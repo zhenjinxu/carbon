@@ -45,6 +45,7 @@ import {
 import { ReplenishmentSystemIcon, TrackingTypeIcon } from "~/components/Icons";
 import { useNextItemId, usePermissions, useUser } from "~/hooks";
 import { path } from "~/utils/path";
+import { serverStorageUpload } from "~/utils/storage";
 import {
   itemReplenishmentSystems,
   itemTrackingTypes,
@@ -90,7 +91,7 @@ const ToolForm = ({ initialValues, type = "card", onClose }: ToolFormProps) => {
     const fileName = `${companyId}/models/${modelId}.${fileExtension}`;
 
     const [fileUpload, recordInsert] = await Promise.all([
-      carbon.storage.from("private").upload(fileName, file),
+      serverStorageUpload(file, fileName, { bucket: "private" }),
       carbon.from("modelUpload").insert({
         id: modelId,
         modelPath: fileName,

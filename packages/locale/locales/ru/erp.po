@@ -54,6 +54,9 @@ msgstr "{0} успешно загружен"
 msgid "{0} values missing"
 msgstr "{0} значений отсутствует"
 
+msgid "{displayText}"
+msgstr ""
+
 msgid "{maxSizeMB}MB limit"
 msgstr "{maxSizeMB}МБ максимум"
 
@@ -62,6 +65,9 @@ msgstr "{name} удален"
 
 msgid "{scopeCount} permissions"
 msgstr "{scopeCount} разрешений"
+
+msgid "{status}"
+msgstr ""
 
 msgid "/month/user"
 msgstr "/месяц/пользователь"
@@ -163,6 +169,9 @@ msgstr "Способности"
 msgid "About"
 msgstr "О программе"
 
+msgid "Accept"
+msgstr ""
+
 msgid "Accept Lot"
 msgstr "Принять партию"
 
@@ -171,6 +180,12 @@ msgstr "Принять партию?"
 
 msgid "Accept Quote"
 msgstr "Принять предложение"
+
+msgid "Acceptance Conclusion"
+msgstr ""
+
+msgid "Acceptance Notes"
+msgstr ""
 
 msgid "Account"
 msgstr "Счет"
@@ -204,6 +219,9 @@ msgstr "Период накопления (недели)"
 
 msgid "Accumulation Period:"
 msgstr "Период накопления:"
+
+msgid "Acquisition Cost"
+msgstr ""
 
 msgid "Action Items"
 msgstr "Элементы действия"
@@ -448,11 +466,17 @@ msgstr "Все работы завершены"
 msgid "All members of selected groups and selected individuals will be able to approve requests"
 msgstr "Все члены выбранных групп и выбранные лица смогут одобрять запросы"
 
+msgid "All Qualified"
+msgstr ""
+
 msgid "All Suppliers"
 msgstr "Все поставщики"
 
 msgid "All Types"
 msgstr "Все типы"
+
+msgid "All Unqualified"
+msgstr ""
 
 msgid "All Work Centers"
 msgstr "Все рабочие центры"
@@ -936,8 +960,14 @@ msgstr "Сборка:"
 msgid "Asset"
 msgstr "Актив"
 
+msgid "Asset Class"
+msgstr ""
+
 msgid "Asset Classes"
 msgstr "Классы активов"
+
+msgid "Asset ID"
+msgstr ""
 
 msgid "Assets"
 msgstr "Активы"
@@ -1053,6 +1083,9 @@ msgstr "Среднее количество дней до закрытия"
 msgid "Back"
 msgstr "Назад"
 
+msgid "Back Home"
+msgstr ""
+
 msgid "Back to traceability"
 msgstr "Вернуться к отслеживанию"
 
@@ -1137,6 +1170,9 @@ msgstr "BoM + BoP"
 
 msgid "BOM synced successfully"
 msgstr "BOM успешно синхронизирован"
+
+msgid "Book Depreciation"
+msgstr ""
 
 msgid "Breadcrumb"
 msgstr "Навигационная цепочка"
@@ -1302,6 +1338,12 @@ msgstr "CC"
 
 msgid "Centralized Billing Address"
 msgstr "Централизованный адрес выставления счетов"
+
+msgid "Certificate Number"
+msgstr ""
+
+msgid "Certificate uploaded"
+msgstr ""
 
 msgid "Change"
 msgstr "Изменить"
@@ -1629,6 +1671,12 @@ msgstr "Контакт"
 msgid "Contact (optional)"
 msgstr "Контакт (опционально)"
 
+msgid "Contact Person"
+msgstr ""
+
+msgid "Contact Phone"
+msgstr ""
+
 msgid "Contacts"
 msgstr "Контакты"
 
@@ -1637,6 +1685,9 @@ msgstr "Локализовано"
 
 msgid "Containment"
 msgstr "Локализация"
+
+msgid "Contract Number"
+msgstr ""
 
 msgid "Contractor"
 msgstr "Подрядчик"
@@ -2022,6 +2073,16 @@ msgstr "Рабочий центр создан"
 msgid "Creating part..."
 msgstr "Создание детали..."
 
+msgid "Credit"
+msgstr ""
+
+#. placeholder {0}: parentCurrency ?? "Translated"
+msgid "Credit ({0})"
+msgstr ""
+
+msgid "Credits"
+msgstr ""
+
 msgid "CSV column"
 msgstr "Столбец CSV"
 
@@ -2139,6 +2200,9 @@ msgstr "Настройте макет ваших PDF-документов — п
 msgid "Daily Usage"
 msgstr "Ежедневное использование"
 
+msgid "Damaged"
+msgstr ""
+
 msgid "Dark"
 msgstr "Тёмный"
 
@@ -2230,6 +2294,16 @@ msgstr "Деактивировать рабочий центр"
 msgid "Deadline Type"
 msgstr "Тип срока"
 
+msgid "Debit"
+msgstr ""
+
+#. placeholder {0}: parentCurrency ?? "Translated"
+msgid "Debit ({0})"
+msgstr ""
+
+msgid "Debits"
+msgstr ""
+
 msgid "Decide what an operator sees if they try to issue a batch or serial that's already expired."
 msgstr "Решите, что видит оператор при попытке выдать партию или серийный номер, срок действия которого уже истек."
 
@@ -2276,7 +2350,7 @@ msgid "Default Unit"
 msgstr "Единица по умолчанию"
 
 msgid "Defaults"
-msgstr "Значения по умолчанию"
+msgstr ""
 
 msgid "Defines how many tracked entities are inspected per lot, and how many failures are tolerated before the lot is rejected."
 msgstr "Определяет, сколько отслеживаемых объектов проверяется на партию и сколько отказов допускается перед отклонением партии."
@@ -2328,6 +2402,9 @@ msgstr "Удалить тип клиента"
 
 msgid "Delete Department"
 msgstr "Удалить отдел"
+
+msgid "Delete Dimension"
+msgstr ""
 
 msgid "Delete Dispatch"
 msgstr "Удалить диспетчеризацию"
@@ -2558,10 +2635,13 @@ msgid "Description of Issue"
 msgstr "Описание проблемы"
 
 msgid "Detail"
-msgstr "Подробности"
+msgstr ""
 
 msgid "Details"
 msgstr "Детали"
+
+msgid "Development mode — verification code:"
+msgstr ""
 
 msgid "Diagram saved"
 msgstr "Диаграмма сохранена"
@@ -2629,6 +2709,9 @@ msgstr "Документ"
 msgid "Document Control"
 msgstr "Управление документами"
 
+msgid "Document Number"
+msgstr ""
+
 msgid "Document Templates"
 msgstr "Шаблоны документов"
 
@@ -2688,6 +2771,9 @@ msgstr "Номер чертежа"
 
 msgid "Drawing replaced. Balloon placements were removed; feature rows are unchanged."
 msgstr "Рисунок заменён. Размещение выносок удалено; строки функций не изменены."
+
+msgid "Drop Excel file here, or click to select"
+msgstr ""
 
 msgid "Drop Shipment"
 msgstr "Прямая поставка"
@@ -2797,6 +2883,9 @@ msgstr "Изменить диапазон дат"
 
 msgid "Edit Department"
 msgstr "Редактировать отдел"
+
+msgid "Edit Dimension"
+msgstr ""
 
 msgid "Edit Dispatch"
 msgstr "Редактировать диспетчеризацию"
@@ -3125,6 +3214,9 @@ msgstr "Сущность"
 msgid "Entity is {status}"
 msgstr "Сущность имеет статус {status}"
 
+msgid "Entity Type"
+msgstr ""
+
 msgid "EORI"
 msgstr "EORI"
 
@@ -3230,11 +3322,20 @@ msgstr "Всё из Starter"
 msgid "Exceeds {PO_EMAIL_ATTACHMENT_LIMIT_MB} MB total — remove some attachments to send."
 msgstr "Превышает {PO_EMAIL_ATTACHMENT_LIMIT_MB} МБ всего — удалите некоторые вложения для отправки."
 
+msgid "Excel data imported successfully"
+msgstr ""
+
 msgid "Exchange Rate"
 msgstr "Курс обмена"
 
 msgid "Exchange Rates"
 msgstr "Курсы обмена"
+
+msgid "Exemption Certificate"
+msgstr ""
+
+msgid "Exemption Reason"
+msgstr ""
 
 msgid "Expand"
 msgstr "Развернуть"
@@ -3263,6 +3364,9 @@ msgstr "Развернуть Setup"
 
 msgid "Expand subtree"
 msgstr "Развернуть поддерево"
+
+msgid "Expected Qty"
+msgstr ""
 
 msgid "Expected Receipt"
 msgstr "Ожидаемое получение"
@@ -3591,6 +3695,9 @@ msgstr "Не удалось обновить путь миниатюры"
 msgid "Failed to upload {0}"
 msgstr "Ошибка загрузки {0}"
 
+msgid "Failed to upload certificate"
+msgstr ""
+
 msgid "Failed to upload CSV file."
 msgstr "Не удалось загрузить CSV файл."
 
@@ -3616,9 +3723,6 @@ msgstr "Ошибка загрузки модели"
 
 msgid "Failed to upload PDF"
 msgstr "Ошибка загрузки PDF"
-
-msgid "Failed to upload thumbnail"
-msgstr "Не удалось загрузить миниатюру"
 
 msgid "Failure Mode"
 msgstr "Режим отказа"
@@ -3731,7 +3835,7 @@ msgid "Fiscal Year Settings"
 msgstr "Параметры финансового года"
 
 msgid "Fiscal Years"
-msgstr "Финансовые годы"
+msgstr ""
 
 msgid "Fixed"
 msgstr "Фиксированный"
@@ -3863,6 +3967,9 @@ msgstr "Название группы"
 msgid "Groups"
 msgstr "Группы"
 
+msgid "Header Information"
+msgstr ""
+
 msgid "Help"
 msgstr "Справка"
 
@@ -3944,6 +4051,12 @@ msgstr "Поддержка внедрения"
 msgid "Import {label} CSV"
 msgstr "Импорт {label} CSV"
 
+msgid "Import Excel"
+msgstr ""
+
+msgid "Import Receipt from Excel"
+msgstr ""
+
 msgid "In order to convert this RFQ to a quote, all lines must have an internal part number."
 msgstr "Чтобы преобразовать это РЗП в предложение, все строки должны иметь внутренний номер детали."
 
@@ -4016,6 +4129,9 @@ msgstr "Инфраструктура"
 msgid "Inherit From Materials"
 msgstr "Наследовать от материалов"
 
+msgid "Inherited"
+msgstr ""
+
 msgid "Inherited from parent"
 msgstr "Унаследовано от родителя"
 
@@ -4046,6 +4162,9 @@ msgstr "Документы проверки"
 msgid "Inspection Level"
 msgstr "Уровень проверки"
 
+msgid "Inspection Results"
+msgstr ""
+
 msgid "Inspection Status"
 msgstr "Статус проверки"
 
@@ -4063,6 +4182,9 @@ msgstr "Инструкции"
 
 msgid "Instructions are inherited from the procedure."
 msgstr "Инструкции наследуются из процедуры."
+
+msgid "Intact"
+msgstr ""
 
 msgid "Integration not found"
 msgstr "Интеграция не найдена"
@@ -4241,6 +4363,9 @@ msgstr "Товар должен соответствовать выбранно�
 msgid "Item must match a selected type OR a selected group"
 msgstr "Товар должен соответствовать выбранному типу ИЛИ выбранной группе"
 
+msgid "Item Name"
+msgstr ""
+
 msgid "Item Scope"
 msgstr "Область применения товара"
 
@@ -4295,6 +4420,9 @@ msgstr "Присоединиться к {0}"
 
 msgid "Journal Entries"
 msgstr "Записи в журнале"
+
+msgid "Journal Entry"
+msgstr ""
 
 msgid "Kanban"
 msgstr "Канбан"
@@ -4426,6 +4554,9 @@ msgstr "Вероятность"
 
 msgid "Line Item Comparison"
 msgstr "Сравнение позиций"
+
+msgid "Line Items"
+msgstr ""
 
 msgid "Line options"
 msgstr "Параметры строки"
@@ -4950,6 +5081,12 @@ msgstr "Нужны правильные столбцы?"
 msgid "Negative Adjustment"
 msgstr "Отрицательная корректировка"
 
+msgid "Net Book Value"
+msgstr ""
+
+msgid "Net Change"
+msgstr ""
+
 msgid "Never"
 msgstr "Никогда"
 
@@ -5167,7 +5304,7 @@ msgid "New Training"
 msgstr "Новое обучение"
 
 msgid "New Transfer"
-msgstr "Новый трансфер"
+msgstr ""
 
 msgid "New Transfer Line"
 msgstr "Новая строка передачи"
@@ -5717,6 +5854,12 @@ msgstr "Перезаписать метод предложения исходн�
 msgid "Overwrite the target manufacturing method with the quote method"
 msgstr "Перезаписать целевой производственный метод методом предложения"
 
+msgid "Packaging Condition"
+msgstr ""
+
+msgid "Packaging Notes"
+msgstr ""
+
 msgid "Packing Slip"
 msgstr "Упаковочный лист"
 
@@ -5767,6 +5910,12 @@ msgstr "Деталь настроена для производства"
 
 msgid "Partial"
 msgstr "Частичный"
+
+msgid "Partial Acceptance"
+msgstr ""
+
+msgid "Partially Qualified"
+msgstr ""
 
 msgid "Partner"
 msgstr "Партнер"
@@ -5831,6 +5980,9 @@ msgstr "Идеально для недорогой оценки"
 msgid "Period"
 msgstr "Период"
 
+msgid "Period End"
+msgstr ""
+
 msgid "Permanently Delete"
 msgstr "Окончательно удалить"
 
@@ -5880,7 +6032,7 @@ msgid "Picking Lines"
 msgstr "Строки комплектации"
 
 msgid "Picking List"
-msgstr "Список комплектации"
+msgstr ""
 
 msgid "Picking List ID"
 msgstr "ID списка комплектации"
@@ -5939,15 +6091,6 @@ msgstr "Пожалуйста, введите ваше имя"
 msgid "Please fill out all required fields"
 msgstr "Пожалуйста, заполните все обязательные поля"
 
-msgid "Please save the operation before adding parameters."
-msgstr "Пожалуйста, сохраните операцию перед добавлением параметров."
-
-msgid "Please save the operation before adding steps."
-msgstr "Пожалуйста, сохраните операцию перед добавлением шагов."
-
-msgid "Please save the operation before adding tools."
-msgstr "Пожалуйста, сохраните операцию перед добавлением инструментов."
-
 msgid "Please select an item"
 msgstr "Пожалуйста, выберите товар"
 
@@ -5967,7 +6110,7 @@ msgid "Policy"
 msgstr "Политика"
 
 msgid "Policy & Procedure"
-msgstr "Политика и процедура"
+msgstr ""
 
 msgid "Portal Link"
 msgstr "Ссылка портала"
@@ -5999,6 +6142,9 @@ msgstr "Почтовый индекс"
 msgid "Posted"
 msgstr "Опубликовано"
 
+msgid "Posted At"
+msgstr ""
+
 msgid "Posted By"
 msgstr "Опубликовано"
 
@@ -6006,7 +6152,7 @@ msgid "Posting Date"
 msgstr "Дата публикации"
 
 msgid "Posting Groups"
-msgstr "Группы учета"
+msgstr ""
 
 msgid "Potential Data Loss"
 msgstr "Потенциальная потеря данных"
@@ -6290,6 +6436,12 @@ msgstr "Правило утверждения документа качеств�
 msgid "Quality Documents"
 msgstr "Документы качества"
 
+msgid "Quality Inspection"
+msgstr ""
+
+msgid "Quality Inspection Notes"
+msgstr ""
+
 msgid "Quality Type"
 msgstr "Тип качества"
 
@@ -6381,6 +6533,9 @@ msgstr "Котировка"
 msgid "Rate Limit"
 msgstr "Ограничение скорости"
 
+msgid "Re-select File"
+msgstr ""
+
 msgid "Reactivate"
 msgstr "Переактивировать"
 
@@ -6410,6 +6565,9 @@ msgstr "Пересчитать себестоимость единицы"
 
 msgid "Receipt"
 msgstr "Квитанция"
+
+msgid "Receipt Date"
+msgstr ""
 
 msgid "Receipt ID"
 msgstr "ID квитанции"
@@ -6447,6 +6605,18 @@ msgstr "Получено от"
 
 msgid "Received Qty"
 msgstr "Полученное кол-во"
+
+msgid "Receiver Contact"
+msgstr ""
+
+msgid "Receiver Information"
+msgstr ""
+
+msgid "Receiver Signature"
+msgstr ""
+
+msgid "Receiving Department"
+msgstr ""
 
 msgid "Receiving Location"
 msgstr "Место получения"
@@ -6797,6 +6967,9 @@ msgstr "Тип правила"
 msgid "Rules"
 msgstr "Правила"
 
+msgid "Run ID"
+msgstr ""
+
 msgid "Run Test"
 msgstr "Запустить тест"
 
@@ -7107,6 +7280,9 @@ msgstr "Выберите принтер"
 msgid "Select Quantities"
 msgstr "Выберите количества"
 
+msgid "Select Reason"
+msgstr ""
+
 msgid "Select Row"
 msgstr "Выбрать строку"
 
@@ -7161,6 +7337,18 @@ msgstr "Отправить РФП поставщикам"
 
 msgid "Send Via"
 msgstr "Отправить через"
+
+msgid "Sender Contact"
+msgstr ""
+
+msgid "Sender Information"
+msgstr ""
+
+msgid "Sender Phone"
+msgstr ""
+
+msgid "Sender Signature"
+msgstr ""
 
 msgid "Sends this document for approval before it can go active."
 msgstr "Отправляет этот документ на утверждение перед тем, как он сможет стать активным."
@@ -7406,6 +7594,12 @@ msgstr "Войти с помощью Passkey"
 msgid "Sign Out"
 msgstr "Выход"
 
+msgid "Signature Confirmation"
+msgstr ""
+
+msgid "Signature Date"
+msgstr ""
+
 msgid "Signed in as {name}"
 msgstr "Вы вошли как {name}"
 
@@ -7429,6 +7623,9 @@ msgstr "Пропускать запланированное техническо
 
 msgid "Skipped"
 msgstr "Пропущено"
+
+msgid "Something went wrong"
+msgstr ""
 
 msgid "Something went wrong. Please try again."
 msgstr "Что-то пошло не так. Пожалуйста, попробуйте еще раз."
@@ -7492,6 +7689,9 @@ msgstr "Конкретные клиенты"
 
 msgid "Specific Items"
 msgstr "Конкретные товары"
+
+msgid "Specification"
+msgstr ""
 
 msgid "Split"
 msgstr "Разделить"
@@ -7866,11 +8066,23 @@ msgstr "Налог и доставка"
 msgid "Tax Amount"
 msgstr "Сумма налога"
 
+msgid "Tax Depreciation"
+msgstr ""
+
+msgid "Tax Exempt"
+msgstr ""
+
 msgid "Tax ID"
 msgstr "Налоговый ID"
 
+msgid "Tax Information"
+msgstr ""
+
 msgid "Tax Percent"
 msgstr "Процент налога"
+
+msgid "Tax Status"
+msgstr ""
 
 msgid "Tax:"
 msgstr "Налог:"
@@ -7882,7 +8094,7 @@ msgid "Template ID"
 msgstr "ID шаблона"
 
 msgid "Templates"
-msgstr "Шаблоны"
+msgstr ""
 
 msgid "Terms and Privacy"
 msgstr "Условия и конфиденциальность"
@@ -8447,6 +8659,9 @@ msgstr "Загрузить"
 msgid "Upload a PDF first"
 msgstr "Сначала загрузите PDF"
 
+msgid "Upload an Excel file (.xlsx) matching the delivery note template"
+msgstr ""
+
 msgid "Upload completed but no file path returned"
 msgstr "Загрузка завершена, но путь файла не возвращен"
 
@@ -8548,6 +8763,9 @@ msgstr "Значение"
 msgid "Value source by surface"
 msgstr "Источник значения по поверхности"
 
+msgid "Values"
+msgstr ""
+
 msgid "VAT Number"
 msgstr "Номер НДС"
 
@@ -8589,6 +8807,9 @@ msgstr "Просмотреть вложение"
 
 msgid "View Attributes"
 msgstr "Просмотр атрибутов"
+
+msgid "View Certificate"
+msgstr ""
 
 msgid "View Contact"
 msgstr "Просмотр контакта"
@@ -8724,6 +8945,9 @@ msgstr "Аннулирование этого чека приведет к:"
 
 msgid "Voiding this shipment will:"
 msgstr "Отмена этой отправки приведет к:"
+
+msgid "Warehouse Keeper Signature"
+msgstr ""
 
 msgid "Warehouse Transfer"
 msgstr "Передача между складами"
@@ -8965,3 +9189,159 @@ msgstr "ZPL (Термальная этикетка)"
 
 msgid "ZPL Label Preview"
 msgstr "Предпросмотр этикетки ZPL"
+
+msgid "交付周期"
+msgstr ""
+
+msgid "人工"
+msgstr ""
+
+msgid "人工单位"
+msgstr ""
+
+msgid "人工时间"
+msgstr ""
+
+msgid "作业指导继承自工艺规程。"
+msgstr ""
+
+msgid "供应商"
+msgstr ""
+
+msgid "值"
+msgstr ""
+
+msgid "最低成本"
+msgstr ""
+
+msgid "最大值"
+msgstr ""
+
+msgid "最小值"
+msgstr ""
+
+msgid "准备"
+msgstr ""
+
+msgid "准备单位"
+msgstr ""
+
+msgid "准备时间"
+msgstr ""
+
+msgid "列表选项"
+msgstr ""
+
+msgid "单位成本"
+msgstr ""
+
+msgid "参数继承自工艺规程。"
+msgstr ""
+
+msgid "名称"
+msgstr ""
+
+msgid "图片上传失败"
+msgstr ""
+
+msgid "展开人工"
+msgstr ""
+
+msgid "展开准备"
+msgstr ""
+
+msgid "展开设备"
+msgstr ""
+
+msgid "属性继承自工艺规程。"
+msgstr ""
+
+msgid "工作中心"
+msgstr ""
+
+msgid "工具"
+msgstr ""
+
+msgid "工序"
+msgstr ""
+
+msgid "工序类型"
+msgstr ""
+
+msgid "工序顺序"
+msgstr ""
+
+msgid "工艺规程"
+msgstr ""
+
+msgid "工艺路线"
+msgstr ""
+
+msgid "已配置"
+msgstr ""
+
+msgid "打开菜单"
+msgstr ""
+
+msgid "拖拽手柄"
+msgstr ""
+
+msgid "描述"
+msgstr ""
+
+msgid "收起人工"
+msgstr ""
+
+msgid "收起准备"
+msgstr ""
+
+msgid "收起设备"
+msgstr ""
+
+msgid "数量"
+msgstr ""
+
+msgid "无法向未保存的工序添加参数"
+msgstr ""
+
+msgid "无法向未保存的工序添加工具"
+msgstr ""
+
+msgid "无法向未保存的工序添加步骤"
+msgstr ""
+
+msgid "添加工序"
+msgstr ""
+
+msgid "类型"
+msgstr ""
+
+msgid "计量单位"
+msgstr ""
+
+msgid "设备"
+msgstr ""
+
+msgid "设备单位"
+msgstr ""
+
+msgid "设备时间"
+msgstr ""
+
+msgid "详情"
+msgstr ""
+
+msgid "请先保存工序后再添加参数。"
+msgstr ""
+
+msgid "请先保存工序后再添加工具。"
+msgstr ""
+
+msgid "请先保存工序后再添加步骤。"
+msgstr ""
+
+msgid "配置"
+msgstr ""
+
+msgid "键"
+msgstr ""

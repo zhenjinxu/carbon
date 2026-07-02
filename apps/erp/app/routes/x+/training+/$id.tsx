@@ -28,6 +28,7 @@ import { getTagsList } from "~/modules/shared";
 import type { action } from "~/routes/x+/training+/update";
 import type { Handle } from "~/utils/handle";
 import { getPrivateUrl, path } from "~/utils/path";
+import { serverStorageUpload } from "~/utils/storage";
 
 export const handle: Handle = {
   breadcrumb: msg`Training`,
@@ -145,7 +146,9 @@ function TrainingEditor() {
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/training/${nanoid()}.${fileType}`;
 
-    const result = await carbon?.storage.from("private").upload(fileName, file);
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private"
+    });
 
     if (result?.error) {
       toast.error("Failed to upload image");

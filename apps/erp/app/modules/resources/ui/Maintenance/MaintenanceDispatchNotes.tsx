@@ -39,6 +39,7 @@ import { usePermissions, useUser } from "~/hooks";
 import { getDocumentType } from "~/modules/shared";
 import type { StorageItem } from "~/types";
 import { getPrivateUrl, path } from "~/utils/path";
+import { serverStorageUpload } from "~/utils/storage";
 import { stripSpecialCharacters } from "~/utils/string";
 
 export function MaintenanceDispatchNotes({
@@ -63,7 +64,9 @@ export function MaintenanceDispatchNotes({
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/maintenance/${nanoid()}.${fileType}`;
 
-    const result = await carbon?.storage.from("private").upload(fileName, file);
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private"
+    });
 
     if (result?.error) {
       toast.error("Failed to upload image");
@@ -216,12 +219,11 @@ function MaintenanceFilesContent({
       for (const file of filesToUpload) {
         const filePath = getFilePath(file.name);
 
-        const result = await carbon.storage
-          .from("private")
-          .upload(filePath, file, {
-            cacheControl: `${12 * 60 * 60}`,
-            upsert: true
-          });
+        const result = await serverStorageUpload(file, filePath, {
+          bucket: "private",
+          cacheControl: `${12 * 60 * 60}`,
+          upsert: true
+        });
 
         if (result.error) {
           toast.error(t`Failed to upload file: ${file.name}`);

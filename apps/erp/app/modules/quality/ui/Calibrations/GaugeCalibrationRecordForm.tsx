@@ -62,6 +62,7 @@ import {
 import { useGauges } from "~/components/Form/Gauge";
 import { usePermissions, useRouteData, useUser } from "~/hooks";
 import { getPrivateUrl, path } from "~/utils/path";
+import { serverStorageUpload } from "~/utils/storage";
 import { gaugeCalibrationRecordValidator } from "../../quality.models";
 import type { Gauge } from "../../types";
 import { GaugeRole } from "../Gauge/GaugeStatus";
@@ -154,7 +155,9 @@ const GaugeCalibrationRecordForm = ({
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/parts/${nanoid()}.${fileType}`;
 
-    const result = await carbon?.storage.from("private").upload(fileName, file);
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private"
+    });
 
     if (result?.error) {
       toast.error(t`Failed to upload image`);

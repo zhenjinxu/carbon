@@ -1,4 +1,3 @@
-import { useCarbon } from "@carbon/auth";
 import {
   Array as ArrayInput,
   Hidden,
@@ -66,6 +65,7 @@ import { usePermissions, useRouteData, useUser } from "~/hooks";
 import { qualityDocumentStepValidator } from "~/modules/quality/quality.models";
 import { procedureStepType } from "~/modules/shared";
 import { getPrivateUrl, path } from "~/utils/path";
+import { serverStorageUpload } from "~/utils/storage";
 import type { QualityDocument, QualityDocumentStep } from "../../types";
 
 export default function QualityDocumentExplorer() {
@@ -491,7 +491,6 @@ function QualityDocumentStepForm({
     }
   });
 
-  const { carbon } = useCarbon();
   const {
     company: { id: companyId }
   } = useUser();
@@ -526,7 +525,9 @@ function QualityDocumentStepForm({
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/parts/${nanoid()}.${fileType}`;
 
-    const result = await carbon?.storage.from("private").upload(fileName, file);
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private"
+    });
 
     if (result?.error) {
       toast.error(t`Failed to upload image`);

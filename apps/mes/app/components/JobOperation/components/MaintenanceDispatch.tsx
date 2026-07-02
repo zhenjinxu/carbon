@@ -1,4 +1,3 @@
-import { useCarbon } from "@carbon/auth";
 import {
   DateTimePicker,
   Hidden,
@@ -37,6 +36,7 @@ import {
   oeeImpact
 } from "~/services/models";
 import { getPrivateUrl, path } from "~/utils/path";
+import { serverStorageUpload } from "~/utils/storage";
 
 function getPriorityIcon(
   priority: (typeof maintenanceDispatchPriority)[number]
@@ -91,7 +91,6 @@ export function MaintenanceDispatch({
   const {
     company: { id: companyId }
   } = useUser();
-  const { carbon } = useCarbon();
 
   const [content, setContent] = useState<JSONContent>({});
   const [severity, setSeverity] =
@@ -126,7 +125,9 @@ export function MaintenanceDispatch({
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/maintenance/${nanoid()}.${fileType}`;
 
-    const result = await carbon?.storage.from("private").upload(fileName, file);
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private"
+    });
 
     if (result?.error) {
       toast.error("Failed to upload image");

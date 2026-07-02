@@ -12,6 +12,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. placeholder {0}: operation.jobStatus === "Paused" ? "Paused" : operation.operationStatus
+#. placeholder {0}: status === "Ready" ? "Released" : status
+msgid "{0}"
+msgstr ""
+
 #. placeholder {0}: attribute.name
 #. placeholder {1}: activeStep + 1
 msgid "{0} - Set {1}"
@@ -41,6 +46,9 @@ msgstr "{0} из {1} завершено"
 #. placeholder {0}: item.quantityScrapped
 msgid "{0} Scrapped"
 msgstr "{0} Списано"
+
+msgid "{status}"
+msgstr ""
 
 msgid "About"
 msgstr "О системе"
@@ -104,6 +112,9 @@ msgstr "Ошибка аутентификации"
 
 msgid "available"
 msgstr "доступно"
+
+msgid "Back Home"
+msgstr ""
 
 msgid "Batch"
 msgstr "Партия"
@@ -956,6 +967,9 @@ msgstr "Вход выполнен как {stationName}"
 
 msgid "Size"
 msgstr "Размер"
+
+msgid "Something went wrong"
+msgstr ""
 
 msgid "Source"
 msgstr "Источник"

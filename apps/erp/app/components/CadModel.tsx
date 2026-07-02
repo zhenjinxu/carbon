@@ -1,4 +1,3 @@
-import { useCarbon } from "@carbon/auth";
 import {
   CardHeader,
   CardTitle,
@@ -15,11 +14,10 @@ import {
   supportedModelTypes
 } from "@carbon/utils";
 import { nanoid } from "nanoid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { LuCloudUpload } from "react-icons/lu";
 import { useFetcher } from "react-router";
-import { useUser } from "~/hooks";
 import { getPrivateUrl, path } from "~/utils/path";
 
 const SIZE_LIMIT = getFileSizeLimit("CAD_MODEL_UPLOAD");
@@ -48,14 +46,22 @@ const CadModel = ({
   uploadClassName,
   viewerClassName
 }: CadModelProps) => {
-  const {
-    company: { id: companyId }
-  } = useUser();
   const mode = useMode();
-  const { carbon } = useCarbon();
 
-  const fetcher = useFetcher<{}>();
+  const fetcher = useFetcher<{
+    success: boolean;
+    modelPath?: string;
+    error?: string;
+  }>();
   const [file, setFile] = useState<File | null>(null);
+
+  // When the server upload completes, clear the local file and show the model
+  // from storage via the server-provided path.
+  useEffect(() => {
+    if (fetcher.data?.success && fetcher.data?.modelPath) {
+      setFile(null);
+    }
+  }, [fetcher.data]);
 
   const onFileChange = async (file: File | null) => {
     const modelId = nanoid();
@@ -63,29 +69,12 @@ const CadModel = ({
     setFile(file);
 
     if (file) {
-      if (!carbon) {
-        toast.error("Failed to initialize carbon client");
-        return;
-      } else {
-        toast.info(`Uploading ${file.name}`);
-      }
-      const fileExtension = file.name.split(".").pop();
-      const fileName = `${companyId}/models/${modelId}.${fileExtension}`;
-
-      const modelUpload = await carbon.storage
-        .from("private")
-        .upload(fileName, file, {
-          upsert: true
-        });
-
-      if (modelUpload.error) {
-        toast.error("Failed to upload file to storage");
-      }
+      toast.info(`Uploading ${file.name}`);
 
       const formData = new FormData();
       formData.append("name", file.name);
       formData.append("modelId", modelId);
-      formData.append("modelPath", modelUpload.data!.path);
+      formData.append("file", file);
       formData.append("size", file.size.toString());
       if (metadata) {
         if (metadata.itemId) {
@@ -121,11 +110,12 @@ const CadModel = ({
       }
     >
       {() => {
-        return file || modelPath ? (
+        const resolvedPath = fetcher.data?.modelPath || modelPath;
+        return file || resolvedPath ? (
           <ModelViewer
-            key={modelPath}
+            key={resolvedPath}
             file={file}
-            url={modelPath ? getPrivateUrl(modelPath) : null}
+            url={resolvedPath ? getPrivateUrl(resolvedPath) : null}
             mode={mode}
             className={viewerClassName}
           />

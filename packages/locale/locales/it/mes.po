@@ -12,6 +12,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. placeholder {0}: operation.jobStatus === "Paused" ? "Paused" : operation.operationStatus
+#. placeholder {0}: status === "Ready" ? "Released" : status
+msgid "{0}"
+msgstr ""
+
 #. placeholder {0}: attribute.name
 #. placeholder {1}: activeStep + 1
 msgid "{0} - Set {1}"
@@ -41,6 +46,9 @@ msgstr "{0} di {1} completati"
 #. placeholder {0}: item.quantityScrapped
 msgid "{0} Scrapped"
 msgstr "{0} Scartati"
+
+msgid "{status}"
+msgstr ""
 
 msgid "About"
 msgstr "Informazioni"
@@ -104,6 +112,9 @@ msgstr "Errore di Autenticazione"
 
 msgid "available"
 msgstr "disponibile"
+
+msgid "Back Home"
+msgstr ""
 
 msgid "Batch"
 msgstr "Lotto"
@@ -956,6 +967,9 @@ msgstr "Connesso come {stationName}"
 
 msgid "Size"
 msgstr "Dimensione"
+
+msgid "Something went wrong"
+msgstr ""
 
 msgid "Source"
 msgstr "Origine"

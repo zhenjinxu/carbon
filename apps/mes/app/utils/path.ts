@@ -16,7 +16,8 @@ export const path = {
       failureModes: `${api}/failure-modes`,
       qualityIssueTypes: `${api}/quality-issue-types`,
       serialNumbers: (itemId: string) =>
-        generatePath(`${api}/serial-numbers?itemId=${itemId}`)
+        generatePath(`${api}/serial-numbers?itemId=${itemId}`),
+      storageUpload: `${api}/storage/upload`
     },
     file: {
       jobTraveler: (id: string) => `${getAppUrl()}${file}/traveler/${id}.pdf`,

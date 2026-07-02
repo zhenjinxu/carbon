@@ -54,6 +54,9 @@ msgstr "{0} 上传成功"
 msgid "{0} values missing"
 msgstr "{0} 个值缺失"
 
+msgid "{displayText}"
+msgstr ""
+
 msgid "{maxSizeMB}MB limit"
 msgstr "{maxSizeMB}MB 限制"
 
@@ -62,6 +65,9 @@ msgstr "{name} 已删除"
 
 msgid "{scopeCount} permissions"
 msgstr "{scopeCount} 个权限"
+
+msgid "{status}"
+msgstr ""
 
 msgid "/month/user"
 msgstr "/月/用户"
@@ -163,6 +169,9 @@ msgstr "能力"
 msgid "About"
 msgstr "关于"
 
+msgid "Accept"
+msgstr ""
+
 msgid "Accept Lot"
 msgstr "接受批次"
 
@@ -171,6 +180,12 @@ msgstr "接受批次？"
 
 msgid "Accept Quote"
 msgstr "接受报价"
+
+msgid "Acceptance Conclusion"
+msgstr ""
+
+msgid "Acceptance Notes"
+msgstr ""
 
 msgid "Account"
 msgstr "账户"
@@ -204,6 +219,9 @@ msgstr "累积期（周）"
 
 msgid "Accumulation Period:"
 msgstr "累积期间："
+
+msgid "Acquisition Cost"
+msgstr "购置成本"
 
 msgid "Action Items"
 msgstr "操作项"
@@ -448,11 +466,17 @@ msgstr "所有工作已完成"
 msgid "All members of selected groups and selected individuals will be able to approve requests"
 msgstr "所选组的所有成员和所选个人将能够批准请求"
 
+msgid "All Qualified"
+msgstr ""
+
 msgid "All Suppliers"
 msgstr "所有供应商"
 
 msgid "All Types"
 msgstr "所有类型"
+
+msgid "All Unqualified"
+msgstr ""
 
 msgid "All Work Centers"
 msgstr "所有工作中心"
@@ -936,8 +960,14 @@ msgstr "装配体："
 msgid "Asset"
 msgstr "资产"
 
+msgid "Asset Class"
+msgstr "资产类别"
+
 msgid "Asset Classes"
 msgstr "资产类别"
+
+msgid "Asset ID"
+msgstr "资产编号"
 
 msgid "Assets"
 msgstr "资产"
@@ -1053,6 +1083,9 @@ msgstr "平均关闭天数"
 msgid "Back"
 msgstr "返回"
 
+msgid "Back Home"
+msgstr "返回首页"
+
 msgid "Back to traceability"
 msgstr "返回可追溯性"
 
@@ -1137,6 +1170,9 @@ msgstr "BoM + BoP"
 
 msgid "BOM synced successfully"
 msgstr "物料清单同步成功"
+
+msgid "Book Depreciation"
+msgstr "账面折旧"
 
 msgid "Breadcrumb"
 msgstr "面包屑"
@@ -1302,6 +1338,12 @@ msgstr "抄送"
 
 msgid "Centralized Billing Address"
 msgstr "集中式账单地址"
+
+msgid "Certificate Number"
+msgstr "证书编号"
+
+msgid "Certificate uploaded"
+msgstr "证书已上传"
 
 msgid "Change"
 msgstr "更改"
@@ -1629,6 +1671,12 @@ msgstr "联系人"
 msgid "Contact (optional)"
 msgstr "联系人（可选）"
 
+msgid "Contact Person"
+msgstr ""
+
+msgid "Contact Phone"
+msgstr ""
+
 msgid "Contacts"
 msgstr "联系人"
 
@@ -1637,6 +1685,9 @@ msgstr "已控制"
 
 msgid "Containment"
 msgstr "遏制"
+
+msgid "Contract Number"
+msgstr ""
 
 msgid "Contractor"
 msgstr "承包商"
@@ -2022,6 +2073,16 @@ msgstr "已创建工作中心"
 msgid "Creating part..."
 msgstr "正在创建零件..."
 
+msgid "Credit"
+msgstr "贷方"
+
+#. placeholder {0}: parentCurrency ?? "Translated"
+msgid "Credit ({0})"
+msgstr "贷方（{0}）"
+
+msgid "Credits"
+msgstr "贷方合计"
+
 msgid "CSV column"
 msgstr "CSV 列"
 
@@ -2139,6 +2200,9 @@ msgstr "自定义您的 PDF 文档布局 — 重新排列部分、隐藏不需�
 msgid "Daily Usage"
 msgstr "日常使用"
 
+msgid "Damaged"
+msgstr ""
+
 msgid "Dark"
 msgstr "深色"
 
@@ -2230,6 +2294,16 @@ msgstr "停用工作中心"
 msgid "Deadline Type"
 msgstr "截止日期类型"
 
+msgid "Debit"
+msgstr "借方"
+
+#. placeholder {0}: parentCurrency ?? "Translated"
+msgid "Debit ({0})"
+msgstr "借方（{0}）"
+
+msgid "Debits"
+msgstr "借方合计"
+
 msgid "Decide what an operator sees if they try to issue a batch or serial that's already expired."
 msgstr "决定操作员在尝试发放已过期的批次或序列号时看到的内容。"
 
@@ -2276,7 +2350,7 @@ msgid "Default Unit"
 msgstr "默认单位"
 
 msgid "Defaults"
-msgstr "默认值"
+msgstr ""
 
 msgid "Defines how many tracked entities are inspected per lot, and how many failures are tolerated before the lot is rejected."
 msgstr "定义每批检查多少个跟踪实体，以及在批次被拒绝前允许多少个失败。"
@@ -2328,6 +2402,9 @@ msgstr "删除客户类型"
 
 msgid "Delete Department"
 msgstr "删除部门"
+
+msgid "Delete Dimension"
+msgstr "删除维度"
 
 msgid "Delete Dispatch"
 msgstr "删除派工"
@@ -2558,10 +2635,13 @@ msgid "Description of Issue"
 msgstr "问题描述"
 
 msgid "Detail"
-msgstr "详情"
+msgstr ""
 
 msgid "Details"
 msgstr "详情"
+
+msgid "Development mode — verification code:"
+msgstr ""
 
 msgid "Diagram saved"
 msgstr "图表已保存"
@@ -2629,6 +2709,9 @@ msgstr "文档"
 msgid "Document Control"
 msgstr "文件控制"
 
+msgid "Document Number"
+msgstr ""
+
 msgid "Document Templates"
 msgstr "文档模板"
 
@@ -2688,6 +2771,9 @@ msgstr "图纸编号"
 
 msgid "Drawing replaced. Balloon placements were removed; feature rows are unchanged."
 msgstr "图纸已替换。气球位置已移除；功能行保持不变。"
+
+msgid "Drop Excel file here, or click to select"
+msgstr ""
 
 msgid "Drop Shipment"
 msgstr "直运"
@@ -2797,6 +2883,9 @@ msgstr "编辑日期范围"
 
 msgid "Edit Department"
 msgstr "编辑部门"
+
+msgid "Edit Dimension"
+msgstr "编辑维度"
 
 msgid "Edit Dispatch"
 msgstr "编辑派工"
@@ -3125,6 +3214,9 @@ msgstr "实体"
 msgid "Entity is {status}"
 msgstr "实体为 {status}"
 
+msgid "Entity Type"
+msgstr "实体类型"
+
 msgid "EORI"
 msgstr "EORI"
 
@@ -3230,11 +3322,20 @@ msgstr "Starter 中的所有功能"
 msgid "Exceeds {PO_EMAIL_ATTACHMENT_LIMIT_MB} MB total — remove some attachments to send."
 msgstr "超过 {PO_EMAIL_ATTACHMENT_LIMIT_MB} MB 总限制 — 请删除一些附件以发送。"
 
+msgid "Excel data imported successfully"
+msgstr ""
+
 msgid "Exchange Rate"
 msgstr "汇率"
 
 msgid "Exchange Rates"
 msgstr "汇率"
+
+msgid "Exemption Certificate"
+msgstr "免税证明"
+
+msgid "Exemption Reason"
+msgstr "免税原因"
 
 msgid "Expand"
 msgstr "展开"
@@ -3263,6 +3364,9 @@ msgstr "展开设置"
 
 msgid "Expand subtree"
 msgstr "展开子树"
+
+msgid "Expected Qty"
+msgstr ""
 
 msgid "Expected Receipt"
 msgstr "预期收货"
@@ -3591,6 +3695,9 @@ msgstr "无法更新缩略图路径"
 msgid "Failed to upload {0}"
 msgstr "上传失败 {0}"
 
+msgid "Failed to upload certificate"
+msgstr "上传证书失败"
+
 msgid "Failed to upload CSV file."
 msgstr "未能上传 CSV 文件。"
 
@@ -3616,9 +3723,6 @@ msgstr "上传模型失败"
 
 msgid "Failed to upload PDF"
 msgstr "上传 PDF 失败"
-
-msgid "Failed to upload thumbnail"
-msgstr "上传缩略图失败"
 
 msgid "Failure Mode"
 msgstr "故障模式"
@@ -3731,7 +3835,7 @@ msgid "Fiscal Year Settings"
 msgstr "财政年度设置"
 
 msgid "Fiscal Years"
-msgstr "财政年度"
+msgstr ""
 
 msgid "Fixed"
 msgstr "固定"
@@ -3863,6 +3967,9 @@ msgstr "组名"
 msgid "Groups"
 msgstr "组"
 
+msgid "Header Information"
+msgstr ""
+
 msgid "Help"
 msgstr "帮助"
 
@@ -3944,6 +4051,12 @@ msgstr "实施支持"
 msgid "Import {label} CSV"
 msgstr "导入 {label} CSV"
 
+msgid "Import Excel"
+msgstr ""
+
+msgid "Import Receipt from Excel"
+msgstr ""
+
 msgid "In order to convert this RFQ to a quote, all lines must have an internal part number."
 msgstr "为了将此RFQ转换为报价，所有行必须具有内部零件编号。"
 
@@ -4016,6 +4129,9 @@ msgstr "基础设施"
 msgid "Inherit From Materials"
 msgstr "从材料继承"
 
+msgid "Inherited"
+msgstr "继承"
+
 msgid "Inherited from parent"
 msgstr "从父级继承"
 
@@ -4046,6 +4162,9 @@ msgstr "检验文件"
 msgid "Inspection Level"
 msgstr "检验水平"
 
+msgid "Inspection Results"
+msgstr ""
+
 msgid "Inspection Status"
 msgstr "检验状态"
 
@@ -4063,6 +4182,9 @@ msgstr "说明"
 
 msgid "Instructions are inherited from the procedure."
 msgstr "说明继承自工序。"
+
+msgid "Intact"
+msgstr ""
 
 msgid "Integration not found"
 msgstr "集成未找到"
@@ -4241,6 +4363,9 @@ msgstr "项目必须匹配选定的类型和选定的组"
 msgid "Item must match a selected type OR a selected group"
 msgstr "项目必须匹配选定的类型或选定的组"
 
+msgid "Item Name"
+msgstr ""
+
 msgid "Item Scope"
 msgstr "物品范围"
 
@@ -4294,6 +4419,9 @@ msgid "Join {0}"
 msgstr "加入 {0}"
 
 msgid "Journal Entries"
+msgstr "日记账分录"
+
+msgid "Journal Entry"
 msgstr "日记账分录"
 
 msgid "Kanban"
@@ -4426,6 +4554,9 @@ msgstr "可能性"
 
 msgid "Line Item Comparison"
 msgstr "行项目比较"
+
+msgid "Line Items"
+msgstr ""
 
 msgid "Line options"
 msgstr "行选项"
@@ -4950,6 +5081,12 @@ msgstr "需要正确的列吗？"
 msgid "Negative Adjustment"
 msgstr "负调整"
 
+msgid "Net Book Value"
+msgstr "账面净值"
+
+msgid "Net Change"
+msgstr "净变动"
+
 msgid "Never"
 msgstr "永不"
 
@@ -5167,7 +5304,7 @@ msgid "New Training"
 msgstr "新培训"
 
 msgid "New Transfer"
-msgstr "新转账"
+msgstr ""
 
 msgid "New Transfer Line"
 msgstr "新转移行"
@@ -5717,6 +5854,12 @@ msgstr "用源方法覆盖报价方法"
 msgid "Overwrite the target manufacturing method with the quote method"
 msgstr "用报价方法覆盖目标制造方法"
 
+msgid "Packaging Condition"
+msgstr ""
+
+msgid "Packaging Notes"
+msgstr ""
+
 msgid "Packing Slip"
 msgstr "装箱单"
 
@@ -5767,6 +5910,12 @@ msgstr "零件已配置用于制造"
 
 msgid "Partial"
 msgstr "部分"
+
+msgid "Partial Acceptance"
+msgstr ""
+
+msgid "Partially Qualified"
+msgstr ""
 
 msgid "Partner"
 msgstr "合作伙伴"
@@ -5831,6 +5980,9 @@ msgstr "非常适合低成本评估"
 msgid "Period"
 msgstr "期间"
 
+msgid "Period End"
+msgstr "期末"
+
 msgid "Permanently Delete"
 msgstr "永久删除"
 
@@ -5880,7 +6032,7 @@ msgid "Picking Lines"
 msgstr "拣货行"
 
 msgid "Picking List"
-msgstr "拣货单"
+msgstr ""
 
 msgid "Picking List ID"
 msgstr "拣货单ID"
@@ -5939,15 +6091,6 @@ msgstr "请输入您的名字"
 msgid "Please fill out all required fields"
 msgstr "请填写所有必填字段"
 
-msgid "Please save the operation before adding parameters."
-msgstr "请先保存操作，然后再添加参数。"
-
-msgid "Please save the operation before adding steps."
-msgstr "请先保存操作，然后再添加步骤。"
-
-msgid "Please save the operation before adding tools."
-msgstr "请先保存操作，然后再添加工具。"
-
 msgid "Please select an item"
 msgstr "请选择一个项目"
 
@@ -5967,7 +6110,7 @@ msgid "Policy"
 msgstr "政策"
 
 msgid "Policy & Procedure"
-msgstr "政策与程序"
+msgstr ""
 
 msgid "Portal Link"
 msgstr "门户链接"
@@ -5999,6 +6142,9 @@ msgstr "邮政编码"
 msgid "Posted"
 msgstr "已发布"
 
+msgid "Posted At"
+msgstr "过账时间"
+
 msgid "Posted By"
 msgstr "发布者"
 
@@ -6006,7 +6152,7 @@ msgid "Posting Date"
 msgstr "过账日期"
 
 msgid "Posting Groups"
-msgstr "过账组"
+msgstr ""
 
 msgid "Potential Data Loss"
 msgstr "潜在数据丢失"
@@ -6290,6 +6436,12 @@ msgstr "质量文件审批规则"
 msgid "Quality Documents"
 msgstr "质量文件"
 
+msgid "Quality Inspection"
+msgstr ""
+
+msgid "Quality Inspection Notes"
+msgstr ""
+
 msgid "Quality Type"
 msgstr "质量类型"
 
@@ -6381,6 +6533,9 @@ msgstr "报价"
 msgid "Rate Limit"
 msgstr "速率限制"
 
+msgid "Re-select File"
+msgstr ""
+
 msgid "Reactivate"
 msgstr "重新激活"
 
@@ -6410,6 +6565,9 @@ msgstr "重新计算单位成本"
 
 msgid "Receipt"
 msgstr "收据"
+
+msgid "Receipt Date"
+msgstr ""
 
 msgid "Receipt ID"
 msgstr "收据ID"
@@ -6447,6 +6605,18 @@ msgstr "接收人"
 
 msgid "Received Qty"
 msgstr "已收货数量"
+
+msgid "Receiver Contact"
+msgstr ""
+
+msgid "Receiver Information"
+msgstr ""
+
+msgid "Receiver Signature"
+msgstr ""
+
+msgid "Receiving Department"
+msgstr ""
 
 msgid "Receiving Location"
 msgstr "收货地点"
@@ -6797,6 +6967,9 @@ msgstr "规则类型"
 msgid "Rules"
 msgstr "规则"
 
+msgid "Run ID"
+msgstr "运行编号"
+
 msgid "Run Test"
 msgstr "运行测试"
 
@@ -7107,6 +7280,9 @@ msgstr "选择打印机"
 msgid "Select Quantities"
 msgstr "选择数量"
 
+msgid "Select Reason"
+msgstr "选择原因"
+
 msgid "Select Row"
 msgstr "选择行"
 
@@ -7161,6 +7337,18 @@ msgstr "向供应商发送询价单"
 
 msgid "Send Via"
 msgstr "通过以下方式发送"
+
+msgid "Sender Contact"
+msgstr ""
+
+msgid "Sender Information"
+msgstr ""
+
+msgid "Sender Phone"
+msgstr ""
+
+msgid "Sender Signature"
+msgstr ""
 
 msgid "Sends this document for approval before it can go active."
 msgstr "在文档激活前将其发送以供批准。"
@@ -7406,6 +7594,12 @@ msgstr "使用密钥登录"
 msgid "Sign Out"
 msgstr "登出"
 
+msgid "Signature Confirmation"
+msgstr ""
+
+msgid "Signature Date"
+msgstr ""
+
 msgid "Signed in as {name}"
 msgstr "以 {name} 身份登录"
 
@@ -7429,6 +7623,9 @@ msgstr "跳过公司假期的计划维护"
 
 msgid "Skipped"
 msgstr "已跳过"
+
+msgid "Something went wrong"
+msgstr "出现错误"
 
 msgid "Something went wrong. Please try again."
 msgstr "出现问题。请重试。"
@@ -7492,6 +7689,9 @@ msgstr "特定客户"
 
 msgid "Specific Items"
 msgstr "特定项目"
+
+msgid "Specification"
+msgstr ""
 
 msgid "Split"
 msgstr "分割"
@@ -7866,11 +8066,23 @@ msgstr "税费和运费"
 msgid "Tax Amount"
 msgstr "税额"
 
+msgid "Tax Depreciation"
+msgstr "税务折旧"
+
+msgid "Tax Exempt"
+msgstr "免税"
+
 msgid "Tax ID"
 msgstr "税号"
 
+msgid "Tax Information"
+msgstr "税务信息"
+
 msgid "Tax Percent"
 msgstr "税收百分比"
+
+msgid "Tax Status"
+msgstr "税务状态"
 
 msgid "Tax:"
 msgstr "税:"
@@ -7882,7 +8094,7 @@ msgid "Template ID"
 msgstr "模板 ID"
 
 msgid "Templates"
-msgstr "模板"
+msgstr ""
 
 msgid "Terms and Privacy"
 msgstr "条款和隐私"
@@ -8447,6 +8659,9 @@ msgstr "上传"
 msgid "Upload a PDF first"
 msgstr "先上传 PDF"
 
+msgid "Upload an Excel file (.xlsx) matching the delivery note template"
+msgstr ""
+
 msgid "Upload completed but no file path returned"
 msgstr "上传完成但未返回文件路径"
 
@@ -8548,6 +8763,9 @@ msgstr "值"
 msgid "Value source by surface"
 msgstr "按表面的值来源"
 
+msgid "Values"
+msgstr "值"
+
 msgid "VAT Number"
 msgstr "增值税号"
 
@@ -8589,6 +8807,9 @@ msgstr "查看附件"
 
 msgid "View Attributes"
 msgstr "查看属性"
+
+msgid "View Certificate"
+msgstr "查看证书"
 
 msgid "View Contact"
 msgstr "查看联系人"
@@ -8724,6 +8945,9 @@ msgstr "作废此收据将："
 
 msgid "Voiding this shipment will:"
 msgstr "取消此货运将会："
+
+msgid "Warehouse Keeper Signature"
+msgstr ""
 
 msgid "Warehouse Transfer"
 msgstr "仓库转移"
@@ -8965,3 +9189,159 @@ msgstr "ZPL（热敏标签）"
 
 msgid "ZPL Label Preview"
 msgstr "ZPL 标签预览"
+
+msgid "交付周期"
+msgstr ""
+
+msgid "人工"
+msgstr ""
+
+msgid "人工单位"
+msgstr ""
+
+msgid "人工时间"
+msgstr ""
+
+msgid "作业指导继承自工艺规程。"
+msgstr ""
+
+msgid "供应商"
+msgstr ""
+
+msgid "值"
+msgstr ""
+
+msgid "最低成本"
+msgstr ""
+
+msgid "最大值"
+msgstr ""
+
+msgid "最小值"
+msgstr ""
+
+msgid "准备"
+msgstr ""
+
+msgid "准备单位"
+msgstr ""
+
+msgid "准备时间"
+msgstr ""
+
+msgid "列表选项"
+msgstr ""
+
+msgid "单位成本"
+msgstr ""
+
+msgid "参数继承自工艺规程。"
+msgstr ""
+
+msgid "名称"
+msgstr ""
+
+msgid "图片上传失败"
+msgstr ""
+
+msgid "展开人工"
+msgstr ""
+
+msgid "展开准备"
+msgstr ""
+
+msgid "展开设备"
+msgstr ""
+
+msgid "属性继承自工艺规程。"
+msgstr ""
+
+msgid "工作中心"
+msgstr ""
+
+msgid "工具"
+msgstr ""
+
+msgid "工序"
+msgstr ""
+
+msgid "工序类型"
+msgstr ""
+
+msgid "工序顺序"
+msgstr ""
+
+msgid "工艺规程"
+msgstr ""
+
+msgid "工艺路线"
+msgstr ""
+
+msgid "已配置"
+msgstr ""
+
+msgid "打开菜单"
+msgstr ""
+
+msgid "拖拽手柄"
+msgstr ""
+
+msgid "描述"
+msgstr ""
+
+msgid "收起人工"
+msgstr ""
+
+msgid "收起准备"
+msgstr ""
+
+msgid "收起设备"
+msgstr ""
+
+msgid "数量"
+msgstr ""
+
+msgid "无法向未保存的工序添加参数"
+msgstr ""
+
+msgid "无法向未保存的工序添加工具"
+msgstr ""
+
+msgid "无法向未保存的工序添加步骤"
+msgstr ""
+
+msgid "添加工序"
+msgstr ""
+
+msgid "类型"
+msgstr ""
+
+msgid "计量单位"
+msgstr ""
+
+msgid "设备"
+msgstr ""
+
+msgid "设备单位"
+msgstr ""
+
+msgid "设备时间"
+msgstr ""
+
+msgid "详情"
+msgstr ""
+
+msgid "请先保存工序后再添加参数。"
+msgstr ""
+
+msgid "请先保存工序后再添加工具。"
+msgstr ""
+
+msgid "请先保存工序后再添加步骤。"
+msgstr ""
+
+msgid "配置"
+msgstr ""
+
+msgid "键"
+msgstr ""

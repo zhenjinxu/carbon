@@ -126,6 +126,7 @@ import type { action as editMethodOperationToolAction } from "~/routes/x+/items+
 import type { action as newMethodOperationToolAction } from "~/routes/x+/items+/methods+/operation.tool.new";
 import { useItems, useTools } from "~/stores";
 import { getPrivateUrl, path } from "~/utils/path";
+import { serverStorageUpload } from "~/utils/storage";
 import { methodOperationValidator } from "../../items.models";
 import type {
   ConfigurationParameter,
@@ -338,19 +339,18 @@ const BillOfProcess = ({
   const onUploadImage = async (file: File) => {
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/parts/${selectedItemId}/${nanoid()}.${fileType}`;
-    const result = await carbon?.storage
-      .from("private")
-      .upload(fileName, file, {
-        upsert: true,
-        cacheControl: "3600"
-      });
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private",
+      upsert: true,
+      cacheControl: "3600"
+    });
 
     if (result?.error) {
       throw new Error(result.error.message);
     }
 
     if (!result?.data) {
-      throw new Error("Failed to upload image");
+      throw new Error("图片上传失败");
     }
 
     return getPrivateUrl(result.data.path);
@@ -481,7 +481,7 @@ const BillOfProcess = ({
     const tabs = [
       {
         id: 0,
-        label: t`Details`,
+        label: t`详情`,
         content: (
           <div className="flex w-full flex-col pr-2 py-2">
             <motion.div
@@ -522,7 +522,7 @@ const BillOfProcess = ({
         id: 1,
         label: (
           <span className="flex items-center gap-2">
-            Instructions
+            作业指导
             {hasProcedure && (
               <Tooltip>
                 <TooltipTrigger>
@@ -532,9 +532,7 @@ const BillOfProcess = ({
                 </TooltipTrigger>
                 <TooltipContent side="bottom" className="opacity-100">
                   <p>
-                    <Trans>
-                      Instructions are inherited from the procedure.
-                    </Trans>
+                    <Trans>作业指导继承自工艺规程。</Trans>
                   </p>
                 </TooltipContent>
               </Tooltip>
@@ -587,7 +585,7 @@ const BillOfProcess = ({
           item.data.operationType === "Outside",
         label: (
           <span className="flex items-center gap-2">
-            <span>Parameters</span>
+            <span>参数</span>
             {hasProcedure && (
               <Tooltip>
                 <TooltipTrigger>
@@ -597,7 +595,7 @@ const BillOfProcess = ({
                 </TooltipTrigger>
                 <TooltipContent side="bottom" className="opacity-100">
                   <p>
-                    <Trans>Parameters are inherited from the procedure.</Trans>
+                    <Trans>参数继承自工艺规程。</Trans>
                   </p>
                 </TooltipContent>
               </Tooltip>
@@ -633,7 +631,7 @@ const BillOfProcess = ({
           item.data.operationType === "Outside",
         label: (
           <span className="flex items-center gap-2">
-            <span>Steps</span>
+            <span>步骤</span>
             {hasProcedure && (
               <Tooltip>
                 <TooltipTrigger>
@@ -643,7 +641,7 @@ const BillOfProcess = ({
                 </TooltipTrigger>
                 <TooltipContent side="bottom" className="opacity-100">
                   <p>
-                    <Trans>Attributes are inherited from the procedure.</Trans>
+                    <Trans>属性继承自工艺规程。</Trans>
                   </p>
                 </TooltipContent>
               </Tooltip>
@@ -678,7 +676,7 @@ const BillOfProcess = ({
           item.id in temporaryItems || item.data.operationType === "Outside",
         label: (
           <span className="flex items-center gap-2">
-            <span>Tools</span>
+            <span>工具</span>
             {tools.length > 0 && <Count count={tools.length} />}
           </span>
         ),
@@ -820,7 +818,7 @@ const BillOfProcess = ({
       <HStack className="justify-between">
         <CardHeader>
           <CardTitle className="flex flex-row items-center gap-2">
-            Bill of Process {isReadOnly && <LuLock />}
+            工艺路线 {isReadOnly && <LuLock />}
           </CardTitle>
         </CardHeader>
 
@@ -832,12 +830,12 @@ const BillOfProcess = ({
               isDisabled={isReadOnly || selectedItemId !== null}
               onClick={onAddItem}
             >
-              <Trans>Add Operation</Trans>
+              <Trans>添加工序</Trans>
             </Button>
             {configurable && operations.length > 0 && (
               <IconButton
                 icon={<LuSquareFunction />}
-                aria-label={t`Configure`}
+                aria-label={t`配置`}
                 variant="ghost"
                 className={cn(
                   rulesByField.has(
@@ -846,7 +844,7 @@ const BillOfProcess = ({
                 )}
                 onClick={() =>
                   onConfigure({
-                    label: t`Bill of Process`,
+                    label: t`工艺路线`,
                     field: `billOfProcess:${makeMethodId}:${materialId}`,
                     code: rulesByField.get(
                       `billOfProcess:${makeMethodId}:${materialId}`
@@ -1066,20 +1064,20 @@ function OperationForm({
       <div className="grid w-full gap-x-8 gap-y-4 grid-cols-1 lg:grid-cols-3">
         <Process
           name="processId"
-          label={t`Process`}
+          label={t`工序`}
           isConfigured={rulesByField.has(key("processId"))}
           onConfigure={
             configurable && !temporaryItems[item.id]
               ? () => {
                   onConfigure({
-                    label: t`Process`,
+                    label: t`工序`,
                     field: key("processId"),
                     code: rulesByField.get(key("processId"))?.code,
                     defaultValue: processData.processId,
                     returnType: {
                       type: "text",
                       helperText:
-                        "the unique identifier for the process. you can get this from the URL when editing a process"
+                        "工序的唯一标识符。你可以在编辑工序时从 URL 中获取"
                     }
                   });
                 }
@@ -1092,8 +1090,8 @@ function OperationForm({
 
         <Select
           name="operationOrder"
-          label={t`Operation Order`}
-          placeholder={t`Operation Order`}
+          label={t`工序顺序`}
+          placeholder={t`工序顺序`}
           options={methodOperationOrders.map((o) => ({
             value: o,
             label: o
@@ -1109,7 +1107,7 @@ function OperationForm({
             configurable && !temporaryItems[item.id]
               ? () => {
                   onConfigure({
-                    label: t`Operation Order`,
+                    label: t`工序顺序`,
                     field: key("operationOrder"),
                     code: rulesByField.get(key("operationOrder"))?.code,
                     defaultValue: processData.operationOrder,
@@ -1125,8 +1123,8 @@ function OperationForm({
 
         <SelectControlled
           name="operationType"
-          label={t`Operation Type`}
-          placeholder={t`Operation Type`}
+          label={t`工序类型`}
+          placeholder={t`工序类型`}
           options={operationTypes.map((o) => ({
             value: o,
             label: o
@@ -1146,7 +1144,7 @@ function OperationForm({
             configurable && !temporaryItems[item.id]
               ? () => {
                   onConfigure({
-                    label: t`Operation Type`,
+                    label: t`工序类型`,
                     field: key("operationType"),
                     code: rulesByField.get(key("operationType"))?.code,
                     defaultValue: processData.operationType,
@@ -1162,7 +1160,7 @@ function OperationForm({
 
         <InputControlled
           name="description"
-          label={t`Description`}
+          label={t`描述`}
           value={processData.description}
           onChange={(newValue) => {
             setProcessData((d) => ({ ...d, description: newValue }));
@@ -1173,7 +1171,7 @@ function OperationForm({
             configurable && !temporaryItems[item.id]
               ? () => {
                   onConfigure({
-                    label: t`Description`,
+                    label: t`描述`,
                     field: key("description"),
                     code: rulesByField.get(key("description"))?.code,
                     defaultValue: processData.description,
@@ -1190,13 +1188,13 @@ function OperationForm({
           <>
             <SupplierProcess
               name="operationSupplierProcessId"
-              label={t`Supplier`}
+              label={t`供应商`}
               processId={processData.processId}
               isOptional
             />
             <NumberControlled
               name="operationMinimumCost"
-              label={t`Minimum Cost`}
+              label={t`最低成本`}
               minValue={0}
               value={processData.operationMinimumCost}
               formatOptions={{
@@ -1212,7 +1210,7 @@ function OperationForm({
             />
             <NumberControlled
               name="operationUnitCost"
-              label={t`Unit Cost`}
+              label={t`单位成本`}
               minValue={0}
               value={processData.operationUnitCost}
               formatOptions={{
@@ -1228,7 +1226,7 @@ function OperationForm({
             />
             <NumberControlled
               name="operationLeadTime"
-              label={t`Lead Time`}
+              label={t`交付周期`}
               minValue={0}
               value={processData.operationLeadTime}
               onChange={(newValue) =>
@@ -1243,7 +1241,7 @@ function OperationForm({
           <>
             <WorkCenter
               name="workCenterId"
-              label={t`Work Center`}
+              label={t`工作中心`}
               isOptional
               processId={processData.processId}
               isConfigured={rulesByField.has(key("workCenterId"))}
@@ -1251,14 +1249,14 @@ function OperationForm({
                 configurable && !temporaryItems[item.id]
                   ? () => {
                       onConfigure({
-                        label: t`Work Center`,
+                        label: t`工作中心`,
                         field: key("workCenterId"),
                         code: rulesByField.get(key("workCenterId"))?.code,
                         defaultValue: processData.workCenterId,
                         returnType: {
                           type: "text",
                           helperText:
-                            "the unique identifier for the work center. you can get this from the URL when editing a work center"
+                            "工作中心的唯一标识符。你可以在编辑工作中心时从 URL 中获取"
                         }
                       });
                     }
@@ -1284,7 +1282,7 @@ function OperationForm({
               <HStack>
                 <TimeTypeIcon type="Setup" />
                 <Label>
-                  <Trans>Setup</Trans>
+                  <Trans>准备</Trans>
                 </Label>
               </HStack>
               <HStack>
@@ -1297,7 +1295,7 @@ function OperationForm({
                 <IconButton
                   icon={<LuChevronRight />}
                   aria-label={
-                    setupDisclosure.isOpen ? t`Collapse Setup` : t`Expand Setup`
+                    setupDisclosure.isOpen ? t`收起准备` : t`展开准备`
                   }
                   variant="ghost"
                   size="md"
@@ -1318,7 +1316,7 @@ function OperationForm({
             >
               <UnitHint
                 name="setupHint"
-                label={t`Setup`}
+                label={t`准备`}
                 value={processData.setupUnitHint}
                 onChange={(hint) => {
                   setProcessData((d) => ({
@@ -1331,7 +1329,7 @@ function OperationForm({
               />
               <NumberControlled
                 name="setupTime"
-                label={t`Setup Time`}
+                label={t`准备时间`}
                 isOptional={false}
                 minValue={0}
                 value={processData.setupTime}
@@ -1346,7 +1344,7 @@ function OperationForm({
                   configurable && !temporaryItems[item.id]
                     ? () => {
                         onConfigure({
-                          label: t`Setup Time`,
+                          label: t`准备时间`,
                           field: key("setupTime"),
                           code: rulesByField.get(key("setupTime"))?.code,
                           defaultValue: processData.setupTime,
@@ -1360,7 +1358,7 @@ function OperationForm({
               />
               <StandardFactor
                 name="setupUnit"
-                label={t`Setup Unit`}
+                label={t`准备单位`}
                 isOptional={false}
                 hint={processData.setupUnitHint}
                 value={processData.setupUnit}
@@ -1375,7 +1373,7 @@ function OperationForm({
                   configurable && !temporaryItems[item.id]
                     ? () => {
                         onConfigure({
-                          label: t`Setup Unit`,
+                          label: t`准备单位`,
                           field: key("setupUnit"),
                           code: rulesByField.get(key("setupUnit"))?.code,
                           defaultValue: processData.setupUnit,
@@ -1399,7 +1397,7 @@ function OperationForm({
               <HStack>
                 <TimeTypeIcon type="Labor" />
                 <Label>
-                  <Trans>Labor</Trans>
+                  <Trans>人工</Trans>
                 </Label>
               </HStack>
               <HStack>
@@ -1412,7 +1410,7 @@ function OperationForm({
                 <IconButton
                   icon={<LuChevronRight />}
                   aria-label={
-                    laborDisclosure.isOpen ? t`Collapse Labor` : t`Expand Labor`
+                    laborDisclosure.isOpen ? t`收起人工` : t`展开人工`
                   }
                   variant="ghost"
                   size="md"
@@ -1433,7 +1431,7 @@ function OperationForm({
             >
               <UnitHint
                 name="laborHint"
-                label={t`Labor`}
+                label={t`人工`}
                 value={processData.laborUnitHint}
                 onChange={(hint) => {
                   setProcessData((d) => ({
@@ -1446,7 +1444,7 @@ function OperationForm({
               />
               <NumberControlled
                 name="laborTime"
-                label={t`Labor Time`}
+                label={t`人工时间`}
                 isOptional={false}
                 minValue={0}
                 value={processData.laborTime}
@@ -1461,7 +1459,7 @@ function OperationForm({
                   configurable && !temporaryItems[item.id]
                     ? () => {
                         onConfigure({
-                          label: t`Labor Time`,
+                          label: t`人工时间`,
                           field: key("laborTime"),
                           code: rulesByField.get(key("laborTime"))?.code,
                           defaultValue: processData.laborTime,
@@ -1475,7 +1473,7 @@ function OperationForm({
               />
               <StandardFactor
                 name="laborUnit"
-                label={t`Labor Unit`}
+                label={t`人工单位`}
                 isOptional={false}
                 hint={processData.laborUnitHint}
                 value={processData.laborUnit}
@@ -1490,7 +1488,7 @@ function OperationForm({
                   configurable && !temporaryItems[item.id]
                     ? () => {
                         onConfigure({
-                          label: t`Labor Unit`,
+                          label: t`人工单位`,
                           field: key("laborUnit"),
                           code: rulesByField.get(key("laborUnit"))?.code,
                           defaultValue: processData.laborUnit,
@@ -1513,7 +1511,7 @@ function OperationForm({
               <HStack>
                 <TimeTypeIcon type="Machine" />
                 <Label>
-                  <Trans>Machine</Trans>
+                  <Trans>设备</Trans>
                 </Label>
               </HStack>
               <HStack>
@@ -1526,9 +1524,7 @@ function OperationForm({
                 <IconButton
                   icon={<LuChevronRight />}
                   aria-label={
-                    machineDisclosure.isOpen
-                      ? t`Collapse Machine`
-                      : t`Expand Machine`
+                    machineDisclosure.isOpen ? t`收起设备` : t`展开设备`
                   }
                   variant="ghost"
                   size="md"
@@ -1549,7 +1545,7 @@ function OperationForm({
             >
               <UnitHint
                 name="machineHint"
-                label={t`Machine`}
+                label={t`设备`}
                 value={processData.machineUnitHint}
                 onChange={(hint) => {
                   setProcessData((d) => ({
@@ -1562,7 +1558,7 @@ function OperationForm({
               />
               <NumberControlled
                 name="machineTime"
-                label={t`Machine Time`}
+                label={t`设备时间`}
                 isOptional={false}
                 minValue={0}
                 value={processData.machineTime}
@@ -1577,7 +1573,7 @@ function OperationForm({
                   configurable && !temporaryItems[item.id]
                     ? () => {
                         onConfigure({
-                          label: t`Machine Time`,
+                          label: t`设备时间`,
                           field: key("machineTime"),
                           code: rulesByField.get(key("machineTime"))?.code,
                           defaultValue: processData.machineTime,
@@ -1591,7 +1587,7 @@ function OperationForm({
               />
               <StandardFactor
                 name="machineUnit"
-                label={t`Machine Unit`}
+                label={t`设备单位`}
                 isOptional={false}
                 hint={processData.machineUnitHint}
                 value={processData.machineUnit}
@@ -1606,7 +1602,7 @@ function OperationForm({
                   configurable && !temporaryItems[item.id]
                     ? () => {
                         onConfigure({
-                          label: t`Machine Unit`,
+                          label: t`设备单位`,
                           field: key("machineUnit"),
                           code: rulesByField.get(key("machineUnit"))?.code,
                           defaultValue: processData.machineUnit,
@@ -1629,21 +1625,19 @@ function OperationForm({
             >
               <HStack>
                 <LuListChecks />
-                <Label>Procedure</Label>
+                <Label>工艺规程</Label>
               </HStack>
               <HStack>
                 {processData.procedureId && (
                   <Badge variant="secondary">
                     <LuListChecks className="h-3 w-3 mr-1" />
-                    Procedure
+                    工艺规程
                   </Badge>
                 )}
                 <IconButton
                   icon={<LuChevronRight />}
                   aria-label={
-                    procedureDisclosure.isOpen
-                      ? "Collapse Procedure"
-                      : "Expand Procedure"
+                    procedureDisclosure.isOpen ? "收起工艺规程" : "展开工艺规程"
                   }
                   variant="ghost"
                   size="md"
@@ -1664,7 +1658,7 @@ function OperationForm({
             >
               <Procedure
                 name="procedureId"
-                label={t`Procedure`}
+                label={t`工艺规程`}
                 processId={processData.processId}
                 value={processData.procedureId}
                 isConfigured={rulesByField.has(key("procedureId"))}
@@ -1672,14 +1666,14 @@ function OperationForm({
                   configurable && !temporaryItems[item.id]
                     ? () => {
                         onConfigure({
-                          label: t`Procedure`,
+                          label: t`工艺规程`,
                           field: key("procedureId"),
                           code: rulesByField.get(key("procedureId"))?.code,
                           defaultValue: processData.procedureId,
                           returnType: {
                             type: "text",
                             helperText:
-                              "the unique identifier for the procedure. you can get this from the URL when editing a procedure"
+                              "工艺规程的唯一标识符。你可以在编辑工艺规程时从 URL 中获取"
                           }
                         });
                       }
@@ -1711,7 +1705,7 @@ function OperationForm({
             isDisabled={isReadOnly || methodOperationFetcher.state !== "idle"}
             isLoading={methodOperationFetcher.state === "submitting"}
           >
-            Save
+            保存
           </Submit>
         </motion.div>
       </motion.div>
@@ -1799,7 +1793,6 @@ function AttributesForm({
     []
   );
 
-  const { carbon } = useCarbon();
   const {
     company: { id: companyId }
   } = useUser();
@@ -1808,15 +1801,17 @@ function AttributesForm({
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/parts/${nanoid()}.${fileType}`;
 
-    const result = await carbon?.storage.from("private").upload(fileName, file);
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private"
+    });
 
     if (result?.error) {
-      toast.error(t`Failed to upload image`);
+      toast.error(t`图片上传失败`);
       throw new Error(result.error.message);
     }
 
     if (!result?.data) {
-      throw new Error("Failed to upload image");
+      throw new Error("图片上传失败");
     }
 
     return getPrivateUrl(result.data.path);
@@ -1827,10 +1822,10 @@ function AttributesForm({
       <Alert className="max-w-[420px] mx-auto my-8">
         <LuTriangleAlert />
         <AlertTitle>
-          <Trans>Cannot add steps to unsaved operation</Trans>
+          <Trans>无法向未保存的工序添加步骤</Trans>
         </AlertTitle>
         <AlertDescription>
-          <Trans>Please save the operation before adding steps.</Trans>
+          <Trans>请先保存工序后再添加步骤。</Trans>
         </AlertDescription>
       </Alert>
     );
@@ -1877,7 +1872,7 @@ function AttributesForm({
               <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
                 <SelectControlled
                   name="type"
-                  label={t`Type`}
+                  label={t`类型`}
                   options={typeOptions}
                   value={type}
                   onChange={(option) => {
@@ -1886,11 +1881,11 @@ function AttributesForm({
                     }
                   }}
                 />
-                <Input name="name" label={t`Name`} />
+                <Input name="name" label={t`名称`} />
               </div>
 
               <VStack spacing={2} className="w-full col-span-2">
-                <Label>Description</Label>
+                <Label>描述</Label>
                 <Editor
                   initialValue={description}
                   onUpload={onUploadImage}
@@ -1904,10 +1899,7 @@ function AttributesForm({
 
               {type === "Measurement" && (
                 <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
-                  <UnitOfMeasure
-                    name="unitOfMeasureCode"
-                    label={t`Unit of Measure`}
-                  />
+                  <UnitOfMeasure name="unitOfMeasureCode" label={t`计量单位`} />
 
                   <ToggleGroup
                     type="multiple"
@@ -1917,18 +1909,18 @@ function AttributesForm({
                   >
                     <ToggleGroupItem size="sm" value="min">
                       <LuMinimize2 className="mr-2" />
-                      Minimum
+                      最小值
                     </ToggleGroupItem>
                     <ToggleGroupItem size="sm" value="max">
                       <LuMaximize2 className="mr-2" />
-                      Maximum
+                      最大值
                     </ToggleGroupItem>
                   </ToggleGroup>
 
                   {numericControls.includes("min") && (
                     <Number
                       name="minValue"
-                      label={t`Minimum`}
+                      label={t`最小值`}
                       formatOptions={{
                         minimumFractionDigits: 0,
                         maximumFractionDigits: 10
@@ -1938,7 +1930,7 @@ function AttributesForm({
                   {numericControls.includes("max") && (
                     <Number
                       name="maxValue"
-                      label={t`Maximum`}
+                      label={t`最大值`}
                       formatOptions={{
                         minimumFractionDigits: 0,
                         maximumFractionDigits: 10
@@ -1948,7 +1940,7 @@ function AttributesForm({
                 </div>
               )}
               {type === "List" && (
-                <ArrayInput name="listValues" label={t`List Options`} />
+                <ArrayInput name="listValues" label={t`列表选项`} />
               )}
 
               <Submit
@@ -1956,7 +1948,7 @@ function AttributesForm({
                 isDisabled={isDisabled || fetcher.state !== "idle"}
                 isLoading={fetcher.state !== "idle"}
               >
-                Save Step
+                保存步骤
               </Submit>
             </VStack>
           </ValidatedForm>
@@ -2107,7 +2099,6 @@ function AttributesListItem({
     attribute.description ?? {}
   );
 
-  const { carbon } = useCarbon();
   const {
     company: { id: companyId }
   } = useUser();
@@ -2116,15 +2107,17 @@ function AttributesListItem({
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/parts/${nanoid()}.${fileType}`;
 
-    const result = await carbon?.storage.from("private").upload(fileName, file);
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private"
+    });
 
     if (result?.error) {
-      toast.error(t`Failed to upload image`);
+      toast.error(t`图片上传失败`);
       throw new Error(result.error.message);
     }
 
     if (!result?.data) {
-      throw new Error("Failed to upload image");
+      throw new Error("图片上传失败");
     }
 
     return getPrivateUrl(result.data.path);
@@ -2162,7 +2155,7 @@ function AttributesListItem({
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
               <SelectControlled
                 name="type"
-                label={t`Type`}
+                label={t`类型`}
                 options={typeOptions}
                 onChange={(option) => {
                   if (option) {
@@ -2170,11 +2163,11 @@ function AttributesListItem({
                   }
                 }}
               />
-              <Input name="name" label={t`Name`} />
+              <Input name="name" label={t`名称`} />
             </div>
 
             <VStack spacing={2} className="w-full col-span-2">
-              <Label>Description</Label>
+              <Label>描述</Label>
               <Editor
                 initialValue={description}
                 onUpload={onUploadImage}
@@ -2188,10 +2181,7 @@ function AttributesListItem({
 
             {type === "Measurement" && (
               <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
-                <UnitOfMeasure
-                  name="unitOfMeasureCode"
-                  label={t`Unit of Measure`}
-                />
+                <UnitOfMeasure name="unitOfMeasureCode" label={t`计量单位`} />
 
                 <ToggleGroup
                   type="multiple"
@@ -2212,7 +2202,7 @@ function AttributesListItem({
                 {numericControls.includes("min") && (
                   <Number
                     name="minValue"
-                    label={t`Minimum`}
+                    label={t`最小值`}
                     formatOptions={{
                       minimumFractionDigits: 0,
                       maximumFractionDigits: 10
@@ -2224,7 +2214,7 @@ function AttributesListItem({
                       configurable && typeof onConfigure === "function"
                         ? () => {
                             onConfigure({
-                              label: t`Minimum`,
+                              label: t`最小值`,
                               field: getFieldKey(
                                 `attribute:${id}:minValue`,
                                 operationId
@@ -2248,7 +2238,7 @@ function AttributesListItem({
                 {numericControls.includes("max") && (
                   <Number
                     name="maxValue"
-                    label={t`Maximum`}
+                    label={t`最大值`}
                     formatOptions={{
                       minimumFractionDigits: 0,
                       maximumFractionDigits: 10
@@ -2260,7 +2250,7 @@ function AttributesListItem({
                       configurable && typeof onConfigure === "function"
                         ? () => {
                             onConfigure({
-                              label: t`Maximum`,
+                              label: t`最大值`,
                               field: getFieldKey(
                                 `attribute:${id}:maxValue`,
                                 operationId
@@ -2284,17 +2274,17 @@ function AttributesListItem({
               </div>
             )}
             {type === "List" && (
-              <ArrayInput name="listValues" label={t`List Options`} />
+              <ArrayInput name="listValues" label={t`列表选项`} />
             )}
             <HStack className="w-full justify-end" spacing={2}>
               <Button variant="secondary" onClick={disclosure.onClose}>
-                Cancel
+                取消
               </Button>
               <Submit
                 isDisabled={isDisabled || fetcher.state !== "idle"}
                 isLoading={fetcher.state !== "idle"}
               >
-                Save
+                保存
               </Submit>
             </HStack>
           </VStack>
@@ -2303,7 +2293,7 @@ function AttributesListItem({
         <div className="flex flex-1 justify-between items-center w-full">
           <HStack spacing={4} className="w-1/2">
             <IconButton
-              aria-label={t`Drag handle`}
+              aria-label={t`拖拽手柄`}
               icon={<LuGripVertical />}
               variant="ghost"
               disabled={isDisabled}
@@ -2342,21 +2332,21 @@ function AttributesListItem({
                 {attribute.type === "Measurement" && (
                   <span className="text-xs text-muted-foreground">
                     {attribute.minValue !== null && attribute.maxValue !== null
-                      ? `Must be between ${attribute.minValue} and ${
+                      ? `需在 ${attribute.minValue} 和 ${
                           attribute.maxValue
-                        } ${
+                        } 之间 ${
                           unitOfMeasures.find(
                             (u) => u.value === unitOfMeasureCode
                           )?.label
                         }`
                       : attribute.minValue !== null
-                        ? `Must be > ${attribute.minValue} ${
+                        ? `需 > ${attribute.minValue} ${
                             unitOfMeasures.find(
                               (u) => u.value === unitOfMeasureCode
                             )?.label
                           }`
                         : attribute.maxValue !== null
-                          ? `Must be < ${attribute.maxValue} ${
+                          ? `需 < ${attribute.maxValue} ${
                               unitOfMeasures.find(
                                 (u) => u.value === unitOfMeasureCode
                               )?.label
@@ -2370,18 +2360,16 @@ function AttributesListItem({
                   <TooltipTrigger>
                     <div className="flex flex-col items-center justify-center gap-1 text-emerald-500">
                       <LuSquareFunction
-                        aria-label={t`Configured`}
+                        aria-label={t`已配置`}
                         className="size-4 "
                       />
                       <span className="text-xxs font-mono uppercase">
-                        Configured
+                        已配置
                       </span>
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p className="text-foreground text-sm">
-                      This attribute is configured
-                    </p>
+                    <p className="text-foreground text-sm">此属性已配置</p>
                   </TooltipContent>
                 </Tooltip>
               )}
@@ -2405,7 +2393,7 @@ function AttributesListItem({
           <div className="flex items-center justify-end gap-2">
             <HStack spacing={2}>
               <span className="text-xs text-muted-foreground">
-                {isUpdated ? "Updated" : "Created"} {formatRelativeTime(date)}
+                {isUpdated ? "更新于" : "创建于"} {formatRelativeTime(date)}
               </span>
               <EmployeeAvatar employeeId={person} withName={false} />
             </HStack>
@@ -2413,20 +2401,20 @@ function AttributesListItem({
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <IconButton
-                    aria-label={t`Open menu`}
+                    aria-label={t`打开菜单`}
                     icon={<LuEllipsisVertical />}
                     variant="ghost"
                   />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <DropdownMenuItem onClick={disclosure.onOpen}>
-                    Edit
+                    编辑
                   </DropdownMenuItem>
                   <DropdownMenuItem
                     destructive
                     onClick={deleteModalDisclosure.onOpen}
                   >
-                    Delete
+                    删除
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -2439,7 +2427,7 @@ function AttributesListItem({
           action={path.to.deleteMethodOperationStep(id)}
           isOpen={deleteModalDisclosure.isOpen}
           name={name}
-          text={`Are you sure you want to delete the ${name} attribute from this operation? This cannot be undone.`}
+          text={`确定要从此工序中删除属性 ${name} 吗？此操作无法撤销。`}
           onCancel={() => {
             deleteModalDisclosure.onClose();
           }}
@@ -2477,10 +2465,10 @@ function ParametersForm({
       <Alert className="max-w-[420px] mx-auto my-8">
         <LuTriangleAlert />
         <AlertTitle>
-          <Trans>Cannot add parameters to unsaved operation</Trans>
+          <Trans>无法向未保存的工序添加参数</Trans>
         </AlertTitle>
         <AlertDescription>
-          <Trans>Please save the operation before adding parameters.</Trans>
+          <Trans>请先保存工序后再添加参数。</Trans>
         </AlertDescription>
       </Alert>
     );
@@ -2509,17 +2497,17 @@ function ParametersForm({
               <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
                 <Input
                   name="key"
-                  label={t`Key`}
+                  label={t`键`}
                   autoFocus={parameters.length === 0}
                 />
-                <Input name="value" label={t`Value`} />
+                <Input name="value" label={t`值`} />
               </div>
               <Submit
                 leftIcon={<LuCirclePlus />}
                 isDisabled={isDisabled || fetcher.state !== "idle"}
                 isLoading={fetcher.state !== "idle"}
               >
-                Add Parameter
+                添加参数
               </Submit>
             </VStack>
           </ValidatedForm>
@@ -2620,10 +2608,10 @@ function ParametersListItem({
           <Hidden name="operationId" />
           <VStack spacing={4}>
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
-              <Input name="key" label={t`Key`} />
+              <Input name="key" label={t`键`} />
               <Input
                 name="value"
-                label={t`Value`}
+                label={t`值`}
                 isConfigured={isConfigured}
                 onConfigure={
                   configurable && typeof onConfigure === "function"
@@ -2649,13 +2637,13 @@ function ParametersListItem({
             </div>
             <HStack className="w-full justify-end" spacing={2}>
               <Button variant="secondary" onClick={disclosure.onClose}>
-                Cancel
+                取消
               </Button>
               <Submit
                 isDisabled={isDisabled || fetcher.state !== "idle"}
                 isLoading={fetcher.state !== "idle"}
               >
-                Save
+                保存
               </Submit>
             </HStack>
           </VStack>
@@ -2677,11 +2665,11 @@ function ParametersListItem({
                   <TooltipTrigger>
                     <div className="flex flex-col items-center justify-center gap-1 text-emerald-500">
                       <LuSquareFunction
-                        aria-label={t`Configured`}
+                        aria-label={t`已配置`}
                         className="size-4 "
                       />
                       <span className="text-xxs font-mono uppercase">
-                        Configured
+                        已配置
                       </span>
                     </div>
                   </TooltipTrigger>
@@ -2701,7 +2689,7 @@ function ParametersListItem({
           <div className="flex items-center justify-end gap-2">
             <HStack spacing={2}>
               <span className="text-xs text-muted-foreground">
-                {isUpdated ? "Updated" : "Created"} {formatRelativeTime(date)}
+                {isUpdated ? "更新于" : "创建于"} {formatRelativeTime(date)}
               </span>
               <EmployeeAvatar employeeId={person} withName={false} />
             </HStack>
@@ -2709,20 +2697,20 @@ function ParametersListItem({
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <IconButton
-                    aria-label={t`Open menu`}
+                    aria-label={t`打开菜单`}
                     icon={<LuEllipsisVertical />}
                     variant="ghost"
                   />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <DropdownMenuItem onClick={disclosure.onOpen}>
-                    Edit
+                    编辑
                   </DropdownMenuItem>
                   <DropdownMenuItem
                     destructive
                     onClick={deleteModalDisclosure.onOpen}
                   >
-                    Delete
+                    删除
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -2735,7 +2723,7 @@ function ParametersListItem({
           action={path.to.deleteMethodOperationParameter(id)}
           isOpen={deleteModalDisclosure.isOpen}
           name={key}
-          text={`Are you sure you want to delete the ${key} parameter from this operation? This cannot be undone.`}
+          text={`确定要从此工序中删除参数 ${key} 吗？此操作无法撤销。`}
           onCancel={() => {
             deleteModalDisclosure.onClose();
           }}
@@ -2767,10 +2755,10 @@ function ToolsForm({
       <Alert className="max-w-[420px] mx-auto my-8">
         <LuTriangleAlert />
         <AlertTitle>
-          <Trans>Cannot add tools to unsaved operation</Trans>
+          <Trans>无法向未保存的工序添加工具</Trans>
         </AlertTitle>
         <AlertDescription>
-          <Trans>Please save the operation before adding tools.</Trans>
+          <Trans>请先保存工序后再添加工具。</Trans>
         </AlertDescription>
       </Alert>
     );
@@ -2799,10 +2787,10 @@ function ToolsForm({
               <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
                 <Tool
                   name="toolId"
-                  label={t`Tool`}
+                  label={t`工具`}
                   autoFocus={tools.length === 0}
                 />
-                <Number name="quantity" label={t`Quantity`} />
+                <Number name="quantity" label={t`数量`} />
               </div>
 
               <Submit
@@ -2810,7 +2798,7 @@ function ToolsForm({
                 isDisabled={isDisabled || fetcher.state !== "idle"}
                 isLoading={fetcher.state !== "idle"}
               >
-                Save Tool
+                保存工具
               </Submit>
             </VStack>
           </ValidatedForm>
@@ -2900,18 +2888,18 @@ function ToolsListItem({
           <Hidden name="operationId" />
           <VStack spacing={4}>
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
-              <Tool name="toolId" label={t`Tool`} autoFocus />
-              <Number name="quantity" label={t`Quantity`} />
+              <Tool name="toolId" label={t`工具`} autoFocus />
+              <Number name="quantity" label={t`数量`} />
             </div>
             <HStack className="w-full justify-end" spacing={2}>
               <Button variant="secondary" onClick={disclosure.onClose}>
-                Cancel
+                取消
               </Button>
               <Submit
                 isDisabled={isDisabled || fetcher.state !== "idle"}
                 isLoading={fetcher.state !== "idle"}
               >
-                Save
+                保存
               </Submit>
             </HStack>
           </VStack>
@@ -2939,7 +2927,7 @@ function ToolsListItem({
           <div className="flex items-center justify-end gap-2">
             <HStack spacing={2}>
               <span className="text-xs text-muted-foreground">
-                {isUpdated ? "Updated" : "Created"} {formatRelativeTime(date)}
+                {isUpdated ? "更新于" : "创建于"} {formatRelativeTime(date)}
               </span>
               <EmployeeAvatar employeeId={person} withName={false} />
             </HStack>
@@ -2947,20 +2935,20 @@ function ToolsListItem({
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <IconButton
-                    aria-label={t`Open menu`}
+                    aria-label={t`打开菜单`}
                     icon={<LuEllipsisVertical />}
                     variant="ghost"
                   />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <DropdownMenuItem onClick={disclosure.onOpen}>
-                    Edit
+                    编辑
                   </DropdownMenuItem>
                   <DropdownMenuItem
                     destructive
                     onClick={deleteModalDisclosure.onOpen}
                   >
-                    Delete
+                    删除
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -2973,7 +2961,7 @@ function ToolsListItem({
           action={path.to.deleteMethodOperationTool(id)}
           isOpen={deleteModalDisclosure.isOpen}
           name={tool.readableIdWithRevision}
-          text={`Are you sure you want to delete ${tool.readableIdWithRevision} from this operation? This cannot be undone.`}
+          text={`确定要从此工序中删除工具 ${tool.readableIdWithRevision} 吗？此操作无法撤销。`}
           onCancel={() => {
             deleteModalDisclosure.onClose();
           }}
@@ -3017,7 +3005,7 @@ function makeItem(
     details: (
       <HStack spacing={1}>
         {operation.operationType === "Outside" ? (
-          <Badge>Outside</Badge>
+          <Badge>外协</Badge>
         ) : (
           <>
             {(operation?.setupTime ?? 0) > 0 && (

@@ -65,6 +65,7 @@ import type {
 import { nonConformanceTaskStatus } from "~/modules/quality";
 import { useSuppliers } from "~/stores";
 import { getPrivateUrl, path } from "~/utils/path";
+import { serverStorageUpload } from "~/utils/storage";
 import { JiraIssueDialog } from "./Jira/IssueDialog";
 import { LinearIssueDialog } from "./Linear/IssueDialog";
 
@@ -407,7 +408,7 @@ export function TaskItem({
             table={getTable(type)}
             id={task.id}
             size="sm"
-            value={task.assignee ?? undefined}
+            value={task.assignee ?? ""}
             disabled={isDisabled}
           />
           {type === "action" && (
@@ -475,7 +476,9 @@ function useTaskNotes({
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/parts/${nanoid()}.${fileType}`;
 
-    const result = await carbon?.storage.from("private").upload(fileName, file);
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private"
+    });
 
     if (result?.error) {
       toast.error(t`Failed to upload image`);

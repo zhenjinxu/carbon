@@ -54,6 +54,9 @@ msgstr "{0} सफलतापूर्वक अपलोड हो गया"
 msgid "{0} values missing"
 msgstr "{0} मान गायब हैं"
 
+msgid "{displayText}"
+msgstr ""
+
 msgid "{maxSizeMB}MB limit"
 msgstr "{maxSizeMB}MB सीमा"
 
@@ -62,6 +65,9 @@ msgstr "{name} हटाया गया"
 
 msgid "{scopeCount} permissions"
 msgstr "{scopeCount} अनुमतियाँ"
+
+msgid "{status}"
+msgstr ""
 
 msgid "/month/user"
 msgstr "/माह/उपयोगकर्ता"
@@ -163,6 +169,9 @@ msgstr "क्षमताएं"
 msgid "About"
 msgstr "के बारे में"
 
+msgid "Accept"
+msgstr ""
+
 msgid "Accept Lot"
 msgstr "लॉट स्वीकार करें"
 
@@ -171,6 +180,12 @@ msgstr "लॉट स्वीकार करें?"
 
 msgid "Accept Quote"
 msgstr "उद्धरण स्वीकार करें"
+
+msgid "Acceptance Conclusion"
+msgstr ""
+
+msgid "Acceptance Notes"
+msgstr ""
 
 msgid "Account"
 msgstr "खाता"
@@ -204,6 +219,9 @@ msgstr "संचय अवधि (सप्ताह)"
 
 msgid "Accumulation Period:"
 msgstr "संचय अवधि:"
+
+msgid "Acquisition Cost"
+msgstr ""
 
 msgid "Action Items"
 msgstr "कार्य आइटम"
@@ -448,11 +466,17 @@ msgstr "सभी नौकरियां पूरी हुईं"
 msgid "All members of selected groups and selected individuals will be able to approve requests"
 msgstr "चयनित समूहों के सभी सदस्य और चयनित व्यक्ति अनुरोधों को मंजूरी दे सकेंगे"
 
+msgid "All Qualified"
+msgstr ""
+
 msgid "All Suppliers"
 msgstr "सभी आपूर्तिकर्ता"
 
 msgid "All Types"
 msgstr "सभी प्रकार"
+
+msgid "All Unqualified"
+msgstr ""
 
 msgid "All Work Centers"
 msgstr "सभी कार्य केंद्र"
@@ -936,8 +960,14 @@ msgstr "असेंबली:"
 msgid "Asset"
 msgstr "संपत्ति"
 
+msgid "Asset Class"
+msgstr ""
+
 msgid "Asset Classes"
 msgstr "संपत्ति वर्ग"
+
+msgid "Asset ID"
+msgstr ""
 
 msgid "Assets"
 msgstr "संपत्तियां"
@@ -1053,6 +1083,9 @@ msgstr "बंद करने के लिए औसत दिन"
 msgid "Back"
 msgstr "वापस"
 
+msgid "Back Home"
+msgstr ""
+
 msgid "Back to traceability"
 msgstr "ट्रेसेबिलिटी पर वापस जाएं"
 
@@ -1137,6 +1170,9 @@ msgstr "BoM + BoP"
 
 msgid "BOM synced successfully"
 msgstr "BOM सफलतापूर्वक सिंक हो गया"
+
+msgid "Book Depreciation"
+msgstr ""
 
 msgid "Breadcrumb"
 msgstr "ब्रेडक्रम्ब"
@@ -1302,6 +1338,12 @@ msgstr "CC"
 
 msgid "Centralized Billing Address"
 msgstr "केंद्रीकृत बिलिंग पता"
+
+msgid "Certificate Number"
+msgstr ""
+
+msgid "Certificate uploaded"
+msgstr ""
 
 msgid "Change"
 msgstr "बदलें"
@@ -1629,6 +1671,12 @@ msgstr "संपर्क"
 msgid "Contact (optional)"
 msgstr "संपर्क (वैकल्पिक)"
 
+msgid "Contact Person"
+msgstr ""
+
+msgid "Contact Phone"
+msgstr ""
+
 msgid "Contacts"
 msgstr "संपर्क"
 
@@ -1637,6 +1685,9 @@ msgstr "नियंत्रित"
 
 msgid "Containment"
 msgstr "समावेशन"
+
+msgid "Contract Number"
+msgstr ""
 
 msgid "Contractor"
 msgstr "ठेकेदार"
@@ -2022,6 +2073,16 @@ msgstr "कार्य केंद्र बनाया गया"
 msgid "Creating part..."
 msgstr "भाग बनाया जा रहा है..."
 
+msgid "Credit"
+msgstr ""
+
+#. placeholder {0}: parentCurrency ?? "Translated"
+msgid "Credit ({0})"
+msgstr ""
+
+msgid "Credits"
+msgstr ""
+
 msgid "CSV column"
 msgstr "CSV कॉलम"
 
@@ -2139,6 +2200,9 @@ msgstr "अपने PDF दस्तावेज़ों के लेआउ�
 msgid "Daily Usage"
 msgstr "दैनिक उपयोग"
 
+msgid "Damaged"
+msgstr ""
+
 msgid "Dark"
 msgstr "गहरा"
 
@@ -2230,6 +2294,16 @@ msgstr "वर्क सेंटर को निष्क्रिय कर�
 msgid "Deadline Type"
 msgstr "समय सीमा प्रकार"
 
+msgid "Debit"
+msgstr ""
+
+#. placeholder {0}: parentCurrency ?? "Translated"
+msgid "Debit ({0})"
+msgstr ""
+
+msgid "Debits"
+msgstr ""
+
 msgid "Decide what an operator sees if they try to issue a batch or serial that's already expired."
 msgstr "तय करें कि यदि कोई ऑपरेटर एक बैच या सीरियल जारी करने का प्रयास करता है जो पहले से ही समाप्त हो गया है तो वह क्या देखता है।"
 
@@ -2276,7 +2350,7 @@ msgid "Default Unit"
 msgstr "डिफ़ॉल्ट यूनिट"
 
 msgid "Defaults"
-msgstr "डिफ़ॉल्ट"
+msgstr ""
 
 msgid "Defines how many tracked entities are inspected per lot, and how many failures are tolerated before the lot is rejected."
 msgstr "परिभाषित करता है कि प्रति लॉट कितनी ट्रैक की गई संस्थाओं का निरीक्षण किया जाता है, और लॉट को अस्वीकार करने से पहले कितनी विफलताओं को सहन किया जाता है।"
@@ -2328,6 +2402,9 @@ msgstr "ग्राहक प्रकार हटाएं"
 
 msgid "Delete Department"
 msgstr "विभाग हटाएं"
+
+msgid "Delete Dimension"
+msgstr ""
 
 msgid "Delete Dispatch"
 msgstr "डिस्पैच हटाएं"
@@ -2558,10 +2635,13 @@ msgid "Description of Issue"
 msgstr "समस्या का विवरण"
 
 msgid "Detail"
-msgstr "विवरण"
+msgstr ""
 
 msgid "Details"
 msgstr "विवरण"
+
+msgid "Development mode — verification code:"
+msgstr ""
 
 msgid "Diagram saved"
 msgstr "आरेख सहेजा गया"
@@ -2629,6 +2709,9 @@ msgstr "दस्तावेज़"
 msgid "Document Control"
 msgstr "दस्तावेज़ नियंत्रण"
 
+msgid "Document Number"
+msgstr ""
+
 msgid "Document Templates"
 msgstr "दस्तावेज़ टेम्पलेट"
 
@@ -2688,6 +2771,9 @@ msgstr "ड्राइंग नंबर"
 
 msgid "Drawing replaced. Balloon placements were removed; feature rows are unchanged."
 msgstr "ड्राइंग बदल दी गई। बैलून प्लेसमेंट हटा दिए गए; फीचर पंक्तियां अपरिवर्तित हैं।"
+
+msgid "Drop Excel file here, or click to select"
+msgstr ""
 
 msgid "Drop Shipment"
 msgstr "ड्रॉप शिपमेंट"
@@ -2797,6 +2883,9 @@ msgstr "तारीख की सीमा संपादित करें"
 
 msgid "Edit Department"
 msgstr "विभाग संपादित करें"
+
+msgid "Edit Dimension"
+msgstr ""
 
 msgid "Edit Dispatch"
 msgstr "डिस्पैच संपादित करें"
@@ -3125,6 +3214,9 @@ msgstr "इकाई"
 msgid "Entity is {status}"
 msgstr "Entity {status} है"
 
+msgid "Entity Type"
+msgstr ""
+
 msgid "EORI"
 msgstr "EORI"
 
@@ -3230,11 +3322,20 @@ msgstr "स्टार्टर से सब कुछ"
 msgid "Exceeds {PO_EMAIL_ATTACHMENT_LIMIT_MB} MB total — remove some attachments to send."
 msgstr "{PO_EMAIL_ATTACHMENT_LIMIT_MB} MB से अधिक है — भेजने के लिए कुछ अटैचमेंट हटाएं।"
 
+msgid "Excel data imported successfully"
+msgstr ""
+
 msgid "Exchange Rate"
 msgstr "विनिमय दर"
 
 msgid "Exchange Rates"
 msgstr "विनिमय दरें"
+
+msgid "Exemption Certificate"
+msgstr ""
+
+msgid "Exemption Reason"
+msgstr ""
 
 msgid "Expand"
 msgstr "विस्तार करें"
@@ -3263,6 +3364,9 @@ msgstr "सेटअप विस्तृत करें"
 
 msgid "Expand subtree"
 msgstr "सबट्री को विस्तृत करें"
+
+msgid "Expected Qty"
+msgstr ""
 
 msgid "Expected Receipt"
 msgstr "अपेक्षित रसीद"
@@ -3591,6 +3695,9 @@ msgstr "थंबनेल पथ अपडेट करने में वि�
 msgid "Failed to upload {0}"
 msgstr "अपलोड करने में विफल {0}"
 
+msgid "Failed to upload certificate"
+msgstr ""
+
 msgid "Failed to upload CSV file."
 msgstr "CSV फ़ाइल अपलोड करने में विफल।"
 
@@ -3616,9 +3723,6 @@ msgstr "मॉडल अपलोड करने में विफल"
 
 msgid "Failed to upload PDF"
 msgstr "PDF अपलोड करने में विफल"
-
-msgid "Failed to upload thumbnail"
-msgstr "थंबनेल अपलोड करने में विफल"
 
 msgid "Failure Mode"
 msgstr "विफलता मोड"
@@ -3731,7 +3835,7 @@ msgid "Fiscal Year Settings"
 msgstr "वित्तीय वर्ष सेटिंग्स"
 
 msgid "Fiscal Years"
-msgstr "वित्तीय वर्ष"
+msgstr ""
 
 msgid "Fixed"
 msgstr "निश्चित"
@@ -3863,6 +3967,9 @@ msgstr "समूह का नाम"
 msgid "Groups"
 msgstr "समूह"
 
+msgid "Header Information"
+msgstr ""
+
 msgid "Help"
 msgstr "मदद"
 
@@ -3944,6 +4051,12 @@ msgstr "कार्यान्वयन समर्थन"
 msgid "Import {label} CSV"
 msgstr "{label} CSV आयात करें"
 
+msgid "Import Excel"
+msgstr ""
+
+msgid "Import Receipt from Excel"
+msgstr ""
+
 msgid "In order to convert this RFQ to a quote, all lines must have an internal part number."
 msgstr "इस RFQ को उद्धरण में परिवर्तित करने के लिए, सभी पंक्तियों के पास एक आंतरिक भाग संख्या होनी चाहिए।"
 
@@ -4016,6 +4129,9 @@ msgstr "बुनियादी ढांचा"
 msgid "Inherit From Materials"
 msgstr "सामग्री से विरासत में प्राप्त करें"
 
+msgid "Inherited"
+msgstr ""
+
 msgid "Inherited from parent"
 msgstr "माता-पिता से विरासत में मिला"
 
@@ -4046,6 +4162,9 @@ msgstr "निरीक्षण दस्तावेज़"
 msgid "Inspection Level"
 msgstr "निरीक्षण स्तर"
 
+msgid "Inspection Results"
+msgstr ""
+
 msgid "Inspection Status"
 msgstr "निरीक्षण स्थिति"
 
@@ -4063,6 +4182,9 @@ msgstr "निर्देश"
 
 msgid "Instructions are inherited from the procedure."
 msgstr "निर्देश प्रक्रिया से विरासत में मिले हैं।"
+
+msgid "Intact"
+msgstr ""
 
 msgid "Integration not found"
 msgstr "एकीकरण नहीं मिला"
@@ -4241,6 +4363,9 @@ msgstr "आइटम को एक चयनित प्रकार और ए
 msgid "Item must match a selected type OR a selected group"
 msgstr "आइटम को एक चयनित प्रकार OR एक चयनित समूह से मेल खाना चाहिए"
 
+msgid "Item Name"
+msgstr ""
+
 msgid "Item Scope"
 msgstr "आइटम स्कोप"
 
@@ -4295,6 +4420,9 @@ msgstr "{0} में शामिल हों"
 
 msgid "Journal Entries"
 msgstr "जर्नल प्रविष्टियां"
+
+msgid "Journal Entry"
+msgstr ""
 
 msgid "Kanban"
 msgstr "कनबन"
@@ -4426,6 +4554,9 @@ msgstr "संभावना"
 
 msgid "Line Item Comparison"
 msgstr "लाइन आइटम तुलना"
+
+msgid "Line Items"
+msgstr ""
 
 msgid "Line options"
 msgstr "पंक्ति विकल्प"
@@ -4950,6 +5081,12 @@ msgstr "क्या आपको सही कॉलम चाहिए?"
 msgid "Negative Adjustment"
 msgstr "नकारात्मक समायोजन"
 
+msgid "Net Book Value"
+msgstr ""
+
+msgid "Net Change"
+msgstr ""
+
 msgid "Never"
 msgstr "कभी नहीं"
 
@@ -5167,7 +5304,7 @@ msgid "New Training"
 msgstr "नई प्रशिक्षण"
 
 msgid "New Transfer"
-msgstr "नया स्थानांतरण"
+msgstr ""
 
 msgid "New Transfer Line"
 msgstr "नई ट्रांसफर लाइन"
@@ -5717,6 +5854,12 @@ msgstr "उद्धरण विधि को स्रोत विधि स�
 msgid "Overwrite the target manufacturing method with the quote method"
 msgstr "उद्धरण विधि के साथ लक्ष्य विनिर्माण विधि को अधिलेखित करें"
 
+msgid "Packaging Condition"
+msgstr ""
+
+msgid "Packaging Notes"
+msgstr ""
+
 msgid "Packing Slip"
 msgstr "पैकिंग स्लिप"
 
@@ -5767,6 +5910,12 @@ msgstr "भाग विनिर्माण के लिए कॉन्फ�
 
 msgid "Partial"
 msgstr "आंशिक"
+
+msgid "Partial Acceptance"
+msgstr ""
+
+msgid "Partially Qualified"
+msgstr ""
 
 msgid "Partner"
 msgstr "साथी"
@@ -5831,6 +5980,9 @@ msgstr "कम लागत मूल्यांकन के लिए बि�
 msgid "Period"
 msgstr "अवधि"
 
+msgid "Period End"
+msgstr ""
+
 msgid "Permanently Delete"
 msgstr "स्थायी रूप से हटाएं"
 
@@ -5880,7 +6032,7 @@ msgid "Picking Lines"
 msgstr "पिकिंग लाइनें"
 
 msgid "Picking List"
-msgstr "पिकिंग सूची"
+msgstr ""
 
 msgid "Picking List ID"
 msgstr "पिकिंग लिस्ट आईडी"
@@ -5939,15 +6091,6 @@ msgstr "कृपया अपना नाम दर्ज करें"
 msgid "Please fill out all required fields"
 msgstr "कृपया सभी आवश्यक फ़ील्ड भरें"
 
-msgid "Please save the operation before adding parameters."
-msgstr "कृपया पैरामीटर जोड़ने से पहले ऑपरेशन को सहेजें।"
-
-msgid "Please save the operation before adding steps."
-msgstr "कृपया चरण जोड़ने से पहले ऑपरेशन को सहेजें।"
-
-msgid "Please save the operation before adding tools."
-msgstr "कृपया उपकरण जोड़ने से पहले ऑपरेशन को सहेजें।"
-
 msgid "Please select an item"
 msgstr "कृपया एक आइटम चुनें"
 
@@ -5967,7 +6110,7 @@ msgid "Policy"
 msgstr "नीति"
 
 msgid "Policy & Procedure"
-msgstr "नीति और प्रक्रिया"
+msgstr ""
 
 msgid "Portal Link"
 msgstr "पोर्टल लिंक"
@@ -5999,6 +6142,9 @@ msgstr "पिन कोड"
 msgid "Posted"
 msgstr "पोस्ट किया गया"
 
+msgid "Posted At"
+msgstr ""
+
 msgid "Posted By"
 msgstr "द्वारा पोस्ट किया गया"
 
@@ -6006,7 +6152,7 @@ msgid "Posting Date"
 msgstr "पोस्टिंग तारीख"
 
 msgid "Posting Groups"
-msgstr "पोस्टिंग समूह"
+msgstr ""
 
 msgid "Potential Data Loss"
 msgstr "संभावित डेटा हानि"
@@ -6290,6 +6436,12 @@ msgstr "गुणवत्ता दस्तावेज़ अनुमोद�
 msgid "Quality Documents"
 msgstr "गुणवत्ता दस्तावेज़"
 
+msgid "Quality Inspection"
+msgstr ""
+
+msgid "Quality Inspection Notes"
+msgstr ""
+
 msgid "Quality Type"
 msgstr "गुणवत्ता प्रकार"
 
@@ -6381,6 +6533,9 @@ msgstr "उद्धरण"
 msgid "Rate Limit"
 msgstr "दर सीमा"
 
+msgid "Re-select File"
+msgstr ""
+
 msgid "Reactivate"
 msgstr "पुनः सक्रिय करें"
 
@@ -6410,6 +6565,9 @@ msgstr "यूनिट कॉस्ट की पुनः गणना कर�
 
 msgid "Receipt"
 msgstr "रसीद"
+
+msgid "Receipt Date"
+msgstr ""
 
 msgid "Receipt ID"
 msgstr "रसीद आईडी"
@@ -6447,6 +6605,18 @@ msgstr "द्वारा प्राप्त"
 
 msgid "Received Qty"
 msgstr "प्राप्त मात्रा"
+
+msgid "Receiver Contact"
+msgstr ""
+
+msgid "Receiver Information"
+msgstr ""
+
+msgid "Receiver Signature"
+msgstr ""
+
+msgid "Receiving Department"
+msgstr ""
 
 msgid "Receiving Location"
 msgstr "प्राप्ति स्थान"
@@ -6797,6 +6967,9 @@ msgstr "नियम प्रकार"
 msgid "Rules"
 msgstr "नियम"
 
+msgid "Run ID"
+msgstr ""
+
 msgid "Run Test"
 msgstr "टेस्ट चलाएं"
 
@@ -7107,6 +7280,9 @@ msgstr "प्रिंटर चुनें"
 msgid "Select Quantities"
 msgstr "मात्रा चुनें"
 
+msgid "Select Reason"
+msgstr ""
+
 msgid "Select Row"
 msgstr "पंक्ति चुनें"
 
@@ -7161,6 +7337,18 @@ msgstr "आपूर्तिकर्ताओं को RFQ भेजें"
 
 msgid "Send Via"
 msgstr "के माध्यम से भेजें"
+
+msgid "Sender Contact"
+msgstr ""
+
+msgid "Sender Information"
+msgstr ""
+
+msgid "Sender Phone"
+msgstr ""
+
+msgid "Sender Signature"
+msgstr ""
 
 msgid "Sends this document for approval before it can go active."
 msgstr "यह दस्तावेज़ सक्रिय होने से पहले अनुमोदन के लिए भेजता है।"
@@ -7406,6 +7594,12 @@ msgstr "पासकी के साथ साइन इन करें"
 msgid "Sign Out"
 msgstr "साइन आउट"
 
+msgid "Signature Confirmation"
+msgstr ""
+
+msgid "Signature Date"
+msgstr ""
+
 msgid "Signed in as {name}"
 msgstr "{name} के रूप में साइन इन किया गया"
 
@@ -7429,6 +7623,9 @@ msgstr "कंपनी की छुट्टियों पर निर्�
 
 msgid "Skipped"
 msgstr "छोड़ा गया"
+
+msgid "Something went wrong"
+msgstr ""
 
 msgid "Something went wrong. Please try again."
 msgstr "कुछ गलत हो गया। कृपया पुनः प्रयास करें।"
@@ -7492,6 +7689,9 @@ msgstr "विशिष्ट ग्राहक"
 
 msgid "Specific Items"
 msgstr "विशिष्ट आइटम"
+
+msgid "Specification"
+msgstr ""
 
 msgid "Split"
 msgstr "विभाजित करें"
@@ -7866,11 +8066,23 @@ msgstr "कर और शिपिंग"
 msgid "Tax Amount"
 msgstr "कर राशि"
 
+msgid "Tax Depreciation"
+msgstr ""
+
+msgid "Tax Exempt"
+msgstr ""
+
 msgid "Tax ID"
 msgstr "टैक्स आईडी"
 
+msgid "Tax Information"
+msgstr ""
+
 msgid "Tax Percent"
 msgstr "कर प्रतिशत"
+
+msgid "Tax Status"
+msgstr ""
 
 msgid "Tax:"
 msgstr "कर:"
@@ -7882,7 +8094,7 @@ msgid "Template ID"
 msgstr "टेम्पलेट आईडी"
 
 msgid "Templates"
-msgstr "टेम्पलेट्स"
+msgstr ""
 
 msgid "Terms and Privacy"
 msgstr "शर्तें और गोपनीयता"
@@ -8447,6 +8659,9 @@ msgstr "अपलोड करें"
 msgid "Upload a PDF first"
 msgstr "पहले एक PDF अपलोड करें"
 
+msgid "Upload an Excel file (.xlsx) matching the delivery note template"
+msgstr ""
+
 msgid "Upload completed but no file path returned"
 msgstr "अपलोड पूर्ण हुआ लेकिन कोई फ़ाइल पथ नहीं मिला"
 
@@ -8548,6 +8763,9 @@ msgstr "मान"
 msgid "Value source by surface"
 msgstr "सतह द्वारा मान स्रोत"
 
+msgid "Values"
+msgstr ""
+
 msgid "VAT Number"
 msgstr "VAT संख्या"
 
@@ -8589,6 +8807,9 @@ msgstr "संलग्नक देखें"
 
 msgid "View Attributes"
 msgstr "विशेषताएं देखें"
+
+msgid "View Certificate"
+msgstr ""
 
 msgid "View Contact"
 msgstr "संपर्क देखें"
@@ -8724,6 +8945,9 @@ msgstr "इस रसीद को रद्द करने से:"
 
 msgid "Voiding this shipment will:"
 msgstr "इस शिपमेंट को रद्द करने से:"
+
+msgid "Warehouse Keeper Signature"
+msgstr ""
 
 msgid "Warehouse Transfer"
 msgstr "गोदाम स्थानांतरण"
@@ -8965,3 +9189,159 @@ msgstr "ZPL (थर्मल लेबल)"
 
 msgid "ZPL Label Preview"
 msgstr "ZPL लेबल पूर्वावलोकन"
+
+msgid "交付周期"
+msgstr ""
+
+msgid "人工"
+msgstr ""
+
+msgid "人工单位"
+msgstr ""
+
+msgid "人工时间"
+msgstr ""
+
+msgid "作业指导继承自工艺规程。"
+msgstr ""
+
+msgid "供应商"
+msgstr ""
+
+msgid "值"
+msgstr ""
+
+msgid "最低成本"
+msgstr ""
+
+msgid "最大值"
+msgstr ""
+
+msgid "最小值"
+msgstr ""
+
+msgid "准备"
+msgstr ""
+
+msgid "准备单位"
+msgstr ""
+
+msgid "准备时间"
+msgstr ""
+
+msgid "列表选项"
+msgstr ""
+
+msgid "单位成本"
+msgstr ""
+
+msgid "参数继承自工艺规程。"
+msgstr ""
+
+msgid "名称"
+msgstr ""
+
+msgid "图片上传失败"
+msgstr ""
+
+msgid "展开人工"
+msgstr ""
+
+msgid "展开准备"
+msgstr ""
+
+msgid "展开设备"
+msgstr ""
+
+msgid "属性继承自工艺规程。"
+msgstr ""
+
+msgid "工作中心"
+msgstr ""
+
+msgid "工具"
+msgstr ""
+
+msgid "工序"
+msgstr ""
+
+msgid "工序类型"
+msgstr ""
+
+msgid "工序顺序"
+msgstr ""
+
+msgid "工艺规程"
+msgstr ""
+
+msgid "工艺路线"
+msgstr ""
+
+msgid "已配置"
+msgstr ""
+
+msgid "打开菜单"
+msgstr ""
+
+msgid "拖拽手柄"
+msgstr ""
+
+msgid "描述"
+msgstr ""
+
+msgid "收起人工"
+msgstr ""
+
+msgid "收起准备"
+msgstr ""
+
+msgid "收起设备"
+msgstr ""
+
+msgid "数量"
+msgstr ""
+
+msgid "无法向未保存的工序添加参数"
+msgstr ""
+
+msgid "无法向未保存的工序添加工具"
+msgstr ""
+
+msgid "无法向未保存的工序添加步骤"
+msgstr ""
+
+msgid "添加工序"
+msgstr ""
+
+msgid "类型"
+msgstr ""
+
+msgid "计量单位"
+msgstr ""
+
+msgid "设备"
+msgstr ""
+
+msgid "设备单位"
+msgstr ""
+
+msgid "设备时间"
+msgstr ""
+
+msgid "详情"
+msgstr ""
+
+msgid "请先保存工序后再添加参数。"
+msgstr ""
+
+msgid "请先保存工序后再添加工具。"
+msgstr ""
+
+msgid "请先保存工序后再添加步骤。"
+msgstr ""
+
+msgid "配置"
+msgstr ""
+
+msgid "键"
+msgstr ""

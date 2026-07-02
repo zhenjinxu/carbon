@@ -1,4 +1,3 @@
-import { useCarbon } from "@carbon/auth";
 import { ValidatedForm } from "@carbon/form";
 import type { JSONContent } from "@carbon/react";
 import {
@@ -37,6 +36,7 @@ import {
   riskStatus
 } from "~/modules/quality/quality.models";
 import { getPrivateUrl, path } from "~/utils/path";
+import { serverStorageUpload } from "~/utils/storage";
 import { RiskRating } from "./RiskRating";
 import RiskStatus from "./RiskStatus";
 
@@ -61,7 +61,6 @@ const RiskRegisterForm = ({
   const {
     company: { id: companyId }
   } = useUser();
-  const { carbon } = useCarbon();
   const fetcher = useFetcher<{
     data: { id: string } | null;
     error: any;
@@ -87,7 +86,9 @@ const RiskRegisterForm = ({
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/quality/${nanoid()}.${fileType}`;
 
-    const result = await carbon?.storage.from("private").upload(fileName, file);
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private"
+    });
 
     if (result?.error) {
       toast.error(t`Failed to upload image`);

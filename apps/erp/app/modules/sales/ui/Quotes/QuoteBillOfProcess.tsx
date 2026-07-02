@@ -119,6 +119,7 @@ import type { action as editQuoteOperationToolAction } from "~/routes/x+/quote+/
 import type { action as newQuoteOperationToolAction } from "~/routes/x+/quote+/methods+/operation.tool.new";
 import { useItems, useTools } from "~/stores";
 import { getPrivateUrl, path } from "~/utils/path";
+import { serverStorageUpload } from "~/utils/storage";
 import { quoteOperationValidator } from "../../sales.models";
 import type { Quotation } from "../../types";
 
@@ -407,9 +408,10 @@ const QuoteBillOfProcess = ({
   const onUploadImage = async (file: File) => {
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/opportunity-line/${selectedItemId}/${nanoid()}.${fileType}`;
-    const result = await carbon?.storage
-      .from("private")
-      .upload(fileName, file, { upsert: true });
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private",
+      upsert: true
+    });
 
     if (result?.error) {
       throw new Error(result.error.message);
@@ -953,7 +955,6 @@ function AttributesForm({
 
   const [description, setDescription] = useState<JSONContent>({});
 
-  const { carbon } = useCarbon();
   const {
     company: { id: companyId }
   } = useUser();
@@ -962,7 +963,9 @@ function AttributesForm({
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/parts/${nanoid()}.${fileType}`;
 
-    const result = await carbon?.storage.from("private").upload(fileName, file);
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private"
+    });
 
     if (result?.error) {
       toast.error(t`Failed to upload image`);
@@ -1260,7 +1263,6 @@ function AttributesListItem({
     attribute.description ?? {}
   );
 
-  const { carbon } = useCarbon();
   const {
     company: { id: companyId }
   } = useUser();
@@ -1269,7 +1271,9 @@ function AttributesListItem({
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/parts/${nanoid()}.${fileType}`;
 
-    const result = await carbon?.storage.from("private").upload(fileName, file);
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private"
+    });
 
     if (result?.error) {
       toast.error("Failed to upload image");

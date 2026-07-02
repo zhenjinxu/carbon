@@ -1,5 +1,5 @@
-// import { error } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
+import { getCarbonServiceRole } from "@carbon/auth/client.server";
 import { trigger } from "@carbon/jobs";
 import type { ActionFunctionArgs } from "react-router";
 
@@ -11,7 +11,7 @@ export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const modelId = formData.get("modelId") as string;
   const name = formData.get("name") as string;
-  const modelPath = formData.get("modelPath") as string;
+  const file = formData.get("file") as File | null;
   const size = parseInt(formData.get("size") as string);
 
   const itemId = formData.get("itemId") as string | null;
@@ -21,18 +21,38 @@ export async function action({ request }: ActionFunctionArgs) {
   const jobId = formData.get("jobId") as string | null;
 
   if (!modelId) {
-    throw new Error("File ID is required");
+    return { error: "Model ID is required" };
   }
   if (!name) {
-    throw new Error("Name is required");
+    return { error: "Name is required" };
   }
-  if (!modelPath) {
-    throw new Error("Model path is required");
+  if (!file || !(file instanceof File)) {
+    return { error: "File is required" };
+  }
+
+  const fileExtension = name.split(".").pop();
+  const storagePath = `${companyId}/models/${modelId}.${fileExtension}`;
+
+  const serviceRole = getCarbonServiceRole();
+
+  const { error: uploadError } = await serviceRole.storage
+    .from("private")
+    .upload(storagePath, file, {
+      upsert: true
+    });
+
+  if (uploadError) {
+    console.error("[model.upload] Storage upload failed:", uploadError, {
+      path: storagePath,
+      fileSize: file.size,
+      fileType: file.type
+    });
+    return { error: `Failed to upload file: ${uploadError.message}` };
   }
 
   const modelRecord = await client.from("modelUpload").insert({
     id: modelId,
-    modelPath,
+    modelPath: storagePath,
     name,
     size,
     companyId,
@@ -40,7 +60,16 @@ export async function action({ request }: ActionFunctionArgs) {
   });
 
   if (modelRecord.error) {
-    throw new Error("Failed to record upload: " + modelRecord.error.message);
+    console.error(
+      "[model.upload] Failed to record upload:",
+      modelRecord.error,
+      {
+        modelId,
+        storagePath,
+        name
+      }
+    );
+    return { error: "Failed to record upload: " + modelRecord.error.message };
   }
 
   if (itemId) {
@@ -77,6 +106,7 @@ export async function action({ request }: ActionFunctionArgs) {
   });
 
   return {
-    success: true
+    success: true,
+    modelPath: storagePath
   };
 }

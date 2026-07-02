@@ -54,6 +54,9 @@ msgstr "{0}が正常にアップロードされました"
 msgid "{0} values missing"
 msgstr "{0}個の値が見つかりません"
 
+msgid "{displayText}"
+msgstr ""
+
 msgid "{maxSizeMB}MB limit"
 msgstr "{maxSizeMB}MB制限"
 
@@ -62,6 +65,9 @@ msgstr "{name}が削除されました"
 
 msgid "{scopeCount} permissions"
 msgstr "{scopeCount} 個の権限"
+
+msgid "{status}"
+msgstr ""
 
 msgid "/month/user"
 msgstr "/月/ユーザー"
@@ -163,6 +169,9 @@ msgstr "能力"
 msgid "About"
 msgstr "について"
 
+msgid "Accept"
+msgstr ""
+
 msgid "Accept Lot"
 msgstr "ロットを受け入れる"
 
@@ -171,6 +180,12 @@ msgstr "ロットを受け入れますか？"
 
 msgid "Accept Quote"
 msgstr "見積もりを承認"
+
+msgid "Acceptance Conclusion"
+msgstr ""
+
+msgid "Acceptance Notes"
+msgstr ""
 
 msgid "Account"
 msgstr "アカウント"
@@ -204,6 +219,9 @@ msgstr "蓄積期間（週）"
 
 msgid "Accumulation Period:"
 msgstr "蓄積期間:"
+
+msgid "Acquisition Cost"
+msgstr ""
 
 msgid "Action Items"
 msgstr "アクション項目"
@@ -448,11 +466,17 @@ msgstr "すべてのジョブが完了しました"
 msgid "All members of selected groups and selected individuals will be able to approve requests"
 msgstr "選択されたグループのすべてのメンバーと選択された個人が承認リクエストを承認できます"
 
+msgid "All Qualified"
+msgstr ""
+
 msgid "All Suppliers"
 msgstr "すべてのサプライヤー"
 
 msgid "All Types"
 msgstr "すべてのタイプ"
+
+msgid "All Unqualified"
+msgstr ""
 
 msgid "All Work Centers"
 msgstr "すべての作業センター"
@@ -936,8 +960,14 @@ msgstr "アセンブリ:"
 msgid "Asset"
 msgstr "資産"
 
+msgid "Asset Class"
+msgstr ""
+
 msgid "Asset Classes"
 msgstr "資産クラス"
+
+msgid "Asset ID"
+msgstr ""
 
 msgid "Assets"
 msgstr "資産"
@@ -1053,6 +1083,9 @@ msgstr "平均クローズ日数"
 msgid "Back"
 msgstr "戻る"
 
+msgid "Back Home"
+msgstr ""
+
 msgid "Back to traceability"
 msgstr "トレーサビリティに戻る"
 
@@ -1137,6 +1170,9 @@ msgstr "BoM + BoP"
 
 msgid "BOM synced successfully"
 msgstr "BOMが正常に同期されました"
+
+msgid "Book Depreciation"
+msgstr ""
 
 msgid "Breadcrumb"
 msgstr "パンくずリスト"
@@ -1302,6 +1338,12 @@ msgstr "CC"
 
 msgid "Centralized Billing Address"
 msgstr "一元化された請求先住所"
+
+msgid "Certificate Number"
+msgstr ""
+
+msgid "Certificate uploaded"
+msgstr ""
 
 msgid "Change"
 msgstr "変更"
@@ -1629,6 +1671,12 @@ msgstr "連絡先"
 msgid "Contact (optional)"
 msgstr "連絡先（オプション）"
 
+msgid "Contact Person"
+msgstr ""
+
+msgid "Contact Phone"
+msgstr ""
+
 msgid "Contacts"
 msgstr "連絡先"
 
@@ -1637,6 +1685,9 @@ msgstr "含有"
 
 msgid "Containment"
 msgstr "封じ込め"
+
+msgid "Contract Number"
+msgstr ""
 
 msgid "Contractor"
 msgstr "請負業者"
@@ -2022,6 +2073,16 @@ msgstr "ワークセンターを作成しました"
 msgid "Creating part..."
 msgstr "パーツを作成中..."
 
+msgid "Credit"
+msgstr ""
+
+#. placeholder {0}: parentCurrency ?? "Translated"
+msgid "Credit ({0})"
+msgstr ""
+
+msgid "Credits"
+msgstr ""
+
 msgid "CSV column"
 msgstr "CSVカラム"
 
@@ -2139,6 +2200,9 @@ msgstr "PDFドキュメントのレイアウトをカスタマイズ — セク�
 msgid "Daily Usage"
 msgstr "日次使用量"
 
+msgid "Damaged"
+msgstr ""
+
 msgid "Dark"
 msgstr "ダーク"
 
@@ -2230,6 +2294,16 @@ msgstr "ワークセンターを無効化"
 msgid "Deadline Type"
 msgstr "期限タイプ"
 
+msgid "Debit"
+msgstr ""
+
+#. placeholder {0}: parentCurrency ?? "Translated"
+msgid "Debit ({0})"
+msgstr ""
+
+msgid "Debits"
+msgstr ""
+
 msgid "Decide what an operator sees if they try to issue a batch or serial that's already expired."
 msgstr "オペレーターが既に期限切れのバッチまたはシリアルを発行しようとした場合に表示される内容を決定します。"
 
@@ -2276,7 +2350,7 @@ msgid "Default Unit"
 msgstr "デフォルト単位"
 
 msgid "Defaults"
-msgstr "デフォルト"
+msgstr ""
 
 msgid "Defines how many tracked entities are inspected per lot, and how many failures are tolerated before the lot is rejected."
 msgstr "ロットごとに検査される追跡対象エンティティの数と、ロットが却下される前に許容される失敗の数を定義します。"
@@ -2328,6 +2402,9 @@ msgstr "顧客タイプを削除"
 
 msgid "Delete Department"
 msgstr "部門を削除"
+
+msgid "Delete Dimension"
+msgstr ""
 
 msgid "Delete Dispatch"
 msgstr "ディスパッチを削除"
@@ -2558,10 +2635,13 @@ msgid "Description of Issue"
 msgstr "問題の説明"
 
 msgid "Detail"
-msgstr "詳細"
+msgstr ""
 
 msgid "Details"
 msgstr "詳細"
+
+msgid "Development mode — verification code:"
+msgstr ""
 
 msgid "Diagram saved"
 msgstr "図が保存されました"
@@ -2629,6 +2709,9 @@ msgstr "ドキュメント"
 msgid "Document Control"
 msgstr "ドキュメント管理"
 
+msgid "Document Number"
+msgstr ""
+
 msgid "Document Templates"
 msgstr "ドキュメントテンプレート"
 
@@ -2688,6 +2771,9 @@ msgstr "図面番号"
 
 msgid "Drawing replaced. Balloon placements were removed; feature rows are unchanged."
 msgstr "図面が置き換わりました。バルーン配置は削除されました。機能行は変更されていません。"
+
+msgid "Drop Excel file here, or click to select"
+msgstr ""
 
 msgid "Drop Shipment"
 msgstr "ドロップシップメント"
@@ -2797,6 +2883,9 @@ msgstr "日付範囲を編集"
 
 msgid "Edit Department"
 msgstr "部門を編集"
+
+msgid "Edit Dimension"
+msgstr ""
 
 msgid "Edit Dispatch"
 msgstr "ディスパッチを編集"
@@ -3125,6 +3214,9 @@ msgstr "エンティティ"
 msgid "Entity is {status}"
 msgstr "エンティティは {status} です"
 
+msgid "Entity Type"
+msgstr ""
+
 msgid "EORI"
 msgstr "EORI"
 
@@ -3230,11 +3322,20 @@ msgstr "スターターのすべての機能"
 msgid "Exceeds {PO_EMAIL_ATTACHMENT_LIMIT_MB} MB total — remove some attachments to send."
 msgstr "{PO_EMAIL_ATTACHMENT_LIMIT_MB} MB を超えています — 送信するには添付ファイルを削除してください。"
 
+msgid "Excel data imported successfully"
+msgstr ""
+
 msgid "Exchange Rate"
 msgstr "為替レート"
 
 msgid "Exchange Rates"
 msgstr "為替レート"
+
+msgid "Exemption Certificate"
+msgstr ""
+
+msgid "Exemption Reason"
+msgstr ""
 
 msgid "Expand"
 msgstr "展開"
@@ -3263,6 +3364,9 @@ msgstr "段取りを展開"
 
 msgid "Expand subtree"
 msgstr "サブツリーを展開"
+
+msgid "Expected Qty"
+msgstr ""
 
 msgid "Expected Receipt"
 msgstr "予想受取日"
@@ -3591,6 +3695,9 @@ msgstr "サムネイルパスの更新に失敗しました"
 msgid "Failed to upload {0}"
 msgstr "アップロードに失敗しました {0}"
 
+msgid "Failed to upload certificate"
+msgstr ""
+
 msgid "Failed to upload CSV file."
 msgstr "CSVファイルのアップロードに失敗しました。"
 
@@ -3616,9 +3723,6 @@ msgstr "モデルのアップロードに失敗しました"
 
 msgid "Failed to upload PDF"
 msgstr "PDFのアップロードに失敗しました"
-
-msgid "Failed to upload thumbnail"
-msgstr "サムネイルのアップロードに失敗しました"
 
 msgid "Failure Mode"
 msgstr "故障モード"
@@ -3731,7 +3835,7 @@ msgid "Fiscal Year Settings"
 msgstr "会計年度設定"
 
 msgid "Fiscal Years"
-msgstr "会計年度"
+msgstr ""
 
 msgid "Fixed"
 msgstr "固定"
@@ -3863,6 +3967,9 @@ msgstr "グループ名"
 msgid "Groups"
 msgstr "グループ"
 
+msgid "Header Information"
+msgstr ""
+
 msgid "Help"
 msgstr "ヘルプ"
 
@@ -3944,6 +4051,12 @@ msgstr "実装サポート"
 msgid "Import {label} CSV"
 msgstr "{label} CSV をインポート"
 
+msgid "Import Excel"
+msgstr ""
+
+msgid "Import Receipt from Excel"
+msgstr ""
+
 msgid "In order to convert this RFQ to a quote, all lines must have an internal part number."
 msgstr "このRFQを見積に変換するには、すべての行に内部部品番号が必要です。"
 
@@ -4016,6 +4129,9 @@ msgstr "インフラストラクチャ"
 msgid "Inherit From Materials"
 msgstr "材料から継承"
 
+msgid "Inherited"
+msgstr ""
+
 msgid "Inherited from parent"
 msgstr "親から継承"
 
@@ -4046,6 +4162,9 @@ msgstr "検査ドキュメント"
 msgid "Inspection Level"
 msgstr "検査レベル"
 
+msgid "Inspection Results"
+msgstr ""
+
 msgid "Inspection Status"
 msgstr "検査ステータス"
 
@@ -4063,6 +4182,9 @@ msgstr "手順"
 
 msgid "Instructions are inherited from the procedure."
 msgstr "手順から継承された指示。"
+
+msgid "Intact"
+msgstr ""
 
 msgid "Integration not found"
 msgstr "統合が見つかりません"
@@ -4241,6 +4363,9 @@ msgstr "アイテムは選択されたタイプと選択されたグループの
 msgid "Item must match a selected type OR a selected group"
 msgstr "アイテムは選択されたタイプまたは選択されたグループと一致する必要があります"
 
+msgid "Item Name"
+msgstr ""
+
 msgid "Item Scope"
 msgstr "アイテムスコープ"
 
@@ -4295,6 +4420,9 @@ msgstr "{0}に参加"
 
 msgid "Journal Entries"
 msgstr "仕訳帳"
+
+msgid "Journal Entry"
+msgstr ""
 
 msgid "Kanban"
 msgstr "カンバン"
@@ -4426,6 +4554,9 @@ msgstr "可能性"
 
 msgid "Line Item Comparison"
 msgstr "明細項目の比較"
+
+msgid "Line Items"
+msgstr ""
 
 msgid "Line options"
 msgstr "行オプション"
@@ -4950,6 +5081,12 @@ msgstr "正しい列が必要ですか？"
 msgid "Negative Adjustment"
 msgstr "負の調整"
 
+msgid "Net Book Value"
+msgstr ""
+
+msgid "Net Change"
+msgstr ""
+
 msgid "Never"
 msgstr "なし"
 
@@ -5167,7 +5304,7 @@ msgid "New Training"
 msgstr "新しいトレーニング"
 
 msgid "New Transfer"
-msgstr "新しい転送"
+msgstr ""
 
 msgid "New Transfer Line"
 msgstr "新しい転送ライン"
@@ -5717,6 +5854,12 @@ msgstr "見積方法をソース方法で上書きします"
 msgid "Overwrite the target manufacturing method with the quote method"
 msgstr "見積方法でターゲット製造方法を上書きします"
 
+msgid "Packaging Condition"
+msgstr ""
+
+msgid "Packaging Notes"
+msgstr ""
+
 msgid "Packing Slip"
 msgstr "梱包明細書"
 
@@ -5767,6 +5910,12 @@ msgstr "部品は製造用に構成されています"
 
 msgid "Partial"
 msgstr "部分的"
+
+msgid "Partial Acceptance"
+msgstr ""
+
+msgid "Partially Qualified"
+msgstr ""
 
 msgid "Partner"
 msgstr "パートナー"
@@ -5831,6 +5980,9 @@ msgstr "低コスト評価に最適"
 msgid "Period"
 msgstr "期間"
 
+msgid "Period End"
+msgstr ""
+
 msgid "Permanently Delete"
 msgstr "完全に削除"
 
@@ -5880,7 +6032,7 @@ msgid "Picking Lines"
 msgstr "ピッキングラインス"
 
 msgid "Picking List"
-msgstr "ピッキングリスト"
+msgstr ""
 
 msgid "Picking List ID"
 msgstr "ピッキングリストID"
@@ -5939,15 +6091,6 @@ msgstr "お名前を入力してください"
 msgid "Please fill out all required fields"
 msgstr "すべての必須フィールドに入力してください"
 
-msgid "Please save the operation before adding parameters."
-msgstr "操作を保存してからパラメータを追加してください。"
-
-msgid "Please save the operation before adding steps."
-msgstr "操作を保存してからステップを追加してください。"
-
-msgid "Please save the operation before adding tools."
-msgstr "操作を保存してからツールを追加してください。"
-
 msgid "Please select an item"
 msgstr "アイテムを選択してください"
 
@@ -5967,7 +6110,7 @@ msgid "Policy"
 msgstr "ポリシー"
 
 msgid "Policy & Procedure"
-msgstr "ポリシーと手順"
+msgstr ""
 
 msgid "Portal Link"
 msgstr "ポータルリンク"
@@ -5999,6 +6142,9 @@ msgstr "郵便番号"
 msgid "Posted"
 msgstr "転記済み"
 
+msgid "Posted At"
+msgstr ""
+
 msgid "Posted By"
 msgstr "投稿者"
 
@@ -6006,7 +6152,7 @@ msgid "Posting Date"
 msgstr "投稿日"
 
 msgid "Posting Groups"
-msgstr "転記グループ"
+msgstr ""
 
 msgid "Potential Data Loss"
 msgstr "潜在的データ損失"
@@ -6290,6 +6436,12 @@ msgstr "品質文書承認ルール"
 msgid "Quality Documents"
 msgstr "品質文書"
 
+msgid "Quality Inspection"
+msgstr ""
+
+msgid "Quality Inspection Notes"
+msgstr ""
+
 msgid "Quality Type"
 msgstr "品質タイプ"
 
@@ -6381,6 +6533,9 @@ msgstr "見積"
 msgid "Rate Limit"
 msgstr "レート制限"
 
+msgid "Re-select File"
+msgstr ""
+
 msgid "Reactivate"
 msgstr "再度有効化"
 
@@ -6410,6 +6565,9 @@ msgstr "単位原価を再計算"
 
 msgid "Receipt"
 msgstr "領収書"
+
+msgid "Receipt Date"
+msgstr ""
 
 msgid "Receipt ID"
 msgstr "受取ID"
@@ -6447,6 +6605,18 @@ msgstr "受け取った人"
 
 msgid "Received Qty"
 msgstr "受け取り数量"
+
+msgid "Receiver Contact"
+msgstr ""
+
+msgid "Receiver Information"
+msgstr ""
+
+msgid "Receiver Signature"
+msgstr ""
+
+msgid "Receiving Department"
+msgstr ""
 
 msgid "Receiving Location"
 msgstr "受取場所"
@@ -6797,6 +6967,9 @@ msgstr "ルールタイプ"
 msgid "Rules"
 msgstr "ルール"
 
+msgid "Run ID"
+msgstr ""
+
 msgid "Run Test"
 msgstr "テストを実行"
 
@@ -7107,6 +7280,9 @@ msgstr "プリンターを選択"
 msgid "Select Quantities"
 msgstr "数量を選択"
 
+msgid "Select Reason"
+msgstr ""
+
 msgid "Select Row"
 msgstr "行を選択"
 
@@ -7161,6 +7337,18 @@ msgstr "RFQをサプライヤーに送信"
 
 msgid "Send Via"
 msgstr "経由で送信"
+
+msgid "Sender Contact"
+msgstr ""
+
+msgid "Sender Information"
+msgstr ""
+
+msgid "Sender Phone"
+msgstr ""
+
+msgid "Sender Signature"
+msgstr ""
 
 msgid "Sends this document for approval before it can go active."
 msgstr "このドキュメントを承認のために送信してから、アクティブにすることができます。"
@@ -7406,6 +7594,12 @@ msgstr "パスキーでサインイン"
 msgid "Sign Out"
 msgstr "サインアウト"
 
+msgid "Signature Confirmation"
+msgstr ""
+
+msgid "Signature Date"
+msgstr ""
+
 msgid "Signed in as {name}"
 msgstr "{name}としてサインインしています"
 
@@ -7429,6 +7623,9 @@ msgstr "会社の祝日に予定されたメンテナンスをスキップする
 
 msgid "Skipped"
 msgstr "スキップ"
+
+msgid "Something went wrong"
+msgstr ""
 
 msgid "Something went wrong. Please try again."
 msgstr "何か問題が発生しました。もう一度お試しください。"
@@ -7492,6 +7689,9 @@ msgstr "特定の顧客"
 
 msgid "Specific Items"
 msgstr "特定の品目"
+
+msgid "Specification"
+msgstr ""
 
 msgid "Split"
 msgstr "分割"
@@ -7866,11 +8066,23 @@ msgstr "税金と配送"
 msgid "Tax Amount"
 msgstr "税額"
 
+msgid "Tax Depreciation"
+msgstr ""
+
+msgid "Tax Exempt"
+msgstr ""
+
 msgid "Tax ID"
 msgstr "税務ID"
 
+msgid "Tax Information"
+msgstr ""
+
 msgid "Tax Percent"
 msgstr "税率"
+
+msgid "Tax Status"
+msgstr ""
 
 msgid "Tax:"
 msgstr "税:"
@@ -7882,7 +8094,7 @@ msgid "Template ID"
 msgstr "テンプレートID"
 
 msgid "Templates"
-msgstr "テンプレート"
+msgstr ""
 
 msgid "Terms and Privacy"
 msgstr "利用規約とプライバシー"
@@ -8447,6 +8659,9 @@ msgstr "アップロード"
 msgid "Upload a PDF first"
 msgstr "まずPDFをアップロードしてください"
 
+msgid "Upload an Excel file (.xlsx) matching the delivery note template"
+msgstr ""
+
 msgid "Upload completed but no file path returned"
 msgstr "アップロードは完了しましたがファイルパスが返されませんでした"
 
@@ -8548,6 +8763,9 @@ msgstr "値"
 msgid "Value source by surface"
 msgstr "サーフェスごとの値のソース"
 
+msgid "Values"
+msgstr ""
+
 msgid "VAT Number"
 msgstr "VAT番号"
 
@@ -8589,6 +8807,9 @@ msgstr "添付ファイルを表示"
 
 msgid "View Attributes"
 msgstr "属性を表示"
+
+msgid "View Certificate"
+msgstr ""
 
 msgid "View Contact"
 msgstr "連絡先を表示"
@@ -8724,6 +8945,9 @@ msgstr "このレシートを無効にすると:"
 
 msgid "Voiding this shipment will:"
 msgstr "この出荷をキャンセルすると、以下のようになります:"
+
+msgid "Warehouse Keeper Signature"
+msgstr ""
 
 msgid "Warehouse Transfer"
 msgstr "倉庫移動"
@@ -8965,3 +9189,159 @@ msgstr "ZPL（サーマルラベル）"
 
 msgid "ZPL Label Preview"
 msgstr "ZPLラベルプレビュー"
+
+msgid "交付周期"
+msgstr ""
+
+msgid "人工"
+msgstr ""
+
+msgid "人工单位"
+msgstr ""
+
+msgid "人工时间"
+msgstr ""
+
+msgid "作业指导继承自工艺规程。"
+msgstr ""
+
+msgid "供应商"
+msgstr ""
+
+msgid "值"
+msgstr ""
+
+msgid "最低成本"
+msgstr ""
+
+msgid "最大值"
+msgstr ""
+
+msgid "最小值"
+msgstr ""
+
+msgid "准备"
+msgstr ""
+
+msgid "准备单位"
+msgstr ""
+
+msgid "准备时间"
+msgstr ""
+
+msgid "列表选项"
+msgstr ""
+
+msgid "单位成本"
+msgstr ""
+
+msgid "参数继承自工艺规程。"
+msgstr ""
+
+msgid "名称"
+msgstr ""
+
+msgid "图片上传失败"
+msgstr ""
+
+msgid "展开人工"
+msgstr ""
+
+msgid "展开准备"
+msgstr ""
+
+msgid "展开设备"
+msgstr ""
+
+msgid "属性继承自工艺规程。"
+msgstr ""
+
+msgid "工作中心"
+msgstr ""
+
+msgid "工具"
+msgstr ""
+
+msgid "工序"
+msgstr ""
+
+msgid "工序类型"
+msgstr ""
+
+msgid "工序顺序"
+msgstr ""
+
+msgid "工艺规程"
+msgstr ""
+
+msgid "工艺路线"
+msgstr ""
+
+msgid "已配置"
+msgstr ""
+
+msgid "打开菜单"
+msgstr ""
+
+msgid "拖拽手柄"
+msgstr ""
+
+msgid "描述"
+msgstr ""
+
+msgid "收起人工"
+msgstr ""
+
+msgid "收起准备"
+msgstr ""
+
+msgid "收起设备"
+msgstr ""
+
+msgid "数量"
+msgstr ""
+
+msgid "无法向未保存的工序添加参数"
+msgstr ""
+
+msgid "无法向未保存的工序添加工具"
+msgstr ""
+
+msgid "无法向未保存的工序添加步骤"
+msgstr ""
+
+msgid "添加工序"
+msgstr ""
+
+msgid "类型"
+msgstr ""
+
+msgid "计量单位"
+msgstr ""
+
+msgid "设备"
+msgstr ""
+
+msgid "设备单位"
+msgstr ""
+
+msgid "设备时间"
+msgstr ""
+
+msgid "详情"
+msgstr ""
+
+msgid "请先保存工序后再添加参数。"
+msgstr ""
+
+msgid "请先保存工序后再添加工具。"
+msgstr ""
+
+msgid "请先保存工序后再添加步骤。"
+msgstr ""
+
+msgid "配置"
+msgstr ""
+
+msgid "键"
+msgstr ""

@@ -148,6 +148,7 @@ import type { action as editJobOperationToolAction } from "~/routes/x+/job+/meth
 import type { action as newJobOperationToolAction } from "~/routes/x+/job+/methods+/operation.tool.new";
 import { useItems, usePeople, useTools } from "~/stores";
 import { getPrivateUrl, path } from "~/utils/path";
+import { serverStorageUpload } from "~/utils/storage";
 import {
   jobOperationValidator,
   jobOperationValidatorForReleasedJob,
@@ -273,7 +274,7 @@ function makeItem(
             table="jobOperation"
             id={operation.id!}
             size="sm"
-            value={operation.assignee ?? undefined}
+            value={operation.assignee ?? ""}
           />
         </HStack>
         <HStack>
@@ -637,9 +638,10 @@ const JobBillOfProcess = ({
   const onUploadImage = async (file: File) => {
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/parts/${selectedItemId}/${nanoid()}.${fileType}`;
-    const result = await carbon?.storage
-      .from("private")
-      .upload(fileName, file, { upsert: true });
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private",
+      upsert: true
+    });
 
     if (result?.error) {
       throw new Error(result.error.message);
@@ -1162,7 +1164,6 @@ function StepsForm({
     []
   );
 
-  const { carbon } = useCarbon();
   const {
     company: { id: companyId }
   } = useUser();
@@ -1189,7 +1190,9 @@ function StepsForm({
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/parts/${nanoid()}.${fileType}`;
 
-    const result = await carbon?.storage.from("private").upload(fileName, file);
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private"
+    });
 
     if (result?.error) {
       toast.error(t`Failed to upload image`);
@@ -1490,7 +1493,6 @@ function StepsListItem({
   const date = updatedAt ?? createdAt;
 
   const unitOfMeasures = useUnitOfMeasure();
-  const { carbon } = useCarbon();
   const {
     company: { id: companyId }
   } = useUser();
@@ -1499,7 +1501,9 @@ function StepsListItem({
     const fileType = file.name.split(".").pop();
     const fileName = `${companyId}/parts/${nanoid()}.${fileType}`;
 
-    const result = await carbon?.storage.from("private").upload(fileName, file);
+    const result = await serverStorageUpload(file, fileName, {
+      bucket: "private"
+    });
 
     if (result?.error) {
       toast.error(t`Failed to upload image`);
@@ -3389,7 +3393,7 @@ function OperationChat({ jobOperationId }: { jobOperationId: string }) {
                     )}
                   >
                     <Avatar
-                      src={createdBy?.avatarUrl ?? undefined}
+                      src={createdBy?.avatarUrl ?? ""}
                       name={createdBy?.name}
                     />
 

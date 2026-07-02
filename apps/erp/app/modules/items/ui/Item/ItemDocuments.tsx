@@ -408,44 +408,25 @@ export const useItemDocuments = ({ itemId, type }: Props) => {
 
   const upload = useCallback(
     async (files: File[]) => {
-      if (!carbon) {
-        toast.error(t`Carbon client not available`);
-        return;
-      }
-
       for (const file of files) {
         toast.info(t`Uploading ${file.name}`);
-        const fileName = getPath(file);
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("name", file.name);
+        formData.append("size", Math.round(file.size / 1024).toString());
+        formData.append("sourceDocument", type);
+        formData.append("sourceDocumentId", itemId);
 
-        const fileUpload = await carbon.storage
-          .from("private")
-          .upload(fileName, file, {
-            cacheControl: `${12 * 60 * 60}`,
-            upsert: true
-          });
-
-        if (fileUpload.error) {
-          toast.error(t`Failed to upload file: ${file.name}`);
-        } else if (fileUpload.data?.path) {
-          toast.success(t`Uploaded: ${file.name}`);
-          const formData = new FormData();
-          formData.append("path", fileUpload.data.path);
-          formData.append("name", file.name);
-          formData.append("size", Math.round(file.size / 1024).toString());
-          formData.append("sourceDocument", type);
-          formData.append("sourceDocumentId", itemId);
-
-          submit(formData, {
-            method: "post",
-            action: path.to.newDocument,
-            navigate: false,
-            fetcherKey: `item:${file.name}`
-          });
-        }
+        submit(formData, {
+          method: "post",
+          action: path.to.api.documentUpload,
+          navigate: false,
+          fetcherKey: `item:${file.name}`
+        });
       }
       revalidator.revalidate();
     },
-    [getPath, carbon, revalidator, submit, type, itemId, t]
+    [revalidator, submit, type, itemId, t]
   );
 
   return {
@@ -467,16 +448,20 @@ const usePendingItems = () => {
 
   return useFetchers()
     .filter((fetcher): fetcher is PendingItem => {
-      return fetcher.formAction === path.to.newDocument;
+      return fetcher.formAction === path.to.api.documentUpload;
     })
     .reduce<OptimisticFileObject[]>((acc, fetcher) => {
-      const path = fetcher.formData.get("path") as string;
+      const sourceDocumentId = fetcher.formData.get(
+        "sourceDocumentId"
+      ) as string;
       const name = fetcher.formData.get("name") as string;
       const size = parseInt(fetcher.formData.get("size") as string, 10) * 1024;
 
-      if (path && name && size) {
+      if (sourceDocumentId && name && size) {
+        const sanitizedFileName = stripSpecialCharacters(name);
+        const filePath = `parts/${sourceDocumentId}/${sanitizedFileName}`;
         const newItem: OptimisticFileObject = {
-          id: path,
+          id: filePath,
           name: name,
           bucket_id: "private",
           bucket: "private",

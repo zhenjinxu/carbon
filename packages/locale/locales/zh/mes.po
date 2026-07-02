@@ -12,6 +12,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. placeholder {0}: operation.jobStatus === "Paused" ? "Paused" : operation.operationStatus
+#. placeholder {0}: status === "Ready" ? "Released" : status
+msgid "{0}"
+msgstr ""
+
 #. placeholder {0}: attribute.name
 #. placeholder {1}: activeStep + 1
 msgid "{0} - Set {1}"
@@ -41,6 +46,9 @@ msgstr "{0} / {1} 已完成"
 #. placeholder {0}: item.quantityScrapped
 msgid "{0} Scrapped"
 msgstr "{0} 已报废"
+
+msgid "{status}"
+msgstr ""
 
 msgid "About"
 msgstr "关于"
@@ -104,6 +112,9 @@ msgstr "认证错误"
 
 msgid "available"
 msgstr "可用"
+
+msgid "Back Home"
+msgstr "返回首页"
 
 msgid "Batch"
 msgstr "批次"
@@ -956,6 +967,9 @@ msgstr "已登录为 {stationName}"
 
 msgid "Size"
 msgstr "大小"
+
+msgid "Something went wrong"
+msgstr "出现错误"
 
 msgid "Source"
 msgstr "来源"

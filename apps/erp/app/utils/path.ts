@@ -116,7 +116,9 @@ export const path = {
         generatePath(
           `${api}/mrp${locationId ? `?location=${locationId}` : ""}`
         ),
+      documentUpload: `${api}/document/upload`,
       modelUpload: `${api}/model/upload`,
+      storageUpload: `${api}/storage/upload`,
       onShapeBom: (documentId: string, versionId: string, elementId: string) =>
         generatePath(
           `${api}/integrations/onshape/d/${documentId}/v/${versionId}/e/${elementId}/bom`
@@ -554,6 +556,7 @@ export const path = {
     bulkUpdateQuote: `${x}/quote/update`,
     bulkUpdateQualityDocument: `${x}/quality-document/update`,
     bulkUpdateReceiptLine: `${x}/receipt/lines/update`,
+    importReceiptLines: `${x}/receipt/lines/import`,
     bulkUpdateSalesInvoice: `${x}/sales-invoice/update`,
     bulkUpdateSalesOrder: `${x}/sales-order/update`,
     bulkUpdateSalesRfq: `${x}/sales-rfq/update`,
