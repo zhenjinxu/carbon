@@ -13,17 +13,25 @@ export async function action({ request }: ActionFunctionArgs) {
   await requirePermissions(request, {});
 
   const formData = await request.formData();
-  const file = formData.get("file") as File | null;
+  const fileEntry = formData.get("file");
   const bucket = (formData.get("bucket") as string) ?? "private";
   const storagePath = formData.get("path") as string;
   const cacheControl = (formData.get("cacheControl") as string) ?? "3600";
-  const contentType =
-    (formData.get("contentType") as string) ||
-    file?.type ||
-    "application/octet-stream";
   const upsert = formData.get("upsert") !== "false";
 
-  if (!file || !(file instanceof File)) {
+  // Normalize file object across runtimes (Node, Bun, Cloudflare, etc.)
+  let file: Blob | null = null;
+  if (fileEntry instanceof Blob) {
+    file = fileEntry;
+  } else if (
+    fileEntry &&
+    typeof fileEntry === "object" &&
+    "arrayBuffer" in fileEntry
+  ) {
+    file = fileEntry as Blob;
+  }
+
+  if (!file) {
     return { error: "File is required" };
   }
   if (!storagePath) {
@@ -32,9 +40,14 @@ export async function action({ request }: ActionFunctionArgs) {
 
   const serviceRole = getCarbonServiceRole();
 
+  const contentType =
+    (formData.get("contentType") as string) ||
+    (file as File).type ||
+    "application/octet-stream";
+
   const { data, error } = await serviceRole.storage
     .from(bucket)
-    .upload(storagePath, file, {
+    .upload(storagePath, file as File, {
       cacheControl,
       upsert,
       contentType

@@ -11,7 +11,7 @@ export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const modelId = formData.get("modelId") as string;
   const name = formData.get("name") as string;
-  const file = formData.get("file") as File | null;
+  const fileEntry = formData.get("file");
   const size = parseInt(formData.get("size") as string);
 
   const itemId = formData.get("itemId") as string | null;
@@ -20,13 +20,25 @@ export async function action({ request }: ActionFunctionArgs) {
   const salesOrderLineId = formData.get("salesOrderLineId") as string | null;
   const jobId = formData.get("jobId") as string | null;
 
+  // Normalize file object across runtimes
+  let file: Blob | null = null;
+  if (fileEntry instanceof Blob) {
+    file = fileEntry;
+  } else if (
+    fileEntry &&
+    typeof fileEntry === "object" &&
+    "arrayBuffer" in fileEntry
+  ) {
+    file = fileEntry as Blob;
+  }
+
   if (!modelId) {
     return { error: "Model ID is required" };
   }
   if (!name) {
     return { error: "Name is required" };
   }
-  if (!file || !(file instanceof File)) {
+  if (!file) {
     return { error: "File is required" };
   }
 
@@ -37,7 +49,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
   const { error: uploadError } = await serviceRole.storage
     .from("private")
-    .upload(storagePath, file, {
+    .upload(storagePath, file as File, {
       upsert: true
     });
 
