@@ -667,7 +667,9 @@ export async function getUserClaims(userId: string, companyId: string) {
       }
 
       // convert rawClaims to permissions
-      claims = makePermissionsFromClaims(rawClaims.data as Json[]);
+      // Supabase RPC returns { data: { get_claims: {...} } } so we need to unwrap
+      const claimsData = (rawClaims.data as { get_claims?: Json })?.get_claims ?? rawClaims.data;
+      claims = makePermissionsFromClaims(claimsData as Json[]);
 
       // store claims in redis
       await redis.set(getPermissionCacheKey(userId), JSON.stringify(claims));

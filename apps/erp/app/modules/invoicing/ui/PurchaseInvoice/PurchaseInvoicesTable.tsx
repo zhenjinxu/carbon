@@ -1,5 +1,5 @@
 import { HStack, MenuIcon, MenuItem, useDisclosure } from "@carbon/react";
-import { Trans, useLingui } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react/macro";
 import type { ColumnDef } from "@tanstack/react-table";
 import { memo, useMemo, useState } from "react";
 import {
@@ -280,7 +280,7 @@ const PurchaseInvoicesTable = memo(
             onClick={() => navigate(path.to.purchaseInvoice(row.id!))}
           >
             <MenuIcon icon={<LuPencil />} />
-            <Trans>Edit</Trans>
+            {t`Edit`}
           </MenuItem>
           <MenuItem
             disabled={
@@ -293,11 +293,11 @@ const PurchaseInvoicesTable = memo(
             }}
           >
             <MenuIcon icon={<LuTrash />} />
-            <Trans>Delete</Trans>
+            {t`Delete`}
           </MenuItem>
         </>
       );
-    }, [closePurchaseInvoiceModal, navigate, permissions]);
+    }, [closePurchaseInvoiceModal, navigate, permissions, t]);
 
     return (
       <>

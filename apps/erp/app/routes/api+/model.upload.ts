@@ -4,7 +4,7 @@ import { trigger } from "@carbon/jobs";
 import type { ActionFunctionArgs } from "react-router";
 
 export async function action({ request }: ActionFunctionArgs) {
-  const { client, companyId, userId } = await requirePermissions(request, {
+  const { companyId, userId } = await requirePermissions(request, {
     update: "parts"
   });
 
@@ -54,15 +54,10 @@ export async function action({ request }: ActionFunctionArgs) {
     });
 
   if (uploadError) {
-    console.error("[model.upload] Storage upload failed:", uploadError, {
-      path: storagePath,
-      fileSize: file.size,
-      fileType: file.type
-    });
     return { error: `Failed to upload file: ${uploadError.message}` };
   }
 
-  const modelRecord = await client.from("modelUpload").insert({
+  const modelRecord = await serviceRole.from("modelUpload").insert({
     id: modelId,
     modelPath: storagePath,
     name,
@@ -72,44 +67,38 @@ export async function action({ request }: ActionFunctionArgs) {
   });
 
   if (modelRecord.error) {
-    console.error(
-      "[model.upload] Failed to record upload:",
-      modelRecord.error,
-      {
-        modelId,
-        storagePath,
-        name
-      }
-    );
     return { error: "Failed to record upload: " + modelRecord.error.message };
   }
 
   if (itemId) {
-    await client
+    await serviceRole
       .from("item")
       .update({ modelUploadId: modelId })
       .eq("id", itemId);
   }
   if (salesRfqLineId) {
-    await client
+    await serviceRole
       .from("salesRfqLine")
       .update({ modelUploadId: modelId })
       .eq("id", salesRfqLineId);
   }
   if (quoteLineId) {
-    await client
+    await serviceRole
       .from("quoteLine")
       .update({ modelUploadId: modelId })
       .eq("id", quoteLineId);
   }
   if (salesOrderLineId) {
-    await client
+    await serviceRole
       .from("salesOrderLine")
       .update({ modelUploadId: modelId })
       .eq("id", salesOrderLineId);
   }
   if (jobId) {
-    await client.from("job").update({ modelUploadId: modelId }).eq("id", jobId);
+    await serviceRole
+      .from("job")
+      .update({ modelUploadId: modelId })
+      .eq("id", jobId);
   }
 
   await trigger("model-thumbnail", {
@@ -119,6 +108,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
   return {
     success: true,
-    modelPath: storagePath
+    modelPath: storagePath,
+    createdAt: new Date().toISOString()
   };
 }

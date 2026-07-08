@@ -19,18 +19,6 @@ import { usePermissions } from "~/hooks";
 import { path } from "~/utils/path";
 import type { PickingDisplaySettings } from "./PickingItemCard";
 
-const cardSettings: { key: keyof PickingDisplaySettings; label: string }[] = [
-  { key: "showStatus", label: "Status" },
-  { key: "showDueDate", label: "Due Date" },
-  { key: "showDuration", label: "Duration" },
-  { key: "showProgress", label: "Progress" },
-  { key: "showCustomer", label: "Customer" },
-  { key: "showSalesOrder", label: "Sales Order" },
-  { key: "showDescription", label: "Description" },
-  { key: "showQuantity", label: "Quantity" },
-  { key: "showThumbnail", label: "Thumbnail" }
-];
-
 type PickingListsHeaderProps = {
   locationId: string;
   displaySettings?: PickingDisplaySettings;
@@ -48,6 +36,18 @@ export function PickingListsHeader({
   selectedJobOperationIds = []
 }: PickingListsHeaderProps) {
   const { t } = useLingui();
+
+  const cardSettings = [
+    { key: "showStatus" as keyof PickingDisplaySettings, label: t`Status` },
+    { key: "showDueDate" as keyof PickingDisplaySettings, label: t`Due Date` },
+    { key: "showDuration" as keyof PickingDisplaySettings, label: t`Duration` },
+    { key: "showProgress" as keyof PickingDisplaySettings, label: t`Progress` },
+    { key: "showCustomer" as keyof PickingDisplaySettings, label: t`Customer` },
+    { key: "showSalesOrder" as keyof PickingDisplaySettings, label: t`Sales Order` },
+    { key: "showDescription" as keyof PickingDisplaySettings, label: t`Description` },
+    { key: "showQuantity" as keyof PickingDisplaySettings, label: t`Quantity` },
+    { key: "showThumbnail" as keyof PickingDisplaySettings, label: t`Thumbnail` }
+  ];
   const permissions = usePermissions();
   const locations = useLocations();
 

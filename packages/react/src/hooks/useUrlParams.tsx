@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useSearchParams, useSubmit } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 
 export function useUrlParams(): [
   URLSearchParams,
@@ -7,7 +7,7 @@ export function useUrlParams(): [
     params: Record<string, string | string[] | number | undefined | null>
   ) => void
 ] {
-  const submit = useSubmit();
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
   const setSearchParams = useCallback(
@@ -34,9 +34,9 @@ export function useUrlParams(): [
         }
       });
 
-      submit(searchParams);
+      navigate(`?${searchParams.toString()}`);
     },
-    [submit, searchParams]
+    [navigate, searchParams]
   );
 
   return [searchParams, setSearchParams];

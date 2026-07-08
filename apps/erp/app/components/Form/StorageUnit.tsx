@@ -206,7 +206,7 @@ function useNewStorageUnitModal(locationId?: string | null) {
           modal.onClose();
           triggerRef.current?.click();
         }}
-        initialValues={{ name: created, locationId, storageTypeIds: [] }}
+        initialValues={{ name: created, locationId, storageTypeIds: [], allowsStorage: true, movable: false }}
       />
     ) : null;
 
@@ -288,7 +288,7 @@ function StorageUnit({
         <CreatableCombobox
           ref={triggerRef}
           name={name}
-          value={value ?? undefined}
+          value={value ?? ""}
           options={options}
           label={label ?? "Storage Unit"}
           helperText={helperText}
@@ -319,7 +319,7 @@ function StorageUnit({
       <CreatableComboboxBase
         ref={triggerRef}
         options={options}
-        value={value ?? undefined}
+        value={value ?? ""}
         isReadOnly={readOnly}
         isClearable
         placeholder={placeholder}

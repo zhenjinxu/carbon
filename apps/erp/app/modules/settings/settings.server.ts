@@ -394,14 +394,33 @@ export async function getIntegrationsWithHealth(
   client: SupabaseClient<Database>,
   companyId: string
 ) {
-  const results = await client
-    .from("integrations")
-    .select("*")
-    .eq("companyId", companyId);
+  // Query integration definitions and per-company configs separately
+  // instead of using the "integrations" VIEW (which uses CROSS JOIN and
+  // is not exposed by PostgREST v13 when subqueries are in the FROM clause).
+  const [defs, configs] = await Promise.all([
+    client.from("integration").select("*"),
+    client
+      .from("companyIntegration")
+      .select("*")
+      .eq("companyId", companyId)
+  ]);
 
-  if (results.error) return results;
+  if (defs.error) return defs;
+  if (configs.error) return configs;
 
-  const integrations = results.data;
+  const configMap = new Map(
+    (configs.data ?? []).map((ci) => [ci.id, ci])
+  );
+
+  const integrations = (defs.data ?? []).map((def) => {
+    const ci = configMap.get(def.id);
+    return {
+      ...def,
+      companyId,
+      metadata: ci?.metadata ?? {},
+      active: ci?.active ?? false
+    };
+  });
 
   const withHealth = await Promise.all(
     integrations.map((i) => getIntegrationHealth(companyId, i))

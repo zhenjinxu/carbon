@@ -77,15 +77,18 @@ export async function loader({ request, context }: LoaderFunctionArgs) {
 
   // share a client between requests
   const client = getCarbon(accessToken);
+  // Use service role for user query to bypass RLS (the user table's RLS
+  // policy blocks reads with the user's own JWT in some environments)
+  const serviceRoleForUser = getCarbonServiceRole();
 
   // parallelize the requests
   const [companies, user] = await Promise.all([
     getCompanies(client, userId),
-    getUser(client, userId)
+    getUser(serviceRoleForUser, userId)
   ]);
 
   if (user.error || !user.data) {
-    await destroyAuthSession(request);
+    throw await destroyAuthSession(request);
   }
 
   const company = companies.data?.find((c) => c.companyId === companyId);

@@ -150,7 +150,7 @@ const SalesOrderSummary = ({
             </CardHeader>
             <CardFooter>
               <Button variant="primary" onClick={salesOrderToJobsModal.onOpen}>
-                <Trans>Create Jobs</Trans>
+                {t`Create Jobs`}
               </Button>
             </CardFooter>
             {salesOrderToJobsModal.isOpen && (
@@ -254,7 +254,7 @@ const SalesOrderSummary = ({
                       className="text-muted-foreground"
                       onClick={onEditShippingCost}
                     >
-                      <Trans>Edit Shipping</Trans>
+                      {t`Edit Shipping`}
                     </Button>
                   </VStack>
                   <MotionNumber
@@ -273,7 +273,7 @@ const SalesOrderSummary = ({
                   className="text-muted-foreground"
                   onClick={onEditShippingCost}
                 >
-                  <Trans>Add Shipping</Trans>
+                  {t`Add Shipping`}
                 </Button>
               ) : null}
             </HStack>
@@ -350,6 +350,7 @@ function LineItems({
   const { orderId } = useParams();
   if (!orderId) throw new Error("Could not find orderId");
 
+  const { t } = useLingui();
   const percentFormatter = usePercentFormatter();
   const [openItems, setOpenItems] = useState<string[]>([]);
   const todaysDate = useMemo(() => today(getLocalTimeZone()), []);
@@ -420,7 +421,7 @@ function LineItems({
                           className="text-muted-foreground flex-shrink-0"
                         >
                           <Link to={path.to.salesOrderLine(orderId, line.id!)}>
-                            <Trans>Edit</Trans>
+                            {t`Edit`}
                           </Link>
                         </Button>
                       </HStack>

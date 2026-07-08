@@ -161,7 +161,7 @@ const StockTransferLineForm = ({
                   onChange={(value) => {
                     onItemChange(value?.value as string);
                   }}
-                  value={itemId ?? undefined}
+                  value={itemId ?? ""}
                 />
                 <Number
                   name="quantity"
@@ -174,13 +174,13 @@ const StockTransferLineForm = ({
                   name="fromStorageUnitId"
                   label={t`From Storage Unit`}
                   locationId={locationId}
-                  itemId={itemId ?? undefined}
+                  itemId={itemId ?? ""}
                 />
                 <StorageUnit
                   name="toStorageUnitId"
                   label={t`To Storage Unit`}
                   locationId={locationId}
-                  itemId={itemId ?? undefined}
+                  itemId={itemId ?? ""}
                 />
               </VStack>
             </ModalDrawerBody>

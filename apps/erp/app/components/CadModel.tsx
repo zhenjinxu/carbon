@@ -59,6 +59,10 @@ const CadModel = ({
   // from storage via the server-provided path.
   useEffect(() => {
     if (fetcher.data?.success && fetcher.data?.modelPath) {
+      toast.success("CAD model uploaded");
+      setFile(null);
+    } else if (fetcher.data?.error) {
+      toast.error(fetcher.data.error);
       setFile(null);
     }
   }, [fetcher.data]);
@@ -96,7 +100,8 @@ const CadModel = ({
 
       fetcher.submit(formData, {
         method: "post",
-        action: path.to.api.modelUpload
+        action: path.to.api.modelUpload,
+        encType: "multipart/form-data"
       });
     }
   };

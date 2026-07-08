@@ -1,4 +1,5 @@
 import { MenuIcon, MenuItem, useDisclosure } from "@carbon/react";
+import { useLingui } from "@lingui/react/macro";
 import type { ColumnDef } from "@tanstack/react-table";
 import type { ReactNode } from "react";
 import { memo, useCallback, useMemo, useState } from "react";
@@ -59,6 +60,7 @@ const AssetClassesTable = memo(
     taxDepreciationEnabled,
     primaryAction
   }: AssetClassesTableProps) => {
+    const { t } = useLingui();
     const navigate = useNavigate();
     const permissions = usePermissions();
     const [selectedClass, setSelectedClass] =
@@ -69,7 +71,7 @@ const AssetClassesTable = memo(
       const cols: ColumnDef<FixedAssetClassListItem>[] = [
         {
           accessorKey: "name",
-          header: "Name",
+          header: t`Name`,
           cell: ({ row }) => (
             <Hyperlink to={path.to.assetClass(row.original.id)}>
               <Enumerable
@@ -84,7 +86,7 @@ const AssetClassesTable = memo(
         },
         {
           id: "bookDepreciation",
-          header: "Book Depreciation",
+          header: t`Book Depreciation`,
           cell: ({ row }) => formatBookDepreciation(row.original),
           meta: {
             icon: <LuCalendar />
@@ -95,7 +97,7 @@ const AssetClassesTable = memo(
       if (taxDepreciationEnabled) {
         cols.push({
           id: "taxDepreciation",
-          header: "Tax Depreciation",
+          header: t`Tax Depreciation`,
           cell: ({ row }) => formatTaxDepreciation(row.original),
           meta: {
             icon: <LuPercent />
@@ -104,7 +106,7 @@ const AssetClassesTable = memo(
       }
 
       return cols;
-    }, [taxDepreciationEnabled]);
+    }, [taxDepreciationEnabled, t]);
 
     const renderContextMenu = useCallback(
       (row: FixedAssetClassListItem) => (

@@ -615,7 +615,7 @@ const PurchaseOrderLineForm = ({
                         <DatePicker
                           name="requiredDate"
                           label={t`Required Date`}
-                          value={itemData?.requiredDate ?? undefined}
+                          value={itemData?.requiredDate ?? ""}
                           onChange={(date) => {
                             setItemData((d) => ({
                               ...d,
@@ -730,7 +730,7 @@ const PurchaseOrderLineForm = ({
                               name="storageUnitId"
                               label={t`Storage Unit`}
                               locationId={locationId}
-                              value={itemData.storageUnitId ?? undefined}
+                              value={itemData.storageUnitId ?? ""}
                               onChange={(newValue) => {
                                 if (newValue) {
                                   setItemData((d) => ({
@@ -940,7 +940,7 @@ const PurchaseOrderLineForm = ({
                           <DatePicker
                             name="requiredDate"
                             label={t`Required Date`}
-                            value={indirectData.requiredDate ?? undefined}
+                            value={indirectData.requiredDate ?? ""}
                             onChange={(date) => {
                               setIndirectData((d) => ({
                                 ...d,

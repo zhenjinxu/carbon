@@ -130,7 +130,10 @@ export const UploadCSV = ({ table }: { table: keyof typeof importSchemas }) => {
       .upload(fileName, file);
 
     if (error) {
-      setError(t`Failed to upload CSV file.`);
+      console.error(`[UploadCSV] Upload failed for ${file.name}:`, error, {
+        path: fileName
+      });
+      setError(`${t`Failed to upload CSV file.`} ${error.message}`);
       setFileColumns(null);
       setFirstRows(null);
       setLoading(false);

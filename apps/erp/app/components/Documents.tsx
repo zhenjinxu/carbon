@@ -33,6 +33,7 @@ import type { OptimisticFileObject } from "~/modules/shared";
 import { getDocumentType } from "~/modules/shared";
 import type { ModelUpload, StorageItem } from "~/types";
 import { path } from "~/utils/path";
+import { serverStorageRemove, serverStorageUpload } from "~/utils/storage";
 import { stripSpecialCharacters } from "~/utils/string";
 
 type DocumentsProps = {
@@ -99,19 +100,24 @@ const Documents = ({
 
   const deleteFile = useCallback(
     async (file: StorageItem) => {
-      const fileDelete = await carbon?.storage
-        .from("private")
-        .remove([getReadPath(file)]);
+      const fileDelete = await serverStorageRemove(
+        [getReadPath(file)],
+        "private"
+      );
 
-      if (!fileDelete || fileDelete.error) {
-        toast.error(fileDelete?.error?.message || t`Error deleting file`);
+      if (fileDelete.error) {
+        const msg = fileDelete.error.message || "Unknown error";
+        console.error(`Delete failed for ${file.name}:`, fileDelete.error, {
+          path: getReadPath(file)
+        });
+        toast.error(`${t`Error deleting file`}: ${msg}`);
         return;
       }
 
       toast.success(t`${file.name} deleted successfully`);
       revalidator.revalidate();
     },
-    [carbon?.storage, getReadPath, revalidator, t]
+    [getReadPath, revalidator, t]
   );
 
   const downloadModel = useCallback(
@@ -190,23 +196,29 @@ const Documents = ({
 
   const upload = useCallback(
     async (files: File[]) => {
-      if (!carbon) {
-        toast.error(t`Carbon client not available`);
-        return;
-      }
-
       for (const file of files) {
         const fileName = getWritePath({ name: file.name });
         toast.info(t`Uploading ${file.name}`);
-        const fileUpload = await carbon.storage
-          .from("private")
-          .upload(fileName, file, {
-            cacheControl: `${12 * 60 * 60}`,
-            upsert: true
-          });
+        const fileUpload = await serverStorageUpload(file, fileName, {
+          bucket: "private",
+          cacheControl: `${12 * 60 * 60}`,
+          upsert: true
+        });
 
         if (fileUpload.error) {
-          toast.error(t`Failed to upload file: ${file.name}`);
+          console.error(
+            `[Documents] Upload failed for ${file.name}`,
+            {
+              error: fileUpload.error,
+              path: fileName,
+              bucket: "private",
+              fileSize: file.size,
+              fileType: file.type
+            }
+          );
+          toast.error(
+            `Failed to upload ${file.name}: ${fileUpload.error.message}`
+          );
         } else if (
           fileUpload.data?.path &&
           sourceDocument &&
@@ -220,7 +232,7 @@ const Documents = ({
           formData.append("sourceDocument", sourceDocument);
           formData.append("sourceDocumentId", sourceDocumentId);
 
-          submit(formData, {
+          await submit(formData, {
             method: "post",
             action: path.to.newDocument,
             navigate: false,
@@ -232,7 +244,6 @@ const Documents = ({
     },
     [
       getWritePath,
-      carbon,
       revalidator,
       submit,
       sourceDocument,
@@ -261,7 +272,7 @@ const Documents = ({
             isDisabled={!canUpdate}
             leftIcon={<LuUpload />}
             onChange={async (e: ChangeEvent<HTMLInputElement>) => {
-              if (e.target.files && carbon && company) {
+              if (e.target.files) {
                 upload(Array.from(e.target.files));
               }
             }}
@@ -312,7 +323,11 @@ const Documents = ({
                       )
                     : "--"}
                 </Td>
-                <Td className="text-xs font-mono">--</Td>
+                <Td className="text-xs font-mono">
+                  {modelUpload.modelCreatedAt
+                    ? formatDate(modelUpload.modelCreatedAt)
+                    : "--"}
+                </Td>
                 <Td>
                   <div className="flex justify-end w-full">
                     <DropdownMenu>

@@ -119,6 +119,7 @@ export const path = {
       documentUpload: `${api}/document/upload`,
       modelUpload: `${api}/model/upload`,
       storageUpload: `${api}/storage/upload`,
+      storageRemove: `${api}/storage/remove`,
       onShapeBom: (documentId: string, versionId: string, elementId: string) =>
         generatePath(
           `${api}/integrations/onshape/d/${documentId}/v/${versionId}/e/${elementId}/bom`
@@ -577,6 +578,7 @@ export const path = {
     balanceSheet: `${x}/accounting/balance-sheet`,
     incomeStatement: `${x}/accounting/income-statement`,
     company: `${x}/settings/company`,
+    deleteCurrentCompany: `${x}/settings/company/delete`,
     companySwitch: (companyId: string) =>
       generatePath(`${x}/settings/company/switch/${companyId}`),
     companies: `${x}/settings/companies`,

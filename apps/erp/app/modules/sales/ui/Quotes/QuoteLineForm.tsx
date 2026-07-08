@@ -357,7 +357,7 @@ const QuoteLineForm = ({
                 <Hidden name="unitOfMeasureCode" value={itemData?.uom} />
                 <Hidden
                   name="modelUploadId"
-                  value={itemData?.modelUploadId ?? undefined}
+                  value={itemData?.modelUploadId ?? ""}
                 />
                 {!isEditing && requiresConfiguration && (
                   <Hidden
@@ -375,7 +375,7 @@ const QuoteLineForm = ({
                         type="Part"
                         value={itemData.itemId}
                         includeInactive
-                        locationId={routeData?.quote?.locationId ?? undefined}
+                        locationId={routeData?.quote?.locationId ?? ""}
                         onChange={(value) => {
                           onItemChange(value?.value as string);
                         }}

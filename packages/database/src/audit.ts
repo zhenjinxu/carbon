@@ -312,7 +312,8 @@ export async function isAuditLogEnabled(
     .maybeSingle();
 
   if (error) {
-    throw new Error(`Failed to check audit log status: ${error.message}`);
+    console.warn("Failed to check audit log status:", error);
+    return false;
   }
 
   return (

@@ -1,4 +1,5 @@
 import { MenuIcon, MenuItem, useDisclosure } from "@carbon/react";
+import { useLingui } from "@lingui/react/macro";
 import type { ColumnDef } from "@tanstack/react-table";
 import type { ReactNode } from "react";
 import { memo, useCallback, useMemo, useState } from "react";
@@ -34,6 +35,7 @@ type FixedAssetsTableProps = {
 
 const FixedAssetsTable = memo(
   ({ data, count, assetClasses, primaryAction }: FixedAssetsTableProps) => {
+    const { t } = useLingui();
     const navigate = useNavigate();
     const permissions = usePermissions();
     const { company } = useUser();
@@ -49,7 +51,7 @@ const FixedAssetsTable = memo(
       () => [
         {
           accessorKey: "fixedAssetId",
-          header: "Asset ID",
+          header: t`Asset ID`,
           cell: ({ row }) => (
             <Hyperlink to={path.to.fixedAsset(row.original.id)}>
               {row.original.fixedAssetId}
@@ -61,21 +63,21 @@ const FixedAssetsTable = memo(
         },
         {
           accessorKey: "name",
-          header: "Name",
+          header: t`Name`,
           meta: {
             icon: <LuBuilding2 />
           }
         },
         {
           accessorKey: "serialNumber",
-          header: "Serial Number",
+          header: t`Serial Number`,
           meta: {
             icon: <LuHash />
           }
         },
         {
           accessorKey: "status",
-          header: "Status",
+          header: t`Status`,
           cell: ({ row }) => (
             <FixedAssetStatus
               status={
@@ -96,7 +98,7 @@ const FixedAssetsTable = memo(
         },
         {
           accessorKey: "fixedAssetClassId",
-          header: "Asset Class",
+          header: t`Asset Class`,
           cell: ({ row }) => {
             const cls = row.original.fixedAssetClass as {
               id: string;
@@ -117,7 +119,7 @@ const FixedAssetsTable = memo(
         },
         {
           accessorKey: "location.name",
-          header: "Location",
+          header: t`Location`,
           cell: ({ row }) => {
             const loc = (row.original as any).location as {
               id: string;
@@ -138,7 +140,7 @@ const FixedAssetsTable = memo(
         },
         {
           accessorKey: "acquisitionCost",
-          header: "Acquisition Cost",
+          header: t`Acquisition Cost`,
           cell: ({ row }) =>
             currencyFormatter.format(Number(row.original.acquisitionCost)),
           meta: {
@@ -147,7 +149,7 @@ const FixedAssetsTable = memo(
         },
         {
           id: "netBookValue",
-          header: "Net Book Value",
+          header: t`Net Book Value`,
           cell: ({ row }) => {
             const nbv =
               Number(row.original.acquisitionCost) -
@@ -159,7 +161,7 @@ const FixedAssetsTable = memo(
           }
         }
       ],
-      [assetClasses, currencyFormatter, locations]
+      [assetClasses, currencyFormatter, locations, t]
     );
 
     const renderContextMenu = useCallback(

@@ -24,9 +24,9 @@ import { convertKbToString } from "@carbon/utils";
 import { Trans, useLingui } from "@lingui/react/macro";
 import type { FileObject } from "@supabase/storage-js";
 import type { ChangeEvent } from "react";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { LuAxis3D, LuEllipsisVertical, LuUpload } from "react-icons/lu";
-import { Link, useFetchers, useRevalidator, useSubmit } from "react-router";
+import { Link, useRevalidator } from "react-router";
 import { DocumentPreview, FileDropzone, Hyperlink } from "~/components";
 import DocumentIcon from "~/components/DocumentIcon";
 import { useDateFormatter, usePermissions, useUser } from "~/hooks";
@@ -35,6 +35,7 @@ import { getDocumentType } from "~/modules/shared";
 import type { ModelUpload } from "~/types";
 import { path } from "~/utils/path";
 import { stripSpecialCharacters } from "~/utils/string";
+import { serverStorageRemove } from "~/utils/storage";
 import type { ItemFile } from "../../types";
 
 type ItemDocumentsProps = {
@@ -60,7 +61,8 @@ const ItemDocuments = ({
     deleteModel,
     getPath,
     getModelPath,
-    upload
+    upload,
+    pendingFiles
   } = useItemDocuments({
     itemId,
     type
@@ -76,8 +78,7 @@ const ItemDocuments = ({
   const attachmentsByName = new Map<string, FileObject | OptimisticFileObject>(
     files.map((file) => [file.name, file])
   );
-  const pendingItems = usePendingItems();
-  for (let pendingItem of pendingItems) {
+  for (let pendingItem of pendingFiles) {
     let item = attachmentsByName.get(pendingItem.name);
     let merged = item ? { ...item, ...pendingItem } : pendingItem;
     attachmentsByName.set(pendingItem.name, merged);
@@ -96,7 +97,7 @@ const ItemDocuments = ({
           </CardTitle>
         </CardHeader>
         <CardAction>
-          <ItemDocumentForm type={type} itemId={itemId} />
+          <ItemDocumentForm upload={upload} />
         </CardAction>
       </HStack>
       <CardContent>
@@ -262,13 +263,11 @@ const ItemDocuments = ({
 export default ItemDocuments;
 
 type ItemDocumentFormProps = {
-  itemId: string;
-  type: MethodItemType;
+  upload: (files: File[]) => Promise<void>;
 };
 
-const ItemDocumentForm = ({ itemId, type }: ItemDocumentFormProps) => {
+const ItemDocumentForm = ({ upload }: ItemDocumentFormProps) => {
   const permissions = usePermissions();
-  const { upload } = useItemDocuments({ itemId, type });
 
   const uploadFiles = async (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -299,7 +298,7 @@ export const useItemDocuments = ({ itemId, type }: Props) => {
   const revalidator = useRevalidator();
   const { carbon } = useCarbon();
   const { company } = useUser();
-  const submit = useSubmit();
+  const [pendingFiles, setPendingFiles] = useState<OptimisticFileObject[]>([]);
 
   const canDelete = permissions.can("delete", "parts");
   const getPath = useCallback(
@@ -313,9 +312,8 @@ export const useItemDocuments = ({ itemId, type }: Props) => {
 
   const deleteFile = useCallback(
     async (file: FileObject) => {
-      const fileDelete = await carbon?.storage
-        .from("private")
-        .remove([getPath(file)]);
+      const storagePath = getPath(file);
+      const fileDelete = await serverStorageRemove([storagePath], "private");
 
       if (!fileDelete || fileDelete.error) {
         toast.error(fileDelete?.error?.message || t`Error deleting file`);
@@ -325,7 +323,7 @@ export const useItemDocuments = ({ itemId, type }: Props) => {
       toast.success(t`File deleted successfully`);
       revalidator.revalidate();
     },
-    [getPath, carbon?.storage, revalidator, t]
+    [getPath, revalidator, t]
   );
 
   const deleteModel = useCallback(async () => {
@@ -408,6 +406,26 @@ export const useItemDocuments = ({ itemId, type }: Props) => {
 
   const upload = useCallback(
     async (files: File[]) => {
+      // Add optimistic items immediately so they don't flash/disappear
+      setPendingFiles((prev) => [
+        ...prev,
+        ...files.map((file) => {
+          const sanitizedFileName = stripSpecialCharacters(file.name);
+          const filePath = `parts/${itemId}/${sanitizedFileName}`;
+          return {
+            id: filePath,
+            name: file.name,
+            bucket_id: "private",
+            bucket: "private",
+            metadata: {
+              size: file.size,
+              mimetype: getDocumentType(file.name)
+            }
+          } as OptimisticFileObject;
+        })
+      ]);
+
+      const failedFileNames = new Set<string>();
       for (const file of files) {
         toast.info(t`Uploading ${file.name}`);
         const formData = new FormData();
@@ -417,16 +435,31 @@ export const useItemDocuments = ({ itemId, type }: Props) => {
         formData.append("sourceDocument", type);
         formData.append("sourceDocumentId", itemId);
 
-        submit(formData, {
-          method: "post",
-          action: path.to.api.documentUpload,
-          navigate: false,
-          fetcherKey: `item:${file.name}`
-        });
+        try {
+          const response = await fetch(path.to.api.documentUpload, {
+            method: "POST",
+            body: formData
+          });
+          const result = await response.json();
+          if (result.error) {
+            failedFileNames.add(file.name);
+            console.error(`[ItemDocuments] Upload failed for ${file.name}:`, result.error);
+            toast.error(`Failed to upload ${file.name}: ${result.error}`);
+          } else {
+            toast.success(t`Uploaded: ${file.name}`);
+          }
+        } catch (error) {
+          failedFileNames.add(file.name);
+          console.error(`[ItemDocuments] Upload error for ${file.name}:`, error);
+          toast.error(`Failed to upload ${file.name}`);
+        }
       }
-      revalidator.revalidate();
+      // Wait for revalidation to complete — new files arrive in the same
+      // render cycle as the pendingFiles cleanup below, so no flash occurs.
+      await revalidator.revalidate();
+      setPendingFiles((prev) => prev.filter((f) => failedFileNames.has(f.name)));
     },
-    [revalidator, submit, type, itemId, t]
+    [revalidator, type, itemId, t]
   );
 
   return {
@@ -437,41 +470,7 @@ export const useItemDocuments = ({ itemId, type }: Props) => {
     downloadModel,
     getPath,
     getModelPath,
-    upload
+    upload,
+    pendingFiles
   };
-};
-
-const usePendingItems = () => {
-  type PendingItem = ReturnType<typeof useFetchers>[number] & {
-    formData: FormData;
-  };
-
-  return useFetchers()
-    .filter((fetcher): fetcher is PendingItem => {
-      return fetcher.formAction === path.to.api.documentUpload;
-    })
-    .reduce<OptimisticFileObject[]>((acc, fetcher) => {
-      const sourceDocumentId = fetcher.formData.get(
-        "sourceDocumentId"
-      ) as string;
-      const name = fetcher.formData.get("name") as string;
-      const size = parseInt(fetcher.formData.get("size") as string, 10) * 1024;
-
-      if (sourceDocumentId && name && size) {
-        const sanitizedFileName = stripSpecialCharacters(name);
-        const filePath = `parts/${sourceDocumentId}/${sanitizedFileName}`;
-        const newItem: OptimisticFileObject = {
-          id: filePath,
-          name: name,
-          bucket_id: "private",
-          bucket: "private",
-          metadata: {
-            size,
-            mimetype: getDocumentType(name)
-          }
-        };
-        return [...acc, newItem];
-      }
-      return acc;
-    }, []);
 };

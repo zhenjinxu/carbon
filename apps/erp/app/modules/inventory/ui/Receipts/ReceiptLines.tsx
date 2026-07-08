@@ -542,6 +542,12 @@ function ReceiptLineItem({
         <div className="flex flex-grow items-center justify-between gap-2 pl-4">
           <HStack spacing={4}>
             <VStack spacing={1} className="text-center items-center">
+              <label className="text-xs text-muted-foreground">Expected</label>
+              <span className="text-sm py-1.5">
+                {line.expectedQuantity ?? line.orderQuantity ?? 0}
+              </span>
+            </VStack>
+            <VStack spacing={1} className="text-center items-center">
               <label className="text-xs text-muted-foreground">Ordered</label>
               <span className="text-sm py-1.5">{line.orderQuantity ?? 0}</span>
             </VStack>
@@ -590,6 +596,11 @@ function ReceiptLineItem({
           </div>
         </div>
       </div>
+      {line.notes && (
+        <div className="text-xs text-muted-foreground italic mt-1">
+          {line.notes}
+        </div>
+      )}
       {line.requiresBatchTracking && (
         <>
           <BatchForm

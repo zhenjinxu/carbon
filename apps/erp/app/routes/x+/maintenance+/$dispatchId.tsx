@@ -1,5 +1,6 @@
 import { error } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
+import { getCarbonServiceRole } from "@carbon/auth/client.server";
 import { flash } from "@carbon/auth/session.server";
 import type { JSONContent } from "@carbon/react";
 import { VStack } from "@carbon/react";
@@ -32,11 +33,12 @@ export const handle: Handle = {
 };
 
 async function getMaintenanceDispatchFiles(
-  client: Parameters<typeof getMaintenanceDispatch>[0],
   companyId: string,
   dispatchId: string
 ) {
-  const result = await client.storage
+  // Use service role to bypass RLS issues with Storage API
+  const serviceRole = getCarbonServiceRole();
+  const result = await serviceRole.storage
     .from("private")
     .list(`${companyId}/maintenance/${dispatchId}`);
   return result.data || [];
@@ -74,7 +76,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
     items: items.data ?? [],
     comments: comments.data ?? [],
     failureModes: failureModes.data ?? [],
-    files: getMaintenanceDispatchFiles(client, companyId, dispatchId)
+    files: getMaintenanceDispatchFiles(companyId, dispatchId)
   };
 }
 

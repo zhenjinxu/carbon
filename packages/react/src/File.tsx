@@ -6,7 +6,7 @@ import { Button } from "./Button";
 type FileProps = Omit<ButtonProps, "onChange"> & {
   accept?: string;
   multiple?: boolean;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => Promise<void>;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => Promise<void> | void;
 };
 
 const File = ({
@@ -27,7 +27,13 @@ const File = ({
         hidden
         multiple={multiple}
         accept={accept}
-        onChange={onChange}
+        onChange={async (e) => {
+          await onChange(e);
+          // Reset so selecting the same file again triggers onChange
+          if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+          }
+        }}
       />
       <Button
         className={className}

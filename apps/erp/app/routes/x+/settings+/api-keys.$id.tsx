@@ -13,7 +13,7 @@ import { getParams, path } from "~/utils/path";
 export async function action({ request, params }: ActionFunctionArgs) {
   assertIsPost(request);
   const { client, companyId } = await requirePermissions(request, {
-    update: "users"
+    update: "settings"
   });
 
   await requirePlan({

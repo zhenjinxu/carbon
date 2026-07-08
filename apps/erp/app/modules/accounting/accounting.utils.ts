@@ -246,7 +246,10 @@ export function addOneMonth(dateStr: string): Date {
 
 export function getLastDayOfMonth(year: number, month: number): string {
   const d = new Date(year, month + 1, 0);
-  return d.toISOString().split("T")[0];
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return `${yyyy}-${mm}-${dd}`;
 }
 
 export function getNextPeriodEnd(lastPeriodEnd: string | null): string {

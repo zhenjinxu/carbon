@@ -30,7 +30,6 @@ import {
   Number as NumberInput,
   Submit
 } from "~/components/Form";
-import { useFlags } from "~/hooks";
 import { getDefaultAccounts } from "~/modules/accounting";
 import {
   getCompanySettings,
@@ -156,7 +155,6 @@ export default function AccountingSettingsRoute() {
   const { companySettings, accountDefaults } = useLoaderData<typeof loader>();
   const fetcher = useFetcher<typeof action>();
   const taxFetcher = useFetcher<typeof action>();
-  const { isInternal } = useFlags();
 
   const taxEnabled =
     (companySettings as any).assetTaxDepreciationEnabled ?? false;
@@ -257,7 +255,6 @@ export default function AccountingSettingsRoute() {
               <Switch
                 checked={(companySettings as any).accountingEnabled ?? false}
                 onCheckedChange={handleAccountingToggle}
-                disabled={!isInternal}
               />
             </HStack>
           </CardContent>

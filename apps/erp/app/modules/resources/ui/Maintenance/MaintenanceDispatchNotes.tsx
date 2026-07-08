@@ -39,7 +39,7 @@ import { usePermissions, useUser } from "~/hooks";
 import { getDocumentType } from "~/modules/shared";
 import type { StorageItem } from "~/types";
 import { getPrivateUrl, path } from "~/utils/path";
-import { serverStorageUpload } from "~/utils/storage";
+import { serverStorageRemove, serverStorageUpload } from "~/utils/storage";
 import { stripSpecialCharacters } from "~/utils/string";
 
 export function MaintenanceDispatchNotes({
@@ -198,7 +198,6 @@ function MaintenanceFilesContent({
   isReadOnly: boolean;
 }) {
   const { t } = useLingui();
-  const { carbon } = useCarbon();
   const { company } = useUser();
   const revalidator = useRevalidator();
 
@@ -211,11 +210,6 @@ function MaintenanceFilesContent({
 
   const upload = useCallback(
     async (filesToUpload: File[]) => {
-      if (!carbon) {
-        toast.error(t`Carbon client not available`);
-        return;
-      }
-
       for (const file of filesToUpload) {
         const filePath = getFilePath(file.name);
 
@@ -226,14 +220,19 @@ function MaintenanceFilesContent({
         });
 
         if (result.error) {
-          toast.error(t`Failed to upload file: ${file.name}`);
+          console.error(`[MaintenanceFiles] Upload failed for ${file.name}:`, result.error, {
+            filePath,
+            fileSize: file.size,
+            fileType: file.type
+          });
+          toast.error(t`Failed to upload ${file.name}: ${result.error.message}`);
         } else {
           toast.success(t`${file.name} uploaded successfully`);
         }
       }
       revalidator.revalidate();
     },
-    [carbon, getFilePath, revalidator, t]
+    [getFilePath, revalidator, t]
   );
 
   const download = useCallback(
@@ -261,13 +260,8 @@ function MaintenanceFilesContent({
 
   const deleteFile = useCallback(
     async (file: FileObject) => {
-      if (!carbon) {
-        toast.error(t`Carbon client not available`);
-        return;
-      }
-
       const filePath = getFilePath(file.name);
-      const result = await carbon.storage.from("private").remove([filePath]);
+      const result = await serverStorageRemove([filePath], "private");
 
       if (result.error) {
         toast.error(result.error.message || "Error deleting file");
@@ -277,7 +271,7 @@ function MaintenanceFilesContent({
       toast.success(t`${file.name} deleted successfully`);
       revalidator.revalidate();
     },
-    [carbon, getFilePath, revalidator, t]
+    [getFilePath, revalidator, t]
   );
 
   const onDrop = useCallback(
@@ -287,9 +281,9 @@ function MaintenanceFilesContent({
     [upload]
   );
 
-  const uploadFiles = (e: ChangeEvent<HTMLInputElement>) => {
+  const uploadFiles = async (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      upload(Array.from(e.target.files));
+      await upload(Array.from(e.target.files));
     }
   };
 
@@ -297,7 +291,6 @@ function MaintenanceFilesContent({
     <>
       {!isReadOnly && (
         <div className="flex justify-end mb-4">
-          {/* @ts-expect-error TS2322 */}
           <File leftIcon={<LuUpload />} onChange={uploadFiles} multiple>
             <Trans>Upload</Trans>
           </File>

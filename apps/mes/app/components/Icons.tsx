@@ -1,3 +1,4 @@
+import { Trans } from "@lingui/react/macro";
 import type { Database } from "@carbon/database";
 import { cn, Tooltip, TooltipContent, TooltipTrigger } from "@carbon/react";
 import { AiOutlinePartition } from "react-icons/ai";
@@ -222,7 +223,7 @@ export function OperationStatusIcon({
         <span className="inline-flex">{icon}</span>
       </TooltipTrigger>
       <TooltipContent>
-        <span>{status}</span>
+        <span><Trans>{status}</Trans></span>
       </TooltipContent>
     </Tooltip>
   );

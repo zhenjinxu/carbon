@@ -561,7 +561,7 @@ function JobDetails({ job }: { job: Job }) {
                           )
                         );
                       }}
-                      value={operation.assignee ?? undefined}
+                      value={operation.assignee ?? ""}
                     />
                     <OperationDueDatePicker
                       operationId={operation.id!}

@@ -45,9 +45,17 @@ describe("Lingui React macro migration", () => {
       const source = readFileSync(filePath, "utf8");
       const relativePath = path.relative(path.resolve(__dirname, ".."), filePath);
 
+      // @lingui/core/macro is allowed ONLY for `msg` (route breadcrumb descriptors).
+      // Block any other usage of core/macro (e.g., importing `t` from core).
       if (
-        source.includes('@lingui/core/macro') ||
-        source.includes("from '@lingui/core/macro'") ||
+        source.includes('@lingui/core/macro') &&
+        !/import\s*\{[^}]*msg[^}]*\}\s*from\s*['"]@lingui\/core\/macro['"]/.test(source)
+      ) {
+        offenders.push(relativePath);
+      }
+
+      // Block old msg-based translation patterns
+      if (
         source.includes("_(msg") ||
         source.includes("t(msg(")
       ) {

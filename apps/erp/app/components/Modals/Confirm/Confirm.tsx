@@ -5,7 +5,6 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalOverlay,
   ModalTitle,
   toast
 } from "@carbon/react";
@@ -58,7 +57,6 @@ const Confirm = ({
         if (!open) onCancel();
       }}
     >
-      <ModalOverlay />
       <ModalContent>
         <ModalHeader>
           <ModalTitle>{title}</ModalTitle>

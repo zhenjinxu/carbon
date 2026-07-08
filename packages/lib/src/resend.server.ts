@@ -5,7 +5,8 @@ import type {
 } from "resend";
 import { Resend } from "resend";
 
-export const resend = new Resend(process.env.RESEND_API_KEY!);
+// Use a dummy key if not configured (Resend constructor requires a non-empty string)
+export const resend = new Resend(process.env.RESEND_API_KEY || "re_dummy_local");
 
 export const sendEmail = async (
   payload: CreateEmailOptions,

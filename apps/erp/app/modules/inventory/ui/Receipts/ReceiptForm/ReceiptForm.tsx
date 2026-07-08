@@ -4,6 +4,8 @@ import {
   Card,
   CardContent,
   CardFooter,
+  CardHeader,
+  CardTitle,
   DropdownMenuIcon,
   DropdownMenuItem,
   DropdownMenuSeparator,
@@ -11,15 +13,17 @@ import {
   VStack
 } from "@carbon/react";
 import { Trans, useLingui } from "@lingui/react/macro";
+import { useCallback, useState } from "react";
 import {
   LuCheckCheck,
   LuCreditCard,
+  LuFileSpreadsheet,
   LuShoppingCart,
   LuTicketX,
   LuTrash,
   LuTruck
 } from "react-icons/lu";
-import { Link, useParams } from "react-router";
+import { Link, useParams, useFetcher } from "react-router";
 import type { z } from "zod";
 import { DocumentHeader, PrintButton } from "~/components";
 import { useAuditLog } from "~/components/AuditLog";
@@ -29,11 +33,14 @@ import {
   Hidden,
   Input,
   Location,
-  Select
+  Select,
+  ShippingMethod,
+  TextArea
 } from "~/components/Form";
 import { ConfirmDelete } from "~/components/Modals";
 import { usePermissions, useRouteData, useUser } from "~/hooks";
 import type {
+  ExcelImportResult,
   ItemTracking,
   Receipt,
   ReceiptLine,
@@ -41,6 +48,7 @@ import type {
   receiptStatusType
 } from "~/modules/inventory";
 import {
+  ImportExcelModal,
   ReceiptPostModal,
   ReceiptStatus,
   ReceiptVoidModal,
@@ -86,12 +94,58 @@ const ReceiptForm = ({
   const postModal = useDisclosure();
   const voidModal = useDisclosure();
   const deleteDisclosure = useDisclosure();
+  const importModal = useDisclosure();
+  const [importedData, setImportedData] = useState<ExcelImportResult | null>(
+    null
+  );
+  const importFetcher = useFetcher();
+
   const { trigger: auditLogTrigger, drawer: auditLogDrawer } = useAuditLog({
     entityType: "receipt",
     entityId: receiptId,
     companyId: company.id,
     variant: "dropdown"
   });
+
+  // Merge imported data with initial values
+  const currentValues = useCallback(() => {
+    if (!importedData) return initialValues;
+    const h = importedData.header;
+    return {
+      ...initialValues,
+      receiptId: h.receiptId ?? initialValues.receiptId,
+      externalDocumentId:
+        initialValues.sourceDocumentReadableId ??
+        initialValues.externalDocumentId,
+      contractNumber: h.contractNumber ?? initialValues.contractNumber,
+      receivingDepartment:
+        h.receivingDepartment ?? initialValues.receivingDepartment,
+      receiverContactName:
+        h.receiverContactName ?? initialValues.receiverContactName,
+      receiverContactPhone:
+        h.receiverContactPhone ?? initialValues.receiverContactPhone,
+      senderContactName:
+        h.senderContactName ?? initialValues.senderContactName,
+      senderContactPhone:
+        h.senderContactPhone ?? initialValues.senderContactPhone,
+      qualityInspectionResult:
+        h.qualityInspectionResult ?? initialValues.qualityInspectionResult,
+      qualityInspectionNotes:
+        h.qualityInspectionNotes ?? initialValues.qualityInspectionNotes,
+      packagingCondition:
+        h.packagingCondition ?? initialValues.packagingCondition,
+      packagingNotes: h.packagingNotes ?? initialValues.packagingNotes,
+      acceptanceConclusion:
+        h.acceptanceConclusion ?? initialValues.acceptanceConclusion,
+      acceptanceNotes: h.acceptanceNotes ?? initialValues.acceptanceNotes,
+      receiverSignature:
+        h.receiverSignature ?? initialValues.receiverSignature,
+      senderSignature: h.senderSignature ?? initialValues.senderSignature,
+      warehouseKeeperSignature:
+        h.warehouseKeeperSignature ?? initialValues.warehouseKeeperSignature,
+      signatureDate: h.signatureDate ?? initialValues.signatureDate
+    };
+  }, [importedData, initialValues])();
 
   const isPosted = status === "Posted";
   const isVoided = status === "Voided";
@@ -123,7 +177,8 @@ const ReceiptForm = ({
           validator={receiptValidator}
           method="post"
           action={path.to.receiptDetails(initialValues.id)}
-          defaultValues={initialValues}
+          defaultValues={currentValues}
+          key={importedData ? "imported" : "initial"}
           style={{ width: "100%" }}
         >
           <DocumentHeader
@@ -165,11 +220,20 @@ const ReceiptForm = ({
             }
             actions={
               <>
+                {!isPosted && (
+                  <Button
+                    variant="secondary"
+                    onClick={importModal.onOpen}
+                    leftIcon={<LuFileSpreadsheet />}
+                  >
+                    <Trans>Import Excel</Trans>
+                  </Button>
+                )}
                 {receiptLineTracking.length > 0 && (
                   <PrintButton
                     sourceDocument="Receipt"
                     sourceDocumentId={receiptId}
-                    locationId={locationId ?? undefined}
+                    locationId={locationId ?? ""}
                     context="receiving"
                     fileRoutes={{
                       pdf: path.to.file.receiptLabelsPdf,
@@ -223,7 +287,7 @@ const ReceiptForm = ({
                 <Location
                   name="locationId"
                   label={t`Location`}
-                  value={locationId ?? undefined}
+                  value={locationId ?? ""}
                   onChange={(newValue) => {
                     if (newValue) setLocationId(newValue.value as string);
                   }}
@@ -259,10 +323,155 @@ const ReceiptForm = ({
                   label={t`External Reference`}
                   isDisabled={isPosted}
                 />
+                <Input
+                  name="contractNumber"
+                  label={t`Contract Number`}
+                  isDisabled={isPosted}
+                />
                 <CustomFormFields table="receipt" />
               </div>
             </VStack>
           </CardContent>
+
+          {/* Receiver Information */}
+          <CardHeader>
+            <CardTitle>
+              <Trans>Receiver Information</Trans>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 w-full">
+              <Input
+                name="receivingDepartment"
+                label={t`Receiving Department`}
+                isDisabled={isPosted}
+              />
+              <Input
+                name="receiverContactName"
+                label={t`Contact Person`}
+                isDisabled={isPosted}
+              />
+              <Input
+                name="receiverContactPhone"
+                label={t`Contact Phone`}
+                isDisabled={isPosted}
+              />
+            </div>
+          </CardContent>
+
+          {/* Sender Information */}
+          <CardHeader>
+            <CardTitle>
+              <Trans>Sender Information</Trans>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 w-full">
+              <Input
+                name="senderContactName"
+                label={t`Sender Contact`}
+                isDisabled={isPosted}
+              />
+              <Input
+                name="senderContactPhone"
+                label={t`Sender Phone`}
+                isDisabled={isPosted}
+              />
+              <ShippingMethod
+                name="shippingMethodId"
+                label={t`Shipping Method`}
+                disabled={isPosted}
+              />
+            </div>
+          </CardContent>
+
+          {/* Inspection Results */}
+          <CardHeader>
+            <CardTitle>
+              <Trans>Inspection Results</Trans>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 w-full">
+              <Select
+                name="qualityInspectionResult"
+                label={t`Quality Inspection`}
+                options={[
+                  { label: t`All Qualified`, value: "All Qualified" },
+                  { label: t`Partially Qualified`, value: "Partially Qualified" },
+                  { label: t`All Unqualified`, value: "All Unqualified" }
+                ]}
+                isDisabled={isPosted}
+              />
+              <Select
+                name="packagingCondition"
+                label={t`Packaging Condition`}
+                options={[
+                  { label: t`Intact`, value: "Intact" },
+                  { label: t`Damaged`, value: "Damaged" }
+                ]}
+                isDisabled={isPosted}
+              />
+              <TextArea
+                name="qualityInspectionNotes"
+                label={t`Quality Inspection Notes`}
+                isDisabled={isPosted}
+              />
+              <TextArea
+                name="packagingNotes"
+                label={t`Packaging Notes`}
+                isDisabled={isPosted}
+              />
+              <Select
+                name="acceptanceConclusion"
+                label={t`Acceptance Conclusion`}
+                options={[
+                  { label: t`Accept`, value: "Accept" },
+                  { label: t`Reject`, value: "Reject" },
+                  { label: t`Partial Acceptance`, value: "Partial Acceptance" }
+                ]}
+                isDisabled={isPosted}
+              />
+              <TextArea
+                name="acceptanceNotes"
+                label={t`Acceptance Notes`}
+                isDisabled={isPosted}
+              />
+            </div>
+          </CardContent>
+
+          {/* Signature Confirmation */}
+          <CardHeader>
+            <CardTitle>
+              <Trans>Signature Confirmation</Trans>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 w-full">
+              <Input
+                name="receiverSignature"
+                label={t`Receiver Signature`}
+                isDisabled={isPosted}
+              />
+              <Input
+                name="senderSignature"
+                label={t`Sender Signature`}
+                isDisabled={isPosted}
+              />
+              <Input
+                name="warehouseKeeperSignature"
+                label={t`Warehouse Keeper Signature`}
+                isDisabled={isPosted}
+              />
+              <Input
+                name="signatureDate"
+                label={t`Signature Date`}
+                type="date"
+                isDisabled={isPosted}
+              />
+            </div>
+          </CardContent>
+
           <CardFooter>
             <DefaultDisabledSubmit
               formId={formId}
@@ -280,6 +489,27 @@ const ReceiptForm = ({
 
       {postModal.isOpen && <ReceiptPostModal onClose={postModal.onClose} />}
       {voidModal.isOpen && <ReceiptVoidModal onClose={voidModal.onClose} />}
+      {importModal.isOpen && (
+        <ImportExcelModal
+          isOpen={importModal.isOpen}
+          onClose={importModal.onClose}
+          onImport={(data) => {
+            setImportedData(data);
+            importModal.onClose();
+
+            // Submit line items to server for creation
+            if (data.lines.length > 0) {
+              const formData = new FormData();
+              formData.append("receiptId", initialValues.id);
+              formData.append("lines", JSON.stringify(data.lines));
+              importFetcher.submit(formData, {
+                method: "post",
+                action: path.to.importReceiptLines
+              });
+            }
+          }}
+        />
+      )}
       {deleteDisclosure.isOpen && (
         <ConfirmDelete
           action={path.to.deleteReceipt(receiptId)}

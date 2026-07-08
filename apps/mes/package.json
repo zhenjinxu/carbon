@@ -102,9 +102,9 @@
     "build": "react-router build",
     "clean": "rimraf .cache .turbo node_modules dist build",
     "dev": "portless --script dev:app run --force",
-    "dev:app": "react-router dev",
+    "dev:app": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" react-router dev",
     "lint": "biome lint --write ",
-    "start": "NODE_ENV=production react-router-serve ./build/server/index.js",
+    "start": "cross-env NODE_ENV=production react-router-serve ./build/server/index.js",
     "typecheck": "tsgo --noEmit",
     "typegen": "react-router typegen"
   },

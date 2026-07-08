@@ -1,49 +1,55 @@
 import { parseNumberFromUrlParam } from "@carbon/auth";
 import type { RowSelectionState } from "@tanstack/react-table";
 import type { Dispatch, SetStateAction } from "react";
+import { useCallback } from "react";
 import { flushSync } from "react-dom";
-import { useUrlParams } from "~/hooks";
+import { useNavigate, useSearchParams } from "react-router";
 
 export function usePagination(
   count: number,
   setRowSelections: Dispatch<SetStateAction<RowSelectionState>>
 ) {
-  const [params, setParams] = useUrlParams();
-  const pageSize = parseNumberFromUrlParam(params, "limit", 100);
-  const offset = parseNumberFromUrlParam(params, "offset", 0);
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const pageSize = parseNumberFromUrlParam(searchParams, "limit", 100);
+  const offset = parseNumberFromUrlParam(searchParams, "offset", 0);
 
   const pageIndex = Math.floor(offset / pageSize) + 1;
   const pageCount = Math.ceil(count / pageSize);
   const canPreviousPage = pageIndex > 1;
   const canNextPage = pageIndex < Math.ceil(count / pageSize);
 
-  const gotoPage = (page: number) => {
-    flushSync(() => {
-      setRowSelections({});
-      setParams({
-        ...Object.fromEntries(params),
-        offset: (page - 1) * pageSize,
-        limit: pageSize
+  const gotoPage = useCallback(
+    (page: number) => {
+      const newParams = new URLSearchParams(searchParams);
+      newParams.set("offset", String((page - 1) * pageSize));
+      newParams.set("limit", String(pageSize));
+      flushSync(() => {
+        setRowSelections({});
       });
-    });
+      navigate(`?${newParams.toString()}`);
+      window?.scrollTo({ top: 0, behavior: "smooth" });
+    },
+    [searchParams, pageSize, navigate, setRowSelections]
+  );
 
-    window?.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const previousPage = () => {
+  const previousPage = useCallback(() => {
     gotoPage(pageIndex - 1);
-  };
+  }, [gotoPage, pageIndex]);
 
-  const nextPage = () => {
+  const nextPage = useCallback(() => {
     gotoPage(pageIndex + 1);
-  };
+  }, [gotoPage, pageIndex]);
 
-  const setPageSize = (pageSize: number) => {
-    setParams({
-      offset: 0,
-      limit: pageSize
-    });
-  };
+  const setPageSize = useCallback(
+    (pageSize: number) => {
+      const newParams = new URLSearchParams(searchParams);
+      newParams.set("offset", "0");
+      newParams.set("limit", String(pageSize));
+      navigate(`?${newParams.toString()}`);
+    },
+    [searchParams, navigate]
+  );
 
   return {
     count,

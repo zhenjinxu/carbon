@@ -154,6 +154,27 @@ export default function ReceiptDetailsRoute() {
     sourceDocumentReadableId:
       routeData.receipt.sourceDocumentReadableId ?? undefined,
     locationId: routeData.receipt.locationId ?? undefined,
+    // Delivery note fields
+    contractNumber: routeData.receipt.contractNumber ?? undefined,
+    receivingDepartment: routeData.receipt.receivingDepartment ?? undefined,
+    receiverContactName: routeData.receipt.receiverContactName ?? undefined,
+    receiverContactPhone: routeData.receipt.receiverContactPhone ?? undefined,
+    senderContactName: routeData.receipt.senderContactName ?? undefined,
+    senderContactPhone: routeData.receipt.senderContactPhone ?? undefined,
+    shippingMethodId: routeData.receipt.shippingMethodId ?? undefined,
+    qualityInspectionResult:
+      routeData.receipt.qualityInspectionResult ?? undefined,
+    qualityInspectionNotes:
+      routeData.receipt.qualityInspectionNotes ?? undefined,
+    packagingCondition: routeData.receipt.packagingCondition ?? undefined,
+    packagingNotes: routeData.receipt.packagingNotes ?? undefined,
+    acceptanceConclusion: routeData.receipt.acceptanceConclusion ?? undefined,
+    acceptanceNotes: routeData.receipt.acceptanceNotes ?? undefined,
+    receiverSignature: routeData.receipt.receiverSignature ?? undefined,
+    senderSignature: routeData.receipt.senderSignature ?? undefined,
+    warehouseKeeperSignature:
+      routeData.receipt.warehouseKeeperSignature ?? undefined,
+    signatureDate: routeData.receipt.signatureDate ?? undefined,
     ...getCustomFields(routeData.receipt.customFields)
   };
 

@@ -775,6 +775,41 @@ export const defaultLocation = {
   createdBy: "system"
 } as const;
 
+/**
+ * Default storage units seeded for new companies
+ * 20 bins (B0001-B0020), 20 pallets (P0001-P0020), 20 cages (C0001-C0020)
+ * Organized in hierarchical structure with parent units
+ */
+export const storageUnits = [
+  // 20 bins (料箱)
+  ...Array.from({ length: 20 }, (_, i) => ({
+    name: `B${String(i + 1).padStart(4, "0")}`,
+    parentName: "料箱",
+    movable: true,
+  })),
+  // 20 pallets (托盘)
+  ...Array.from({ length: 20 }, (_, i) => ({
+    name: `P${String(i + 1).padStart(4, "0")}`,
+    parentName: "托盘",
+    movable: true,
+  })),
+  // 20 cages (笼箱)
+  ...Array.from({ length: 20 }, (_, i) => ({
+    name: `C${String(i + 1).padStart(4, "0")}`,
+    parentName: "笼箱",
+    movable: true,
+  })),
+] as const;
+
+/**
+ * Parent storage units that serve as categories
+ */
+export const parentStorageUnits = [
+  { name: "料箱" },
+  { name: "托盘" },
+  { name: "笼箱" },
+] as const;
+
 export const groups = [
   {
     idPrefix: "00000000-0000",

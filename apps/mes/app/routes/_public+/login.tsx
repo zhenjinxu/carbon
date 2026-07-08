@@ -8,11 +8,16 @@ import {
   magicLinkValidator,
   RATE_LIMIT
 } from "@carbon/auth";
-import { sendMagicLink, verifyAuthSession } from "@carbon/auth/auth.server";
+import {
+  sendMagicLink,
+  signInWithBypassEmail,
+  verifyAuthSession
+} from "@carbon/auth/auth.server";
 import {
   clearAuthCookies,
   flash,
-  getAuthSession
+  getAuthSession,
+  setAuthSession
 } from "@carbon/auth/session.server";
 import { getUserByEmail } from "@carbon/auth/users.server";
 import { Hidden, Input, Submit, ValidatedForm, validator } from "@carbon/form";
@@ -103,6 +108,21 @@ export async function action({ request }: ActionFunctionArgs) {
 
   const { email } = validation.data;
   const user = await getUserByEmail(email);
+
+  const devBypassEmail = process.env.DEV_BYPASS_EMAIL;
+  if (
+    devBypassEmail &&
+    email.toLowerCase() === devBypassEmail.toLowerCase() &&
+    user.data?.active
+  ) {
+    const authSession = await signInWithBypassEmail(email);
+    if (authSession) {
+      const sessionCookie = await setAuthSession(request, { authSession });
+      return redirect(path.to.authenticatedRoot, {
+        headers: [["Set-Cookie", sessionCookie]]
+      });
+    }
+  }
 
   if (user.data && user.data.active) {
     const magicLink = await sendMagicLink(email);

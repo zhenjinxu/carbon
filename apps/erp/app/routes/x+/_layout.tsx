@@ -6,6 +6,7 @@ import {
   getMESUrl
 } from "@carbon/auth";
 import { getCompanyId, setCompanyId } from "@carbon/auth/company.server";
+import { getCarbonServiceRole } from "@carbon/auth/client.server";
 import {
   destroyAuthSession,
   requireAuthSession,
@@ -126,7 +127,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     getCompanyIntegrations(client, companyId),
     getCompanySettings(client, companyId),
     getSavedViews(client, userId, companyId),
-    getUser(client, userId),
+    getUser(getCarbonServiceRole(), userId),
     getUserClaims(userId, companyId),
     getUserGroups(client, userId),
     getUserDefaults(client, userId, companyId),

@@ -398,7 +398,7 @@ const MakeMethodTools = ({
                     name="sourceId"
                     options={sourceMakeMethods}
                     label={t`Source Version`}
-                    value={selectedSourceMethod ?? undefined}
+                    value={selectedSourceMethod ?? ""}
                     onChange={(value) => {
                       if (value) {
                         setSelectedSourceMethod(value?.value);
@@ -495,7 +495,7 @@ const MakeMethodTools = ({
                     name="targetId"
                     options={targetMakeMethods}
                     label={t`Target Version`}
-                    value={selectedTargetMethod ?? undefined}
+                    value={selectedTargetMethod ?? ""}
                     onChange={(value) => {
                       if (value) {
                         setSelectedTargetMethod(value?.value);

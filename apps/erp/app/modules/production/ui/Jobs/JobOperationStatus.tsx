@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
   IconButton
 } from "@carbon/react";
-import { useLingui } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useCallback } from "react";
 import { useFetchers, useParams, useSubmit } from "react-router";
 import { z } from "zod";
@@ -105,7 +105,7 @@ export function JobOperationStatus({
                 <DropdownMenuIcon
                   icon={<OperationStatusIcon status={status} />}
                 />
-                <span>{status}</span>
+                <span><Trans>{status}</Trans></span>
               </DropdownMenuRadioItem>
             ))}
           </DropdownMenuRadioGroup>

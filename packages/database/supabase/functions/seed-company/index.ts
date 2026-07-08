@@ -7,6 +7,7 @@ import {
   accounts,
   currencies,
   customerStatuses,
+  defaultLocation,
   dimensions,
   failureModes,
   fiscalYearSettings,
@@ -16,9 +17,11 @@ import {
   groups,
   nonConformanceRequiredActions,
   nonConformanceTypes,
+  parentStorageUnits,
   paymentTerms,
   scrapReasons,
   sequences,
+  storageUnits,
   unitOfMeasures,
 } from "../lib/seed.ts";
 import { getSupabaseServiceRole } from "../lib/supabase.ts";
@@ -354,6 +357,70 @@ serve(async (req: Request) => {
             disposalAccountId: accountIdByKey[fac.disposalAccount]!,
             companyId,
             createdBy: userId,
+          }))
+        )
+        .execute();
+
+      // Seed default location
+      const locationResult = await trx
+        .insertInto("location")
+        .values({
+          ...defaultLocation,
+          companyId,
+          createdBy: userId,
+        })
+        .returning(["id"])
+        .execute();
+      const locationId = locationResult[0]?.id;
+      if (!locationId) throw new Error("Failed to insert default location");
+
+      // Seed default warehouse
+      const warehouseResult = await trx
+        .insertInto("warehouse")
+        .values({
+          name: "Main Warehouse",
+          locationId,
+          companyId,
+          createdBy: userId,
+        })
+        .returning(["id"])
+        .execute();
+      const warehouseId = warehouseResult[0]?.id;
+      if (!warehouseId) throw new Error("Failed to insert default warehouse");
+
+      // Seed parent storage units (料箱, 托盘, 笼箱)
+      const parentStorageUnitResults = await trx
+        .insertInto("storageUnit")
+        .values(
+          parentStorageUnits.map((psu) => ({
+            name: psu.name,
+            locationId,
+            warehouseId,
+            companyId,
+            createdBy: userId,
+          }))
+        )
+        .returning(["id", "name"])
+        .execute();
+
+      // Build a map from parent storage unit name to ID
+      const parentStorageUnitIdByName: Record<string, string> = {};
+      for (const psu of parentStorageUnitResults) {
+        parentStorageUnitIdByName[psu.name] = psu.id;
+      }
+
+      // Seed storage units (60 total: 20 bins, 20 pallets, 20 cages)
+      await trx
+        .insertInto("storageUnit")
+        .values(
+          storageUnits.map((su) => ({
+            name: su.name,
+            locationId,
+            warehouseId,
+            companyId,
+            createdBy: userId,
+            parentId: parentStorageUnitIdByName[su.parentName],
+            movable: su.movable,
           }))
         )
         .execute();

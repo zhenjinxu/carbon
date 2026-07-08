@@ -4,6 +4,7 @@ import ReceiptPostModal from "./ReceiptPostModal";
 import ReceiptStatus from "./ReceiptStatus";
 import ReceiptsTable from "./ReceiptsTable";
 import ReceiptVoidModal from "./ReceiptVoidModal";
+import { ImportExcelModal } from "./ImportExcelModal";
 
 export {
   ReceiptForm,
@@ -11,5 +12,6 @@ export {
   ReceiptPostModal,
   ReceiptsTable,
   ReceiptStatus,
-  ReceiptVoidModal
+  ReceiptVoidModal,
+  ImportExcelModal
 };

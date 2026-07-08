@@ -1,4 +1,3 @@
-import { useCarbon } from "@carbon/auth";
 import {
   Button,
   HStack,
@@ -48,6 +47,7 @@ import type { BalloonRegionAnalysis } from "~/modules/quality/inspectionBalloonA
 import type { InspectionDocumentContent } from "~/modules/quality/types";
 import { procedureStepType } from "~/modules/shared/shared.models";
 import { path } from "~/utils/path";
+import { serverStorageUpload } from "~/utils/storage";
 import { cropInspectionAnchorToPngBlob } from "./cropInspectionAnchorToPng";
 import { buildInspectionDocumentPdfWithOverlaysBytes } from "./exportInspectionDocumentPdfWithOverlays";
 
@@ -587,7 +587,6 @@ export default function InspectionDocumentEditor({
     );
   }, 500);
 
-  const { carbon } = useCarbon();
   const user = useUser();
   const companyId = user.company.id;
 
@@ -2101,23 +2100,28 @@ export default function InspectionDocumentEditor({
 
   const uploadPdfAndSave = useCallback(
     async (file: File, options: { clearBalloons: boolean }) => {
-      if (!carbon) return;
-
       setUploading(true);
 
       const storagePath = `${companyId}/inspectionDocument/${diagramId}/${nanoid()}.pdf`;
-      const result = await carbon.storage
-        .from("private")
-        .upload(storagePath, file);
+      const result = await serverStorageUpload(file, storagePath, {
+        bucket: "private",
+        contentType: "application/pdf",
+        upsert: true
+      });
 
       setUploading(false);
 
       if (result.error) {
-        toast.error(t`Failed to upload PDF`);
+        console.error(`[InspectionDocument] Upload failed:`, result.error, {
+          storagePath,
+          fileSize: file.size,
+          fileType: file.type
+        });
+        toast.error(t`Failed to upload PDF: ${result.error.message}`);
         return;
       }
 
-      const nextPdfUrl = `/file/preview/private/${result.data.path}`;
+      const nextPdfUrl = `/file/preview/private/${result.data!.path}`;
       setPdfUrl(nextPdfUrl);
       setPdfFile(null);
       setPdfViewPage(1);
@@ -2156,14 +2160,14 @@ export default function InspectionDocumentEditor({
         action: path.to.saveInspectionDocument(diagramId)
       });
     },
-    [carbon, companyId, diagramId, featureRows, fetcher, t]
+    [companyId, diagramId, featureRows, fetcher, t]
   );
 
   const handlePdfUpload = useCallback(
     async (e: React.ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files?.[0];
       e.target.value = "";
-      if (!file || !carbon) return;
+      if (!file) return;
 
       const replacingExistingPdf = pdfUrl.trim() !== "";
       const shouldConfirmClearBalloons =
@@ -2177,7 +2181,7 @@ export default function InspectionDocumentEditor({
 
       await uploadPdfAndSave(file, { clearBalloons: false });
     },
-    [anchorRects, carbon, featureRows, pdfUrl, uploadPdfAndSave]
+    [anchorRects, featureRows, pdfUrl, uploadPdfAndSave]
   );
 
   const handleConfirmReplacePdf = useCallback(async () => {

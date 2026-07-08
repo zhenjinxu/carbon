@@ -283,7 +283,7 @@ const KanbanForm = ({ initialValues, onClose }: KanbanFormProps) => {
                   name="storageUnitId"
                   label={t`Storage Unit`}
                   locationId={locationId}
-                  value={storageUnitId ?? undefined}
+                  value={storageUnitId ?? ""}
                   onChange={(value) => {
                     if (value) setStorageUnitId(value?.id ?? null);
                   }}

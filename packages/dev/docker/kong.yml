@@ -98,6 +98,9 @@ services:
 
   - name: functions-v1
     url: http://edge-runtime:9000/
+    connect_timeout: 300000
+    write_timeout: 300000
+    read_timeout: 300000
     routes:
       - name: functions-v1-all
         strip_path: true

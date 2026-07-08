@@ -1,4 +1,5 @@
 import { Status } from "@carbon/react";
+import { Trans } from "@lingui/react/macro";
 import type { jobStatus } from "../../production.models";
 
 type JobStatusProps = {
@@ -33,7 +34,7 @@ function JobStatus({ status, className }: JobStatusProps) {
 
   return (
     <Status color={color} className={className} tooltip={tooltip}>
-      {displayText}
+      <Trans id={displayText}>{displayText}</Trans>
     </Status>
   );
 }

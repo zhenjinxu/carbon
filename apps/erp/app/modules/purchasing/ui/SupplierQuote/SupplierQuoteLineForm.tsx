@@ -409,7 +409,7 @@ const SupplierQuoteLineForm = ({
                           <DatePicker
                             name="requiredDate"
                             label={t`Required Date`}
-                            value={indirectData.requiredDate ?? undefined}
+                            value={indirectData.requiredDate ?? ""}
                             onChange={(date) => {
                               setIndirectData((d) => ({
                                 ...d,

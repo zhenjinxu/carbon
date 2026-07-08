@@ -118,7 +118,7 @@ const SalesRFQHeader = () => {
                 }}
               >
                 <DropdownMenuIcon icon={<LuLoaderCircle />} />
-                <Trans>Reopen</Trans>
+                {t`Reopen`}
               </DropdownMenuItem>
               <DropdownMenuItem
                 disabled={
@@ -130,7 +130,7 @@ const SalesRFQHeader = () => {
                 onClick={deleteRFQModal.onOpen}
               >
                 <DropdownMenuIcon icon={<LuTrash />} />
-                <Trans>Delete RFQ</Trans>
+                {t`Delete RFQ`}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -157,7 +157,7 @@ const SalesRFQHeader = () => {
                 variant={status === "Draft" ? "primary" : "secondary"}
                 type="submit"
               >
-                <Trans>Ready for Quote</Trans>
+                {t`Ready for Quote`}
               </Button>
             </statusFetcher.Form>
           ) : (
@@ -171,7 +171,7 @@ const SalesRFQHeader = () => {
               variant={status === "Draft" ? "primary" : "secondary"}
               onClick={requiresCustomerAlert.onOpen}
             >
-              <Trans>Ready for Quote</Trans>
+              {t`Ready for Quote`}
             </Button>
           )}
 
@@ -190,7 +190,7 @@ const SalesRFQHeader = () => {
             }
             onClick={convertToQuoteModal.onOpen}
           >
-            <Trans>Quote</Trans>
+            {t`Quote`}
           </Button>
           {/* <statusFetcher.Form
             method="post"
@@ -236,7 +236,7 @@ const SalesRFQHeader = () => {
                 : "secondary"
             }
           >
-            <Trans>No Quote</Trans>
+            {t`No Quote`}
           </Button>
 
           <IconButton
@@ -356,7 +356,7 @@ function NoQuoteReasonModal({
           </ModalBody>
           <ModalFooter>
             <Button variant="secondary" onClick={onClose}>
-              <Trans>Cancel</Trans>
+              {t`Cancel`}
             </Button>
             <Submit withBlocker={false}>
               <Trans>Save</Trans>
@@ -410,6 +410,7 @@ function ConvertToQuoteModal({
   rfqId: string;
   onClose: () => void;
 }) {
+  const { t } = useLingui();
   const routeData = useRouteData<{ rfqSummary: SalesRFQ }>(
     path.to.salesRfq(rfqId)
   );
@@ -499,7 +500,7 @@ function ConvertToQuoteModal({
 
         <ModalFooter>
           <Button variant="secondary" onClick={onClose}>
-            <Trans>Cancel</Trans>
+            {t`Cancel`}
           </Button>
           <fetcher.Form method="post" action={path.to.salesRfqConvert(rfqId)}>
             <Button isDisabled={isLoading} type="submit" isLoading={isLoading}>

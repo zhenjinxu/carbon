@@ -173,7 +173,7 @@ const QuoteHeader = () => {
                   }}
                 >
                   <DropdownMenuIcon icon={<LuLoaderCircle />} />
-                  <Trans>Reopen</Trans>
+                  {t`Reopen`}
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   disabled={
@@ -185,7 +185,7 @@ const QuoteHeader = () => {
                   onClick={deleteQuoteModal.onOpen}
                 >
                   <DropdownMenuIcon icon={<LuTrash />} />
-                  <Trans>Delete Quote</Trans>
+                  {t`Delete Quote`}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -199,7 +199,7 @@ const QuoteHeader = () => {
                 leftIcon={<LuShare2 />}
                 variant="secondary"
               >
-                <Trans>Share</Trans>
+                {t`Share`}
               </Button>
             ) : (
               <DropdownMenu>
@@ -209,7 +209,7 @@ const QuoteHeader = () => {
                     variant="secondary"
                     rightIcon={<LuChevronDown />}
                   >
-                    <Trans>Preview</Trans>
+                    {t`Preview`}
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
@@ -255,7 +255,7 @@ const QuoteHeader = () => {
               }
               leftIcon={<LuCheckCheck />}
             >
-              <Trans>Finalize</Trans>
+              {t`Finalize`}
             </Button>
 
             <Button
@@ -273,7 +273,7 @@ const QuoteHeader = () => {
               }
               onClick={convertToOrderModal.onOpen}
             >
-              <Trans>Won</Trans>
+              {t`Won`}
             </Button>
 
             <statusFetcher.Form
@@ -299,7 +299,7 @@ const QuoteHeader = () => {
                     : "secondary"
                 }
               >
-                <Trans>Lost</Trans>
+                {t`Lost`}
               </Button>
             </statusFetcher.Form>
 
@@ -322,7 +322,7 @@ const QuoteHeader = () => {
                   type="submit"
                   variant="secondary"
                 >
-                  <Trans>Cancel</Trans>
+                  {t`Cancel`}
                 </Button>
               </statusFetcher.Form>
             )}
@@ -458,7 +458,7 @@ function CreateRevisionModal({
             </ModalBody>
             <ModalFooter>
               <Button variant="secondary" onClick={onClose}>
-                <Trans>Cancel</Trans>
+                {t`Cancel`}
               </Button>
               <Button asChild>
                 <Link to={path.to.quoteDetails(newQuoteId)}>
@@ -470,7 +470,7 @@ function CreateRevisionModal({
         ) : (
           <ModalFooter>
             <Button variant="secondary" onClick={onClose}>
-              <Trans>Cancel</Trans>
+              {t`Cancel`}
             </Button>
             <fetcher.Form
               method="post"

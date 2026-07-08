@@ -120,6 +120,17 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
     }
   );
 
+  // Enrich with modelUpload createdAt for Documents panel display
+  if (partSummary.data?.modelId) {
+    const { data: modelUpload } = await client
+      .from("modelUpload")
+      .select("createdAt")
+      .eq("id", partSummary.data.modelId)
+      .single();
+    (partSummary.data as Record<string, unknown>).modelCreatedAt =
+      modelUpload?.createdAt ?? null;
+  }
+
   return {
     partSummary: partSummary.data,
     files: getItemFiles(client, itemId, companyId),

@@ -19,9 +19,9 @@ import {
 } from "@carbon/react";
 import { msg } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { LuKeySquare } from "react-icons/lu";
+import { LuKeySquare, LuTrash2 } from "react-icons/lu";
 import type { ActionFunctionArgs } from "react-router";
-import { data } from "react-router";
+import { data, Link } from "react-router";
 import { useRouteData } from "~/hooks";
 import type { Company as CompanyType } from "~/modules/settings";
 import {
@@ -96,25 +96,42 @@ export default function Company() {
         spacing={4}
         className="py-12 px-4 max-w-[60rem] h-full mx-auto gap-4"
       >
-        <HStack spacing={1} className="items-center">
-          <Heading size="h3">
-            <Trans>Company</Trans>
-          </Heading>
+        <HStack spacing={1} className="items-center justify-between">
+          <HStack spacing={1} className="items-center">
+            <Heading size="h3">
+              <Trans>Company</Trans>
+            </Heading>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  aria-label={t`Copy`}
+                  size="sm"
+                  className="p-1"
+                  onClick={() => copyToClipboard(company.id ?? "")}
+                >
+                  <LuKeySquare className="w-3 h-3" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <span>
+                  <Trans>Copy company unique identifier</Trans>
+                </span>
+              </TooltipContent>
+            </Tooltip>
+          </HStack>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                aria-label={t`Copy`}
-                size="sm"
-                className="p-1"
-                onClick={() => copyToClipboard(company.id ?? "")}
-              >
-                <LuKeySquare className="w-3 h-3" />
-              </Button>
+              <Link to={path.to.deleteCurrentCompany}>
+                <Button variant="destructive" size="sm">
+                  <LuTrash2 className="w-4 h-4 mr-2" />
+                  <Trans>Delete Company</Trans>
+                </Button>
+              </Link>
             </TooltipTrigger>
             <TooltipContent>
               <span>
-                <Trans>Copy company unique identifier</Trans>
+                <Trans>Delete this company (only if no business data exists)</Trans>
               </span>
             </TooltipContent>
           </Tooltip>

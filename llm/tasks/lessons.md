@@ -112,3 +112,65 @@ Patterns learned from corrections. Review at the start of each session.
 - Rule: before claiming a callsite is broken or changing its `onChange` shape,
   grep the file for a local `function <Name>` / `const <Name> =` shadowing the
   import, and check the actual prop/callback types at that callsite.
+
+## Deno/Edge Runtime uses `rustls`, not OpenSSL — Node.js SSL env vars don't work
+
+- **`SSL_CERT_FILE` / `NODE_EXTRA_CA_CERTS`** are Node.js/OpenSSL conventions. Deno uses Rust's `rustls`, so these are silently ignored.
+- **`DENO_TLS_CA_STORE`** only accepts `"system"` or `"mozilla"` — NOT file paths. Setting it to a path does nothing useful.
+- **Custom CA certs in Deno** require the `--cert=<file>` flag on the command line, not environment variables.
+- **PowerShell quirk**: `$env:HOME` is not set by default in PowerShell. Tools expecting `HOME` (like path resolution for `${HOME}/.dev-sidecar/...`) fail silently. Fix: `$env:HOME = $env:USERPROFILE`.
+- **Symptoms**: SSL errors like `invalid peer certificate: UnknownIssuer` in Edge Runtime containers.
+- See `llm/cache/edge-runtime-ssl-fix.md` for the full root-cause chain and fix.
+
+## Never leave debug `console.log` statements in auth/session code
+
+- When debugging auth/session issues (file uploads, permission problems, etc.), it's tempting to add `console.log` to `requirePermissions`, `requireAuthSession`, `verifyAuthSession`, `useUser`, `usePermissions`, layout loaders, etc. **Remove them before finishing the task.**
+- **Why**: These functions run on EVERY request/render. Debug logging causes:
+  1. Excessive console output that floods the terminal
+  2. Performance degradation (especially in hooks that run on every render)
+  3. **Stack buffer overrun crashes** (Windows exit code 3221226505 / 0xC0000509) from memory pressure or Node.js console buffer overflow
+- **Symptoms**: Dev server crashes with `ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL Command failed with exit code 3221226505` after showing many `[requirePermissions] Claims:` or similar debug logs.
+- **Rule**: If you add debug logging, either (a) remove it when done, or (b) gate it behind `if (process.env.DEBUG_AUTH)` so it's opt-in.
+- **Files to check**: `packages/auth/src/services/auth.server.ts`, `session.server.ts`, `apps/erp/app/hooks/useUser.tsx`, `usePermissions.tsx`, `apps/erp/app/routes/x+/_layout.tsx`, `RealtimeDataProvider.tsx`.
+
+## Layout loader 中 `getUser()` 必须使用 `getCarbonServiceRole()`，不能用用户 JWT client
+
+- **根因**：user 表的 RLS 策略会阻止用户用自己的 JWT 查询自己的数据。`getCarbon(accessToken)` 创建的是用户 JWT 的 client，用它调用 `getUser(client, userId)` 在自托管环境下会返回空数据（因为 `auth.uid()` 被 RLS 过滤），导致登录后 layout loader 失败，整个应用崩溃。
+- **症状**：登录成功后页面白屏/报错，`user.error` 或 `!user.data` 为 true。
+- **修复**：在两个 layout 文件中使用 `getCarbonServiceRole()` 创建 service role client 来查询 user 数据：
+  - `apps/erp/app/routes/x+/_layout.tsx`：`getUser(getCarbonServiceRole(), userId)`
+  - `apps/mes/app/routes/x+/_layout.tsx`：`getUser(serviceRoleForUser, userId)`
+- **规则**：**layout loader 中的 `getUser()` 必须用 service role**，其他查询（如 `getCompanies`、`getUserGroups` 等）可以用用户 JWT client，因为它们通常有自己的 RLS 豁免或不需要 bypass。
+
+## `requirePermissions` 返回的 `client` 不应暴露给服务端业务代码做 DB 写操作
+
+- **根因**：`requirePermissions` 返回的 `client` 是用户 JWT 的 client，在自托管 Supabase 环境下 JWT context 不会被 Storage API 传播到 Postgres（`auth.uid()` 为 NULL）。所以用这个 client 做 `upsertDocument` 或 `.from("table").insert(...)` 等操作会被 RLS 拦截。
+- **正确做法**：服务端上传/写入路由应该：
+  1. 从 `requirePermissions` 只解构 `companyId`、`userId`（用于权限验证），**不解构 `client`**
+  2. 使用 `getCarbonServiceRole()` 创建 service role client 来做 storage upload 和 DB 写入
+- **影响的文件**：`document.upload.ts`、`model.upload.ts`、`storage.upload.ts`、`storage.remove.ts`
+
+## `destroyAuthSession()` 在 loader 中必须加 `throw`
+
+- **根因**：`await destroyAuthSession(request)` 只是执行了销毁逻辑但不会终止 loader 执行，也不会触发页面重定向。如果忘记 `throw`，loader 会继续执行后续代码，可能导致 NPE 或其他异常，但用户看不到正确的重定向。
+- **规则**：在所有 layout/route loader 中，销毁 session 后**必须 throw**：
+  ```typescript
+  if (!claims || user.error || !user.data || !groups.data) {
+    throw await destroyAuthSession(request);
+  }
+  ```
+- **检查方法**：grep `destroyAuthSession(` 确保每个调用前面都有 `throw`。
+
+## React Router v7 ErrorBoundary 的 `WithErrorBoundaryProps` 包装器问题
+
+- **根因**：React Router v7 会自动用 `WithErrorBoundaryProps` 高阶组件包裹所有导出的 `ErrorBoundary`。这个包装器内部调用 `useErrorBoundaryProps` hook，而该 hook 又调用 `useLoaderData`。当数据路由上下文不可用时（某些错误场景），会导致 "useLoaderData must be used within a data router" 错误。
+- **症状**：页面闪退，控制台显示 `useLoaderData must be used within a data router` 错误，堆栈跟踪包含 `useErrorBoundaryProps` 和 `WithErrorBoundaryProps2`。
+- **影响**：任何导出 `ErrorBoundary` 的路由文件都可能触发此问题，包括 `root.tsx` 和子路由（如 `_public+/refresh-session.tsx`）。
+- **当前状态（待修复）**：
+  - 已从 `apps/mes/app/routes/_public+/refresh-session.tsx` 和 `apps/erp/app/routes/_public+/refresh-session.tsx` 移除 `ErrorBoundary` 导出
+  - `root.tsx` 中的 `ErrorBoundary` 已重构为类组件，但问题仍未解决
+  - 错误可能来自其他有 `ErrorBoundary` 导出的路由，或需要更深入调查 React Router v7 的内部机制
+- **待办**：继续调查为什么移除所有 `ErrorBoundary` 导出后错误仍然存在，可能需要检查：
+  1. 是否有其他路由文件导出了 `ErrorBoundary`
+  2. React Router 的缓存/生成类型是否需要清理
+  3. 是否需要完全避免使用 `ErrorBoundary` 导出，改用其他方式处理错误

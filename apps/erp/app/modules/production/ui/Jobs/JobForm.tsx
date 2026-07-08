@@ -248,7 +248,7 @@ const JobForm = ({ initialValues }: JobFormProps) => {
                   <Hidden name="id" />
                   <Hidden
                     name="modelUploadId"
-                    value={itemData.modelUploadId ?? undefined}
+                    value={itemData.modelUploadId ?? ""}
                   />
                   <Hidden name="unitOfMeasureCode" value={itemData.uom} />
                   {!isEditing && requiresConfiguration && (
@@ -281,7 +281,7 @@ const JobForm = ({ initialValues }: JobFormProps) => {
                         label={type}
                         type={type}
                         value={itemData.itemId}
-                        locationId={initialValues.locationId ?? undefined}
+                        locationId={initialValues.locationId ?? ""}
                         validItemTypes={["Part", "Tool"]}
                         replenishmentSystem="Make"
                         onChange={(value) => {
@@ -411,7 +411,7 @@ const JobForm = ({ initialValues }: JobFormProps) => {
                     <Hidden name="id" />
                     <Hidden
                       name="modelUploadId"
-                      value={itemData.modelUploadId ?? undefined}
+                      value={itemData.modelUploadId ?? ""}
                     />
                     <Hidden name="unitOfMeasureCode" value={itemData.uom} />
                     {!isEditing && requiresConfiguration && (
@@ -432,7 +432,7 @@ const JobForm = ({ initialValues }: JobFormProps) => {
                           label={type}
                           type={type}
                           value={itemData.itemId}
-                          locationId={initialValues.locationId ?? undefined}
+                          locationId={initialValues.locationId ?? ""}
                           validItemTypes={["Part", "Tool"]}
                           onChange={(value) => {
                             onItemChange(value?.value as string);

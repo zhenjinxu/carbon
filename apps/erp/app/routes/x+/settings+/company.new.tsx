@@ -5,11 +5,9 @@ import { setCompanyId } from "@carbon/auth/company.server";
 import { updateCompanySession } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
 import { redis } from "@carbon/kv";
-import { getLocalTimeZone } from "@internationalized/date";
 import type { ActionFunctionArgs } from "react-router";
 import { redirect } from "react-router";
 import { insertEmployeeJob } from "~/modules/people";
-import { upsertLocation } from "~/modules/resources";
 import {
   companyValidator,
   insertCompany,
@@ -48,25 +46,38 @@ export async function action({ request }: ActionFunctionArgs) {
     throw new Error("Fatal: failed to seed company");
   }
 
-  // TODO: move all of this to transaction
-  // biome-ignore lint/correctness/noUnusedVariables: suppressed due to migration
-  const { baseCurrencyCode, ...locationData } = validation.data;
-  const locationInsert = await upsertLocation(client, {
-    ...locationData,
-    name: "Headquarters",
-    companyId,
-    timezone: getLocalTimeZone(),
-    createdBy: userId
-  });
+  // Get the default location created by seedCompany
+  const { data: defaultLocation, error: locationError } = await client
+    .from("location")
+    .select("id")
+    .eq("companyId", companyId)
+    .eq("name", "Headquarters")
+    .single();
 
-  if (locationInsert.error) {
-    console.error(locationInsert.error);
-    throw new Error("Fatal: failed to insert location");
+  if (locationError || !defaultLocation) {
+    console.error("Failed to get default location:", locationError);
+    throw new Error("Fatal: failed to get default location");
   }
 
-  const locationId = locationInsert.data?.id;
-  if (!locationId) {
-    throw new Error("Fatal: failed to get location ID");
+  const locationId = defaultLocation.id;
+
+  // Update the default location with company address information
+  const { error: updateLocationError } = await client
+    .from("location")
+    .update({
+      addressLine1: validation.data.addressLine1,
+      addressLine2: validation.data.addressLine2,
+      city: validation.data.city,
+      stateProvince: validation.data.stateProvince,
+      postalCode: validation.data.postalCode,
+      countryCode: validation.data.countryCode,
+      updatedBy: userId
+    })
+    .eq("id", locationId);
+
+  if (updateLocationError) {
+    console.error("Failed to update location:", updateLocationError);
+    throw new Error("Fatal: failed to update location");
   }
 
   const [job] = await Promise.all([

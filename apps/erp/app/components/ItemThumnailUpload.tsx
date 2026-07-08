@@ -1,4 +1,5 @@
 import { SUPABASE_URL, useCarbon } from "@carbon/auth";
+import { serverStorageUpload } from "~/utils/storage";
 import { Button, File as FileUpload, HStack, toast } from "@carbon/react";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { nanoid } from "nanoid";
@@ -113,18 +114,20 @@ export function ItemThumbnailUpload({
             type: contentType
           });
 
-          const { data, error } = await carbon.storage
-            .from("private")
-            .upload(
-              `${company.id}/thumbnails/${itemId}/${fileName}`,
-              thumbnailFile,
-              {
-                upsert: true
-              }
-            );
+          const { data, error } = await serverStorageUpload(
+            thumbnailFile,
+            `${company.id}/thumbnails/${itemId}/${fileName}`,
+            {
+              bucket: "private",
+              upsert: true
+            }
+          );
 
           if (error) {
-            toast.error(t`Failed to upload thumbnail`);
+            console.error("Failed to upload thumbnail:", error, {
+              path: `${company.id}/thumbnails/${itemId}/${fileName}`
+            });
+            toast.error(`Failed to upload thumbnail: ${error.message}`);
             return;
           }
 

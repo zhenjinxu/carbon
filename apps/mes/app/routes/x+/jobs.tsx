@@ -87,7 +87,9 @@ function JobStatus({ status }: { status: string | null }) {
   if (!status) return null;
   const color = STATUS_COLORS[status] ?? "gray";
   return (
-    <Status color={color}>{status === "Ready" ? "Released" : status}</Status>
+    <Status color={color}>
+      <Trans>{status === "Ready" ? "Released" : status}</Trans>
+    </Status>
   );
 }
 

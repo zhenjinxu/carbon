@@ -46,7 +46,7 @@ export async function getDocument(
   client: SupabaseClient<Database>,
   documentId: string
 ) {
-  return client.from("documents").select("*").eq("id", documentId).single();
+  return client.from("document").select("*").eq("id", documentId).single();
 }
 
 export async function getDocuments(
@@ -61,7 +61,7 @@ export async function getDocuments(
   }
 ) {
   let query = client
-    .from("documents")
+    .from("document")
     .select("*", {
       count: "exact"
     })

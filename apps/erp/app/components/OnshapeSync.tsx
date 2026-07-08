@@ -271,7 +271,7 @@ export const OnshapeSync = ({
                   }}
                   size="sm"
                   className="text-xs"
-                  value={documentId ?? undefined}
+                  value={documentId ?? ""}
                 />
               </div>
             </div>
@@ -291,7 +291,7 @@ export const OnshapeSync = ({
                   }}
                   size="sm"
                   className="text-xs"
-                  value={versionId ?? undefined}
+                  value={versionId ?? ""}
                 />
               </div>
             </div>
@@ -310,7 +310,7 @@ export const OnshapeSync = ({
                   }}
                   size="sm"
                   className="text-xs"
-                  value={elementId ?? undefined}
+                  value={elementId ?? ""}
                 />
               </div>
             </div>

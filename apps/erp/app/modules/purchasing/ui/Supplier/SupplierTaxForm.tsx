@@ -11,6 +11,7 @@ import {
   toast
 } from "@carbon/react";
 import { isEoriCountry } from "@carbon/utils";
+import { useLingui } from "@lingui/react/macro";
 import { nanoid } from "nanoid";
 import { useCallback, useState } from "react";
 import { LuPaperclip } from "react-icons/lu";
@@ -29,6 +30,7 @@ type SupplierTaxFormProps = {
 };
 
 const SupplierTaxForm = ({ initialValues }: SupplierTaxFormProps) => {
+  const { t } = useLingui();
   const taxExemptionReasonOptions = taxExemptionReasons.map((reason) => ({
     label: <Enumerable value={reason} />,
     value: reason
@@ -57,13 +59,13 @@ const SupplierTaxForm = ({ initialValues }: SupplierTaxFormProps) => {
         .upload(fileName, file);
 
       if (result.error) {
-        toast.error("Failed to upload certificate");
+        toast.error(t`Failed to upload certificate`);
       } else {
         setCertificatePath(result.data.path);
-        toast.success("Certificate uploaded");
+        toast.success(t`Certificate uploaded`);
       }
     },
-    [carbon, companyId]
+    [carbon, companyId, t]
   );
 
   return (
@@ -74,7 +76,7 @@ const SupplierTaxForm = ({ initialValues }: SupplierTaxFormProps) => {
     >
       <Card>
         <CardHeader>
-          <CardTitle>Tax Information</CardTitle>
+          <CardTitle>{t`Tax Information`}</CardTitle>
         </CardHeader>
         <CardContent>
           <Hidden name="supplierId" />
@@ -84,10 +86,10 @@ const SupplierTaxForm = ({ initialValues }: SupplierTaxFormProps) => {
             value={certificatePath}
           />
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-4 w-full">
-            <Input name="taxId" label="Tax ID" />
-            <Input name="vatNumber" label="VAT Number" />
+            <Input name="taxId" label={t`Tax ID`} />
+            <Input name="vatNumber" label={t`VAT Number`} />
             {isEoriCountry(company.countryCode) ? (
-              <Input name="eori" label="EORI" />
+              <Input name="eori" label={t`EORI`} />
             ) : (
               <div />
             )}
@@ -95,7 +97,7 @@ const SupplierTaxForm = ({ initialValues }: SupplierTaxFormProps) => {
             <div className="col-span-3">
               <Boolean
                 name="taxExempt"
-                label="Tax Exempt"
+                label={t`Tax Exempt`}
                 bordered
                 onChange={setTaxExempt}
               />
@@ -104,13 +106,13 @@ const SupplierTaxForm = ({ initialValues }: SupplierTaxFormProps) => {
               <>
                 <Select
                   name="taxExemptionReason"
-                  label="Exemption Reason"
+                  label={t`Exemption Reason`}
                   options={taxExemptionReasonOptions}
-                  placeholder="Select Reason"
+                  placeholder={t`Select Reason`}
                 />
                 <Input
                   name="taxExemptionCertificateNumber"
-                  label="Certificate Number"
+                  label={t`Certificate Number`}
                 />
               </>
             )}
@@ -119,7 +121,7 @@ const SupplierTaxForm = ({ initialValues }: SupplierTaxFormProps) => {
             <div className="mt-4 flex flex-col gap-2">
               <div className="flex items-end gap-2">
                 <label className="text-xs font-medium text-muted-foreground">
-                  Exemption Certificate
+                  {t`Exemption Certificate`}
                 </label>
                 {certificatePath && (
                   <Button
@@ -133,7 +135,7 @@ const SupplierTaxForm = ({ initialValues }: SupplierTaxFormProps) => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      View Certificate
+                      {t`View Certificate`}
                     </a>
                   </Button>
                 )}
@@ -151,7 +153,7 @@ const SupplierTaxForm = ({ initialValues }: SupplierTaxFormProps) => {
         </CardContent>
         <CardFooter>
           <HStack>
-            <Submit isDisabled={isDisabled}>Save</Submit>
+            <Submit isDisabled={isDisabled}>{t`Save`}</Submit>
           </HStack>
         </CardFooter>
       </Card>

@@ -15,7 +15,7 @@ import {
   convertDateStringToIsoString,
   formatDurationMilliseconds
 } from "@carbon/utils";
-import { useLingui } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { cva } from "class-variance-authority";
 import {
   LuCalendarDays,
@@ -156,7 +156,7 @@ function OperationCard({
           {showStatus && operation.operationStatus && (
             <HStack className="justify-start space-x-2">
               <OperationStatusIcon status={operation.operationStatus} />
-              <span className="text-sm">{operation.operationStatus}</span>
+              <span className="text-sm"><Trans>{operation.operationStatus}</Trans></span>
             </HStack>
           )}
           {showDuration && typeof operation.duration === "number" && (

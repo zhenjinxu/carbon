@@ -8,6 +8,7 @@ export {
   accounts,
   currencies,
   customerStatuses,
+  defaultLocation,
   dimensions,
   failureModes,
   fiscalYearSettings,
@@ -15,9 +16,11 @@ export {
   gaugeTypes,
   nonConformanceRequiredActions,
   nonConformanceTypes,
+  parentStorageUnits,
   paymentTerms,
   scrapReasons,
   sequences,
+  storageUnits,
   unitOfMeasures,
 } from "./seed.data.ts";
 

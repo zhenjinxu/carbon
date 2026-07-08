@@ -5,12 +5,10 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalOverlay,
   ModalTitle
 } from "@carbon/react";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { useEffect, useRef } from "react";
-import { useFetcher } from "react-router";
+import { Form, useNavigation } from "react-router";
 
 type ConfirmDeleteProps = {
   action?: string;
@@ -20,6 +18,7 @@ type ConfirmDeleteProps = {
   deleteText?: string;
   onCancel: () => void;
   onSubmit?: () => void;
+  disabled?: boolean;
 };
 
 const ConfirmDelete = ({
@@ -29,17 +28,13 @@ const ConfirmDelete = ({
   text,
   deleteText = "Delete",
   onCancel,
-  onSubmit
+  onSubmit,
+  disabled = false
 }: ConfirmDeleteProps) => {
   const { t } = useLingui();
-  const fetcher = useFetcher<{}>();
-  const submitted = useRef(false);
-  useEffect(() => {
-    if (fetcher.state === "idle" && submitted.current) {
-      onSubmit?.();
-      submitted.current = false;
-    }
-  }, [fetcher.state, onSubmit]);
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state !== "idle";
+
   return (
     <Modal
       open={isOpen}
@@ -47,7 +42,6 @@ const ConfirmDelete = ({
         if (!open) onCancel();
       }}
     >
-      <ModalOverlay />
       <ModalContent>
         <ModalHeader>
           <ModalTitle>{t`Delete ${name}`}</ModalTitle>
@@ -61,20 +55,21 @@ const ConfirmDelete = ({
           <Button variant="secondary" onClick={onCancel}>
             <Trans>Cancel</Trans>
           </Button>
-          <fetcher.Form
+          <Form
             method="post"
             action={action}
-            onSubmit={() => (submitted.current = true)}
+            navigate
+            onSubmit={() => onSubmit?.()}
           >
             <Button
               variant="destructive"
-              isLoading={fetcher.state !== "idle"}
-              isDisabled={fetcher.state !== "idle"}
+              isLoading={isSubmitting}
+              isDisabled={disabled || isSubmitting}
               type="submit"
             >
               {deleteText}
             </Button>
-          </fetcher.Form>
+          </Form>
         </ModalFooter>
       </ModalContent>
     </Modal>

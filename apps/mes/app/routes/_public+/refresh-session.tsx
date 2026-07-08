@@ -5,7 +5,7 @@ import {
   setAuthSession
 } from "@carbon/auth/session.server";
 import type { ActionFunctionArgs } from "react-router";
-import { data, redirect, useNavigate } from "react-router";
+import { data, redirect } from "react-router";
 
 import { path } from "~/utils/path";
 
@@ -34,8 +34,6 @@ export async function action({ request }: ActionFunctionArgs) {
   );
 }
 
-export function ErrorBoundary() {
-  const navigate = useNavigate();
-  navigate(path.to.authenticatedRoot);
-  return null;
-}
+// Don't export ErrorBoundary - React Router wraps it with WithErrorBoundaryProps
+// which internally calls useLoaderData and fails without data router context
+// Let errors propagate to parent error boundary instead

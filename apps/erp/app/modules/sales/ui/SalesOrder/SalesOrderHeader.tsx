@@ -163,10 +163,10 @@ const SalesOrderConfirmModal = ({
           </ModalBody>
           <ModalFooter>
             <Button variant="secondary" onClick={onClose}>
-              <Trans>Cancel</Trans>
+              {t`Cancel`}
             </Button>
             <Button type="submit" isLoading={fetcher.state !== "idle"}>
-              <Trans>Confirm</Trans>
+              {t`Confirm`}
             </Button>
           </ModalFooter>
         </ValidatedForm>
@@ -325,7 +325,7 @@ const SalesOrderHeader = () => {
                   }}
                 >
                   <DropdownMenuIcon icon={<LuLoaderCircle />} />
-                  <Trans>Reopen</Trans>
+                  {t`Reopen`}
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   destructive
@@ -337,7 +337,7 @@ const SalesOrderHeader = () => {
                   onClick={deleteSalesOrderModal.onOpen}
                 >
                   <DropdownMenuIcon icon={<LuTrash />} />
-                  <Trans>Delete Sales Order</Trans>
+                  {t`Delete Sales Order`}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -371,7 +371,7 @@ const SalesOrderHeader = () => {
                   variant="secondary"
                   rightIcon={<LuChevronDown />}
                 >
-                  <Trans>Preview</Trans>
+                  {t`Preview`}
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
@@ -406,7 +406,7 @@ const SalesOrderHeader = () => {
                 !permissions.can("update", "sales")
               }
             >
-              <Trans>Confirm</Trans>
+              {t`Confirm`}
             </Button>
 
             <Button
@@ -425,7 +425,7 @@ const SalesOrderHeader = () => {
                 statusFetcher.formData?.get("status") === "Cancelled"
               }
             >
-              <Trans>Cancel</Trans>
+              {t`Cancel`}
             </Button>
 
             <Suspense
@@ -464,7 +464,7 @@ const SalesOrderHeader = () => {
                               }
                               rightIcon={<LuChevronDown />}
                             >
-                              <Trans>Shipments</Trans>
+                              {t`Shipments`}
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent>
@@ -481,7 +481,7 @@ const SalesOrderHeader = () => {
                               }}
                             >
                               <DropdownMenuIcon icon={<LuCirclePlus />} />
-                              <Trans>New Shipment</Trans>
+                              {t`New Shipment`}
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
                             {shipments.map((shipment) => (
@@ -519,7 +519,7 @@ const SalesOrderHeader = () => {
                             ship(routeData?.salesOrder);
                           }}
                         >
-                          <Trans>Ship</Trans>
+                          {t`Ship`}
                         </Button>
                       )}
                       {invoices?.length > 0 ? (
@@ -536,7 +536,7 @@ const SalesOrderHeader = () => {
                                   : "secondary"
                               }
                             >
-                              <Trans>Invoices</Trans>
+                              {t`Invoices`}
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
@@ -551,7 +551,7 @@ const SalesOrderHeader = () => {
                               }}
                             >
                               <DropdownMenuIcon icon={<LuCirclePlus />} />
-                              <Trans>New Invoice</Trans>
+                              {t`New Invoice`}
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
                             {invoices.map((invoice) => (
@@ -588,7 +588,7 @@ const SalesOrderHeader = () => {
                             invoice(routeData?.salesOrder);
                           }}
                         >
-                          <Trans>Invoice</Trans>
+                          {t`Invoice`}
                         </Button>
                       )}
                     </>

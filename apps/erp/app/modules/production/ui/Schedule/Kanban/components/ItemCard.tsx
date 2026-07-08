@@ -395,7 +395,7 @@ export function ItemCard({ item, isOverlay, progressByItemId }: ItemCardProps) {
             table="jobOperation"
             id={item.id!}
             size="sm"
-            value={item.assignee ?? undefined}
+            value={item.assignee ?? ""}
           />
           <JobOperationTags operation={item} availableTags={tags} />
         </HStack>

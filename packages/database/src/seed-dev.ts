@@ -33,11 +33,14 @@ import {
   unitOfMeasures
 } from "../supabase/functions/lib/seed.data.ts";
 import { getPostgresConnectionPool } from "./client.ts";
+import { seedAsmTop001 } from "./seed-asm-top-001.ts";
+import { seedAssembly } from "./seed-assembly.ts";
 import { seedPrinting } from "./seed-printing.ts";
 import type { Database } from "./types.ts";
 
 // Load environment variables
 dotenv.config();
+dotenv.config({ path: ".env.local" });
 
 const DEV_PASSWORD = "password";
 const DEV_COMPANY_NAME = "Carbon Development";
@@ -66,6 +69,14 @@ const { values } = parseArgs({
     printing: {
       type: "boolean",
       default: false
+    },
+    assembly: {
+      type: "boolean",
+      default: false
+    },
+    asm: {
+      type: "boolean",
+      default: false
     }
   },
   strict: true
@@ -73,15 +84,20 @@ const { values } = parseArgs({
 
 function printUsage() {
   console.log(`
-Usage: pnpm run db:seed:dev -- --email <email> [--printing]
+Usage: pnpm run db:seed:dev -- --email <email> [--printing] [--assembly] [--asm]
 
 Arguments:
   --email, -e    Required. The email address for the dev user.
   --printing     Optional. Seed printing test data (printer routes, receipts, etc.).
+  --assembly     Optional. Seed a 3-level nested assembly BoM (gear-motor) for
+                 testing recursive BoM explosion / MRP.
+  --asm          Optional. Seed asm-top-001 MES demo data (product, equipment,
+                 process route, work order with 18 split operations).
 
 Example:
   pnpm run db:seed:dev -- --email developer@example.com
-  pnpm run db:seed:dev -- --email developer@example.com --printing
+  pnpm run db:seed:dev -- --email developer@example.com --printing --assembly
+  pnpm run db:seed:dev -- --email developer@example.com --asm
   `);
 }
 
@@ -172,54 +188,110 @@ async function seedDev() {
       console.log(`   User created with ID: ${userId}`);
     }
 
-    // Step 2: Update user's first name (inferred from email)
-    const firstName = inferFirstNameFromEmail(email ?? "");
-    console.log(`2. Updating user first name to "${firstName}"...`);
-    await client.query(`UPDATE "user" SET "firstName" = $1 WHERE id = $2`, [
-      firstName,
-      userId
-    ]);
-
-    // Step 3: Begin transaction for all database operations
-    console.log("3. Starting database transaction...");
+    // Step 2: Begin transaction for all database operations
+    console.log("2. Starting database transaction...");
     await client.query("BEGIN");
 
     try {
-      // Generate company ID using xid() function
-      console.log("4. Generating company ID...");
-      const xidResult = await client.query("SELECT xid() as id");
-      const companyId = xidResult.rows[0].id as string;
-      console.log(`   Company ID: ${companyId}`);
+      // Use the fixed company ID from the migration (20230123004513_companies.sql)
+      // This ensures consistency between the seed data and the pre-existing company
+      const companyId = "co-dev";
+      console.log(`4. Using fixed company ID: ${companyId}`);
 
-      // Create company group
-      console.log("5. Creating company group...");
-      const companyGroupResult = await client.query(
-        `INSERT INTO "companyGroup" (name, "createdBy") VALUES ($1, $2) RETURNING id`,
-        [DEV_COMPANY_NAME, userId]
+      // Ensure the user record exists in the application "user" table
+      // (Supabase Auth created auth.users, but the app-level user table is separate)
+      console.log("5. Ensuring application user record exists...");
+      const applicationUserEmail = email ?? "";
+
+      // Check if a user with this email already exists in the app "user" table.
+      // If it does but with a *different* ID than the auth user, migrate its
+      // dependent records (userToCompany, userPermission, employee, …) to the
+      // auth ID so the session cookie and app data stay in sync.
+      const existingByEmail = await client.query(
+        `SELECT id FROM "user" WHERE email = $1`,
+        [applicationUserEmail]
       );
-      const companyGroupId = companyGroupResult.rows[0].id as string;
-      console.log(`   Company Group ID: ${companyGroupId}`);
+      if (existingByEmail.rows.length > 0) {
+        const existingId = existingByEmail.rows[0].id as string;
+        if (existingId !== userId) {
+          console.log(
+            `   Migrating app data from old userId ${existingId} → auth userId ${userId}`
+          );
+          // Update dependent rows first (FK constraints), then the user row.
+          await client.query(
+            `UPDATE "userToCompany" SET "userId" = $2 WHERE "userId" = $1`,
+            [existingId, userId]
+          );
+          await client.query(
+            `UPDATE "userPermission" SET id = $2 WHERE id = $1`,
+            [existingId, userId]
+          );
+          await client.query(
+            `UPDATE "employee" SET id = $2 WHERE id = $1`,
+            [existingId, userId]
+          );
+          await client.query(
+            `UPDATE "user" SET id = $2, "firstName" = $3, email = $4 WHERE id = $1`,
+            [existingId, userId, inferFirstNameFromEmail(applicationUserEmail), applicationUserEmail]
+          );
+        } else {
+          await client.query(
+            `UPDATE "user" SET "firstName" = $2, email = $3 WHERE id = $1`,
+            [userId, inferFirstNameFromEmail(applicationUserEmail), applicationUserEmail]
+          );
+        }
+      } else {
+        await client.query(
+          `INSERT INTO "user" (id, email, "firstName", "lastName", active)
+           VALUES ($1, $2, $3, '', true)
+           ON CONFLICT (id) DO UPDATE SET "firstName" = EXCLUDED."firstName", email = EXCLUDED.email`,
+          [userId, applicationUserEmail, inferFirstNameFromEmail(applicationUserEmail)]
+        );
+      }
 
-      // Create the company
-      console.log("6. Creating company...");
+      // Create company group (reuse existing if present)
+      console.log("6. Creating company group...");
+      const existingCompanyResult = await client.query(
+        `SELECT "companyGroupId" FROM company WHERE id = $1 AND "companyGroupId" IS NOT NULL`,
+        [companyId]
+      );
+      let companyGroupId: string;
+      if (existingCompanyResult.rows.length > 0 && existingCompanyResult.rows[0].companyGroupId) {
+        companyGroupId = existingCompanyResult.rows[0].companyGroupId as string;
+        console.log(`   Reusing existing company group: ${companyGroupId}`);
+      } else {
+        const companyGroupResult = await client.query(
+          `INSERT INTO "companyGroup" (name, "createdBy") VALUES ($1, $2) RETURNING id`,
+          [DEV_COMPANY_NAME, userId]
+        );
+        companyGroupId = companyGroupResult.rows[0].id as string;
+        console.log(`   Company Group ID: ${companyGroupId}`);
+      }
+
+      // Create the company (use upsert since migration may have already created 'co-dev')
+      console.log("7. Creating/updating company...");
       await client.query(
-        `INSERT INTO company (id, name, "baseCurrencyCode", "companyGroupId") VALUES ($1, $2, 'USD', $3)`,
+        `INSERT INTO company (id, name, "baseCurrencyCode", "companyGroupId")
+         VALUES ($1, $2, 'USD', $3)
+         ON CONFLICT (id) DO UPDATE SET "companyGroupId" = COALESCE(company."companyGroupId", EXCLUDED."companyGroupId")`,
         [companyId, DEV_COMPANY_NAME, companyGroupId]
       );
-      console.log(`   Company "${DEV_COMPANY_NAME}" created.`);
+      console.log(`   Company "${DEV_COMPANY_NAME}" ready.`);
 
       // Seed the company with all default data
-      console.log("7. Seeding company with default data...");
+      console.log("8. Seeding company with default data...");
 
-      // Create storage bucket
+      // The 'private' bucket is created by migration 20230123004514_buckets.sql, skip if exists
       await client.query(
-        `INSERT INTO storage.buckets (id, name, public) VALUES ($1, $2, false)`,
+        `INSERT INTO storage.buckets (id, name, public) VALUES ($1, $2, false)
+         ON CONFLICT (id) DO NOTHING`,
         [companyId, companyId]
       );
 
-      // Link user to company
+      // Link user to company (skip if already linked)
       await client.query(
-        `INSERT INTO "userToCompany" ("userId", "companyId", "role") VALUES ($1, $2, 'employee')`,
+        `INSERT INTO "userToCompany" ("userId", "companyId", "role") VALUES ($1, $2, 'employee')
+         ON CONFLICT ("userId", "companyId") DO NOTHING`,
         [userId, companyId]
       );
 
@@ -227,7 +299,8 @@ async function seedDev() {
       for (const group of groups) {
         await client.query(
           `INSERT INTO "group" (id, name, "isCustomerTypeGroup", "isEmployeeTypeGroup", "isSupplierTypeGroup", "companyId")
-           VALUES ($1, $2, $3, $4, $5, $6)`,
+           VALUES ($1, $2, $3, $4, $5, $6)
+           ON CONFLICT (id) DO NOTHING`,
           [
             getGroupId(group.idPrefix, companyId),
             group.name,
@@ -241,43 +314,68 @@ async function seedDev() {
 
       // Create Admin employee type
       const employeeTypeResult = await client.query(
-        `INSERT INTO "employeeType" (name, "companyId", protected, "systemType") VALUES ('Admin', $1, true, 'Admin') RETURNING id`,
+        `INSERT INTO "employeeType" (name, "companyId", protected, "systemType") VALUES ('Admin', $1, true, 'Admin')
+         ON CONFLICT ("companyId", "systemType") WHERE "systemType" IS NOT NULL DO NOTHING RETURNING id`,
         [companyId]
       );
-      const employeeTypeId = employeeTypeResult.rows[0].id;
+      const employeeTypeId = employeeTypeResult.rows[0]?.id;
+
+      if (!employeeTypeId) {
+        // Employee type already exists, look it up
+        const existing = await client.query(
+          `SELECT id FROM "employeeType" WHERE name = 'Admin' AND "companyId" = $1`,
+          [companyId]
+        );
+        if (existing.rows.length > 0) {
+          console.log("   Admin employee type already exists.");
+        }
+      }
 
       // Get available modules
       const modulesResult = await client.query(`SELECT name FROM modules`);
       const modules = modulesResult.rows as { name: string }[];
 
-      // Create employee type permissions
-      for (const module of modules) {
-        if (module.name) {
-          await client.query(
-            `INSERT INTO "employeeTypePermission" ("employeeTypeId", module, "create", "update", "delete", view)
-             VALUES ($1, $2, $3, $4, $5, $6)`,
-            [
-              employeeTypeId,
-              module.name,
-              [companyId],
-              [companyId],
-              [companyId],
-              [companyId]
-            ]
-          );
+      // Create employee type permissions (skip if table doesn't exist)
+      const tableExistsResult = await client.query(
+        `SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'employeeTypePermission')`
+      );
+      const tableExists = tableExistsResult.rows[0].exists;
+
+      if (tableExists && employeeTypeId) {
+        for (const module of modules) {
+          if (module.name) {
+            await client.query(
+              `INSERT INTO "employeeTypePermission" ("employeeTypeId", module, "create", "update", "delete", view)
+               VALUES ($1, $2, $3, $4, $5, $6)
+               ON CONFLICT DO NOTHING`,
+              [
+                employeeTypeId,
+                module.name,
+                [companyId],
+                [companyId],
+                [companyId],
+                [companyId]
+              ]
+            );
+          }
         }
+      } else {
+        console.log("   Skipping employeeTypePermission (table does not exist).");
       }
 
       // Create employee record
-      await client.query(
-        `INSERT INTO employee (id, "employeeTypeId", "companyId", active) VALUES ($1, $2, $3, true)`,
-        [userId, employeeTypeId, companyId]
-      );
+      if (employeeTypeId) {
+        await client.query(
+          `INSERT INTO employee (id, "employeeTypeId", "companyId", active) VALUES ($1, $2, $3, true)
+           ON CONFLICT (id, "companyId") DO NOTHING`,
+          [userId, employeeTypeId, companyId]
+        );
+      }
 
       // Seed customer statuses
       for (const name of customerStatuses) {
         await client.query(
-          `INSERT INTO "customerStatus" (name, "companyId", "createdBy") VALUES ($1, $2, 'system')`,
+          `INSERT INTO "customerStatus" (name, "companyId", "createdBy") VALUES ($1, $2, 'system') ON CONFLICT DO NOTHING`,
           [name, companyId]
         );
       }
@@ -285,7 +383,7 @@ async function seedDev() {
       // Seed scrap reasons
       for (const name of scrapReasons) {
         await client.query(
-          `INSERT INTO "scrapReason" (name, "companyId", "createdBy") VALUES ($1, $2, 'system')`,
+          `INSERT INTO "scrapReason" (name, "companyId", "createdBy") VALUES ($1, $2, 'system') ON CONFLICT DO NOTHING`,
           [name, companyId]
         );
       }
@@ -294,7 +392,8 @@ async function seedDev() {
       for (const pt of paymentTerms) {
         await client.query(
           `INSERT INTO "paymentTerm" (name, "daysDue", "calculationMethod", "daysDiscount", "discountPercentage", "companyId", "createdBy")
-           VALUES ($1, $2, $3, $4, $5, $6, 'system')`,
+           VALUES ($1, $2, $3, $4, $5, $6, 'system')
+           ON CONFLICT (name, "companyId", active) DO NOTHING`,
           [
             pt.name,
             pt.daysDue,
@@ -309,39 +408,58 @@ async function seedDev() {
       // Seed units of measure
       for (const uom of unitOfMeasures) {
         await client.query(
-          `INSERT INTO "unitOfMeasure" (name, code, "companyId", "createdBy") VALUES ($1, $2, $3, 'system')`,
+          `INSERT INTO "unitOfMeasure" (name, code, "companyId", "createdBy") VALUES ($1, $2, $3, 'system') ON CONFLICT DO NOTHING`,
           [uom.name, uom.code, companyId]
         );
       }
 
       // Seed gauge types
       for (const gt of gaugeTypes) {
-        await client.query(
-          `INSERT INTO "gaugeType" (name, "companyId", "createdBy") VALUES ($1, $2, 'system')`,
+        const exists = await client.query(
+          `SELECT 1 FROM "gaugeType" WHERE name = $1 AND "companyId" = $2`,
           [gt, companyId]
         );
+        if (exists.rows.length === 0) {
+          await client.query(
+            `INSERT INTO "gaugeType" (name, "companyId", "createdBy") VALUES ($1, $2, 'system')`,
+            [gt, companyId]
+          );
+        }
       }
 
       // Seed maintenance failure modes
       for (const fm of failureModes) {
-        await client.query(
-          `INSERT INTO "maintenanceFailureMode" (name, "companyId", "createdBy") VALUES ($1, $2, 'system')`,
+        const exists = await client.query(
+          `SELECT 1 FROM "maintenanceFailureMode" WHERE name = $1 AND "companyId" = $2`,
           [fm, companyId]
         );
+        if (exists.rows.length === 0) {
+          await client.query(
+            `INSERT INTO "maintenanceFailureMode" (name, "companyId", "createdBy") VALUES ($1, $2, 'system')`,
+            [fm, companyId]
+          );
+        }
       }
 
       // Seed non-conformance types
       for (const nct of nonConformanceTypes) {
-        await client.query(
-          `INSERT INTO "nonConformanceType" (name, "companyId", "createdBy") VALUES ($1, $2, 'system')`,
+        const exists = await client.query(
+          `SELECT 1 FROM "nonConformanceType" WHERE name = $1 AND "companyId" = $2`,
           [nct.name, companyId]
         );
+        if (exists.rows.length === 0) {
+          await client.query(
+            `INSERT INTO "nonConformanceType" (name, "companyId", "createdBy") VALUES ($1, $2, 'system')`,
+            [nct.name, companyId]
+          );
+        }
       }
 
       // Seed non-conformance required actions
       for (const nca of nonConformanceRequiredActions) {
         await client.query(
-          `INSERT INTO "nonConformanceRequiredAction" (name, "systemType", "companyId", "createdBy") VALUES ($1, $2, $3, 'system')`,
+          `INSERT INTO "nonConformanceRequiredAction" (name, "systemType", "companyId", "createdBy") VALUES ($1, $2, $3, 'system')
+           ON CONFLICT ("companyId", name) DO NOTHING`,
           [nca.name, "systemType" in nca ? nca.systemType : null, companyId]
         );
       }
@@ -350,7 +468,8 @@ async function seedDev() {
       for (const seq of sequences) {
         await client.query(
           `INSERT INTO sequence ("table", name, prefix, suffix, next, size, step, "companyId")
-           VALUES ($1, $2, $3, NULL, $4, $5, $6, $7)`,
+           VALUES ($1, $2, $3, NULL, $4, $5, $6, $7)
+           ON CONFLICT ("table", "companyId") DO NOTHING`,
           [
             seq.table,
             seq.name,
@@ -367,14 +486,29 @@ async function seedDev() {
       for (const c of currencies) {
         await client.query(
           `INSERT INTO currency (code, "exchangeRate", "decimalPlaces", "companyGroupId", "createdBy")
-           VALUES ($1, $2, $3, $4, 'system')`,
+           VALUES ($1, $2, $3, $4, 'system')
+           ON CONFLICT (code, "companyGroupId") DO NOTHING`,
           [c.code, c.exchangeRate, c.decimalPlaces, companyGroupId]
         );
       }
 
       // Seed accounts (chart of accounts) - insert in order, resolving parentKey to parentId
       const accountIdByKey: Record<string, string> = {};
+
+      // Build a map of existing accounts by number to avoid duplicate inserts
+      const existingAccountsResult = await client.query(
+        `SELECT number, id FROM account WHERE "companyGroupId" = $1`,
+        [companyGroupId]
+      );
+      for (const row of existingAccountsResult.rows) {
+        accountIdByKey[row.number] = row.id;
+      }
+
       for (const { key, parentKey, ...acc } of accounts) {
+        if (accountIdByKey[key]) {
+          // Account already exists, use existing ID
+          continue;
+        }
         const result = await client.query(
           `INSERT INTO account (number, name, "isGroup", "accountType", "incomeBalance", class, "parentId", "isSystem", "companyGroupId", "createdBy")
            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'system') RETURNING id`,
@@ -399,7 +533,7 @@ async function seedDev() {
       for (const d of dimensions) {
         await client.query(
           `INSERT INTO dimension (name, "entityType", "companyGroupId", "createdBy")
-           VALUES ($1, $2, $3, 'system')`,
+           VALUES ($1, $2, $3, 'system') ON CONFLICT DO NOTHING`,
           [d.name, d.entityType, companyGroupId]
         );
       }
@@ -429,7 +563,11 @@ async function seedDev() {
         ) VALUES (
           $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19,
           $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40
-        )`,
+        ) ON CONFLICT ("companyId") DO UPDATE SET
+          "salesAccount" = EXCLUDED."salesAccount",
+          "salesDiscountAccount" = EXCLUDED."salesDiscountAccount",
+          "costOfGoodsSoldAccount" = EXCLUDED."costOfGoodsSoldAccount"
+        `,
         [
           resolveAccountId(accountDefaults.salesAccount),
           resolveAccountId(accountDefaults.salesDiscountAccount),
@@ -481,7 +619,8 @@ async function seedDev() {
       // Seed fiscal year settings
       await client.query(
         `INSERT INTO "fiscalYearSettings" ("startMonth", "taxStartMonth", "companyId", "updatedBy")
-         VALUES ($1, $2, $3, 'system')`,
+         VALUES ($1, $2, $3, 'system')
+         ON CONFLICT ("companyId") DO UPDATE SET "startMonth" = EXCLUDED."startMonth", "taxStartMonth" = EXCLUDED."taxStartMonth"`,
         [
           fiscalYearSettings.startMonth,
           fiscalYearSettings.taxStartMonth,
@@ -498,7 +637,8 @@ async function seedDev() {
             "depreciationExpenseAccountId", "writeOffAccountId",
             "writeDownAccountId", "disposalAccountId",
             "companyId", "createdBy"
-          ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, 'system')`,
+          ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, 'system')
+          ON CONFLICT DO NOTHING`,
           [
             fac.name,
             fac.depreciationMethod,
@@ -517,30 +657,41 @@ async function seedDev() {
 
       // Seed default location (required for inventory, jobs, etc.)
       // Must be after accountDefaults since location trigger copies from accountDefaults
-      const locationResult = await client.query(
-        `INSERT INTO location (name, "addressLine1", city, "stateProvince", "postalCode", "countryCode", timezone, "companyId", "createdBy")
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, 'system') RETURNING id`,
-        [
-          defaultLocation.name,
-          defaultLocation.addressLine1,
-          defaultLocation.city,
-          defaultLocation.stateProvince,
-          defaultLocation.postalCode,
-          defaultLocation.countryCode,
-          defaultLocation.timezone,
-          companyId
-        ]
+      let locationId: string;
+      const existingLocation = await client.query(
+        `SELECT id FROM location WHERE name = $1 AND "companyId" = $2`,
+        [defaultLocation.name, companyId]
       );
-      const locationId = locationResult.rows[0].id;
+      if (existingLocation.rows.length > 0) {
+        locationId = existingLocation.rows[0].id;
+        console.log(`   Using existing location: ${locationId}`);
+      } else {
+        const locationResult = await client.query(
+          `INSERT INTO location (name, "addressLine1", city, "stateProvince", "postalCode", "countryCode", timezone, "companyId", "createdBy")
+           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, 'system') RETURNING id`,
+          [
+            defaultLocation.name,
+            defaultLocation.addressLine1,
+            defaultLocation.city,
+            defaultLocation.stateProvince,
+            defaultLocation.postalCode,
+            defaultLocation.countryCode,
+            defaultLocation.timezone,
+            companyId
+          ]
+        );
+        locationId = locationResult.rows[0].id;
+      }
 
       // Link employee to location (employeeJob)
       await client.query(
-        `INSERT INTO "employeeJob" (id, "companyId", "locationId") VALUES ($1, $2, $3)`,
+        `INSERT INTO "employeeJob" (id, "companyId", "locationId") VALUES ($1, $2, $3)
+         ON CONFLICT (id, "companyId") DO NOTHING`,
         [userId, companyId, locationId]
       );
 
       // Update user permissions
-      console.log("7. Updating user permissions...");
+      console.log("9. Updating user permissions...");
 
       // Build permissions object
       const newPermissions: Record<string, string[]> = {};
@@ -583,16 +734,29 @@ async function seedDev() {
       }
 
       await client.query(
-        `UPDATE "userPermission" SET permissions = $1 WHERE id = $2`,
-        [JSON.stringify(finalPermissions), userId]
+        `INSERT INTO "userPermission" (id, permissions) VALUES ($1, $2)
+         ON CONFLICT (id) DO UPDATE SET permissions = EXCLUDED.permissions`,
+        [userId, JSON.stringify(finalPermissions)]
       );
 
       console.log("   User permissions updated.");
 
       // Seed printing test data (opt-in via --printing flag)
       if (values.printing) {
-        console.log("8. Seeding printing test data...");
+        console.log("10. Seeding printing test data...");
         await seedPrinting(client, { companyId, userId, locationId });
+      }
+
+      // Seed multi-level assembly test data (opt-in via --assembly flag)
+      if (values.assembly) {
+        console.log("11. Seeding multi-level assembly test data...");
+        await seedAssembly(client, { companyId, userId, locationId });
+      }
+
+      // Seed asm-top-001 MES demonstration data (opt-in via --asm flag)
+      if (values.asm) {
+        console.log("12. Seeding asm-top-001 MES demo data...");
+        await seedAsmTop001(client, { companyId, userId, locationId });
       }
 
       // Commit the transaction

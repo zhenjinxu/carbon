@@ -54,6 +54,7 @@ export type ModelUpload = {
   modelPath: string | null;
   modelSize: number | null;
   thumbnailPath: string | null;
+  modelCreatedAt: string | null;
 };
 
 export type UserContext = {

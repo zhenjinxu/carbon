@@ -523,9 +523,11 @@ export const JobOperation = ({
                   }
                 />
                 <span className="text-sm truncate">
-                  {operation.jobStatus === "Paused"
-                    ? "Paused"
-                    : operation.operationStatus}
+                  <Trans>
+                    {operation.jobStatus === "Paused"
+                      ? "Paused"
+                      : operation.operationStatus}
+                  </Trans>
                 </span>
               </HStack>
             )}

@@ -98,19 +98,11 @@ export async function waitForStorageReady(
 }
 
 // Re-apply `packages/dev/docker/init.sql` as the cluster superuser role.
-// Docker's `docker-entrypoint-initdb.d` only runs on a fresh pgdata volume —
-// a worktree with a pre-existing volume from before init.sql evolved keeps the
-// old role passwords forever, so storage-api / gotrue / postgrest auth-fail on
-// every boot. Re-applying is idempotent (`ALTER USER ... PASSWORD`, `CREATE
-// SCHEMA IF NOT EXISTS`).
-//
-// Connect as `supabase_admin` (not `postgres`): current supabase/postgres
-// images treat `supabase_admin` as a reserved role; only a superuser may
-// `ALTER` it, and the host TCP `postgres` role is no longer sufficient.
+// For local PostgreSQL 18, connect as `postgres` (the native superuser).
 export async function applyBootstrapSql(root: string, port: number) {
   const sql = readFileSync(join(root, "packages/dev/docker/init.sql"), "utf8");
   await withClient(port, (c) => c.query(sql), {
-    user: "supabase_admin",
+    user: "postgres",
     password: "postgres"
   });
 }

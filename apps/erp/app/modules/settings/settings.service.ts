@@ -321,7 +321,7 @@ export async function getCustomFields(
   companyId: string
 ) {
   return client
-    .from("customFieldTables")
+    .from("customFieldTable")
     .select("*")
     .eq("table", table)
     .eq("companyId", companyId)
@@ -336,7 +336,7 @@ export async function getCustomFieldsTables(
   }
 ) {
   let query = client
-    .from("customFieldTables")
+    .from("customFieldTable")
     .select("*", {
       count: "exact"
     })
@@ -369,7 +369,26 @@ export async function getIntegrations(
   client: SupabaseClient<Database>,
   companyId: string
 ) {
-  return client.from("integrations").select("*").eq("companyId", companyId);
+  // Query integration definitions and per-company configs separately
+  // instead of using the "integrations" VIEW.
+  const [defs, configs] = await Promise.all([
+    client.from("integration").select("*"),
+    client
+      .from("companyIntegration")
+      .select("*")
+      .eq("companyId", companyId)
+  ]);
+
+  if (defs.error) return defs;
+
+  const configMap = new Map((configs.data ?? []).map((ci) => [ci.id, ci]));
+
+  const merged = (defs.data ?? []).map((def) => {
+    const ci = configMap.get(def.id);
+    return { ...def, companyId, metadata: ci?.metadata ?? {}, active: ci?.active ?? false };
+  });
+
+  return { data: merged, error: null, count: merged.length };
 }
 
 export async function getKanbanOutputSetting(

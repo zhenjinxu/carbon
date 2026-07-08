@@ -13011,7 +13011,6 @@ export type Database = {
           replenishmentSystem: Database["public"]["Enums"]["itemReplenishmentSystem"]
           requiresInspection: boolean
           revision: string | null
-          sourcingType: Database["public"]["Enums"]["sourcingType"]
           thumbnailPath: string | null
           trackingMethod: string | null
           type: Database["public"]["Enums"]["itemType"]
@@ -13038,7 +13037,6 @@ export type Database = {
           replenishmentSystem?: Database["public"]["Enums"]["itemReplenishmentSystem"]
           requiresInspection?: boolean
           revision?: string | null
-          sourcingType?: Database["public"]["Enums"]["sourcingType"]
           thumbnailPath?: string | null
           trackingMethod?: string | null
           type: Database["public"]["Enums"]["itemType"]
@@ -13065,7 +13063,6 @@ export type Database = {
           replenishmentSystem?: Database["public"]["Enums"]["itemReplenishmentSystem"]
           requiresInspection?: boolean
           revision?: string | null
-          sourcingType?: Database["public"]["Enums"]["sourcingType"]
           thumbnailPath?: string | null
           trackingMethod?: string | null
           type?: Database["public"]["Enums"]["itemType"]
@@ -35299,8 +35296,11 @@ export type Database = {
       }
       receipt: {
         Row: {
+          acceptanceConclusion: string | null
+          acceptanceNotes: string | null
           assignee: string | null
           companyId: string
+          contractNumber: string | null
           createdAt: string
           createdBy: string
           customFields: Json | null
@@ -35309,9 +35309,22 @@ export type Database = {
           internalNotes: Json | null
           invoiced: boolean | null
           locationId: string | null
+          packagingCondition: string | null
+          packagingNotes: string | null
           postedBy: string | null
           postingDate: string | null
+          qualityInspectionNotes: string | null
+          qualityInspectionResult: string | null
+          receiverContactName: string | null
+          receiverContactPhone: string | null
+          receiverSignature: string | null
+          receivingDepartment: string | null
           receiptId: string
+          senderContactName: string | null
+          senderContactPhone: string | null
+          senderSignature: string | null
+          shippingMethodId: string | null
+          signatureDate: string | null
           sourceDocument:
             | Database["public"]["Enums"]["receiptSourceDocument"]
             | null
@@ -35323,10 +35336,14 @@ export type Database = {
           tags: string[] | null
           updatedAt: string | null
           updatedBy: string | null
+          warehouseKeeperSignature: string | null
         }
         Insert: {
+          acceptanceConclusion?: string | null
+          acceptanceNotes?: string | null
           assignee?: string | null
           companyId: string
+          contractNumber?: string | null
           createdAt?: string
           createdBy: string
           customFields?: Json | null
@@ -35335,9 +35352,22 @@ export type Database = {
           internalNotes?: Json | null
           invoiced?: boolean | null
           locationId?: string | null
+          packagingCondition?: string | null
+          packagingNotes?: string | null
           postedBy?: string | null
           postingDate?: string | null
+          qualityInspectionNotes?: string | null
+          qualityInspectionResult?: string | null
+          receiverContactName?: string | null
+          receiverContactPhone?: string | null
+          receiverSignature?: string | null
+          receivingDepartment?: string | null
           receiptId: string
+          senderContactName?: string | null
+          senderContactPhone?: string | null
+          senderSignature?: string | null
+          shippingMethodId?: string | null
+          signatureDate?: string | null
           sourceDocument?:
             | Database["public"]["Enums"]["receiptSourceDocument"]
             | null
@@ -35349,10 +35379,14 @@ export type Database = {
           tags?: string[] | null
           updatedAt?: string | null
           updatedBy?: string | null
+          warehouseKeeperSignature?: string | null
         }
         Update: {
+          acceptanceConclusion?: string | null
+          acceptanceNotes?: string | null
           assignee?: string | null
           companyId?: string
+          contractNumber?: string | null
           createdAt?: string
           createdBy?: string
           customFields?: Json | null
@@ -35361,9 +35395,22 @@ export type Database = {
           internalNotes?: Json | null
           invoiced?: boolean | null
           locationId?: string | null
+          packagingCondition?: string | null
+          packagingNotes?: string | null
           postedBy?: string | null
           postingDate?: string | null
+          qualityInspectionNotes?: string | null
+          qualityInspectionResult?: string | null
+          receiverContactName?: string | null
+          receiverContactPhone?: string | null
+          receiverSignature?: string | null
+          receivingDepartment?: string | null
           receiptId?: string
+          senderContactName?: string | null
+          senderContactPhone?: string | null
+          senderSignature?: string | null
+          shippingMethodId?: string | null
+          signatureDate?: string | null
           sourceDocument?:
             | Database["public"]["Enums"]["receiptSourceDocument"]
             | null
@@ -35375,6 +35422,7 @@ export type Database = {
           tags?: string[] | null
           updatedAt?: string | null
           updatedBy?: string | null
+          warehouseKeeperSignature?: string | null
         }
         Relationships: [
           {
@@ -35740,10 +35788,12 @@ export type Database = {
           conversionFactor: number | null
           createdAt: string
           createdBy: string
+          expectedQuantity: number | null
           id: string
           itemId: string
           lineId: string | null
           locationId: string | null
+          notes: string | null
           orderQuantity: number
           outstandingQuantity: number
           receiptId: string
@@ -35761,10 +35811,12 @@ export type Database = {
           conversionFactor?: number | null
           createdAt?: string
           createdBy: string
+          expectedQuantity?: number | null
           id?: string
           itemId: string
           lineId?: string | null
           locationId?: string | null
+          notes?: string | null
           orderQuantity: number
           outstandingQuantity?: number
           receiptId: string
@@ -35782,10 +35834,12 @@ export type Database = {
           conversionFactor?: number | null
           createdAt?: string
           createdBy?: string
+          expectedQuantity?: number | null
           id?: string
           itemId?: string
           lineId?: string | null
           locationId?: string | null
+          notes?: string | null
           orderQuantity?: number
           outstandingQuantity?: number
           receiptId?: string
@@ -55471,7 +55525,6 @@ export type Database = {
             | null
           revision: string | null
           revisions: Json | null
-          sourcingType: Database["public"]["Enums"]["sourcingType"] | null
           supplierIds: string | null
           tags: string[] | null
           thumbnailPath: string | null
@@ -59569,11 +59622,13 @@ export type Database = {
           createdAt: string | null
           createdBy: string | null
           description: string | null
+          expectedQuantity: number | null
           id: string | null
           itemId: string | null
           itemReadableId: string | null
           lineId: string | null
           locationId: string | null
+          notes: string | null
           orderQuantity: number | null
           outstandingQuantity: number | null
           receiptId: string | null
@@ -59732,8 +59787,11 @@ export type Database = {
       }
       receipts: {
         Row: {
+          acceptanceConclusion: string | null
+          acceptanceNotes: string | null
           assignee: string | null
           companyId: string | null
+          contractNumber: string | null
           createdAt: string | null
           createdBy: string | null
           customFields: Json | null
@@ -59743,9 +59801,22 @@ export type Database = {
           invoiced: boolean | null
           locationId: string | null
           locationName: string | null
+          packagingCondition: string | null
+          packagingNotes: string | null
           postedBy: string | null
           postingDate: string | null
+          qualityInspectionNotes: string | null
+          qualityInspectionResult: string | null
+          receiverContactName: string | null
+          receiverContactPhone: string | null
+          receiverSignature: string | null
+          receivingDepartment: string | null
           receiptId: string | null
+          senderContactName: string | null
+          senderContactPhone: string | null
+          senderSignature: string | null
+          shippingMethodId: string | null
+          signatureDate: string | null
           sourceDocument:
             | Database["public"]["Enums"]["receiptSourceDocument"]
             | null
@@ -59757,6 +59828,7 @@ export type Database = {
           tags: string[] | null
           updatedAt: string | null
           updatedBy: string | null
+          warehouseKeeperSignature: string | null
         }
         Relationships: [
           {
@@ -63795,7 +63867,6 @@ export type Database = {
             | null
           revision: string | null
           revisions: Json | null
-          sourcingType: Database["public"]["Enums"]["sourcingType"] | null
           supplierIds: string | null
           tags: string[] | null
           thumbnailPath: string | null
@@ -65500,7 +65571,6 @@ export type Database = {
           requiresInspection: boolean
           revision: string
           revisions: Json
-          sourcingType: Database["public"]["Enums"]["sourcingType"]
           tags: string[]
           thumbnailPath: string
           unitOfMeasure: string
@@ -66015,7 +66085,6 @@ export type Database = {
           requiresInspection: boolean
           revision: string
           revisions: Json
-          sourcingType: Database["public"]["Enums"]["sourcingType"]
           tags: string[]
           thumbnailPath: string
           unitOfMeasure: string

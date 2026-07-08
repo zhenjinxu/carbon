@@ -552,7 +552,7 @@ const SalesOrdersTable = memo(({ data, count }: SalesOrdersTableProps) => {
           onClick={() => edit(row)}
         >
           <MenuIcon icon={<LuPencil />} />
-          <Trans>Edit</Trans>
+          {t`Edit`}
         </MenuItem>
 
         {/*<MenuItem
@@ -577,11 +577,11 @@ const SalesOrdersTable = memo(({ data, count }: SalesOrdersTableProps) => {
           }}
         >
           <MenuIcon icon={<LuTrash />} />
-          <Trans>Delete</Trans>
+          {t`Delete`}
         </MenuItem>
       </>
     );
-  }, [deleteSalesOrderModal, edit, permissions /*receive*/]);
+  }, [deleteSalesOrderModal, edit, permissions /*receive*/, t]);
 
   return (
     <>

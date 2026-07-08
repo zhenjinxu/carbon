@@ -18,10 +18,11 @@ import {
 } from "@carbon/react";
 import type { Theme } from "@carbon/utils";
 import { getPreferenceHeaders, modeValidator, themes } from "@carbon/utils";
+import { Trans } from "@lingui/react/macro";
 import { I18nProvider } from "@react-aria/i18n";
 import { QueryClient } from "@tanstack/react-query";
 import { Analytics } from "@vercel/analytics/react";
-import type React from "react";
+import React from "react";
 import type {
   ActionFunctionArgs,
   LinksFunction,
@@ -255,7 +256,8 @@ export function Document({
   );
 }
 
-export default function App() {
+// App content that uses loader data - wrapped in error boundary
+function AppContent() {
   const loaderData = useLoaderData<typeof loader>();
   const env = loaderData?.env ?? {};
   const theme = loaderData?.theme ?? "zinc";
@@ -298,34 +300,75 @@ export default function App() {
   );
 }
 
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  const message = isRouteErrorResponse(error)
-    ? (error.data.message ?? error.data)
-    : error instanceof Error
-      ? error.message
-      : String(error);
+// Error boundary wrapper for App component - catches useLoaderData failures and route errors
+class AppErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { hasError: boolean; error: unknown }
+> {
+  state = { hasError: false, error: null };
 
+  static getDerivedStateFromError(error: unknown) {
+    return { hasError: true, error };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <RootErrorBoundary error={this.state.error} />;
+    }
+    return this.props.children;
+  }
+}
+
+export default function App() {
   return (
-    <Document title="Error!">
-      <div className="light">
-        <div className="flex flex-col w-full h-screen items-center justify-center space-y-4 ">
-          <img
-            src="/carbon-mark-light.svg"
-            alt="Carbon Logo"
-            className="block max-w-[60px] dark:hidden"
-          />
-          <img
-            src="/carbon-mark-dark.svg"
-            alt="Carbon Logo"
-            className="max-w-[60px] hidden dark:block"
-          />
-          <Heading size="h1">Something went wrong</Heading>
-          <p className="text-muted-foreground max-w-2xl">{message}</p>
-          <Button onClick={() => (window.location.href = "/")}>
-            Back Home
-          </Button>
-        </div>
-      </div>
-    </Document>
+    <AppErrorBoundary>
+      <AppContent />
+    </AppErrorBoundary>
   );
+}
+
+// Error boundary class component - not exported as "ErrorBoundary" to avoid React Router's wrapper
+class RootErrorBoundary extends React.Component<
+  { error: unknown },
+  { hasError: boolean }
+> {
+  constructor(props: { error: unknown }) {
+    super(props);
+    this.state = { hasError: true };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  render() {
+    const error = this.props.error;
+    const message = isRouteErrorResponse(error)
+      ? (error.data?.message ?? error.data ?? "An error occurred")
+      : error instanceof Error
+        ? error.message
+        : String(error);
+
+    return (
+      <Document title="Error!" mode="light" theme="zinc" lang="en">
+        <div className="light">
+          <div className="flex flex-col w-full h-screen items-center justify-center space-y-4">
+            <img
+              src="/carbon-mark-light.svg"
+              alt="Carbon Logo"
+              className="block max-w-[60px] dark:hidden"
+            />
+            <img
+              src="/carbon-mark-dark.svg"
+              alt="Carbon Logo"
+              className="max-w-[60px] hidden dark:block"
+            />
+            <Heading size="h1">Something went wrong</Heading>
+            <p className="text-muted-foreground max-w-2xl">{message}</p>
+            <Button onClick={() => (window.location.href = "/")}>Back Home</Button>
+          </div>
+        </div>
+      </Document>
+    );
+  }
 }

@@ -342,7 +342,11 @@ export async function requirePermissions(
             myClaims.permissions[p]?.[
               action as "view" | "create" | "update" | "delete"
             ];
-          return permissionForCompany?.includes(companyId) ?? false;
+          return (
+            permissionForCompany?.includes("0") ||
+            permissionForCompany?.includes(companyId) ||
+            false
+          );
         });
       } else {
         return false;

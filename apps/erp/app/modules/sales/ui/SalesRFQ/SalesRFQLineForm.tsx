@@ -254,7 +254,7 @@ const SalesRFQLineForm = ({
                 <Hidden name="order" />
                 <Hidden
                   name="modelUploadId"
-                  value={itemData.modelUploadId ?? undefined}
+                  value={itemData.modelUploadId ?? ""}
                 />
                 <VStack>
                   <div className="grid w-full gap-x-8 gap-y-4 grid-cols-1 lg:grid-cols-3">

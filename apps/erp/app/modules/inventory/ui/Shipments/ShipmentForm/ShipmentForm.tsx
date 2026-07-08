@@ -185,7 +185,7 @@ const ShipmentForm = ({
                   <PrintButton
                     sourceDocument="Shipment"
                     sourceDocumentId={shipmentId}
-                    locationId={locationId ?? undefined}
+                    locationId={locationId ?? ""}
                     context="shipping"
                     fileRoutes={{
                       pdf: path.to.file.shipmentLabelsPdf,
@@ -249,7 +249,7 @@ const ShipmentForm = ({
                 <Location
                   name="locationId"
                   label={t`Location`}
-                  value={locationId ?? undefined}
+                  value={locationId ?? ""}
                   onChange={(newValue) => {
                     if (newValue) setLocationId(newValue.value as string);
                   }}

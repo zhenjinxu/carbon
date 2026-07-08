@@ -383,7 +383,7 @@ const LineItems = ({
                 <img
                   alt={line.itemReadableId!}
                   className="w-24 h-24 bg-gradient-to-bl from-muted to-muted/40 rounded-lg"
-                  src={thumbnails[line.id!] ?? undefined}
+                  src={thumbnails[line.id!] ?? ""}
                 />
               ) : (
                 <div className="w-24 h-24 bg-gradient-to-bl from-muted to-muted/40 rounded-lg p-4">
@@ -603,7 +603,7 @@ const LinePricingOptions = ({
     <VStack spacing={4}>
       <RadioGroup
         className="w-full"
-        value={selectedValue ?? undefined}
+        value={selectedValue ?? ""}
         disabled={["Ordered", "Partial", "Expired", "Cancelled"].includes(
           quote.status
         )}

@@ -74,7 +74,7 @@ export async function getCustomFieldsSchemas(
       };
     }
 
-    const query = client.from("customFieldTables").select("*");
+    const query = client.from("customFieldTable").select("*");
 
     if (args?.companyId) {
       query.eq("companyId", args.companyId);

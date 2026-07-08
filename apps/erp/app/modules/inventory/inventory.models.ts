@@ -126,7 +126,8 @@ export const inventoryAdjustmentValidator = z.object({
   trackedEntityId: zfd.text(z.string().optional()),
   readableId: zfd.text(z.string().optional()),
   expirationDate: zfd.text(z.string().optional()),
-  comment: zfd.text(z.string().optional())
+  comment: zfd.text(z.string().optional()),
+  operatorId: zfd.text(z.string().optional())
 });
 
 export const itemLedgerValidator = z.object({
@@ -175,7 +176,25 @@ export const receiptValidator = z.object({
   ),
   externalDocumentId: zfd.text(z.string().optional()),
   sourceDocumentReadableId: zfd.text(z.string().optional()),
-  supplierId: zfd.text(z.string().optional())
+  supplierId: zfd.text(z.string().optional()),
+  // Delivery note fields
+  contractNumber: zfd.text(z.string().optional()),
+  receivingDepartment: zfd.text(z.string().optional()),
+  receiverContactName: zfd.text(z.string().optional()),
+  receiverContactPhone: zfd.text(z.string().optional()),
+  senderContactName: zfd.text(z.string().optional()),
+  senderContactPhone: zfd.text(z.string().optional()),
+  shippingMethodId: zfd.text(z.string().optional()),
+  qualityInspectionResult: zfd.text(z.string().optional()),
+  qualityInspectionNotes: zfd.text(z.string().optional()),
+  packagingCondition: zfd.text(z.string().optional()),
+  packagingNotes: zfd.text(z.string().optional()),
+  acceptanceConclusion: zfd.text(z.string().optional()),
+  acceptanceNotes: zfd.text(z.string().optional()),
+  receiverSignature: zfd.text(z.string().optional()),
+  senderSignature: zfd.text(z.string().optional()),
+  warehouseKeeperSignature: zfd.text(z.string().optional()),
+  signatureDate: zfd.text(z.string().optional())
 });
 
 export const storageUnitValidator = z.object({
@@ -185,7 +204,11 @@ export const storageUnitValidator = z.object({
   warehouseId: zfd.text(z.string().optional()),
   parentId: zfd.text(z.string().optional()),
   workCenterId: zfd.text(z.string().optional()),
-  storageTypeIds: zfd.repeatableOfType(z.string()).default([])
+  storageTypeIds: zfd.repeatableOfType(z.string()).default([]),
+  allowsStorage: zfd.checkbox().default(true),
+  movable: zfd.checkbox().default(false),
+  placedAt: zfd.text(z.string().optional()),
+  placedBy: zfd.text(z.string().optional())
 });
 
 export const storageTypeValidator = z.object({

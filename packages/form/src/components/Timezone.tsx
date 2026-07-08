@@ -53,7 +53,7 @@ const Timezone = ({
         type="hidden"
         name={name}
         id={name}
-        value={value ?? undefined}
+        value={value ?? ""}
       />
       <HStack spacing={1}>
         <SelectBase

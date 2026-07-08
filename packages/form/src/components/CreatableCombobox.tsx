@@ -100,7 +100,7 @@ const CreatableCombobox = forwardRef<HTMLButtonElement, CreatableComboboxProps>(
         <input
           {...getInputProps({
             id: name,
-            value: value
+            value: value ?? ""
           })}
           type="hidden"
           name={name}
@@ -109,7 +109,7 @@ const CreatableCombobox = forwardRef<HTMLButtonElement, CreatableComboboxProps>(
         <CreatableComboboxBase
           ref={ref}
           {...props}
-          value={value?.replace(/"/g, '\\"')}
+          value={(value ?? "").replace(/"/g, '\\"')}
           isClearable={isClearable ?? (resolvedIsOptional && !isReadOnly)}
           isReadOnly={isReadOnly}
           label={label}

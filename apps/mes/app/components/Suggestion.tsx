@@ -10,6 +10,7 @@ import {
   BadgeCloseButton,
   Button,
   Checkbox,
+  ClientOnly,
   File,
   HStack,
   Popover,
@@ -177,15 +178,19 @@ const Suggestion = () => {
                   align="end"
                   sideOffset={8}
                 >
-                  <Picker
-                    data={data}
-                    onEmojiSelect={onEmojiSelect}
-                    theme={pickerTheme}
-                    previewPosition="none"
-                    skinTonePosition="none"
-                    navPosition="bottom"
-                    perLine={8}
-                  />
+                  <ClientOnly>
+                    {() => (
+                      <Picker
+                        data={data}
+                        onEmojiSelect={onEmojiSelect}
+                        theme={pickerTheme}
+                        previewPosition="none"
+                        skinTonePosition="none"
+                        navPosition="bottom"
+                        perLine={8}
+                      />
+                    )}
+                  </ClientOnly>
                 </PopoverContent>
               </Popover>
             </HStack>

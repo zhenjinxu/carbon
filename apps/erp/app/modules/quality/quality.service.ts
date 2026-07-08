@@ -956,13 +956,13 @@ export async function getQualityActions(
   args?: GenericQueryFilters & { search: string | null }
 ) {
   let query = client
-    .from("qualityActions")
+    .from("nonConformanceRequiredAction")
     .select("*", { count: "exact" })
     .eq("companyId", companyId);
 
   if (args?.search) {
     query = query.or(
-      `readableNonConformanceId.ilike.%${args.search}%,nonConformanceName.ilike.%${args.search}%,name.ilike.%${args.search}%,description.ilike.%${args.search}%`
+      `name.ilike.%${args.search}%`
     );
   }
 
@@ -2806,7 +2806,7 @@ export async function getInboundInspections(
   let query = (client as any)
     .from("inboundInspection")
     .select(
-      "*, item(readableId, name), receipt(receiptId, supplierId), supplier(name), inboundInspectionSample(status)",
+      "*, item(readableId, name), receipt(supplierId, supplier(name)), inboundInspectionSample(status)",
       { count: "exact" }
     )
     .eq("companyId", companyId);
@@ -2838,7 +2838,7 @@ export async function getInboundInspection(
   return (client as any)
     .from("inboundInspection")
     .select(
-      "*, item(readableId, name, type), receipt(receiptId, supplierId, createdBy), supplier(name), inboundInspectionSample(*, trackedEntity(id, readableId, attributes, status, sourceDocumentReadableId))"
+      "*, item(readableId, name, type), receipt(receiptId, supplierId, createdBy, supplier(name)), inboundInspectionSample(*, trackedEntity(id, readableId, attributes, status, sourceDocumentReadableId))"
     )
     .eq("id", id)
     .single();

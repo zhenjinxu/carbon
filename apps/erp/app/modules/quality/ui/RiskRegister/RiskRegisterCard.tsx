@@ -257,7 +257,7 @@ function RiskRegisterCardItem({
             // @ts-expect-error TS2322 - TODO: fix type
             id={risk.id}
             size="sm"
-            value={risk.assignee ?? undefined}
+            value={risk.assignee ?? ""}
             onChange={(assignee) => {
               setRisks((prev) =>
                 prev.map((r) => (r.id === risk.id ? { ...r, assignee } : r))

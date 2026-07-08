@@ -6271,10 +6271,10 @@ msgid "Process Name"
 msgstr "流程名称"
 
 msgid "Process Type"
-msgstr "流程类型"
+msgstr "工艺类型"
 
 msgid "Processes"
-msgstr "流程"
+msgstr "工艺"
 
 msgid "Production"
 msgstr "生产"

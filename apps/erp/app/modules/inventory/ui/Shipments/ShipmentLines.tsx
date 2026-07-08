@@ -875,7 +875,7 @@ function BatchForm({
           <PrintButton
             sourceDocument="Shipment"
             sourceDocumentId={shipment?.id ?? ""}
-            locationId={shipment?.locationId ?? undefined}
+            locationId={shipment?.locationId ?? ""}
             context="shipping"
             fileRoutes={{
               pdf: (id, opts) =>
@@ -1127,7 +1127,7 @@ function SerialForm({
           <PrintButton
             sourceDocument="Shipment"
             sourceDocumentId={shipment?.id ?? ""}
-            locationId={shipment?.locationId ?? undefined}
+            locationId={shipment?.locationId ?? ""}
             context="shipping"
             fileRoutes={{
               pdf: (id, opts) =>
@@ -1307,7 +1307,7 @@ function StorageUnit({
       </label>
       <div className="py-1">
         <Combobox
-          value={storageUnitId ?? undefined}
+          value={storageUnitId ?? ""}
           onChange={(newValue) => {
             onChange(newValue);
           }}

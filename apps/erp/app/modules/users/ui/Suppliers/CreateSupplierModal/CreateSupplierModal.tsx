@@ -203,7 +203,7 @@ const SupplierContact = ({
       <input type="hidden" name={name} id={name} value={value ?? ""} />
       <Combobox
         id={name}
-        value={value ?? undefined}
+        value={value ?? ""}
         options={options}
         onChange={handleChange}
         className="w-full"

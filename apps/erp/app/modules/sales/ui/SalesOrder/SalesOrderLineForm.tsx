@@ -526,11 +526,11 @@ const SalesOrderLineForm = ({
                     )}
                     <Hidden
                       name="modelUploadId"
-                      value={itemData?.modelUploadId ?? undefined}
+                      value={itemData?.modelUploadId ?? ""}
                     />
                     <Hidden
                       name="priceListId"
-                      value={itemData?.priceListId ?? undefined}
+                      value={itemData?.priceListId ?? ""}
                     />
                     <Hidden
                       name="priceTrace"
@@ -655,7 +655,7 @@ const SalesOrderLineForm = ({
                                 label={t`Storage Unit`}
                                 locationId={locationId}
                                 itemId={itemData.itemId}
-                                value={itemData.storageUnitId ?? undefined}
+                                value={itemData.storageUnitId ?? ""}
                                 onChange={(newValue) => {
                                   if (newValue) {
                                     setItemData((d) => ({

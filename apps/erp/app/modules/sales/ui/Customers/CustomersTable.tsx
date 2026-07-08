@@ -282,7 +282,7 @@ const CustomersTable = memo(
         <>
           <MenuItem onClick={() => navigate(path.to.customer(row.id!))}>
             <MenuIcon icon={<LuPencil />} />
-            <Trans>Edit</Trans>
+            {t`Edit`}
           </MenuItem>
           <MenuItem
             destructive
@@ -292,12 +292,11 @@ const CustomersTable = memo(
               deleteModal.onOpen();
             }}
           >
-            <MenuIcon icon={<LuTrash />} />
-            <Trans>Delete Customer</Trans>
+            <MenuIcon icon={<LuTrash />} /> {t`Delete Customer`}
           </MenuItem>
         </>
       ),
-      [navigate, deleteModal, permissions]
+      [navigate, deleteModal, permissions, t]
     );
 
     return (

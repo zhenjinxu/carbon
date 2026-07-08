@@ -823,7 +823,7 @@ function DateKanbanSchedule() {
                   <Combobox
                     asButton
                     size="sm"
-                    value={locationId ?? undefined}
+                    value={locationId ?? ""}
                     options={locations}
                     onChange={(selected) => {
                       const newParams = new URLSearchParams(searchParams);

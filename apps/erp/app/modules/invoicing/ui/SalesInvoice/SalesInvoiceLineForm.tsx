@@ -589,7 +589,7 @@ const SalesInvoiceLineForm = ({
                             name="storageUnitId"
                             label={t`Storage Unit`}
                             locationId={locationId}
-                            value={itemData.storageUnitId ?? undefined}
+                            value={itemData.storageUnitId ?? ""}
                             onChange={(newValue) => {
                               if (newValue) {
                                 setItemData((d) => ({

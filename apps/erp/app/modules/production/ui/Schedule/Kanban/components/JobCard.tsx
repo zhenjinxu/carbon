@@ -443,7 +443,7 @@ export function JobCard({ item, isOverlay, progressByItemId }: JobCardProps) {
             table="job"
             id={item.jobId}
             size="sm"
-            value={item.assignee ?? undefined}
+            value={item.assignee ?? ""}
           />
         </HStack>
       </CardFooter>

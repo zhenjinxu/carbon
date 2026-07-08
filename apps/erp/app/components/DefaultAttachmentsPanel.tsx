@@ -1,4 +1,3 @@
-import { useCarbon } from "@carbon/auth";
 import {
   Card,
   CardContent,
@@ -32,6 +31,7 @@ import DocumentPreview from "~/components/DocumentPreview";
 import FileDropzone from "~/components/FileDropzone";
 import { useDateFormatter, useUser } from "~/hooks";
 import { getDocumentType } from "~/modules/shared";
+import { serverStorageRemove, serverStorageUpload } from "~/utils/storage";
 import { path } from "~/utils/path";
 import { stripSpecialCharacters } from "~/utils/string";
 
@@ -52,7 +52,6 @@ export default function DefaultAttachmentsPanel({
 }: Props) {
   const { t } = useLingui();
   const { formatDate } = useDateFormatter();
-  const { carbon } = useCarbon();
   const { company } = useUser();
   const revalidator = useRevalidator();
   const [deletingPath, setDeletingPath] = useState<string | null>(null);
@@ -64,23 +63,36 @@ export default function DefaultAttachmentsPanel({
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
-      if (!carbon) {
-        toast.error(t`Storage client not available`);
+      console.log(`[DefaultAttachmentsPanel] onDrop called with ${acceptedFiles.length} files`);
+      if (acceptedFiles.length === 0) {
+        toast.error(t`No files selected`);
         return;
       }
-      for (const file of acceptedFiles) {
-        const safeName = stripSpecialCharacters(file.name);
-        const upload = await carbon.storage
-          .from("private")
-          .upload(fullPath(safeName), file, {
+      try {
+        for (const file of acceptedFiles) {
+          const safeName = stripSpecialCharacters(file.name);
+          const storagePath = fullPath(safeName);
+          console.log(`[DefaultAttachmentsPanel] Uploading ${file.name} to ${storagePath}`);
+          const upload = await serverStorageUpload(file, storagePath, {
+            bucket: "private",
             cacheControl: `${12 * 60 * 60}`,
             upsert: true
           });
-        if (upload.error) toast.error(t`Failed to upload ${file.name}`);
+          console.log(`[DefaultAttachmentsPanel] Upload result:`, upload);
+          if (upload.error) {
+            console.error(`[DefaultAttachmentsPanel] Upload failed for ${file.name}:`, upload.error);
+            toast.error(t`Failed to upload ${file.name}: ${upload.error.message}`);
+          } else {
+            toast.success(t`Uploaded: ${file.name}`);
+          }
+        }
+      } catch (err) {
+        console.error(`[DefaultAttachmentsPanel] Upload error:`, err);
+        toast.error(t`Upload failed: ${err instanceof Error ? err.message : "Unknown error"}`);
       }
       revalidator.revalidate();
     },
-    [carbon, fullPath, revalidator, t]
+    [fullPath, revalidator, t]
   );
 
   const onDownload = useCallback(
@@ -107,16 +119,10 @@ export default function DefaultAttachmentsPanel({
 
   const onDelete = useCallback(
     async (name: string) => {
-      if (!carbon) {
-        toast.error(t`Storage client not available`);
-        return;
-      }
       const storagePath = fullPath(name);
       setDeletingPath(storagePath);
       try {
-        const result = await carbon.storage
-          .from("private")
-          .remove([storagePath]);
+        const result = await serverStorageRemove([storagePath], "private");
         if (result.error) {
           toast.error(result.error.message || t`Error deleting file`);
         } else {
@@ -127,7 +133,7 @@ export default function DefaultAttachmentsPanel({
         setDeletingPath(null);
       }
     },
-    [carbon, fullPath, revalidator, t]
+    [fullPath, revalidator, t]
   );
 
   return (

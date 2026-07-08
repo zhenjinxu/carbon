@@ -368,7 +368,7 @@ const LinePricingOptions = ({
     <VStack spacing={4}>
       <RadioGroup
         className="w-full"
-        value={selectedValue ?? undefined}
+        value={selectedValue ?? ""}
         disabled={["Ordered", "Partial", "Expired", "Cancelled"].includes(
           routeData?.quote.status ?? ""
         )}

@@ -250,7 +250,7 @@ const PurchaseInvoiceHeader = () => {
                   onClick={deleteModal.onOpen}
                 >
                   <DropdownMenuIcon icon={<LuTrash />} />
-                  <Trans>Delete Purchase Invoice</Trans>
+                  {t`Delete Purchase Invoice`}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -272,7 +272,7 @@ const PurchaseInvoiceHeader = () => {
                     relatedDocs.purchaseOrders[0].id
                   )}
                 >
-                  <Trans>Purchase Order</Trans>
+                  {t`Purchase Order`}
                 </Link>
               </Button>
             )}
@@ -280,7 +280,7 @@ const PurchaseInvoiceHeader = () => {
             {relatedDocs.receipts.length === 1 && (
               <Button variant="secondary" leftIcon={<LuHandCoins />} asChild>
                 <Link to={path.to.receipt(relatedDocs.receipts[0].id)}>
-                  <Trans>Receipt</Trans>
+                  {t`Receipt`}
                 </Link>
               </Button>
             )}
@@ -289,7 +289,7 @@ const PurchaseInvoiceHeader = () => {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="secondary" leftIcon={<LuShoppingCart />}>
-                    <Trans>Purchase Orders</Trans>
+                    {t`Purchase Orders`}
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
@@ -308,7 +308,7 @@ const PurchaseInvoiceHeader = () => {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="secondary" leftIcon={<LuHandCoins />}>
-                    <Trans>Receipts</Trans>
+                    {t`Receipts`}
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
@@ -337,7 +337,7 @@ const PurchaseInvoiceHeader = () => {
                 !isSupplierApproved
               }
             >
-              <Trans>Post</Trans>
+              {t`Post`}
             </Button>
 
             {(() => {
@@ -355,7 +355,7 @@ const PurchaseInvoiceHeader = () => {
                     leftIcon={<LuHandCoins />}
                     rightIcon={<LuChevronDown />}
                   >
-                    <Trans>Payment</Trans>
+                    {t`Payment`}
                   </Button>
                 );
               }
@@ -368,7 +368,7 @@ const PurchaseInvoiceHeader = () => {
                       leftIcon={<LuHandCoins />}
                       rightIcon={<LuChevronDown />}
                     >
-                      <Trans>Payment</Trans>
+                      {t`Payment`}
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>

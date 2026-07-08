@@ -346,7 +346,7 @@ const QuoteMakeMethodTools = () => {
                           type={(line?.itemType ?? "Part") as "Part"}
                           blacklist={configurableItemIds}
                           includeInactive={includeInactive === true}
-                          locationId={routeData?.quote?.locationId ?? undefined}
+                          locationId={routeData?.quote?.locationId ?? ""}
                           replenishmentSystem="Make"
                         />
                         <div className="flex items-center space-x-2">
@@ -393,7 +393,7 @@ const QuoteMakeMethodTools = () => {
                         type={(line?.itemType ?? "Part") as "Part"}
                         blacklist={configurableItemIds}
                         includeInactive={includeInactive === true}
-                        locationId={routeData?.quote?.locationId ?? undefined}
+                        locationId={routeData?.quote?.locationId ?? ""}
                         replenishmentSystem="Make"
                       />
                       <div className="flex items-center space-x-2">
@@ -495,7 +495,7 @@ const QuoteMakeMethodTools = () => {
                     label={t`Target Method`}
                     type={(line?.itemType ?? "Part") as "Part"}
                     blacklist={configurableItemIds}
-                    locationId={routeData?.quote?.locationId ?? undefined}
+                    locationId={routeData?.quote?.locationId ?? ""}
                     onChange={(value) => {
                       if (value) {
                         getMakeMethods(value?.value);
@@ -511,7 +511,7 @@ const QuoteMakeMethodTools = () => {
                     name="targetId"
                     options={makeMethods}
                     label={t`Version`}
-                    value={selectedMakeMethod ?? undefined}
+                    value={selectedMakeMethod ?? ""}
                     onChange={(value) => {
                       if (value) {
                         setSelectedMakeMethod(value?.value);
@@ -579,11 +579,11 @@ const QuoteMakeMethodTools = () => {
                 <Item
                   name="sourceId"
                   label={t`Item`}
-                  value={selectedConfigureItemId ?? undefined}
+                  value={selectedConfigureItemId ?? ""}
                   type={(line?.itemType ?? "Part") as "Part"}
                   includeInactive={includeInactive === true}
                   whitelist={configurableItemIds}
-                  locationId={routeData?.quote?.locationId ?? undefined}
+                  locationId={routeData?.quote?.locationId ?? ""}
                   replenishmentSystem="Make"
                   onChange={(value) => {
                     setSelectedConfigureItemId(value?.value ?? null);

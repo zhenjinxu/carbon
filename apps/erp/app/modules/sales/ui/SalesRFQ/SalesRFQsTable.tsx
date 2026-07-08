@@ -1,5 +1,5 @@
 import { HStack, MenuIcon, MenuItem, useDisclosure } from "@carbon/react";
-import { Trans, useLingui } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react/macro";
 import type { ColumnDef } from "@tanstack/react-table";
 import { memo, useMemo, useState } from "react";
 import {
@@ -223,7 +223,7 @@ const SalesRFQsTable = memo(({ data, count }: SalesRFQsTableProps) => {
       <>
         <MenuItem onClick={() => navigate(path.to.salesRfqDetails(row.id!))}>
           <MenuIcon icon={<LuPencil />} />
-          <Trans>Edit</Trans>
+          {t`Edit`}
         </MenuItem>
         <MenuItem
           destructive
@@ -234,11 +234,11 @@ const SalesRFQsTable = memo(({ data, count }: SalesRFQsTableProps) => {
           }}
         >
           <MenuIcon icon={<LuTrash />} />
-          <Trans>Delete</Trans>
+          {t`Delete`}
         </MenuItem>
       </>
     );
-  }, [deleteSalesRFQModal, navigate, permissions]);
+  }, [deleteSalesRFQModal, navigate, permissions, t]);
 
   return (
     <>

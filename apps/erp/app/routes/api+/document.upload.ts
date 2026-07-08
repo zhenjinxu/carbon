@@ -5,8 +5,7 @@ import { upsertDocument } from "~/modules/documents";
 import { stripSpecialCharacters } from "~/utils/string";
 
 export async function action({ request }: ActionFunctionArgs) {
-  console.log("[document.upload] Action called");
-  const { client, companyId, userId } = await requirePermissions(request, {});
+  const { companyId, userId } = await requirePermissions(request, {});
 
   const formData = await request.formData();
   const fileEntry = formData.get("file");
@@ -29,39 +28,19 @@ export async function action({ request }: ActionFunctionArgs) {
     file = fileEntry as Blob;
   }
 
-  console.log("[document.upload] Received:", {
-    fileEntryType: fileEntry?.constructor?.name ?? typeof fileEntry,
-    hasFileEntry: !!fileEntry,
-    hasBlob: fileEntry instanceof Blob,
-    fileName: (fileEntry as File)?.name,
-    fileType: (fileEntry as File)?.type,
-    fileSize: (fileEntry as File)?.size,
-    name,
-    size,
-    sourceDocument,
-    sourceDocumentId,
-    companyId,
-    userId
-  });
-
   if (!file) {
-    console.error("[document.upload] File is missing or not a Blob/File");
     return { error: "File is required" };
   }
   if (!name) {
-    console.error("[document.upload] Name is missing");
     return { error: "Name is required" };
   }
   if (!sourceDocument || !sourceDocumentId) {
-    console.error("[document.upload] Source document info is missing");
     return { error: "Source document and ID are required" };
   }
 
   const sanitizedFileName = stripSpecialCharacters(name);
   const storagePath = `${companyId}/parts/${sourceDocumentId}/${sanitizedFileName}`;
 
-  // Use service role for storage upload (bypasses RLS which is broken for
-  // client-side uploads in this self-hosted Supabase environment)
   const serviceRole = getCarbonServiceRole();
 
   const fileForUpload = file as File;
@@ -74,20 +53,10 @@ export async function action({ request }: ActionFunctionArgs) {
     });
 
   if (uploadError) {
-    console.error("[document.upload] Storage upload failed:", uploadError, {
-      path: storagePath,
-      fileSize: file.size,
-      fileType: fileForUpload.type
-    });
     return { error: `Failed to upload file: ${uploadError.message}` };
   }
 
-  console.log("[document.upload] Storage upload succeeded:", {
-    path: storagePath
-  });
-
-  // Use the user's JWT client for DB operations (matches original behavior)
-  const createDocument = await upsertDocument(client, {
+  const createDocument = await upsertDocument(serviceRole, {
     path: storagePath,
     name,
     size,
@@ -100,19 +69,10 @@ export async function action({ request }: ActionFunctionArgs) {
   });
 
   if (createDocument.error) {
-    console.error(
-      "[document.upload] Failed to create document record:",
-      createDocument.error
-    );
     return {
       error: `Failed to save document: ${createDocument.error.message}`
     };
   }
-
-  console.log("[document.upload] Document created:", {
-    id: createDocument.data?.id,
-    path: createDocument.data?.path
-  });
 
   return { success: true, document: createDocument.data };
 }

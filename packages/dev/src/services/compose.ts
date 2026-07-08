@@ -1,6 +1,6 @@
 import { log } from "@clack/prompts";
 import { execa } from "execa";
-import { COMPOSE_DEV_FILE, COMPOSE_SHARED_FILE } from "../constants.js";
+import { COMPOSE_DEV_FILE } from "../constants.js";
 import { readLines } from "../helpers.js";
 import { projectName } from "../worktree.js";
 
@@ -119,20 +119,24 @@ export async function stopStack(
   await execa("docker", args, { cwd: root, stdio: "ignore", reject: false });
 }
 
-// One redis per host; recover from stale `carbon-redis` leftovers.
+// One redis per host; shared Redis runs natively on the host (no Docker).
+// Just verify it's reachable via TCP.
 export async function bootSharedRedis(root: string) {
-  const args = ["compose", "-f", COMPOSE_SHARED_FILE, "up", "-d", "redis"];
-  let r = await execa("docker", args, { cwd: root, reject: false });
-  if (r.exitCode !== 0 && /already in use/i.test(r.stderr ?? "")) {
-    await execa("docker", ["rm", "-f", "carbon-redis"], {
+  const r = await execa("redis-cli", ["ping"], {
+    reject: false,
+    stdio: "pipe"
+  });
+  if (r.exitCode !== 0 || !r.stdout?.trim().startsWith("PONG")) {
+    // Try to start Redis if not running
+    const start = await execa("redis-server", ["--daemonize", "yes"], {
       reject: false,
-      stdio: "ignore"
+      stdio: "pipe"
     });
-    r = await execa("docker", args, { cwd: root, reject: false });
-  }
-  if (r.exitCode !== 0) {
-    process.stderr.write(r.stderr ?? "");
-    throw new Error(`shared redis up failed (exit ${r.exitCode})`);
+    if (start.exitCode !== 0) {
+      process.stderr.write("Redis is not running and could not be started.\n");
+      process.stderr.write("Please start Redis manually on port 6379.\n");
+      throw new Error("Redis not available");
+    }
   }
 }
 
@@ -366,14 +370,12 @@ export async function listCarbonProjects(): Promise<string[]> {
 // Utility
 // ---------------------------------------------------------------------------
 
-// Wipe one logical DB on shared redis via the container's bundled redis-cli —
-// avoids requiring a host `redis-cli` install.
+// Wipe one logical DB on shared Redis via local redis-cli.
 export async function flushDb(db: number) {
-  const r = await execa(
-    "docker",
-    ["exec", "carbon-redis", "redis-cli", "-n", String(db), "FLUSHDB"],
-    { reject: false, stdio: "ignore" }
-  );
+  const r = await execa("redis-cli", ["-n", String(db), "FLUSHDB"], {
+    reject: false,
+    stdio: "ignore"
+  });
   if (r.exitCode !== 0) {
     log.warn(`redis flush of db ${db} failed (skipped)`);
   }

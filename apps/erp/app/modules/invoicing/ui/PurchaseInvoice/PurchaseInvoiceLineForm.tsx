@@ -646,7 +646,7 @@ const PurchaseInvoiceLineForm = ({
                             name="storageUnitId"
                             label={t`Storage Unit`}
                             locationId={locationId}
-                            value={itemData.storageUnitId ?? undefined}
+                            value={itemData.storageUnitId ?? ""}
                             onChange={(newValue) => {
                               if (newValue) {
                                 setItemData((d) => ({
@@ -846,7 +846,7 @@ const PurchaseInvoiceLineForm = ({
                         <DatePicker
                           name="requiredDate"
                           label={t`Required Date`}
-                          value={indirectData.requiredDate ?? undefined}
+                          value={indirectData.requiredDate ?? ""}
                           onChange={(date) => {
                             setIndirectData((d) => ({
                               ...d,

@@ -289,7 +289,7 @@ const JobMakeMethodTools = ({ makeMethod }: { makeMethod?: JobMakeMethod }) => {
                     <PrintButton
                       sourceDocument="Operation"
                       sourceDocumentId={makeMethod.id}
-                      locationId={routeData?.job?.locationId ?? undefined}
+                      locationId={routeData?.job?.locationId ?? ""}
                       context="workCenter"
                       fileRoutes={{
                         pdf: path.to.file.operationLabelsPdf,
@@ -369,7 +369,7 @@ const JobMakeMethodTools = ({ makeMethod }: { makeMethod?: JobMakeMethod }) => {
                         type={(routeData?.job.itemType ?? "Part") as "Part"}
                         blacklist={configurableItemIds}
                         includeInactive={includeInactive === true}
-                        locationId={routeData?.job?.locationId ?? undefined}
+                        locationId={routeData?.job?.locationId ?? ""}
                         replenishmentSystem="Make"
                       />
                       <div className="flex items-center space-x-2">
@@ -473,7 +473,7 @@ const JobMakeMethodTools = ({ makeMethod }: { makeMethod?: JobMakeMethod }) => {
                     label={t`Target Method`}
                     type={(routeData?.job?.itemType ?? "Part") as "Part"}
                     blacklist={configurableItemIds}
-                    locationId={routeData?.job?.locationId ?? undefined}
+                    locationId={routeData?.job?.locationId ?? ""}
                     onChange={(value) => {
                       if (value) {
                         getMakeMethods(value?.value);
@@ -489,7 +489,7 @@ const JobMakeMethodTools = ({ makeMethod }: { makeMethod?: JobMakeMethod }) => {
                     name="targetId"
                     options={makeMethods}
                     label={t`Version`}
-                    value={selectedMakeMethod ?? undefined}
+                    value={selectedMakeMethod ?? ""}
                     onChange={(value) => {
                       if (value) {
                         setSelectedMakeMethod(value?.value);
@@ -562,11 +562,11 @@ const JobMakeMethodTools = ({ makeMethod }: { makeMethod?: JobMakeMethod }) => {
                 <Item
                   name="sourceId"
                   label={t`Item`}
-                  value={selectedConfigureItemId ?? undefined}
+                  value={selectedConfigureItemId ?? ""}
                   type={(routeData?.job?.itemType ?? "Part") as "Part"}
                   includeInactive={includeInactive === true}
                   whitelist={configurableItemIds}
-                  locationId={routeData?.job?.locationId ?? undefined}
+                  locationId={routeData?.job?.locationId ?? ""}
                   replenishmentSystem="Make"
                   onChange={(value) => {
                     setSelectedConfigureItemId(value?.value ?? null);

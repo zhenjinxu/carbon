@@ -492,7 +492,7 @@ export async function getSupplier(
   client: SupabaseClient<Database>,
   supplierId: string
 ) {
-  return client.from("suppliers").select("*").eq("id", supplierId).single();
+  return client.from("supplier").select("*").eq("id", supplierId).single();
 }
 
 type ApprovalContext = {
@@ -883,7 +883,7 @@ export async function getSuppliers(
   }
 ) {
   let query = client
-    .from("suppliers")
+    .from("supplier")
     .select("*", {
       count: "exact"
     })

@@ -32,10 +32,10 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 
   if (!file) {
-    return { error: "File is required" };
+    return { error: { message: "File is required" } };
   }
   if (!storagePath) {
-    return { error: "Storage path is required" };
+    return { error: { message: "Storage path is required" } };
   }
 
   const serviceRole = getCarbonServiceRole();
@@ -60,7 +60,7 @@ export async function action({ request }: ActionFunctionArgs) {
       fileSize: file.size,
       fileType: file.type
     });
-    return { error: error.message };
+    return { error: { message: error.message } };
   }
 
   return { data: { path: data?.path ?? storagePath } };

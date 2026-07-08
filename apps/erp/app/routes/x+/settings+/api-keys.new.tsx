@@ -12,7 +12,7 @@ import { path } from "~/utils/path";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   await requirePermissions(request, {
-    update: "users"
+    update: "settings"
   });
 
   return null;
@@ -21,7 +21,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 export async function action({ request }: ActionFunctionArgs) {
   assertIsPost(request);
   const { client, companyId, userId } = await requirePermissions(request, {
-    update: "users"
+    update: "settings"
   });
 
   await requirePlan({

@@ -1,5 +1,6 @@
 import { error } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
+import { getCarbonServiceRole } from "@carbon/auth/client.server";
 import { flash } from "@carbon/auth/session.server";
 import {
   Input,
@@ -65,8 +66,9 @@ export async function loader({ request }: LoaderFunctionArgs) {
     await Promise.all([
       getCompanySettings(client, companyId),
       getAccountsPayableBillingAddress(client, companyId),
-      client.storage
-        .from("private")
+      // Use service role to bypass RLS issues with Storage API
+      getCarbonServiceRole()
+        .storage.from("private")
         .list(`${companyId}/default-attachments/company`)
     ]);
 

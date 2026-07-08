@@ -90,7 +90,7 @@ const Select = ({
         type="hidden"
         name={name}
         id={name}
-        value={value ?? undefined}
+        value={value ?? ""}
       />
       <SelectBase
         {...props}

@@ -5,7 +5,7 @@ import {
   MenuItem,
   useDisclosure
 } from "@carbon/react";
-import { Trans, useLingui } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react/macro";
 import type { ColumnDef } from "@tanstack/react-table";
 import { memo, useMemo, useState } from "react";
 import {
@@ -281,7 +281,7 @@ const QuotesTable = memo(({ data, count }: QuotesTableProps) => {
       <>
         <MenuItem onClick={() => navigate(path.to.quoteDetails(row.id!))}>
           <MenuIcon icon={<LuPencil />} />
-          <Trans>Edit</Trans>
+          {t`Edit`}
         </MenuItem>
         <MenuItem
           disabled={!permissions.can("delete", "sales")}
@@ -292,11 +292,11 @@ const QuotesTable = memo(({ data, count }: QuotesTableProps) => {
           }}
         >
           <MenuIcon icon={<LuTrash />} />
-          <Trans>Delete</Trans>
+          {t`Delete`}
         </MenuItem>
       </>
     );
-  }, [deleteQuotationModal, navigate, permissions]);
+  }, [deleteQuotationModal, navigate, permissions, t]);
 
   return (
     <>

@@ -136,6 +136,7 @@ export default function VerifyRoute() {
   const [searchParams] = useSearchParams();
   const email = searchParams.get("email") ?? "";
   const redirectTo = searchParams.get("redirectTo") ?? undefined;
+  const devCode = searchParams.get("devCode") ?? undefined;
 
   const fetcher = useFetcher<Result>();
 
@@ -169,6 +170,17 @@ export default function VerifyRoute() {
             <p className="text-muted-foreground tracking-tight text-sm text-center">
               <Trans>We've sent a verification code to {email}</Trans>
             </p>
+
+            {devCode && (
+              <div className="w-full rounded-md border border-dashed border-border bg-muted/50 px-4 py-3 text-center">
+                <p className="text-xs text-muted-foreground mb-1">
+                  <Trans>Development mode — verification code:</Trans>
+                </p>
+                <p className="text-lg font-mono font-bold tracking-wider text-foreground select-all">
+                  {devCode}
+                </p>
+              </div>
+            )}
 
             {fetcher.data?.success === false && fetcher.data?.message && (
               <Alert variant="destructive">
