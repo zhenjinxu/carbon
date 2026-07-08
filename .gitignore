@@ -71,3 +71,6 @@ apps/*/portless.json
 packages/database/supabase/snippets/**
 .pr-review
 dump.rdb
+.codewhale/pastes/
+*.step
+*.rdb
