@@ -40,14 +40,12 @@ async function checkCompanyRelatedData(
   client: ReturnType<typeof getCarbonServiceRole>,
   companyId: string
 ) {
-  // Check key tables that indicate the company is in use
+  // Check tables with actual business data (not seed data with CASCADE delete)
+  // Excluded: location, warehouse (have ON DELETE CASCADE - auto-cleaned)
   const tablesToCheck = [
     { table: "item", label: "Items" },
     { table: "supplier", label: "Suppliers" },
     { table: "customer", label: "Customers" },
-    { table: "employeeJob", label: "Employees" },
-    { table: "location", label: "Locations" },
-    { table: "warehouse", label: "Warehouses" },
     { table: "salesOrder", label: "Sales Orders" },
     { table: "purchaseOrder", label: "Purchase Orders" },
     { table: "journalLine", label: "Journal Entries" },
@@ -97,7 +95,10 @@ export async function action({ request }: ActionFunctionArgs) {
     );
   }
 
-  // Delete the company (cascade will handle related seed data)
+  // Delete employeeJob records first (no CASCADE on this FK)
+  await client.from("employeeJob").delete().eq("companyId", companyId);
+
+  // Delete the company (cascade will handle location, warehouse, etc.)
   const { error: deleteError } = await client
     .from("company")
     .delete()

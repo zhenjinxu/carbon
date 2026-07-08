@@ -76,9 +76,8 @@ export async function getCustomFieldsSchemas(
 
     const query = client.from("customFieldTable").select("*");
 
-    if (args?.companyId) {
-      query.eq("companyId", args.companyId);
-    }
+    // customFieldTable is a global registry - no companyId column
+    // (companyId filter removed as it doesn't apply to this table)
 
     if (args?.module) {
       query.eq("module", args.module as any);

@@ -320,8 +320,9 @@ export async function getCustomFields(
   table: string,
   companyId: string
 ) {
+  // customField has companyId; customFieldTable is a global registry (no companyId)
   return client
-    .from("customFieldTable")
+    .from("customField")
     .select("*")
     .eq("table", table)
     .eq("companyId", companyId)
@@ -335,12 +336,12 @@ export async function getCustomFieldsTables(
     search: string | null;
   }
 ) {
+  // customFieldTable is a global registry - no companyId column
   let query = client
     .from("customFieldTable")
     .select("*", {
       count: "exact"
-    })
-    .eq("companyId", companyId);
+    });
 
   if (args.search) {
     query = query.ilike("name", `%${args.search}%`);
