@@ -1,0 +1,429 @@
+###
+# Carbon 阶段一：厂内局域网部署
+# ================================================
+# 用途：厂内员工通过 IP 地址访问，无需域名和 HTTPS
+#
+# 架构：
+#   - Caddy 反向代理（HTTP，无 HTTPS）
+#   - 所有服务在 Docker 内部网络
+#   - 数据库不暴露到宿主机
+#
+# 访问方式：
+#   ERP: http://[服务器IP]
+#   MES: http://[服务器IP]/mes
+#   API: http://[服务器IP]/api
+###
+
+services:
+  # ============================================================
+  # 反向代理 — 使用 IP 地址访问
+  # ============================================================
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/stage1/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      erp:
+        condition: service_healthy
+      mes:
+        condition: service_healthy
+      kong:
+        condition: service_healthy
+    networks:
+      - frontend
+      - backend
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ============================================================
+  # 业务应用
+  # ============================================================
+  erp:
+    build:
+      context: .
+      dockerfile: apps/erp/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      DOMAIN: ${SERVER_IP}
+      ERP_URL: http://${SERVER_IP}
+      MES_URL: http://${SERVER_IP}/mes
+      SUPABASE_URL: http://kong:8000
+      SUPABASE_DB_URL: postgres://authenticator:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-postgres}
+      SUPABASE_ANON_KEY: ${SUPABASE_ANON_KEY}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+      SUPABASE_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
+      SESSION_SECRET: ${SESSION_SECRET}
+      CARBON_EDITION: ${CARBON_EDITION:-community}
+      # 阶段一使用 Inbucket 作为邮件服务器
+      SMTP_HOST: inbucket
+      SMTP_PORT: 2500
+      PGSSLMODE: disable
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      kong:
+        condition: service_healthy
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  mes:
+    build:
+      context: .
+      dockerfile: apps/mes/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      DOMAIN: ${SERVER_IP}
+      ERP_URL: http://${SERVER_IP}
+      MES_URL: http://${SERVER_IP}/mes
+      SUPABASE_URL: http://kong:8000
+      SUPABASE_DB_URL: postgres://authenticator:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-postgres}
+      SUPABASE_ANON_KEY: ${SUPABASE_ANON_KEY}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+      SUPABASE_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
+      SESSION_SECRET: ${SESSION_SECRET}
+      CARBON_EDITION: ${CARBON_EDITION:-community}
+      PGSSLMODE: disable
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      kong:
+        condition: service_healthy
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # ============================================================
+  # 数据层
+  # ============================================================
+  postgres:
+    image: supabase/postgres:15.14.1.112
+    restart: unless-stopped
+    environment:
+      POSTGRES_HOST: /var/run/postgresql
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./scripts/db/supabase-init-local.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ${POSTGRES_DB:-postgres}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    # 阶段一可以暴露数据库端口方便调试
+    ports:
+      - "127.0.0.1:${PORT_DB:-5432}:5432"
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: redis-server --requirepass ${REDIS_PASSWORD} --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redisdata:/data
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # ============================================================
+  # Supabase 服务
+  # ============================================================
+  kong:
+    image: kong:2.8.1
+    restart: unless-stopped
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /home/kong/kong.yml
+      KONG_DNS_ORDER: LAST,A,CNAME
+      KONG_PLUGINS: request-transformer,cors,key-auth,acl,basic-auth
+    volumes:
+      - ./packages/dev/docker/kong.yml:/home/kong/kong.yml:ro
+    depends_on:
+      gotrue:
+        condition: service_healthy
+      postgrest:
+        condition: service_healthy
+      realtime:
+        condition: service_started
+      storage:
+        condition: service_healthy
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "kong", "health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  gotrue:
+    image: supabase/gotrue:v2.189.0
+    restart: unless-stopped
+    environment:
+      GOTRUE_API_HOST: 0.0.0.0
+      GOTRUE_API_PORT: 9999
+      API_EXTERNAL_URL: http://${SERVER_IP}
+      GOTRUE_DB_DRIVER: postgres
+      GOTRUE_DB_DATABASE_URL: postgres://supabase_auth_admin:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-postgres}
+      GOTRUE_SITE_URL: http://${SERVER_IP}
+      GOTRUE_URI_ALLOW_LIST: http://${SERVER_IP},http://${SERVER_IP}/mes
+      GOTRUE_DISABLE_SIGNUP: "false"
+      GOTRUE_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      GOTRUE_JWT_EXP: 3600
+      GOTRUE_JWT_DEFAULT_GROUP_NAME: authenticated
+      GOTRUE_JWT_ADMIN_ROLES: service_role
+      GOTRUE_JWT_AUD: authenticated
+      GOTRUE_EXTERNAL_EMAIL_ENABLED: "true"
+      GOTRUE_MAILER_AUTOCONFIRM: "true"  # 阶段一自动确认邮件
+      GOTRUE_SMTP_HOST: inbucket
+      GOTRUE_SMTP_PORT: 2500
+      GOTRUE_SMTP_USER: ""
+      GOTRUE_SMTP_PASS: ""
+      GOTRUE_SMTP_ADMIN_EMAIL: admin@carbon.local
+      GOTRUE_SMTP_SENDER_NAME: Carbon
+    depends_on:
+      postgres:
+        condition: service_healthy
+      inbucket:
+        condition: service_started
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:9999/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  postgrest:
+    image: postgrest/postgrest:v13.0.8
+    restart: unless-stopped
+    environment:
+      PGRST_DB_URI: postgres://authenticator:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-postgres}
+      PGRST_DB_SCHEMAS: public,storage,graphql_public
+      PGRST_DB_ANON_ROLE: anon
+      PGRST_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      PGRST_DB_USE_LEGACY_GUCS: "false"
+      PGRST_APP_SETTINGS_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      PGRST_APP_SETTINGS_JWT_EXP: 3600
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  realtime:
+    image: supabase/realtime:v2.89.0
+    restart: unless-stopped
+    environment:
+      PORT: 4000
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_USER: supabase_admin
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_NAME: ${POSTGRES_DB:-postgres}
+      DB_AFTER_CONNECT_QUERY: 'SET search_path TO _realtime'
+      DB_ENC_KEY: supabaserealtime
+      API_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      METRICS_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      SECRET_KEY_BASE: ${REALTIME_SECRET_KEY_BASE}
+      APP_NAME: realtime
+      ERL_AFLAGS: -proto_dist inet_tcp
+      DNS_NODES: "''"
+      RLIMIT_NOFILE: "10000"
+      SEED_SELF_HOST: "true"
+      RUN_JANITOR: "true"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
+
+  storage:
+    image: supabase/storage-api:v1.58.4
+    restart: unless-stopped
+    environment:
+      ANON_KEY: ${SUPABASE_ANON_KEY}
+      SERVICE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+      POSTGREST_URL: http://postgrest:3000
+      PGRST_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      DATABASE_URL: postgres://supabase_storage_admin:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-postgres}
+      FILE_SIZE_LIMIT: "52428800"
+      STORAGE_BACKEND: file
+      FILE_STORAGE_BACKEND_PATH: /var/lib/storage
+      TENANT_ID: stub
+      REGION: stub
+      GLOBAL_S3_BUCKET: stub
+      ENABLE_IMAGE_TRANSFORMATION: "false"
+    volumes:
+      - storage:/var/lib/storage:z
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:5000/status"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  edge-runtime:
+    image: supabase/edge-runtime:v1.74.0
+    restart: unless-stopped
+    environment:
+      JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      SUPABASE_URL: http://kong:8000
+      SUPABASE_ANON_KEY: ${SUPABASE_ANON_KEY}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+      SUPABASE_DB_URL: postgres://postgres:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-postgres}
+      VERIFY_JWT: "false"
+    volumes:
+      - ./packages/database/supabase/functions:/home/deno/functions:ro
+      - ./packages/database/src:/home/src:ro
+      - ./packages/dev/docker/edge-main:/home/deno/main:ro
+      - ./packages/dev/docker/edge-entrypoint.sh:/home/deno/entrypoint.sh:ro
+    entrypoint: ["/bin/sh", "/home/deno/entrypoint.sh"]
+    command:
+      - start
+      - --main-service
+      - /home/deno/main
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
+
+  # ============================================================
+  # 后台任务 — 阶段一使用 Inngest dev 模式
+  # ============================================================
+  inngest:
+    image: inngest/inngest:v1.19.4
+    restart: unless-stopped
+    command:
+      - inngest
+      - dev
+      - --sdk-url=http://erp:3000/api/inngest
+    environment:
+      INNGEST_DEV: "1"
+    depends_on:
+      erp:
+        condition: service_healthy
+    networks:
+      - backend
+
+  # ============================================================
+  # 邮件测试 — Inbucket（阶段一专用）
+  # ============================================================
+  inbucket:
+    image: inbucket/inbucket:3.1.1
+    restart: unless-stopped
+    ports:
+      - "${PORT_INBUCKET:-9000}:9000"  # Web UI
+      - "${PORT_SMTP:-2500}:2500"      # SMTP
+    networks:
+      - backend
+
+  # ============================================================
+  # 管理工具
+  # ============================================================
+  meta:
+    image: supabase/postgres-meta:v0.96.5
+    restart: unless-stopped
+    environment:
+      PG_META_PORT: 8080
+      PG_META_DB_HOST: postgres
+      PG_META_DB_PORT: 5432
+      PG_META_DB_NAME: ${POSTGRES_DB:-postgres}
+      PG_META_DB_USER: supabase_admin
+      PG_META_DB_PASSWORD: ${POSTGRES_PASSWORD}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
+
+  studio:
+    image: supabase/studio:2026.04.28-sha-89d08a2
+    restart: unless-stopped
+    ports:
+      - "${PORT_STUDIO:-3000}:3000"  # 阶段一可以暴露 Studio
+    environment:
+      STUDIO_PG_META_URL: http://meta:8080
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      DEFAULT_ORGANIZATION_NAME: Carbon
+      DEFAULT_PROJECT_NAME: carbon-stage1
+      SUPABASE_URL: http://kong:8000
+      SUPABASE_PUBLIC_URL: http://${SERVER_IP}/api
+      SUPABASE_ANON_KEY: ${SUPABASE_ANON_KEY}
+      SUPABASE_SERVICE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+    depends_on:
+      meta:
+        condition: service_started
+      kong:
+        condition: service_healthy
+    networks:
+      - backend
+
+# ============================================================
+# 网络
+# ============================================================
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+# ============================================================
+# 持久化卷
+# ============================================================
+volumes:
+  pgdata:
+    driver: local
+  redisdata:
+    driver: local
+  storage:
+    driver: local
+  caddy_data:
+    driver: local
+  caddy_config:
+    driver: local

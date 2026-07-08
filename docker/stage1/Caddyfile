@@ -1,0 +1,39 @@
+# Carbon 阶段一：厂内局域网 Caddy 配置
+# ================================================
+# 用途：HTTP 反向代理，无 HTTPS（厂内使用）
+#
+# 访问方式：
+#   ERP: http://[服务器IP]/
+#   MES: http://[服务器IP]/mes/
+#   API: http://[服务器IP]/api/
+
+{
+	# 阶段一不使用 HTTPS
+	auto_https off
+}
+
+# ============================================================
+# 主入口 — 路由所有服务
+# ============================================================
+:80 {
+	# MES 应用
+	handle_path /mes/* {
+		reverse_proxy mes:3000
+	}
+
+	# Supabase API
+	handle_path /api/* {
+		reverse_proxy kong:8000
+	}
+
+	# ERP 应用（默认）
+	handle {
+		reverse_proxy erp:3000
+	}
+
+	# 日志
+	log {
+		output stdout
+		format console
+	}
+}
