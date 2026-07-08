@@ -32,6 +32,7 @@ import DocumentIcon from "~/components/DocumentIcon";
 import { useDateFormatter, usePermissions, useUser } from "~/hooks";
 import { getDocumentType } from "~/modules/shared";
 import { path } from "~/utils/path";
+import { serverStorageRemove, serverStorageUpload } from "~/utils/storage";
 import { stripSpecialCharacters } from "~/utils/string";
 
 type SupplierInteractionDocumentsProps = {
@@ -223,19 +224,17 @@ export const useSupplierInteractionDocuments = ({
 
   const deleteAttachment = useCallback(
     async (attachment: FileObject) => {
-      const result = await carbon?.storage
-        .from("private")
-        .remove([getPath(attachment)]);
+      const result = await serverStorageRemove([getPath(attachment)]);
 
-      if (!result || result.error) {
-        toast.error(result?.error?.message || "Error deleting file");
+      if (result.error) {
+        toast.error(result.error.message || "Error deleting file");
         return;
       }
 
       toast.success(`${attachment.name} deleted successfully`);
       revalidator.revalidate();
     },
-    [carbon?.storage, getPath, revalidator]
+    [getPath, revalidator]
   );
 
   const download = useCallback(
@@ -289,24 +288,18 @@ export const useSupplierInteractionDocuments = ({
 
   const upload = useCallback(
     async (files: File[]) => {
-      if (!carbon) {
-        toast.error(t`Carbon client not available`);
-        return;
-      }
-
       for (const file of files) {
         const fileName = getPath(file);
         toast.info(`Uploading ${file.name}`);
 
-        const fileUpload = await carbon.storage
-          .from("private")
-          .upload(fileName, file, {
-            cacheControl: `${12 * 60 * 60}`,
-            upsert: true
-          });
+        const fileUpload = await serverStorageUpload(file, fileName, {
+          bucket: "private",
+          cacheControl: `${12 * 60 * 60}`,
+          upsert: true
+        });
 
         if (fileUpload.error) {
-          toast.error(`Failed to upload file: ${file.name}`);
+          toast.error(`Failed to upload file: ${fileUpload.error.message}`);
         } else if (fileUpload.data?.path) {
           toast.success(`Uploaded: ${file.name}`);
           createDocumentRecord({
@@ -318,7 +311,7 @@ export const useSupplierInteractionDocuments = ({
       }
       revalidator.revalidate();
     },
-    [getPath, createDocumentRecord, carbon, revalidator, t]
+    [getPath, createDocumentRecord, revalidator]
   );
 
   return {
