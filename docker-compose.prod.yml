@@ -1,0 +1,433 @@
+###
+# Carbon 生产环境全容器化部署
+# ================================================
+# 用法:
+#   1. cp .env.production.example .env.production  (编辑所有密钥)
+#   2. docker compose -f docker-compose.prod.yml --env-file .env.production up -d
+#   3. 运行初始化: docker compose -f docker-compose.prod.yml exec postgres psql ...
+#
+# 架构:
+#   唯一对外端口: 80/443 (Caddy 反向代理)
+#   所有内部服务通过 Docker 网络通信，不暴露到宿主机
+#   PostgreSQL/Redis/Storage 使用命名 volume 持久化
+#
+# 首次部署:
+#   1. 运行 supabase-init.sql 初始化数据库角色和扩展
+#   2. 运行所有 migrations: supabase/migrations/*.sql
+#   3. 运行 seed 数据 (如需要)
+###
+
+services:
+  # ============================================================
+  # 反向代理 — 唯一对外暴露的服务
+  # ============================================================
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "${PORT_HTTP:-80}:80"
+      - "${PORT_HTTPS:-443}:443"
+    volumes:
+      - ./docker/prod/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      erp:
+        condition: service_healthy
+      mes:
+        condition: service_healthy
+      kong:
+        condition: service_healthy
+    networks:
+      - frontend
+      - backend
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ============================================================
+  # 业务应用
+  # ============================================================
+  erp:
+    build:
+      context: .
+      dockerfile: apps/erp/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      DOMAIN: ${DOMAIN}
+      ERP_URL: ${ERP_URL}
+      MES_URL: ${MES_URL}
+      SUPABASE_URL: http://kong:8000
+      SUPABASE_DB_URL: postgres://authenticator:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      SUPABASE_ANON_KEY: ${SUPABASE_ANON_KEY}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+      SUPABASE_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
+      SESSION_SECRET: ${SESSION_SECRET}
+      CARBON_EDITION: ${CARBON_EDITION:-community}
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      RESEND_DOMAIN: ${RESEND_DOMAIN:-}
+      INNGEST_SIGNING_KEY: ${INNGEST_SIGNING_KEY:-}
+      INNGEST_EVENT_KEY: ${INNGEST_EVENT_KEY:-}
+      INNGEST_BASE_URL: http://inngest:8288
+      PGSSLMODE: disable
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      kong:
+        condition: service_healthy
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  mes:
+    build:
+      context: .
+      dockerfile: apps/mes/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      DOMAIN: ${DOMAIN}
+      ERP_URL: ${ERP_URL}
+      MES_URL: ${MES_URL}
+      SUPABASE_URL: http://kong:8000
+      SUPABASE_DB_URL: postgres://authenticator:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      SUPABASE_ANON_KEY: ${SUPABASE_ANON_KEY}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+      SUPABASE_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
+      SESSION_SECRET: ${SESSION_SECRET}
+      CARBON_EDITION: ${CARBON_EDITION:-community}
+      PGSSLMODE: disable
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      kong:
+        condition: service_healthy
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # ============================================================
+  # 数据层
+  # ============================================================
+  postgres:
+    image: supabase/postgres:15.14.1.112
+    restart: unless-stopped
+    environment:
+      POSTGRES_HOST: /var/run/postgresql
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./scripts/db/supabase-init-local.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ${POSTGRES_DB:-postgres}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    # 生产环境不建议暴露 PostgreSQL 端口到宿主机
+    # 如需调试: 取消下方注释
+    # ports:
+    #   - "127.0.0.1:${PORT_DB:-5432}:5432"
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: redis-server --requirepass ${REDIS_PASSWORD} --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redisdata:/data
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    # 生产环境不建议暴露 Redis 端口
+    # ports:
+    #   - "127.0.0.1:${PORT_REDIS:-6379}:6379"
+
+  # ============================================================
+  # Supabase 服务
+  # ============================================================
+  kong:
+    image: kong:2.8.1
+    restart: unless-stopped
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /home/kong/kong.yml
+      KONG_DNS_ORDER: LAST,A,CNAME
+      KONG_PLUGINS: request-transformer,cors,key-auth,acl,basic-auth
+    volumes:
+      - ./packages/dev/docker/kong.yml:/home/kong/kong.yml:ro
+    depends_on:
+      gotrue:
+        condition: service_healthy
+      postgrest:
+        condition: service_healthy
+      realtime:
+        condition: service_started
+      storage:
+        condition: service_healthy
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "kong", "health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  gotrue:
+    image: supabase/gotrue:v2.189.0
+    restart: unless-stopped
+    environment:
+      GOTRUE_API_HOST: 0.0.0.0
+      GOTRUE_API_PORT: 9999
+      API_EXTERNAL_URL: ${SUPABASE_URL}
+      GOTRUE_DB_DRIVER: postgres
+      GOTRUE_DB_DATABASE_URL: postgres://supabase_auth_admin:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-postgres}
+      GOTRUE_SITE_URL: ${ERP_URL}
+      GOTRUE_URI_ALLOW_LIST: ${ERP_URL},${MES_URL}
+      GOTRUE_DISABLE_SIGNUP: "false"
+      GOTRUE_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      GOTRUE_JWT_EXP: 3600
+      GOTRUE_JWT_DEFAULT_GROUP_NAME: authenticated
+      GOTRUE_JWT_ADMIN_ROLES: service_role
+      GOTRUE_JWT_AUD: authenticated
+      GOTRUE_EXTERNAL_EMAIL_ENABLED: "true"
+      GOTRUE_MAILER_AUTOCONFIRM: "false"
+      GOTRUE_SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      GOTRUE_SMTP_USER: ${SMTP_USER}
+      GOTRUE_SMTP_PASS: ${SMTP_PASS}
+      GOTRUE_SMTP_ADMIN_EMAIL: ${SMTP_ADMIN_EMAIL}
+      GOTRUE_SMTP_SENDER_NAME: Carbon
+      GOTRUE_EXTERNAL_GOOGLE_ENABLED: "${GOTRUE_EXTERNAL_GOOGLE_ENABLED:-false}"
+      GOTRUE_EXTERNAL_GOOGLE_CLIENT_ID: ${SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID:-}
+      GOTRUE_EXTERNAL_GOOGLE_SECRET: ${SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET:-}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:9999/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  postgrest:
+    image: postgrest/postgrest:v13.0.8
+    restart: unless-stopped
+    environment:
+      PGRST_DB_URI: postgres://authenticator:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-postgres}
+      PGRST_DB_SCHEMAS: public,storage,graphql_public
+      PGRST_DB_ANON_ROLE: anon
+      PGRST_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      PGRST_DB_USE_LEGACY_GUCS: "false"
+      PGRST_APP_SETTINGS_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      PGRST_APP_SETTINGS_JWT_EXP: 3600
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  realtime:
+    image: supabase/realtime:v2.89.0
+    restart: unless-stopped
+    environment:
+      PORT: 4000
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_USER: supabase_admin
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_NAME: ${POSTGRES_DB:-postgres}
+      DB_AFTER_CONNECT_QUERY: 'SET search_path TO _realtime'
+      DB_ENC_KEY: supabaserealtime
+      API_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      METRICS_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      SECRET_KEY_BASE: ${REALTIME_SECRET_KEY_BASE}
+      APP_NAME: realtime
+      ERL_AFLAGS: -proto_dist inet_tcp
+      DNS_NODES: "''"
+      RLIMIT_NOFILE: "10000"
+      SEED_SELF_HOST: "true"
+      RUN_JANITOR: "true"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
+
+  storage:
+    image: supabase/storage-api:v1.58.4
+    restart: unless-stopped
+    environment:
+      ANON_KEY: ${SUPABASE_ANON_KEY}
+      SERVICE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+      POSTGREST_URL: http://postgrest:3000
+      PGRST_JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      DATABASE_URL: postgres://supabase_storage_admin:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-postgres}
+      FILE_SIZE_LIMIT: "52428800"
+      STORAGE_BACKEND: file
+      FILE_STORAGE_BACKEND_PATH: /var/lib/storage
+      TENANT_ID: stub
+      REGION: stub
+      GLOBAL_S3_BUCKET: stub
+      ENABLE_IMAGE_TRANSFORMATION: "false"
+    volumes:
+      - storage:/var/lib/storage:z
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:5000/status"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  edge-runtime:
+    image: supabase/edge-runtime:v1.74.0
+    restart: unless-stopped
+    environment:
+      JWT_SECRET: ${SUPABASE_JWT_SECRET}
+      SUPABASE_URL: http://kong:8000
+      SUPABASE_ANON_KEY: ${SUPABASE_ANON_KEY}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+      SUPABASE_DB_URL: postgres://postgres:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-postgres}
+      VERIFY_JWT: "false"
+    volumes:
+      - ./packages/database/supabase/functions:/home/deno/functions:ro
+      - ./packages/database/src:/home/src:ro
+      - ./packages/dev/docker/edge-main:/home/deno/main:ro
+      - ./packages/dev/docker/edge-entrypoint.sh:/home/deno/entrypoint.sh:ro
+    entrypoint: ["/bin/sh", "/home/deno/entrypoint.sh"]
+    command:
+      - start
+      - --main-service
+      - /home/deno/main
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
+
+  # ============================================================
+  # 后台任务 — 生产环境使用 Inngest Cloud 或自托管
+  # ============================================================
+  inngest:
+    image: inngest/inngest:v1.19.4
+    restart: unless-stopped
+    command:
+      - inngest
+      - dev
+      - --sdk-url=http://erp:3000/api/inngest
+    environment:
+      INNGEST_DEV: "1"
+    depends_on:
+      erp:
+        condition: service_healthy
+    networks:
+      - backend
+    # 生产环境建议使用 Inngest Cloud，而非自托管 dev 模式
+    # 如需自托管生产队列，需额外配置 PostgreSQL 后端
+
+  # ============================================================
+  # 管理工具 — 仅内网访问
+  # ============================================================
+  meta:
+    image: supabase/postgres-meta:v0.96.5
+    restart: unless-stopped
+    environment:
+      PG_META_PORT: 8080
+      PG_META_DB_HOST: postgres
+      PG_META_DB_PORT: 5432
+      PG_META_DB_NAME: ${POSTGRES_DB:-postgres}
+      PG_META_DB_USER: supabase_admin
+      PG_META_DB_PASSWORD: ${POSTGRES_PASSWORD}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
+
+  studio:
+    image: supabase/studio:2026.04.28-sha-89d08a2
+    restart: unless-stopped
+    # 生产环境建议不对外暴露，仅内网/VPN 访问
+    # 如需要，取消下方 ports 注释并在 Caddy 中配置内网路由
+    # ports:
+    #   - "127.0.0.1:${PORT_STUDIO:-3000}:3000"
+    environment:
+      STUDIO_PG_META_URL: http://meta:8080
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      DEFAULT_ORGANIZATION_NAME: Carbon
+      DEFAULT_PROJECT_NAME: carbon-production
+      SUPABASE_URL: http://kong:8000
+      SUPABASE_PUBLIC_URL: ${SUPABASE_URL}
+      SUPABASE_ANON_KEY: ${SUPABASE_ANON_KEY}
+      SUPABASE_SERVICE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+    depends_on:
+      meta:
+        condition: service_started
+      kong:
+        condition: service_healthy
+    networks:
+      - backend
+
+# ============================================================
+# 网络
+# ============================================================
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+    internal: true  # 内部网络不暴露到宿主机
+
+# ============================================================
+# 持久化卷
+# ============================================================
+volumes:
+  pgdata:
+    driver: local
+  redisdata:
+    driver: local
+  storage:
+    driver: local
+  caddy_data:
+    driver: local
+  caddy_config:
+    driver: local

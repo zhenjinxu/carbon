@@ -30,6 +30,6 @@ COPY --from=deps /repo/package.json /repo/pnpm-lock.yaml /repo/pnpm-workspace.ya
 COPY --from=deps /repo/node_modules ./node_modules
 COPY --from=deps /repo/packages ./packages
 COPY --from=build /repo/apps/mes ./apps/mes
-EXPOSE 3001
+EXPOSE 3000
 WORKDIR /repo/apps/mes
 CMD ["pnpm","run","start"]

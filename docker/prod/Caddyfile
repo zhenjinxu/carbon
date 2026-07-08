@@ -1,0 +1,150 @@
+# Caddy 反向代理 — Carbon 生产环境
+# ============================================================
+# 功能:
+#   - 自动 HTTPS (Let's Encrypt)
+#   - ERP/MES/Supabase API 域名路由
+#   - WebSocket 代理 (Realtime)
+#   - 静态资源缓存
+#   - 安全头 (HSTS, CSP 等)
+#
+# 用法:
+#   - ERP:  erp.yourcompany.com  → erp:3000
+#   - MES:  mes.yourcompany.com  → mes:3000
+#   - API:  api.yourcompany.com  → kong:8000 (Supabase)
+#   - Studio: 内网 IP:3000 (不通过 Caddy，直接访问)
+
+# ============================================================
+# 全局设置
+# ============================================================
+{
+	# 生产环境自动 HTTPS
+	acme_ca https://acme-v02.api.letsencrypt.org/directory
+	email {$ACME_EMAIL:admin@{$DOMAIN}}
+
+	# 安全设置
+	servers {
+		protocols h1 h2 h3
+	}
+}
+
+# ============================================================
+# ERP 应用
+# ============================================================
+{$ERP_URL} {
+	reverse_proxy erp:3000 {
+		health_uri /api/health
+		health_interval 15s
+		health_timeout 5s
+	}
+
+	header {
+		# 安全头
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		X-XSS-Protection "1; mode=block"
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		Referrer-Policy strict-origin-when-cross-origin
+
+		# 移除 server header
+		-Server
+	}
+
+	# 静态资源长缓存
+	@static path /assets/* /favicon.ico /robots.txt
+	handle @static {
+		header Cache-Control "public, max-age=31536000, immutable"
+	}
+
+	# SPA fallback (所有非 API 路由返回 index.html)
+	handle {
+		try_files {path} /index.html
+	}
+
+	encode gzip zstd
+}
+
+# ============================================================
+# MES 应用
+# ============================================================
+{$MES_URL} {
+	reverse_proxy mes:3000 {
+		health_uri /api/health
+		health_interval 15s
+		health_timeout 5s
+	}
+
+	header {
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		X-XSS-Protection "1; mode=block"
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		Referrer-Policy strict-origin-when-cross-origin
+		-Server
+	}
+
+	@static path /assets/* /favicon.ico
+	handle @static {
+		header Cache-Control "public, max-age=31536000, immutable"
+	}
+
+	handle {
+		try_files {path} /index.html
+	}
+
+	encode gzip zstd
+}
+
+# ============================================================
+# Supabase API (Kong)
+# ============================================================
+# API 子域名 — 路由所有 Supabase 服务
+{$SUPABASE_URL_HOST:api.{$DOMAIN}} {
+	# Auth
+	handle_path /auth/* {
+		reverse_proxy kong:8000
+	}
+
+	# REST API
+	handle_path /rest/* {
+		reverse_proxy kong:8000
+	}
+
+	# Storage
+	handle_path /storage/* {
+		reverse_proxy kong:8000 {
+			# 上传大文件需要更大的 body
+			max_request_body_size 100MB
+		}
+	}
+
+	# Realtime (WebSocket)
+	handle_path /realtime/* {
+		reverse_proxy kong:8000 {
+			# WebSocket 支持
+			header_up X-Forwarded-Proto {scheme}
+		}
+	}
+
+	# Edge Functions
+	handle_path /functions/* {
+		reverse_proxy kong:8000 {
+			# Edge Functions 可能需要较长超时
+			transport http {
+				response_header_timeout 300s
+			}
+		}
+	}
+
+	# Verify endpoint (GoTrue)
+	handle_path /verify {
+		reverse_proxy kong:8000
+	}
+
+	header {
+		X-Content-Type-Options nosniff
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		-Server
+	}
+
+	encode gzip
+}
