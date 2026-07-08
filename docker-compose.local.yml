@@ -228,7 +228,7 @@ services:
     command:
       - inngest
       - dev
-      - --sdk-url=${ERP_URL}/api/inngest
+      - --sdk-url=http://host.docker.internal:${PORT_ERP}/api/inngest
     environment:
       SSL_CERT_FILE: /etc/ssl/certs/portless-ca.pem
     extra_hosts:
