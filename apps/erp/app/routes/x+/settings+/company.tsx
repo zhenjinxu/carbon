@@ -21,7 +21,7 @@ import { msg } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { LuKeySquare, LuTrash2 } from "react-icons/lu";
 import type { ActionFunctionArgs } from "react-router";
-import { data, Link } from "react-router";
+import { data, Link, Outlet } from "react-router";
 import { useRouteData } from "~/hooks";
 import type { Company as CompanyType } from "~/modules/settings";
 import {
@@ -151,6 +151,7 @@ export default function Company() {
           </CardContent>
         </Card>
       </VStack>
+      <Outlet />
     </ScrollArea>
   );
 }
