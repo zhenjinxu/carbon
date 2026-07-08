@@ -2379,6 +2379,9 @@ msgstr "删除属性"
 msgid "Delete Category"
 msgstr "删除分类"
 
+msgid "Delete Company"
+msgstr ""
+
 msgid "Delete Consumable"
 msgstr "删除耗材"
 
@@ -2564,6 +2567,9 @@ msgstr "删除供应商报价"
 
 msgid "Delete Supplier Type"
 msgstr "删除供应商类型"
+
+msgid "Delete this company (only if no business data exists)"
+msgstr ""
 
 msgid "Delete Timecard"
 msgstr "删除时间卡"
@@ -3692,8 +3698,10 @@ msgid "Failed to update thumbnail path"
 msgstr "无法更新缩略图路径"
 
 #. placeholder {0}: file.name
-msgid "Failed to upload {0}"
-msgstr "上传失败 {0}"
+#. placeholder {1}: result.error.message
+#. placeholder {1}: upload.error.message
+msgid "Failed to upload {0}: {1}"
+msgstr ""
 
 msgid "Failed to upload certificate"
 msgstr "上传证书失败"
@@ -3721,8 +3729,9 @@ msgstr "上传徽标失败：{errorMessage}"
 msgid "Failed to upload model"
 msgstr "上传模型失败"
 
-msgid "Failed to upload PDF"
-msgstr "上传 PDF 失败"
+#. placeholder {0}: result.error.message
+msgid "Failed to upload PDF: {0}"
+msgstr ""
 
 msgid "Failure Mode"
 msgstr "故障模式"
@@ -5443,6 +5452,9 @@ msgstr "未找到字段。"
 msgid "No files"
 msgstr "没有文件"
 
+msgid "No files selected"
+msgstr ""
+
 msgid "No files uploaded"
 msgstr "未上传任何文件"
 
@@ -5865,6 +5877,9 @@ msgstr "装箱单"
 
 msgid "Page {pdfViewPage} of {documentPageCount}"
 msgstr "第 {pdfViewPage} 页，共 {documentPageCount} 页"
+
+msgid "Page Not Found"
+msgstr ""
 
 msgid "Paid Amount:"
 msgstr "已支付金额："
@@ -7624,9 +7639,6 @@ msgstr "跳过公司假期的计划维护"
 msgid "Skipped"
 msgstr "已跳过"
 
-msgid "Something went wrong"
-msgstr "出现错误"
-
 msgid "Something went wrong. Please try again."
 msgstr "出现问题。请重试。"
 
@@ -7797,9 +7809,6 @@ msgstr "库存转移向导"
 
 msgid "Stock Transfers"
 msgstr "库存转移"
-
-msgid "Storage client not available"
-msgstr "存储客户端不可用"
 
 msgid "Storage Rules"
 msgstr "存储规则"
@@ -8143,6 +8152,9 @@ msgstr "该方法的新版本号"
 
 msgid "The number of hours per week the contractor is available to work."
 msgstr "承包商每周可用工作的小时数。"
+
+msgid "The page you're looking for doesn't exist."
+msgstr ""
 
 msgid "The percentage of the cash discount. Use 0 for no discount."
 msgstr "现金折扣的百分比。使用 0 表示无折扣。"
@@ -8667,6 +8679,10 @@ msgstr "上传完成但未返回文件路径"
 
 msgid "Upload CSV"
 msgstr "上传 CSV"
+
+#. placeholder {0}: err instanceof Error ? err.message : "Unknown error"
+msgid "Upload failed: {0}"
+msgstr ""
 
 msgid "Uploaded model"
 msgstr "已上传模型"

@@ -2379,6 +2379,9 @@ msgstr "Delete Attribute"
 msgid "Delete Category"
 msgstr "Delete Category"
 
+msgid "Delete Company"
+msgstr "Delete Company"
+
 msgid "Delete Consumable"
 msgstr "Delete Consumable"
 
@@ -2564,6 +2567,9 @@ msgstr "Delete Supplier Quote"
 
 msgid "Delete Supplier Type"
 msgstr "Delete Supplier Type"
+
+msgid "Delete this company (only if no business data exists)"
+msgstr "Delete this company (only if no business data exists)"
 
 msgid "Delete Timecard"
 msgstr "Delete Timecard"
@@ -3692,8 +3698,10 @@ msgid "Failed to update thumbnail path"
 msgstr "Failed to update thumbnail path"
 
 #. placeholder {0}: file.name
-msgid "Failed to upload {0}"
-msgstr "Failed to upload {0}"
+#. placeholder {1}: result.error.message
+#. placeholder {1}: upload.error.message
+msgid "Failed to upload {0}: {1}"
+msgstr "Failed to upload {0}: {1}"
 
 msgid "Failed to upload certificate"
 msgstr "Failed to upload certificate"
@@ -3721,8 +3729,9 @@ msgstr "Failed to upload logo: {errorMessage}"
 msgid "Failed to upload model"
 msgstr "Failed to upload model"
 
-msgid "Failed to upload PDF"
-msgstr "Failed to upload PDF"
+#. placeholder {0}: result.error.message
+msgid "Failed to upload PDF: {0}"
+msgstr "Failed to upload PDF: {0}"
 
 msgid "Failure Mode"
 msgstr "Failure Mode"
@@ -5443,6 +5452,9 @@ msgstr "No fields found."
 msgid "No files"
 msgstr "No files"
 
+msgid "No files selected"
+msgstr "No files selected"
+
 msgid "No files uploaded"
 msgstr "No files uploaded"
 
@@ -5865,6 +5877,9 @@ msgstr "Packing Slip"
 
 msgid "Page {pdfViewPage} of {documentPageCount}"
 msgstr "Page {pdfViewPage} of {documentPageCount}"
+
+msgid "Page Not Found"
+msgstr "Page Not Found"
 
 msgid "Paid Amount:"
 msgstr "Paid Amount:"
@@ -7624,9 +7639,6 @@ msgstr "Skip scheduled maintenance on company holidays"
 msgid "Skipped"
 msgstr "Skipped"
 
-msgid "Something went wrong"
-msgstr "Something went wrong"
-
 msgid "Something went wrong. Please try again."
 msgstr "Something went wrong. Please try again."
 
@@ -7797,9 +7809,6 @@ msgstr "Stock Transfer Wizard"
 
 msgid "Stock Transfers"
 msgstr "Stock Transfers"
-
-msgid "Storage client not available"
-msgstr "Storage client not available"
 
 msgid "Storage Rules"
 msgstr "Storage Rules"
@@ -8143,6 +8152,9 @@ msgstr "The new version number of the method"
 
 msgid "The number of hours per week the contractor is available to work."
 msgstr "The number of hours per week the contractor is available to work."
+
+msgid "The page you're looking for doesn't exist."
+msgstr "The page you're looking for doesn't exist."
 
 msgid "The percentage of the cash discount. Use 0 for no discount."
 msgstr "The percentage of the cash discount. Use 0 for no discount."
@@ -8667,6 +8679,10 @@ msgstr "Upload completed but no file path returned"
 
 msgid "Upload CSV"
 msgstr "Upload CSV"
+
+#. placeholder {0}: err instanceof Error ? err.message : "Unknown error"
+msgid "Upload failed: {0}"
+msgstr "Upload failed: {0}"
 
 msgid "Uploaded model"
 msgstr "Uploaded model"

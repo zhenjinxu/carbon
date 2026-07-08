@@ -13,6 +13,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. placeholder {0}: operation.jobStatus === "Paused" ? "Paused" : operation.operationStatus
+#. placeholder {0}: operation.operationStatus
 #. placeholder {0}: status === "Ready" ? "Released" : status
 msgid "{0}"
 msgstr "{0}"
@@ -112,9 +113,6 @@ msgstr "Authentication Error"
 
 msgid "available"
 msgstr "available"
-
-msgid "Back Home"
-msgstr "Back Home"
 
 msgid "Batch"
 msgstr "Batch"
@@ -967,9 +965,6 @@ msgstr "Signed in as {stationName}"
 
 msgid "Size"
 msgstr "Size"
-
-msgid "Something went wrong"
-msgstr "Something went wrong"
 
 msgid "Source"
 msgstr "Source"

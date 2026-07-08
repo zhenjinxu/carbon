@@ -2379,6 +2379,9 @@ msgstr "Удалить атрибут"
 msgid "Delete Category"
 msgstr "Удалить категорию"
 
+msgid "Delete Company"
+msgstr ""
+
 msgid "Delete Consumable"
 msgstr "Удалить расходный материал"
 
@@ -2564,6 +2567,9 @@ msgstr "Удалить предложение поставщика"
 
 msgid "Delete Supplier Type"
 msgstr "Удалить тип поставщика"
+
+msgid "Delete this company (only if no business data exists)"
+msgstr ""
 
 msgid "Delete Timecard"
 msgstr "Удалить табель учета рабочего времени"
@@ -3692,8 +3698,10 @@ msgid "Failed to update thumbnail path"
 msgstr "Не удалось обновить путь миниатюры"
 
 #. placeholder {0}: file.name
-msgid "Failed to upload {0}"
-msgstr "Ошибка загрузки {0}"
+#. placeholder {1}: result.error.message
+#. placeholder {1}: upload.error.message
+msgid "Failed to upload {0}: {1}"
+msgstr ""
 
 msgid "Failed to upload certificate"
 msgstr ""
@@ -3721,8 +3729,9 @@ msgstr "Ошибка загрузки логотипа: {errorMessage}"
 msgid "Failed to upload model"
 msgstr "Ошибка загрузки модели"
 
-msgid "Failed to upload PDF"
-msgstr "Ошибка загрузки PDF"
+#. placeholder {0}: result.error.message
+msgid "Failed to upload PDF: {0}"
+msgstr ""
 
 msgid "Failure Mode"
 msgstr "Режим отказа"
@@ -5443,6 +5452,9 @@ msgstr "Поля не найдены."
 msgid "No files"
 msgstr "Нет файлов"
 
+msgid "No files selected"
+msgstr ""
+
 msgid "No files uploaded"
 msgstr "Файлы не загружены"
 
@@ -5865,6 +5877,9 @@ msgstr "Упаковочный лист"
 
 msgid "Page {pdfViewPage} of {documentPageCount}"
 msgstr "Страница {pdfViewPage} из {documentPageCount}"
+
+msgid "Page Not Found"
+msgstr ""
 
 msgid "Paid Amount:"
 msgstr "Оплаченная сумма:"
@@ -7624,9 +7639,6 @@ msgstr "Пропускать запланированное техническо
 msgid "Skipped"
 msgstr "Пропущено"
 
-msgid "Something went wrong"
-msgstr ""
-
 msgid "Something went wrong. Please try again."
 msgstr "Что-то пошло не так. Пожалуйста, попробуйте еще раз."
 
@@ -7797,9 +7809,6 @@ msgstr "Мастер передачи запасов"
 
 msgid "Stock Transfers"
 msgstr "Передачи запасов"
-
-msgid "Storage client not available"
-msgstr "Клиент хранилища недоступен"
 
 msgid "Storage Rules"
 msgstr "Правила хранения"
@@ -8143,6 +8152,9 @@ msgstr "Номер новой версии метода"
 
 msgid "The number of hours per week the contractor is available to work."
 msgstr "Количество часов в неделю, в течение которых подрядчик доступен для работы."
+
+msgid "The page you're looking for doesn't exist."
+msgstr ""
 
 msgid "The percentage of the cash discount. Use 0 for no discount."
 msgstr "Процент скидки за наличный расчет. Используйте 0 для отсутствия скидки."
@@ -8667,6 +8679,10 @@ msgstr "Загрузка завершена, но путь файла не во�
 
 msgid "Upload CSV"
 msgstr "Загрузить CSV"
+
+#. placeholder {0}: err instanceof Error ? err.message : "Unknown error"
+msgid "Upload failed: {0}"
+msgstr ""
 
 msgid "Uploaded model"
 msgstr "Модель загружена"

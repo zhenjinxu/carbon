@@ -2379,6 +2379,9 @@ msgstr "属性を削除"
 msgid "Delete Category"
 msgstr "カテゴリを削除"
 
+msgid "Delete Company"
+msgstr ""
+
 msgid "Delete Consumable"
 msgstr "消耗品を削除"
 
@@ -2564,6 +2567,9 @@ msgstr "サプライヤー見積を削除"
 
 msgid "Delete Supplier Type"
 msgstr "サプライヤータイプを削除"
+
+msgid "Delete this company (only if no business data exists)"
+msgstr ""
 
 msgid "Delete Timecard"
 msgstr "タイムカードを削除"
@@ -3692,8 +3698,10 @@ msgid "Failed to update thumbnail path"
 msgstr "サムネイルパスの更新に失敗しました"
 
 #. placeholder {0}: file.name
-msgid "Failed to upload {0}"
-msgstr "アップロードに失敗しました {0}"
+#. placeholder {1}: result.error.message
+#. placeholder {1}: upload.error.message
+msgid "Failed to upload {0}: {1}"
+msgstr ""
 
 msgid "Failed to upload certificate"
 msgstr ""
@@ -3721,8 +3729,9 @@ msgstr "ロゴのアップロードに失敗しました: {errorMessage}"
 msgid "Failed to upload model"
 msgstr "モデルのアップロードに失敗しました"
 
-msgid "Failed to upload PDF"
-msgstr "PDFのアップロードに失敗しました"
+#. placeholder {0}: result.error.message
+msgid "Failed to upload PDF: {0}"
+msgstr ""
 
 msgid "Failure Mode"
 msgstr "故障モード"
@@ -5443,6 +5452,9 @@ msgstr "フィールドが見つかりません。"
 msgid "No files"
 msgstr "ファイルなし"
 
+msgid "No files selected"
+msgstr ""
+
 msgid "No files uploaded"
 msgstr "ファイルがアップロードされていません"
 
@@ -5865,6 +5877,9 @@ msgstr "梱包明細書"
 
 msgid "Page {pdfViewPage} of {documentPageCount}"
 msgstr "ページ {pdfViewPage} / {documentPageCount}"
+
+msgid "Page Not Found"
+msgstr ""
 
 msgid "Paid Amount:"
 msgstr "支払済み金額:"
@@ -7624,9 +7639,6 @@ msgstr "会社の祝日に予定されたメンテナンスをスキップする
 msgid "Skipped"
 msgstr "スキップ"
 
-msgid "Something went wrong"
-msgstr ""
-
 msgid "Something went wrong. Please try again."
 msgstr "何か問題が発生しました。もう一度お試しください。"
 
@@ -7797,9 +7809,6 @@ msgstr "在庫転送ウィザード"
 
 msgid "Stock Transfers"
 msgstr "在庫移動"
-
-msgid "Storage client not available"
-msgstr "ストレージクライアントが利用できません"
 
 msgid "Storage Rules"
 msgstr "保管ルール"
@@ -8143,6 +8152,9 @@ msgstr "メソッドの新しいバージョン番号"
 
 msgid "The number of hours per week the contractor is available to work."
 msgstr "契約者が利用可能な週あたりの時間数。"
+
+msgid "The page you're looking for doesn't exist."
+msgstr ""
 
 msgid "The percentage of the cash discount. Use 0 for no discount."
 msgstr "キャッシュディスカウントのパーセンテージ。割引なしの場合は0を使用してください。"
@@ -8667,6 +8679,10 @@ msgstr "アップロードは完了しましたがファイルパスが返され
 
 msgid "Upload CSV"
 msgstr "CSVをアップロード"
+
+#. placeholder {0}: err instanceof Error ? err.message : "Unknown error"
+msgid "Upload failed: {0}"
+msgstr ""
 
 msgid "Uploaded model"
 msgstr "モデルをアップロードしました"

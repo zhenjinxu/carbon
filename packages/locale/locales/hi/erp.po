@@ -2379,6 +2379,9 @@ msgstr "विशेषता हटाएं"
 msgid "Delete Category"
 msgstr "श्रेणी हटाएं"
 
+msgid "Delete Company"
+msgstr ""
+
 msgid "Delete Consumable"
 msgstr "उपभोग्य हटाएं"
 
@@ -2564,6 +2567,9 @@ msgstr "आपूर्तिकर्ता उद्धरण हटाएं"
 
 msgid "Delete Supplier Type"
 msgstr "आपूर्तिकर्ता प्रकार हटाएं"
+
+msgid "Delete this company (only if no business data exists)"
+msgstr ""
 
 msgid "Delete Timecard"
 msgstr "टाइमकार्ड हटाएं"
@@ -3692,8 +3698,10 @@ msgid "Failed to update thumbnail path"
 msgstr "थंबनेल पथ अपडेट करने में विफल"
 
 #. placeholder {0}: file.name
-msgid "Failed to upload {0}"
-msgstr "अपलोड करने में विफल {0}"
+#. placeholder {1}: result.error.message
+#. placeholder {1}: upload.error.message
+msgid "Failed to upload {0}: {1}"
+msgstr ""
 
 msgid "Failed to upload certificate"
 msgstr ""
@@ -3721,8 +3729,9 @@ msgstr "लोगो अपलोड करने में विफल: {error
 msgid "Failed to upload model"
 msgstr "मॉडल अपलोड करने में विफल"
 
-msgid "Failed to upload PDF"
-msgstr "PDF अपलोड करने में विफल"
+#. placeholder {0}: result.error.message
+msgid "Failed to upload PDF: {0}"
+msgstr ""
 
 msgid "Failure Mode"
 msgstr "विफलता मोड"
@@ -5443,6 +5452,9 @@ msgstr "कोई फ़ील्ड नहीं मिला।"
 msgid "No files"
 msgstr "कोई फ़ाइलें नहीं"
 
+msgid "No files selected"
+msgstr ""
+
 msgid "No files uploaded"
 msgstr "कोई फ़ाइल अपलोड नहीं की गई"
 
@@ -5865,6 +5877,9 @@ msgstr "पैकिंग स्लिप"
 
 msgid "Page {pdfViewPage} of {documentPageCount}"
 msgstr "पृष्ठ {pdfViewPage} का {documentPageCount}"
+
+msgid "Page Not Found"
+msgstr ""
 
 msgid "Paid Amount:"
 msgstr "भुगतान की गई राशि:"
@@ -7624,9 +7639,6 @@ msgstr "कंपनी की छुट्टियों पर निर्�
 msgid "Skipped"
 msgstr "छोड़ा गया"
 
-msgid "Something went wrong"
-msgstr ""
-
 msgid "Something went wrong. Please try again."
 msgstr "कुछ गलत हो गया। कृपया पुनः प्रयास करें।"
 
@@ -7797,9 +7809,6 @@ msgstr "स्टॉक ट्रांसफर विज़ार्ड"
 
 msgid "Stock Transfers"
 msgstr "स्टॉक ट्रांसफर"
-
-msgid "Storage client not available"
-msgstr "स्टोरेज क्लाइंट उपलब्ध नहीं है"
 
 msgid "Storage Rules"
 msgstr "भंडारण नियम"
@@ -8143,6 +8152,9 @@ msgstr "विधि का नया संस्करण संख्या"
 
 msgid "The number of hours per week the contractor is available to work."
 msgstr "ठेकेदार प्रति सप्ताह काम करने के लिए उपलब्ध घंटों की संख्या।"
+
+msgid "The page you're looking for doesn't exist."
+msgstr ""
 
 msgid "The percentage of the cash discount. Use 0 for no discount."
 msgstr "नकद छूट का प्रतिशत। कोई छूट नहीं के लिए 0 का उपयोग करें।"
@@ -8667,6 +8679,10 @@ msgstr "अपलोड पूर्ण हुआ लेकिन कोई फ�
 
 msgid "Upload CSV"
 msgstr "CSV अपलोड करें"
+
+#. placeholder {0}: err instanceof Error ? err.message : "Unknown error"
+msgid "Upload failed: {0}"
+msgstr ""
 
 msgid "Uploaded model"
 msgstr "अपलोड किया गया मॉडल"

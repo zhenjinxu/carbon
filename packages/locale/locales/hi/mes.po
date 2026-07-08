@@ -13,6 +13,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. placeholder {0}: operation.jobStatus === "Paused" ? "Paused" : operation.operationStatus
+#. placeholder {0}: operation.operationStatus
 #. placeholder {0}: status === "Ready" ? "Released" : status
 msgid "{0}"
 msgstr ""
@@ -112,9 +113,6 @@ msgstr "प्रमाणीकरण त्रुटि"
 
 msgid "available"
 msgstr "उपलब्ध"
-
-msgid "Back Home"
-msgstr ""
 
 msgid "Batch"
 msgstr "बैच"
@@ -967,9 +965,6 @@ msgstr "के रूप में साइन इन किया गया {s
 
 msgid "Size"
 msgstr "आकार"
-
-msgid "Something went wrong"
-msgstr ""
 
 msgid "Source"
 msgstr "स्रोत"

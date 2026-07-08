@@ -2379,6 +2379,9 @@ msgstr "Usuń atrybut"
 msgid "Delete Category"
 msgstr "Usuń kategorię"
 
+msgid "Delete Company"
+msgstr ""
+
 msgid "Delete Consumable"
 msgstr "Usuń materiał eksploatacyjny"
 
@@ -2564,6 +2567,9 @@ msgstr "Usuń Ofertę Dostawcy"
 
 msgid "Delete Supplier Type"
 msgstr "Usuń typ dostawcy"
+
+msgid "Delete this company (only if no business data exists)"
+msgstr ""
 
 msgid "Delete Timecard"
 msgstr "Usuń kartę czasu pracy"
@@ -3692,8 +3698,10 @@ msgid "Failed to update thumbnail path"
 msgstr "Nie udało się zaktualizować ścieżki miniatury"
 
 #. placeholder {0}: file.name
-msgid "Failed to upload {0}"
-msgstr "Nie udało się przesłać {0}"
+#. placeholder {1}: result.error.message
+#. placeholder {1}: upload.error.message
+msgid "Failed to upload {0}: {1}"
+msgstr ""
 
 msgid "Failed to upload certificate"
 msgstr ""
@@ -3721,8 +3729,9 @@ msgstr "Nie udało się przesłać logo: {errorMessage}"
 msgid "Failed to upload model"
 msgstr "Nie udało się przesłać modelu"
 
-msgid "Failed to upload PDF"
-msgstr "Nie udało się przesłać pliku PDF"
+#. placeholder {0}: result.error.message
+msgid "Failed to upload PDF: {0}"
+msgstr ""
 
 msgid "Failure Mode"
 msgstr "Tryb Awarii"
@@ -5443,6 +5452,9 @@ msgstr "Nie znaleziono pól."
 msgid "No files"
 msgstr "Brak plików"
 
+msgid "No files selected"
+msgstr ""
+
 msgid "No files uploaded"
 msgstr "Brak przesłanych plików"
 
@@ -5865,6 +5877,9 @@ msgstr "Dokument wysyłki"
 
 msgid "Page {pdfViewPage} of {documentPageCount}"
 msgstr "Strona {pdfViewPage} z {documentPageCount}"
+
+msgid "Page Not Found"
+msgstr ""
 
 msgid "Paid Amount:"
 msgstr "Kwota zapłacona:"
@@ -7624,9 +7639,6 @@ msgstr "Pomiń zaplanowaną konserwację w dni świąt firmowych"
 msgid "Skipped"
 msgstr "Pominięte"
 
-msgid "Something went wrong"
-msgstr ""
-
 msgid "Something went wrong. Please try again."
 msgstr "Coś poszło nie tak. Spróbuj ponownie."
 
@@ -7797,9 +7809,6 @@ msgstr "Kreator Transferu Zapasów"
 
 msgid "Stock Transfers"
 msgstr "Transfery Zapasów"
-
-msgid "Storage client not available"
-msgstr "Klient magazynu niedostępny"
 
 msgid "Storage Rules"
 msgstr "Reguły przechowywania"
@@ -8143,6 +8152,9 @@ msgstr "Nowy numer wersji metody"
 
 msgid "The number of hours per week the contractor is available to work."
 msgstr "Liczba godzin na tydzień, przez którą wykonawca jest dostępny do pracy."
+
+msgid "The page you're looking for doesn't exist."
+msgstr ""
 
 msgid "The percentage of the cash discount. Use 0 for no discount."
 msgstr "Procent rabatu gotówkowego. Użyj 0, aby nie udzielać rabatu."
@@ -8667,6 +8679,10 @@ msgstr "Przesyłanie zakończone, ale ścieżka pliku nie została zwrócona"
 
 msgid "Upload CSV"
 msgstr "Prześlij CSV"
+
+#. placeholder {0}: err instanceof Error ? err.message : "Unknown error"
+msgid "Upload failed: {0}"
+msgstr ""
 
 msgid "Uploaded model"
 msgstr "Model przesłany"

@@ -2379,6 +2379,9 @@ msgstr "Attribut löschen"
 msgid "Delete Category"
 msgstr "Kategorie löschen"
 
+msgid "Delete Company"
+msgstr ""
+
 msgid "Delete Consumable"
 msgstr "Verbrauchsmaterial löschen"
 
@@ -2564,6 +2567,9 @@ msgstr "Lieferantenangebotsanfrage löschen"
 
 msgid "Delete Supplier Type"
 msgstr "Lieferantentyp löschen"
+
+msgid "Delete this company (only if no business data exists)"
+msgstr ""
 
 msgid "Delete Timecard"
 msgstr "Zeitkarte löschen"
@@ -3692,8 +3698,10 @@ msgid "Failed to update thumbnail path"
 msgstr "Fehler beim Aktualisieren des Miniaturbildpfads"
 
 #. placeholder {0}: file.name
-msgid "Failed to upload {0}"
-msgstr "Fehler beim Hochladen von {0}"
+#. placeholder {1}: result.error.message
+#. placeholder {1}: upload.error.message
+msgid "Failed to upload {0}: {1}"
+msgstr ""
 
 msgid "Failed to upload certificate"
 msgstr ""
@@ -3721,8 +3729,9 @@ msgstr "Logo-Upload fehlgeschlagen: {errorMessage}"
 msgid "Failed to upload model"
 msgstr "Fehler beim Hochladen des Modells"
 
-msgid "Failed to upload PDF"
-msgstr "PDF-Upload fehlgeschlagen"
+#. placeholder {0}: result.error.message
+msgid "Failed to upload PDF: {0}"
+msgstr ""
 
 msgid "Failure Mode"
 msgstr "Fehlermodus"
@@ -5443,6 +5452,9 @@ msgstr "Keine Felder gefunden."
 msgid "No files"
 msgstr "Keine Dateien"
 
+msgid "No files selected"
+msgstr ""
+
 msgid "No files uploaded"
 msgstr "Keine Dateien hochgeladen"
 
@@ -5865,6 +5877,9 @@ msgstr "Packzettel"
 
 msgid "Page {pdfViewPage} of {documentPageCount}"
 msgstr "Seite {pdfViewPage} von {documentPageCount}"
+
+msgid "Page Not Found"
+msgstr ""
 
 msgid "Paid Amount:"
 msgstr "Bezahlter Betrag:"
@@ -7624,9 +7639,6 @@ msgstr "Geplante Wartung an Betriebsfeiertagen überspringen"
 msgid "Skipped"
 msgstr "Übersprungen"
 
-msgid "Something went wrong"
-msgstr ""
-
 msgid "Something went wrong. Please try again."
 msgstr "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut."
 
@@ -7797,9 +7809,6 @@ msgstr "Bestandsübertragungs-Assistent"
 
 msgid "Stock Transfers"
 msgstr "Bestandsübertragungen"
-
-msgid "Storage client not available"
-msgstr "Speicherclient nicht verfügbar"
 
 msgid "Storage Rules"
 msgstr "Lagerungsregeln"
@@ -8143,6 +8152,9 @@ msgstr "Die neue Versionsnummer der Methode"
 
 msgid "The number of hours per week the contractor is available to work."
 msgstr "Die Anzahl der Stunden pro Woche, die der Auftragnehmer zur Verfügung steht."
+
+msgid "The page you're looking for doesn't exist."
+msgstr ""
 
 msgid "The percentage of the cash discount. Use 0 for no discount."
 msgstr "Der Prozentsatz des Skonto. Verwenden Sie 0 für keinen Rabatt."
@@ -8667,6 +8679,10 @@ msgstr "Upload abgeschlossen, aber kein Dateipfad zurückgegeben"
 
 msgid "Upload CSV"
 msgstr "CSV hochladen"
+
+#. placeholder {0}: err instanceof Error ? err.message : "Unknown error"
+msgid "Upload failed: {0}"
+msgstr ""
 
 msgid "Uploaded model"
 msgstr "Modell hochgeladen"
