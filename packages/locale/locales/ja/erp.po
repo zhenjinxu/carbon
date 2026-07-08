@@ -295,6 +295,9 @@ msgstr "コメントを追加..."
 msgid "Add a printer in the printing settings to print labels directly."
 msgstr "プリンター設定にプリンターを追加して、ラベルを直接印刷します。"
 
+msgid "Add Account"
+msgstr ""
+
 msgid "Add Actions"
 msgstr "アクションを追加"
 
@@ -1091,6 +1094,9 @@ msgstr "トレーサビリティに戻る"
 
 msgid "Backflush"
 msgstr "バックフラッシュ"
+
+msgid "Balance"
+msgstr ""
 
 msgid "Balance Sheet"
 msgstr "貸借対照表"

@@ -204,6 +204,7 @@ services:
       SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
       SUPABASE_DB_URL: postgresql://postgres:postgres@postgres:5432/postgres
       VERIFY_JWT: "false"
+      TIMEOUT_MS: "120000"  # 120 seconds timeout for long-running functions
     volumes:
       - ./packages/database/supabase/functions:/home/deno/functions:ro
       - ./packages/database/src:/home/src:ro

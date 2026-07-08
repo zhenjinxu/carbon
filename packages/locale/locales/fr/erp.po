@@ -295,6 +295,9 @@ msgstr "Ajouter un commentaire..."
 msgid "Add a printer in the printing settings to print labels directly."
 msgstr "Ajoutez une imprimante dans les paramètres d'impression pour imprimer les étiquettes directement."
 
+msgid "Add Account"
+msgstr ""
+
 msgid "Add Actions"
 msgstr "Ajouter des actions"
 
@@ -1091,6 +1094,9 @@ msgstr "Retour à la traçabilité"
 
 msgid "Backflush"
 msgstr "Retrait automatique"
+
+msgid "Balance"
+msgstr ""
 
 msgid "Balance Sheet"
 msgstr "Bilan"
