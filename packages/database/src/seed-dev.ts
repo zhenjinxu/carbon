@@ -17,6 +17,7 @@ import {
   accounts,
   currencies,
   customerStatuses,
+  customerTypes,
   defaultLocation,
   dimensions,
   failureModes,
@@ -377,6 +378,34 @@ async function seedDev() {
         await client.query(
           `INSERT INTO "customerStatus" (name, "companyId", "createdBy") VALUES ($1, $2, 'system') ON CONFLICT DO NOTHING`,
           [name, companyId]
+        );
+      }
+
+      // Seed customer types
+      for (const name of customerTypes) {
+        await client.query(
+          `INSERT INTO "customerType" (name, "companyId", "createdBy") VALUES ($1, $2, 'system') ON CONFLICT DO NOTHING`,
+          [name, companyId]
+        );
+      }
+
+      // Seed sample customers
+      const sampleCustomers = [
+        { name: "Acme Corporation", type: "Enterprise", status: "Active" },
+        { name: "TechStart Inc", type: "SMB", status: "Active" },
+        { name: "City of Springfield", type: "Government", status: "Active" },
+        { name: "State University", type: "Education", status: "Lead" },
+        { name: "John Smith", type: "Individual", status: "Active" }
+      ];
+      for (const customer of sampleCustomers) {
+        await client.query(
+          `INSERT INTO "customer" (name, "customerTypeId", "customerStatusId", "companyId", "createdBy")
+           SELECT $1, ct.id, cs.id, $2, 'system'
+           FROM (SELECT id FROM "customerType" WHERE name = $3 AND "companyId" = $2 LIMIT 1) ct,
+                (SELECT id FROM "customerStatus" WHERE name = $4 AND "companyId" = $2 LIMIT 1) cs
+           WHERE ct.id IS NOT NULL AND cs.id IS NOT NULL
+           ON CONFLICT DO NOTHING`,
+          [customer.name, companyId, customer.type, customer.status]
         );
       }
 

@@ -33,6 +33,14 @@ export const customerStatuses = [
   "Cancelled"
 ] as const;
 
+export const customerTypes = [
+  "Enterprise",
+  "SMB",
+  "Government",
+  "Education",
+  "Individual"
+] as const;
+
 export const scrapReasons = ["Defective", "Damaged", "Quality"] as const;
 
 export const paymentTerms = [
