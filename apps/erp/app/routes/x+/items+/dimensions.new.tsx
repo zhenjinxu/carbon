@@ -2,6 +2,7 @@ import { assertIsPost, error, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
+import { msg } from "@lingui/core/macro";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { data, redirect, useNavigate } from "react-router";
 import {
@@ -56,7 +57,7 @@ export async function action({ request }: ActionFunctionArgs) {
         request,
         error(
           insertMaterialDimension.error,
-          "Failed to insert material dimension"
+          msg`Failed to insert material dimension`
         )
       )
     );
@@ -68,7 +69,7 @@ export async function action({ request }: ActionFunctionArgs) {
       {},
       await flash(
         request,
-        error(insertMaterialDimension, "Failed to insert material dimension")
+        error(insertMaterialDimension, msg`Failed to insert material dimension`)
       )
     );
   }
@@ -77,7 +78,7 @@ export async function action({ request }: ActionFunctionArgs) {
     ? data(insertMaterialDimension, { status: 201 })
     : redirect(
         `${path.to.materialDimensions}?${getParams(request)}`,
-        await flash(request, success("Dimension created"))
+        await flash(request, success(msg`Dimension created`))
       );
 }
 

@@ -2,6 +2,7 @@ import { assertIsPost, error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
+import { msg } from "@lingui/core/macro";
 import type {
   ActionFunctionArgs,
   ClientActionFunctionArgs,
@@ -62,14 +63,14 @@ export async function action({ request }: ActionFunctionArgs) {
       {},
       await flash(
         request,
-        error(updateUnitOfMeasure.error, "Failed to update unit of measure")
+        error(updateUnitOfMeasure.error, msg`Failed to update unit of measure`)
       )
     );
   }
 
   throw redirect(
     `${path.to.uoms}?${getParams(request)}`,
-    await flash(request, success("Updated unit of measure"))
+    await flash(request, success(msg`Updated unit of measure`))
   );
 }
 

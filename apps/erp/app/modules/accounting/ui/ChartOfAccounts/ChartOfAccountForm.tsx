@@ -68,7 +68,7 @@ const ChartOfAccountForm = ({
       onClose?.();
       toast.success(initialValues.id ? t`Updated account` : t`Created account`);
     } else if (fetcher.state === "idle" && fetcher.data?.error) {
-      toast.error(`Failed to save account: ${fetcher.data.error.message}`);
+      toast.error(t`Failed to save account: ${fetcher.data.error.message}`);
     }
   }, [fetcher.data, fetcher.state, onClose, initialValues.id, t]);
 

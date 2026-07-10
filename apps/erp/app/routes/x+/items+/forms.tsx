@@ -39,7 +39,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   if (materialForms.error) {
     throw redirect(
       path.to.items,
-      await flash(request, error(null, "Error loading material forms"))
+      await flash(request, error(null, msg`Error loading material forms`))
     );
   }
 

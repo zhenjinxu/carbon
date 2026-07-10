@@ -4,6 +4,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from "@carbon/react";
+import { Trans } from "@lingui/react/macro";
 import { Handle, type NodeProps, Position } from "@xyflow/react";
 import { memo } from "react";
 import {
@@ -66,18 +67,18 @@ function CostCenterNodeComponent({
           <DropdownMenuContent align="end" className="w-44">
             <DropdownMenuItem onClick={() => onEdit(costCenter.id!)}>
               <LuPencil className="mr-2 size-4" />
-              Edit
+              <Trans>Edit</Trans>
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => onAddChild(costCenter.id!)}>
               <LuPlus className="mr-2 size-4" />
-              Add cost center
+              <Trans>Add cost center</Trans>
             </DropdownMenuItem>
             <DropdownMenuItem
               className="text-destructive focus:text-destructive"
               onClick={() => onDelete(costCenter.id!)}
             >
               <LuTrash2 className="mr-2 size-4" />
-              Delete
+              <Trans>Delete</Trans>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

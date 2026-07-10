@@ -3,6 +3,7 @@ import { getCarbonServiceRole } from "@carbon/auth/client.server";
 import { JobTravelerPDF } from "@carbon/documents/pdf";
 import type { JSONContent } from "@carbon/react";
 import {
+  contentDisposition,
   flattenTree,
   generateBomIds,
   getPreferenceHeaders
@@ -151,7 +152,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
 
   const headers = new Headers({
     "Content-Type": "application/pdf",
-    "Content-Disposition": `inline; filename="${company.data.name} - ${job.data.jobId}.pdf"`
+    "Content-Disposition": contentDisposition("inline", `${company.data.name} - ${job.data.jobId}.pdf`)
   });
   return new Response(new Uint8Array(body), { status: 200, headers });
 }

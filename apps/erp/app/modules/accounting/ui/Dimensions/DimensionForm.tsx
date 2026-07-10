@@ -1,3 +1,4 @@
+import { Trans, useLingui } from "@lingui/react/macro";
 import { SelectControlled, ValidatedForm } from "@carbon/form";
 import {
   Drawer,
@@ -16,6 +17,7 @@ import { DimensionEntityTypeIcon } from "~/components/Icons";
 import { usePermissions } from "~/hooks";
 import { path } from "~/utils/path";
 import {
+  dimensionEntityTypeLabels,
   dimensionEntityTypes,
   dimensionValidator
 } from "../../accounting.models";
@@ -25,20 +27,9 @@ type DimensionFormProps = {
   onClose: () => void;
 };
 
-const entityTypeLabels: Record<string, string> = {
-  Custom: "Custom",
-  Location: "Location",
-  ItemPostingGroup: "Item Group",
-  SupplierType: "Supplier Type",
-  CustomerType: "Customer Type",
-  Department: "Department",
-  Employee: "Employee",
-  FixedAssetClass: "Asset Class",
-  CostCenter: "Cost Center"
-};
-
 const DimensionForm = ({ initialValues, onClose }: DimensionFormProps) => {
   const permissions = usePermissions();
+  const { t } = useLingui();
 
   const isEditing = initialValues.id !== undefined;
   const isDisabled = isEditing
@@ -55,7 +46,7 @@ const DimensionForm = ({ initialValues, onClose }: DimensionFormProps) => {
     label: (
       <HStack className="w-full">
         <DimensionEntityTypeIcon entityType={et} className="w-4 h-4 mr-2" />
-        {entityTypeLabels[et]}
+        {t(dimensionEntityTypeLabels[et])}
       </HStack>
     )
   }));
@@ -80,18 +71,18 @@ const DimensionForm = ({ initialValues, onClose }: DimensionFormProps) => {
           className="flex flex-col h-full"
         >
           <DrawerHeader>
-            <DrawerTitle>{isEditing ? "Edit" : "New"} Dimension</DrawerTitle>
+            <DrawerTitle>{isEditing ? <Trans>Edit Dimension</Trans> : <Trans>New Dimension</Trans>}</DrawerTitle>
           </DrawerHeader>
           <DrawerBody>
             <Hidden name="id" />
             <VStack spacing={4}>
-              <Input name="name" label="Name" />
+              <Input name="name" label={t`Name`} />
               <SelectControlled
                 name="entityType"
-                label="Entity Type"
+                label={t`Entity Type`}
                 isReadOnly={isEditing}
                 helperText={
-                  isEditing ? "Entity type cannot be changed" : undefined
+                  isEditing ? t`Entity type cannot be changed` : undefined
                 }
                 options={entityTypeOptions}
                 value={entityType}
@@ -101,13 +92,13 @@ const DimensionForm = ({ initialValues, onClose }: DimensionFormProps) => {
                   }
                 }}
               />
-              {isCustom && <Array name="dimensionValues" label="Values" />}
-              <Boolean name="active" label="Active" />
+              {isCustom && <Array name="dimensionValues" label={t`Values`} />}
+              <Boolean name="active" label={t`Active`} />
             </VStack>
           </DrawerBody>
           <DrawerFooter>
             <HStack>
-              <Submit isDisabled={isDisabled}>Save</Submit>
+              <Submit isDisabled={isDisabled}><Trans>Save</Trans></Submit>
             </HStack>
           </DrawerFooter>
         </ValidatedForm>

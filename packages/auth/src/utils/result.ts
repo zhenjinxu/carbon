@@ -1,6 +1,9 @@
 import type { Result } from "../types";
 
-export function error(error: any, message = "Request failed"): Result {
+export function error(
+  error: any,
+  message: string | { id: string; message?: string } = "Request failed"
+): Result {
   if (error) console.error({ error, message });
 
   return {
@@ -9,7 +12,10 @@ export function error(error: any, message = "Request failed"): Result {
   };
 }
 
-export function success(message = "Request succeeded", data?: any): Result {
+export function success(
+  message: string | { id: string; message?: string } = "Request succeeded",
+  data?: any
+): Result {
   return {
     success: true,
     message

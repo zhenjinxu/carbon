@@ -1,5 +1,6 @@
 import { requirePermissions } from "@carbon/auth/auth.server";
 import type { Database } from "@carbon/database";
+import { contentDisposition } from "@carbon/utils";
 import type { LoaderFunctionArgs } from "react-router";
 import { flattenTree } from "~/components/TreeView";
 import { getQuoteMethodTrees } from "~/modules/sales";
@@ -65,7 +66,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
     return new Response(bomHeaders.join(",") + "\n", {
       headers: {
         "Content-Type": "text/csv",
-        "Content-Disposition": `attachment; filename=${fileName}`
+        "Content-Disposition": contentDisposition("attachment", fileName)
       }
     });
   }

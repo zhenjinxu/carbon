@@ -40,7 +40,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     console.error(materialFinishes.error);
     throw redirect(
       path.to.items,
-      await flash(request, error(null, "Error loading material substances"))
+      await flash(request, error(null, msg`Error loading material finishes`))
     );
   }
 

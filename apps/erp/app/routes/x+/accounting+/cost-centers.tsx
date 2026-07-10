@@ -9,6 +9,8 @@ import {
   TabsList,
   TabsTrigger
 } from "@carbon/react";
+import { msg } from "@lingui/core/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useCallback } from "react";
 import type { LoaderFunctionArgs } from "react-router";
 import { Outlet, redirect, useLoaderData, useNavigate } from "react-router";
@@ -23,7 +25,7 @@ import type { Handle } from "~/utils/handle";
 import { path } from "~/utils/path";
 
 export const handle: Handle = {
-  breadcrumb: "Cost Centers",
+  breadcrumb: msg`Cost Centers`,
   to: path.to.costCenters
 };
 
@@ -43,7 +45,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
       path.to.accounting,
       await flash(
         request,
-        error(costCenters.error, "Failed to load cost centers")
+        error(costCenters.error, msg`Failed to load cost centers`)
       )
     );
   }
@@ -57,6 +59,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 export default function Route() {
   const { costCenters } = useLoaderData<typeof loader>();
   const navigate = useNavigate();
+  const { t } = useLingui();
 
   const handleEdit = useCallback(
     (id: string) => {
@@ -82,14 +85,14 @@ export default function Route() {
   return (
     <Tabs defaultValue="tree" className="w-full">
       <div className="flex px-4 py-3 items-center space-x-4 justify-between bg-card border-b border-border w-full">
-        <Heading size="h3">Cost Centers</Heading>
+        <Heading size="h3"><Trans>Cost Centers</Trans></Heading>
         <HStack>
           <TabsList>
-            <TabsTrigger value="tree">Tree View</TabsTrigger>
-            <TabsTrigger value="list">List View</TabsTrigger>
+            <TabsTrigger value="tree"><Trans>Tree View</Trans></TabsTrigger>
+            <TabsTrigger value="list"><Trans>List View</Trans></TabsTrigger>
           </TabsList>
           <New
-            label="Cost Center"
+            label={t`Cost Center`}
             to={path.to.newCostCenter}
             variant="primary"
           />

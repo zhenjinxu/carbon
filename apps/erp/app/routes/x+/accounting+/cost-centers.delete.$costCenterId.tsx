@@ -1,6 +1,8 @@
 import { error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react/macro";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { redirect, useLoaderData, useNavigate, useParams } from "react-router";
 import { ConfirmDelete } from "~/components/Modals";
@@ -20,7 +22,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
   if (costCenter.error) {
     throw redirect(
       path.to.costCenters,
-      await flash(request, error(costCenter.error, "Failed to get cost center"))
+      await flash(request, error(costCenter.error, msg`Failed to get cost center`))
     );
   }
 
@@ -38,7 +40,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
   if (!costCenterId) {
     throw redirect(
       path.to.costCenters,
-      await flash(request, error(params, "Failed to get cost center id"))
+      await flash(request, error(params, msg`Failed to get cost center id`))
     );
   }
 
@@ -51,14 +53,14 @@ export async function action({ request, params }: ActionFunctionArgs) {
       path.to.costCenters,
       await flash(
         request,
-        error(deleteCostCenterError, "Failed to delete cost center")
+        error(deleteCostCenterError, msg`Failed to delete cost center`)
       )
     );
   }
 
   throw redirect(
     path.to.costCenters,
-    await flash(request, success("Successfully deleted cost center"))
+    await flash(request, success(msg`Successfully deleted cost center`))
   );
 }
 
@@ -66,6 +68,7 @@ export default function DeleteCostCenterRoute() {
   const { costCenterId } = useParams();
   const { costCenter } = useLoaderData<typeof loader>();
   const navigate = useNavigate();
+  const { t } = useLingui();
 
   if (!costCenter) return null;
   if (!costCenterId) throw new Error("costCenterId is not found");
@@ -76,7 +79,7 @@ export default function DeleteCostCenterRoute() {
     <ConfirmDelete
       action={path.to.deleteCostCenter(costCenterId)}
       name={costCenter.name}
-      text={`Are you sure you want to delete the cost center: ${costCenter.name}? This cannot be undone.`}
+      text={t`Are you sure you want to delete the cost center: ${costCenter.name}? This cannot be undone.`}
       onCancel={onCancel}
     />
   );

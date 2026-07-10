@@ -1,4 +1,5 @@
 import { cn, ScrollArea } from "@carbon/react";
+import { Trans } from "@lingui/react/macro";
 import { memo, useMemo, useRef } from "react";
 import {
   LuChevronDown,
@@ -130,16 +131,20 @@ const FinancialStatementTree = memo(
     return (
       <ScrollArea className="h-[calc(100dvh-var(--header-height)-61px)] w-full">
         <div className="sticky top-0 z-10 flex h-11 items-center pr-4 text-sm font-medium text-foreground/80 border-b border-border bg-card">
-          <div className="flex-1 px-4">Account</div>
+          <div className="flex-1 px-4">
+            <Trans>Account</Trans>
+          </div>
           <span className="w-32 text-right px-4">
-            {showTranslated ? "Local" : "Balance"}
+            {showTranslated ? <Trans>Local</Trans> : <Trans>Balance</Trans>}
           </span>
           {showTranslated && (
             <span className="w-32 text-right px-4">
-              {parentCurrency ?? "Translated"}
+              {parentCurrency ?? <Trans>Translated</Trans>}
             </span>
           )}
-          <span className="w-32 text-right px-4">Net Change</span>
+          <span className="w-32 text-right px-4">
+            <Trans>Net Change</Trans>
+          </span>
         </div>
         <TreeView<TranslatedChart>
           tree={tree}

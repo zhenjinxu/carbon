@@ -1,3 +1,4 @@
+import { msg } from "@lingui/core/macro";
 import { z } from "zod";
 import { zfd } from "zod-form-data";
 import { months } from "~/modules/shared";
@@ -353,6 +354,12 @@ export const paymentTermsCalculationMethod = [
   "Day of Month"
 ] as const;
 
+export const paymentTermsCalculationMethodLabels = {
+  Net: msg`Net`,
+  "End of Month": msg`End of Month`,
+  "Day of Month": msg`Day of Month`
+} as const;
+
 export const paymentTermValidator = z.object({
   id: zfd.text(z.string().optional()),
   name: z.string().min(1, { message: "Name is required" }),
@@ -504,6 +511,20 @@ export const dimensionEntityTypes = [
   "WorkCenter"
 ] as const;
 
+export const dimensionEntityTypeLabels = {
+  CostCenter: msg`Cost Center`,
+  Custom: msg`Custom`,
+  CustomerType: msg`Customer Type`,
+  Department: msg`Department`,
+  Employee: msg`Employee`,
+  FixedAssetClass: msg`Asset Class`,
+  ItemPostingGroup: msg`Item Group`,
+  Location: msg`Location`,
+  Process: msg`Process`,
+  SupplierType: msg`Supplier Type`,
+  WorkCenter: msg`Work Center`
+} as const;
+
 export const dimensionValidator = z.object({
   id: zfd.text(z.string().optional()),
   name: z.string().min(1, { message: "Name is required" }),
@@ -530,11 +551,23 @@ export const depreciationMethods = [
   "Units of Production"
 ] as const;
 
+export const depreciationMethodLabels = {
+  "Straight Line": msg`Straight Line`,
+  "Declining Balance": msg`Declining Balance`,
+  "Units of Production": msg`Units of Production`
+} as const;
+
 export const taxDepreciationMethods = [
   "Straight Line",
   "Declining Balance",
   "MACRS"
 ] as const;
+
+export const taxDepreciationMethodLabels = {
+  "Straight Line": msg`Straight Line`,
+  "Declining Balance": msg`Declining Balance`,
+  MACRS: msg`MACRS`
+} as const;
 
 export const disposalMethods = ["Sale", "Scrapping"] as const;
 

@@ -28,6 +28,7 @@ import { usePermissions } from "~/hooks";
 import { path } from "~/utils/path";
 import {
   paymentTermsCalculationMethod,
+  paymentTermsCalculationMethodLabels,
   paymentTermValidator
 } from "../../accounting.models";
 import type { PaymentTermCalculationMethod } from "../../types";
@@ -70,7 +71,7 @@ const PaymentTermForm = ({
     : !permissions.can("create", "accounting");
 
   const calculationMethodOptions = paymentTermsCalculationMethod.map((v) => ({
-    label: v,
+    label: t(paymentTermsCalculationMethodLabels[v]),
     value: v
   }));
 

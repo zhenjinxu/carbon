@@ -1,8 +1,10 @@
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { Button, VStack } from "@carbon/react";
+import { msg } from "@lingui/core/macro";
 import { LuCirclePlus } from "react-icons/lu";
 import type { LoaderFunctionArgs } from "react-router";
 import { Outlet, useLoaderData, useNavigate } from "react-router";
+import { Trans } from "@lingui/react/macro";
 import { usePermissions } from "~/hooks";
 import { getFixedAssetClasses } from "~/modules/accounting";
 import { AssetClassesTable } from "~/modules/accounting/ui/FixedAssets";
@@ -12,7 +14,7 @@ import { path } from "~/utils/path";
 import { getGenericQueryFilters } from "~/utils/query";
 
 export const handle: Handle = {
-  breadcrumb: "Asset Classes",
+  breadcrumb: msg`Asset Classes`,
   to: path.to.assetClasses
 };
 
@@ -66,7 +68,7 @@ export default function AssetClassesRoute() {
               variant="primary"
               onClick={() => navigate(path.to.newAssetClass)}
             >
-              Add Asset Class
+              <Trans>Add Asset Class</Trans>
             </Button>
           )
         }

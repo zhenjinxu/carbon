@@ -1,6 +1,7 @@
 import { error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { redirect, useLoaderData, useNavigate, useParams } from "react-router";
@@ -19,7 +20,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
   if (account.error) {
     throw redirect(
       path.to.chartOfAccounts,
-      await flash(request, error(account.error, "Failed to get account"))
+      await flash(request, error(account.error, msg`Failed to get account`))
     );
   }
 
@@ -35,7 +36,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
   if (!accountId) {
     throw redirect(
       path.to.chartOfAccounts,
-      await flash(request, error(params, "Failed to get an account id"))
+      await flash(request, error(params, msg`Failed to get an account id`))
     );
   }
 
@@ -44,7 +45,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
   if (existing.data?.isSystem) {
     throw redirect(
       path.to.chartOfAccounts,
-      await flash(request, error(null, "Root accounts cannot be deleted"))
+      await flash(request, error(null, msg`Root accounts cannot be deleted`))
     );
   }
 
@@ -52,13 +53,13 @@ export async function action({ request, params }: ActionFunctionArgs) {
   if (deleteTypeError) {
     throw redirect(
       path.to.chartOfAccounts,
-      await flash(request, error(deleteTypeError, "Failed to delete account"))
+      await flash(request, error(deleteTypeError, msg`Failed to delete account`))
     );
   }
 
   throw redirect(
     path.to.chartOfAccounts,
-    await flash(request, success("Successfully deleted account"))
+    await flash(request, success(msg`Successfully deleted account`))
   );
 }
 

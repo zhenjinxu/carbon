@@ -2,6 +2,7 @@ import { assertIsPost, error, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
+import { msg } from "@lingui/core/macro";
 import type {
   ActionFunctionArgs,
   ClientActionFunctionArgs,
@@ -52,7 +53,7 @@ export async function action({ request }: ActionFunctionArgs) {
       {},
       await flash(
         request,
-        error(insertPaymentTerm.error, "Failed to insert payment term")
+        error(insertPaymentTerm.error, msg`Failed to insert payment term`)
       )
     );
   }
@@ -61,7 +62,7 @@ export async function action({ request }: ActionFunctionArgs) {
     ? data(insertPaymentTerm, { status: 201 })
     : redirect(
         `${path.to.paymentTerms}?${getParams(request)}`,
-        await flash(request, success("Payment term created"))
+        await flash(request, success(msg`Payment term created`))
       );
 }
 

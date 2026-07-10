@@ -61,7 +61,7 @@ export async function getDocuments(
   }
 ) {
   let query = client
-    .from("document")
+    .from("documents")
     .select("*", {
       count: "exact"
     })
@@ -79,7 +79,7 @@ export async function getDocuments(
   }
 
   if (args.recent) {
-    query = query.order("lastActivityAt", { ascending: false });
+    query = query.order("updatedAt", { ascending: false });
   }
 
   query = setGenericQueryFilters(query, args, [

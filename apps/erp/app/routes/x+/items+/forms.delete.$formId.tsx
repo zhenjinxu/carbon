@@ -1,6 +1,7 @@
 import { error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { redirect, useLoaderData, useNavigate, useParams } from "react-router";
@@ -21,7 +22,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
       path.to.materialForms,
       await flash(
         request,
-        error(materialForm.error, "Failed to get material form")
+        error(materialForm.error, msg`Failed to get material shape`)
       )
     );
   }
@@ -38,7 +39,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
   if (!formId) {
     throw redirect(
       path.to.materialForms,
-      await flash(request, error(params, "Failed to get an material form id"))
+      await flash(request, error(params, msg`Failed to get a material shape id`))
     );
   }
 
@@ -48,14 +49,14 @@ export async function action({ request, params }: ActionFunctionArgs) {
       `${path.to.materialForms}?${getParams(request)}`,
       await flash(
         request,
-        error(deleteTypeError, "Failed to delete material form")
+        error(deleteTypeError, msg`Failed to delete material shape`)
       )
     );
   }
 
   throw redirect(
     path.to.materialForms,
-    await flash(request, success("Successfully deleted material form"))
+    await flash(request, success(msg`Successfully deleted material shape`))
   );
 }
 

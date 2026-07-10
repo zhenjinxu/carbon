@@ -54,7 +54,7 @@ const UnitOfMeasureForm = ({
       toast.success(t`Created unit of measure`);
     } else if (fetcher.state === "idle" && fetcher.data?.error) {
       toast.error(
-        `Failed to create unit of measure: ${fetcher.data.error.message}`
+        t`Failed to create unit of measure: ${fetcher.data.error.message}`
       );
     }
   }, [fetcher.data, fetcher.state, onClose, type, t]);
@@ -109,7 +109,7 @@ const UnitOfMeasureForm = ({
                   <Trans>Save</Trans>
                 </Submit>
                 <Button size="md" variant="solid" onClick={() => onClose()}>
-                  Cancel
+                  <Trans>Cancel</Trans>
                 </Button>
               </HStack>
             </ModalDrawerFooter>

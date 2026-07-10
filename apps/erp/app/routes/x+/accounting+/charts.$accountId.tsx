@@ -3,6 +3,7 @@ import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
+import { msg } from "@lingui/core/macro";
 import { data, redirect, useLoaderData, useNavigate } from "react-router";
 import {
   accountValidator,
@@ -51,7 +52,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
     if (existing.data?.isSystem) {
       throw redirect(
         path.to.chartOfAccounts,
-        await flash(request, error(null, "Root accounts cannot be modified"))
+        await flash(request, error(null, msg`Root accounts cannot be modified`))
       );
     }
   }
@@ -86,14 +87,14 @@ export async function action({ request, params }: ActionFunctionArgs) {
         {},
         await flash(
           request,
-          error(updateAccount.error, "Failed to update group")
+          error(updateAccount.error, msg`Failed to update group`)
         )
       );
     }
 
     throw redirect(
       path.to.chartOfAccounts,
-      await flash(request, success("Updated group"))
+      await flash(request, success(msg`Updated group`))
     );
   }
 
@@ -119,14 +120,14 @@ export async function action({ request, params }: ActionFunctionArgs) {
       {},
       await flash(
         request,
-        error(updateAccount.error, "Failed to update account")
+        error(updateAccount.error, msg`Failed to update account`)
       )
     );
   }
 
   throw redirect(
     path.to.chartOfAccounts,
-    await flash(request, success("Updated account"))
+    await flash(request, success(msg`Updated account`))
   );
 }
 

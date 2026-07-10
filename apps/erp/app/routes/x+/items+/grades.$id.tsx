@@ -2,6 +2,7 @@ import { assertIsPost, error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
+import { msg } from "@lingui/core/macro";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { data, redirect, useLoaderData, useNavigate } from "react-router";
 import {
@@ -28,7 +29,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
       path.to.materialGrades,
       await flash(
         request,
-        error(new Error("Access denied"), "Cannot edit global material grade")
+        error(new Error("Access denied"), msg`Cannot edit global material grade`)
       )
     );
   }
@@ -64,14 +65,14 @@ export async function action({ request, params }: ActionFunctionArgs) {
       {},
       await flash(
         request,
-        error(updateMaterialGrade.error, "Failed to update material grade")
+        error(updateMaterialGrade.error, msg`Failed to update material grade`)
       )
     );
   }
 
   throw redirect(
     `${path.to.materialGrades}?${getParams(request)}`,
-    await flash(request, success("Updated material grade"))
+    await flash(request, success(msg`Updated material grade`))
   );
 }
 

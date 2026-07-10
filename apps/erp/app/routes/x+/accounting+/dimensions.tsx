@@ -1,3 +1,4 @@
+import { msg } from "@lingui/core/macro";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { VStack } from "@carbon/react";
 import type { LoaderFunctionArgs } from "react-router";
@@ -9,7 +10,7 @@ import { path } from "~/utils/path";
 import { getGenericQueryFilters } from "~/utils/query";
 
 export const handle: Handle = {
-  breadcrumb: "Dimensions",
+  breadcrumb: msg`Dimensions`,
   to: path.to.dimensions
 };
 

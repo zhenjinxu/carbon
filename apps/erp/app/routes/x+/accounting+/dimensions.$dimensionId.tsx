@@ -2,6 +2,7 @@ import { assertIsPost, error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
+import { msg } from "@lingui/core/macro";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { data, redirect, useLoaderData, useNavigate } from "react-router";
 import {
@@ -59,14 +60,14 @@ export async function action({ request }: ActionFunctionArgs) {
       {},
       await flash(
         request,
-        error(updateDimension.error, "Failed to update dimension")
+        error(updateDimension.error, msg`Failed to update dimension`)
       )
     );
   }
 
   throw redirect(
     `${path.to.dimensions}?${getParams(request)}`,
-    await flash(request, success("Updated dimension"))
+    await flash(request, success(msg`Updated dimension`))
   );
 }
 

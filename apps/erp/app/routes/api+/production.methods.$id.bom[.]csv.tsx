@@ -1,4 +1,5 @@
 import { requirePermissions } from "@carbon/auth/auth.server";
+import { contentDisposition } from "@carbon/utils";
 import type { LoaderFunctionArgs } from "react-router";
 import { flattenTree } from "~/components/TreeView";
 import type { JobOperation } from "~/modules/production";
@@ -214,7 +215,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
   return new Response(csv, {
     headers: {
       "Content-Type": "text/csv",
-      "Content-Disposition": `attachment; filename=${fileName}`
+      "Content-Disposition": contentDisposition("attachment", fileName)
     }
   });
 }

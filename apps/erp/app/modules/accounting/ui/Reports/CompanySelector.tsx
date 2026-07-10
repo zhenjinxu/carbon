@@ -6,6 +6,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger
 } from "@carbon/react";
+import { Trans } from "@lingui/react/macro";
 import { LuBuilding2 } from "react-icons/lu";
 import { useUrlParams } from "~/hooks";
 
@@ -31,10 +32,14 @@ const CompanySelector = ({
 
   const allSelected = selectedCompanyIds.length === companies.length;
   const value = allSelected ? ALL : selectedCompanyIds[0];
+  const foundCompany = companies.find((c) => c.id === value);
 
-  const label = allSelected
-    ? "All Companies"
-    : (companies.find((c) => c.id === value)?.name ?? "All Companies");
+  const label =
+    allSelected || !foundCompany ? (
+      <Trans>All Companies</Trans>
+    ) : (
+      foundCompany.name
+    );
 
   const onChange = (next: string) => {
     setParams({ companies: next === ALL ? "all" : next });
@@ -50,7 +55,7 @@ const CompanySelector = ({
       <DropdownMenuContent>
         <DropdownMenuRadioGroup value={value} onValueChange={onChange}>
           <DropdownMenuRadioItem value={ALL}>
-            All Companies
+            <Trans>All Companies</Trans>
           </DropdownMenuRadioItem>
           {companies.map((company) => (
             <DropdownMenuRadioItem key={company.id} value={company.id}>

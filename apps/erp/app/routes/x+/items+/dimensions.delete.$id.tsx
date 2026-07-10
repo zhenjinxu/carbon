@@ -1,6 +1,7 @@
 import { error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { redirect, useLoaderData, useNavigate, useParams } from "react-router";
@@ -21,7 +22,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
       path.to.materialDimensions,
       await flash(
         request,
-        error(materialDimension.error, "Failed to get material dimension")
+        error(materialDimension.error, msg`Failed to get material dimension`)
       )
     );
   }
@@ -40,7 +41,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
       path.to.materialDimensions,
       await flash(
         request,
-        error(params, "Failed to get an material dimension id")
+        error(params, msg`Failed to get a material dimension id`)
       )
     );
   }
@@ -51,14 +52,14 @@ export async function action({ request, params }: ActionFunctionArgs) {
       `${path.to.materialDimensions}?${getParams(request)}`,
       await flash(
         request,
-        error(deleteTypeError, "Failed to delete material dimension")
+        error(deleteTypeError, msg`Failed to delete material dimension`)
       )
     );
   }
 
   throw redirect(
     path.to.materialDimensions,
-    await flash(request, success("Successfully deleted material dimension"))
+    await flash(request, success(msg`Successfully deleted material dimension`))
   );
 }
 

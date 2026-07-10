@@ -3,6 +3,7 @@ import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
+import { msg } from "@lingui/core/macro";
 import {
   data,
   redirect,
@@ -61,7 +62,7 @@ export async function action({ request }: ActionFunctionArgs) {
       {},
       await flash(
         request,
-        error(insertAccount.error, "Failed to insert account")
+        error(insertAccount.error, msg`Failed to insert account`)
       )
     );
   }
@@ -70,13 +71,13 @@ export async function action({ request }: ActionFunctionArgs) {
   if (!accountId) {
     return data(
       {},
-      await flash(request, error(insertAccount, "Failed to insert account"))
+      await flash(request, error(insertAccount, msg`Failed to insert account`))
     );
   }
 
   throw redirect(
     path.to.chartOfAccounts,
-    await flash(request, success("Account created"))
+    await flash(request, success(msg`Account created`))
   );
 }
 

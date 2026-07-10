@@ -2,6 +2,7 @@ import { assertIsPost, error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
+import { msg } from "@lingui/core/macro";
 import type {
   ActionFunctionArgs,
   ClientActionFunctionArgs,
@@ -63,14 +64,14 @@ export async function action({ request }: ActionFunctionArgs) {
       {},
       await flash(
         request,
-        error(updatePaymentTerm.error, "Failed to update payment term")
+        error(updatePaymentTerm.error, msg`Failed to update payment term`)
       )
     );
   }
 
   throw redirect(
     `${path.to.paymentTerms}?${getParams(request)}`,
-    await flash(request, success("Updated payment term"))
+    await flash(request, success(msg`Updated payment term`))
   );
 }
 

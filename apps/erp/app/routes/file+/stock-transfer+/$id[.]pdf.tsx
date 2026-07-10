@@ -5,7 +5,7 @@ import {
   resolveTemplate,
   toDocumentTemplate
 } from "@carbon/documents/template";
-import { getPreferenceHeaders } from "@carbon/utils";
+import { contentDisposition, getPreferenceHeaders } from "@carbon/utils";
 import { renderToStream } from "@react-pdf/renderer";
 import type { LoaderFunctionArgs } from "react-router";
 import { getStockTransfer, getStockTransferLines } from "~/modules/inventory";
@@ -145,7 +145,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
 
   const headers = new Headers({
     "Content-Type": "application/pdf",
-    "Content-Disposition": `inline; filename="${company.data.name} - ${stockTransfer.data.stockTransferId}.pdf"`
+    "Content-Disposition": contentDisposition("inline", `${company.data.name} - ${stockTransfer.data.stockTransferId}.pdf`)
   });
   return new Response(new Uint8Array(body), { status: 200, headers });
 }

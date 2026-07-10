@@ -13,6 +13,7 @@ import {
   VStack
 } from "@carbon/react";
 import type { PostgrestResponse } from "@supabase/supabase-js";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useEffect } from "react";
 import { useFetcher } from "react-router";
 import type { z } from "zod";
@@ -41,6 +42,7 @@ const CostCenterForm = ({
   type = "drawer",
   onClose
 }: CostCenterFormProps) => {
+  const { t } = useLingui();
   const permissions = usePermissions();
   const fetcher = useFetcher<PostgrestResponse<{ id: string }>>();
   const routeData = useRouteData<{
@@ -53,10 +55,10 @@ const CostCenterForm = ({
 
     if (fetcher.state === "loading" && fetcher.data?.data) {
       onClose?.();
-      toast.success(`Created cost center`);
+      toast.success(t`Created cost center`);
     } else if (fetcher.state === "idle" && fetcher.data?.error) {
       toast.error(
-        `Failed to create cost center: ${fetcher.data.error.message}`
+        t`Failed to create cost center: ${fetcher.data.error.message}`
       );
     }
   }, [fetcher.data, fetcher.state, onClose, type]);
@@ -89,21 +91,21 @@ const CostCenterForm = ({
           >
             <ModalDrawerHeader>
               <ModalDrawerTitle>
-                {isEditing ? "Edit" : "New"} Cost Center
+                {isEditing ? <Trans>Edit Cost Center</Trans> : <Trans>New Cost Center</Trans>}
               </ModalDrawerTitle>
             </ModalDrawerHeader>
             <ModalDrawerBody>
               <Hidden name="id" />
               <Hidden name="type" value={type} />
               <VStack spacing={4}>
-                <Input name="name" label="Cost Center Name" />
+                <Input name="name" label={t`Cost Center Name`} />
                 <CostCenter
                   name="parentCostCenterId"
-                  label="Parent Cost Center"
+                  label={t`Parent Cost Center`}
                 />
                 <Employee
                   name="ownerId"
-                  label="Owner"
+                  label={t`Owner`}
                   isOptional={!approvalsActive}
                 />
                 <CustomFormFields table="costCenter" />
@@ -111,9 +113,9 @@ const CostCenterForm = ({
             </ModalDrawerBody>
             <ModalDrawerFooter>
               <HStack>
-                <Submit isDisabled={isDisabled}>Save</Submit>
+                <Submit isDisabled={isDisabled}><Trans>Save</Trans></Submit>
                 <Button size="md" variant="solid" onClick={() => onClose?.()}>
-                  Cancel
+                  <Trans>Cancel</Trans>
                 </Button>
               </HStack>
             </ModalDrawerFooter>

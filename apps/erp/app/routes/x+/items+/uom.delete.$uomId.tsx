@@ -1,6 +1,7 @@
 import { error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
 import type {
   ActionFunctionArgs,
@@ -27,7 +28,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
       `${path.to.uoms}?${getParams(request)}`,
       await flash(
         request,
-        error(unitOfMeasure.error, "Failed to get unit of measure")
+        error(unitOfMeasure.error, msg`Failed to get unit of measure`)
       )
     );
   }
@@ -44,7 +45,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
   if (!uomId) {
     throw redirect(
       path.to.uoms,
-      await flash(request, error(params, "Failed to get an unit of measure id"))
+      await flash(request, error(params, msg`Failed to get a unit of measure id`))
     );
   }
 
@@ -54,14 +55,14 @@ export async function action({ request, params }: ActionFunctionArgs) {
       path.to.uoms,
       await flash(
         request,
-        error(deleteTypeError, "Failed to delete unit of measure")
+        error(deleteTypeError, msg`Failed to delete unit of measure`)
       )
     );
   }
 
   throw redirect(
     path.to.uoms,
-    await flash(request, success("Successfully deleted unit of measure"))
+    await flash(request, success(msg`Successfully deleted unit of measure`))
   );
 }
 

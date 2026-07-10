@@ -2,6 +2,7 @@ import { assertIsPost, error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
+import { msg } from "@lingui/core/macro";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { data, redirect, useLoaderData, useNavigate } from "react-router";
 import {
@@ -31,7 +32,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
         request,
         error(
           new Error("Access denied"),
-          "Cannot edit global material substance"
+          msg`Cannot edit global material substance`
         )
       )
     );
@@ -74,7 +75,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
         request,
         error(
           updateMaterialSubstance.error,
-          "Failed to update material substance"
+          msg`Failed to update material substance`
         )
       )
     );
@@ -82,7 +83,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
 
   throw redirect(
     `${path.to.materialSubstances}?${getParams(request)}`,
-    await flash(request, success("Updated material substance"))
+    await flash(request, success(msg`Updated material substance`))
   );
 }
 

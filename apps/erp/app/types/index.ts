@@ -70,7 +70,7 @@ export type NavItem = Omit<Route, "icon"> & {
 
 export type Result = {
   success: boolean;
-  message?: string;
+  message?: string | { id: string; message?: string };
 };
 
 export type Role = "employee" | "customer" | "supplier";

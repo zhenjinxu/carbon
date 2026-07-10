@@ -42,7 +42,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
       path.to.accounting,
       await flash(
         request,
-        error(chartOfAccounts.error, "Failed to get chart of accounts")
+        error(chartOfAccounts.error, msg`Failed to get chart of accounts`)
       )
     );
   }

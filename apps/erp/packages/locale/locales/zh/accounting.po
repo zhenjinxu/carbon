@@ -12,3 +12,439 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 "Plural-Forms: \n"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Default Accounts"
+msgstr "默认科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Configure the default accounts used for various transaction types across your system"
+msgstr "配置系统中各类交易所使用的默认科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Save"
+msgstr "保存"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Cancel"
+msgstr "取消"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Cash & Banking"
+msgstr "现金与银行"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Configure default accounts for cash and bank transactions"
+msgstr "配置现金和银行交易的默认科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Bank - Cash"
+msgstr "银行 - 现金"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Primary cash account for bank transactions"
+msgstr "银行交易的主要现金科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Bank - Local Currency"
+msgstr "银行 - 本币"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Bank account denominated in the local currency"
+msgstr "以本币计价的银行账户"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Bank - Foreign Currency"
+msgstr "银行 - 外币"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Bank account denominated in a foreign currency"
+msgstr "以外币计价的银行账户"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Accounts Receivable"
+msgstr "应收账款"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Default accounts for customer transactions and receivables"
+msgstr "客户交易和应收款的默认科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Receivables"
+msgstr "应收款"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Accounts receivable for amounts owed by customers"
+msgstr "客户欠款的应收账款科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Prepayments"
+msgstr "预付款"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Account for advance payments made before goods or services are received"
+msgstr "在收到货物或服务之前预付款项的科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Inventory"
+msgstr "存货"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Configure default accounts for inventory management"
+msgstr "配置库存管理的默认科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Primary account for on-hand inventory valuation"
+msgstr "在手库存估值的主要科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Work in Progress (WIP)"
+msgstr "在产品（WIP）"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Account for production orders not yet completed"
+msgstr "尚未完工的生产订单科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Inventory Shipped Not Invoiced"
+msgstr "已发货未开票存货"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Accrual for inventory shipped but not yet invoiced to customer"
+msgstr "已发货但尚未向客户开票的存货应计"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Fixed Assets"
+msgstr "固定资产"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Default accounts for long-term assets and depreciation"
+msgstr "长期资产和折旧的默认科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Asset Acquisition Cost"
+msgstr "资产购置成本"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Account for the purchase cost of fixed assets"
+msgstr "固定资产购置成本科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Asset Cost on Disposal"
+msgstr "处置资产成本"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Account for the cost of fixed assets when disposed"
+msgstr "固定资产处置时的成本科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Accumulated Depreciation"
+msgstr "累计折旧"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Contra-asset account for total depreciation of fixed assets"
+msgstr "固定资产累计折旧的备抵资产科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Accumulated Depreciation on Disposal"
+msgstr "处置累计折旧"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Depreciation reversal when a fixed asset is disposed"
+msgstr "固定资产处置时的折旧冲回"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Accounts Payable"
+msgstr "应付账款"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Configure default accounts for vendor and supplier transactions"
+msgstr "配置供应商交易的默认科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Payables"
+msgstr "应付款"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Accounts payable for amounts owed to suppliers"
+msgstr "欠供应商款项的应付账款科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "GR/IR Clearing"
+msgstr "GR/IR 清算"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Clearing account for goods received / invoice received matching"
+msgstr "收到货物/收到发票匹配的清算科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Taxes"
+msgstr "税务"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Default accounts for tax-related transactions"
+msgstr "税务相关交易的默认科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Sales Tax Payable"
+msgstr "应交销售税"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Liability account for sales tax collected from customers"
+msgstr "从客户收取的销售税负债科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Purchase Tax Payable"
+msgstr "应交采购税"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Liability account for tax paid on purchases"
+msgstr "采购支付税款的负债科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Reverse Charge Sales Tax"
+msgstr "反向征收销售税"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Tax liability for reverse-charge transactions"
+msgstr "反向征收交易的税务负债"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Deferred Tax Liability"
+msgstr "递延所得税负债"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Liability account for deferred taxes from accelerated depreciation"
+msgstr "加速折旧产生的递延所得税负债科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Equity"
+msgstr "所有者权益"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Configure default equity and retained earnings accounts"
+msgstr "配置默认的所有者权益和留存收益科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Retained Earnings"
+msgstr "留存收益"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Equity account for accumulated profits or losses"
+msgstr "累计利润或亏损的所有者权益科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Currency Translation"
+msgstr "外币折算"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Equity account for currency translation adjustments (CTA)"
+msgstr "外币折算调整（CTA）的所有者权益科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Sales & Revenue"
+msgstr "销售与收入"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Default accounts for sales and income"
+msgstr "销售和收入的默认科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Sales"
+msgstr "销售收入"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Default account for posting sales revenue from invoices"
+msgstr "从发票过账销售收入的默认科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Sales Discounts"
+msgstr "销售折扣"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Contra-revenue account for discounts given on sales"
+msgstr "销售折扣的备抵收入科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Purchasing & Cost of Goods"
+msgstr "采购与销货成本"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Configure default accounts for purchasing and COGS"
+msgstr "配置采购和销售成本的默认科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Cost of Goods Sold"
+msgstr "销货成本"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Expense account for the cost of items sold"
+msgstr "已售商品成本的费用科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Indirect Materials & Services"
+msgstr "间接材料与服务"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Expense account for non-inventory purchases (services, supplies)"
+msgstr "非库存采购（服务、用品）的费用科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Labor & Machine Absorption"
+msgstr "人工与机器吸收"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Credit account when labor/machine time is absorbed into WIP"
+msgstr "人工/机器时间计入在产品时的贷方科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Purchase Price Variance"
+msgstr "采购价格差异"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Variance between actual purchase price and standard cost"
+msgstr "实际采购价格与标准成本之间的差异"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Inventory Adjustment"
+msgstr "库存调整"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Variance from physical inventory count adjustments"
+msgstr "实物盘点调整产生的差异"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Material Usage Variance"
+msgstr "材料用量差异"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Variance between actual and standard BOM component consumption"
+msgstr "实际与标准 BOM 组件消耗之间的差异"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Labor & Machine Variance"
+msgstr "人工与机器差异"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Variance between actual and standard routing hours and rates"
+msgstr "实际与标准工艺路线工时和费率之间的差异"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Overhead Variance"
+msgstr "制造费用差异"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Variance between applied and actual manufacturing overhead"
+msgstr "已分配制造费用与实际制造费用之间的差异"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Lot Size Variance"
+msgstr "批量差异"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Fixed cost amortization variance when batch size differs from standard"
+msgstr "批量与标准不同时固定成本摊销的差异"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Subcontracting Variance"
+msgstr "外协加工差异"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Variance in outside processing costs"
+msgstr "外部加工成本的差异"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Operating Expenses"
+msgstr "营业费用"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Default accounts for business expenses"
+msgstr "业务支出的默认科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Maintenance Expense"
+msgstr "维护费用"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Expense account for equipment and facility maintenance"
+msgstr "设备和设施维护的费用科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Depreciation Expense"
+msgstr "折旧费用"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Periodic depreciation expense for fixed assets"
+msgstr "固定资产的定期折旧费用"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Gains and Losses"
+msgstr "损益"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Gains or losses recognized on disposal of fixed assets"
+msgstr "固定资产处置时确认的损益"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Service Charges"
+msgstr "服务费"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Bank and financial service charge expenses"
+msgstr "银行和金融服务费用支出"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Interest"
+msgstr "利息"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Interest income or expense from banking activities"
+msgstr "银行活动的利息收入或支出"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Supplier Payment Discounts"
+msgstr "供应商付款折扣"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Discounts earned for early payment to suppliers"
+msgstr "提前向供应商付款获得的折扣"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Customer Payment Discounts"
+msgstr "客户付款折扣"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Discounts given to customers for early payment"
+msgstr "给予客户提前付款的折扣"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Rounding Account"
+msgstr "尾差科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Account for small rounding differences in transactions"
+msgstr "交易中小额四舍五入差异的科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Deferred Tax Expense"
+msgstr "递延所得税费用"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Expense account for deferred tax adjustments on depreciation"
+msgstr "折旧递延所得税调整的费用科目"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Asset"
+msgstr "资产"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Liability"
+msgstr "负债"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Revenue"
+msgstr "收入"
+
+#: apps/erp/app/modules/accounting/ui/AccountDefaults/AccountDefaultsForm.tsx
+msgid "Expense"
+msgstr "费用"

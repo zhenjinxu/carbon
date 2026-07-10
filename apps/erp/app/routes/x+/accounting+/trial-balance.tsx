@@ -2,6 +2,7 @@ import { error } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { VStack } from "@carbon/react";
+import { msg } from "@lingui/core/macro";
 import { useState } from "react";
 import type { LoaderFunctionArgs } from "react-router";
 import { redirect, useLoaderData } from "react-router";
@@ -20,7 +21,7 @@ import type { Handle } from "~/utils/handle";
 import { path } from "~/utils/path";
 
 export const handle: Handle = {
-  breadcrumb: "Trial Balance",
+  breadcrumb: msg`Trial Balance`,
   to: path.to.trialBalance
 };
 
@@ -92,7 +93,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
       path.to.accounting,
       await flash(
         request,
-        error(balances.error, "Failed to load trial balance")
+        error(balances.error, msg`Failed to load trial balance`)
       )
     );
   }

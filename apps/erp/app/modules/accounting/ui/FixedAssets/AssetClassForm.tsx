@@ -12,6 +12,7 @@ import {
   toast,
   VStack
 } from "@carbon/react";
+import { Trans, useLingui } from "@lingui/react/macro";
 import type { PostgrestResponse } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { useFetcher } from "react-router";
@@ -27,11 +28,13 @@ import {
 import { usePermissions } from "~/hooks";
 import { path } from "~/utils/path";
 import {
+  depreciationMethodLabels,
   depreciationMethods,
   fixedAssetClassValidator,
+  taxDepreciationMethodLabels,
   taxDepreciationMethods
 } from "../../accounting.models";
-import { macrsConventions, macrsPropertyClasses } from "../../accounting.utils";
+import { macrsConventionLabels, macrsConventions, macrsPropertyClasses } from "../../accounting.utils";
 
 type AssetClassFormProps = {
   initialValues: z.infer<typeof fixedAssetClassValidator>;
@@ -46,6 +49,7 @@ const AssetClassForm = ({
   type = "drawer",
   onClose
 }: AssetClassFormProps) => {
+  const { t } = useLingui();
   const permissions = usePermissions();
   const fetcher = useFetcher<PostgrestResponse<{ id: string }>>();
 
@@ -54,13 +58,13 @@ const AssetClassForm = ({
 
     if (fetcher.state === "loading" && fetcher.data?.data) {
       onClose?.();
-      toast.success("Created asset class");
+      toast.success(t`Created asset class`);
     } else if (fetcher.state === "idle" && fetcher.data?.error) {
       toast.error(
-        `Failed to create asset class: ${fetcher.data.error.message}`
+        t`Failed to create asset class: ${fetcher.data.error.message}`
       );
     }
-  }, [fetcher.data, fetcher.state, onClose, type]);
+  }, [fetcher.data, fetcher.state, onClose, type, t]);
 
   const isEditing = initialValues.id !== undefined;
   const isDisabled = isEditing
@@ -94,62 +98,62 @@ const AssetClassForm = ({
           >
             <ModalDrawerHeader>
               <ModalDrawerTitle>
-                {isEditing ? "Edit" : "New"} Asset Class
+                {isEditing ? <Trans>Edit Asset Class</Trans> : <Trans>New Asset Class</Trans>}
               </ModalDrawerTitle>
             </ModalDrawerHeader>
             <ModalDrawerBody>
               <Hidden name="id" />
               <Hidden name="type" value={type} />
               <VStack spacing={4}>
-                <Input name="name" label="Name" />
-                <Input name="description" label="Description" />
+                <Input name="name" label={t`Name`} />
+                <Input name="description" label={t`Description`} />
                 <Select
                   name="depreciationMethod"
-                  label="Depreciation Method"
+                  label={t`Depreciation Method`}
                   options={depreciationMethods.map((m) => ({
-                    label: m,
+                    label: t(depreciationMethodLabels[m]),
                     value: m
                   }))}
                 />
                 <Number
                   name="usefulLifeMonths"
-                  label="Useful Life (Months)"
+                  label={t`Useful Life (Months)`}
                   minValue={1}
                 />
                 <Number
                   name="residualValuePercent"
-                  label="Residual Value %"
+                  label={t`Residual Value %`}
                   minValue={0}
                   maxValue={100}
                 />
                 <Account
                   name="assetAccountId"
-                  label="Asset Account"
+                  label={t`Asset Account`}
                   classes={["Asset"]}
                 />
                 <Account
                   name="accumulatedDepreciationAccountId"
-                  label="Accumulated Depreciation Account"
+                  label={t`Accumulated Depreciation Account`}
                   classes={["Asset"]}
                 />
                 <Account
                   name="depreciationExpenseAccountId"
-                  label="Depreciation Expense Account"
+                  label={t`Depreciation Expense Account`}
                   classes={["Expense"]}
                 />
                 <Account
                   name="writeOffAccountId"
-                  label="Write-Off Account"
+                  label={t`Write-Off Account`}
                   classes={["Expense"]}
                 />
                 <Account
                   name="writeDownAccountId"
-                  label="Write-Down Account"
+                  label={t`Write-Down Account`}
                   classes={["Expense"]}
                 />
                 <Account
                   name="disposalAccountId"
-                  label="Disposal Account"
+                  label={t`Disposal Account`}
                   classes={["Revenue", "Expense"]}
                 />
 
@@ -157,16 +161,16 @@ const AssetClassForm = ({
                   <>
                     <div className="border-t pt-4 mt-2 w-full">
                       <h4 className="text-sm font-medium mb-4">
-                        Tax Depreciation
+                        <Trans>Tax Depreciation</Trans>
                       </h4>
                     </div>
                     <Select
                       name="taxDepreciationMethod"
-                      label="Tax Method"
-                      placeholder="Same as Book"
+                      label={t`Tax Method`}
+                      placeholder={t`Same as Book`}
                       isOptional
                       options={taxDepreciationMethods.map((m) => ({
-                        label: m,
+                        label: t(taxDepreciationMethodLabels[m]),
                         value: m
                       }))}
                       onChange={(value) => setTaxMethod(value?.value ?? "")}
@@ -176,23 +180,23 @@ const AssetClassForm = ({
                       <>
                         <Select
                           name="macrsPropertyClass"
-                          label="Recovery Period"
+                          label={t`Recovery Period`}
                           options={macrsPropertyClasses.map((c) => ({
-                            label: `${c}-Year Property`,
+                            label: t`${c}-Year Property`,
                             value: c
                           }))}
                         />
                         <Select
                           name="macrsConvention"
-                          label="Convention"
+                          label={t`Convention`}
                           options={macrsConventions.map((c) => ({
-                            label: c,
+                            label: t(macrsConventionLabels[c]),
                             value: c
                           }))}
                         />
                         <Number
                           name="bonusDepreciationPercent"
-                          label="Bonus Depreciation %"
+                          label={t`Bonus Depreciation %`}
                           minValue={0}
                           maxValue={100}
                         />
@@ -204,12 +208,12 @@ const AssetClassForm = ({
                       <>
                         <Number
                           name="taxUsefulLifeMonths"
-                          label="Tax Useful Life (Months)"
+                          label={t`Tax Useful Life (Months)`}
                           minValue={1}
                         />
                         <Number
                           name="taxResidualValuePercent"
-                          label="Tax Residual Value %"
+                          label={t`Tax Residual Value %`}
                           minValue={0}
                           maxValue={100}
                         />
@@ -221,9 +225,9 @@ const AssetClassForm = ({
             </ModalDrawerBody>
             <ModalDrawerFooter>
               <HStack>
-                <Submit isDisabled={isDisabled}>Save</Submit>
+                <Submit isDisabled={isDisabled}><Trans>Save</Trans></Submit>
                 <Button size="md" variant="solid" onClick={() => onClose?.()}>
-                  Cancel
+                  <Trans>Cancel</Trans>
                 </Button>
               </HStack>
             </ModalDrawerFooter>

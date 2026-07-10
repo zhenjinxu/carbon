@@ -14,7 +14,10 @@ import { Hyperlink, New, Table } from "~/components";
 import { Enumerable } from "~/components/Enumerable";
 import { usePermissions, useUrlParams } from "~/hooks";
 import { path } from "~/utils/path";
-import { dimensionEntityTypes } from "../../accounting.models";
+import {
+  dimensionEntityTypeLabels,
+  dimensionEntityTypes
+} from "../../accounting.models";
 import type { Dimension } from "../../types";
 
 type DimensionsTableProps = {
@@ -45,12 +48,26 @@ const DimensionsTable = memo(({ data, count }: DimensionsTableProps) => {
       {
         accessorKey: "entityType",
         header: t`Entity Type`,
-        cell: (item) => <Enumerable value={item.getValue<string>()} />,
+        cell: (item) => {
+          const raw = item.getValue<string>();
+          const label = dimensionEntityTypeLabels[
+            raw as keyof typeof dimensionEntityTypeLabels
+          ];
+          return <Enumerable value={label ? t(label) : raw} />;
+        },
         meta: {
           filter: {
             type: "static",
             options: dimensionEntityTypes.map((v) => ({
-              label: <Enumerable value={v} />,
+              label: (
+                <Enumerable
+                  value={t(
+                    dimensionEntityTypeLabels[
+                      v as keyof typeof dimensionEntityTypeLabels
+                    ]
+                  )}
+                />
+              ),
               value: v
             }))
           },

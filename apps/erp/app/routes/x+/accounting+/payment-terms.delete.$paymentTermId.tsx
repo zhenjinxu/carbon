@@ -1,6 +1,7 @@
 import { error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
 import type {
   ActionFunctionArgs,
@@ -26,7 +27,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
       `${path.to.paymentTerms}?${getParams(request)}`,
       await flash(
         request,
-        error(paymentTerm.error, "Failed to get payment term")
+        error(paymentTerm.error, msg`Failed to get payment term`)
       )
     );
   }
@@ -43,7 +44,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
   if (!paymentTermId) {
     throw redirect(
       `${path.to.paymentTerms}?${getParams(request)}`,
-      await flash(request, error(params, "Failed to get an payment term id"))
+      await flash(request, error(params, msg`Failed to get an payment term id`))
     );
   }
 
@@ -56,14 +57,14 @@ export async function action({ request, params }: ActionFunctionArgs) {
       `${path.to.paymentTerms}?${getParams(request)}`,
       await flash(
         request,
-        error(deleteTypeError, "Failed to delete payment term")
+        error(deleteTypeError, msg`Failed to delete payment term`)
       )
     );
   }
 
   throw redirect(
     `${path.to.paymentTerms}?${getParams(request)}`,
-    await flash(request, success("Successfully deleted payment term"))
+    await flash(request, success(msg`Successfully deleted payment term`))
   );
 }
 

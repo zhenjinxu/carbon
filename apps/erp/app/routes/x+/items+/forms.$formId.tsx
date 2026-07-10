@@ -2,6 +2,7 @@ import { assertIsPost, error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
+import { msg } from "@lingui/core/macro";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { data, redirect, useLoaderData, useNavigate } from "react-router";
 import {
@@ -29,7 +30,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
       path.to.materialForms,
       await flash(
         request,
-        error(new Error("Access Denied"), "Cannot edit global material shape")
+        error(new Error("Access Denied"), msg`Cannot edit global material shape`)
       )
     );
   }
@@ -67,14 +68,14 @@ export async function action({ request, params }: ActionFunctionArgs) {
       {},
       await flash(
         request,
-        error(updateMaterialForm.error, "Failed to update material form")
+        error(updateMaterialForm.error, msg`Failed to update material shape`)
       )
     );
   }
 
   throw redirect(
     `${path.to.materialForms}?${getParams(request)}`,
-    await flash(request, success("Updated material form"))
+    await flash(request, success(msg`Updated material shape`))
   );
 }
 

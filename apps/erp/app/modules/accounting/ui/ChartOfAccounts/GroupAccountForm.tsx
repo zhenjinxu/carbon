@@ -83,11 +83,11 @@ const GroupAccountForm = ({
   useEffect(() => {
     if (fetcher.state === "loading" && fetcher.data?.data) {
       onClose?.();
-      toast.success(initialValues.id ? "Updated group" : "Created group");
+      toast.success(initialValues.id ? t`Updated group` : t`Created group`);
     } else if (fetcher.state === "idle" && fetcher.data?.error) {
-      toast.error(`Failed to save group: ${fetcher.data.error.message}`);
+      toast.error(t`Failed to save group: ${fetcher.data.error.message}`);
     }
-  }, [fetcher.data, fetcher.state, onClose, initialValues.id]);
+  }, [fetcher.data, fetcher.state, onClose, initialValues.id, t]);
 
   const isEditing = initialValues.id !== undefined;
   const isDisabled = isEditing
@@ -129,7 +129,7 @@ const GroupAccountForm = ({
           >
             <ModalDrawerHeader>
               <ModalDrawerTitle>
-                {isEditing ? "Edit" : "New"} Group
+                {isEditing ? <Trans>Edit Group</Trans> : <Trans>New Group</Trans>}
               </ModalDrawerTitle>
             </ModalDrawerHeader>
             <ModalDrawerBody>

@@ -3,6 +3,7 @@ import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
+import { msg } from "@lingui/core/macro";
 import { data, redirect, useLoaderData, useNavigate } from "react-router";
 import {
   getAccount,
@@ -29,7 +30,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
   if (account.error || !account.data) {
     throw redirect(
       path.to.chartOfAccounts,
-      await flash(request, error(account.error, "Failed to get account"))
+      await flash(request, error(account.error, msg`Failed to get account`))
     );
   }
 
@@ -110,7 +111,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
         {},
         await flash(
           request,
-          error(parent.error, "Failed to get parent account")
+          error(parent.error, msg`Failed to get parent account`)
         )
       );
     }
@@ -132,13 +133,13 @@ export async function action({ request, params }: ActionFunctionArgs) {
   if (result.error) {
     return data(
       {},
-      await flash(request, error(result.error, "Failed to move account"))
+      await flash(request, error(result.error, msg`Failed to move account`))
     );
   }
 
   throw redirect(
     path.to.chartOfAccounts,
-    await flash(request, success("Account moved"))
+    await flash(request, success(msg`Account moved`))
   );
 }
 

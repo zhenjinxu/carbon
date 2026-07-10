@@ -1,6 +1,7 @@
 import { error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { redirect, useLoaderData, useNavigate, useParams } from "react-router";
@@ -21,7 +22,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
       path.to.materialFinishes,
       await flash(
         request,
-        error(materialFinish.error, "Failed to get material finish")
+        error(materialFinish.error, msg`Failed to get material finish`)
       )
     );
   }
@@ -38,7 +39,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
   if (!id) {
     throw redirect(
       path.to.materialFinishes,
-      await flash(request, error(params, "Failed to get an material finish id"))
+      await flash(request, error(params, msg`Failed to get a material finish id`))
     );
   }
 
@@ -48,14 +49,14 @@ export async function action({ request, params }: ActionFunctionArgs) {
       `${path.to.materialFinishes}?${getParams(request)}`,
       await flash(
         request,
-        error(deleteTypeError, "Failed to delete material finish")
+        error(deleteTypeError, msg`Failed to delete material finish`)
       )
     );
   }
 
   throw redirect(
     path.to.materialFinishes,
-    await flash(request, success("Successfully deleted material finish"))
+    await flash(request, success(msg`Successfully deleted material finish`))
   );
 }
 

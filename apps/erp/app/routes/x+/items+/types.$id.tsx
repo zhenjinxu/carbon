@@ -2,6 +2,7 @@ import { assertIsPost, error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
+import { msg } from "@lingui/core/macro";
 import type {
   ActionFunctionArgs,
   ClientActionFunctionArgs,
@@ -34,7 +35,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
       path.to.materialTypes,
       await flash(
         request,
-        error(new Error("Access denied"), "Cannot edit global material type")
+        error(new Error("Access denied"), msg`Cannot edit global material type`)
       )
     );
   }
@@ -70,14 +71,14 @@ export async function action({ request, params }: ActionFunctionArgs) {
       {},
       await flash(
         request,
-        error(updateMaterialType.error, "Failed to update material type")
+        error(updateMaterialType.error, msg`Failed to update material type`)
       )
     );
   }
 
   throw redirect(
     `${path.to.materialTypes}?${getParams(request)}`,
-    await flash(request, success("Updated material type"))
+    await flash(request, success(msg`Updated material type`))
   );
 }
 

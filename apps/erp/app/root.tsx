@@ -126,6 +126,24 @@ export async function loader({ request, context }: LoaderFunctionArgs) {
   const appLanguage = resolveLanguage(preferences.locale);
   const linguiCatalog = await loadLinguiCatalogForRequest(request, appLanguage);
 
+  // Translate flash message from Lingui message ID if applicable
+  const flashResult = context.get(flashResultContext);
+  let flashMessage = flashResult?.message;
+  if (typeof flashMessage === "object" && flashMessage?.id) {
+    const translated = (linguiCatalog as Record<string, unknown>)[
+      flashMessage.id
+    ];
+    if (typeof translated === "string") {
+      flashMessage = translated;
+    } else if (Array.isArray(translated)) {
+      flashMessage = translated
+        .map((part: unknown) => (typeof part === "string" ? part : ""))
+        .join("");
+    } else {
+      flashMessage = flashMessage.message ?? flashMessage.id;
+    }
+  }
+
   return data(
     {
       env: {
@@ -152,7 +170,9 @@ export async function loader({ request, context }: LoaderFunctionArgs) {
       linguiCatalog,
       mode: getMode(request),
       preferences: getPreferenceHeaders(request),
-      result: context.get(flashResultContext),
+      result: flashResult
+        ? { ...flashResult, message: flashMessage }
+        : flashResult,
       theme: getTheme(request)
     },
     {

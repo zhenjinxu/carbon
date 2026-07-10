@@ -44,7 +44,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     console.error(materialDimensions.error);
     throw redirect(
       path.to.items,
-      await flash(request, error(null, "Error loading material dimensions"))
+      await flash(request, error(null, msg`Error loading material dimensions`))
     );
   }
 

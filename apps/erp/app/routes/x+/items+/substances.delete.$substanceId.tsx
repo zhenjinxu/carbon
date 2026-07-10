@@ -1,6 +1,7 @@
 import { error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react/macro";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { redirect, useLoaderData, useNavigate, useParams } from "react-router";
@@ -21,7 +22,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
       path.to.materialSubstances,
       await flash(
         request,
-        error(materialSubstance.error, "Failed to get material substance")
+        error(materialSubstance.error, msg`Failed to get material substance`)
       )
     );
   }
@@ -40,7 +41,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
       path.to.materialSubstances,
       await flash(
         request,
-        error(params, "Failed to get an material substance id")
+        error(params, msg`Failed to get a material substance id`)
       )
     );
   }
@@ -54,14 +55,14 @@ export async function action({ request, params }: ActionFunctionArgs) {
       `${path.to.materialSubstances}?${getParams(request)}`,
       await flash(
         request,
-        error(deleteTypeError, "Failed to delete material substance")
+        error(deleteTypeError, msg`Failed to delete material substance`)
       )
     );
   }
 
   throw redirect(
     path.to.materialSubstances,
-    await flash(request, success("Successfully deleted material substance"))
+    await flash(request, success(msg`Successfully deleted material substance`))
   );
 }
 

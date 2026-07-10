@@ -70,14 +70,14 @@ export async function action({ request }: ActionFunctionArgs) {
         {},
         await flash(
           request,
-          error(result.error, "Failed to update default accounts")
+          error(result.error, msg`Failed to update default accounts`)
         )
       );
     }
 
     throw redirect(
       path.to.accountingDefaults,
-      await flash(request, success("Updated default accounts"))
+      await flash(request, success(msg`Updated default accounts`))
     );
   }
 

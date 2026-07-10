@@ -1,5 +1,6 @@
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { KanbanLabelPDF } from "@carbon/documents/pdf";
+import { contentDisposition } from "@carbon/utils";
 import { renderToStream } from "@react-pdf/renderer";
 import type { LoaderFunctionArgs } from "react-router";
 import { getCompany } from "~/modules/settings";
@@ -126,7 +127,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
 
   const headers = new Headers({
     "Content-Type": "application/pdf",
-    "Content-Disposition": `inline; filename="${company.data.name} - Kanban Labels.pdf"`
+    "Content-Disposition": contentDisposition("inline", `${company.data.name} - Kanban Labels.pdf`)
   });
 
   return new Response(new Uint8Array(body), { status: 200, headers });

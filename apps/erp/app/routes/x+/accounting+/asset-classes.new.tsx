@@ -2,6 +2,7 @@ import { assertIsPost, error, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
+import { msg } from "@lingui/core/macro";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { redirect, useLoaderData, useNavigate } from "react-router";
 import {
@@ -61,7 +62,7 @@ export async function action({ request }: ActionFunctionArgs) {
           path.to.assetClasses,
           await flash(
             request,
-            error(result.error, "Failed to create asset class")
+            error(result.error, msg`Failed to create asset class`)
           )
         );
   }
@@ -70,7 +71,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
   throw redirect(
     path.to.assetClasses,
-    await flash(request, success("Asset class created"))
+    await flash(request, success(msg`Asset class created`))
   );
 }
 

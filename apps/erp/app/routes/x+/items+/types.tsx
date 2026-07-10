@@ -40,7 +40,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     console.error(materialTypes.error);
     throw redirect(
       path.to.items,
-      await flash(request, error(null, "Error loading material types"))
+      await flash(request, error(null, msg`Error loading material types`))
     );
   }
 

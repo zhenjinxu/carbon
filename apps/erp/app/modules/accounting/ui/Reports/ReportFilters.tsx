@@ -11,6 +11,7 @@ import {
   PopoverTrigger
 } from "@carbon/react";
 import { parseDate } from "@internationalized/date";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { LuCalendarDays, LuLanguages, LuSearch, LuX } from "react-icons/lu";
 import { useUrlParams } from "~/hooks";
 import CompanySelector from "./CompanySelector";
@@ -40,6 +41,7 @@ const ReportFilters = ({
   onSearchChange
 }: ReportFiltersProps) => {
   const [params, setParams] = useUrlParams();
+  const { t } = useLingui();
 
   const startDate = params.get("startDate");
   const endDate = params.get("endDate");
@@ -53,7 +55,7 @@ const ReportFilters = ({
             <LuSearch className="h-4 w-4 text-muted-foreground" />
           </InputLeftElement>
           <Input
-            placeholder="Search accounts..."
+            placeholder={t`Search accounts...`}
             value={search}
             onChange={(e) => onSearchChange(e.target.value)}
           />
@@ -65,26 +67,32 @@ const ReportFilters = ({
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="secondary" leftIcon={<LuCalendarDays />}>
-              Date Range
+              <Trans>Date Range</Trans>
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-[390px]">
             <PopoverHeader>
-              <p className="text-sm">Edit date range</p>
+              <p className="text-sm">
+                <Trans>Edit date range</Trans>
+              </p>
               <p className="text-xs text-muted-foreground">
-                Select date range to filter balances
+                <Trans>Select date range to filter balances</Trans>
               </p>
             </PopoverHeader>
 
             <div className="grid grid-cols-[1fr_3fr] gap-y-2 items-center">
-              <p className="text-sm text-muted-foreground">Start Date</p>
+              <p className="text-sm text-muted-foreground">
+                <Trans>Start Date</Trans>
+              </p>
               <DatePicker
                 value={startDate ? parseDate(startDate) : null}
                 onChange={(value) =>
                   setParams({ startDate: value?.toString() })
                 }
               />
-              <p className="text-sm text-muted-foreground">End Date</p>
+              <p className="text-sm text-muted-foreground">
+                <Trans>End Date</Trans>
+              </p>
               <DatePicker
                 value={endDate ? parseDate(endDate) : null}
                 onChange={(value) => setParams({ endDate: value?.toString() })}
@@ -102,12 +110,12 @@ const ReportFilters = ({
               })
             }
           >
-            Show in {parentCurrency}
+            <Trans>Show in {parentCurrency}</Trans>
           </Button>
         )}
         {isMultiCompany && parentCurrency && (
           <span className="text-sm text-muted-foreground">
-            Showing in {parentCurrency}
+            <Trans>Showing in {parentCurrency}</Trans>
           </span>
         )}
         {[...params.entries()].length > 0 && (
@@ -123,7 +131,7 @@ const ReportFilters = ({
               })
             }
           >
-            Reset
+            <Trans>Reset</Trans>
           </Button>
         )}
       </HStack>

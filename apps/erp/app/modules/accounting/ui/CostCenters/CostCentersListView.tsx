@@ -5,6 +5,7 @@ import {
   DropdownMenuTrigger,
   IconButton
 } from "@carbon/react";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
   LuChevronRight,
   LuCircleDollarSign,
@@ -37,6 +38,7 @@ function CostCentersRow({
   onDelete: (id: string) => void;
   onAddChild: (parentId: string) => void;
 }) {
+  const { t } = useLingui();
   const children = costCenters.filter(
     (c) => c.parentCostCenterId === costCenter.id
   );
@@ -81,18 +83,18 @@ function CostCentersRow({
             <DropdownMenuContent align="end" className="w-44">
               <DropdownMenuItem onClick={() => onEdit(costCenter.id!)}>
                 <LuPencil className="mr-2 size-4" />
-                Edit
+                <Trans>Edit</Trans>
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => onAddChild(costCenter.id!)}>
                 <LuPlus className="mr-2 size-4" />
-                Add cost center
+                <Trans>Add cost center</Trans>
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="text-destructive focus:text-destructive"
                 onClick={() => onDelete(costCenter.id!)}
               >
                 <LuTrash2 className="mr-2 size-4" />
-                Delete
+                <Trans>Delete</Trans>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -120,15 +122,16 @@ export function CostCentersListView({
   onDelete,
   onAddChild
 }: CostCentersListViewProps) {
+  const { t } = useLingui();
   const roots = costCenters.filter((c) => c.parentCostCenterId === null);
 
   return (
     <div className="bg-card overflow-hidden h-full">
       <div className="grid grid-cols-[1fr_auto] items-center border-b border-border bg-card h-11 px-6">
         <span className="text-sm font-medium text-foreground/80">
-          Cost Center
+          <Trans>Cost Center</Trans>
         </span>
-        <span className="text-sm font-medium text-foreground/80">Actions</span>
+        <span className="text-sm font-medium text-foreground/80"><Trans>Actions</Trans></span>
       </div>
       {roots.map((root) => (
         <CostCentersRow

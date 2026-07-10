@@ -1,6 +1,8 @@
 import { error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react/macro";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { redirect, useLoaderData, useNavigate, useParams } from "react-router";
 import { ConfirmDelete } from "~/components/Modals";
@@ -18,7 +20,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
   if (dimension.error) {
     throw redirect(
       `${path.to.dimensions}?${getParams(request)}`,
-      await flash(request, error(dimension.error, "Failed to get dimension"))
+      await flash(request, error(dimension.error, msg`Failed to get dimension`))
     );
   }
 
@@ -34,7 +36,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
   if (!dimensionId) {
     throw redirect(
       `${path.to.dimensions}?${getParams(request)}`,
-      await flash(request, error(params, "Failed to get a dimension id"))
+      await flash(request, error(params, msg`Failed to get a dimension id`))
     );
   }
 
@@ -42,13 +44,13 @@ export async function action({ request, params }: ActionFunctionArgs) {
   if (deleteError) {
     throw redirect(
       `${path.to.dimensions}?${getParams(request)}`,
-      await flash(request, error(deleteError, "Failed to delete dimension"))
+      await flash(request, error(deleteError, msg`Failed to delete dimension`))
     );
   }
 
   throw redirect(
     `${path.to.dimensions}?${getParams(request)}`,
-    await flash(request, success("Successfully deleted dimension"))
+    await flash(request, success(msg`Successfully deleted dimension`))
   );
 }
 
@@ -56,6 +58,7 @@ export default function DeleteDimensionRoute() {
   const { dimensionId } = useParams();
   const { dimension } = useLoaderData<typeof loader>();
   const navigate = useNavigate();
+  const { t } = useLingui();
 
   if (!dimensionId || !dimension) return null;
 
@@ -65,7 +68,7 @@ export default function DeleteDimensionRoute() {
     <ConfirmDelete
       action={path.to.deleteDimension(dimensionId)}
       name={dimension.name}
-      text={`Are you sure you want to delete the dimension: ${dimension.name}? This will also delete all associated values. This cannot be undone.`}
+      text={t`Are you sure you want to delete the dimension: ${dimension.name}? This will also delete all associated values. This cannot be undone.`}
       onCancel={onCancel}
     />
   );

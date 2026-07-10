@@ -1,6 +1,6 @@
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { ProductLabelPDF } from "@carbon/documents/pdf";
-import { labelSizes } from "@carbon/utils";
+import { contentDisposition, labelSizes } from "@carbon/utils";
 import { renderToStream } from "@react-pdf/renderer";
 import type { LoaderFunctionArgs } from "react-router";
 import { getTrackedEntitiesByMakeMethodId } from "~/modules/inventory";
@@ -107,7 +107,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
 
   const headers = new Headers({
     "Content-Type": "application/pdf",
-    "Content-Disposition": `inline; filename="${company.data.name} - Operation Labels.pdf"`
+    "Content-Disposition": contentDisposition("inline", `${company.data.name} - Operation Labels.pdf`)
   });
   return new Response(new Uint8Array(body), { status: 200, headers });
 }

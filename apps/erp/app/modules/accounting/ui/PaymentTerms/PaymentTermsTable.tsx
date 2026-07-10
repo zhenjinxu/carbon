@@ -16,7 +16,10 @@ import { Enumerable } from "~/components/Enumerable";
 import { usePermissions, useUrlParams } from "~/hooks";
 import { useCustomColumns } from "~/hooks/useCustomColumns";
 import { path } from "~/utils/path";
-import { paymentTermsCalculationMethod } from "../../accounting.models";
+import {
+  paymentTermsCalculationMethod,
+  paymentTermsCalculationMethodLabels
+} from "../../accounting.models";
 import type { PaymentTerm } from "../../types";
 
 type PaymentTermsTableProps = {
@@ -72,12 +75,26 @@ const PaymentTermsTable = memo(({ data, count }: PaymentTermsTableProps) => {
       {
         accessorKey: "calculationMethod",
         header: t`Calculation Method`,
-        cell: (item) => <Enumerable value={item.getValue<string>()} />,
+        cell: (item) => {
+          const raw = item.getValue<string>();
+          const label = paymentTermsCalculationMethodLabels[
+            raw as keyof typeof paymentTermsCalculationMethodLabels
+          ];
+          return <Enumerable value={label ? t(label) : raw} />;
+        },
         meta: {
           filter: {
             type: "static",
             options: paymentTermsCalculationMethod.map((v) => ({
-              label: <Enumerable value={v} />,
+              label: (
+                <Enumerable
+                  value={t(
+                    paymentTermsCalculationMethodLabels[
+                      v as keyof typeof paymentTermsCalculationMethodLabels
+                    ]
+                  )}
+                />
+              ),
               value: v
             }))
           },

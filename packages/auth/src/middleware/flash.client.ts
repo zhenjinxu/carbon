@@ -7,6 +7,15 @@ type ClientMiddlewareResult = Record<
   { type: "data" | "error"; result: unknown }
 >;
 
+function getMessage(result: Result | null): string {
+  const msg = result?.message;
+  if (typeof msg === "string") return msg;
+  if (msg && typeof msg === "object" && "message" in msg && msg.message)
+    return msg.message;
+  if (msg && typeof msg === "object" && "id" in msg) return msg.id;
+  return "";
+}
+
 export const flashClientMiddleware: MiddlewareFunction<
   ClientMiddlewareResult
 > = async (_args, next) => {
@@ -16,10 +25,13 @@ export const flashClientMiddleware: MiddlewareFunction<
   if (rootData?.type === "data" && rootData.result) {
     const result = (rootData.result as Record<string, unknown>)
       .result as Result | null;
-    if (result?.success === true) {
-      toast.success(result.message);
-    } else if (result?.message) {
-      toast.error(result.message);
+    const message = getMessage(result);
+    if (message) {
+      if (result?.success === true) {
+        toast.success(message);
+      } else {
+        toast.error(message);
+      }
     }
   }
 

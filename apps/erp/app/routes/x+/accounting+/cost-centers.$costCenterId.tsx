@@ -2,6 +2,7 @@ import { assertIsPost, error, notFound, success } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
+import { msg } from "@lingui/core/macro";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { redirect, useLoaderData, useNavigate } from "react-router";
 import {
@@ -26,7 +27,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
   if (costCenter.error) {
     throw redirect(
       path.to.costCenters,
-      await flash(request, error(costCenter.error, "Failed to get cost center"))
+      await flash(request, error(costCenter.error, msg`Failed to get cost center`))
     );
   }
 
@@ -63,14 +64,14 @@ export async function action({ request }: ActionFunctionArgs) {
       path.to.costCenters,
       await flash(
         request,
-        error(updateCostCenter.error, "Failed to update cost center.")
+        error(updateCostCenter.error, msg`Failed to update cost center.`)
       )
     );
   }
 
   throw redirect(
     path.to.costCenters,
-    await flash(request, success("Cost center updated"))
+    await flash(request, success(msg`Cost center updated`))
   );
 }
 

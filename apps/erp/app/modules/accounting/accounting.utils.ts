@@ -1,3 +1,5 @@
+import { msg } from "@lingui/core/macro";
+
 export const macrsPropertyClasses = [
   "3",
   "5",
@@ -10,6 +12,11 @@ export const macrsPropertyClasses = [
 ] as const;
 
 export const macrsConventions = ["Half-Year", "Mid-Quarter"] as const;
+
+export const macrsConventionLabels = {
+  "Half-Year": msg`Half-Year`,
+  "Mid-Quarter": msg`Mid-Quarter`
+} as const;
 
 export type MacrsPropertyClass = (typeof macrsPropertyClasses)[number];
 export type MacrsConvention = (typeof macrsConventions)[number];
