@@ -61,7 +61,7 @@ export async function getDocuments(
   }
 ) {
   let query = client
-    .from("document")
+    .from("documents")
     .select("*", {
       count: "exact"
     })
@@ -75,19 +75,15 @@ export async function getDocuments(
   }
 
   if (args?.favorite) {
-    query = query.filter(
-      "id",
-      "in",
-      `(${client.from("documentFavorite").select("documentId").eq("userId", "auth.uid()::text").toSql().sql})`
-    );
+    query = query.eq("favorite", true);
   }
 
   if (args.recent) {
-    query = query.order("updatedAt", { ascending: false });
+    query = query.order("lastActivityAt", { ascending: false });
   }
 
   query = setGenericQueryFilters(query, args, [
-    { column: "createdAt", ascending: false }
+    { column: "favorite", ascending: false }
   ]);
 
   return query;
