@@ -186,7 +186,9 @@ services:
       - ./packages/database/src:/home/src:ro
       - ./packages/dev/docker/edge-main:/home/deno/main:ro
       - ./packages/dev/docker/edge-entrypoint.sh:/home/deno/entrypoint.sh:ro
+      - ./packages/dev/docker/npm-cache-preload:/home/deno/npm-preload:ro
       - ${HOME}/.dev-sidecar/dev-sidecar.ca.crt:/etc/ssl/certs/dev-sidecar-ca.crt:ro
+      - edge-npm-cache:/root/.cache/deno/npm
     entrypoint: ["/bin/sh", "/home/deno/entrypoint.sh"]
     command:
       - start
@@ -241,3 +243,4 @@ services:
 volumes:
   storage:
   inngest:
+  edge-npm-cache:

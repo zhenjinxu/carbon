@@ -1,0 +1,7 @@
+{
+  "name": "@supabase/cli-linux-x64-musl",
+  "version": "2.109.1",
+  "description": "Placeholder for edge-runtime npm cache",
+  "os": ["linux", "darwin", "win32"],
+  "cpu": ["x64", "arm64"]
+}

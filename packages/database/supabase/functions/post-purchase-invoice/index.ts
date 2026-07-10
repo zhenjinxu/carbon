@@ -1646,14 +1646,18 @@ serve(async (req: Request) => {
     );
   } catch (err) {
     console.error(err);
-    if (payload.type !== "void" && "invoiceId" in payload) {
-      const client = await requirePermissions(req, payload.companyId, payload.userId, { update: "invoicing" });
-      await client
-        .from("purchaseInvoice")
-        .update({ status: "Draft" })
-        .eq("id", payload.invoiceId);
+    try {
+      if (payload.type !== "void" && "invoiceId" in payload) {
+        const client = await requirePermissions(req, payload.companyId, payload.userId, { update: "invoicing" });
+        await client
+          .from("purchaseInvoice")
+          .update({ status: "Draft" })
+          .eq("id", payload.invoiceId);
+      }
+    } catch (recoveryErr) {
+      console.error("Failed to reset invoice status", recoveryErr);
     }
-    return new Response(JSON.stringify(err), {
+    return new Response(JSON.stringify({ error: (err as Error).message ?? "Internal error" }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 500,
     });

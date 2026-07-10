@@ -10,11 +10,8 @@ import { useRouteData } from "~/hooks";
 import type { AccountListItem } from "~/modules/accounting";
 import {
   defaultAccountValidator,
-  defaultBalanceSheetAccountValidator,
-  defaultIncomeAcountValidator,
   getDefaultAccounts,
-  updateDefaultBalanceSheetAccounts,
-  updateDefaultIncomeAccounts
+  updateDefaultAccounts
 } from "~/modules/accounting";
 import { AccountDefaultsForm } from "~/modules/accounting/ui/AccountDefaults";
 import type { Handle } from "~/utils/handle";
@@ -32,19 +29,14 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
   const defaultAccounts = await getDefaultAccounts(client, companyId);
 
-  if (defaultAccounts.error || !defaultAccounts.data) {
-    throw redirect(
-      path.to.accounting,
-      await flash(
-        request,
-        error(defaultAccounts.error, "Failed to load default accounts")
-      )
-    );
+  // When no accountDefault row exists yet (common for companies that haven't
+  // configured defaults), return an empty object so the form renders with
+  // blank fields for first-time setup.
+  if (!defaultAccounts.data) {
+    return { defaultAccounts: {} };
   }
 
-  return {
-    defaultAccounts: defaultAccounts.data
-  };
+  return { defaultAccounts: defaultAccounts.data };
 }
 
 export async function action({ request }: ActionFunctionArgs) {
@@ -65,39 +57,20 @@ export async function action({ request }: ActionFunctionArgs) {
       return validationError(validation.error);
     }
 
-    const incomeValidation = defaultIncomeAcountValidator.safeParse(
-      validation.data
-    );
-    const balanceValidation = defaultBalanceSheetAccountValidator.safeParse(
-      validation.data
-    );
+    // Single upsert with all fields so that the row is created on first save
+    // (when no accountDefault row exists yet) or updated on subsequent saves.
+    const result = await updateDefaultAccounts(client, {
+      ...validation.data,
+      companyId,
+      updatedBy: userId
+    });
 
-    if (!incomeValidation.success || !balanceValidation.success) {
-      throw new Error("Failed to parse default accounts");
-    }
-
-    const [updateIncome, updateBalance] = await Promise.all([
-      updateDefaultIncomeAccounts(client, {
-        ...incomeValidation.data,
-        companyId,
-        updatedBy: userId
-      }),
-      updateDefaultBalanceSheetAccounts(client, {
-        ...balanceValidation.data,
-        companyId,
-        updatedBy: userId
-      })
-    ]);
-
-    if (updateIncome.error || updateBalance.error) {
+    if (result.error) {
       return data(
         {},
         await flash(
           request,
-          error(
-            updateIncome.error || updateBalance.error,
-            "Failed to update default accounts"
-          )
+          error(result.error, "Failed to update default accounts")
         )
       );
     }

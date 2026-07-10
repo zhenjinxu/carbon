@@ -115,7 +115,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
       path.to.receipt(receiptId),
       await flash(
         request,
-        error(setPendingState.error, "Failed to post receipt")
+        error(setPendingState.error, setPendingState.error.message || "Failed to update receipt status")
       )
     );
   }
@@ -148,9 +148,21 @@ export async function action({ request, params }: ActionFunctionArgs) {
         })
         .eq("id", receiptId);
 
+      // Extract the actual error message from the edge function response
+      const edgeError = postReceipt.error as any;
+      console.error("Edge function error:", JSON.stringify(edgeError, null, 2));
+
+      // Try multiple paths to extract the error message
+      const detail =
+        edgeError?.context?.message ||
+        edgeError?.message ||
+        (typeof edgeError?.context === "string" ? edgeError.context : null) ||
+        (typeof edgeError === "string" ? edgeError : null) ||
+        "Failed to post receipt. Check server logs for details.";
+
       throw redirect(
         path.to.receipt(receiptId),
-        await flash(request, error(postReceipt.error, "Failed to post receipt"))
+        await flash(request, error(postReceipt.error, detail))
       );
     }
 

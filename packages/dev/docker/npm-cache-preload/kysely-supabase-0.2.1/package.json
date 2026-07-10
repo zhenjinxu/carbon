@@ -1,0 +1,62 @@
+{
+  "name": "kysely-supabase",
+  "version": "0.2.1",
+  "description": "Kysely type translators for Supabase",
+  "repository": "https://github.com/kysely-org/kysely-supabase.git",
+  "homepage": "https://github.com/kysely-org/kysely-supabase",
+  "author": "Igal Klebanov <igalklebanov@gmail.com> (https://github.com/igalklebanov)",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "kysely",
+    "supabase",
+    "postgres",
+    "postgresql",
+    "typescript",
+    "types"
+  ],
+  "peerDependencies": {
+    "kysely": ">= 0.24.0 < 1",
+    "supabase": ">= 1.0.0 < 3"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.2",
+    "@biomejs/biome": "^2.2.0",
+    "@tsconfig/node24": "^24.0.1",
+    "@types/node": "^24.3.0",
+    "kysely": "^0.28.5",
+    "supabase": "^2.34.3",
+    "tsd": "^0.33.0",
+    "tsup": "^8.5.0",
+    "type-fest": "^4.41.0",
+    "typescript": "^5.9.2"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "biome": "biome",
+    "build": "tsup",
+    "check:exports": "attw --pack .",
+    "check:types": "tsc --noEmit",
+    "init:db": "supabase start && supabase db reset && supabase gen types typescript --local > schema.gen.ts",
+    "lint": "biome check",
+    "test": "pnpm build && pnpm test:typings",
+    "test:typings": "tsd tests/typings"
+  }
+}

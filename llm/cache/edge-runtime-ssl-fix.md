@@ -1,117 +1,91 @@
-# Edge Runtime SSL Certificate Fix
+# Edge Runtime: Complete Fix for Corporate Proxy Module Resolution
 
 ## Problem
 
-Edge Runtime (Deno-based, running in Docker) was failing with SSL errors when loading npm packages:
-```
-worker boot error: failed to bootstrap runtime: failed to create the graph: 
-Failed loading https://registry.npmjs.org/@types%2fnode for package "@types/node": 
-error sending request for url: invalid peer certificate: UnknownIssuer
-```
+Edge functions (Supabase edge-runtime in Docker) hung indefinitely on every request behind a corporate proxy (dev-sidecar MITM). The previous SSL fix (2026-06-29) was insufficient — the runtime still hung during npm package resolution.
 
-This caused ALL edge functions to fail, which in turn caused:
-- "Failed to create receipt" errors
-- ERP app crashes on routes that invoke Supabase Edge Functions
+## Symptoms
+
+- `curl` to edge functions through Kong (port 54322) hangs forever
+- Edge-runtime container shows no error logs (just sits there)
+- Kong returns 502/504 timeouts
+- Individual function execution never starts
 
 ## Root Cause Chain
 
-Multiple issues combined:
+1. **`dev-sidecar.exe` intercepts HTTPS from Docker containers**: The MITM proxy presents its own CA cert, which the edge-runtime trusts (via `DENO_TLS_CA_STORE=system` + `update-ca-certificates`). TLS handshakes succeed but data transfer is unreliable — `hyper::Error(IncompleteMessage)` / `connection reset`.
 
-### 1. `HOME` not set in `.env.local`
-- Docker Compose uses `${HOME}` for volume mount path of the dev-sidecar CA cert
-- `.env.local` didn't define `HOME` (PowerShell doesn't export `HOME` by default)
-- Result: Volume mount source resolved to `/.dev-sidecar/dev-sidecar.ca.crt` (empty HOME) → file not found → CA cert never mounted into container
+2. **Deno FileFetcher always tries remote before cache**: For `https://deno.land/...` URLs, the runtime tries `fetch_remote_no_follow` → timeout → `fetch_cached_no_follow`. Slow but works.
 
-### 2. dev-sidecar MITM proxy intercepting npmjs.org
-- The dev-sidecar tool on the Windows host intercepts HTTPS traffic via DNS poisoning
-- It presents its own CA-signed certificate for `registry.npmjs.org`
-- Deno's rustls (not OpenSSL) doesn't trust the dev-sidecar CA by default
+3. **npm resolver connects to registry.npmjs.org**: After module resolution, the npm resolver opens a TLS connection to the npm registry for package validation/download. This connection hangs because the dev-sidecar proxy drops it mid-transfer.
 
-### 3. `--cert` flag only applies to main service, not user workers
-- The `--cert /etc/ssl/certs/dev-sidecar-ca.crt` flag was passed to `edge-runtime start`
-- But user workers (created via `EdgeRuntime.userWorkers.create()`) don't inherit this flag
-- The npm package resolver in user workers still failed SSL validation
+4. **Missing npm packages in cache**: Even when most packages are cached, if ANY transitive dependency is missing (e.g. `encoding@0.1.13`, `@types/node@22.5.4`, `@supabase/cli-*`), the resolver tries to download it → hang.
 
-### 4. `DENO_TLS_CA_STORE=mozilla` insufficient
-- `mozilla` store only includes Mozilla's built-in root CAs
-- The dev-sidecar CA is a custom CA not in Mozilla's store
-- Need `system` store + cert injected into OS trust store
+5. **Container filesystem is ephemeral**: The Deno npm cache at `/root/.cache/deno/npm` is in the container's writable layer, which is destroyed on container recreation.
 
-### 5. Kong timeout too short for first bootstrap
-- Default Kong timeout: 60 seconds
-- First edge function bootstrap needs to download npm packages (slow through MITM proxy)
-- Kong gave up before the worker could finish bootstrapping
+## Solution (3-layer defense)
 
-## Solution
+### Layer 1: Pre-download all npm packages
+Script: `packages/dev/docker/download-npm-cache.sh` (idempotent, re-run after dependency changes)
 
-### File: `.env.local`
-Added `HOME` variable for Docker Compose volume mount resolution:
-```
-HOME=C:/Users/zhenjin_xu
+Downloads 38 packages from `registry.npmjs.org` on the HOST (where internet works) into `packages/dev/docker/npm-cache-preload/`:
+- All `@supabase/*` packages + platform CLI binaries
+- `kysely`, `kysely-supabase`, `zod`, `@internationalized/date`
+- All transitive deps: `encoding`, `@types/node`, `undici-types`, etc.
+
+### Layer 2: Entrypoint copies preload → npm cache
+`packages/dev/docker/edge-entrypoint.sh`:
+```sh
+# Copies dev-sidecar CA cert into OS trust store
+# Then copies npm-cache-preload/* → /root/.cache/deno/npm/registry.npmjs.org/
+# Handles scoped (@scope+name-version) and unscoped (name-version) packages
 ```
 
-### File: `docker-compose.local.yml` (edge-runtime service)
-1. Added `DENO_CERT` env var (applies to all Deno processes including workers):
-   ```yaml
-   DENO_TLS_CA_STORE: system
-   DENO_CERT: /etc/ssl/certs/dev-sidecar-ca.crt
-   ```
-2. Added external DNS to bypass dev-sidecar DNS interception:
-   ```yaml
-   dns:
-     - 8.8.8.8
-     - 8.8.4.4
-   ```
-3. Added custom entrypoint volume mount:
-   ```yaml
-   - ./packages/dev/docker/edge-entrypoint.sh:/home/deno/entrypoint.sh:ro
-   entrypoint: ["/bin/sh", "/home/deno/entrypoint.sh"]
-   ```
+### Layer 3: Docker volume persists the cache
+Named volume `edge-npm-cache` mounted at `/root/.cache/deno/npm`.
+Survives container recreation. Populated on first start from preload dir + any packages the runtime can download.
 
-### File: `packages/dev/docker/edge-entrypoint.sh` (new)
-Copies the dev-sidecar CA cert into the Debian system trust store before starting edge-runtime:
-```bash
-#!/bin/sh
-if [ -f /etc/ssl/certs/dev-sidecar-ca.crt ]; then
-  cp /etc/ssl/certs/dev-sidecar-ca.crt /usr/local/share/ca-certificates/dev-sidecar-ca.crt
-  update-ca-certificates --fresh >/dev/null 2>&1
-fi
-exec edge-runtime "$@"
+### Supporting fixes
+- `packages/dev/docker/edge-main/index.ts`: Removed `import { STATUS_CODE } from "https://deno.land/std@0.224.0/http/status.ts"` (replaced with inline `404`/`500`). Prevents the main dispatcher from depending on remote modules.
+- `.gitattributes`: Enforces `LF` line endings for `*.sh` and `packages/dev/docker/**` files. Prevents CRLF breakage on Windows.
+
+## Files Modified
+
+| File | Change |
+|------|--------|
+| `packages/dev/docker/edge-main/index.ts` | Removed remote deno.land import |
+| `packages/dev/docker/edge-entrypoint.sh` | Added npm preload copy logic |
+| `docker-compose.local.yml` | Added `edge-npm-cache` volume + `npm-cache-preload` bind mount |
+| `.gitattributes` | LF enforcement for shell scripts |
+| `packages/dev/docker/npm-cache-preload/` | 38 pre-downloaded npm packages |
+| `packages/dev/docker/download-npm-cache.sh` | Script to (re)populate the preload dir |
+
+## How to Refresh After Dependency Changes
+
+```sh
+# 1. Edit deno.json or add new npm imports in functions
+# 2. Update download-npm-cache.sh with new packages
+# 3. Re-run the script:
+bash packages/dev/docker/download-npm-cache.sh
+# 4. Restart edge-runtime (it picks up new preload on next start):
+docker compose -f docker-compose.local.yml --env-file .env.local restart edge-runtime
 ```
 
-### File: `packages/dev/docker/kong.yml` (functions-v1 service)
-Increased timeouts from default 60s to 300s (in milliseconds):
-```yaml
-connect_timeout: 300000
-write_timeout: 300000
-read_timeout: 300000
-```
+## Verification
 
-## Why external DNS was the key fix
-Even with the CA cert properly mounted, Deno's npm resolver in user workers was slow/unreliable through the MITM proxy. By using Google DNS (8.8.8.8), `registry.npmjs.org` resolves to the real Cloudflare/AWS servers with valid public certificates, completely bypassing the MITM interception.
+From a clean `docker compose up -d --force-recreate edge-runtime`:
+- `get-method`: 16-30ms (first call may take ~18s for TS compilation)
+- `post-receipt`: 27ms
+- Both return ZodError / auth errors (expected business logic responses)
 
 ## Key Learnings
 
-1. **Docker Compose variable resolution**: `${HOME}` in docker-compose.yml resolves from `.env`/`.env.local`, NOT from the shell environment. Must be explicitly set.
+1. **dev-sidecar MITM affects Docker containers**: Even with `DENO_TLS_CA_STORE=system`, the Rust HTTP library in edge-runtime completes TLS handshake but drops data transfer. External DNS (`8.8.8.8`) does NOT bypass this — dev-sidecar intercepts at the TLS layer, not just DNS.
 
-2. **Deno TLS configuration**:
-   - `DENO_TLS_CA_STORE=system` → Use OS certificate store (Debian: `/etc/ssl/certs/`)
-   - `DENO_TLS_CA_STORE=mozilla` → Use Mozilla's root certificates (built-in)
-   - `--cert=<file>` → Add custom CA certificate (main process only, not user workers)
-   - `DENO_CERT=<file>` → Env var version of `--cert` (may apply to workers)
+2. **Deno's FileFetcher fallback pattern**: Remote attempt → timeout → cache fallback. For `deno.land` URLs, this is slow but works. For npm registry, the timeout is infinite → total hang.
 
-3. **Deno ≠ Node.js**: Deno uses Rust's `rustls`, not OpenSSL. `SSL_CERT_FILE` and `NODE_EXTRA_CA_CERTS` don't work.
+3. **npm cache is all-or-nothing**: If even one transitive dep is missing from cache, the resolver hangs. Must pre-populate ALL packages.
 
-4. **Kong timeouts are in milliseconds** in the declarative config (`kong.yml`).
+4. **Scoped package naming in preload**: Use `@scope+name-version` (e.g., `@supabase+supabase-js-2.33.1`). The `+` separates scope+name from version. The entrypoint parses this to construct the cache path.
 
-5. **PowerShell Quirks**: `$env:HOME` is not set by default; use `$env:USERPROFILE`.
-
-## Related Files
-- `docker-compose.local.yml` — edge-runtime service config
-- `packages/dev/docker/edge-entrypoint.sh` — CA cert injection script
-- `packages/dev/docker/kong.yml` — API gateway timeout config
-- `.env.local` — HOME variable for Docker volume mounts
-
-## References
-- Fixed: 2026-06-29
-- Context: Edge Runtime SSL certificate validation in containerized environment with dev-sidecar MITM proxy
+5. **Docker named volumes persist across recreations**: Using `edge-npm-cache` volume at `/root/.cache/deno/npm` means the cache survives `docker compose up --force-recreate`.

@@ -1,14 +1,16 @@
 // Edge runtime dispatcher. Routes /functions/v1/<name>/* to <name>/index.ts.
 // Required by supabase/edge-runtime when started with --main-service.
-
-import { STATUS_CODE } from "https://deno.land/std@0.224.0/http/status.ts";
+//
+// NOTE: No remote imports (e.g. https://deno.land/...) are allowed here.
+// The Deno module resolver hangs behind corporate SSL proxies even with
+// DENO_TLS_CA_STORE=system. We inline the two HTTP status codes we need.
 
 Deno.serve(async (req: Request) => {
   const url = new URL(req.url);
   const segments = url.pathname.split("/").filter(Boolean);
   const fnName = segments[0];
   if (!fnName) {
-    return new Response("Not found", { status: STATUS_CODE.NotFound });
+    return new Response("Not found", { status: 404 });
   }
 
   const servicePath = `/home/deno/functions/${fnName}`;
@@ -30,9 +32,9 @@ Deno.serve(async (req: Request) => {
         function: fnName,
       }),
       {
-        status: STATUS_CODE.InternalServerError,
+        status: 500,
         headers: { "content-type": "application/json" },
-      }
+      },
     );
   }
 });

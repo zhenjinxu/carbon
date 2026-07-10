@@ -131,6 +131,12 @@ serve(async (req: Request) => {
     if (itemCosts.error) {
       throw new Error("Failed to fetch item costs");
     }
+    if (companySettings.error) {
+      console.error("Failed to fetch company settings", companySettings.error);
+    }
+    if (itemSamplingPlans.error) {
+      console.error("Failed to fetch item sampling plans", itemSamplingPlans.error);
+    }
 
     const samplingStandard: SamplingStandard =
       (companySettings.data as any)?.samplingStandard ?? "ANSI_Z1_4";
@@ -1891,14 +1897,18 @@ serve(async (req: Request) => {
     );
   } catch (err) {
     console.error(err);
-    if (payload.type !== "void" && "receiptId" in payload) {
-      const client = await requirePermissions(req, payload.companyId, payload.userId, { update: "inventory" });
-      await client
-        .from("receipt")
-        .update({ status: "Draft" })
-        .eq("id", payload.receiptId);
+    try {
+      if (payload.type !== "void" && "receiptId" in payload) {
+        const client = await requirePermissions(req, payload.companyId, payload.userId, { update: "inventory" });
+        await client
+          .from("receipt")
+          .update({ status: "Draft" })
+          .eq("id", payload.receiptId);
+      }
+    } catch (recoveryErr) {
+      console.error("Failed to reset receipt status", recoveryErr);
     }
-    return new Response(JSON.stringify(err), {
+    return new Response(JSON.stringify({ error: (err as Error).message ?? "Internal error" }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 500,
     });

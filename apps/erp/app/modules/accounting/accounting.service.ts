@@ -12,6 +12,7 @@ import type {
   currencyValidator,
   defaultBalanceSheetAccountValidator,
   defaultIncomeAcountValidator,
+  defaultAccountValidator,
   depreciationMethods,
   dimensionValidator,
   fiscalYearSettingsValidator,
@@ -584,30 +585,16 @@ export async function getPaymentTermsList(
     .order("name", { ascending: true });
 }
 
-export async function updateDefaultBalanceSheetAccounts(
+export async function updateDefaultAccounts(
   client: SupabaseClient<Database>,
-  defaultAccounts: z.infer<typeof defaultBalanceSheetAccountValidator> & {
+  defaultAccounts: z.infer<typeof defaultAccountValidator> & {
     companyId: string;
     updatedBy: string;
   }
 ) {
   return client
     .from("accountDefault")
-    .update(defaultAccounts)
-    .eq("companyId", defaultAccounts.companyId);
-}
-
-export async function updateDefaultIncomeAccounts(
-  client: SupabaseClient<Database>,
-  defaultAccounts: z.infer<typeof defaultIncomeAcountValidator> & {
-    companyId: string;
-    updatedBy: string;
-  }
-) {
-  return client
-    .from("accountDefault")
-    .update(defaultAccounts)
-    .eq("companyId", defaultAccounts.companyId);
+    .upsert(defaultAccounts, { onConflict: "companyId" });
 }
 
 export async function updateFiscalYearSettings(
