@@ -61,7 +61,7 @@ export async function getDocuments(
   }
 ) {
   let query = client
-    .from("documents")
+    .from("document")
     .select("*", {
       count: "exact"
     })
@@ -75,7 +75,11 @@ export async function getDocuments(
   }
 
   if (args?.favorite) {
-    query = query.eq("favorite", true);
+    query = query.filter(
+      "id",
+      "in",
+      `(${client.from("documentFavorite").select("documentId").eq("userId", "auth.uid()::text").toSql().sql})`
+    );
   }
 
   if (args.recent) {
@@ -83,7 +87,7 @@ export async function getDocuments(
   }
 
   query = setGenericQueryFilters(query, args, [
-    { column: "favorite", ascending: false }
+    { column: "createdAt", ascending: false }
   ]);
 
   return query;

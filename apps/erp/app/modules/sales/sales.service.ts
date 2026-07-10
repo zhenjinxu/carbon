@@ -516,7 +516,7 @@ export async function getCustomer(
   client: SupabaseClient<Database>,
   customerId: string
 ) {
-  return client.from("customers").select("*").eq("id", customerId).single();
+  return client.from("customer").select("*").eq("id", customerId).single();
 }
 
 export async function getCustomerContact(
@@ -744,7 +744,7 @@ export async function getCustomers(
   }
 ) {
   let query = client
-    .from("customers")
+    .from("customer")
     .select("*", {
       count: "exact"
     })
