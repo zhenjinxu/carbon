@@ -28,6 +28,7 @@ import {
   LuBookMarked,
   LuCalendar,
   LuClock,
+  LuDatabase,
   LuHash,
   LuMapPin,
   LuPencil,
@@ -222,6 +223,27 @@ const JobsTable = memo(({ data, count, tags }: JobsTableProps) => {
             }))
           },
           icon: <AiOutlinePartition />
+        }
+      },
+      {
+        accessorKey: "source",
+        header: t`Work Order Source`,
+        cell: ({ row }) => (
+          <Badge
+            variant={row.original.source === "U8 ERP" ? "outline" : "secondary"}
+          >
+            {row.original.source === "U8 ERP" ? t`U8 ERP` : t`Carbon MRP`}
+          </Badge>
+        ),
+        meta: {
+          filter: {
+            type: "static",
+            options: [
+              { value: "Carbon MRP", label: t`Carbon MRP` },
+              { value: "U8 ERP", label: t`U8 ERP` }
+            ]
+          },
+          icon: <LuDatabase />
         }
       },
       {

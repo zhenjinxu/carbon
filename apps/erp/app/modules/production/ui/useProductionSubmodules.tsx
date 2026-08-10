@@ -2,6 +2,8 @@ import { useLingui } from "@lingui/react/macro";
 import {
   LuChartLine,
   LuCirclePlay,
+  LuCloudDownload,
+  LuGauge,
   LuListChecks,
   LuSquareChartGantt,
   LuSquareKanban,
@@ -31,6 +33,23 @@ export default function useProductionSubmodules() {
           to: path.to.procedures,
           icon: <LuListChecks />,
           table: "procedure",
+          role: "employee"
+        }
+      ]
+    },
+    {
+      name: t`U8 ERP`,
+      routes: [
+        {
+          name: t`Work Order Import`,
+          to: path.to.u8WorkOrderImport,
+          icon: <LuCloudDownload />,
+          role: "employee"
+        },
+        {
+          name: t`Work Order Overview`,
+          to: path.to.u8WorkOrders,
+          icon: <LuGauge />,
           role: "employee"
         }
       ]
