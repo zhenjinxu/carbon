@@ -4,9 +4,15 @@
 -- Runs as the image's bundled superuser during first postgres init
 -- (mounted to /docker-entrypoint-initdb.d/init-scripts/).
 
+SELECT 'CREATE ROLE supabase_functions_admin NOINHERIT CREATEROLE LOGIN'
+WHERE NOT EXISTS (
+  SELECT 1 FROM pg_roles WHERE rolname = 'supabase_functions_admin'
+) \gexec
+
 ALTER USER supabase_admin            WITH PASSWORD 'postgres';
 ALTER USER supabase_auth_admin       WITH PASSWORD 'postgres';
 ALTER USER supabase_storage_admin    WITH PASSWORD 'postgres';
+ALTER USER supabase_functions_admin  WITH PASSWORD 'postgres';
 ALTER USER authenticator             WITH PASSWORD 'postgres';
 
 GRANT anon, authenticated, service_role TO authenticator;
