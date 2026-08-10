@@ -1,0 +1,25 @@
+{
+  "name": "@carbon/ontology-context",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@carbon/config": "workspace:*",
+    "@types/node": "20.19.39",
+    "typescript": "catalog:",
+    "tsx": "catalog:",
+    "vitest": "catalog:"
+  },
+  "scripts": {
+    "serve": "node scripts/ontology-context-server.cjs",
+    "test": "vitest run",
+    "test:server": "node scripts/ontology-context-server.test.cjs",
+    "typecheck": "tsgo --noEmit",
+    "verify:snapshot": "node scripts/verify-snapshot.mjs"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}
