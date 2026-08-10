@@ -46,7 +46,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
 export async function action({ request }: ActionFunctionArgs) {
   assertIsPost(request);
   const { client, userId } = await requirePermissions(request, {
-    update: "resources"
+    update: "settings"
   });
 
   const updateMap = (await request.formData()).get("updates") as string;

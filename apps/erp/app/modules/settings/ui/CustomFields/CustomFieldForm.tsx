@@ -66,8 +66,8 @@ const CustomFieldForm = ({
 
   const isEditing = initialValues.id !== undefined;
   const isDisabled = isEditing
-    ? !permissions.can("update", "resources")
-    : !permissions.can("create", "resources");
+    ? !permissions.can("update", "settings")
+    : !permissions.can("create", "settings");
 
   const [dataType, setDataType] = useState<string>(
     initialValues.dataTypeId.toString()
@@ -87,7 +87,7 @@ const CustomFieldForm = ({
           method="post"
           action={
             isEditing
-              ? path.to.customField(table, initialValues.table!)
+              ? path.to.customField(table, initialValues.id!)
               : path.to.newCustomField(table)
           }
           defaultValues={initialValues}
