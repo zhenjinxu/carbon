@@ -64,6 +64,7 @@ declare global {
       GTM_URL: string;
       GTM_EVENTS_API_SECRET_KEY: string;
       SUPABASE_ANON_KEY: string;
+      SUPABASE_INTERNAL_URL: string;
       SUPABASE_URL: string;
       SUPABASE_DB_URL: string;
       SUPABASE_AUTH_EXTERNAL_AZURE_CLIENT_ID: string;
@@ -351,6 +352,10 @@ export const POSTHOG_PROJECT_PUBLIC_KEY = getEnv("POSTHOG_PROJECT_PUBLIC_KEY", {
   isSecret: false
 });
 export const SUPABASE_URL = getEnv("SUPABASE_URL", { isSecret: false });
+export const SUPABASE_INTERNAL_URL = getEnv("SUPABASE_INTERNAL_URL", {
+  isRequired: false,
+  isSecret: true
+});
 export const SUPABASE_ANON_KEY = getEnv("SUPABASE_ANON_KEY", {
   isSecret: false
 });

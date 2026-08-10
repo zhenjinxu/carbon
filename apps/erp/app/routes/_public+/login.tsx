@@ -62,6 +62,12 @@ import {
 import type { Result } from "~/types";
 import { path } from "~/utils/path";
 
+const TURNSTILE_TEST_SITE_KEY = "1x00000000000000000000AA";
+const isTurnstileEnabled =
+  CarbonEdition === Edition.Cloud &&
+  Boolean(CLOUDFLARE_TURNSTILE_SITE_KEY) &&
+  CLOUDFLARE_TURNSTILE_SITE_KEY !== TURNSTILE_TEST_SITE_KEY;
+
 export const meta: MetaFunction = () => {
   return [{ title: "Carbon | Login" }];
 };
@@ -500,7 +506,7 @@ export default function LoginRoute() {
               <Submit
                 isDisabled={
                   fetcher.state !== "idle" ||
-                  (!!CLOUDFLARE_TURNSTILE_SITE_KEY && !turnstileToken)
+                  (isTurnstileEnabled && !turnstileToken)
                 }
                 isLoading={fetcher.state === "submitting"}
                 size="lg"
@@ -510,10 +516,12 @@ export default function LoginRoute() {
               >
                 <Trans>Sign in with Email</Trans>
               </Submit>
-              {!!CLOUDFLARE_TURNSTILE_SITE_KEY && (
+              {isTurnstileEnabled && (
                 <div className="w-full flex justify-center">
                   <Turnstile
-                    siteKey={CLOUDFLARE_TURNSTILE_SITE_KEY}
+                    siteKey={
+                      CLOUDFLARE_TURNSTILE_SITE_KEY ?? TURNSTILE_TEST_SITE_KEY
+                    }
                     onSuccess={(token) => setTurnstileToken(token)}
                     onError={() => setTurnstileToken("")}
                     onExpire={() => setTurnstileToken("")}
