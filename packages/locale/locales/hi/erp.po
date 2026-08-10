@@ -793,6 +793,10 @@ msgstr "ऐड-ऑन"
 msgid "Add-On Cost"
 msgstr "ऐड-ऑन लागत"
 
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:348
+msgid "Added"
+msgstr ""
+
 #: apps/erp/app/modules/quality/ui/Issue/ActionTasksList.tsx:257
 #: apps/erp/app/modules/quality/ui/Issue/ReviewersList.tsx:231
 msgid "Adding..."
@@ -876,6 +880,10 @@ msgstr "चयनित समूहों के सभी सदस्य औ�
 msgid "All Qualified"
 msgstr ""
 
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:208
+msgid "All statuses"
+msgstr ""
+
 #: apps/erp/app/routes/x+/purchasing+/_index.tsx:278
 msgid "All Suppliers"
 msgstr "सभी आपूर्तिकर्ता"
@@ -891,6 +899,10 @@ msgstr ""
 #: apps/erp/app/routes/x+/resources+/_index.tsx:162
 msgid "All Work Centers"
 msgstr "सभी कार्य केंद्र"
+
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:199
+msgid "All work orders"
+msgstr ""
 
 #: apps/erp/app/modules/storageRules/ui/SeveritySelect.tsx:34
 msgid "Allows acknowledge & continue"
@@ -1665,7 +1677,7 @@ msgstr "मुझे असाइन किया गया"
 #: apps/erp/app/modules/inventory/ui/StockTransfers/StockTransfersTable.tsx:115
 #: apps/erp/app/modules/invoicing/ui/PurchaseInvoice/PurchaseInvoicesTable.tsx:165
 #: apps/erp/app/modules/invoicing/ui/SalesInvoice/SalesInvoicesTable.tsx:159
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:351
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:373
 #: apps/erp/app/modules/production/ui/Procedures/ProceduresTable.tsx:100
 #: apps/erp/app/modules/purchasing/ui/PurchaseOrder/PurchaseOrdersTable.tsx:217
 #: apps/erp/app/modules/purchasing/ui/PurchasingRfq/PurchasingRFQsTable.tsx:138
@@ -1764,7 +1776,7 @@ msgstr "ऑडिट लॉगिंग सक्षम नहीं है"
 msgid "Audit Logs"
 msgstr "ऑडिट लॉग्स"
 
-#: apps/erp/app/routes/_public+/login.tsx:431
+#: apps/erp/app/routes/_public+/login.tsx:445
 msgid "Authentication Error"
 msgstr "प्रमाणीकरण त्रुटि"
 
@@ -2074,7 +2086,7 @@ msgstr "द्वारा {byUser}"
 msgid "By accepting the invite, you agree to the <0>Terms of Service</0> and <1>Privacy Policy</1>."
 msgstr "आमंत्रण स्वीकार करके, आप <0>सेवा की शर्तें</0> और <1>गोपनीयता नीति</1> से सहमत हैं।"
 
-#: apps/erp/app/routes/_public+/login.tsx:534
+#: apps/erp/app/routes/_public+/login.tsx:550
 msgid "By signing in, you agree to the <0>Terms of Service</0> and <1>Privacy Policy.</1>"
 msgstr "साइन इन करके, आप <0>सेवा की शर्तें</0> और <1>गोपनीयता नीति</1> से सहमत हैं।"
 
@@ -2454,6 +2466,11 @@ msgstr "कार्बन कॉलम"
 msgid "Carbon Logo"
 msgstr "कार्बन लोगो"
 
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:235
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:242
+msgid "Carbon MRP"
+msgstr ""
+
 #: apps/erp/app/components/ImportCSVModal/FieldMappings.tsx:590
 msgid "Carbon Value"
 msgstr "कार्बन मान"
@@ -2557,7 +2574,7 @@ msgstr "खातों की सूची"
 msgid "Chat"
 msgstr "चैट"
 
-#: apps/erp/app/routes/_public+/login.tsx:382
+#: apps/erp/app/routes/_public+/login.tsx:396
 msgid "Check your email"
 msgstr "अपना ईमेल जांचें"
 
@@ -2666,6 +2683,7 @@ msgstr "{0} से घड़ी में है"
 #: apps/erp/app/modules/settings/ui/ApiKeys/ApiKeysForm.tsx:244
 #: apps/erp/app/modules/settings/ui/Integrations/IntegrationForm.tsx:721
 #: apps/erp/app/modules/settings/ui/Printing/PrintJobsTable.tsx:469
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:439
 msgid "Close"
 msgstr "बंद करें"
 
@@ -2843,6 +2861,7 @@ msgstr "स्टॉक ट्रांसफर पूरा करें"
 #: apps/erp/app/modules/inventory/ui/StockTransfers/StockTransferStatus.tsx:32
 #: apps/erp/app/modules/inventory/ui/WarehouseTransfers/WarehouseTransferStatus.tsx:38
 #: apps/erp/app/modules/quality/ui/Actions/ActionsTable.tsx:274
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:274
 #: apps/erp/app/routes/x+/resources+/assignments.$trainingId.tsx:101
 #: apps/erp/app/routes/x+/resources+/assignments.$trainingId.tsx:294
 #: apps/erp/app/routes/x+/resources+/assignments.tsx:152
@@ -2861,7 +2880,7 @@ msgstr "पूर्ण तारीख"
 msgid "Completed Job Notifications"
 msgstr "पूर्ण किए गए कार्य सूचनाएं"
 
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:482
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:504
 msgid "Completed Qty"
 msgstr "पूर्ण मात्रा"
 
@@ -2891,7 +2910,7 @@ msgstr "कॉन्फ़िगरेटर"
 #: apps/erp/app/modules/items/ui/useItemsSubmodules.tsx:97
 #: apps/erp/app/modules/people/ui/usePeopleSubmodules.tsx:38
 #: apps/erp/app/modules/production/ui/Jobs/JobMakeMethodTools.tsx:276
-#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:61
+#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:80
 #: apps/erp/app/modules/purchasing/ui/usePurchasingSubmodules.tsx:70
 #: apps/erp/app/modules/quality/ui/useQualitySubmodules.tsx:94
 #: apps/erp/app/modules/sales/ui/Quotes/QuoteLineForm.tsx:507
@@ -3593,7 +3612,7 @@ msgstr ""
 #: apps/erp/app/modules/items/ui/Parts/PartsTable.tsx:313
 #: apps/erp/app/modules/items/ui/Tools/ToolsTable.tsx:328
 #: apps/erp/app/modules/production/ui/Jobs/JobOperationStepRecordsTable.tsx:219
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:548
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:570
 #: apps/erp/app/modules/production/ui/Jobs/ProductionQuantitiesTable.tsx:152
 #: apps/erp/app/modules/purchasing/ui/PurchaseOrder/PurchaseOrdersTable.tsx:299
 #: apps/erp/app/modules/purchasing/ui/PurchasingRfq/PurchasingRFQsTable.tsx:189
@@ -3629,7 +3648,7 @@ msgstr "बनाया गया"
 #: apps/erp/app/modules/items/ui/Parts/PartsTable.tsx:296
 #: apps/erp/app/modules/items/ui/Tools/ToolsTable.tsx:311
 #: apps/erp/app/modules/production/ui/Jobs/JobOperationStepRecordsTable.tsx:206
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:531
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:553
 #: apps/erp/app/modules/purchasing/ui/PurchaseOrder/PurchaseOrdersTable.tsx:282
 #: apps/erp/app/modules/purchasing/ui/PurchasingRfq/PurchasingRFQsTable.tsx:155
 #: apps/erp/app/modules/purchasing/ui/Supplier/SuppliersTable.tsx:211
@@ -3851,6 +3870,7 @@ msgstr ""
 
 #: apps/erp/app/modules/settings/ui/Sequences/SequenceForm.tsx:81
 #: apps/erp/app/modules/settings/ui/Sequences/SequencesTable.tsx:53
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:462
 msgid "Current"
 msgstr "वर्तमान"
 
@@ -3899,7 +3919,7 @@ msgstr "कस्टम फील्ड्स"
 #: apps/erp/app/modules/items/ui/Item/CustomerPartForm.tsx:67
 #: apps/erp/app/modules/items/ui/Item/CustomerParts/CustomerParts.tsx:41
 #: apps/erp/app/modules/production/ui/Jobs/JobForm.tsx:356
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:271
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:293
 #: apps/erp/app/modules/purchasing/ui/PurchaseOrder/PurchaseOrderDeliveryForm.tsx:163
 #: apps/erp/app/modules/quality/ui/Issue/IssueAssociations.tsx:356
 #: apps/erp/app/modules/sales/ui/Customer/CustomerForm.tsx:65
@@ -3920,6 +3940,8 @@ msgstr "कस्टम फील्ड्स"
 #: apps/erp/app/modules/users/ui/Customers/CustomerAccountsTable.tsx:150
 #: apps/erp/app/modules/users/ui/Customers/CustomerAccountsTable.tsx:325
 #: apps/erp/app/routes/x+/issue+/$id.tsx:153
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:189
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:310
 #: apps/erp/app/routes/x+/sales+/_index.tsx:652
 #: apps/erp/app/routes/x+/sales+/_index.tsx:724
 #: apps/erp/app/routes/x+/schedule+/dates.tsx:843
@@ -3960,6 +3982,10 @@ msgstr "ग्राहक चालान संख्या"
 #: apps/erp/app/modules/sales/ui/SalesRFQ/SalesRFQForm.tsx:173
 msgid "Customer Location"
 msgstr "ग्राहक स्थान"
+
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:209
+msgid "Customer names"
+msgstr ""
 
 #: apps/erp/app/modules/sales/ui/Customer/CustomerForm.tsx:92
 msgid "Customer Overview"
@@ -4013,6 +4039,10 @@ msgstr "ग्राहक पोर्टल"
 #: apps/erp/app/routes/x+/sales+/customer-portals.tsx:14
 msgid "Customer Portals"
 msgstr "ग्राहक पोर्टल"
+
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:286
+msgid "Customer ranking"
+msgstr ""
 
 #: apps/erp/app/modules/items/ui/Item/CustomerParts/CustomerParts.tsx:92
 msgid "Customer Revision"
@@ -4259,7 +4289,7 @@ msgstr "वर्क सेंटर को निष्क्रिय कर�
 #: apps/erp/app/modules/production/ui/Jobs/JobForm.tsx:341
 #: apps/erp/app/modules/production/ui/Jobs/JobForm.tsx:497
 #: apps/erp/app/modules/production/ui/Jobs/JobProperties.tsx:467
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:384
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:406
 #: apps/erp/app/modules/sales/ui/SalesOrder/SalesOrderLineJobs.tsx:250
 msgid "Deadline Type"
 msgstr "समय सीमा प्रकार"
@@ -5226,6 +5256,7 @@ msgid "Drop your file here, or click to browse."
 msgstr "अपनी फ़ाइल यहाँ ड्रॉप करें, या ब्राउज़ करने के लिए क्लिक करें।"
 
 #: apps/erp/app/modules/items/ui/Item/DemandForecastSourcesPopover.tsx:113
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:328
 msgid "Due"
 msgstr "देय"
 
@@ -5242,7 +5273,7 @@ msgstr "Due {0}"
 #: apps/erp/app/modules/invoicing/ui/SalesInvoice/SalesInvoicesTable.tsx:184
 #: apps/erp/app/modules/production/ui/Jobs/JobForm.tsx:336
 #: apps/erp/app/modules/production/ui/Jobs/JobProperties.tsx:445
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:376
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:398
 #: apps/erp/app/modules/production/ui/Planning/ProductionPlanningOrderDrawer.tsx:390
 #: apps/erp/app/modules/purchasing/ui/Planning/PurchasingPlanningOrderDrawer.tsx:687
 #: apps/erp/app/modules/purchasing/ui/PurchasingRfq/PurchasingRFQForm.tsx:85
@@ -5785,7 +5816,7 @@ msgstr "कार्य केंद्र संपादित करें"
 msgid "Email"
 msgstr "ईमेल"
 
-#: apps/erp/app/routes/_public+/login.tsx:488
+#: apps/erp/app/routes/_public+/login.tsx:502
 #: apps/erp/app/routes/x+/users+/operators.$operatorId.tsx:143
 msgid "Email Address"
 msgstr "ईमेल पता"
@@ -6443,6 +6474,10 @@ msgstr "बाहरी संदर्भ"
 #: apps/erp/app/modules/quality/ui/InboundInspections/ScanInspectionSample.tsx:238
 msgid "Fail"
 msgstr "विफल"
+
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:354
+msgid "Failed"
+msgstr ""
 
 #: apps/erp/app/routes/x+/accounting+/asset-classes.new.tsx:65
 msgid "Failed to create asset class"
@@ -7281,8 +7316,13 @@ msgid "Files attached here ride along on every purchase order email sent to this
 msgstr "यहां संलग्न की गई फाइलें इस आपूर्तिकर्ता को भेजे गए प्रत्येक क्रय आदेश ईमेल के साथ जाती हैं (कंपनी-व्यापी डिफ़ॉल्ट के अतिरिक्त)।"
 
 #: apps/erp/app/components/Table/components/Filter/Filter.tsx:164
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:247
 msgid "Filter"
 msgstr "फ़िल्टर"
+
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:201
+msgid "Filtered"
+msgstr ""
 
 #: apps/erp/app/modules/api/ui/TableDocs.tsx:176
 msgid "Filtering"
@@ -7731,6 +7771,14 @@ msgstr "{label} CSV आयात करें"
 msgid "Import Excel"
 msgstr ""
 
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:191
+msgid "Import Filters"
+msgstr ""
+
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:329
+msgid "Import History"
+msgstr ""
+
 #: apps/erp/app/modules/inventory/ui/Receipts/ImportExcelModal.tsx:95
 msgid "Import Receipt from Excel"
 msgstr ""
@@ -7754,6 +7802,10 @@ msgstr "इस RFQ को आपूर्तिकर्ताओं को भ�
 #: apps/erp/app/components/Gantt/Gantt.tsx:128
 msgid "In Process Only"
 msgstr "केवल प्रक्रिया में"
+
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:269
+msgid "In progress"
+msgstr ""
 
 #: apps/erp/app/modules/inventory/ui/PickingLists/PickingListStatus.tsx:20
 #: apps/erp/app/modules/inventory/ui/StockTransfers/StockTransferStatus.tsx:26
@@ -7993,6 +8045,10 @@ msgstr "आंतरिक"
 msgid "Internal Notes"
 msgstr "आंतरिक नोट्स"
 
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:265
+msgid "Interval (minutes)"
+msgstr ""
+
 #: apps/erp/app/modules/items/ui/Item/PlannedOrderDetailsPopover.tsx:81
 msgid "inv"
 msgstr "इन्व"
@@ -8058,7 +8114,7 @@ msgstr "इन्वेंटरी इतिहास"
 msgid "Inventory Job Notifications"
 msgstr "इन्वेंटरी जॉब नोटिफिकेशन"
 
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:455
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:477
 msgid "Inventory Qty"
 msgstr "इन्वेंटरी मात्रा"
 
@@ -8297,7 +8353,7 @@ msgstr "आइटम"
 #: apps/erp/app/modules/production/ui/Jobs/JobMakeMethodTools.tsx:564
 #: apps/erp/app/modules/production/ui/Jobs/JobMaterialsTable.tsx:178
 #: apps/erp/app/modules/production/ui/Jobs/JobOperationsTable.tsx:144
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:205
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:206
 #: apps/erp/app/modules/production/ui/Jobs/ProductionEventsTable.tsx:60
 #: apps/erp/app/modules/production/ui/Jobs/ProductionQuantitiesTable.tsx:57
 #: apps/erp/app/modules/production/ui/Projection/DemandProjectionForm.tsx:108
@@ -8314,6 +8370,7 @@ msgstr "आइटम"
 #: apps/erp/app/modules/sales/ui/Quotes/QuoteMakeMethodTools.tsx:581
 #: apps/erp/app/modules/sales/ui/SalesOrder/SalesOrderLineForm.tsx:482
 #: apps/erp/app/routes/x+/issue+/$id.tsx:104
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:313
 msgid "Item"
 msgstr "आइटम"
 
@@ -8438,7 +8495,7 @@ msgstr "इस विंडो के अंदर आइटम को एक �
 #: apps/erp/app/modules/people/ui/Person/PersonJob.tsx:36
 #: apps/erp/app/modules/people/ui/Person/PersonSidebar/usePersonSidebar.tsx:23
 #: apps/erp/app/modules/production/ui/Jobs/JobHeader.tsx:107
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:682
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:704
 #: apps/erp/app/modules/production/ui/Planning/ProductionPlanningOrderDrawer.tsx:366
 #: apps/erp/app/modules/purchasing/ui/PurchaseOrder/PurchaseOrderLineForm.tsx:1182
 #: apps/erp/app/modules/quality/ui/Issue/IssueAssociations.tsx:424
@@ -8448,7 +8505,7 @@ msgstr "Job"
 
 #: apps/erp/app/modules/production/ui/Jobs/JobForm.tsx:270
 #: apps/erp/app/modules/production/ui/Jobs/JobForm.tsx:274
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:185
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:186
 #: apps/erp/app/modules/sales/ui/SalesOrder/SalesOrderLineJobs.tsx:218
 msgid "Job ID"
 msgstr "जॉब आईडी"
@@ -8473,9 +8530,9 @@ msgstr "जॉब ऑपरेशन"
 msgid "Job Operations"
 msgstr "कार्य संचालन"
 
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:687
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:709
 #: apps/erp/app/modules/production/ui/Schedule/Kanban/ScheuleNavigation.tsx:113
-#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:24
+#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:26
 #: apps/erp/app/modules/sales/ui/SalesOrder/SalesOrderLineJobs.tsx:122
 #: apps/erp/app/modules/sales/ui/SalesOrder/SalesOrdersTable.tsx:203
 #: apps/erp/app/modules/sales/ui/SalesOrder/SalesOrdersTable.tsx:293
@@ -8650,6 +8707,10 @@ msgstr "अंतिम अंशांकन तारीख"
 #: apps/erp/app/routes/x+/users+/operators.new.tsx:156
 msgid "Last Name"
 msgstr "अंतिम नाम"
+
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:176
+msgid "Last run"
+msgstr ""
 
 #. placeholder {0}: formatDateTime(lastSyncedAt)
 #: apps/erp/app/components/OnshapeSync.tsx:354
@@ -8914,7 +8975,7 @@ msgstr ""
 #: apps/erp/app/modules/production/ui/Jobs/JobForm.tsx:332
 #: apps/erp/app/modules/production/ui/Jobs/JobForm.tsx:494
 #: apps/erp/app/modules/production/ui/Jobs/JobHeader.tsx:1106
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:509
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:531
 #: apps/erp/app/modules/production/ui/Projection/DemandProjectionForm.tsx:116
 #: apps/erp/app/modules/purchasing/ui/PurchaseOrder/PurchaseOrderDeliveryForm.tsx:168
 #: apps/erp/app/modules/purchasing/ui/PurchaseOrder/PurchaseOrderLineForm.tsx:912
@@ -8969,7 +9030,7 @@ msgstr "लॉक करें"
 msgid "Log In"
 msgstr "लॉग इन करें"
 
-#: apps/erp/app/routes/_public+/login.tsx:528
+#: apps/erp/app/routes/_public+/login.tsx:544
 msgid "Login or create a new account"
 msgstr "लॉगिन करें या नया खाता बनाएं"
 
@@ -10258,6 +10319,9 @@ msgstr "नवीनतम पहले"
 #: apps/erp/app/routes/onboarding+/user.tsx:121
 #: apps/erp/app/routes/x+/person+/$personId.timecard.tsx:502
 #: apps/erp/app/routes/x+/person+/$personId.timecard.tsx:508
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:416
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:419
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:467
 msgid "Next"
 msgstr "अगला"
 
@@ -10280,6 +10344,10 @@ msgstr "अगला देय"
 #: apps/erp/app/modules/quality/ui/InspectionDocument/InspectionDocumentEditor.tsx:2752
 msgid "Next page"
 msgstr "अगला पृष्ठ"
+
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:180
+msgid "Next run"
+msgstr ""
 
 #: apps/erp/app/components/Form/SequenceOrCustomId.tsx:43
 #: apps/erp/app/modules/sales/ui/SalesRFQ/SalesRFQForm.tsx:149
@@ -10379,6 +10447,10 @@ msgstr "कोई रूपांतरण आवश्यक नहीं ह�
 msgid "No cost history found"
 msgstr "कोई लागत इतिहास नहीं मिला"
 
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:118
+msgid "No data"
+msgstr ""
+
 #: apps/erp/app/components/Grid/Grid.tsx:412
 msgid "No Data"
 msgstr "कोई डेटा नहीं"
@@ -10451,6 +10523,10 @@ msgstr "कोई समूह असाइन नहीं किया गय�
 #: apps/erp/app/components/ItemThumnailUpload.tsx:170
 msgid "No image"
 msgstr "कोई छवि नहीं"
+
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:365
+msgid "No import history"
+msgstr ""
 
 #: apps/erp/app/modules/quality/ui/InboundInspections/InboundInspectionLotView.tsx:466
 msgid "No issue types configured"
@@ -10618,6 +10694,10 @@ msgstr "रेंज के भीतर कोई कार्य केंद�
 #: apps/erp/app/routes/x+/schedule+/operations.tsx:591
 msgid "No work centers exist"
 msgstr "कोई कार्य केंद्र मौजूद नहीं है"
+
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:339
+msgid "No work orders"
+msgstr ""
 
 #: apps/erp/app/modules/quality/ui/InspectionDocument/InspectionDocumentEditor.tsx:2384
 msgid "Nom"
@@ -10879,6 +10959,10 @@ msgstr "खुले मुद्दे"
 msgid "Open menu"
 msgstr "मेनू खोलें"
 
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:288
+msgid "Open operation ranking"
+msgstr ""
+
 #: apps/erp/app/routes/x+/purchasing+/_index.tsx:457
 msgid "Open Purchase Invoices"
 msgstr "खुले क्रय चालान"
@@ -11036,7 +11120,7 @@ msgstr "ऑर्डर मल्टीपल"
 msgid "Order Parts"
 msgstr "पार्ट्स ऑर्डर करें"
 
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:446
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:468
 msgid "Order Qty"
 msgstr "ऑर्डर मात्रा"
 
@@ -11045,6 +11129,10 @@ msgstr "ऑर्डर मात्रा"
 #: apps/erp/app/modules/sales/ui/SalesOrder/SalesOrdersTable.tsx:373
 msgid "Order Total"
 msgstr "ऑर्डर कुल"
+
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:179
+msgid "Order, item or sales order"
+msgstr ""
 
 #: apps/erp/app/modules/sales/ui/SalesOrder/SalesOrderSummary.tsx:183
 msgid "Ordered"
@@ -11098,6 +11186,7 @@ msgstr "आउटपुट"
 msgid "Output never outlasts its raw materials. Falls back to the fixed duration when no input has an expiry date."
 msgstr "आउटपुट कभी भी अपनी कच्ची सामग्री से अधिक समय तक नहीं रहता। जब किसी इनपुट की समाप्ति तारीख नहीं होती है तो निर्धारित अवधि पर वापस आता है।"
 
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:279
 #: apps/erp/app/routes/x+/resources+/assignments.$trainingId.tsx:115
 #: apps/erp/app/routes/x+/resources+/assignments.$trainingId.tsx:314
 #: apps/erp/app/routes/x+/resources+/assignments.tsx:182
@@ -11526,7 +11615,7 @@ msgstr "Pieces/Minute"
 msgid "Pinned"
 msgstr "पिन किया गया"
 
-#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:39
+#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:58
 #: apps/erp/app/modules/purchasing/ui/usePurchasingSubmodules.tsx:59
 #: apps/erp/app/modules/quality/ui/InboundInspections/InboundInspectionLotView.tsx:181
 #: apps/erp/app/routes/x+/settings+/billing.tsx:216
@@ -11558,9 +11647,17 @@ msgstr "नियोजित आदेश = अनुमानित मां�
 msgid "Planned Start"
 msgstr "नियोजित प्रारंभ"
 
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:243
+msgid "Planned start from"
+msgstr ""
+
 #: apps/erp/app/modules/resources/ui/Maintenance/MaintenanceDispatchForm.tsx:205
 msgid "Planned Start Time"
 msgstr "नियोजित प्रारंभ समय"
+
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:254
+msgid "Planned start to"
+msgstr ""
 
 #: apps/erp/app/modules/items/ui/Consumables/useConsumableNavigation.tsx:54
 #: apps/erp/app/modules/items/ui/Item/ItemPlanningForm.tsx:62
@@ -11568,7 +11665,7 @@ msgstr "नियोजित प्रारंभ समय"
 #: apps/erp/app/modules/items/ui/Parts/usePartNavigation.tsx:59
 #: apps/erp/app/modules/items/ui/Tools/useToolNavigation.tsx:58
 #: apps/erp/app/modules/production/ui/Planning/ProductionPlanningTable.tsx:500
-#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:42
+#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:61
 #: apps/erp/app/modules/purchasing/ui/Planning/PurchasingPlanningTable.tsx:635
 #: apps/erp/app/modules/purchasing/ui/usePurchasingSubmodules.tsx:62
 #: apps/erp/app/routes/x+/production+/planning.tsx:22
@@ -11741,6 +11838,8 @@ msgstr "पूर्वावलोकन मात्रा"
 #: apps/erp/app/routes/onboarding+/company.tsx:241
 #: apps/erp/app/routes/onboarding+/theme.tsx:230
 #: apps/erp/app/routes/onboarding+/user.tsx:117
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:400
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:403
 msgid "Previous"
 msgstr "पिछला"
 
@@ -11885,7 +11984,7 @@ msgid "Procedure"
 msgstr "प्रक्रिया"
 
 #: apps/erp/app/modules/production/ui/Procedures/ProceduresTable.tsx:228
-#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:30
+#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:32
 #: apps/erp/app/routes/x+/procedure+/$id.tsx:32
 #: apps/erp/app/routes/x+/production+/procedures.tsx:14
 msgid "Procedures"
@@ -11925,7 +12024,7 @@ msgid "Processes"
 msgstr "प्रक्रियाएं"
 
 #: apps/erp/app/hooks/useModules.tsx:86
-#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:21
+#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:23
 #: apps/erp/app/modules/settings/ui/useSettingsSubmodules.tsx:120
 #: apps/erp/app/routes/x+/job+/_layout.tsx:13
 #: apps/erp/app/routes/x+/procedure+/_layout.tsx:12
@@ -11936,6 +12035,10 @@ msgstr "प्रक्रियाएं"
 msgid "Production"
 msgstr "उत्पादन"
 
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:169
+msgid "Production Dashboard"
+msgstr ""
+
 #: apps/erp/app/modules/production/ui/Jobs/ProductionEventsTable.tsx:232
 msgid "Production Event"
 msgstr "उत्पादन घटना"
@@ -11945,7 +12048,11 @@ msgstr "उत्पादन घटना"
 msgid "Production Events"
 msgstr "उत्पादन घटनाएं"
 
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:464
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:220
+msgid "Production order numbers"
+msgstr ""
+
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:486
 msgid "Production Qty"
 msgstr "उत्पादन मात्रा"
 
@@ -11968,6 +12075,7 @@ msgstr "प्रोफ़ाइल"
 #: apps/erp/app/modules/inventory/ui/PickingLists/PickingListsHeader.tsx:44
 #: apps/erp/app/modules/inventory/ui/PickingLists/PickingListsTable.tsx:121
 #: apps/erp/app/modules/quality/ui/InboundInspections/InboundInspectionLotView.tsx:217
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:322
 #: apps/erp/app/routes/x+/resources+/assignments.tsx:197
 #: apps/erp/app/routes/x+/schedule+/dates.tsx:846
 #: apps/erp/app/routes/x+/schedule+/operations.tsx:526
@@ -11989,7 +12097,7 @@ msgstr "प्रक्षेपण"
 
 #: apps/erp/app/modules/items/ui/Item/ItemPlanningChart.tsx:358
 #: apps/erp/app/modules/items/ui/Item/ItemPlanningChart.tsx:375
-#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:48
+#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:67
 #: apps/erp/app/routes/x+/production+/projections.tsx:19
 msgid "Projections"
 msgstr "अनुमान"
@@ -12336,7 +12444,7 @@ msgstr "मात्रा"
 #: apps/erp/app/modules/production/ui/Jobs/JobForm.tsx:304
 #: apps/erp/app/modules/production/ui/Jobs/JobOperationsTable.tsx:170
 #: apps/erp/app/modules/production/ui/Jobs/JobProperties.tsx:381
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:244
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:266
 #: apps/erp/app/modules/production/ui/Jobs/ProductionQuantitiesTable.tsx:119
 #: apps/erp/app/modules/production/ui/Jobs/ProductionQuantityForm.tsx:89
 #: apps/erp/app/modules/production/ui/Planning/ProductionPlanningOrderDrawer.tsx:382
@@ -12522,6 +12630,10 @@ msgstr ""
 msgid "Reactivate"
 msgstr "पुनः सक्रिय करें"
 
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:345
+msgid "Read"
+msgstr ""
+
 #: apps/erp/app/modules/api/ui/TableDocs.tsx:126
 msgid "Read rows"
 msgstr "पंक्तियों को पढ़ें"
@@ -12640,7 +12752,7 @@ msgstr "प्राप्त किया गया"
 msgid "Received By"
 msgstr "द्वारा प्राप्त"
 
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:500
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:522
 msgid "Received Qty"
 msgstr "प्राप्त मात्रा"
 
@@ -12671,6 +12783,10 @@ msgstr "प्राप्ति स्थान"
 msgid "Recent"
 msgstr "हाल ही में"
 
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:393
+msgid "Recent Errors"
+msgstr ""
+
 #: apps/erp/app/routes/x+/purchasing+/_index.tsx:646
 #: apps/erp/app/routes/x+/quality+/_index.tsx:900
 #: apps/erp/app/routes/x+/resources+/_index.tsx:656
@@ -12694,7 +12810,7 @@ msgstr "रिकॉर्ड"
 msgid "Recovery Period"
 msgstr ""
 
-#: apps/erp/app/routes/_public+/login.tsx:400
+#: apps/erp/app/routes/_public+/login.tsx:414
 msgid "Redirecting to verification page..."
 msgstr "सत्यापन पृष्ठ पर पुनः निर्देशित किया जा रहा है..."
 
@@ -12760,6 +12876,7 @@ msgid "Release Job"
 msgstr "जॉब रिलीज़ करें"
 
 #: apps/erp/app/modules/inventory/ui/StockTransfers/StockTransferStatus.tsx:20
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:264
 msgid "Released"
 msgstr "जारी किया गया"
 
@@ -13037,6 +13154,7 @@ msgstr "आरक्षित"
 
 #: apps/erp/app/modules/accounting/ui/ChartOfAccounts/ChartOfAccountsTableFilters.tsx:97
 #: apps/erp/app/modules/accounting/ui/Reports/ReportFilters.tsx:134
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:251
 msgid "Reset"
 msgstr "रीसेट करें"
 
@@ -13300,9 +13418,17 @@ msgstr "नियम"
 msgid "Run ID"
 msgstr ""
 
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:299
+msgid "Run now"
+msgstr ""
+
 #: apps/erp/app/components/Configurator/ConfigurationEditor/ConfigurationEditor.ee.tsx:405
 msgid "Run Test"
 msgstr "टेस्ट चलाएं"
+
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:170
+msgid "Running"
+msgstr ""
 
 #: apps/erp/app/modules/sales/ui/Pricing/PriceTracePopover.tsx:116
 msgid "Running Total"
@@ -13374,11 +13500,15 @@ msgstr "बिक्रय चालान"
 msgid "Sales Job Notifications"
 msgstr "बिक्रय कार्य सूचनाएं"
 
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:316
+msgid "Sales order"
+msgstr ""
+
 #: apps/erp/app/components/Layout/Topbar/CreateMenu.tsx:101
 #: apps/erp/app/modules/inventory/ui/PickingLists/PickingListsHeader.tsx:46
 #: apps/erp/app/modules/inventory/ui/Shipments/ShipmentForm/ShipmentForm.tsx:347
 #: apps/erp/app/modules/invoicing/ui/SalesInvoice/SalesInvoiceHeader.tsx:255
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:288
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:310
 #: apps/erp/app/modules/quality/ui/Issue/IssueAssociations.tsx:632
 #: apps/erp/app/modules/sales/ui/SalesOrder/SalesOrderForm.tsx:135
 #: apps/erp/app/modules/sales/ui/SalesOrder/SalesOrdersTable.tsx:608
@@ -13405,6 +13535,10 @@ msgstr "बिक्रय आदेश स्थान"
 #: apps/erp/app/modules/sales/ui/SalesOrder/SalesOrdersTable.tsx:121
 msgid "Sales Order Number"
 msgstr "बिक्रय आदेश संख्या"
+
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:231
+msgid "Sales order numbers"
+msgstr ""
 
 #: apps/erp/app/modules/invoicing/ui/SalesInvoice/SalesInvoiceHeader.tsx:264
 #: apps/erp/app/modules/sales/ui/SalesOrder/SalesOrdersTable.tsx:612
@@ -13611,6 +13745,7 @@ msgstr "शनिवार"
 #: apps/erp/app/modules/users/ui/Groups/GroupsForm.tsx:74
 #: apps/erp/app/routes/x+/person+/$personId.timecard.tsx:611
 #: apps/erp/app/routes/x+/person+/$personId.timecard.tsx:693
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:289
 #: apps/erp/app/routes/x+/settings+/accounting.tsx:336
 #: apps/erp/app/routes/x+/settings+/inventory.tsx:202
 #: apps/erp/app/routes/x+/settings+/inventory.tsx:262
@@ -13693,7 +13828,7 @@ msgstr "इस लाइन के लिए ट्रैकिंग आईड�
 msgid "SCAR"
 msgstr "SCAR"
 
-#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:54
+#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:73
 #: apps/erp/app/routes/x+/schedule+/dates.tsx:64
 #: apps/erp/app/routes/x+/schedule+/operations.tsx:64
 msgid "Schedule"
@@ -13729,7 +13864,7 @@ msgstr "स्कोप"
 msgid "Scrap Percent"
 msgstr "स्क्रैप प्रतिशत"
 
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:473
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:495
 msgid "Scrap Qty"
 msgstr "स्क्रैप मात्रा"
 
@@ -13750,7 +13885,7 @@ msgid "Scrap Reason"
 msgstr "स्क्रैप कारण"
 
 #: apps/erp/app/modules/production/ui/ScrapReasons/ScrapReasonsTable.tsx:88
-#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:64
+#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:83
 #: apps/erp/app/routes/x+/production+/scrap-reasons.tsx:13
 msgid "Scrap Reasons"
 msgstr "स्क्रैप कारण"
@@ -14413,7 +14548,7 @@ msgstr "शिपमेंट स्थान"
 msgid "Shipments"
 msgstr "शिपमेंट"
 
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:491
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:513
 msgid "Shipped Qty"
 msgstr "भेजी गई मात्रा"
 
@@ -14580,19 +14715,19 @@ msgstr "जनरेट की गई PDF के हर पेज के पी�
 msgid "Shown to the user when this rule fails."
 msgstr "जब यह नियम विफल हो तो उपयोगकर्ता को दिखाया जाता है।"
 
-#: apps/erp/app/routes/_public+/login.tsx:503
+#: apps/erp/app/routes/_public+/login.tsx:517
 msgid "Sign in with Email"
 msgstr "ईमेल के साथ साइन इन करें"
 
-#: apps/erp/app/routes/_public+/login.tsx:447
+#: apps/erp/app/routes/_public+/login.tsx:461
 msgid "Sign in with Google"
 msgstr "Google के साथ साइन इन करें"
 
-#: apps/erp/app/routes/_public+/login.tsx:460
+#: apps/erp/app/routes/_public+/login.tsx:474
 msgid "Sign in with Outlook"
 msgstr "Outlook के साथ साइन इन करें"
 
-#: apps/erp/app/routes/_public+/login.tsx:475
+#: apps/erp/app/routes/_public+/login.tsx:489
 msgid "Sign in with Passkey"
 msgstr "पासकी के साथ साइन इन करें"
 
@@ -14812,6 +14947,8 @@ msgstr "मानक लीड समय"
 #: apps/erp/app/modules/inventory/ui/PickingLists/PickingListHeader.tsx:150
 #: apps/erp/app/modules/quality/ui/Issue/IssueHeader.tsx:161
 #: apps/erp/app/modules/resources/ui/Maintenance/MaintenanceDispatchHeader.tsx:128
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:320
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:325
 msgid "Start"
 msgstr "शुरू करें"
 
@@ -14829,7 +14966,7 @@ msgstr "अपने स्टॉक ट्रांसफर में पा�
 #: apps/erp/app/modules/people/ui/Person/PersonJob.tsx:42
 #: apps/erp/app/modules/people/ui/Person/PersonPreview.tsx:82
 #: apps/erp/app/modules/production/ui/Jobs/JobProperties.tsx:425
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:368
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:390
 msgid "Start Date"
 msgstr "शुरुआत तारीख"
 
@@ -14844,6 +14981,10 @@ msgstr "प्रक्रिया समाप्त होने पर स�
 #: apps/erp/app/components/Form/ShelfLifeStartEvent.tsx:92
 msgid "Start expiration on process start"
 msgstr "प्रक्रिया शुरुआत पर समाप्ति शुरू करें"
+
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:220
+msgid "Start from"
+msgstr ""
 
 #: apps/erp/app/routes/onboarding+/plan.tsx:253
 msgid "Start Learning"
@@ -14871,6 +15012,11 @@ msgstr "कर वर्ष की शुरुआत"
 msgid "Start Time"
 msgstr "शुरुआत का समय"
 
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:231
+msgid "Start to"
+msgstr ""
+
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:342
 #: apps/erp/app/routes/x+/resources+/assignments.$trainingId.tsx:163
 msgid "Started"
 msgstr "शुरू किया गया"
@@ -14904,7 +15050,7 @@ msgstr "सांख्यिकीय स्वीकृति विफल ह
 #: apps/erp/app/modules/items/ui/Item/PlannedOrderDetailsPopover.tsx:249
 #: apps/erp/app/modules/people/ui/People/PeopleTable.tsx:180
 #: apps/erp/app/modules/people/ui/Timecards/TimecardsTable.tsx:142
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:315
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:337
 #: apps/erp/app/modules/production/ui/Planning/ProductionPlanningOrderDrawer.tsx:374
 #: apps/erp/app/modules/production/ui/Procedures/ProcedureProperties.tsx:174
 #: apps/erp/app/modules/production/ui/Procedures/ProceduresTable.tsx:92
@@ -14936,6 +15082,9 @@ msgstr "सांख्यिकीय स्वीकृति विफल ह
 #: apps/erp/app/modules/storageRules/ui/RuleAssignmentsList.tsx:253
 #: apps/erp/app/modules/storageRules/ui/StorageRulesTable.tsx:99
 #: apps/erp/app/modules/users/ui/Employees/EmployeesTable.tsx:166
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:336
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:199
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:319
 #: apps/erp/app/routes/x+/purchasing+/_index.tsx:659
 #: apps/erp/app/routes/x+/purchasing+/_index.tsx:810
 #: apps/erp/app/routes/x+/quality+/_index.tsx:977
@@ -14959,7 +15108,7 @@ msgstr "स्थिति वितरण"
 #: apps/erp/app/modules/inventory/ui/WarehouseTransfers/WarehouseTransfersTable.tsx:84
 #: apps/erp/app/modules/invoicing/ui/PurchaseInvoice/PurchaseInvoicesTable.tsx:149
 #: apps/erp/app/modules/invoicing/ui/SalesInvoice/SalesInvoicesTable.tsx:143
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:345
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:367
 #: apps/erp/app/modules/purchasing/ui/PurchaseOrder/PurchaseOrdersTable.tsx:144
 #: apps/erp/app/modules/purchasing/ui/PurchasingRfq/PurchasingRFQsTable.tsx:116
 #: apps/erp/app/modules/purchasing/ui/SupplierQuote/SupplierQuotesTable.tsx:117
@@ -15021,6 +15170,14 @@ msgstr "स्टॉक ट्रांसफर विज़ार्ड"
 #: apps/erp/app/routes/x+/stock-transfer+/new.tsx:22
 msgid "Stock Transfers"
 msgstr "स्टॉक ट्रांसफर"
+
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:310
+msgid "Stop"
+msgstr ""
+
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:172
+msgid "Stopped"
+msgstr ""
 
 #: apps/erp/app/modules/inventory/ui/useInventorySubmodules.tsx:109
 #: apps/erp/app/modules/storageRules/ui/StorageRulesTable.tsx:167
@@ -15510,7 +15667,7 @@ msgstr "तालिका क्रियाएं"
 #: apps/erp/app/modules/items/ui/Tools/ToolProperties.tsx:584
 #: apps/erp/app/modules/items/ui/Tools/ToolsTable.tsx:255
 #: apps/erp/app/modules/production/ui/Jobs/JobProperties.tsx:559
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:422
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:444
 #: apps/erp/app/modules/production/ui/Procedures/ProcedureProperties.tsx:223
 #: apps/erp/app/modules/production/ui/Procedures/ProceduresTable.tsx:110
 #: apps/erp/app/modules/purchasing/ui/Supplier/SupplierHeader.tsx:343
@@ -16142,6 +16299,10 @@ msgstr "कुल मूल्य"
 msgid "Total Quantity"
 msgstr "कुल मात्रा"
 
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:259
+msgid "Total work orders"
+msgstr ""
+
 #: apps/erp/app/modules/purchasing/ui/SupplierQuote/SupplierQuoteCompareDrawer.tsx:475
 #: apps/erp/app/modules/sales/ui/SalesOrder/SalesOrderSummary.tsx:282
 #: apps/erp/app/routes/x+/person+/$personId.timecard.tsx:761
@@ -16208,7 +16369,7 @@ msgstr "ट्रैक किया गया इकाई ID आवश्य�
 #: apps/erp/app/modules/items/ui/Materials/MaterialsTable.tsx:286
 #: apps/erp/app/modules/items/ui/Parts/PartsTable.tsx:230
 #: apps/erp/app/modules/items/ui/Tools/ToolsTable.tsx:230
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:229
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:251
 msgid "Tracking"
 msgstr "ट्रैकिंग"
 
@@ -16323,6 +16484,10 @@ msgstr ""
 msgid "Trial Balance"
 msgstr "ट्रायल बैलेंस"
 
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:339
+msgid "Trigger"
+msgstr ""
+
 #: apps/erp/app/modules/storageRules/ui/SurfacesField.tsx:146
 msgid "Triggers"
 msgstr "ट्रिगर"
@@ -16399,6 +16564,16 @@ msgstr "प्रकार:"
 #: apps/erp/app/routes/x+/items+/types.tsx:15
 msgid "Types"
 msgstr "प्रकार"
+
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:235
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:243
+#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:41
+msgid "U8 ERP"
+msgstr ""
+
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:165
+msgid "U8 Work Order Import"
+msgstr ""
 
 #: apps/erp/app/modules/quality/ui/InboundInspections/InboundInspectionLotView.tsx:378
 msgid "Un-sampled entities will remain On Hold so you can keep inspecting and disposition later. Sampled outcomes are preserved."
@@ -16586,7 +16761,7 @@ msgstr "UoM"
 #: apps/erp/app/modules/items/ui/Materials/MaterialsTable.tsx:494
 #: apps/erp/app/modules/items/ui/Parts/PartsTable.tsx:396
 #: apps/erp/app/modules/items/ui/Tools/ToolsTable.tsx:411
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:613
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:635
 #: apps/erp/app/modules/production/ui/Planning/ProductionPlanningTable.tsx:429
 #: apps/erp/app/modules/quality/ui/InspectionDocument/InspectionDocumentEditor.tsx:3313
 #: apps/erp/app/modules/settings/ui/Integrations/IntegrationForm.tsx:711
@@ -16655,6 +16830,7 @@ msgstr "क्रय आदेश मात्रा अपडेट करे�
 #: apps/erp/app/modules/inventory/ui/WarehouseTransfers/WarehouseTransferLines.tsx:183
 #: apps/erp/app/modules/items/ui/Parts/ConfigurationParameters.tsx:991
 #: apps/erp/app/modules/quality/ui/Gauge/GaugeForm.tsx:244
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:351
 msgid "Updated"
 msgstr "अपडेट किया गया"
 
@@ -16676,7 +16852,7 @@ msgstr "खाता अपडेट किया गया"
 #: apps/erp/app/modules/items/ui/Materials/MaterialsTable.tsx:433
 #: apps/erp/app/modules/items/ui/Parts/PartsTable.tsx:338
 #: apps/erp/app/modules/items/ui/Tools/ToolsTable.tsx:353
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:573
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:595
 #: apps/erp/app/modules/purchasing/ui/PurchaseOrder/PurchaseOrdersTable.tsx:324
 #: apps/erp/app/modules/purchasing/ui/PurchasingRfq/PurchasingRFQsTable.tsx:214
 #: apps/erp/app/modules/purchasing/ui/Supplier/SuppliersTable.tsx:253
@@ -16705,7 +16881,7 @@ msgstr "अपडेट किया गया"
 #: apps/erp/app/modules/items/ui/Materials/MaterialsTable.tsx:416
 #: apps/erp/app/modules/items/ui/Parts/PartsTable.tsx:321
 #: apps/erp/app/modules/items/ui/Tools/ToolsTable.tsx:336
-#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:556
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:578
 #: apps/erp/app/modules/purchasing/ui/PurchaseOrder/PurchaseOrdersTable.tsx:307
 #: apps/erp/app/modules/purchasing/ui/PurchasingRfq/PurchasingRFQsTable.tsx:197
 #: apps/erp/app/modules/purchasing/ui/Supplier/SuppliersTable.tsx:236
@@ -16887,7 +17063,7 @@ msgstr "अगला पार्ट आईडी प्राप्त कर�
 msgid "Use ... to get the next tool ID"
 msgstr "अगली टूल ID प्राप्त करने के लिए ... का उपयोग करें"
 
-#: apps/erp/app/routes/_public+/login.tsx:413
+#: apps/erp/app/routes/_public+/login.tsx:427
 #: apps/erp/app/routes/_public+/verify.tsx:199
 msgid "Use a different email"
 msgstr "एक अलग ईमेल का उपयोग करें"
@@ -17017,7 +17193,7 @@ msgstr "VAT संख्या"
 msgid "Verification Error"
 msgstr "सत्यापन त्रुटि"
 
-#: apps/erp/app/routes/_public+/login.tsx:394
+#: apps/erp/app/routes/_public+/login.tsx:408
 #: apps/erp/app/routes/_public+/verify.tsx:168
 msgid "Verify your email"
 msgstr "अपनी ईमेल सत्यापित करें"
@@ -17336,11 +17512,11 @@ msgstr "हमने प्रत्येक कॉलम को मैप क�
 msgid "We've sent a verification code to {email}"
 msgstr "हमने {email} को एक सत्यापन कोड भेजा है"
 
-#: apps/erp/app/routes/_public+/login.tsx:397
+#: apps/erp/app/routes/_public+/login.tsx:411
 msgid "We've sent a verification code to {signupEmail}"
 msgstr "हमने {signupEmail} को एक सत्यापन कोड भेजा है"
 
-#: apps/erp/app/routes/_public+/login.tsx:385
+#: apps/erp/app/routes/_public+/login.tsx:399
 msgid "We've sent you a magic link to sign in to your account."
 msgstr "हमने आपके खाते में साइन इन करने के लिए आपको एक जादुई लिंक भेजा है।"
 
@@ -17528,6 +17704,28 @@ msgstr ""
 #: apps/erp/app/modules/production/ui/Jobs/JobMakeMethodTools.tsx:654
 msgid "Work Instructions"
 msgstr "कार्य निर्देश"
+
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:307
+msgid "Work order"
+msgstr ""
+
+#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:44
+#: apps/erp/app/routes/x+/production+/u8-import.tsx:54
+msgid "Work Order Import"
+msgstr ""
+
+#: apps/erp/app/modules/production/ui/useProductionSubmodules.tsx:50
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:42
+msgid "Work Order Overview"
+msgstr ""
+
+#: apps/erp/app/modules/production/ui/Jobs/JobsTable.tsx:230
+msgid "Work Order Source"
+msgstr ""
+
+#: apps/erp/app/routes/x+/production+/u8-work-orders.tsx:296
+msgid "Work Orders"
+msgstr ""
 
 #: apps/erp/app/modules/people/ui/Contact/ContactTable.tsx:51
 #: apps/erp/app/modules/purchasing/ui/Supplier/SupplierContactForm.tsx:103
