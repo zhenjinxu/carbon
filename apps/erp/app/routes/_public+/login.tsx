@@ -169,6 +169,14 @@ export async function action({ request }: ActionFunctionArgs) {
     const magicLink = await sendMagicLink(email);
 
     if (magicLink.error) {
+      if (magicLink.error.code === "over_email_send_rate_limit") {
+        const message = "Please wait before requesting another login link.";
+        return data(
+          error(magicLink, message),
+          await flash(request, error(magicLink, message))
+        );
+      }
+
       return data(
         error(magicLink, "Failed to send magic link"),
         await flash(request, error(magicLink, "Failed to send magic link"))

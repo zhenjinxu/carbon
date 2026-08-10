@@ -183,7 +183,14 @@ export async function refreshAuthSession(
   }
 
   if (!refreshedAuthSession) {
-    const redirectUrl = `${path.to.login}?${makeRedirectToFromHere(request)}`;
+    const currentPath = getCurrentPath(request);
+    const redirectTo =
+      currentPath === path.to.refreshSession
+        ? path.to.authenticatedRoot
+        : currentPath;
+    const redirectUrl = `${path.to.login}?${new URLSearchParams([
+      ["redirectTo", redirectTo]
+    ])}`;
 
     const sessionCookie = await setAuthSession(request, {
       authSession: null
