@@ -88,6 +88,45 @@ VALUES
   ('job-asm-sub-b', 'WO-2026-0012', 'item_XLFUVBzfNMwyRi9V3hP7sV', 'EA', 'loc_BRMACv8Z8FVDWrRWdVroxE', 'Ready', 10, 0, 0, CURRENT_DATE + INTERVAL '20 days', 'Hard Deadline', 'd8s9bh4f8gm357312pbg', 'ec76ca4d-f4b5-4458-9924-bdbc8f7f6ebc', NOW(), 2)
 ON CONFLICT (id) DO NOTHING;
 
+-- job inserts automatically create a root jobMakeMethod. This seed uses stable
+-- method IDs below, so remove only unreferenced trigger-created roots.
+WITH seed_root_methods (job_id, method_id) AS (
+  VALUES
+    ('job-asm-top-001', 'jmm-asm-top-001'),
+    ('job-asm-sub-a', 'jmm-asm-sub-a'),
+    ('job-asm-sub-b', 'jmm-asm-sub-b')
+)
+DELETE FROM "jobMakeMethod" jmm
+USING seed_root_methods seed
+WHERE jmm."jobId" = seed.job_id
+  AND jmm."parentMaterialId" IS NULL
+  AND jmm.id <> seed.method_id
+  AND NOT EXISTS (
+    SELECT 1 FROM "jobMaterial" jm WHERE jm."jobMakeMethodId" = jmm.id
+  )
+  AND NOT EXISTS (
+    SELECT 1 FROM "jobOperation" jo WHERE jo."jobMakeMethodId" = jmm.id
+  );
+
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1
+    FROM "jobMakeMethod" jmm
+    JOIN (
+      VALUES
+        ('job-asm-top-001', 'jmm-asm-top-001'),
+        ('job-asm-sub-a', 'jmm-asm-sub-a'),
+        ('job-asm-sub-b', 'jmm-asm-sub-b')
+    ) AS seed(job_id, method_id) ON seed.job_id = jmm."jobId"
+    WHERE jmm."parentMaterialId" IS NULL
+      AND jmm.id <> seed.method_id
+  ) THEN
+    RAISE EXCEPTION 'Seed job has a conflicting referenced root make method';
+  END IF;
+END
+$$;
+
 -- ============================================================================
 -- 6. 创建工单工艺路线 (Job Make Methods)
 -- ============================================================================
