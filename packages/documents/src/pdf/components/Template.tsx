@@ -17,7 +17,7 @@ type TemplateProps = PropsWithChildren<{
   showPageNumbers?: boolean;
   pageNumberFormat?: "pageOfTotal" | "page";
   showRegistrationLine?: boolean;
-  /** Body font (Inter is registered; the rest are PDF standard fonts). */
+  /** Body font. Unregistered legacy/custom fonts fall back to Helvetica. */
   fontFamily?: string;
   /** Shared-section content repeated at the top of every page. */
   headerContent?: JSONContent | null;
@@ -36,7 +36,7 @@ const Template = ({
   showPageNumbers = true,
   pageNumberFormat = "pageOfTotal",
   showRegistrationLine = true,
-  fontFamily = "Inter",
+  fontFamily = "Helvetica",
   headerContent,
   footerContent,
   theme = DEFAULT_THEME,
@@ -48,34 +48,10 @@ const Template = ({
     typeof headerContent === "object" &&
     Array.isArray(headerContent.content) &&
     headerContent.content.length > 0;
-  Font.register({
-    family: "Inter",
-    fonts: [
-      {
-        src: "https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZhrib2Bg-4.ttf"
-      },
-      {
-        src: "https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuOKfMZhrib2Bg-4.ttf",
-        fontWeight: 300
-      },
-      {
-        src: "https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fMZhrib2Bg-4.ttf",
-        fontWeight: 500
-      },
-      {
-        src: "https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYMZhrib2Bg-4.ttf",
-        fontWeight: 700
-      },
-      {
-        src: "https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuBWYMZhrib2Bg-4.ttf",
-        fontWeight: 900
-      }
-    ]
-  });
 
   // Built-ins need no registration; otherwise the font must have been
-  // registered (Inter statically here, Google fonts via ensureFont before
-  // render). Fall back to Helvetica so an unregistered font never errors.
+  // registered by ensureFont before render. Fall back to Helvetica so a
+  // legacy or unavailable remote font never blocks document generation.
   const BUILT_IN_FONTS = ["Helvetica", "Times-Roman", "Courier"];
   const safeFontFamily =
     BUILT_IN_FONTS.includes(fontFamily) ||

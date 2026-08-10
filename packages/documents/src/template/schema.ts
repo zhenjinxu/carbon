@@ -304,12 +304,10 @@ export const themeSchema = z.object({
 });
 
 /**
- * Document body fonts. "Inter" is registered in Template; the rest are the
- * react-pdf built-in PDF standard fonts (no registration needed).
+ * Document body fonts. PDF standard fonts need no registration; Google fonts
+ * are best-effort and fall back to Helvetica when unavailable.
  */
 export const DOCUMENT_FONTS = [
-  // Inter is registered in Template; Helvetica/Times/Courier are PDF built-ins.
-  { value: "Inter", label: "Inter", kind: "Sans" },
   { value: "Helvetica", label: "Helvetica", kind: "Sans" },
   { value: "Times-Roman", label: "Times", kind: "Serif" },
   { value: "Courier", label: "Courier", kind: "Mono" },
@@ -327,7 +325,7 @@ export type DocumentFont = (typeof DOCUMENT_FONTS)[number]["value"];
 
 /** Document-level settings (font + footer page numbers + registration line). */
 export const DEFAULT_DOCUMENT_SETTINGS = {
-  fontFamily: "Inter",
+  fontFamily: "Helvetica",
   showPageNumbers: true,
   pageNumberFormat: "pageOfTotal",
   showRegistrationLine: true
@@ -348,7 +346,7 @@ export const documentSettingsSchema = z.object({
       "Playfair Display",
       "Lora"
     ])
-    .default("Inter"),
+    .default("Helvetica"),
   showPageNumbers: z.boolean().default(true),
   /** "pageOfTotal" → "Page 1 of 3"; "page" → "Page 1". */
   pageNumberFormat: z.enum(["pageOfTotal", "page"]).default("pageOfTotal"),

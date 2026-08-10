@@ -2,8 +2,8 @@ import { Font } from "@react-pdf/renderer";
 
 /**
  * Google fonts offered in the template editor, registered on demand at render
- * time. Inter is registered statically in Template; Helvetica / Times-Roman /
- * Courier are PDF standard fonts and need no registration.
+ * time. Helvetica / Times-Roman / Courier are PDF standard fonts and need no
+ * registration. Legacy Inter templates safely fall back to Helvetica.
  *
  * react-pdf can render TTF/WOFF but NOT WOFF2, so we fetch the CSS2 stylesheet
  * with a legacy User-Agent that makes Google serve TTF `src` URLs, then parse
@@ -27,7 +27,7 @@ const inFlight = new Map<string, Promise<void>>();
 
 /**
  * Ensure `family` is registered with react-pdf before rendering. No-op for
- * built-ins, Inter, or unknown families. Best-effort: on any failure the font
+ * built-ins or unknown families. Best-effort: on any failure the font
  * is simply left unregistered (Template falls back to a safe font).
  */
 export async function ensureFont(family: string): Promise<void> {
