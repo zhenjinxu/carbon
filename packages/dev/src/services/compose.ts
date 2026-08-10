@@ -26,7 +26,7 @@ export type Container = {
 export async function bootStack(root: string, slug: string) {
   await execStrict(
     "docker",
-    devArgs(slug, "--env-file", ".env.local", "up", "-d"),
+    devArgs(slug, "--env-file", ".env.local", "up", "-d", "--build"),
     root
   );
 }
@@ -58,7 +58,15 @@ export async function pullStack(
 ) {
   const proc = execa(
     "docker",
-    devArgs(slug, "--env-file", ".env.local", "--progress", "plain", "pull"),
+    devArgs(
+      slug,
+      "--env-file",
+      ".env.local",
+      "--progress",
+      "plain",
+      "pull",
+      "--ignore-buildable"
+    ),
     { cwd: root, reject: false, all: true }
   );
 
@@ -117,27 +125,6 @@ export async function stopStack(
   const args = devArgs(slug, "--env-file", ".env.local", "down");
   if (withVolumes) args.push("-v", "--remove-orphans");
   await execa("docker", args, { cwd: root, stdio: "ignore", reject: false });
-}
-
-// One redis per host; shared Redis runs natively on the host (no Docker).
-// Just verify it's reachable via TCP.
-export async function bootSharedRedis(root: string) {
-  const r = await execa("redis-cli", ["ping"], {
-    reject: false,
-    stdio: "pipe"
-  });
-  if (r.exitCode !== 0 || !r.stdout?.trim().startsWith("PONG")) {
-    // Try to start Redis if not running
-    const start = await execa("redis-server", ["--daemonize", "yes"], {
-      reject: false,
-      stdio: "pipe"
-    });
-    if (start.exitCode !== 0) {
-      process.stderr.write("Redis is not running and could not be started.\n");
-      process.stderr.write("Please start Redis manually on port 6379.\n");
-      throw new Error("Redis not available");
-    }
-  }
 }
 
 export async function destroyProjectVolumes(cwd: string, project: string) {

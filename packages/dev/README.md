@@ -29,8 +29,8 @@ source ./setup.sh   # adds crbn to PATH + installs shell wrapper
 |---|---|
 | `crbn up` | Boot compose stack + apps. |
 | `crbn up --no-portless` | Localhost mode: fixed ports (API `:54321`, ERP `:3000`, MES `:3001`). |
-| `crbn up --borrow` | Reuse another worktree's running containers (DB, API, etc). |
-| `crbn up --no-apps` | Services only (postgres, kong, supabase, inngest, mail). |
+| `crbn up --borrow` | Unsupported in full-Docker mode; fails before changing state. |
+| `crbn up --no-apps` | Unsupported in full-Docker mode; fails before changing state. |
 | `crbn up --no-migrate` | Skip database migrations. |
 | `crbn up --no-regen` | Skip type/swagger regeneration. |
 | `crbn up --pull` | Force `docker compose pull` even if images exist locally. |

@@ -32,8 +32,7 @@ const main = defineCommand({
         apps: {
           type: "boolean",
           default: true,
-          description:
-            "Spawn ERP/MES dev servers (use --no-apps for services-only boot)"
+          description: "Unsupported in full-Docker mode; omit --no-apps"
         },
         pull: {
           type: "boolean",
@@ -45,7 +44,7 @@ const main = defineCommand({
           type: "boolean",
           default: false,
           description:
-            "Pick another worktree's running containers to use instead of booting a new stack"
+            "Unsupported in full-Docker mode; each worktree uses its own stack"
         },
         portless: {
           type: "boolean",

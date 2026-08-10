@@ -6,7 +6,6 @@ import {
   PORT_NAMES,
   type PortMap,
   projectName,
-  SHARED_REDIS_PORT
 } from "./worktree.js";
 
 // ---------------------------------------------------------------------------
@@ -39,11 +38,7 @@ export function portsTable(
       pc.bold(String(ports[n]))
     ]);
   }
-  t.push([
-    pc.cyan("redis (shared)"),
-    pc.bold(String(SHARED_REDIS_PORT)) +
-      pc.dim(typeof redisDb === "number" ? ` /db ${redisDb}` : " /db ?")
-  ]);
+  t.push([pc.cyan("redis db"), pc.bold(String(redisDb ?? "?"))]);
   return t.toString();
 }
 

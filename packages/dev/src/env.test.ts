@@ -9,7 +9,8 @@ const ports: PortMap = {
   PORT_INBUCKET: 54003,
   PORT_INNGEST: 54004,
   PORT_ERP: 54005,
-  PORT_MES: 54006
+  PORT_MES: 54006,
+  PORT_REDIS: 54007
 };
 
 const jwt: JwtCreds = {
@@ -49,6 +50,7 @@ describe("renderEnv (portless disabled)", () => {
     expect(out).toContain("PORT_INNGEST=54004");
     expect(out).toContain("PORT_ERP=54005");
     expect(out).toContain("PORT_MES=54006");
+    expect(out).toContain("PORT_REDIS=54007");
   });
 
   it("places redis db index in REDIS_URL", () => {
@@ -59,7 +61,9 @@ describe("renderEnv (portless disabled)", () => {
       jwt,
       portless: false
     });
-    expect(out).toMatch(/REDIS_URL=redis:\/\/localhost:\d+\/7/);
+    expect(out).toContain("REDIS_URL=redis://localhost:54007/7");
+    expect(out).toContain("REDIS_DB=7");
+    expect(out).toContain("SUPABASE_CLI_SOURCE=carbon/supabase-cli:2.89.0");
   });
 
   it("injects jwt creds verbatim", () => {
@@ -120,6 +124,7 @@ describe("renderEnv (portless enabled)", () => {
     expect(out).toContain("PORT_INNGEST=54004");
     expect(out).toContain("PORT_ERP=54005");
     expect(out).toContain("PORT_MES=54006");
+    expect(out).toContain("PORT_REDIS=54007");
   });
 
   it("places redis db index in REDIS_URL", () => {
@@ -131,7 +136,7 @@ describe("renderEnv (portless enabled)", () => {
       portless: true,
       branchPrefix: "s"
     });
-    expect(out).toMatch(/REDIS_URL=redis:\/\/localhost:\d+\/7/);
+    expect(out).toContain("REDIS_URL=redis://localhost:54007/7");
   });
 
   it("injects jwt creds verbatim", () => {

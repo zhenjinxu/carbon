@@ -22,7 +22,8 @@ export const PORT_NAMES = [
   "PORT_INBUCKET",
   "PORT_INNGEST",
   "PORT_ERP",
-  "PORT_MES"
+  "PORT_MES",
+  "PORT_REDIS"
 ] as const;
 type PortName = (typeof PORT_NAMES)[number];
 
@@ -36,7 +37,6 @@ type RegistryEntry = {
 };
 type Registry = Record<string, RegistryEntry>;
 
-export const SHARED_REDIS_PORT = 6379;
 const REDIS_DB_MAX = 16;
 const SLUG_FILE = ".carbon-worktree";
 const REGISTRY_PATH = join(homedir(), ".carbon", "dev-ports.json");

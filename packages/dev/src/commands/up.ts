@@ -5,17 +5,13 @@ import { join } from "pathe";
 import type { AppId } from "../constants.js";
 import { renderEnv, syncAppPortlessConfigs, writeEnv } from "../env.js";
 import { currentBranch } from "../git.js";
-import { onShutdown } from "../helpers.js";
-import { pickApps, pickBorrowSlug } from "../prompts.js";
 import {
   installDeps,
-  spawnApps,
   spawnStripeListener,
   syncEnvSymlinks
 } from "../services/apps.js";
 import {
   allImagesPresentLocally,
-  bootSharedRedis,
   bootStack,
   type Container,
   devComposeImageRefs,
@@ -48,18 +44,15 @@ import {
 import { summaryLines } from "../ui.js";
 import {
   ensureSlugAvailable,
-  getSlot,
   getWorktreeRoot,
   type JwtCreds,
   type PortMap,
   persistSlug,
   projectName,
   resolveSlot,
-  resolveSlug,
-  SHARED_REDIS_PORT
+  resolveSlug
 } from "../worktree.js";
 import { syncStaleCopyFiles } from "./copy.js";
-import { down } from "./down.js";
 
 type UpOpts = {
   migrate?: boolean;
@@ -83,15 +76,21 @@ type Ctx = {
 };
 
 export async function up(opts: UpOpts = {}) {
+  if (opts.apps === false) {
+    throw new Error(
+      "--no-apps is not supported in full-Docker mode; start the complete stack"
+    );
+  }
+  if (opts.borrow === true) {
+    throw new Error(
+      "--borrow is not supported in full-Docker mode; use an isolated Compose stack per worktree"
+    );
+  }
+
   const shouldMigrate = opts.migrate ?? true;
   // Type/swagger regen depends on a freshly-migrated schema. If migrations
   // were skipped, schema is unchanged — skip regen too.
   const shouldRegen = shouldMigrate && (opts.regen ?? true);
-  const shouldBorrow = opts.borrow === true;
-  // Services-only mode: boot compose stack + portless aliases (api/studio/
-  // mail/inngest URLs still useful), skip spawnApps + auto-`down` on Ctrl+C.
-  // Triggered by --no-apps OR by deselecting everything in the picker.
-  const appsRequested = opts.apps ?? true;
 
   // Load .env early so CARBON_PORTLESS (and other flags) can be set there
   // rather than requiring a shell export. .env.local takes precedence.
@@ -116,26 +115,10 @@ export async function up(opts: UpOpts = {}) {
     log.info("portless disabled (CARBON_PORTLESS=0) — using localhost URLs");
   }
 
-  const selectedApps = appsRequested ? await pickApps() : [];
+  const selectedApps: AppId[] = ["erp", "mes"];
   const slug = resolveSlug(root);
 
-  // Resolve borrowed slot before ensureSlugAvailable (borrowing doesn't start
-  // own containers so the slug conflict check is irrelevant).
-  let borrowedEntry:
-    | { ports: PortMap; redisDb: number; jwt: JwtCreds }
-    | undefined;
-  if (shouldBorrow) {
-    const borrowSlug = await pickBorrowSlug(slug);
-    const entry = getSlot(borrowSlug);
-    if (!entry)
-      throw new Error(
-        `No slot found for worktree "${borrowSlug}" in ~/.carbon/dev-ports.json`
-      );
-    borrowedEntry = entry;
-    log.info(`borrowing containers from: ${borrowSlug}`);
-  } else {
-    await ensureSlugAvailable(slug, root);
-  }
+  await ensureSlugAvailable(slug, root);
 
   persistSlug(root, slug);
   log.info(`worktree: ${slug}  (project ${projectName(slug)})`);
@@ -143,14 +126,10 @@ export async function up(opts: UpOpts = {}) {
   await refreshStaleCopyFiles(root);
   await ensureDepsInstalled(root);
 
-  const ctx = await provisionSlot(root, slug, portless, borrowedEntry);
-  if (borrowedEntry) {
-    await waitForServices(ctx);
-  } else {
-    await pullImages(ctx, { force: opts.pull === true });
-    await bootDockerStack(ctx);
-    await waitForServices(ctx);
-  }
+  const ctx = await provisionSlot(root, slug, portless);
+  await pullImages(ctx, { force: opts.pull === true });
+  await bootDockerStack(ctx);
+  await waitForServices(ctx);
   await runDatabaseMigrations(ctx, { shouldMigrate, shouldRegen });
   await seedSmokeTestUser(ctx);
   if (portless) {
@@ -172,12 +151,7 @@ export async function up(opts: UpOpts = {}) {
     `Carbon dev — ${slug}`
   );
 
-  if (selectedApps.length === 0) {
-    outro("services up (run `crbn down` to stop)");
-    return;
-  }
-  outro("apps starting (Ctrl+C to stop)");
-  await runAppsThenTeardown(root, selectedApps, ctx.ports, portless);
+  outro("all Docker services up (run `crbn down` to stop)");
 }
 
 // ---------------------------------------------------------------------------
@@ -208,39 +182,21 @@ async function ensureDepsInstalled(root: string) {
 async function provisionSlot(
   root: string,
   slug: string,
-  portless: boolean,
-  borrowedEntry?: { ports: PortMap; redisDb: number; jwt: JwtCreds }
+  portless: boolean
 ): Promise<Ctx> {
   let ctx!: Ctx;
   await tasks([
     {
-      title: borrowedEntry ? "Configure (borrowed slot)" : "Configure portless",
+      title: "Configure portless",
       task: async () => {
-        // Always resolve own slot so PORT_ERP/PORT_MES are claimed for this
-        // worktree and won't collide with the borrowed stack's running dev servers.
-        const ownSlot = await resolveSlot(slug, root);
+        const slot = await resolveSlot(slug, root);
         // Pin well-known ports in localhost mode so URLs are predictable and
         // OAuth redirect URIs can be registered once in Google/Azure console.
-        if (!portless && !borrowedEntry) {
-          ownSlot.ports.PORT_API = 54321;
-          ownSlot.ports.PORT_ERP = 3000;
-          ownSlot.ports.PORT_MES = 3001;
+        if (!portless) {
+          slot.ports.PORT_API = 54321;
+          slot.ports.PORT_ERP = 3000;
+          slot.ports.PORT_MES = 3001;
         }
-        const slot = borrowedEntry
-          ? {
-              // Backend ports (DB, API, Studio, Inbucket, Inngest) come from the
-              // borrowed stack — apps talk to those running containers.
-              // App ports (ERP, MES) come from our own slot — dev servers bind here,
-              // so they don't conflict with the borrowed stack's dev servers.
-              ports: {
-                ...borrowedEntry.ports,
-                PORT_ERP: ownSlot.ports.PORT_ERP,
-                PORT_MES: ownSlot.ports.PORT_MES
-              } as PortMap,
-              redisDb: borrowedEntry.redisDb,
-              jwt: borrowedEntry.jwt
-            }
-          : ownSlot;
         const branch = await currentBranch(root);
         const branchPrefix = branchToPrefix(branch, slug);
 
@@ -252,11 +208,9 @@ async function provisionSlot(
         // stale values already in process.env from the initial load at startup.
         loadDotenv({ path: join(root, ".env.local"), override: true });
         loadDotenv({ path: join(root, ".env"), override: false });
-        return borrowedEntry
-          ? `borrowed backend ports, own app ports (ERP :${slot.ports.PORT_ERP} MES :${slot.ports.PORT_MES}), redis db ${slot.redisDb}`
-          : portless
-            ? `prefix "${branchPrefix}", redis db ${slot.redisDb}`
-            : `localhost mode, redis db ${slot.redisDb}`;
+        return portless
+          ? `prefix "${branchPrefix}", redis db ${slot.redisDb}`
+          : `localhost mode, redis db ${slot.redisDb}`;
       }
     },
     {
@@ -264,13 +218,6 @@ async function provisionSlot(
       task: async () => {
         await syncEnvSymlinks(root);
         return "env files synced";
-      }
-    },
-    {
-      title: "Boot shared redis",
-      task: async () => {
-        await bootSharedRedis(root);
-        return `shared redis on :${SHARED_REDIS_PORT} (index ${ctx.redisDb})`;
       }
     }
   ]);
@@ -310,7 +257,7 @@ async function bootDockerStack(ctx: Ctx) {
     {
       title: "Boot docker compose stack",
       task: async (msg) => {
-        msg("starting 12 services");
+        msg("starting complete Docker stack");
         await bootStack(ctx.root, ctx.slug);
         return "containers up";
       }
@@ -319,17 +266,19 @@ async function bootDockerStack(ctx: Ctx) {
 }
 
 // Wait for services via clack progress bar:
-//   3× TCP ports → +1 postgres ready → +1 storage.buckets = 5 ticks.
+//   5× TCP ports → +1 postgres ready → +1 storage.buckets = 7 ticks.
 // `waitForStorageReady` owns the storage heal path internally.
 async function waitForServices(ctx: Ctx) {
-  const bar = progress({ style: "heavy", max: 5 });
+  const bar = progress({ style: "heavy", max: 7 });
   bar.start("Waiting for services");
   try {
     await waitForTcp(
       [
         `tcp:${ctx.ports.PORT_DB}`,
         `tcp:${ctx.ports.PORT_API}`,
-        `tcp:${ctx.ports.PORT_INNGEST}`
+        `tcp:${ctx.ports.PORT_INNGEST}`,
+        `tcp:${ctx.ports.PORT_ERP}`,
+        `tcp:${ctx.ports.PORT_MES}`
       ],
       { onProgress: (line) => bar.advance(1, line.slice(0, 80)) }
     );
@@ -466,28 +415,6 @@ async function ensureHostsFile() {
   }
   log.step("sudo portless hosts sync");
   await syncHostsFile();
-}
-
-async function runAppsThenTeardown(
-  root: string,
-  selectedApps: AppId[],
-  ports: PortMap,
-  portless: boolean
-) {
-  await spawnApps({ root, apps: selectedApps, ports, portless });
-
-  // Apps exit on Ctrl+C; auto-`down` so compose stack isn't orphaned.
-  // Swallow further signals so a second Ctrl+C during teardown doesn't
-  // exit 130 mid-`docker compose stop`.
-  const detach = onShutdown(() => {
-    process.stderr.write("\nfinishing teardown — please wait\n");
-  });
-  try {
-    // silent: post-SIGINT stdin raw-mode triggers EIO in clack's spinner.
-    await down({ silent: true });
-  } finally {
-    detach();
-  }
 }
 
 // ---------------------------------------------------------------------------

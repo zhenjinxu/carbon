@@ -1,7 +1,7 @@
 import { existsSync, unlinkSync, writeFileSync } from "node:fs";
 import { join } from "pathe";
 import { APP_CHOICES } from "./constants.js";
-import { type JwtCreds, type PortMap, SHARED_REDIS_PORT } from "./worktree.js";
+import { type JwtCreds, type PortMap } from "./worktree.js";
 
 export function renderEnv(opts: {
   slug: string;
@@ -73,7 +73,9 @@ export function renderEnv(opts: {
   );
   lines.push("");
   lines.push("# Aux services");
-  lines.push(`REDIS_URL=redis://localhost:${SHARED_REDIS_PORT}/${redisDb}`);
+  lines.push("SUPABASE_CLI_SOURCE=carbon/supabase-cli:2.89.0");
+  lines.push(`REDIS_DB=${redisDb}`);
+  lines.push(`REDIS_URL=redis://localhost:${ports.PORT_REDIS}/${redisDb}`);
   lines.push("INNGEST_DEV=1");
   lines.push(`INNGEST_BASE_URL=http://localhost:${ports.PORT_INNGEST}`);
   // SDK advertises this as its serve URL during self-register. Must be
