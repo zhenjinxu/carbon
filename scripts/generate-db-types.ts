@@ -1,4 +1,4 @@
-import { closeSync, copyFileSync, openSync } from "node:fs";
+import { closeSync, copyFileSync, openSync, renameSync, rmSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { join } from "node:path";
 import * as dotenv from "dotenv";
@@ -30,12 +30,18 @@ const fnTypesPath = join(
   "lib",
   "types.ts"
 );
-
-// Pipe supabase stdout directly to the types file to avoid spawnSync's 1MB
-// default buffer cap (generated types are ~MBs).
-const out = openSync(typesPath, "w");
-const r = spawnSync(
+const tempTypesPath = `${typesPath}.tmp`;
+const supabaseBinary = join(
+  "node_modules",
   "supabase",
+  "bin",
+  process.platform === "win32" ? "supabase.exe" : "supabase"
+);
+
+// Keep the existing generated types intact unless Supabase completes.
+const out = openSync(tempTypesPath, "w");
+const r = spawnSync(
+  supabaseBinary,
   [
     "gen",
     "types",
@@ -54,9 +60,13 @@ const r = spawnSync(
 closeSync(out);
 
 if (r.status !== 0) {
-  console.error(`supabase gen types failed (exit ${r.status})`);
+  rmSync(tempTypesPath, { force: true });
+  console.error(
+    `supabase gen types failed: ${r.error?.message ?? `exit ${r.status}`}`
+  );
   process.exit(r.status ?? 1);
 }
 
+renameSync(tempTypesPath, typesPath);
 copyFileSync(typesPath, fnTypesPath);
 console.log(`wrote ${typesPath}\nwrote ${fnTypesPath}`);
