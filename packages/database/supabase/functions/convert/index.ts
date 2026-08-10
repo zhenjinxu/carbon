@@ -1169,22 +1169,64 @@ serve(async (req: Request) => {
           convertedId = insertedQuoteId;
         });
 
-        // get method for each make line
-        await Promise.all(
-          insertedQuoteLines
-            .filter((line) => line.methodType === "Make to Order")
-            .map((line) =>
-              client.functions.invoke("get-method", {
-                body: {
-                  type: "itemToQuoteLine",
-                  sourceId: line.itemId,
-                  targetId: `${insertedQuoteId}:${line.id}`,
-                  companyId: companyId,
-                  userId: userId,
-                },
-              })
-            )
+        const methodCopyCandidates = insertedQuoteLines.filter(
+          (line) => line.methodType === "Make to Order"
         );
+        const expectedMethodCopyCount = salesRfqLines.data.filter(
+          (line) => line.methodType === "Make to Order"
+        ).length;
+        const methodCopyResults = await Promise.all(
+          methodCopyCandidates.map((line) =>
+            client.functions.invoke("get-method", {
+              body: {
+                type: "itemToQuoteLine",
+                sourceId: line.itemId,
+                targetId: `${insertedQuoteId}:${line.id}`,
+                companyId,
+                userId,
+              },
+            })
+          )
+        );
+        const methodCopyFailure =
+          methodCopyCandidates.length !== expectedMethodCopyCount
+            ? new Error("Failed to identify all make lines for method copy")
+            : methodCopyResults.find((result) => result.error)?.error;
+
+        if (methodCopyFailure) {
+          await db.transaction().execute(async (trx) => {
+            const convertedQuote = await trx
+              .selectFrom("quote")
+              .select("externalLinkId")
+              .where("id", "=", insertedQuoteId)
+              .where("companyId", "=", companyId)
+              .executeTakeFirst();
+
+            await trx
+              .deleteFrom("quote")
+              .where("id", "=", insertedQuoteId)
+              .where("companyId", "=", companyId)
+              .execute();
+            if (convertedQuote?.externalLinkId) {
+              await trx
+                .deleteFrom("externalLink")
+                .where("id", "=", convertedQuote.externalLinkId)
+                .where("companyId", "=", companyId)
+                .execute();
+            }
+            await trx
+              .updateTable("salesRfq")
+              .set({
+                status: "Ready for Quote",
+                updatedAt: new Date().toISOString(),
+                updatedBy: userId,
+              })
+              .where("id", "=", id)
+              .where("companyId", "=", companyId)
+              .execute();
+          });
+          throw methodCopyFailure;
+        }
         break;
       }
       case "shipmentToSalesInvoice": {

@@ -2172,10 +2172,19 @@ serve(async (req: Request) => {
                 const materialId = madeMaterialsWithIds[index].id;
                 const newMakeMethodId = nanoid();
 
-                const updateResult = await trx
-                  .updateTable("quoteMakeMethod")
-                  .set({ id: newMakeMethodId })
-                  .where("parentMaterialId", "=", materialId)
+                await trx
+                  .insertInto("quoteMakeMethod")
+                  .values({
+                    id: newMakeMethodId,
+                    quoteId,
+                    quoteLineId,
+                    parentMaterialId: materialId,
+                    itemId: child.data.itemId,
+                    quantityPerParent: child.data.quantity ?? 1,
+                    version: child.data.version ?? 1,
+                    companyId,
+                    createdBy: userId,
+                  })
                   .execute();
 
                 console.log("[traverseMethod] processing made child", {
@@ -2185,7 +2194,6 @@ serve(async (req: Request) => {
                   childItemId: child.data.itemId,
                   parentItemId: itemId,
                   willRecurse: child.data.itemId !== itemId,
-                  updateResult,
                 });
 
                 // prevent an infinite loop
