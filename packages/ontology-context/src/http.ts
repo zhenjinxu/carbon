@@ -8,7 +8,8 @@ import {
 import {
   contextQuerySchema,
   type DatasetId,
-  type SnapshotAuthority,
+  type ProjectSnapshotAuthority,
+  projectSnapshotAuthoritySchema,
   searchQuerySchema
 } from "./contracts";
 import {
@@ -146,11 +147,12 @@ function errorDetails(error: unknown): {
 }
 function successEnvelope<
   T extends {
-    authority: SnapshotAuthority;
+    authority: ProjectSnapshotAuthority;
     warnings?: readonly string[];
   }
 >(id: string, result: T) {
-  const { authority, warnings, ...data } = result;
+  const { authority: rawAuthority, warnings, ...data } = result;
+  const authority = projectSnapshotAuthoritySchema.parse(rawAuthority);
   return httpSuccessEnvelopeSchema.parse({
     schemaVersion: 1 as const,
     requestId: id,

@@ -273,7 +273,7 @@ export const contextQuerySchema = z
 export type SearchQuery = z.infer<typeof searchQuerySchema>;
 export type ContextQuery = z.infer<typeof contextQuerySchema>;
 
-export const authoritySchema = z
+export const projectSnapshotAuthoritySchema = z
   .object({
     kind: z.literal("project_snapshot"),
     snapshotId: nonEmptyString,
@@ -286,6 +286,43 @@ export const authoritySchema = z
   })
   .strict();
 
+const companyLiveFreshnessSchema = z
+  .object({
+    status: z.enum(["fresh", "stale"]),
+    observedAt: isoTimestamp,
+    staleAt: isoTimestamp.optional()
+  })
+  .strict()
+  .superRefine((freshness, ctx) => {
+    if (freshness.status === "stale" && !freshness.staleAt) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "stale company-live authority requires staleAt"
+      });
+    }
+  });
+
+export const companyLiveAuthoritySchema = z
+  .object({
+    kind: z.literal("company_live"),
+    companyId: nonEmptyString.max(256),
+    dataset: datasetIdSchema,
+    model: nonEmptyString,
+    sourceRevision: nonEmptyString.max(256),
+    generatedAt: isoTimestamp,
+    freshness: companyLiveFreshnessSchema
+  })
+  .strict();
+
+export const authoritySchema = z.discriminatedUnion("kind", [
+  projectSnapshotAuthoritySchema,
+  companyLiveAuthoritySchema
+]);
+
+export type ProjectSnapshotAuthority = z.infer<
+  typeof projectSnapshotAuthoritySchema
+>;
+export type CompanyLiveAuthority = z.infer<typeof companyLiveAuthoritySchema>;
 export type SnapshotAuthority = z.infer<typeof authoritySchema>;
 
 const safeNodeSchema = OntologyNodeSchema.extend({
@@ -303,7 +340,7 @@ const safeEpisodeSchema = OntologyEpisodeSchema.pick({
 
 export const metadataResponseSchema = z
   .object({
-    authority: authoritySchema,
+    authority: projectSnapshotAuthoritySchema,
     contractVersion: z.literal(1),
     availableDatasets: z.array(
       z
@@ -329,7 +366,7 @@ export const metadataResponseSchema = z
 
 export const searchResponseSchema = z
   .object({
-    authority: authoritySchema,
+    authority: projectSnapshotAuthoritySchema,
     results: z.array(safeNodeSchema),
     nextCursor: z.string().min(1).max(256).optional(),
     totalEstimate: z.number().int().nonnegative(),
@@ -339,7 +376,7 @@ export const searchResponseSchema = z
 
 export const contextResponseSchema = z
   .object({
-    authority: authoritySchema,
+    authority: projectSnapshotAuthoritySchema,
     object: safeNodeSchema,
     relationships: z.array(
       z

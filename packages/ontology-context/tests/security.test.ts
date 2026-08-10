@@ -16,6 +16,7 @@ const authority: SnapshotAuthorityInput = {
 };
 
 const sourceFiles = [
+  "company-live.ts",
   "contracts.ts",
   "http.ts",
   "index.ts",

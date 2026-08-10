@@ -1,7 +1,7 @@
 import {
   type ContextQuery,
   type ContextResponse,
-  type SnapshotAuthority as ContractSnapshotAuthority,
+  type ProjectSnapshotAuthority as ContractSnapshotAuthority,
   contextQuerySchema,
   contextResponseSchema,
   type DatasetId,
