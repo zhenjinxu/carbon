@@ -14858,6 +14858,7 @@ export type Database = {
           salesOrderLineId: string | null
           scrapQuantity: number
           secondsToComplete: number | null
+          source: Database["public"]["Enums"]["jobSource"]
           startDate: string | null
           status: Database["public"]["Enums"]["jobStatus"]
           storageUnitId: string | null
@@ -14898,6 +14899,7 @@ export type Database = {
           salesOrderLineId?: string | null
           scrapQuantity?: number
           secondsToComplete?: number | null
+          source?: Database["public"]["Enums"]["jobSource"]
           startDate?: string | null
           status?: Database["public"]["Enums"]["jobStatus"]
           storageUnitId?: string | null
@@ -14938,6 +14940,7 @@ export type Database = {
           salesOrderLineId?: string | null
           scrapQuantity?: number
           secondsToComplete?: number | null
+          source?: Database["public"]["Enums"]["jobSource"]
           startDate?: string | null
           status?: Database["public"]["Enums"]["jobStatus"]
           storageUnitId?: string | null
@@ -53521,6 +53524,7 @@ export type Database = {
           salesOrderReadableId: string | null
           scrapQuantity: number | null
           secondsToComplete: number | null
+          source: Database["public"]["Enums"]["jobSource"] | null
           startDate: string | null
           status: Database["public"]["Enums"]["jobStatus"] | null
           storageUnitId: string | null
@@ -66932,6 +66936,7 @@ export type Database = {
         | "Ready"
         | "Todo"
         | "Waiting"
+      jobSource: "Carbon MRP" | "U8 ERP"
       jobStatus:
         | "Draft"
         | "Ready"
@@ -68227,6 +68232,7 @@ export const Constants = {
         "Todo",
         "Waiting",
       ],
+      jobSource: ["Carbon MRP", "U8 ERP"],
       jobStatus: [
         "Draft",
         "Ready",

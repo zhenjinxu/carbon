@@ -27,6 +27,7 @@ const taskToEvent = {
   "sync-issue-from-jira": "carbon/jira-sync",
   "sync-issue-from-linear": "carbon/linear-sync",
   "update-permissions": "carbon/update-permissions",
+  "u8-work-order-import": "carbon/u8-work-order-import",
   "user-admin": "carbon/user-admin"
 } as const;
 

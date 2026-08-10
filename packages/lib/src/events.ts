@@ -115,6 +115,16 @@ export type Events = {
     };
   };
 
+  // Direct U8 work-order import
+  "carbon/u8-work-order-import": {
+    data: {
+      companyId: string;
+      userId: string;
+      triggerType: "Manual" | "Scheduled";
+      dryRun?: boolean;
+    };
+  };
+
   // Post transaction (accounting)
   "carbon/post-transaction": {
     data: {

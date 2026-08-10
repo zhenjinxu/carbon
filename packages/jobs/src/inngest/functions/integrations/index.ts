@@ -10,3 +10,7 @@ export {
 } from "./slack-document-sync";
 export { syncExternalAccountingFunction } from "./sync-external-accounting";
 export { timeCardAutoCloseFunction } from "./timecard-auto-close";
+export {
+  u8WorkOrderImportFunction,
+  u8WorkOrderImportSchema
+} from "./u8-work-orders";

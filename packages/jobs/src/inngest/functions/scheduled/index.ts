@@ -4,5 +4,6 @@ export { dispatchFunction } from "./dispatch";
 export { mrpFunction } from "./mrp";
 export { notificationDigestFunction } from "./notification-digest";
 export { notificationPurgeFunction } from "./notification-purge";
+export { u8WorkOrderImportSchedulerFunction } from "./u8-work-orders";
 export { updateExchangeRatesFunction } from "./update-exchange-rates";
 export { weeklyFunction } from "./weekly";

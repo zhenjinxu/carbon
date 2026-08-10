@@ -20,7 +20,8 @@ import {
   slackDocumentStatusUpdateFunction,
   slackDocumentTaskUpdateFunction,
   syncExternalAccountingFunction,
-  timeCardAutoCloseFunction
+  timeCardAutoCloseFunction,
+  u8WorkOrderImportFunction
 } from "./functions/integrations";
 // Import all functions
 import {
@@ -35,6 +36,7 @@ import {
   mrpFunction,
   notificationDigestFunction,
   notificationPurgeFunction,
+  u8WorkOrderImportSchedulerFunction,
   updateExchangeRatesFunction,
   weeklyFunction
 } from "./functions/scheduled";
@@ -83,6 +85,7 @@ export const functions = [
   updateExchangeRatesFunction,
   notificationDigestFunction,
   notificationPurgeFunction,
+  u8WorkOrderImportSchedulerFunction,
   // Integrations
   jiraSyncFunction,
   linearSyncFunction,
@@ -93,5 +96,6 @@ export const functions = [
   slackDocumentStatusUpdateFunction,
   slackDocumentTaskUpdateFunction,
   slackDocumentAssignmentUpdateFunction,
-  timeCardAutoCloseFunction
+  timeCardAutoCloseFunction,
+  u8WorkOrderImportFunction
 ];
