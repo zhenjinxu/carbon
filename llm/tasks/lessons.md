@@ -174,3 +174,113 @@ Patterns learned from corrections. Review at the start of each session.
   1. 是否有其他路由文件导出了 `ErrorBoundary`
   2. React Router 的缓存/生成类型是否需要清理
   3. 是否需要完全避免使用 `ErrorBoundary` 导出，改用其他方式处理错误
+
+## WodiMES full import requires a stable source window or a consistent snapshot
+
+- Two transaction-scoped `node scripts/import-wodimes.cjs --rollback` runs on 2026-07-17 reached the full write path but safely rolled back after 174s and 160s because `mes_proc_order_details` changed before the importer's final source-signature check. Carbon target counts and latest successful run remained unchanged after both attempts.
+- Do not bypass this guard or run a full WodiMES import against a live-changing source merely because `--dry-run` succeeds. Use a verified source quiet/maintenance window, a consistent Mongo snapshot/secondary, or redesign the synchronization boundary before scheduling online re-imports. The current successful import remains valid because its latest-run source records and target counts reconcile exactly.
+
+## MES list routes must be bounded before importing production-scale data
+
+- **Evidence**: after importing 72,738 WodiMES jobs, navigating to MES `/x/jobs` rendered every row. Browser navigation exceeded 60 seconds and the local MES Node process later exited from heap pressure.
+- **Rule**: every MES/ERP list route must use server-side pagination or cursoring with an explicit maximum page size. Client rendering must be bounded through pagination or virtualization; never fetch or render the entire tenant dataset by default.
+- **Verification**: add a browser-level test using a production-scale fixture or seeded count. Assert first-page response/render time, bounded DOM row count, and that changing pages/searching does not load all records.
+## Preserve the global `"0"` permission marker until company scope is resolved
+
+- `get_companies_with_employee_permission` must expand a global `"0"` permission to the authenticated employee's `userToCompany` memberships **before** intersecting explicit permission IDs with those memberships. Intersecting first silently removes `"0"` and makes global administrators see empty RLS-protected lists in newly joined companies.
+- Verify both paths when changing this helper: explicit company permissions must remain restricted to employee memberships, and global permissions must resolve to all and only those memberships. Test through a real user JWT, not service-role reads.
+## Imported employee types require empty rows for every supported permission module
+
+- The permission-matrix UI derives its editable module list from `employeeTypePermission` rows. A newly imported employee type with zero rows renders no controls, even for an administrator with `users_update`.
+- Import or seed migrations must create one all-false permission row for every current supported module for each employee type. Use `ON CONFLICT DO NOTHING` so configured permissions are never overwritten.
+- Verify both database row counts and the administrator edit modal; table counts alone do not prove that the UI can render a matrix.
+## Group membership RPCs must distinguish no groups from an authentication failure
+
+- `groups_for_user` previously used `array_agg` directly, which returns NULL when an authenticated employee has no membership rows. The ERP protected layout correctly rejects missing RPC data, so those valid employees were logged out immediately after the callback.
+- User-group functions must return a typed empty collection (`{}` / `text[]`) for zero memberships. Do not make layout or RLS consumers infer authentication state from an aggregate's NULL result.
+- Verify the zero-group case with a real user JWT and a full login callback, in addition to testing employees who do belong to groups.
+## Employee-type permissions are templates, not live user authorization
+
+- The employee type permission matrix defines the default snapshot copied into `userPermission` when an employee is explicitly assigned/overwritten or accepts an invite. Runtime claims and route authorization read the user-level snapshot, not `employeeTypePermission` directly.
+- Editing a type must not silently overwrite existing users because individual permissions may have been deliberately customized. When applying a changed template to an existing employee, use an explicit overwrite/synchronization action for that employee and invalidate `permissions:<userId>`.
+- Verify the three layers after a change: `get_claims`, the Redis cache after refill, and a real protected route for the employee. A type matrix UI alone does not prove effective authorization.
+## Internal session-refresh routes must not become post-login destinations
+
+- A failed fetcher POST to `/refresh-session` previously used the request path to build `redirectTo`, so the login page sent the user back to the internal refresh endpoint instead of a usable screen.
+- On refresh failure, preserve cookie cleanup and token validation, but map the internal refresh endpoint to a fixed authenticated root path. Keep the original requested path only for real protected page requests.
+- Verify both paths with browser automation: an invalid/cleared session must reach `login?redirectTo=/x`, and a new real user session must receive a successful refresh response without navigation or console errors.
+
+## Radix triggers around existing buttons must use `asChild`
+
+- `TooltipTrigger`, `DrawerTrigger`, `DialogTrigger`, and similar Radix primitives render their own interactive element by default. Wrapping a Carbon `Button` or `IconButton` without `asChild` creates `button > button`, which the browser rewrites before React hydrates and causes a full client-render fallback.
+- Compose multiple triggers through `asChild` so only the Carbon control renders a DOM button. Verify with a clean SSR reload: the console must contain neither `Expected server HTML` nor `validateDOMNesting`, and the tooltip/drawer/dialog interaction must still work.
+
+## Direct SQL job seeds must account for the root make-method trigger
+
+- Inserting `job` fires `insert_job_make_method_trigger`, which automatically creates the root `jobMakeMethod`. A seed that then inserts a second stable-ID root makes the `jobs` view duplicate rows and causes `getJob(...).single()` to fail.
+- When a seed needs stable method IDs, remove only the trigger-created root after proving it has no `jobMaterial` or `jobOperation` references, then insert the stable root. Abort on referenced conflicts instead of deleting or duplicating them.
+- Verify seed idempotency in a rollbacked full-script run, assert exactly one root method per job, compare base-table and `jobs` view counts, and open a real job operation route.
+
+## Docker-hosted Inngest must be allowed through the ERP dev-server host check
+
+- A local Inngest container can receive events while still having zero runnable functions when its SDK sync to `http://host.docker.internal:<port>/api/inngest` is rejected by Vite with `403 forbidden`.
+- Keep the container SDK URL on `host.docker.internal` and add that exact hostname to ERP `server.allowedHosts`; do not disable host checking globally.
+- Verify the Inngest Apps page reports the Carbon app and expected function count, then prove a real event reaches its handler and creates the first visible run record.
+
+## Imported child identities must include the source primary identifier
+
+- U8 routing data can contain two genuine operations with the same `MoDId` and `OpSeq` but different `OperationId` values. Using only `MoDId:OpSeq` creates duplicate `jobOperation.id` values and makes a batched upsert fail atomically.
+- Build the stable operation key from `MoDId:OpSeq:OperationId` when the source operation ID exists. Do not discard one same-sequence operation or use array position as identity.
+- Before a real import, dry-run production-like filtered data, assert generated conflict keys are unique, then verify first-run counts and a second idempotent run.
+
+## Production Docker readiness does not prove the local runtime is all Docker
+
+- A production Swarm/Caddy design and successful image builds do not establish that the Windows workstation has stopped using host PostgreSQL, Redis, or Node application processes.
+- When the user asks for full Docker operation, inventory actual processes, ports, Compose services, database URLs, and persistent data ownership on the requested host. State local and production status separately.
+- Do not mark the task complete until the requested host runs the full service set, real data is restored and reconciled, health/business endpoints pass, and any retained native service is explicitly identified as an unused rollback source.
+
+## Scope destructive queue cleanup to the authorized target and preserve rollback evidence
+
+- A large queue should not be purged based only on an operational warning, but an explicit user instruction is valid authorization to remove the identified target data.
+- Quiesce writers and consumers, use the queue extension's official purge API, record the exact before/removed/after counts, then restore the full stack and re-run health and key-data checks.
+- Keep the source database and pre-purge backup unchanged. Create a new post-purge forward-migration snapshot so later restores do not silently reintroduce the cleared queue.
+
+
+## Preserve U8 BOM edge identity and normalize SQL Server rows at the boundary
+
+- **Evidence**: the production-order graph imported on 2026-07-30 contained 3,099 direct U8 edges but 8,264 root-relative branch occurrences. Repeated descendants appeared under different direct parents with different quantities. The Word CTE retained only the root parent and multiplied quantities, so it could not identify those branches.
+- **Rule**: use `bom_opcomponent.OpComponentId` as the stable direct-edge identity. Preserve direct parent, child, edge path, part path, direct quantity, and cumulative quantity. Never deduplicate a BOM by root code plus child code.
+- **Quantity**: calculate direct usage as `BaseQtyN / BaseQtyD` with decimal arithmetic, then multiply along each branch. Reject a zero denominator.
+- **Selection**: prefer a production order's approved assigned `BomId`; if it is missing or not approved, select the latest approved BOM effective on the import date. Apply the effective approved rule recursively to manufactured children.
+- **Boundary**: normalize SQL Server PascalCase fields such as `BomId` and `ParentId` once before calling the tree engine. Do not let database driver row casing leak into the normalized graph contract.
+- **Import safety**: require dry-run, full-write rollback rehearsal, a stable source signature before commit, deterministic external mappings, target reconciliation, and an idempotent committed rerun before declaring a production BOM import complete. A no-op rerun must not update timestamps or emit downstream events; verify the event-queue sequence before and after.
+
+## Reconcile standard related rows when importing or reusing core entities
+
+- Carbon insert interceptors initialize related records only when the canonical base-row insert path runs. A direct import, historical restore, or identity reuse can leave a valid `item` or `customer` without required cost, planning, payment, shipping, tax, or similar baseline rows.
+- Importers and compatibility migrations must explicitly reconcile every standard related-row contract with idempotent, tenant-scoped inserts that preserve existing configuration. Do not assume a base row proves its interceptor-derived records exist.
+- Verify missing rows before repair, perform a rollback rehearsal, compare committed counts, run a no-op rerun, and test a real downstream consumer such as the BOM explorer or RFQ conversion.
+
+## Cross-function conversions must validate nested work and compensate partial state
+
+- A successful parent Edge Function transaction does not prove nested function calls or asynchronous interceptors completed. Never discard `functions.invoke` results when their work is required for a valid converted document.
+- Rows needed by the current transaction must be created explicitly inside that transaction; an asynchronous interceptor cannot satisfy a same-transaction foreign-key dependency. Make the later interceptor idempotent so event processing cannot duplicate explicit rows.
+- When required nested work runs after the parent transaction, validate candidate counts and every invocation result. On failure, use a company-scoped compensating transaction to remove the incomplete target and restore the source workflow state, then return an error.
+
+## Restored migration history does not prove derived objects or ACLs exist
+
+- A restored database can record a migration as applied while views or other derived objects are absent. Verify application-critical views, RPCs, and Storage grants against the live catalog and through the actual PostgREST/API consumer; migration history alone is not acceptance evidence.
+- A compatibility migration that recreates a view must explicitly restore its security mode and the SELECT grants required by `anon`, `authenticated`, and `service_role` as applicable. Do not rely on the migration executor's owner or default privileges.
+- Reload the PostgREST schema cache after restoring exposed objects, then verify both a real read and the downstream business workflow. The quote and SO000007 PDF failures demonstrated separate missing-view and missing-ACL failure modes.
+
+## Keep lifecycle status and completion timestamps in the authoritative update
+
+- Do not record `completedDate` only as a side effect of creating an external link, document, notification, or other optional artifact. Retries and pre-existing artifacts can skip that branch while the workflow still advances, leaving a valid business state with a missing lifecycle timestamp.
+- The authoritative state transition must write its status and completion timestamp together. A historical repair must be idempotent and use persisted business evidence, such as the first Quote PDF, rather than assigning the migration execution time.
+- Verify both first-run and existing-artifact paths, then reconcile the live row, artifact count, downstream document, and a no-op migration rerun.
+
+## Separate diagnosis from an applied fix before asking for a retest
+
+- Restarting can only load source, image, or schema changes that were actually made. A confirmed root cause is not a fix, and a service restart cannot repair an unchanged application or a missing database object.
+- Before asking the user to retest, record the concrete source/database changes, rebuild or reload the affected runtime, and execute the reported interaction end to end. If work remains diagnosis-only, state that the behavior is still expected to fail.
+- For settings metadata, distinguish global registries from tenant-aware projections. If a required projection is missing from a restored database, restore the view, security mode, grants, and PostgREST cache instead of substituting a base table with a different row shape.
