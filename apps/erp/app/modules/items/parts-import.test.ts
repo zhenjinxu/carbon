@@ -1,4 +1,4 @@
-﻿import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import * as XLSX from "xlsx";
 import {
   annotateWholeBomWorkbook,
@@ -219,6 +219,35 @@ describe("parseWholeBomWorkbook", () => {
         }
       ],
       unmatched: ["OTHER-MODEL.pdf"]
+    });
+  });
+  it("matches PDF drawings selected from a folder by basename, part code, or part name", () => {
+    const plan = parseWholeBomWorkbook(
+      wholeBomWorkbookBuffer([
+        ["层级", "图号/ERP编码", "名称", "部件内数量", "图纸类别", "合并图页"],
+        ["整机", "ROOT", "Root Machine", 1, "总装图", 1],
+        ["1", "ASM-1", "一级装配", 1, "装配图", 2],
+        ["2", "PART-1", "连接板", 2, "零件图", 3]
+      ])
+    );
+
+    expect(
+      matchWholeBomDrawingFileNames(plan, [
+        "1930010001图纸/ROOT.pdf",
+        "1930010001图纸/一级装配.PDF",
+        "1930010001图纸/子目录/PART-1 连接板.pdf"
+      ])
+    ).toEqual({
+      matched: [
+        { code: "ROOT", fileName: "1930010001图纸/ROOT.pdf" },
+        { code: "ASM-1", fileName: "1930010001图纸/一级装配.PDF" },
+        {
+          code: "PART-1",
+          fileName: "1930010001图纸/子目录/PART-1 连接板.pdf"
+        }
+      ],
+      missingExpected: [],
+      unmatched: []
     });
   });
   it("builds existing-item failure annotations and writes them to the workbook failure column", () => {

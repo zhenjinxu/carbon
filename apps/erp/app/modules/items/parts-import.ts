@@ -1,4 +1,4 @@
-﻿import * as XLSX from "xlsx";
+import * as XLSX from "xlsx";
 
 export type PartImportRow = {
   code: string;
@@ -123,9 +123,49 @@ function isBlankDrawingPage(value: string | null) {
   return !value || /^[-—–]+$/.test(value);
 }
 
-function drawingFileCode(fileName: string) {
+function drawingFileStem(fileName: string) {
   const trimmed = fileName.trim();
-  return /\.pdf$/i.test(trimmed) ? trimmed.replace(/\.pdf$/i, "") : null;
+  if (!/\.pdf$/i.test(trimmed)) return null;
+  const baseName = trimmed.split(/[\\/]/).filter(Boolean).pop() ?? trimmed;
+  return baseName.replace(/\.pdf$/i, "").trim();
+}
+
+function normalizeDrawingLookupKey(value: string) {
+  return value
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[\s._\-—–_/\\（）()]+/g, "");
+}
+
+function findWholeBomDrawingMatch(
+  expected: WholeBomExpectedDrawing[],
+  fileName: string
+) {
+  const stem = drawingFileStem(fileName);
+  if (!stem) return null;
+
+  const stemKey = normalizeDrawingLookupKey(stem);
+  let best: { row: WholeBomExpectedDrawing; score: number } | null = null;
+  for (const row of expected) {
+    const codeKey = normalizeDrawingLookupKey(row.code);
+    const nameKey = normalizeDrawingLookupKey(row.name);
+    let score = 0;
+    if (stemKey === codeKey) {
+      score = 1000;
+    } else if (stemKey === nameKey) {
+      score = 900;
+    } else if (codeKey.length >= 4 && stemKey.includes(codeKey)) {
+      score = 800 + codeKey.length;
+    } else if (nameKey.length >= 2 && stemKey.includes(nameKey)) {
+      score = 700 + nameKey.length;
+    }
+
+    if (score > 0 && (!best || score > best.score)) {
+      best = { row, score };
+    }
+  }
+
+  return best?.row ?? null;
 }
 
 function findWholeBomSheet(workbook: XLSX.WorkBook) {
@@ -386,18 +426,16 @@ export function matchWholeBomDrawingFileNames(
   fileNames: string[]
 ): WholeBomDrawingMatch {
   const expected = expectedWholeBomDrawingRows(plan);
-  const expectedCodes = new Set(expected.map((row) => row.code));
   const matchedCodes = new Set<string>();
   const matched: WholeBomDrawingMatch["matched"] = [];
   const unmatched: string[] = [];
 
   for (const fileName of fileNames) {
-    const code = drawingFileCode(fileName);
-    if (!code) continue;
-    if (expectedCodes.has(code)) {
-      matched.push({ code, fileName });
-      matchedCodes.add(code);
-    } else {
+    const drawing = findWholeBomDrawingMatch(expected, fileName);
+    if (drawing) {
+      matched.push({ code: drawing.code, fileName });
+      matchedCodes.add(drawing.code);
+    } else if (drawingFileStem(fileName)) {
       unmatched.push(fileName);
     }
   }

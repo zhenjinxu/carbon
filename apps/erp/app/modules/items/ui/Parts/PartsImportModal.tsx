@@ -1,4 +1,4 @@
-﻿import {
+import {
   Button,
   Modal,
   ModalBody,
@@ -70,6 +70,9 @@ export function PartsImportModal({
   const revalidator = useRevalidator();
   const submitted = useRef(false);
   const isWholeBom = mode === "wholeBom";
+  const pdfDirectoryInputProps = isWholeBom
+    ? ({ webkitdirectory: "", directory: "" } as Record<string, string>)
+    : {};
 
   useEffect(() => {
     if (fetcher.state !== "idle" || !submitted.current || !fetcher.data) {
@@ -177,8 +180,9 @@ export function PartsImportModal({
               </label>
               {isWholeBom ? (
                 <label className="flex flex-col gap-2 text-sm font-medium">
-                  PDF drawings
+                  PDF drawings folder
                   <input
+                    {...pdfDirectoryInputProps}
                     className="rounded-md border border-input bg-background px-3 py-2 text-sm"
                     type="file"
                     name="drawings"
@@ -194,7 +198,7 @@ export function PartsImportModal({
               )}
               <p className="text-sm text-muted-foreground">
                 {isWholeBom
-                  ? "The BOM workbook must contain 层级, 图号/ERP编码, 名称 and 部件内数量 columns. PDF names should match part codes."
+                  ? "The BOM workbook must contain 层级, 图号/ERP编码, 名称 and 部件内数量 columns. Select the folder that contains PDF drawings; PDF names are matched to BOM 图号/ERP编码 or 名称."
                   : "The workbook must contain the 物料 and 说明 columns."}
               </p>
             </div>

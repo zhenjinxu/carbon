@@ -1,4 +1,4 @@
-﻿import { assertIsPost, error } from "@carbon/auth";
+import { assertIsPost, error } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
@@ -146,7 +146,13 @@ export async function action({ request }: ActionFunctionArgs) {
         files: drawingFiles,
         itemIdByCode: importResult.itemIdByCode,
         companyId,
-        userId
+        userId,
+        codeByFileName: Object.fromEntries(
+          drawingMatch.matched.map((drawing) => [
+            drawing.fileName,
+            drawing.code
+          ])
+        )
       });
       const annotatedWorkbook = importResult.failures.length
         ? {

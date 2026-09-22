@@ -1103,12 +1103,14 @@ export async function uploadWholeBomDrawingFiles({
   files,
   itemIdByCode,
   companyId,
-  userId
+  userId,
+  codeByFileName = {}
 }: {
   files: File[];
   itemIdByCode: Record<string, string>;
   companyId: string;
   userId: string;
+  codeByFileName?: Record<string, string>;
 }) {
   const serviceRole = getCarbonServiceRole();
   const uploaded: string[] = [];
@@ -1121,7 +1123,7 @@ export async function uploadWholeBomDrawingFiles({
       failed.push({ fileName, message: "Only PDF drawings are supported" });
       continue;
     }
-    const code = fileName.replace(/\.pdf$/i, "");
+    const code = codeByFileName[fileName] ?? fileName.replace(/\.pdf$/i, "");
     const itemId = itemIdByCode[code];
     if (!itemId) {
       missing.push(fileName);
