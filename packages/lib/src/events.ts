@@ -56,6 +56,17 @@ export type Events = {
     };
   };
 
+  // AI routing drawing extraction
+  "carbon/ai-routing.extract-part-drawing": {
+    data: {
+      companyId: string;
+      userId: string;
+      itemId: string;
+      documentId: string;
+      extractionId: string;
+    };
+  };
+
   // Model thumbnail generation
   "carbon/model-thumbnail": {
     data: {

@@ -1,0 +1,444 @@
+﻿import { readFileSync } from "node:fs";
+import { createRequire } from "node:module";
+import { resolve } from "node:path";
+import { pathToFileURL } from "node:url";
+
+function loadEnvFile(path: string, override = false) {
+  let content = "";
+  try {
+    content = readFileSync(path, "utf8");
+  } catch {
+    return;
+  }
+  for (const rawLine of content.split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith("#")) continue;
+    const match = line.match(/^([A-Za-z_][A-Za-z0-9_]*)=(.*)$/);
+    if (!match) continue;
+    const [, key, rawValue] = match;
+    if (!override && process.env[key] !== undefined) continue;
+    let value = rawValue.trim();
+    if (
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
+      value = value.slice(1, -1);
+    }
+    process.env[key] = value;
+  }
+}
+
+function asRecord(value: unknown): Record<string, unknown> {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : {};
+}
+
+function asArray(value: unknown): unknown[] {
+  return Array.isArray(value) ? value : [];
+}
+
+function stringValue(value: unknown) {
+  return typeof value === "string" && value.trim().length > 0
+    ? value.trim()
+    : null;
+}
+
+function unique(values: Array<string | null | undefined>) {
+  return Array.from(new Set(values.filter((value): value is string => Boolean(value))));
+}
+
+const materialPatterns: Array<[string, RegExp]> = [
+  ["304", /\b304\b|sus304|不锈钢304/i],
+  ["316", /\b316\b|sus316|不锈钢316/i],
+  ["铝", /铝|aluminium|aluminum/i],
+  ["不锈钢", /不锈钢|stainless/i],
+  ["碳钢", /碳钢|carbon steel/i]
+];
+const featurePatterns: Array<[string, RegExp]> = [
+  ["板件", /板|板件|sheet|plate/i],
+  ["孔", /孔|攻丝|钻|hole|thread|tap/i],
+  ["焊接件", /焊|焊接|weld/i],
+  ["折弯", /折弯|bend/i]
+];
+const processPatterns: Array<[string, RegExp]> = [
+  ["激光切割", /激光|laser/i],
+  ["折弯", /折弯|bend/i],
+  ["攻丝", /攻丝|tap|thread/i],
+  ["焊接", /焊|weld/i],
+  ["打磨", /打磨|grind|polish/i],
+  ["下料", /下料|cut.?off|blank/i],
+  ["领料", /领料|material issue/i]
+];
+
+function matchingTags(text: string, patterns: Array<[string, RegExp]>) {
+  return patterns
+    .filter(([, pattern]) => pattern.test(text))
+    .map(([tag]) => tag);
+}
+
+function operationFromRow(row: Record<string, unknown>) {
+  const process = asRecord(row.process);
+  const workCenter = asRecord(row.workCenter);
+  return {
+    id: stringValue(row.id) ?? undefined,
+    order: Number(row.order ?? 0),
+    processId: stringValue(row.processId) ?? stringValue(process.id),
+    processName: stringValue(process.name),
+    workCenterId: stringValue(row.workCenterId) ?? stringValue(workCenter.id),
+    workCenterName: stringValue(workCenter.name),
+    operationType: stringValue(row.operationType),
+    operationOrder: stringValue(row.operationOrder),
+    description: stringValue(row.description),
+    setupTime: Number(row.setupTime ?? 0),
+    setupUnit: stringValue(row.setupUnit),
+    laborTime: Number(row.laborTime ?? 0),
+    laborUnit: stringValue(row.laborUnit),
+    machineTime: Number(row.machineTime ?? 0),
+    machineUnit: stringValue(row.machineUnit),
+    customFields: row.customFields ?? null
+  };
+}
+
+function buildJobRouteSample(args: {
+  companyId: string;
+  item: Record<string, unknown>;
+  jobMakeMethod: Record<string, unknown>;
+  operations: Array<Record<string, unknown>>;
+  documents: Array<Record<string, unknown>>;
+}) {
+  if (args.jobMakeMethod.itemId !== args.item.id) {
+    return { data: null, error: "job_route_item_mismatch" };
+  }
+  const operations = args.operations
+    .map(operationFromRow)
+    .sort((a, b) => a.order - b.order);
+  if (operations.length === 0) {
+    return { data: null, error: "job_route_operations_missing" };
+  }
+  const itemText = [
+    args.item.readableId,
+    args.item.readableIdWithRevision,
+    args.item.name,
+    args.item.description,
+    JSON.stringify(args.item.customFields ?? {})
+  ].join(" ");
+  const operationText = operations
+    .map((operation) => [operation.processName, operation.description].join(" "))
+    .join(" ");
+  return {
+    data: {
+      id: `${args.companyId}:job-route:${args.jobMakeMethod.id}`,
+      itemId: String(args.item.id),
+      readableId:
+        stringValue(args.item.readableIdWithRevision) ??
+        stringValue(args.item.readableId),
+      name: stringValue(args.item.name),
+      makeMethodId: null,
+      documentIds: args.documents
+        .map((document) => stringValue(document.id))
+        .filter((id): id is string => Boolean(id)),
+      operations,
+      status: "Approved",
+      datasetRole: "Training",
+      materialTags: unique(matchingTags(itemText, materialPatterns)),
+      featureTags: unique([
+        ...matchingTags(itemText, featurePatterns),
+        ...matchingTags(operationText, featurePatterns)
+      ]),
+      processTags: unique(matchingTags(operationText, processPatterns)),
+      resourceTags: unique(
+        operations.flatMap((operation) => [operation.workCenterName, operation.workCenterId])
+      )
+    },
+    error: null
+  };
+}
+
+function routeSignature(operations: Array<Record<string, unknown>>) {
+  return operations
+    .slice()
+    .sort((a, b) => Number(a.order ?? 0) - Number(b.order ?? 0))
+    .map(
+      (operation) =>
+        `${operation.order ?? "?"}:${operation.description ?? operation.processId ?? "Unnamed"}`
+    )
+    .join(" -> ");
+}
+
+function currentDrawingSnapshotCount(args: {
+  itemId: string;
+  documents: Array<Record<string, unknown>>;
+  extractions: Array<Record<string, unknown>>;
+}) {
+  const activePdfs = args.documents.filter((document) => {
+    return (
+      document.active !== false &&
+      document.sourceDocument === "Part" &&
+      document.sourceDocumentId === args.itemId &&
+      document.type === "PDF" &&
+      String(document.extension ?? "").toLowerCase() === "pdf"
+    );
+  });
+  if (activePdfs.length === 0) throw new Error("active_part_pdf_missing");
+
+  let snapshotCount = 0;
+  for (const document of activePdfs) {
+    const extraction = args.extractions.find((row) => {
+      const payload = asRecord(row.extraction);
+      const documentPayload = asRecord(payload.document);
+      return (
+        row.documentId === document.id &&
+        row.status === "Succeeded" &&
+        row.contentHash === documentPayload.contentHash &&
+        row.extractorSchemaVersion === payload.schemaVersion
+      );
+    });
+    if (!extraction) throw new Error("succeeded_current_pdf_extraction_missing");
+    snapshotCount += 1;
+  }
+  return snapshotCount;
+}
+
+const root = resolve(process.cwd(), "../..");
+loadEnvFile(resolve(root, ".env"));
+loadEnvFile(resolve(root, ".env.local"), true);
+
+const requireFromJobs = createRequire(resolve(root, "packages/jobs/package.json"));
+const { createClient } = await import(
+  pathToFileURL(requireFromJobs.resolve("@supabase/supabase-js")).href
+);
+
+const carbon = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY,
+  { auth: { autoRefreshToken: false, persistSession: false } }
+);
+
+const companyId = "d8s9bh4f8gm357312pbg";
+const partIds = [
+  "1927930501",
+  "1927930502",
+  "1927930503",
+  "1927930601",
+  "1927930602",
+  "1927930603",
+  "192793050101",
+  "192793050200",
+  "192793050201",
+  "192793060101",
+  "192793060200",
+  "192793060201"
+];
+const proposedTraining = new Set([
+  "1927930501",
+  "1927930502",
+  "192793050101",
+  "192793050200",
+  "1927930601",
+  "1927930602",
+  "192793060101",
+  "192793060200"
+]);
+const proposedEvaluation = new Set([
+  "1927930503",
+  "192793050201",
+  "1927930603",
+  "192793060201"
+]);
+
+const { data: itemRows, error: itemError } = await carbon
+  .from("item")
+  .select("id,readableId,readableIdWithRevision,name,description,customFields:notes")
+  .eq("companyId", companyId)
+  .in("readableId", partIds);
+if (itemError) throw itemError;
+
+const itemsByReadable = new Map(
+  (itemRows ?? []).map((item) => [item.readableId, item as Record<string, unknown>])
+);
+const itemIds = (itemRows ?? []).map((item) => item.id);
+
+const { data: documentRows, error: documentError } = itemIds.length
+  ? await carbon
+      .from("document")
+      .select("id,name,path,extension,type,sourceDocument,sourceDocumentId,active")
+      .eq("companyId", companyId)
+      .eq("sourceDocument", "Part")
+      .in("sourceDocumentId", itemIds)
+  : { data: [], error: null };
+if (documentError) throw documentError;
+
+const { data: extractionRows, error: extractionError } = itemIds.length
+  ? await carbon
+      .from("aiDrawingExtraction")
+      .select("id,itemId,documentId,status,contentHash,extractorSchemaVersion,modelProvider,modelName,pageCount,completedAt,createdAt,errorCode,errorMessage,extraction")
+      .eq("companyId", companyId)
+      .in("itemId", itemIds)
+      .order("createdAt", { ascending: false })
+  : { data: [], error: null };
+if (extractionError) throw extractionError;
+
+const { data: jobRows, error: jobError } = itemIds.length
+  ? await carbon
+      .from("job")
+      .select("id,jobId,itemId,source,status,createdAt")
+      .eq("companyId", companyId)
+      .in("itemId", itemIds)
+      .order("createdAt", { ascending: false })
+  : { data: [], error: null };
+if (jobError) throw jobError;
+
+const jobIds = (jobRows ?? []).map((job) => job.id);
+const { data: jobMakeMethodRows, error: jobMakeMethodError } = jobIds.length
+  ? await carbon
+      .from("jobMakeMethod")
+      .select("id,jobId,itemId,version")
+      .eq("companyId", companyId)
+      .in("jobId", jobIds)
+  : { data: [], error: null };
+if (jobMakeMethodError) throw jobMakeMethodError;
+
+const { data: jobOperationRows, error: jobOperationError } = jobIds.length
+  ? await carbon
+      .from("jobOperation")
+      .select("id,jobId,jobMakeMethodId,order,operationOrder,operationType,processId,workCenterId,description,setupTime,setupUnit,laborTime,laborUnit,machineTime,machineUnit,customFields,process(id,name),workCenter(id,name)")
+      .eq("companyId", companyId)
+      .in("jobId", jobIds)
+      .order("order", { ascending: true })
+  : { data: [], error: null };
+if (jobOperationError) throw jobOperationError;
+
+const documentsByItem = new Map<string, Array<Record<string, unknown>>>();
+for (const document of documentRows ?? []) {
+  const rows = documentsByItem.get(document.sourceDocumentId) ?? [];
+  rows.push(document as Record<string, unknown>);
+  documentsByItem.set(document.sourceDocumentId, rows);
+}
+const extractionsByItem = new Map<string, Array<Record<string, unknown>>>();
+for (const extraction of extractionRows ?? []) {
+  const rows = extractionsByItem.get(extraction.itemId) ?? [];
+  rows.push(extraction as Record<string, unknown>);
+  extractionsByItem.set(extraction.itemId, rows);
+}
+const jobsByItem = new Map<string, Array<Record<string, unknown>>>();
+for (const job of jobRows ?? []) {
+  const rows = jobsByItem.get(job.itemId) ?? [];
+  rows.push(job as Record<string, unknown>);
+  jobsByItem.set(job.itemId, rows);
+}
+const methodsByJob = new Map<string, Array<Record<string, unknown>>>();
+for (const method of jobMakeMethodRows ?? []) {
+  const rows = methodsByJob.get(method.jobId) ?? [];
+  rows.push(method as Record<string, unknown>);
+  methodsByJob.set(method.jobId, rows);
+}
+const operationsByJobMethod = new Map<string, Array<Record<string, unknown>>>();
+for (const operation of jobOperationRows ?? []) {
+  const key = String(operation.jobMakeMethodId ?? "");
+  const rows = operationsByJobMethod.get(key) ?? [];
+  rows.push(operation as Record<string, unknown>);
+  operationsByJobMethod.set(key, rows);
+}
+
+const perPart = partIds.map((readableId) => {
+  const item = itemsByReadable.get(readableId) ?? null;
+  const itemId = stringValue(item?.id);
+  const role = proposedTraining.has(readableId)
+    ? "Training"
+    : proposedEvaluation.has(readableId)
+      ? "Evaluation"
+      : "Unassigned";
+  const documents = itemId ? documentsByItem.get(itemId) ?? [] : [];
+  const extractions = itemId ? extractionsByItem.get(itemId) ?? [] : [];
+  const jobs = itemId ? jobsByItem.get(itemId) ?? [] : [];
+  let drawingSnapshotCount = 0;
+  let drawingError: string | null = null;
+  try {
+    drawingSnapshotCount = currentDrawingSnapshotCount({
+      itemId: itemId ?? "missing",
+      documents,
+      extractions
+    });
+  } catch (error) {
+    drawingError = error instanceof Error ? error.message : String(error);
+  }
+
+  const routeCandidates = jobs
+    .flatMap((job) =>
+      (methodsByJob.get(String(job.id)) ?? []).map((method) => {
+        const operations = operationsByJobMethod.get(String(method.id)) ?? [];
+        return { job, method, operations };
+      })
+    )
+    .filter((candidate) => candidate.operations.length > 0);
+  const distinctRouteSignatures = Array.from(
+    new Set(routeCandidates.map((candidate) => routeSignature(candidate.operations)))
+  );
+  const selectedRoute = routeCandidates[0] ?? null;
+  const sample =
+    item && selectedRoute
+      ? buildJobRouteSample({
+          companyId,
+          item,
+          jobMakeMethod: selectedRoute.method,
+          operations: selectedRoute.operations,
+          documents
+        })
+      : { data: null, error: "u8_job_route_sample_source_missing" };
+  const blockers = [
+    !item ? "item_missing" : null,
+    drawingError,
+    routeCandidates.length === 0 ? "u8_job_route_missing" : null,
+    distinctRouteSignatures.length > 1 ? "multiple_u8_route_signatures" : null,
+    sample.error
+  ].filter(Boolean);
+
+  return {
+    readableId,
+    role,
+    itemId,
+    latestExtractionStatus: extractions[0]?.status ?? null,
+    latestExtractionId: extractions[0]?.id ?? null,
+    drawingReady: drawingError === null,
+    drawingSnapshotCount,
+    routeCandidateCount: routeCandidates.length,
+    distinctRouteSignatureCount: distinctRouteSignatures.length,
+    selectedJobMakeMethodId: selectedRoute?.method.id ?? null,
+    selectedRouteOperationCount: selectedRoute?.operations.length ?? 0,
+    selectedRouteSignature: selectedRoute ? routeSignature(selectedRoute.operations) : null,
+    sampleId: sample.data?.id ?? null,
+    sampleOperationCount: sample.data?.operations.length ?? 0,
+    wouldWriteTrainingSample: role === "Training" && blockers.length === 0,
+    blockers
+  };
+});
+
+const trainingReady = perPart.filter(
+  (part) => part.role === "Training" && part.blockers.length === 0
+).length;
+const evaluationReady = perPart.filter(
+  (part) => part.role === "Evaluation" && part.blockers.length === 0
+).length;
+const blockers = perPart.filter((part) => part.blockers.length > 0);
+
+console.log(
+  JSON.stringify(
+    {
+      companyId,
+      partCount: partIds.length,
+      trainingReady,
+      evaluationReady,
+      wouldWriteTrainingSamples: perPart.filter((part) => part.wouldWriteTrainingSample).length,
+      readyForDatasetWrite: trainingReady === 8 && evaluationReady === 4,
+      blockers,
+      perPart
+    },
+    null,
+    2
+  )
+);
+
+if (trainingReady !== 8 || evaluationReady !== 4) {
+  process.exitCode = 2;
+}

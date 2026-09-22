@@ -1013,6 +1013,7 @@ export const path = {
     itemCostUpdate: (id: string) => generatePath(`${x}/items/cost/${id}`),
     itemPostingGroup: (id: string) => generatePath(`${x}/items/groups/${id}`),
     itemPostingGroups: `${x}/items/groups`,
+    itemDeletionArchive: `${x}/items/archive`,
     itemsSettings: `${x}/settings/items`,
     job: (id: string) => generatePath(`${x}/job/${id}`),
     jobBatchNumber: (id: string) => generatePath(`${x}/job/${id}/batch`),
@@ -1144,6 +1145,7 @@ export const path = {
     materialSubstances: `${x}/items/substances`,
     methodMaterial: (id: string) =>
       generatePath(`${x}/items/methods/material/${id}`),
+    aiRoutingAssistant: `${x}/items/methods/ai-routing`,
     methodMaterials: `${x}/items/methods/materials`,
     methodMaterialsOrder: `${x}/items/methods/material/order`,
     methodOperation: (id: string) =>

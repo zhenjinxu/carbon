@@ -317,6 +317,11 @@ services:
   erp:
     <<: *app
     image: carbon/erp:local
+    env_file:
+      - .env
+      - .env.local
+      - path: .env.u8.local
+        required: false
     build:
       context: .
       dockerfile: Dockerfile

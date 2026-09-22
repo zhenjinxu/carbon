@@ -24,6 +24,7 @@ import {
   IconButton,
   Label,
   Loading,
+  Textarea,
   ToggleGroup,
   ToggleGroupItem,
   Tooltip,
@@ -119,6 +120,7 @@ import {
   procedureStepType,
   standardFactorType
 } from "~/modules/shared";
+import type { AiRoutingActionData } from "~/routes/x+/items+/methods+/ai-routing";
 import type { action as editMethodOperationParameterAction } from "~/routes/x+/items+/methods+/operation.parameter.$id";
 import type { action as newMethodOperationParameterAction } from "~/routes/x+/items+/methods+/operation.parameter.new";
 import type { action as editMethodOperationStepAction } from "~/routes/x+/items+/methods+/operation.step.$id";
@@ -127,6 +129,17 @@ import type { action as newMethodOperationToolAction } from "~/routes/x+/items+/
 import { useItems, useTools } from "~/stores";
 import { getPrivateUrl, path } from "~/utils/path";
 import { serverStorageUpload } from "~/utils/storage";
+import type { AiRoutingDraft, AiRoutingTargetEvidence } from "../../ai-routing";
+import type { AiRoutingDrawingExtractionSummary } from "../../ai-routing.server";
+import {
+  type AiRoutingHumanReviewCheckpointKey,
+  type AiRoutingHumanReviewModel,
+  aiRoutingReviewedOperationKey,
+  buildAiRoutingConfirmedRouteSnapshot,
+  buildAiRoutingHumanReviewModel,
+  reviewedAiRoutingOperations,
+  updateAiRoutingReviewedOperation
+} from "../../ai-routing-review";
 import { methodOperationValidator } from "../../items.models";
 import type {
   ConfigurationParameter,
@@ -159,6 +172,8 @@ type BillOfProcessProps = {
   })[];
   parameters?: ConfigurationParameter[];
   tags: { name: string }[];
+  aiDrawingExtractions?: AiRoutingDrawingExtractionSummary[];
+  aiRoutingTargetEvidence?: AiRoutingTargetEvidence | null;
 };
 
 type PendingWorkInstructions = {
@@ -207,13 +222,14 @@ const BillOfProcess = ({
   materials,
   operations: initialOperations,
   parameters,
-  tags
+  tags,
+  aiDrawingExtractions = [],
+  aiRoutingTargetEvidence = null
 }: BillOfProcessProps) => {
   const permissions = usePermissions();
   const { t } = useLingui();
-  const isReadOnly =
-    permissions.can("update", "parts") === false ||
-    makeMethod.status !== "Draft";
+  const canUpdateParts = permissions.can("update", "parts") !== false;
+  const isReadOnly = !canUpdateParts || makeMethod.status !== "Draft";
 
   const makeMethodId = makeMethod.id;
 
@@ -861,6 +877,13 @@ const BillOfProcess = ({
         </CardAction>
       </HStack>
       <CardContent>
+        <AiRoutingAssistantPanel
+          canUpdateParts={canUpdateParts}
+          makeMethod={makeMethod}
+          operations={operations}
+          aiDrawingExtractions={aiDrawingExtractions}
+          aiRoutingTargetEvidence={aiRoutingTargetEvidence}
+        />
         <SortableList
           isReadOnly={isReadOnly}
           items={items}
@@ -2970,6 +2993,638 @@ function ToolsListItem({
           }}
         />
       )}
+    </div>
+  );
+}
+
+type AiRoutingAssistantPanelProps = {
+  canUpdateParts: boolean;
+  makeMethod: MakeMethod;
+  operations: Operation[];
+  aiDrawingExtractions: AiRoutingDrawingExtractionSummary[];
+  aiRoutingTargetEvidence: AiRoutingTargetEvidence | null;
+};
+
+function AiRoutingAssistantPanel({
+  canUpdateParts,
+  makeMethod,
+  operations,
+  aiDrawingExtractions,
+  aiRoutingTargetEvidence
+}: AiRoutingAssistantPanelProps) {
+  const fetcher = useFetcher<AiRoutingActionData>();
+  const { t } = useLingui();
+  const submitted = useRef(false);
+  const [draftState, setDraftState] = useState<{
+    draftId: string | null;
+    draft: AiRoutingDraft;
+  } | null>(null);
+  const [reviewedOperations, setReviewedOperations] = useState<
+    AiRoutingDraft["suggestedOperations"]
+  >([]);
+  const [feedbackReason, setFeedbackReason] = useState("");
+  const [reviewStatus, setReviewStatus] = useState<
+    "Accepted" | "Rejected" | null
+  >(null);
+  const sampleStatus: "Candidate" | "Approved" =
+    makeMethod.status === "Active" ? "Approved" : "Candidate";
+  const isBusy = fetcher.state !== "idle";
+  const hasOperations = operations.length > 0;
+  const primaryDrawing = aiDrawingExtractions[0] ?? null;
+  const humanReviewModel = useMemo(
+    () =>
+      buildAiRoutingHumanReviewModel({
+        targetEvidence: aiRoutingTargetEvidence,
+        draft: draftState?.draft ?? null
+      }),
+    [aiRoutingTargetEvidence, draftState]
+  );
+
+  useEffect(() => {
+    if (!submitted.current || fetcher.state !== "idle" || !fetcher.data) return;
+
+    if (fetcher.data.success) {
+      toast.success(t(fetcher.data.message));
+      if (fetcher.data.intent === "generate-draft") {
+        setDraftState({
+          draftId: fetcher.data.draftId,
+          draft: fetcher.data.draft
+        });
+        setReviewedOperations(reviewedAiRoutingOperations(fetcher.data.draft));
+        setReviewStatus(null);
+      }
+      if (fetcher.data.intent === "record-feedback") {
+        setFeedbackReason("");
+        setReviewStatus(fetcher.data.draftStatus);
+      }
+    } else {
+      toast.error(t(fetcher.data.message));
+    }
+
+    submitted.current = false;
+  }, [fetcher.data, fetcher.state, t]);
+
+  const submitAssistantAction = (
+    intent: "save-sample" | "generate-draft" | "extract-drawing",
+    extra?: Record<string, string>
+  ) => {
+    const formData = new FormData();
+    formData.append("intent", intent);
+    formData.append("itemId", makeMethod.itemId);
+    formData.append("makeMethodId", makeMethod.id);
+    formData.append("sampleStatus", sampleStatus);
+
+    for (const [key, value] of Object.entries(extra ?? {})) {
+      formData.append(key, value);
+    }
+
+    submitted.current = true;
+    fetcher.submit(formData, {
+      method: "post",
+      action: path.to.aiRoutingAssistant
+    });
+  };
+
+  const submitFeedback = (draftStatus: "Accepted" | "Rejected") => {
+    if (!draftState?.draftId) return;
+
+    const formData = new FormData();
+    formData.append("intent", "record-feedback");
+    formData.append("itemId", makeMethod.itemId);
+    formData.append("draftId", draftState.draftId);
+    formData.append("draftStatus", draftStatus);
+    formData.append("reason", feedbackReason);
+    formData.append("originalSuggestion", JSON.stringify(draftState.draft));
+    formData.append(
+      "confirmedRouteSnapshot",
+      JSON.stringify(
+        buildAiRoutingConfirmedRouteSnapshot({
+          draft: draftState.draft,
+          reviewedOperations:
+            reviewedOperations.length > 0
+              ? reviewedOperations
+              : reviewedAiRoutingOperations(draftState.draft)
+        })
+      )
+    );
+
+    submitted.current = true;
+    fetcher.submit(formData, {
+      method: "post",
+      action: path.to.aiRoutingAssistant
+    });
+  };
+
+  return (
+    <div className="mb-4 rounded-lg border bg-muted/30 p-4">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <Badge variant="secondary">AI</Badge>
+            <h3 className="text-sm font-semibold">{t`AI Routing Assistant`}</h3>
+          </div>
+          <p className="max-w-3xl text-sm text-muted-foreground">
+            {t`Find similar routing samples confirmed in Carbon and generate a traceable draft. The formal routing is never published automatically.`}
+          </p>
+          <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
+            <Badge variant="gray">
+              {t`Current operations: ${operations.length}`}
+            </Badge>
+            <Badge variant="gray">
+              {t`Sample status: ${sampleStatus === "Approved" ? t`Approved` : t`Candidate`}`}
+            </Badge>
+            <Badge variant="gray">
+              {t`Routing version: ${makeMethod.version}`}
+            </Badge>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-2">
+          <Button
+            variant="secondary"
+            isDisabled={!canUpdateParts || !primaryDrawing || isBusy}
+            isLoading={
+              isBusy && fetcher.formData?.get("intent") === "extract-drawing"
+            }
+            onClick={() => {
+              if (!primaryDrawing) return;
+              submitAssistantAction("extract-drawing", {
+                documentId: primaryDrawing.documentId
+              });
+            }}
+          >
+            {t`Extract PDF features`}
+          </Button>{" "}
+          <Button
+            variant="secondary"
+            isDisabled={!canUpdateParts || !hasOperations || isBusy}
+            isLoading={
+              isBusy && fetcher.formData?.get("intent") === "save-sample"
+            }
+            onClick={() => submitAssistantAction("save-sample")}
+          >
+            {t`Save as learning sample`}
+          </Button>
+          <Button
+            isDisabled={!canUpdateParts || isBusy}
+            isLoading={
+              isBusy && fetcher.formData?.get("intent") === "generate-draft"
+            }
+            onClick={() => submitAssistantAction("generate-draft")}
+          >
+            {t`Generate draft`}
+          </Button>
+        </div>
+      </div>
+
+      <div className="mt-4 rounded-md border bg-background p-3 text-sm">
+        <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <div className="font-medium">{t`PDF drawing extraction`}</div>
+            <div className="text-xs text-muted-foreground">
+              {primaryDrawing
+                ? primaryDrawing.documentName || primaryDrawing.documentId
+                : t`No active PDF drawing is attached to this Part.`}
+            </div>
+          </div>
+          {primaryDrawing?.status ? (
+            <Badge
+              variant={
+                primaryDrawing.status === "Succeeded"
+                  ? "green"
+                  : primaryDrawing.status === "Failed"
+                    ? "red"
+                    : "yellow"
+              }
+            >
+              {primaryDrawing.status === "Succeeded"
+                ? t`Extraction succeeded`
+                : primaryDrawing.status === "Failed"
+                  ? t`Extraction failed`
+                  : primaryDrawing.status === "Processing"
+                    ? t`Extraction processing`
+                    : t`Extraction pending`}
+            </Badge>
+          ) : (
+            <Badge variant="gray">{t`Not extracted`}</Badge>
+          )}
+        </div>
+        {primaryDrawing?.status === "Failed" && (
+          <div className="mt-2 text-xs text-red-600">
+            {primaryDrawing.errorMessage ?? t`Drawing extraction failed.`}
+          </div>
+        )}
+      </div>
+
+      <AiRoutingHumanReviewPanel reviewModel={humanReviewModel} />
+      {!canUpdateParts && (
+        <Alert className="mt-4">
+          <LuInfo />
+          <AlertTitle>{t`Permission required`}</AlertTitle>
+          <AlertDescription>
+            {t`Part update permission is required to save samples, generate drafts, or record feedback.`}
+          </AlertDescription>
+        </Alert>
+      )}
+
+      {!hasOperations && (
+        <Alert className="mt-4">
+          <LuInfo />
+          <AlertTitle>{t`This routing has no operations`}</AlertTitle>
+          <AlertDescription>
+            {t`A draft can still be generated, but this routing cannot be saved as a learning sample yet.`}
+          </AlertDescription>
+        </Alert>
+      )}
+
+      {draftState && (
+        <AiRoutingDraftPreview
+          draftId={draftState.draftId}
+          draft={draftState.draft}
+          feedbackReason={feedbackReason}
+          isBusy={isBusy}
+          reviewStatus={reviewStatus}
+          reviewedOperations={reviewedOperations}
+          onFeedbackReasonChange={setFeedbackReason}
+          onReviewedOperationChange={(operationKey, patch) =>
+            setReviewedOperations((current) =>
+              updateAiRoutingReviewedOperation({
+                operations: current,
+                operationKey,
+                patch
+              })
+            )
+          }
+          onAccept={() => submitFeedback("Accepted")}
+          onReject={() => submitFeedback("Rejected")}
+        />
+      )}
+    </div>
+  );
+}
+
+type AiRoutingHumanReviewPanelProps = {
+  reviewModel: AiRoutingHumanReviewModel;
+};
+
+function aiRoutingCheckpointLabel(
+  key: AiRoutingHumanReviewCheckpointKey,
+  t: ReturnType<typeof useLingui>["t"]
+) {
+  switch (key) {
+    case "pdfEvidenceAvailable":
+      return t`PDF evidence available`;
+    case "draftOperationsAvailable":
+      return t`Draft operations available`;
+    case "sourceSamplesAvailable":
+      return t`Source samples available`;
+    case "formalRoutingUnchanged":
+      return t`Formal routing protected`;
+    default:
+      return key;
+  }
+}
+
+function AiRoutingHumanReviewPanel({
+  reviewModel
+}: AiRoutingHumanReviewPanelProps) {
+  const { t } = useLingui();
+  const visibleTags = [
+    ...reviewModel.pdfEvidence.materialTags,
+    ...reviewModel.pdfEvidence.featureTags
+  ];
+
+  return (
+    <div className="mt-4 space-y-3 rounded-md border bg-background p-3 text-sm">
+      <div className="flex flex-col gap-1">
+        <div className="font-medium">{t`Human review checkpoint`}</div>
+        <div className="text-xs text-muted-foreground">
+          {t`Review PDF evidence and draft sources before recording feedback. The assistant does not change formal routing.`}
+        </div>
+      </div>
+
+      <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-4">
+        {reviewModel.checkpoints.map((checkpoint) => (
+          <div
+            key={checkpoint.key}
+            className="flex items-center justify-between gap-2 rounded-md border bg-muted/20 px-3 py-2"
+          >
+            <span className="text-xs font-medium">
+              {aiRoutingCheckpointLabel(checkpoint.key, t)}
+            </span>
+            <Badge variant={checkpoint.satisfied ? "green" : "yellow"}>
+              {checkpoint.satisfied ? t`Ready` : t`Pending`}
+            </Badge>
+          </div>
+        ))}
+      </div>
+
+      <div className="grid gap-3 lg:grid-cols-[1fr_1.2fr]">
+        <div className="space-y-2 rounded-md border bg-muted/20 p-3">
+          <div className="text-xs font-semibold uppercase text-muted-foreground">
+            {t`PDF evidence summary`}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="secondary">
+              {t`Evidence facts: ${reviewModel.pdfEvidence.drawingEvidenceCount}`}
+            </Badge>
+            <Badge
+              variant={
+                reviewModel.pdfEvidence.warningCount > 0 ? "yellow" : "gray"
+              }
+            >
+              {t`Warnings: ${reviewModel.pdfEvidence.warningCount}`}
+            </Badge>
+            <Badge variant="secondary">
+              {t`Matched PDF facts: ${reviewModel.draftEvidence.matchedDrawingEvidenceCount}`}
+            </Badge>
+          </div>
+          {visibleTags.length > 0 ? (
+            <div className="flex flex-wrap gap-1">
+              {visibleTags.slice(0, 10).map((tag) => (
+                <Badge key={tag} variant="outline">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          ) : (
+            <div className="text-xs text-muted-foreground">
+              {t`No PDF evidence is ready yet.`}
+            </div>
+          )}
+          {reviewModel.pdfEvidence.warnings.length > 0 && (
+            <div className="text-xs text-amber-700">
+              {reviewModel.pdfEvidence.warnings.join("; ")}
+            </div>
+          )}
+        </div>
+
+        <div className="space-y-2 rounded-md border bg-muted/20 p-3">
+          <div className="text-xs font-semibold uppercase text-muted-foreground">
+            {t`Evidence preview`}
+          </div>
+          {reviewModel.pdfEvidence.preview.length > 0 ? (
+            <div className="space-y-2">
+              {reviewModel.pdfEvidence.preview.map((evidence) => (
+                <div
+                  key={`${evidence.sourceId}:${evidence.evidenceId}`}
+                  className="rounded-md bg-background px-3 py-2"
+                >
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Badge variant="gray">{evidence.kind}</Badge>
+                    <span className="text-xs text-muted-foreground">
+                      {t`Page ${evidence.pageNumber} · confidence ${Math.round(evidence.confidence * 100)}%`}
+                    </span>
+                  </div>
+                  <div className="mt-1 text-sm">
+                    {evidence.label ? `${evidence.label}: ` : ""}
+                    {evidence.text}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-xs text-muted-foreground">
+              {t`Run a successful drawing extraction before relying on draft generation.`}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+type ReviewedOperationPatch = Partial<
+  Pick<AiRoutingDraft["suggestedOperations"][number], "description" | "order">
+>;
+
+type AiRoutingDraftPreviewProps = {
+  draftId: string | null;
+  draft: AiRoutingDraft;
+  feedbackReason: string;
+  isBusy: boolean;
+  reviewStatus: "Accepted" | "Rejected" | null;
+  reviewedOperations: AiRoutingDraft["suggestedOperations"];
+  onFeedbackReasonChange: (value: string) => void;
+  onReviewedOperationChange: (
+    operationKey: string,
+    patch: ReviewedOperationPatch
+  ) => void;
+  onAccept: () => void;
+  onReject: () => void;
+};
+
+function AiRoutingDraftPreview({
+  draftId,
+  draft,
+  feedbackReason,
+  isBusy,
+  reviewStatus,
+  reviewedOperations,
+  onFeedbackReasonChange,
+  onReviewedOperationChange,
+  onAccept,
+  onReject
+}: AiRoutingDraftPreviewProps) {
+  const { t } = useLingui();
+  const draftLabel = draftId ?? t`Not saved`;
+  const operationsForReview =
+    reviewedOperations.length > 0
+      ? reviewedOperations
+      : draft.suggestedOperations;
+
+  return (
+    <div className="mt-4 space-y-4 rounded-lg border bg-background p-4">
+      <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <h4 className="text-sm font-semibold">{t`AI routing draft`}</h4>
+          <p className="text-xs text-muted-foreground">
+            {t`Draft ID: ${draftLabel} · ${draft.references.length} references · ${operationsForReview.length} suggested operations`}
+          </p>
+        </div>
+        <Badge variant={operationsForReview.length > 0 ? "green" : "yellow"}>
+          {operationsForReview.length > 0
+            ? t`Ready for review`
+            : t`Insufficient evidence`}
+        </Badge>
+      </div>
+
+      {draft.warnings.length > 0 && (
+        <Alert>
+          <LuTriangleAlert />
+          <AlertTitle>{t`Generation warnings`}</AlertTitle>
+          <AlertDescription>
+            {draft.warnings
+              .map((warning) =>
+                warning ===
+                "No approved routing sample met the minimum similarity threshold."
+                  ? t`No approved routing sample met the minimum similarity threshold.`
+                  : warning
+              )
+              .join("; ")}
+          </AlertDescription>
+        </Alert>
+      )}
+
+      {draft.references.length > 0 && (
+        <div className="space-y-2">
+          <h5 className="text-xs font-semibold uppercase text-muted-foreground">
+            {t`Retrieval evidence`}
+          </h5>
+          <div className="grid gap-2 lg:grid-cols-2">
+            {draft.references.slice(0, 4).map((reference) => (
+              <div
+                key={reference.sampleId}
+                className="rounded-md border bg-muted/20 p-3"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <div className="text-sm font-medium">
+                      {reference.readableId ?? reference.sampleId}
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      {reference.name ?? t`Unnamed sample`}
+                    </div>
+                  </div>
+                  <Badge variant="secondary">{reference.score}</Badge>
+                </div>
+                <MatchedTags matched={reference.matched} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {operationsForReview.length > 0 && (
+        <div className="space-y-2">
+          <div>
+            <h5 className="text-xs font-semibold uppercase text-muted-foreground">
+              {t`Suggested operations`}
+            </h5>
+            <p className="mt-1 text-xs text-muted-foreground">
+              {t`Edit the reviewed operation text before recording feedback. Process IDs remain traceable to the source sample.`}
+            </p>
+          </div>
+          <div className="overflow-hidden rounded-md border">
+            {operationsForReview.map((operation) => (
+              <div
+                key={`${operation.sourceSampleId}:${operation.sourceOperationOrder}`}
+                className="grid grid-cols-[80px_1fr] gap-3 border-b p-3 last:border-b-0 lg:grid-cols-[80px_1.4fr_1fr_1fr]"
+              >
+                <div className="text-sm font-semibold">{operation.order}</div>
+                <div className="space-y-2">
+                  <div className="text-sm font-medium">
+                    {operation.processName ?? t`Unnamed operation`}
+                  </div>
+                  <div className="space-y-1">
+                    <Label className="text-xs">
+                      {t`Reviewed operation description`}
+                    </Label>
+                    <Textarea
+                      className="min-h-16"
+                      disabled={reviewStatus !== null}
+                      placeholder={
+                        operation.processName ?? t`Unnamed operation`
+                      }
+                      value={operation.description ?? ""}
+                      onChange={(event) =>
+                        onReviewedOperationChange(
+                          aiRoutingReviewedOperationKey(operation),
+                          {
+                            description: event.target.value || null
+                          }
+                        )
+                      }
+                    />
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    {t`Source operation order: ${operation.sourceOperationOrder}`}
+                  </div>
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {operation.processName ??
+                    operation.processId ??
+                    t`No process specified`}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {operation.workCenterName ??
+                    operation.workCenterId ??
+                    t`No work center specified`}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="space-y-2">
+        <Label>{t`Technologist feedback`}</Label>
+        <Textarea
+          className="min-h-20"
+          disabled={reviewStatus !== null}
+          placeholder={t`Record why the draft changed, such as equipment mismatch, an added inspection point, or an order change.`}
+          value={feedbackReason}
+          onChange={(event) => onFeedbackReasonChange(event.target.value)}
+        />
+        <div className="flex flex-wrap justify-end gap-2">
+          <Button
+            variant="secondary"
+            isDisabled={!draftId || isBusy || reviewStatus !== null}
+            onClick={onReject}
+          >
+            {t`Record rejection`}
+          </Button>
+          <Button
+            isDisabled={
+              !draftId ||
+              isBusy ||
+              operationsForReview.length === 0 ||
+              reviewStatus !== null
+            }
+            onClick={onAccept}
+          >
+            {t`Record acceptance`}
+          </Button>
+        </div>
+        <p className="text-xs text-muted-foreground">
+          {reviewStatus === "Accepted"
+            ? t`Acceptance feedback recorded; the formal routing is unchanged.`
+            : reviewStatus === "Rejected"
+              ? t`Rejection feedback recorded; the formal routing is unchanged.`
+              : t`Acceptance and rejection only record feedback; they never insert or publish formal operations.`}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function MatchedTags({
+  matched
+}: {
+  matched: AiRoutingDraft["references"][number]["matched"];
+}) {
+  const { t } = useLingui();
+  const tags = [
+    ...matched.materialTags,
+    ...matched.featureTags,
+    ...matched.processTags,
+    ...matched.resourceTags
+  ];
+
+  if (tags.length === 0) {
+    return (
+      <div className="mt-2 text-xs text-muted-foreground">
+        {t`No directly matched tags`}
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-2 flex flex-wrap gap-1">
+      {tags.slice(0, 8).map((tag) => (
+        <Badge key={tag} variant="outline">
+          {tag}
+        </Badge>
+      ))}
     </div>
   );
 }

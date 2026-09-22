@@ -23,6 +23,7 @@ import {
   timeCardAutoCloseFunction,
   u8WorkOrderImportFunction
 } from "./functions/integrations";
+import { extractPartDrawingFunction } from "./functions/items/extract-part-drawing";
 // Import all functions
 import {
   notifyFunction,
@@ -66,6 +67,8 @@ export const functions = [
   webhookFunction,
   workflowFunction,
   embeddingFunction,
+  // Items
+  extractPartDrawingFunction,
   // Tasks
   modelThumbnailFunction,
   updatePermissionsFunction,

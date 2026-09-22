@@ -1530,6 +1530,70 @@ export async function getPart(
     .single();
 }
 
+async function getU8StatusItemIds(
+  client: SupabaseClient<Database>,
+  companyId: string,
+  filters: NonNullable<GenericQueryFilters["filters"]>
+) {
+  const statusFilters = filters.filter(
+    (filter) => filter.column === "u8InfoStatus"
+  );
+  if (statusFilters.length === 0) return undefined;
+
+  const statuses = [
+    ...new Set(
+      statusFilters.flatMap((filter) =>
+        (filter.value ?? "").split(",").filter(Boolean)
+      )
+    )
+  ];
+  const [partItems, methods, materials, operations] = await Promise.all([
+    client
+      .from("item")
+      .select("id")
+      .eq("companyId", companyId)
+      .eq("type", "Part"),
+    client.from("makeMethod").select("id, itemId").eq("companyId", companyId),
+    client
+      .from("methodMaterial")
+      .select("makeMethodId")
+      .eq("companyId", companyId),
+    client
+      .from("methodOperation")
+      .select("makeMethodId")
+      .eq("companyId", companyId)
+  ]);
+
+  const failure = [partItems, methods, materials, operations].find(
+    (result) => result.error
+  );
+  if (failure?.error) throw new Error(failure.error.message);
+
+  const methodItemById = new Map(
+    (methods.data ?? []).map((method) => [method.id, method.itemId])
+  );
+  const itemIdsWithBom = new Set(
+    (materials.data ?? [])
+      .map((material) => methodItemById.get(material.makeMethodId))
+      .filter((id): id is string => Boolean(id))
+  );
+  const itemIdsWithRouting = new Set(
+    (operations.data ?? [])
+      .map((operation) => methodItemById.get(operation.makeMethodId))
+      .filter((id): id is string => Boolean(id))
+  );
+
+  let matchingIds = (partItems.data ?? []).map((item) => item.id);
+  for (const status of statuses) {
+    if (status === "no-bom") {
+      matchingIds = matchingIds.filter((id) => !itemIdsWithBom.has(id));
+    } else if (status === "no-routing") {
+      matchingIds = matchingIds.filter((id) => !itemIdsWithRouting.has(id));
+    }
+  }
+  return matchingIds;
+}
+
 export async function getParts(
   client: SupabaseClient<Database>,
   companyId: string,
@@ -1538,6 +1602,15 @@ export async function getParts(
     supplierId: string | null;
   }
 ) {
+  const u8StatusIds = await getU8StatusItemIds(
+    client,
+    companyId,
+    args.filters ?? []
+  );
+  const queryFilters = args.filters?.filter(
+    (filter) => filter.column !== "u8InfoStatus"
+  );
+
   let query = client
     .from("parts")
     .select("*", {
@@ -1547,7 +1620,15 @@ export async function getParts(
 
   if (args.search) {
     query = query.or(
-      `readableIdWithRevision.ilike.%${args.search}%,name.ilike.%${args.search}%,description.ilike.%${args.search}%,supplierIds.ilike.%${args.search}%`
+      "readableIdWithRevision.ilike.%" +
+        args.search +
+        "%,name.ilike.%" +
+        args.search +
+        "%,description.ilike.%" +
+        args.search +
+        "%,supplierIds.ilike.%" +
+        args.search +
+        "%"
     );
   }
 
@@ -1555,7 +1636,14 @@ export async function getParts(
     query = query.contains("supplierIds", [args.supplierId]);
   }
 
-  query = setGenericQueryFilters(query, args, [
+  if (u8StatusIds) {
+    query = query.in(
+      "id",
+      u8StatusIds.length > 0 ? u8StatusIds : ["__no_matching_parts__"]
+    );
+  }
+
+  query = setGenericQueryFilters(query, { ...args, filters: queryFilters }, [
     { column: "readableIdWithRevision", ascending: true }
   ]);
   return query;

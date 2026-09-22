@@ -5,24 +5,29 @@ import {
   TooltipTrigger
 } from "@carbon/react";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { json2csv } from "json-2-csv";
 import { useCallback, useMemo } from "react";
 import { LuDownload } from "react-icons/lu";
 import { useCustomers, useItems, usePeople, useSuppliers } from "~/stores";
+import type { CsvExportColumn } from "../types";
+import {
+  buildCsvDownloadContent,
+  buildCsvExportRows,
+  getVisibleCsvColumnIds
+} from "./csvExport";
 
-type DownloadProps = {
-  data: object[];
-  columnAccessors: Record<string, string>;
+type DownloadProps<T extends object> = {
+  data: T[];
+  columnExports: Record<string, CsvExportColumn<T>[]>;
   columnOrder: string[];
   columnVisibility: Record<string, boolean>;
 };
 
-const Download = ({
+const Download = <T extends object>({
   data,
-  columnAccessors,
+  columnExports,
   columnOrder,
   columnVisibility
-}: DownloadProps) => {
+}: DownloadProps<T>) => {
   const { t } = useLingui();
 
   const [items] = useItems();
@@ -43,43 +48,33 @@ const Download = ({
   );
 
   // The visible columns, in the current view's order. The column id doubles as
-  // the data accessor key; columns absent from columnAccessors (selection,
+  // the data accessor key; columns absent from columnExports (selection,
   // expand, actions) are dropped.
-  const exportColumns = useMemo(() => {
-    const order = columnOrder.length
-      ? columnOrder
-      : Object.keys(columnAccessors);
-    return order.filter(
-      (id) => id in columnAccessors && columnVisibility[id] !== false
-    );
-  }, [columnOrder, columnVisibility, columnAccessors]);
+  const exportColumns = useMemo(
+    () => getVisibleCsvColumnIds(columnOrder, columnVisibility, columnExports),
+    [columnOrder, columnVisibility, columnExports]
+  );
 
   const onClick = useCallback(() => {
     if (!data?.length) {
       return;
     }
-    // Build label-keyed rows so json2csv emits the view's header labels, in the
-    // view's column order, substituting names for id columns.
-    const rows = data.map((row) => {
-      const out: Record<string, unknown> = {};
-      for (const key of exportColumns) {
-        const raw = (row as Record<string, unknown>)[key];
-        const map = idNameMaps[key];
-        out[columnAccessors[key]] =
-          map && raw != null ? (map.get(String(raw)) ?? raw) : raw;
-      }
-      return out;
-    });
-    let csvData = json2csv(rows, { emptyFieldValue: "" });
+    const rows = buildCsvExportRows(
+      data,
+      exportColumns,
+      columnExports,
+      idNameMaps
+    );
+    const csvData = buildCsvDownloadContent(rows);
     // Create a CSV file and allow the user to download it
-    let blob = new Blob([csvData], { type: "text/csv" });
+    let blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
     let url = window.URL.createObjectURL(blob);
     let a = document.createElement("a");
     a.href = url;
     a.download = "data.csv";
     document.body.appendChild(a);
     a.click();
-  }, [data, exportColumns, idNameMaps, columnAccessors]);
+  }, [data, exportColumns, columnExports, idNameMaps]);
 
   if (!data?.length) {
     return null;

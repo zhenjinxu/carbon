@@ -1,5 +1,40 @@
 # Carbon 项目交接方案
 
+> [!important] 最新断点：2026-08-10 关机前
+>
+> 下次开机后的第一优先级是处理并提交现有 Carbon 开发相关改动，Ontology 后续工作继续暂停。
+>
+> - 当前分支为 `main`，与 `origin/main` 没有已显示的领先/落后提交。
+> - 关机前实测暂存区为空：`git diff --cached --stat` 和 `git diff --cached --name-status` 均无输出。当前大量内容属于未暂存修改或未跟踪文件，不能假定它们已经在暂存区。
+> - 恢复后先读取 `AGENTS.md`、Carbon 开发规范、`llm/tasks/lessons.md` 和本段，再运行 `git status -sb`、`git diff --cached --stat`、`git diff --stat`。
+> - 按已完成的 Carbon 功能批次审查 diff、复核验证证据、精确暂存并提交；禁止直接使用 `git add -A`，禁止把无关图片、工具目录、临时文件或 Ontology 产物混入 Carbon 提交。
+> - `pnpm-lock.yaml` 同时包含 Carbon 历史工作和新 `packages/ontology-context` workspace 记录，必须按目标提交核对，不能整文件盲目归入某个 Carbon 提交。
+> - Ontology Phase A 已完成但尚未提交，主要位于 `packages/ontology-context/`、`docs/specs/ontology-context-api-design.md`、`llm/research/ontology-context-api.md` 以及共享锁文件；除非用户单独批准，下一次 Carbon 提交应排除这些内容。
+> - 未执行 commit、push、reset、clean 或数据库 rebuild。Ontology 本地 API 当前未运行；Phase B、ERP/MCP 暴露和 company-live 工作保持暂停。
+
+> [!important] 最新断点：2026-08-08 关机前
+>
+> 当前暂停点：Carbon Ontology Browser 已完成实现、安装、离线验收和 Obsidian 说明文档。
+>
+> - 工程源码：D:\Object\carbon\.codex\work\megamem-pilot\obsidian-ontology-browser
+> - Obsidian 插件：E:\AI_Project_Vault\.obsidian\plugins\carbon-ontology-browser，只安装 main.js、manifest.json、styles.css
+> - 新增说明：E:\AI_Project_Vault\项目开发\Carbon\Carbon Ontology 与 AI 开发运行应用说明.md，已链接到 Carbon项目.md
+> - 验收：34 个 TypeScript 测试、12 个 Python 测试、类型检查、构建、安全扫描、17/17 与 15/15 哈希均通过
+> - 运行态：Obsidian 正常运行；Ollama app/serve 各 1 个且 11434 正常；Neo4j、MCP、临时 CDP 均停止
+> - 下一步只有可选的只读 Ontology Context API 设计；不要未经单独授权给 AI 开放生产写 Action
+> - 恢复时先读取 .codex\work\megamem-pilot\obsidian-ontology-browser\RESUME_CHECKPOINT.md 和上述 Obsidian 说明文档。旧交接内容保留在下方作为历史记录。
+
+> [!important] 最新断点：2026-08-03 关机前
+>
+> 本段是当前恢复入口，优先于本文后面的 2026-07-10 旧交接状态。
+>
+> - 最近完成：`/x/settings/custom-fields` 的编辑、新字段、查看自定义字段均已修复并通过真实浏览器验证；完整证据见 `llm/tasks/todo.md` 的 `Custom Fields Settings Repair`。
+> - 当前暂停任务：评估“Obsidian 本体/知识图谱作为 AI 开发约束底座”，尚未安装任何插件、创建图数据库或修改 Obsidian。
+> - 已核实四个候选：MegaMem 最接近 Obsidian + 时序知识图谱 + 自定义实体关系 + MCP，但其本体主要约束 AI 抽取，不能替代强制校验；AILSS 默认只读、显式 apply 的安全边界更好，但仍早期且仓库未声明许可证；Onto Tracker 仅支持有限本体格式且缺少 MCP；`green-dalii/obsidian-llm-wiki` 适合自动知识整理，但自定义词汇只是 LLM 提示，不是写入强制规则。
+> - 当前建议：如用户决定继续，先设计隔离、只读的 MegaMem 小范围试点；Obsidian 继续承载规范、依据和决策，LinkML/SHACL/OPA/测试负责机器可验证的硬约束。未经用户明确授权，不安装插件，不开放写笔记、`clear_graph` 等 MCP 工具。
+> - 下次开始：先读取本段、`AGENTS.md`、Carbon Obsidian 开发规范和 `llm/tasks/todo.md` 最后一个章节，再询问/确认用户是否要进入 MegaMem 试点设计或安装阶段。
+> - 工作区含大量既有未提交文件，不能清理、还原或提交与下一任务无关的内容。
+
 > **交接时间**: 2026-07-10
 > **交接对象**: Claude (Claude Code) → Codex (GPT-5.5)
 > **项目路径**: `D:\object\carbon`
@@ -537,3 +572,16 @@ pnpm typecheck                      # 类型检查
 ---
 
 **交接完成。** Codex 应该首先阅读 `AGENTS.md` 和 `llm/tasks/lessons.md` 来理解项目规则和避免已知陷阱。
+
+---
+
+## 2026-08-04 继续记录：MegaMem 只读试点设计已完成
+
+- 已完成官方仓库研究、隔离只读设计规格和逐任务实施计划：
+  - `llm/research/megamem-obsidian-pilot.md`
+  - `docs/specs/megamem-obsidian-pilot-design.md`
+  - `llm/tasks/megamem-obsidian-pilot-plan.md`
+- 当前建议仍是 MegaMem 首选小范围检索试点，但只允许复制的 Carbon 文档样本、本机图数据库和读/搜索 MCP 工具。
+- LinkML/SHACL/OPA/SQL/TypeScript 测试继续承担硬约束；MegaMem ontology 只用于抽取语义和检索。
+- 本轮没有安装插件、创建图数据库、修改 Obsidian 配置或笔记、连接 Carbon 服务、启用写入工具。
+- 下一步只有在用户明确批准“执行隔离只读试点”后，才进入实施计划 Task 1；否则保留文档设计并停止。

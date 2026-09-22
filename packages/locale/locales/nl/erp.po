@@ -8359,3 +8359,9 @@ msgstr ""
 
 msgid "yourself"
 msgstr ""
+
+msgid "个人工作台"
+msgstr "个人工作台"
+
+msgid "我的工作台"
+msgstr "我的工作台"

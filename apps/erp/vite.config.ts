@@ -82,6 +82,7 @@ export default defineConfig(({ isSsrBuild, mode }) => {
       global: "globalThis",
     },
     ssr: {
+      external: ["@napi-rs/canvas"],
       noExternal: [
         "react-tweet",
         "react-dropzone",

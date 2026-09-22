@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-16T19:30:33.494Z",
-  "totalTools": 1207,
+  "generated": "2026-09-22T05:27:21.012Z",
+  "totalTools": 1206,
   "modules": 15,
   "tools": [
     {
@@ -870,11 +870,11 @@
       }
     },
     {
-      "name": "accounting_updateDefaultBalanceSheetAccounts",
+      "name": "accounting_updateDefaultAccounts",
       "module": "accounting",
       "classification": "WRITE",
-      "description": "update default balance sheet accounts",
-      "paramCount": 20,
+      "description": "update default accounts",
+      "paramCount": 1,
       "serviceParams": [
         "client",
         "defaultAccounts"
@@ -886,194 +886,10 @@
       "schema": {
         "type": "object",
         "properties": {
-          "inventoryAccount": {
-            "type": "string"
-          },
-          "goodsReceivedNotInvoicedAccount": {
-            "type": "string"
-          },
-          "inventoryShippedNotInvoicedAccount": {
-            "type": "string"
-          },
-          "workInProgressAccount": {
-            "type": "string"
-          },
-          "receivablesAccount": {
-            "type": "string"
-          },
-          "bankCashAccount": {
-            "type": "string"
-          },
-          "bankLocalCurrencyAccount": {
-            "type": "string"
-          },
-          "bankForeignCurrencyAccount": {
-            "type": "string"
-          },
-          "assetAquisitionCostAccount": {
-            "type": "string"
-          },
-          "assetAquisitionCostOnDisposalAccount": {
-            "type": "string"
-          },
-          "accumulatedDepreciationAccount": {
-            "type": "string"
-          },
-          "accumulatedDepreciationOnDisposalAccount": {
-            "type": "string"
-          },
-          "prepaymentAccount": {
-            "type": "string"
-          },
-          "payablesAccount": {
-            "type": "string"
-          },
-          "salesTaxPayableAccount": {
-            "type": "string"
-          },
-          "purchaseTaxPayableAccount": {
-            "type": "string"
-          },
-          "reverseChargeSalesTaxPayableAccount": {
-            "type": "string"
-          },
-          "retainedEarningsAccount": {
-            "type": "string"
-          },
-          "currencyTranslationAccount": {
-            "type": "string"
-          },
-          "deferredTaxLiabilityAccountId": {
-            "type": "string"
-          }
+          "defaultAccounts": {}
         },
         "required": [
-          "inventoryAccount",
-          "goodsReceivedNotInvoicedAccount",
-          "inventoryShippedNotInvoicedAccount",
-          "workInProgressAccount",
-          "receivablesAccount",
-          "bankCashAccount",
-          "bankLocalCurrencyAccount",
-          "bankForeignCurrencyAccount",
-          "assetAquisitionCostAccount",
-          "assetAquisitionCostOnDisposalAccount",
-          "accumulatedDepreciationAccount",
-          "accumulatedDepreciationOnDisposalAccount",
-          "prepaymentAccount",
-          "payablesAccount",
-          "salesTaxPayableAccount",
-          "purchaseTaxPayableAccount",
-          "reverseChargeSalesTaxPayableAccount",
-          "retainedEarningsAccount",
-          "currencyTranslationAccount",
-          "deferredTaxLiabilityAccountId"
-        ]
-      }
-    },
-    {
-      "name": "accounting_updateDefaultIncomeAccounts",
-      "module": "accounting",
-      "classification": "WRITE",
-      "description": "update default income accounts",
-      "paramCount": 21,
-      "serviceParams": [
-        "client",
-        "defaultAccounts"
-      ],
-      "injectAuth": [
-        "companyId",
-        "updatedBy"
-      ],
-      "schema": {
-        "type": "object",
-        "properties": {
-          "salesAccount": {
-            "type": "string"
-          },
-          "salesDiscountAccount": {
-            "type": "string"
-          },
-          "costOfGoodsSoldAccount": {
-            "type": "string"
-          },
-          "purchaseVarianceAccount": {
-            "type": "string"
-          },
-          "inventoryAdjustmentVarianceAccount": {
-            "type": "string"
-          },
-          "materialVarianceAccount": {
-            "type": "string"
-          },
-          "laborAndMachineVarianceAccount": {
-            "type": "string"
-          },
-          "overheadVarianceAccount": {
-            "type": "string"
-          },
-          "lotSizeVarianceAccount": {
-            "type": "string"
-          },
-          "subcontractingVarianceAccount": {
-            "type": "string"
-          },
-          "laborAbsorptionAccount": {
-            "type": "string"
-          },
-          "indirectCostAccount": {
-            "type": "string"
-          },
-          "maintenanceAccount": {
-            "type": "string"
-          },
-          "assetDepreciationExpenseAccount": {
-            "type": "string"
-          },
-          "assetGainsAndLossesAccount": {
-            "type": "string"
-          },
-          "serviceChargeAccount": {
-            "type": "string"
-          },
-          "interestAccount": {
-            "type": "string"
-          },
-          "supplierPaymentDiscountAccount": {
-            "type": "string"
-          },
-          "customerPaymentDiscountAccount": {
-            "type": "string"
-          },
-          "roundingAccount": {
-            "type": "string"
-          },
-          "deferredTaxExpenseAccountId": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "salesAccount",
-          "salesDiscountAccount",
-          "costOfGoodsSoldAccount",
-          "purchaseVarianceAccount",
-          "inventoryAdjustmentVarianceAccount",
-          "materialVarianceAccount",
-          "laborAndMachineVarianceAccount",
-          "overheadVarianceAccount",
-          "lotSizeVarianceAccount",
-          "subcontractingVarianceAccount",
-          "laborAbsorptionAccount",
-          "indirectCostAccount",
-          "maintenanceAccount",
-          "assetDepreciationExpenseAccount",
-          "assetGainsAndLossesAccount",
-          "serviceChargeAccount",
-          "interestAccount",
-          "supplierPaymentDiscountAccount",
-          "customerPaymentDiscountAccount",
-          "roundingAccount",
-          "deferredTaxExpenseAccountId"
+          "defaultAccounts"
         ]
       }
     },
@@ -2028,7 +1844,7 @@
           "description": {
             "type": "string"
           },
-          "lines: Array<{\n      accountId: string;\n      description": {}
+          "lines: Array<{\r\n      accountId: string;\r\n      description": {}
         },
         "required": [
           "journalEntryId",
@@ -2605,7 +2421,7 @@
           "periodEnd": {
             "type": "string"
           },
-          "lines: Array<{\n      fixedAssetId: string;\n      amount: number;\n      taxAmount": {}
+          "lines: Array<{\r\n      fixedAssetId: string;\r\n      amount: number;\r\n      taxAmount": {}
         },
         "required": [
           "periodEnd"
@@ -5201,7 +5017,7 @@
       "module": "inventory",
       "classification": "WRITE",
       "description": "insert manual inventory adjustment",
-      "paramCount": 10,
+      "paramCount": 11,
       "serviceParams": [
         "client",
         "inventoryAdjustment"
@@ -5246,6 +5062,9 @@
             "type": "string"
           },
           "comment": {
+            "type": "string"
+          },
+          "operatorId": {
             "type": "string"
           }
         },
@@ -5381,7 +5200,7 @@
       "module": "inventory",
       "classification": "WRITE",
       "description": "upsert receipt",
-      "paramCount": 8,
+      "paramCount": 24,
       "serviceParams": [
         "client",
         "receipt"
@@ -5417,6 +5236,54 @@
           },
           "supplierId": {
             "type": "string"
+          },
+          "receivingDepartment": {
+            "type": "string"
+          },
+          "receiverContactName": {
+            "type": "string"
+          },
+          "receiverContactPhone": {
+            "type": "string"
+          },
+          "senderContactName": {
+            "type": "string"
+          },
+          "senderContactPhone": {
+            "type": "string"
+          },
+          "shippingMethodId": {
+            "type": "string"
+          },
+          "qualityInspectionResult": {
+            "type": "string"
+          },
+          "qualityInspectionNotes": {
+            "type": "string"
+          },
+          "packagingCondition": {
+            "type": "string"
+          },
+          "packagingNotes": {
+            "type": "string"
+          },
+          "acceptanceConclusion": {
+            "type": "string"
+          },
+          "acceptanceNotes": {
+            "type": "string"
+          },
+          "receiverSignature": {
+            "type": "string"
+          },
+          "senderSignature": {
+            "type": "string"
+          },
+          "warehouseKeeperSignature": {
+            "type": "string"
+          },
+          "signatureDate": {
+            "type": "string"
           }
         },
         "required": [
@@ -5430,7 +5297,7 @@
       "module": "inventory",
       "classification": "WRITE",
       "description": "upsert storage unit",
-      "paramCount": 7,
+      "paramCount": 11,
       "serviceParams": [
         "client",
         "storageUnit"
@@ -5462,6 +5329,18 @@
             "type": "string"
           },
           "storageTypeIds": {
+            "type": "string"
+          },
+          "allowsStorage": {
+            "type": "string"
+          },
+          "movable": {
+            "type": "string"
+          },
+          "placedAt": {
+            "type": "string"
+          },
+          "placedBy": {
             "type": "string"
           }
         },
@@ -6600,7 +6479,7 @@
           "locationId": {
             "type": "string"
           },
-          "lines: Array<{\n      itemId: string;\n      fromStorageUnitId": {},
+          "lines: Array<{\r\n      itemId: string;\r\n      fromStorageUnitId": {},
           "stockTransferId": {
             "type": "string"
           },
@@ -13771,7 +13650,7 @@
       "paramCount": 1,
       "serviceParams": [
         "client",
-        "{\n    orderId,\n    companyId,\n    userId\n  }"
+        "{\r\n    orderId,\r\n    companyId,\r\n    userId\r\n  }"
       ],
       "injectAuth": [
         "companyId",
@@ -13808,7 +13687,7 @@
           "jobId": {
             "type": "string"
           },
-          "// Optional - if updating an existing job\n    dueDate": {
+          "// Optional - if updating an existing job\r\n    dueDate": {
             "type": [
               "string",
               "null"
@@ -13822,7 +13701,7 @@
           }
         },
         "required": [
-          "// Optional - if updating an existing job\n    dueDate",
+          "// Optional - if updating an existing job\r\n    dueDate",
           "deadlineType",
           "locationId"
         ]
@@ -16343,13 +16222,13 @@
           "id": {
             "type": "string"
           },
-          "// job id\n    companyId": {
+          "// job id\r\n    companyId": {
             "type": "string"
           }
         },
         "required": [
           "id",
-          "// job id\n    companyId"
+          "// job id\r\n    companyId"
         ]
       }
     },
@@ -16373,13 +16252,13 @@
           "id": {
             "type": "string"
           },
-          "// job make method id\n    companyId": {
+          "// job make method id\r\n    companyId": {
             "type": "string"
           }
         },
         "required": [
           "id",
-          "// job make method id\n    companyId"
+          "// job make method id\r\n    companyId"
         ]
       }
     },
@@ -18148,7 +18027,7 @@
       "paramCount": 1,
       "serviceParams": [
         "client",
-        "{\n    sourcePurchaseOrderId,\n    companyId,\n    companyGroupId,\n    userId\n  }"
+        "{\r\n    sourcePurchaseOrderId,\r\n    companyId,\r\n    companyGroupId,\r\n    userId\r\n  }"
       ],
       "injectAuth": [
         "companyId",
@@ -19556,7 +19435,7 @@
           "name": {
             "type": "string"
           },
-          "address: {\n      addressLine1": {},
+          "address: {\r\n      addressLine1": {},
           "customFields": {}
         },
         "required": [
@@ -19816,7 +19695,7 @@
           "name": {
             "type": "string"
           },
-          "address: {\n      addressLine1": {},
+          "address: {\r\n      addressLine1": {},
           "customFields": {}
         },
         "required": [
@@ -22697,7 +22576,7 @@
               },
               "status": {},
               "source": {},
-              "// might be needed later for filtering by assignee\n    assignee": {
+              "// might be needed later for filtering by assignee\r\n    assignee": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -30262,7 +30141,7 @@
           "name": {
             "type": "string"
           },
-          "address: {\n      addressLine1": {},
+          "address: {\r\n      addressLine1": {},
           "customFields": {}
         },
         "required": [
@@ -30744,7 +30623,7 @@
           "name": {
             "type": "string"
           },
-          "address: {\n      addressLine1": {},
+          "address: {\r\n      addressLine1": {},
           "customFields": {}
         },
         "required": [
@@ -34279,18 +34158,18 @@
       "schema": {
         "type": "object",
         "properties": {
-          "/** undefined disables expiry badges company-wide. */\n    nearExpiryWarningDays": {},
-          "/** Seed for the \"Shelf-life (days)\" input on new items. */\n    defaultShelfLifeDays": {
+          "/** undefined disables expiry badges company-wide. */\r\n    nearExpiryWarningDays": {},
+          "/** Seed for the \"Shelf-life (days)\" input on new items. */\r\n    defaultShelfLifeDays": {
             "type": "number"
           },
-          "/** MIN expiry scope for Calculated-mode finished products. */\n    calculatedInputScope": {
+          "/** MIN expiry scope for Calculated-mode finished products. */\r\n    calculatedInputScope": {
             "type": "string",
             "enum": [
               "AllInputs",
               "ManagedInputsOnly"
             ]
           },
-          "/** Policy enforced when an operator consumes an expired entity. */\n    expiredEntityPolicy": {
+          "/** Policy enforced when an operator consumes an expired entity. */\r\n    expiredEntityPolicy": {
             "type": "string",
             "enum": [
               "Warn",
@@ -34300,10 +34179,10 @@
           }
         },
         "required": [
-          "/** undefined disables expiry badges company-wide. */\n    nearExpiryWarningDays",
-          "/** Seed for the \"Shelf-life (days)\" input on new items. */\n    defaultShelfLifeDays",
-          "/** MIN expiry scope for Calculated-mode finished products. */\n    calculatedInputScope",
-          "/** Policy enforced when an operator consumes an expired entity. */\n    expiredEntityPolicy"
+          "/** undefined disables expiry badges company-wide. */\r\n    nearExpiryWarningDays",
+          "/** Seed for the \"Shelf-life (days)\" input on new items. */\r\n    defaultShelfLifeDays",
+          "/** MIN expiry scope for Calculated-mode finished products. */\r\n    calculatedInputScope",
+          "/** Policy enforced when an operator consumes an expired entity. */\r\n    expiredEntityPolicy"
         ]
       }
     },
@@ -37335,7 +37214,7 @@
       "paramCount": 2,
       "serviceParams": [
         "client",
-        "{\n    id,\n    name,\n    companyId\n  }"
+        "{\r\n    id,\r\n    name,\r\n    companyId\r\n  }"
       ],
       "injectAuth": [
         "companyId",

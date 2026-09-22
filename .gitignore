@@ -74,3 +74,5 @@ dump.rdb
 .codewhale/pastes/
 *.step
 *.rdb
+# Local Codex logs, PIDs, temporary SQL, and patches
+.codex/work/

@@ -49,6 +49,7 @@ import { useSavedViews } from "~/hooks/useSavedViews";
 import type { fieldMappings } from "~/modules/shared/imports.models";
 import type { action as savedViewAction } from "~/routes/x+/shared+/views";
 import { path } from "~/utils/path";
+import type { CsvExportColumn } from "../types";
 import Columns from "./Columns";
 import Download from "./Download";
 import { ActiveFilters, Filter } from "./Filter";
@@ -60,12 +61,13 @@ import Sort from "./Sort";
 type HeaderProps<T> = {
   renderActions?: (selectedRows: T[]) => ReactNode;
   columnAccessors: Record<string, string>;
+  columnExports: Record<string, CsvExportColumn<T>[]>;
   columnOrder: ColumnOrderState;
   columnPinning: ColumnPinningState;
   columnVisibility: Record<string, boolean>;
   columns: Column<T, unknown>[];
   compact?: boolean;
-  data: object[];
+  data: T[];
   editMode: boolean;
   filters: ColumnFilter[];
   importCSV?: {
@@ -89,6 +91,7 @@ type HeaderProps<T> = {
 const TableHeader = <T extends object>({
   compact,
   columnAccessors,
+  columnExports,
   columnOrder,
   columnPinning,
   columnVisibility,
@@ -334,7 +337,7 @@ const TableHeader = <T extends object>({
 
           <Download
             data={data}
-            columnAccessors={columnAccessors}
+            columnExports={columnExports}
             columnOrder={columnOrder}
             columnVisibility={columnVisibility}
           />

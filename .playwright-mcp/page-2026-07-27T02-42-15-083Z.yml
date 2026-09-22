@@ -1,0 +1,1983 @@
+- generic [active] [ref=e1]:
+  - generic "油猴插件：Github 增强 - 高速下载 注：此脚本由 dev-sidecar 注入" [ref=e2]
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - link "Skip to content" [ref=e5] [cursor=pointer]:
+        - /url: "#start-of-content"
+      - banner [ref=e7]:
+        - heading "Navigation Menu" [level=2] [ref=e8]
+        - generic [ref=e9]:
+          - link "Homepage" [ref=e11] [cursor=pointer]:
+            - /url: /
+          - generic [ref=e14]:
+            - navigation "Global" [ref=e17]:
+              - list [ref=e18]:
+                - listitem [ref=e19]:
+                  - button "Platform" [ref=e21] [cursor=pointer]
+                - listitem [ref=e24]:
+                  - button "Solutions" [ref=e26] [cursor=pointer]
+                - listitem [ref=e29]:
+                  - button "Resources" [ref=e31] [cursor=pointer]
+                - listitem [ref=e34]:
+                  - button "Open Source" [ref=e36] [cursor=pointer]
+                - listitem [ref=e39]:
+                  - button "Enterprise" [ref=e41] [cursor=pointer]
+                - listitem [ref=e44]:
+                  - link "Pricing" [ref=e45] [cursor=pointer]:
+                    - /url: https://github.com/pricing
+            - generic [ref=e47]:
+              - button "Search or jump to…" [ref=e50] [cursor=pointer]:
+                - generic [ref=e54]: Search or jump to...
+              - link "Sign in" [ref=e60] [cursor=pointer]:
+                - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fcrbnos%2Fcarbon
+              - link "Sign up" [ref=e61] [cursor=pointer]:
+                - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=crbnos%2Fcarbon
+              - button "Appearance settings" [ref=e64] [cursor=pointer]
+    - main [ref=e68]:
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - generic [ref=e72]:
+            - link "crbnos" [ref=e76] [cursor=pointer]:
+              - /url: /crbnos
+            - generic [ref=e77]: /
+            - strong [ref=e78]:
+              - link "carbon" [ref=e79] [cursor=pointer]:
+                - /url: /crbnos/carbon
+            - generic [ref=e80]: Public
+          - generic [ref=e81]:
+            - list:
+              - listitem [ref=e82]:
+                - link "You must be signed in to change notification settings" [ref=e83] [cursor=pointer]:
+                  - /url: /login?return_to=%2Fcrbnos%2Fcarbon
+                  - text: Notifications
+              - listitem [ref=e86]:
+                - link "Fork 324" [ref=e87] [cursor=pointer]:
+                  - /url: /login?return_to=%2Fcrbnos%2Fcarbon
+                  - text: Fork
+                  - generic "324" [ref=e90]
+              - listitem [ref=e91]:
+                - link "You must be signed in to star a repository" [ref=e93] [cursor=pointer]:
+                  - /url: /login?return_to=%2Fcrbnos%2Fcarbon
+                  - text: Star
+                  - generic "2282 users starred this repository" [ref=e96]: 2.3k
+        - navigation "Repository" [ref=e97]:
+          - list [ref=e98]:
+            - listitem [ref=e99]:
+              - link "Code" [ref=e100] [cursor=pointer]:
+                - /url: /crbnos/carbon
+            - listitem [ref=e104]:
+              - link "Issues 94" [ref=e105] [cursor=pointer]:
+                - /url: /crbnos/carbon/issues
+                - generic [ref=e109]: Issues
+                - generic "94" [ref=e110]
+            - listitem [ref=e111]:
+              - link "Pull requests 44" [ref=e112] [cursor=pointer]:
+                - /url: /crbnos/carbon/pulls
+                - generic [ref=e115]: Pull requests
+                - generic "44" [ref=e116]
+            - listitem [ref=e117]:
+              - link "Discussions" [ref=e118] [cursor=pointer]:
+                - /url: /crbnos/carbon/discussions
+            - listitem [ref=e122]:
+              - link "Actions" [ref=e123] [cursor=pointer]:
+                - /url: /crbnos/carbon/actions
+            - listitem [ref=e127]:
+              - link "Projects" [ref=e128] [cursor=pointer]:
+                - /url: /crbnos/carbon/projects
+            - listitem [ref=e132]:
+              - link "Security and quality" [ref=e133] [cursor=pointer]:
+                - /url: /crbnos/carbon/security
+            - listitem [ref=e137]:
+              - link "Insights" [ref=e138] [cursor=pointer]:
+                - /url: /crbnos/carbon/pulse
+      - generic [ref=e154]:
+        - heading "crbnos/carbon" [level=1] [ref=e156]
+        - generic [ref=e157]:
+          - generic [ref=e160]:
+            - generic [ref=e161]:
+              - generic [ref=e162]:
+                - button "main branch" [ref=e164] [cursor=pointer]:
+                  - generic [ref=e165]: main
+                - generic [ref=e169]:
+                  - link [ref=e170] [cursor=pointer]:
+                    - /url: /crbnos/carbon/branches
+                    - generic [ref=e173]:
+                      - strong [ref=e174]: "817"
+                      - text: Branches
+                  - link [ref=e175] [cursor=pointer]:
+                    - /url: /crbnos/carbon/tags
+                    - generic [ref=e178]:
+                      - strong [ref=e179]: "0"
+                      - text: Tags
+              - generic [ref=e180]:
+                - combobox "Go to file" [ref=e188]
+                - button "Code" [ref=e189] [cursor=pointer]
+            - generic [ref=e192]:
+              - generic [ref=e193]:
+                - heading "Folders and files" [level=2] [ref=e194]
+                - table "Folders and files" [ref=e195]:
+                  - rowgroup:
+                    - row "Name Last commit message Last commit date":
+                      - columnheader "Name"
+                      - columnheader "Last commit message"
+                      - columnheader "Last commit date"
+                  - rowgroup [ref=e196]:
+                    - row [ref=e197]:
+                      - 'cell "Latest commit sidgaikwad commits by sidgaikwad Merge pull request #1229 from crbnos/fix/prevent-zero-quantity-jobs Open commit details success Commit 8ea6e1d · Jul 27, 20268 hours ago History 4,974 Commits" [ref=e198]':
+                        - generic [ref=e199]:
+                          - heading "Latest commit" [level=2] [ref=e200]
+                          - generic [ref=e201]:
+                            - generic [ref=e203]:
+                              - link [ref=e204] [cursor=pointer]:
+                                - /url: /sidgaikwad
+                                - img "sidgaikwad" [ref=e205]
+                              - link "commits by sidgaikwad" [ref=e206] [cursor=pointer]:
+                                - /url: /crbnos/carbon/commits?author=sidgaikwad
+                                - text: sidgaikwad
+                            - generic [ref=e207]:
+                              - generic [ref=e209]:
+                                - link "Merge pull request" [ref=e210] [cursor=pointer]:
+                                  - /url: /crbnos/carbon/commit/8ea6e1d13adafdc861ddf135b77798a0a32d37f1
+                                - link "#1229" [ref=e211] [cursor=pointer]:
+                                  - /url: https://github.com/crbnos/carbon/pull/1229
+                                - link "from crbnos/fix/prevent-zero-quantity-jobs" [ref=e212] [cursor=pointer]:
+                                  - /url: /crbnos/carbon/commit/8ea6e1d13adafdc861ddf135b77798a0a32d37f1
+                              - button "Open commit details" [ref=e213] [cursor=pointer]
+                              - button "success" [ref=e216] [cursor=pointer]
+                          - generic [ref=e219]:
+                            - generic [ref=e221]:
+                              - link "Commit 8ea6e1d" [ref=e222] [cursor=pointer]:
+                                - /url: /crbnos/carbon/commit/8ea6e1d13adafdc861ddf135b77798a0a32d37f1
+                                - text: 8ea6e1d
+                              - text: ·
+                              - generic "Jul 27, 2026, 01:57 GMT+8" [ref=e223]: Jul 27, 20268 hours ago
+                            - generic [ref=e224]:
+                              - heading "History" [level=2] [ref=e225]
+                              - link "4,974 Commits" [ref=e226] [cursor=pointer]:
+                                - /url: /crbnos/carbon/commits/main/
+                    - row [ref=e229]:
+                      - cell [ref=e230]:
+                        - link ".ai, (Directory)" [ref=e237] [cursor=pointer]:
+                          - /url: /crbnos/carbon/tree/main/.ai
+                          - text: .ai
+                      - cell [ref=e238]:
+                        - link "Merge remote-tracking branch 'origin/main' into invite-link-wrong-com…" [ref=e241] [cursor=pointer]:
+                          - /url: /crbnos/carbon/commit/9ccce5a3e8155c6fbac6511cdbeb3c2335d375d2
+                      - cell "Jul 24, 20263 days ago" [ref=e242]
+                    - row [ref=e244]:
+                      - cell [ref=e245]:
+                        - link ".claude, (Directory)" [ref=e252] [cursor=pointer]:
+                          - /url: /crbnos/carbon/tree/main/.claude
+                          - text: .claude
+                      - cell [ref=e253]:
+                        - link "Merge remote-tracking branch 'origin/main' into invite-link-wrong-com…" [ref=e256] [cursor=pointer]:
+                          - /url: /crbnos/carbon/commit/9ccce5a3e8155c6fbac6511cdbeb3c2335d375d2
+                      - cell "Jul 24, 20263 days ago" [ref=e257]
+                    - row [ref=e259]:
+                      - cell [ref=e260]:
+                        - link ".conductor, (Directory)" [ref=e267] [cursor=pointer]:
+                          - /url: /crbnos/carbon/tree/main/.conductor
+                          - text: .conductor
+                      - cell [ref=e268]:
+                        - 'link "fix(accounting): GAAP-correct journal entries for fixed asset registr…" [ref=e271] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/40d915e00d99c95eae85adcf6c63621f8547d2ef
+                      - cell "Jul 17, 2026last week" [ref=e272]
+                    - row [ref=e274]:
+                      - cell [ref=e275]:
+                        - link ".github, (Directory)" [ref=e282] [cursor=pointer]:
+                          - /url: /crbnos/carbon/tree/main/.github
+                          - text: .github
+                      - cell [ref=e283]:
+                        - 'link "ci: switch labeler to pull_request trigger" [ref=e286] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/9cfd76e129db4c1384653a5f0eab9d9a8ac0989a
+                      - cell "Jul 21, 2026last week" [ref=e287]
+                    - row [ref=e289]:
+                      - cell [ref=e290]:
+                        - link ".husky, (Directory)" [ref=e297] [cursor=pointer]:
+                          - /url: /crbnos/carbon/tree/main/.husky
+                          - text: .husky
+                      - cell [ref=e298]:
+                        - 'link "chore(husky): add post-merge hook to normalize catalogs after pull" [ref=e301] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/3d35338d9760e1dbbe9fb7d5486234fd8d7833df
+                      - cell "Jul 2, 2026last month" [ref=e302]
+                    - row [ref=e304]:
+                      - cell [ref=e305]:
+                        - link "apps, (Directory)" [ref=e312] [cursor=pointer]:
+                          - /url: /crbnos/carbon/tree/main/apps
+                          - text: apps
+                      - cell [ref=e313]:
+                        - 'link "fix(erp): prevent jobs from being created with zero quantity" [ref=e316] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/fdbd5273b0480a45f841238cda59ae7230b97ca9
+                      - cell "Jul 25, 20262 days ago" [ref=e317]
+                    - row [ref=e319]:
+                      - cell [ref=e320]:
+                        - link "ci, (Directory)" [ref=e327] [cursor=pointer]:
+                          - /url: /crbnos/carbon/tree/main/ci
+                          - text: ci
+                      - cell [ref=e328]:
+                        - 'link "ci(assembler): treat empty STAGE as prod" [ref=e331] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/4f9d2fb14ffd1a74c20110751fcbf25847a550a4
+                      - cell "Jul 21, 2026last week" [ref=e332]
+                    - row [ref=e334]:
+                      - cell [ref=e335]:
+                        - link "contrib, (Directory)" [ref=e342] [cursor=pointer]:
+                          - /url: /crbnos/carbon/tree/main/contrib
+                          - text: contrib
+                      - cell [ref=e343]:
+                        - generic [ref=e345]:
+                          - 'link "fix: remove dark square background from all favicons (" [ref=e346] [cursor=pointer]':
+                            - /url: /crbnos/carbon/commit/99790714cbe1dc58e3a0b77aecfe5bd8c9889b34
+                          - link "#990" [ref=e347] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/990
+                          - link ")" [ref=e348] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/99790714cbe1dc58e3a0b77aecfe5bd8c9889b34
+                      - cell "Jun 30, 2026last month" [ref=e349]
+                    - row [ref=e351]:
+                      - cell [ref=e352]:
+                        - link "crates, (Directory)" [ref=e359] [cursor=pointer]:
+                          - /url: /crbnos/carbon/tree/main/crates
+                          - text: crates
+                      - cell [ref=e360]:
+                        - 'link "perf(planner): back off repeated group hunts, early-stop direction ar…" [ref=e363] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/89ff6db07742aba591c9668ec96e460edc5012e5
+                      - cell "Jul 23, 20264 days ago" [ref=e364]
+                    - row [ref=e366]:
+                      - cell [ref=e367]:
+                        - link "docs, (Directory)" [ref=e374] [cursor=pointer]:
+                          - /url: /crbnos/carbon/tree/main/docs
+                          - text: docs
+                      - cell [ref=e375]:
+                        - generic [ref=e377]:
+                          - link "Feat/carbon agent (" [ref=e378] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/442fadb4c65d3b6728f38fdea94e2a9961f06d4a
+                          - link "#1181" [ref=e379] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/1181
+                          - link ")" [ref=e380] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/442fadb4c65d3b6728f38fdea94e2a9961f06d4a
+                      - cell "Jul 23, 20264 days ago" [ref=e381]
+                    - row [ref=e383]:
+                      - cell [ref=e384]:
+                        - link "packages, (Directory)" [ref=e391] [cursor=pointer]:
+                          - /url: /crbnos/carbon/tree/main/packages
+                          - text: packages
+                      - cell [ref=e392]:
+                        - generic [ref=e394]:
+                          - link "Merge pull request" [ref=e395] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/90f68961d0893bf661475d32cd19abf506dc2a63
+                          - link "#1209" [ref=e396] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/1209
+                          - link "from crbnos/invite-link-wrong-company" [ref=e397] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/90f68961d0893bf661475d32cd19abf506dc2a63
+                      - cell "Jul 24, 20263 days ago" [ref=e398]
+                    - row [ref=e400]:
+                      - cell [ref=e401]:
+                        - link "patches, (Directory)" [ref=e408] [cursor=pointer]:
+                          - /url: /crbnos/carbon/tree/main/patches
+                          - text: patches
+                      - cell [ref=e409]:
+                        - generic [ref=e411]:
+                          - 'link "chore: bump Vite and react router (" [ref=e412] [cursor=pointer]':
+                            - /url: /crbnos/carbon/commit/ec585c47968acbd6f45caa104cc00436eb5c2549
+                          - link "#784" [ref=e413] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/784
+                          - link ")" [ref=e414] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/ec585c47968acbd6f45caa104cc00436eb5c2549
+                      - cell "May 18, 20262 months ago" [ref=e415]
+                    - row [ref=e417]:
+                      - cell [ref=e418]:
+                        - link "scripts, (Directory)" [ref=e425] [cursor=pointer]:
+                          - /url: /crbnos/carbon/tree/main/scripts
+                          - text: scripts
+                      - cell [ref=e426]:
+                        - generic [ref=e428]:
+                          - link "Feat/carbon agent (" [ref=e429] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/442fadb4c65d3b6728f38fdea94e2a9961f06d4a
+                          - link "#1181" [ref=e430] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/1181
+                          - link ")" [ref=e431] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/442fadb4c65d3b6728f38fdea94e2a9961f06d4a
+                      - cell "Jul 23, 20264 days ago" [ref=e432]
+                    - row [ref=e434]:
+                      - cell [ref=e435]:
+                        - link ".dockerignore, (File)" [ref=e442] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/.dockerignore
+                          - text: .dockerignore
+                      - cell [ref=e443]:
+                        - generic [ref=e445]:
+                          - 'link "feat: selfhosting documentation (" [ref=e446] [cursor=pointer]':
+                            - /url: /crbnos/carbon/commit/945208c0ecbc5af2871e33abedd15be2788dc7db
+                          - link "#929" [ref=e447] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/929
+                          - link ")" [ref=e448] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/945208c0ecbc5af2871e33abedd15be2788dc7db
+                      - cell "Jun 22, 2026last month" [ref=e449]
+                    - row [ref=e451]:
+                      - cell [ref=e452]:
+                        - link ".env.example, (File)" [ref=e459] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/.env.example
+                          - text: .env.example
+                      - cell [ref=e460]:
+                        - generic [ref=e462]:
+                          - 'link "feat(logging): add centralized @carbon/logging package (" [ref=e463] [cursor=pointer]':
+                            - /url: /crbnos/carbon/commit/a7ca3d03b510b2e162f3f28d6f6b05e1204cb150
+                          - link "#1105" [ref=e464] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/1105
+                          - link ")" [ref=e465] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/a7ca3d03b510b2e162f3f28d6f6b05e1204cb150
+                      - cell "Jul 9, 20263 weeks ago" [ref=e466]
+                    - row [ref=e468]:
+                      - cell [ref=e469]:
+                        - link ".gitattributes, (File)" [ref=e476] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/.gitattributes
+                          - text: .gitattributes
+                      - cell [ref=e477]:
+                        - 'link "chore(git): union-merge lingui .po catalogs to avoid merge conflicts" [ref=e480] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/85bbc8300870500027351fd0fdb10181d14e33b9
+                      - cell "Jul 2, 2026last month" [ref=e481]
+                    - row [ref=e483]:
+                      - cell [ref=e484]:
+                        - link ".gitignore, (File)" [ref=e491] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/.gitignore
+                          - text: .gitignore
+                      - cell [ref=e492]:
+                        - generic [ref=e494]:
+                          - 'link "refactor: make .claude the source of truth for skills and rules (" [ref=e495] [cursor=pointer]':
+                            - /url: /crbnos/carbon/commit/49d7dd44751d014d9ef465e5622fec864a477f96
+                          - link "#1176" [ref=e496] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/1176
+                          - link ")" [ref=e497] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/49d7dd44751d014d9ef465e5622fec864a477f96
+                      - cell "Jul 21, 2026last week" [ref=e498]
+                    - row [ref=e500]:
+                      - cell [ref=e501]:
+                        - link ".npmrc, (File)" [ref=e508] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/.npmrc
+                          - text: .npmrc
+                      - cell [ref=e509]:
+                        - generic [ref=e511]:
+                          - 'link "chore: migrate to pnpm (" [ref=e512] [cursor=pointer]':
+                            - /url: /crbnos/carbon/commit/5dc9fcc7f9074c34b91bef15239a46e0f7b10ce3
+                          - link "#752" [ref=e513] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/752
+                          - link ")" [ref=e514] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/5dc9fcc7f9074c34b91bef15239a46e0f7b10ce3
+                      - cell "May 8, 20262 months ago" [ref=e515]
+                    - row [ref=e517]:
+                      - cell [ref=e518]:
+                        - link ".nvmrc, (File)" [ref=e525] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/.nvmrc
+                          - text: .nvmrc
+                      - cell [ref=e526]:
+                        - 'link "build: upgrade to node 22" [ref=e529] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/187d9f117b29dc6ab65baa9022bf34d8888e38e1
+                      - cell "Apr 11, 20263 months ago" [ref=e530]
+                    - row [ref=e532]:
+                      - cell [ref=e533]:
+                        - link "AGENTS.md, (File)" [ref=e540] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/AGENTS.md
+                          - text: AGENTS.md
+                      - cell [ref=e541]:
+                        - generic [ref=e543]:
+                          - link "Feat/carbon agent (" [ref=e544] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/442fadb4c65d3b6728f38fdea94e2a9961f06d4a
+                          - link "#1181" [ref=e545] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/1181
+                          - link ")" [ref=e546] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/442fadb4c65d3b6728f38fdea94e2a9961f06d4a
+                      - cell "Jul 23, 20264 days ago" [ref=e547]
+                    - row [ref=e549]:
+                      - cell [ref=e550]:
+                        - link "BACKWARD_COMPATIBILITY.md, (File)" [ref=e557] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/BACKWARD_COMPATIBILITY.md
+                          - text: BACKWARD_COMPATIBILITY.md
+                      - cell [ref=e558]:
+                        - generic [ref=e560]:
+                          - 'link "feat: LLM-first architecture overhaul — .ai/ knowledge system (" [ref=e561] [cursor=pointer]':
+                            - /url: /crbnos/carbon/commit/09bdfe354a1100b72dbbf0c831ba941425c84585
+                          - link "#992" [ref=e562] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/992
+                          - link ")" [ref=e563] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/09bdfe354a1100b72dbbf0c831ba941425c84585
+                      - cell "Jul 1, 2026last month" [ref=e564]
+                    - row [ref=e566]:
+                      - cell [ref=e567]:
+                        - link "CLAUDE.md, (File)" [ref=e574] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/CLAUDE.md
+                          - text: CLAUDE.md
+                      - cell [ref=e575]:
+                        - generic [ref=e577]:
+                          - 'link "MCP 2.0: OAuth and fat inserts (" [ref=e578] [cursor=pointer]':
+                            - /url: /crbnos/carbon/commit/0acd75e9727edd8a5aed9924248babdc02f3d902
+                          - link "#863" [ref=e579] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/863
+                          - link ")" [ref=e580] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/0acd75e9727edd8a5aed9924248babdc02f3d902
+                      - cell "Jun 8, 2026last month" [ref=e581]
+                    - row [ref=e583]:
+                      - cell [ref=e584]:
+                        - link "Cargo.lock, (File)" [ref=e591] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/Cargo.lock
+                          - text: Cargo.lock
+                      - cell [ref=e592]:
+                        - 'link "feat(cad): Rust assembler CAD pipeline — eager optimize, raw compacti…" [ref=e595] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/1cce52f44aac004eceb0ef0f39989ca44f16710e
+                      - cell "Jul 20, 2026last week" [ref=e596]
+                    - row [ref=e598]:
+                      - cell [ref=e599]:
+                        - link "Cargo.toml, (File)" [ref=e606] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/Cargo.toml
+                          - text: Cargo.toml
+                      - cell [ref=e607]:
+                        - 'link "feat(cad): Rust assembler CAD pipeline — eager optimize, raw compacti…" [ref=e610] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/1cce52f44aac004eceb0ef0f39989ca44f16710e
+                      - cell "Jul 20, 2026last week" [ref=e611]
+                    - row [ref=e613]:
+                      - cell [ref=e614]:
+                        - link "Dockerfile, (File)" [ref=e621] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/Dockerfile
+                          - text: Dockerfile
+                      - cell [ref=e622]:
+                        - 'link "fix: remove apt curl from selfhosting healthcheck" [ref=e625] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/88f2729ae6d6d708b9439e1e1e55ce334d21ae08
+                      - cell "Jun 22, 2026last month" [ref=e626]
+                    - row [ref=e628]:
+                      - cell [ref=e629]:
+                        - link "LICENSE, (File)" [ref=e636] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/LICENSE
+                          - text: LICENSE
+                      - cell [ref=e637]:
+                        - 'link "docs: remove reference to commercial/LICENSE" [ref=e640] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/ddb9fd485ccf90f8451413be2d07d64d7caad23d
+                      - cell "Oct 11, 20259 months ago" [ref=e641]
+                    - row [ref=e643]:
+                      - cell [ref=e644]:
+                        - link "README.md, (File)" [ref=e651] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/README.md
+                          - text: README.md
+                      - cell [ref=e652]:
+                        - 'link "feat(inventory): valuation report + GL posting for inventory adjustme…" [ref=e655] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/a6524bc45f8cd692f73abfe9800198cf6b42164d
+                      - cell "Jul 15, 20262 weeks ago" [ref=e656]
+                    - row [ref=e658]:
+                      - cell [ref=e659]:
+                        - link "biome.jsonc, (File)" [ref=e666] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/biome.jsonc
+                          - text: biome.jsonc
+                      - cell [ref=e667]:
+                        - generic [ref=e669]:
+                          - link "Engineering change orders (" [ref=e670] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/c1bed1fc52dd6c236d5463527b9e513e88d9653f
+                          - link "#1150" [ref=e671] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/1150
+                          - link ")" [ref=e672] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/c1bed1fc52dd6c236d5463527b9e513e88d9653f
+                      - cell "Jul 20, 2026last week" [ref=e673]
+                    - row [ref=e675]:
+                      - cell [ref=e676]:
+                        - link "lingui.config.js, (File)" [ref=e683] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/lingui.config.js
+                          - text: lingui.config.js
+                      - cell [ref=e684]:
+                        - generic [ref=e686]:
+                          - 'link "feat(i18n): add Korean (ko) translation (" [ref=e687] [cursor=pointer]':
+                            - /url: /crbnos/carbon/commit/b69de4428838f898498a0b67fa8ac7a775b185aa
+                          - link "#1104" [ref=e688] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/1104
+                          - link ")" [ref=e689] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/b69de4428838f898498a0b67fa8ac7a775b185aa
+                      - cell "Jul 10, 20262 weeks ago" [ref=e690]
+                    - row [ref=e692]:
+                      - cell [ref=e693]:
+                        - link "package.json, (File)" [ref=e700] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/package.json
+                          - text: package.json
+                      - cell [ref=e701]:
+                        - generic [ref=e703]:
+                          - link "Feat/carbon agent (" [ref=e704] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/442fadb4c65d3b6728f38fdea94e2a9961f06d4a
+                          - link "#1181" [ref=e705] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/1181
+                          - link ")" [ref=e706] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/442fadb4c65d3b6728f38fdea94e2a9961f06d4a
+                      - cell "Jul 23, 20264 days ago" [ref=e707]
+                    - row [ref=e709]:
+                      - cell [ref=e710]:
+                        - link "pnpm-lock.yaml, (File)" [ref=e717] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/pnpm-lock.yaml
+                          - text: pnpm-lock.yaml
+                      - cell [ref=e718]:
+                        - 'link "fix(erp): move BoM preview cards to uncontrolled Base UI" [ref=e721] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/6ba5772a31504ccddc7806294b8795ea555f57d3
+                      - cell "Jul 23, 20264 days ago" [ref=e722]
+                    - row [ref=e724]:
+                      - cell [ref=e725]:
+                        - link "pnpm-workspace.yaml, (File)" [ref=e732] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/pnpm-workspace.yaml
+                          - text: pnpm-workspace.yaml
+                      - cell [ref=e733]:
+                        - generic [ref=e735]:
+                          - link "Manufacturing inventory fixes (" [ref=e736] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/d00da9e58c2098ac2e1bec679d64d8646d23a2b0
+                          - link "#1135" [ref=e737] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/1135
+                          - link ")" [ref=e738] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/d00da9e58c2098ac2e1bec679d64d8646d23a2b0
+                      - cell "Jul 13, 20262 weeks ago" [ref=e739]
+                    - row [ref=e741]:
+                      - cell [ref=e742]:
+                        - link "setup.sh, (File)" [ref=e749] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/setup.sh
+                          - text: setup.sh
+                      - cell [ref=e750]:
+                        - link [ref=e753] [cursor=pointer]:
+                          - /url: /crbnos/carbon/commit/ff870f26f8f8312e329c4b68b916757585adeb4f
+                          - text: "fix(crbn):"
+                          - code [ref=e754]: new
+                          - text: also checks out the tree and doesn't rely on pnpm in…
+                      - cell "May 16, 20262 months ago" [ref=e755]
+                    - row [ref=e757]:
+                      - cell [ref=e758]:
+                        - link "sst-env.d.ts, (File)" [ref=e765] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/sst-env.d.ts
+                          - text: sst-env.d.ts
+                      - cell [ref=e766]:
+                        - generic [ref=e768]:
+                          - link "React Router v7 (" [ref=e769] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/53b7370f416425db0664ed39f5fef02cf0bc351a
+                          - link "#399" [ref=e770] [cursor=pointer]:
+                            - /url: https://github.com/crbnos/carbon/pull/399
+                          - link ")" [ref=e771] [cursor=pointer]:
+                            - /url: /crbnos/carbon/commit/53b7370f416425db0664ed39f5fef02cf0bc351a
+                      - cell "Dec 13, 20257 months ago" [ref=e772]
+                    - row [ref=e774]:
+                      - cell [ref=e775]:
+                        - link "sst.config.ts, (File)" [ref=e782] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/sst.config.ts
+                          - text: sst.config.ts
+                      - cell [ref=e783]:
+                        - 'link "fix: mcp connector via oauth" [ref=e786] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/0467706ac3568bb00f26fd3b35d0d32d904a10b2
+                      - cell "Jun 8, 2026last month" [ref=e787]
+                    - row [ref=e789]:
+                      - cell [ref=e790]:
+                        - link "tsconfig.json, (File)" [ref=e797] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/tsconfig.json
+                          - text: tsconfig.json
+                      - cell [ref=e798]:
+                        - 'link "feat: sst deployment" [ref=e801] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/2b0a24997ffbb455fe204e6ba2bb639b931ef976
+                      - cell "Sep 25, 202510 months ago" [ref=e802]
+                    - row [ref=e804]:
+                      - cell [ref=e805]:
+                        - link "turbo.json, (File)" [ref=e812] [cursor=pointer]:
+                          - /url: /crbnos/carbon/blob/main/turbo.json
+                          - text: turbo.json
+                      - cell [ref=e813]:
+                        - 'link "build: generate documents font data via turbo build task" [ref=e816] [cursor=pointer]':
+                          - /url: /crbnos/carbon/commit/157ef21f0f37946f7f3a574f5063f39cb1ae6cfd
+                      - cell "Jun 23, 2026last month" [ref=e817]
+              - generic [ref=e820]:
+                - generic [ref=e821]:
+                  - heading "Repository files navigation" [level=2] [ref=e822]
+                  - navigation "Repository files" [ref=e823]:
+                    - list [ref=e824]:
+                      - listitem [ref=e825]:
+                        - link "README" [ref=e826] [cursor=pointer]:
+                          - /url: "#"
+                      - listitem [ref=e828]:
+                        - link "Contributing" [ref=e829] [cursor=pointer]:
+                          - /url: "#"
+                      - listitem [ref=e831]:
+                        - link "License" [ref=e832] [cursor=pointer]:
+                          - /url: "#"
+                      - listitem [ref=e834]:
+                        - link "Security" [ref=e835] [cursor=pointer]:
+                          - /url: "#"
+                  - button "Outline" [ref=e837] [cursor=pointer]
+                - article [ref=e841]:
+                  - paragraph [ref=e842]:
+                    - link [ref=e843] [cursor=pointer]:
+                      - /url: https://carbon.ms
+                      - img "Carbon Logo" [ref=e844]
+                  - paragraph [ref=e845]:
+                    - text: The open core for manufacturing
+                    - link "Discord" [ref=e846] [cursor=pointer]:
+                      - /url: https://discord.gg/yGUJWhNqzy
+                    - text: ·
+                    - link "Website" [ref=e847] [cursor=pointer]:
+                      - /url: https://carbon.ms
+                    - text: ·
+                    - link "Documentation" [ref=e848] [cursor=pointer]:
+                      - /url: https://docs.carbon.ms
+                  - paragraph
+                  - paragraph [ref=e849]:
+                    - link [ref=e850] [cursor=pointer]:
+                      - /url: https://camo.githubusercontent.com/157fb250a4c850de1caa4a9112da44de759352a114486112a7176f8f9712e65f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f53757061626173652d3345434638453f7374796c653d666f722d7468652d6261646765266c6f676f3d7375706162617365266c6f676f436f6c6f723d7768697465
+                      - img "Supabase" [ref=e851]
+                    - link [ref=e852] [cursor=pointer]:
+                      - /url: https://camo.githubusercontent.com/a41c24d73052cc96d84befbfdd1c907247ca8d703141a0245a0256724473cf83/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f547970657363726970742d3161363766333f7374796c653d666f722d7468652d6261646765266c6f676f3d7265616374266c6f676f436f6c6f723d7768697465
+                      - img "Typescript" [ref=e853]
+                    - link [ref=e854] [cursor=pointer]:
+                      - /url: https://camo.githubusercontent.com/399ba7e285109bfaa81cb5ee5e97135037e2a0f60b3d09341616d95b5d797f94/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656163742d3233323732463f7374796c653d666f722d7468652d6261646765266c6f676f3d7265616374266c6f676f436f6c6f723d7768697465
+                      - img "React" [ref=e855]
+                  - paragraph [ref=e856]:
+                    - link [ref=e857] [cursor=pointer]:
+                      - /url: https://private-user-images.githubusercontent.com/64510427/465004791-2e09b891-d5e2-4f68-b924-a1c8ea42d24d.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODUxMjA0NTQsIm5iZiI6MTc4NTEyMDE1NCwicGF0aCI6Ii82NDUxMDQyNy80NjUwMDQ3OTEtMmUwOWI4OTEtZDVlMi00ZjY4LWI5MjQtYTFjOGVhNDJkMjRkLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA3MjclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNzI3VDAyNDIzNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA2NzNhMDM0ZTliOGI2ODFjODAwNzVmYTgwOTA4YTViNjhhNzZhNDUxM2MyNmZmMTRmOWQ0ZjVjMWE0MzE4YTQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRmpwZWcifQ.3b4xK1wPQ50A8JXtMBlEWIqmBiAtJfnbEcseL38Bbz8
+                      - img "ERP Screenshot" [ref=e858]
+                  - paragraph [ref=e859]:
+                    - link [ref=e860] [cursor=pointer]:
+                      - /url: https://private-user-images.githubusercontent.com/64510427/465004825-b04f3644-91aa-4f74-af8d-6f3e12116a6b.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODUxMjA0NTQsIm5iZiI6MTc4NTEyMDE1NCwicGF0aCI6Ii82NDUxMDQyNy80NjUwMDQ4MjUtYjA0ZjM2NDQtOTFhYS00Zjc0LWFmOGQtNmYzZTEyMTE2YTZiLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA3MjclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNzI3VDAyNDIzNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWFlYThhNmYxOTM1OTg2NGE3YTEyNjYzYjAxMjI0NTY2Y2E1MGJiZjMyNTA2NjE1Y2VjMTkzNTIyY2I3YjVlZDImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRmpwZWcifQ.q420WGT5KDFOYZ9IguNUt6FyXMBfz5AfrKcymtJFEnw
+                      - img "MES Screenshot" [ref=e861]
+                  - generic [ref=e862]:
+                    - heading "Does the world need another ERP?" [level=2] [ref=e863]
+                    - 'link "Permalink: Does the world need another ERP?" [ref=e864] [cursor=pointer]':
+                      - /url: "#does-the-world-need-another-erp"
+                  - paragraph [ref=e867]: "We built Carbon after years of building end-to-end manufacturing systems with off-the-shelf solutions. We realized that:"
+                  - list [ref=e868]:
+                    - listitem [ref=e869]: Modern, API-first tooling didn't exist
+                    - listitem [ref=e870]: Vendor lock-in bordered on extortion
+                    - listitem [ref=e871]: There is no "perfect ERP" because each company is unique
+                  - paragraph [ref=e872]: We built Carbon to solve these problems ☝️
+                  - generic [ref=e873]:
+                    - heading "Architecture" [level=2] [ref=e874]
+                    - 'link "Permalink: Architecture" [ref=e875] [cursor=pointer]':
+                      - /url: "#architecture"
+                  - paragraph [ref=e878]:
+                    - text: Carbon is designed to make it easy for you to extend the platform by building your own apps through our API. We provide some examples to get you started in the
+                    - link "examples" [ref=e879] [cursor=pointer]:
+                      - /url: https://github.com/crbnos/carbon/blob/main/examples
+                    - text: folder.
+                  - paragraph [ref=e880]:
+                    - link [ref=e881] [cursor=pointer]:
+                      - /url: https://private-user-images.githubusercontent.com/64510427/600562111-d73b3297-afb4-4bd4-a381-61b31a78aa38.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODUxMjA0NTQsIm5iZiI6MTc4NTEyMDE1NCwicGF0aCI6Ii82NDUxMDQyNy82MDA1NjIxMTEtZDczYjMyOTctYWZiNC00YmQ0LWEzODEtNjFiMzFhNzhhYTM4LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA3MjclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNzI3VDAyNDIzNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTcxYmIxYzkxMDAyNTZhNmFlZDFiMGMzN2ZjMmNhMzllMjFjZDhmMDBjMTE0OWM3MTUyMzgxZWMyMTg0MjQ4NWImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRmpwZWcifQ.rnIsASEIr_fFu6uMKqZ7MdjNmcRLOvv97rTMhKyBvHg
+                      - img "Carbon Functionality" [ref=e882]
+                  - paragraph [ref=e883]:
+                    - link [ref=e884] [cursor=pointer]:
+                      - /url: https://private-user-images.githubusercontent.com/64510427/600562129-e5532a5f-609c-4404-8706-aa9bd59e180b.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODUxMjA0NTQsIm5iZiI6MTc4NTEyMDE1NCwicGF0aCI6Ii82NDUxMDQyNy82MDA1NjIxMjktZTU1MzJhNWYtNjA5Yy00NDA0LTg3MDYtYWE5YmQ1OWUxODBiLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA3MjclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNzI3VDAyNDIzNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTFmZDVlN2QyZjkzNjhkNmNmM2I1ZGVkY2YxZjY5ZWE3ZmE4ZThiZTQ3YTNkYWYwM2E4YjZiNGZhMzY1OTIxMjEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRmpwZWcifQ.lYsNgrH3MN3Y9AeNjry5aTkslU90H5Nwi70-a0xZWyk
+                      - img "Carbon Architecture" [ref=e885]
+                  - paragraph [ref=e886]: "Features:"
+                  - list [ref=e887]:
+                    - listitem [ref=e888]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e889]
+                      - text: ERP
+                    - listitem [ref=e890]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e891]
+                      - text: MES
+                    - listitem [ref=e892]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e893]
+                      - text: QMS
+                    - listitem [ref=e894]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e895]
+                      - text: Custom Fields
+                    - listitem [ref=e896]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e897]
+                      - text: Nested BoM
+                    - listitem [ref=e898]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e899]
+                      - text: Traceability
+                    - listitem [ref=e900]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e901]
+                      - text: MRP
+                    - listitem [ref=e902]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e903]
+                      - text: Configurator
+                    - listitem [ref=e904]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e905]
+                      - text: MCP Client/Server
+                    - listitem [ref=e906]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e907]
+                      - text: API
+                    - listitem [ref=e908]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e909]
+                      - text: Webhooks
+                    - listitem [ref=e910]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e911]
+                      - text: Accounting
+                    - listitem [ref=e912]:
+                      - checkbox "Incomplete task" [disabled] [ref=e913]
+                      - text: Capacity Planning
+                    - listitem [ref=e914]:
+                      - checkbox "Incomplete task" [disabled] [ref=e915]
+                      - text: Simulation
+                    - listitem [ref=e916]:
+                      - checkbox "Incomplete task" [disabled] [ref=e917]
+                      - link "Full Roadmap" [ref=e918] [cursor=pointer]:
+                        - /url: https://github.com/orgs/crbnos/projects/1/views/1
+                  - paragraph [ref=e919]: "Technical highlights:"
+                  - list [ref=e920]:
+                    - listitem [ref=e921]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e922]
+                      - text: Unified auth and permissions across apps
+                    - listitem [ref=e923]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e924]
+                      - text: Full-stack type safety (Database → UI)
+                    - listitem [ref=e925]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e926]
+                      - text: Realtime database subscriptions
+                    - listitem [ref=e927]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e928]
+                      - text: Attribute-based access control (ABAC)
+                    - listitem [ref=e929]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e930]
+                      - text: Role-based access control (Customer, Supplier, Employee)
+                    - listitem [ref=e931]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e932]
+                      - text: Row-level security (RLS)
+                    - listitem [ref=e933]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e934]
+                      - text: Composable user groups
+                    - listitem [ref=e935]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e936]
+                      - text: Dependency graph for operations
+                    - listitem [ref=e937]:
+                      - checkbox "Completed task" [checked] [disabled] [ref=e938]
+                      - text: Third-party integrations
+                  - generic [ref=e939]:
+                    - heading "Techstack" [level=2] [ref=e940]
+                    - 'link "Permalink: Techstack" [ref=e941] [cursor=pointer]':
+                      - /url: "#techstack"
+                  - list [ref=e944]:
+                    - listitem [ref=e945]:
+                      - link "React Router" [ref=e946] [cursor=pointer]:
+                        - /url: https://reactrouter.com
+                      - text: – framework
+                    - listitem [ref=e947]:
+                      - link "Typescript" [ref=e948] [cursor=pointer]:
+                        - /url: https://www.typescriptlang.org/
+                      - text: – language
+                    - listitem [ref=e949]:
+                      - link "Tailwind" [ref=e950] [cursor=pointer]:
+                        - /url: https://tailwindcss.com
+                      - text: – styling
+                    - listitem [ref=e951]:
+                      - link "Radix UI" [ref=e952] [cursor=pointer]:
+                        - /url: https://radix-ui.com
+                      - text: "- behavior"
+                    - listitem [ref=e953]:
+                      - link "Supabase" [ref=e954] [cursor=pointer]:
+                        - /url: https://supabase.com
+                      - text: "- database"
+                    - listitem [ref=e955]:
+                      - link "Supabase" [ref=e956] [cursor=pointer]:
+                        - /url: https://supabase.com
+                      - text: – auth
+                    - listitem [ref=e957]:
+                      - link "Redis" [ref=e958] [cursor=pointer]:
+                        - /url: https://redis.io
+                      - text: "- cache"
+                    - listitem [ref=e959]:
+                      - link "Inngest" [ref=e960] [cursor=pointer]:
+                        - /url: https://inngest.com
+                      - text: "- jobs"
+                    - listitem [ref=e961]:
+                      - link "Resend" [ref=e962] [cursor=pointer]:
+                        - /url: https://resend.com
+                      - text: – email
+                    - listitem [ref=e963]:
+                      - link "Lingui" [ref=e964] [cursor=pointer]:
+                        - /url: https://lingui.dev
+                      - text: "- i18n"
+                    - listitem [ref=e965]:
+                      - link "Vercel" [ref=e966] [cursor=pointer]:
+                        - /url: https://vercel.com
+                      - text: – hosting
+                    - listitem [ref=e967]:
+                      - link "Stripe" [ref=e968] [cursor=pointer]:
+                        - /url: https://stripe.com
+                      - text: "- billing"
+                    - listitem [ref=e969]:
+                      - link "Rust" [ref=e970] [cursor=pointer]:
+                        - /url: https://www.rust-lang.org
+                      - text: – geometry service (FCL collision + OpenCASCADE CAD)
+                  - generic [ref=e971]:
+                    - heading "Codebase" [level=2] [ref=e972]
+                    - 'link "Permalink: Codebase" [ref=e973] [cursor=pointer]':
+                      - /url: "#codebase"
+                  - paragraph [ref=e976]: The monorepo follows the Turborepo convention of grouping packages into one of two folders.
+                  - list [ref=e977]:
+                    - listitem [ref=e978]:
+                      - code [ref=e979]: /apps
+                      - text: for applications
+                    - listitem [ref=e980]:
+                      - code [ref=e981]: /packages
+                      - text: for shared code
+                  - generic [ref=e982]:
+                    - heading [level=3] [ref=e983]:
+                      - code [ref=e984]: /apps
+                    - 'link "Permalink: /apps" [ref=e985] [cursor=pointer]':
+                      - /url: "#apps"
+                  - table [ref=e989]:
+                    - rowgroup [ref=e990]:
+                      - row [ref=e991]:
+                        - columnheader "Package Name" [ref=e992]
+                        - columnheader "Description" [ref=e993]
+                        - columnheader "How to run" [ref=e994]
+                    - rowgroup [ref=e995]:
+                      - row [ref=e996]:
+                        - cell [ref=e997]:
+                          - code [ref=e998]: erp
+                        - cell "ERP Application" [ref=e999]
+                        - cell [ref=e1000]:
+                          - code [ref=e1001]: pnpm dev
+                          - text: (boots stack + ERP via
+                          - code [ref=e1002]: crbn up
+                          - text: picker)
+                      - row [ref=e1003]:
+                        - cell [ref=e1004]:
+                          - code [ref=e1005]: mes
+                        - cell "MES" [ref=e1006]
+                        - cell [ref=e1007]:
+                          - code [ref=e1008]: pnpm dev
+                          - text: (select MES in picker, or both)
+                      - row [ref=e1009]:
+                        - cell [ref=e1010]:
+                          - code [ref=e1011]: academy
+                        - cell "Academy" [ref=e1012]
+                        - cell [ref=e1013]:
+                          - code [ref=e1014]: pnpm dev:academy
+                      - row [ref=e1015]:
+                        - cell [ref=e1016]:
+                          - code [ref=e1017]: starter
+                        - cell "Starter" [ref=e1018]
+                        - cell [ref=e1019]:
+                          - code [ref=e1020]: pnpm dev:starter
+                      - row [ref=e1021]:
+                        - cell [ref=e1022]:
+                          - code [ref=e1023]: assembler
+                        - 'cell "Geometry service (Rust): STEP → GLB + assembly motion planning" [ref=e1024]'
+                        - cell [ref=e1025]:
+                          - text: spawned by
+                          - code [ref=e1026]: crbn up
+                          - text: (needs a release binary — see
+                          - link "Installation" [ref=e1027] [cursor=pointer]:
+                            - /url: "#installation"
+                          - text: )
+                  - paragraph [ref=e1028]:
+                    - code [ref=e1029]: pnpm dev
+                    - text: runs the per-worktree dev CLI (
+                    - code [ref=e1030]: crbn up
+                    - text: ). ERP and MES are first-class — the CLI boots the docker stack, applies migrations, regenerates types/swagger, and spawns the selected apps behind portless. The
+                    - code [ref=e1031]: assembler
+                    - text: geometry service is spawned too when its release binary is present. Academy and starter are standalone Turborepo entries.
+                  - generic [ref=e1032]:
+                    - heading [level=3] [ref=e1033]:
+                      - code [ref=e1034]: /packages
+                    - 'link "Permalink: /packages" [ref=e1035] [cursor=pointer]':
+                      - /url: "#packages"
+                  - table [ref=e1039]:
+                    - rowgroup [ref=e1040]:
+                      - row [ref=e1041]:
+                        - columnheader "Package Name" [ref=e1042]
+                        - columnheader "Description" [ref=e1043]
+                    - rowgroup [ref=e1044]:
+                      - row [ref=e1045]:
+                        - cell [ref=e1046]:
+                          - code [ref=e1047]: "@carbon/database"
+                        - cell "Database schema, migrations and types" [ref=e1048]
+                      - row [ref=e1049]:
+                        - cell [ref=e1050]:
+                          - code [ref=e1051]: "@carbon/documents"
+                        - cell "Transactional PDFs and email templates" [ref=e1052]
+                      - row [ref=e1053]:
+                        - cell [ref=e1054]:
+                          - code [ref=e1055]: "@carbon/ee"
+                        - cell "Integration definitions and configurations" [ref=e1056]
+                      - row [ref=e1057]:
+                        - cell [ref=e1058]:
+                          - code [ref=e1059]: "@carbon/config"
+                        - cell "Shared configuration (vitest, tsconfig, tailwind) across apps and packages" [ref=e1060]
+                      - row [ref=e1061]:
+                        - cell [ref=e1062]:
+                          - code [ref=e1063]: "@carbon/jobs"
+                        - cell "Background jobs and workers" [ref=e1064]
+                      - row [ref=e1065]:
+                        - cell [ref=e1066]:
+                          - code [ref=e1067]: "@carbon/logger"
+                        - cell "Shared logger used across apps" [ref=e1068]
+                      - row [ref=e1069]:
+                        - cell [ref=e1070]:
+                          - code [ref=e1071]: "@carbon/react"
+                        - cell "Shared web-based UI components" [ref=e1072]
+                      - row [ref=e1073]:
+                        - cell [ref=e1074]:
+                          - code [ref=e1075]: "@carbon/kv"
+                        - cell "Redis cache client" [ref=e1076]
+                      - row [ref=e1077]:
+                        - cell [ref=e1078]:
+                          - code [ref=e1079]: "@carbon/lib"
+                        - cell "Third-party client libraries (slack, resend)" [ref=e1080]
+                      - row [ref=e1081]:
+                        - cell [ref=e1082]:
+                          - code [ref=e1083]: "@carbon/stripe"
+                        - cell "Stripe integration" [ref=e1084]
+                      - row [ref=e1085]:
+                        - cell [ref=e1086]:
+                          - code [ref=e1087]: "@carbon/utils"
+                        - cell "Shared utility functions used across apps and packages" [ref=e1088]
+                  - generic [ref=e1089]:
+                    - heading "Development" [level=2] [ref=e1090]
+                    - 'link "Permalink: Development" [ref=e1091] [cursor=pointer]':
+                      - /url: "#development"
+                  - generic [ref=e1094]:
+                    - heading "Setup" [level=3] [ref=e1095]
+                    - 'link "Permalink: Setup" [ref=e1096] [cursor=pointer]':
+                      - /url: "#setup"
+                  - list [ref=e1099]:
+                    - listitem [ref=e1100]:
+                      - paragraph [ref=e1101]:
+                        - text: Clone the repo into a public GitHub repository (or fork
+                        - link "https://github.com/crbnos/carbon/fork" [ref=e1102] [cursor=pointer]:
+                          - /url: https://github.com/crbnos/carbon/fork
+                        - text: ). If want to make the repo private, you should
+                        - link "acquire a commercial license" [ref=e1103] [cursor=pointer]:
+                          - /url: https://carbon.ms/sales
+                        - text: to comply with the AGPL license.
+                      - generic [ref=e1104]:
+                        - generic [ref=e1105]: git clone https://github.com/crbnos/carbon.git
+                        - button "Copy code to clipboard" [ref=e1107] [cursor=pointer]
+                    - listitem [ref=e1111]:
+                      - paragraph [ref=e1112]: Go to the project folder
+                      - generic [ref=e1113]:
+                        - generic [ref=e1114]: cd carbon
+                        - button "Copy code to clipboard" [ref=e1116] [cursor=pointer]
+                  - paragraph [ref=e1120]:
+                    - text: Make sure that you have
+                    - link "Docker installed" [ref=e1121] [cursor=pointer]:
+                      - /url: https://docs.docker.com/desktop/install/mac-install/
+                    - text: on your system since this monorepo uses the Docker for local development.
+                  - paragraph [ref=e1122]: "In addition you must configure the following external services:"
+                  - table [ref=e1124]:
+                    - rowgroup [ref=e1125]:
+                      - row [ref=e1126]:
+                        - columnheader "Service" [ref=e1127]
+                        - columnheader "Purpose" [ref=e1128]
+                        - columnheader "URL" [ref=e1129]
+                    - rowgroup [ref=e1130]:
+                      - row [ref=e1131]:
+                        - cell "Posthog" [ref=e1132]
+                        - cell "Product analytics platform" [ref=e1133]
+                        - cell [ref=e1134]:
+                          - link "https://us.posthog.com/signup" [ref=e1135] [cursor=pointer]:
+                            - /url: https://us.posthog.com/signup
+                      - row [ref=e1136]:
+                        - cell "Stripe" [ref=e1137]
+                        - cell "Payments service" [ref=e1138]
+                        - cell [ref=e1139]:
+                          - link "https://dashboard.stripe.com/login" [ref=e1140] [cursor=pointer]:
+                            - /url: https://dashboard.stripe.com/login
+                      - row [ref=e1141]:
+                        - cell "Resend" [ref=e1142]
+                        - cell "Email service" [ref=e1143]
+                        - cell [ref=e1144]:
+                          - link "https://resend.com" [ref=e1145] [cursor=pointer]:
+                            - /url: https://resend.com
+                  - paragraph [ref=e1146]: Posthog has a free tier which should be plenty to support local development. If you're self hosting and you don't want to use Posthog, it's pretty easy to remove the analytics.
+                  - generic [ref=e1147]:
+                    - heading "Installation" [level=3] [ref=e1148]
+                    - 'link "Permalink: Installation" [ref=e1149] [cursor=pointer]':
+                      - /url: "#installation"
+                  - paragraph [ref=e1152]: First download and initialize the repository dependencies.
+                  - paragraph [ref=e1153]:
+                    - text: This repo uses
+                    - strong [ref=e1154]: pnpm
+                    - text: as its package manager. Enable Corepack so the correct pnpm version (pinned via
+                    - code [ref=e1155]: packageManager
+                    - text: in
+                    - code [ref=e1156]: package.json
+                    - text: ") is used automatically:"
+                  - generic [ref=e1157]:
+                    - generic [ref=e1158]:
+                      - text: $ corepack enable
+                      - generic [ref=e1159]: "# one-time: activates pnpm shim from packageManager field"
+                    - button "Copy code to clipboard" [ref=e1161] [cursor=pointer]
+                  - paragraph [ref=e1165]: "Then install dependencies:"
+                  - generic [ref=e1166]:
+                    - generic [ref=e1167]:
+                      - text: $ nvm use
+                      - generic [ref=e1168]: "# use node v22"
+                      - text: $ pnpm install
+                      - generic [ref=e1169]: "# install dependencies"
+                    - button "Copy code to clipboard" [ref=e1171] [cursor=pointer]
+                  - generic [ref=e1175]:
+                    - heading [level=4] [ref=e1176]:
+                      - text: "Optional: the"
+                      - code [ref=e1177]: assembler
+                      - text: geometry service
+                    - 'link "Permalink: Optional: the assembler geometry service" [ref=e1178] [cursor=pointer]':
+                      - /url: "#optional-the-assembler-geometry-service"
+                  - paragraph [ref=e1181]:
+                    - code [ref=e1182]: assembler
+                    - text: is a Rust service (STEP → GLB + assembly motion planning) over C++ FCL and OpenCASCADE. ERP/MES run fine without it — set it up only if you need the 3D
+                    - code [ref=e1183]: /convert
+                    - text: and
+                    - code [ref=e1184]: /plan
+                    - text: endpoints.
+                  - list [ref=e1185]:
+                    - listitem [ref=e1186]:
+                      - paragraph [ref=e1187]:
+                        - strong [ref=e1188]: Toolchain + native build deps
+                        - text: "(macOS):"
+                      - generic [ref=e1189]:
+                        - generic [ref=e1190]:
+                          - text: $ curl --proto
+                          - generic [ref=e1191]: "'=https'"
+                          - text: "--tlsv1.2 -sSf https://sh.rustup.rs | sh"
+                          - generic [ref=e1192]: "# Rust, if not already installed"
+                          - text: $ brew install fcl cmake ninja
+                          - generic [ref=e1193]: "# collision libs (+ libccd/eigen/octomap) and build tools"
+                        - button "Copy code to clipboard" [ref=e1195] [cursor=pointer]
+                      - paragraph [ref=e1199]:
+                        - text: "On Linux, install the equivalents from your package manager:"
+                        - code [ref=e1200]: libfcl-dev libccd-dev libeigen3-dev liboctomap-dev cmake ninja-build
+                        - text: plus a C/C++ toolchain.
+                    - listitem [ref=e1201]:
+                      - paragraph [ref=e1202]:
+                        - strong [ref=e1203]: Build OCCT once
+                        - text: — a patched static OpenCASCADE, cached in
+                        - code [ref=e1204]: ~/.cache/carbon-occt
+                        - text: ". Slow (~15–30 min) but one-time per machine; re-running is a no-op once cached:"
+                      - generic [ref=e1205]:
+                        - generic [ref=e1206]: $ ./apps/assembler/scripts/build-occt.sh
+                        - button "Copy code to clipboard" [ref=e1208] [cursor=pointer]
+                    - listitem [ref=e1212]:
+                      - paragraph [ref=e1213]:
+                        - strong [ref=e1214]: Build the service
+                        - text: — seconds once OCCT is cached (
+                        - code [ref=e1215]: build.rs
+                        - text: "finds it automatically):"
+                      - generic [ref=e1216]:
+                        - generic [ref=e1217]: $ cargo build --release -p assembler
+                        - button "Copy code to clipboard" [ref=e1219] [cursor=pointer]
+                  - paragraph [ref=e1223]:
+                    - code [ref=e1224]: crbn up
+                    - text: spawns the binary when it's present. Verify it's up with
+                    - code [ref=e1225]: curl -sf "$ASSEMBLER_SERVICE_URL/health"
+                    - text: (the URL is in your worktree's
+                    - code [ref=e1226]: .env.local
+                    - text: ) or by watching the
+                    - code [ref=e1227]: asm |
+                    - text: lines in the
+                    - code [ref=e1228]: crbn up
+                    - text: output. Without the binary the rest of the stack still runs — only
+                    - code [ref=e1229]: /convert
+                    - text: and
+                    - code [ref=e1230]: /plan
+                    - text: are unavailable.
+                  - paragraph [ref=e1231]:
+                    - text: The dev stack (Postgres, GoTrue, Kong, Storage, Inngest, Inbucket, Studio, Realtime) is booted later by
+                    - code [ref=e1232]: crbn up
+                    - text: — see
+                    - link "Local dev CLI" [ref=e1233] [cursor=pointer]:
+                      - /url: "#local-dev-cli-crbn"
+                    - text: below. There is no separate "start the database" step.
+                  - generic [ref=e1234]:
+                    - heading [level=3] [ref=e1235]:
+                      - text: Local dev CLI (
+                      - code [ref=e1236]: crbn
+                      - text: )
+                    - 'link "Permalink: Local dev CLI (crbn)" [ref=e1237] [cursor=pointer]':
+                      - /url: "#local-dev-cli-crbn"
+                  - paragraph [ref=e1240]:
+                    - link [ref=e1242] [cursor=pointer]:
+                      - /url: https://www.loom.com/embed/690e6a4ec1c24216b56a22aa2667ba51
+                  - paragraph [ref=e1243]:
+                    - code [ref=e1244]: crbn
+                    - text: is a small CLI at
+                    - code [ref=e1245]: packages/dev/bin/crbn
+                    - text: "that wraps two things:"
+                  - list [ref=e1246]:
+                    - listitem [ref=e1247]:
+                      - strong [ref=e1248]: Git worktrees
+                      - text: — every feature branch can live in its own checkout dir, so you can switch branches without stashing.
+                    - listitem [ref=e1249]:
+                      - strong [ref=e1250]: Per-worktree docker compose stack
+                      - text: — each worktree gets its own Postgres / Supabase services on dynamic ports, isolated under
+                      - code [ref=e1251]: carbon-<slug>
+                      - text: compose project. Routing is handled by
+                      - link "portless" [ref=e1252] [cursor=pointer]:
+                        - /url: https://github.com/portless-dev/portless
+                      - text: (a local HTTPS reverse proxy that serves
+                      - code [ref=e1253]: "*.dev"
+                      - text: hostnames on
+                      - code [ref=e1254]: :443
+                      - text: with locally-trusted certs — installed automatically on first
+                      - code [ref=e1255]: crbn up
+                      - text: ).
+                  - blockquote [ref=e1256]:
+                    - paragraph [ref=e1257]:
+                      - strong [ref=e1258]: "Windows users:"
+                      - text: the dev CLI (
+                      - code [ref=e1259]: crbn
+                      - text: ","
+                      - code [ref=e1260]: setup.sh
+                      - text: ) is POSIX-only and expects
+                      - strong [ref=e1261]: WSL or Git Bash
+                      - text: . Native cmd.exe / PowerShell shells are not supported. From a WSL/Git Bash prompt, the standard flow (
+                      - code [ref=e1262]: ./setup.sh
+                      - text: ","
+                      - code [ref=e1263]: pnpm dev
+                      - text: ","
+                      - code [ref=e1264]: crbn checkout …
+                      - text: ) works the same as on macOS/Linux.
+                  - paragraph [ref=e1265]:
+                    - text: Run
+                    - code [ref=e1266]: setup.sh
+                    - text: once to put
+                    - code [ref=e1267]: crbn
+                    - text: on your
+                    - code [ref=e1268]: $PATH
+                    - text: and install the
+                    - code [ref=e1269]: crbn
+                    - text: shell function (so
+                    - code [ref=e1270]: crbn checkout
+                    - text: "can change cwd):"
+                  - generic [ref=e1271]:
+                    - generic [ref=e1272]:
+                      - text: $ ./setup.sh
+                      - generic [ref=e1273]: "# writes a sentinel block to ~/.zshrc or ~/.bashrc"
+                      - text: $ source ~/.zshrc
+                      - generic [ref=e1274]: "# or open a new shell"
+                      - text: $ crbn
+                      - generic [ref=e1275]: "# shows commands"
+                    - button "Copy code to clipboard" [ref=e1277] [cursor=pointer]
+                  - paragraph [ref=e1281]: "Common flows:"
+                  - generic [ref=e1282]:
+                    - generic [ref=e1283]:
+                      - text: $ crbn checkout sid/cool-thing
+                      - generic [ref=e1284]: "# cd into worktree (creates if missing,"
+                      - generic [ref=e1285]: "# auto-fetches from origin if needed)"
+                      - text: $ crbn checkout -b feat/new-thing
+                      - generic [ref=e1286]: "# new branch off origin/main + worktree"
+                      - text: $ crbn checkout sid/cool-thing --up
+                      - generic [ref=e1287]: "# …and boot the stack inside it"
+                      - text: $ crbn checkout 760
+                      - generic [ref=e1288]: "# fetch GitHub PR #760 into a `pr-760`"
+                      - generic [ref=e1289]: "# branch + worktree (fork PRs work too)"
+                      - text: $ crbn copy
+                      - generic [ref=e1290]: "# re-sync .env from main checkout"
+                      - text: $ crbn up | down | reset | status
+                      - generic [ref=e1291]: "# per-worktree compose stack"
+                      - text: $ crbn new | list | remove
+                      - generic [ref=e1292]: "# interactive worktree management"
+                    - button "Copy code to clipboard" [ref=e1294] [cursor=pointer]
+                  - paragraph [ref=e1298]:
+                    - code [ref=e1299]: crbn up
+                    - text: "flags:"
+                  - list [ref=e1300]:
+                    - listitem [ref=e1301]:
+                      - code [ref=e1302]: "--no-migrate"
+                      - text: — skip
+                      - code [ref=e1303]: supabase migration up
+                      - text: (use when schema is already current and you just want to re-boot containers fast)
+                    - listitem [ref=e1304]:
+                      - code [ref=e1305]: "--no-regen"
+                      - text: — skip regenerating
+                      - code [ref=e1306]: packages/database/src/types.ts
+                      - text: +
+                      - code [ref=e1307]: swagger-docs-schema.ts
+                      - text: (auto-skipped when
+                      - code [ref=e1308]: "--no-migrate"
+                      - text: is set, since no schema change implies no type drift)
+                  - paragraph [ref=e1309]:
+                    - text: Files synced by
+                    - code [ref=e1310]: crbn copy
+                    - text: are listed under
+                    - code [ref=e1311]: package.json#crbn.copy
+                    - text: (defaults to
+                    - code [ref=e1312]: "[\".env\"]"
+                    - text: "). To uninstall the rc block:"
+                    - code [ref=e1313]: ./setup.sh --uninstall
+                    - text: .
+                  - paragraph [ref=e1314]:
+                    - text: Create an
+                    - code [ref=e1315]: .env
+                    - text: file and copy the contents of
+                    - code [ref=e1316]: .env.example
+                    - text: file into it
+                  - generic [ref=e1317]:
+                    - generic [ref=e1318]: $ cp ./.env.example ./.env
+                    - button "Copy code to clipboard" [ref=e1320] [cursor=pointer]
+                  - list [ref=e1324]:
+                    - listitem [ref=e1325]:
+                      - strong [ref=e1326]: Social Sign In
+                      - text: ": Signing in requires you to setup one of two methods:"
+                  - list [ref=e1327]:
+                    - listitem [ref=e1328]: Email requires a Resend API key (you'll set this up later on)
+                    - listitem [ref=e1329]:
+                      - text: Sign-in with Google requires a Google auth client with these variables.
+                      - link "See the Supabase docs for instructions on how to set this up" [ref=e1330] [cursor=pointer]:
+                        - /url: https://supabase.com/docs/guides/auth/social-login/auth-google
+                      - text: ":"
+                      - list [ref=e1331]:
+                        - listitem [ref=e1332]:
+                          - text: Set
+                          - code [ref=e1333]: Authorized JavaScript origins
+                          - text: to
+                          - code [ref=e1334]: https://api.carbon.dev
+                        - listitem [ref=e1335]:
+                          - text: Set
+                          - code [ref=e1336]: Authorized redirect URIs
+                          - text: to
+                          - code [ref=e1337]: https://api.carbon.dev/auth/v1/callback
+                        - listitem [ref=e1338]:
+                          - strong [ref=e1339]: "About the two API URLs you'll see:"
+                          - text: each worktree has its own scoped Supabase URL (
+                          - code [ref=e1340]: https://<worktree>.api.dev
+                          - text: ) for app traffic,
+                          - strong [ref=e1341]: and
+                          - text: there is one stable alias
+                          - code [ref=e1342]: https://api.carbon.dev
+                          - text: registered on whichever worktree is currently
+                          - code [ref=e1343]: up
+                          - text: . The stable alias exists only so OAuth callbacks have a single registered redirect URI — one Google Console entry covers every worktree. Day-to-day, your app talks to its worktree-scoped URL; only the OAuth callback hits the stable alias.
+                    - listitem [ref=e1344]:
+                      - text: You should set environment variables like the following.
+                      - list [ref=e1345]:
+                        - listitem [ref=e1346]:
+                          - code [ref=e1347]: SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID="******.apps.googleusercontent.com"
+                        - listitem [ref=e1348]:
+                          - code [ref=e1349]: SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_SECRET="GOCSPX-****************"
+                  - list [ref=e1350]:
+                    - listitem [ref=e1351]:
+                      - strong [ref=e1352]: Supabase
+                      - text: ": Backend services run inside the per-worktree docker stack —"
+                      - code [ref=e1353]: crbn up
+                      - text: boots them and writes everything you need into
+                      - code [ref=e1354]: .env.local
+                      - text: "automatically:"
+                  - list [ref=e1355]:
+                    - listitem [ref=e1356]:
+                      - code [ref=e1357]: SUPABASE_URL
+                      - text: — portless alias (e.g.
+                      - code [ref=e1358]: https://local-dev.api.dev
+                      - text: )
+                    - listitem [ref=e1359]:
+                      - code [ref=e1360]: SUPABASE_ANON_KEY
+                      - text: ","
+                      - code [ref=e1361]: SUPABASE_SERVICE_ROLE_KEY
+                      - text: — keys minted per-worktree from a random
+                      - code [ref=e1362]: SUPABASE_JWT_SECRET
+                    - listitem [ref=e1363]:
+                      - code [ref=e1364]: SUPABASE_DB_URL
+                      - text: — direct Postgres URL on a dynamic port
+                  - paragraph [ref=e1365]:
+                    - code [ref=e1366]: .env.local
+                    - text: is generated; do not commit it or hand-edit values that came from
+                    - code [ref=e1367]: crbn up
+                    - text: (they are re-derived on each boot). Put genuine secrets (OAuth client IDs, Stripe keys, Resend) in
+                    - code [ref=e1368]: .env
+                    - text: only.
+                  - paragraph [ref=e1369]:
+                    - text: Run
+                    - code [ref=e1370]: crbn status
+                    - text: at any time to see the live port assignment and the URLs portless is serving.
+                  - list [ref=e1371]:
+                    - listitem [ref=e1372]:
+                      - paragraph [ref=e1373]:
+                        - strong [ref=e1374]: Redis
+                        - text: "(Caching): No setup needed for local dev —"
+                        - code [ref=e1375]: crbn up
+                        - text: boots a shared Redis container and writes
+                        - code [ref=e1376]: REDIS_URL
+                        - text: into
+                        - code [ref=e1377]: .env.local
+                        - text: automatically (each worktree gets its own logical Redis DB). For self-hosted production, set
+                        - code [ref=e1378]: REDIS_URL
+                        - text: to any Redis-compatible endpoint (Upstash, AWS ElastiCache, etc.) in your prod environment.
+                    - listitem [ref=e1379]:
+                      - paragraph [ref=e1380]:
+                        - strong [ref=e1381]: Posthog
+                        - text: "(Analytics): In Posthog go to"
+                        - link "https://[region].posthog.com/project/[project-id]/settings/project-details" [ref=e1382] [cursor=pointer]:
+                          - /url: https://%5Bregion%5D.posthog.com/project/%5Bproject-id%5D/settings/project-details
+                        - text: "to find your Project ID and Project API key:"
+                  - list [ref=e1383]:
+                    - listitem [ref=e1384]:
+                      - code [ref=e1385]: POSTHOG_API_HOST=[https://[region].posthog.com]
+                    - listitem [ref=e1386]:
+                      - code [ref=e1387]: POSTHOG_PROJECT_PUBLIC_KEY=[Project API Key starting 'phc*']
+                  - list [ref=e1388]:
+                    - listitem [ref=e1389]:
+                      - strong [ref=e1390]: Stripe
+                      - text: (Payment service) -
+                      - link "Create a stripe account" [ref=e1391] [cursor=pointer]:
+                        - /url: https://dashboard.stripe.com/login
+                      - text: ", add a"
+                      - code [ref=e1392]: STRIPE_SECRET_KEY
+                      - text: from the Stripe
+                      - code [ref=e1393]: Settings > Developers
+                      - text: interface
+                  - list [ref=e1394]:
+                    - listitem [ref=e1395]:
+                      - code [ref=e1396]: STRIPE_SECRET_KEY="sk_test_*************"
+                  - list [ref=e1397]:
+                    - listitem [ref=e1398]:
+                      - strong [ref=e1399]: Resend
+                      - text: (Email service) -
+                      - link "Create a Resend account" [ref=e1400] [cursor=pointer]:
+                        - /url: https://resend.com
+                      - text: "and configure:"
+                  - list [ref=e1401]:
+                    - listitem [ref=e1402]:
+                      - code [ref=e1403]: RESEND_API_KEY="re_**********"
+                    - listitem [ref=e1404]:
+                      - code [ref=e1405]: RESEND_DOMAIN="carbon.ms"
+                      - text: (or your domain, no trailing slashes or protocols)
+                    - listitem [ref=e1406]:
+                      - code [ref=e1407]: RESEND_AUDIENCE_ID="*****"
+                      - text: (Optional - required for contact management in
+                      - code [ref=e1408]: packages/jobs
+                      - text: )
+                  - paragraph [ref=e1409]:
+                    - text: Resend is used for transactional emails (user invitations, email verification, onboarding). All three variables are stored in
+                    - code [ref=e1410]: packages/auth/src/config/env.ts
+                    - text: .
+                  - paragraph [ref=e1411]: "Finally, boot the stack and the apps:"
+                  - generic [ref=e1412]:
+                    - generic [ref=e1413]:
+                      - text: $ pnpm dev
+                      - generic [ref=e1414]: "# equivalent to `crbn up` — picker lets you choose ERP/MES"
+                    - button "Copy code to clipboard" [ref=e1416] [cursor=pointer]
+                  - paragraph [ref=e1420]:
+                    - code [ref=e1421]: crbn up
+                    - text: "prints a summary box with the live URLs once the stack is healthy. Defaults look like:"
+                  - table [ref=e1423]:
+                    - rowgroup [ref=e1424]:
+                      - row [ref=e1425]:
+                        - columnheader "Surface" [ref=e1426]
+                        - columnheader "URL" [ref=e1427]
+                    - rowgroup [ref=e1428]:
+                      - row [ref=e1429]:
+                        - cell "ERP" [ref=e1430]
+                        - cell [ref=e1431]:
+                          - code [ref=e1432]: https://<worktree>.erp.dev
+                      - row [ref=e1433]:
+                        - cell "MES" [ref=e1434]
+                        - cell [ref=e1435]:
+                          - code [ref=e1436]: https://<worktree>.mes.dev
+                      - row [ref=e1437]:
+                        - cell "Supabase API" [ref=e1438]
+                        - cell [ref=e1439]:
+                          - code [ref=e1440]: https://<worktree>.api.dev
+                      - row [ref=e1441]:
+                        - cell "Supabase Studio" [ref=e1442]
+                        - cell [ref=e1443]:
+                          - code [ref=e1444]: https://<worktree>.studio.dev
+                      - row [ref=e1445]:
+                        - cell "Inngest" [ref=e1446]
+                        - cell [ref=e1447]:
+                          - code [ref=e1448]: https://<worktree>.inngest.dev
+                      - row [ref=e1449]:
+                        - cell "Mail (Inbucket)" [ref=e1450]
+                        - cell [ref=e1451]:
+                          - code [ref=e1452]: https://<worktree>.mail.dev
+                      - row [ref=e1453]:
+                        - cell "Postgres" [ref=e1454]
+                        - cell [ref=e1455]:
+                          - code [ref=e1456]: postgresql://postgres:postgres@localhost:<PORT_DB>/postgres
+                  - paragraph [ref=e1457]:
+                    - code [ref=e1458]: <worktree>
+                    - text: is derived from the branch name (e.g.
+                    - code [ref=e1459]: sid-local-dev
+                    - text: →
+                    - code [ref=e1460]: local-dev
+                    - text: ). The main checkout drops the prefix and just uses
+                    - code [ref=e1461]: erp.dev
+                    - text: ","
+                    - code [ref=e1462]: mes.dev
+                    - text: ", etc. Ports for raw TCP services (Postgres, Inbucket, Inngest) are dynamic per-worktree —"
+                    - code [ref=e1463]: crbn status
+                    - text: is the source of truth.
+                  - paragraph [ref=e1464]:
+                    - text: Academy and starter still run on classic localhost ports via
+                    - code [ref=e1465]: pnpm dev:academy
+                    - text: /
+                    - code [ref=e1466]: pnpm dev:starter
+                    - text: (they are not part of the per-worktree stack).
+                  - generic [ref=e1467]:
+                    - heading "Logging in" [level=3] [ref=e1468]
+                    - 'link "Permalink: Logging in" [ref=e1469] [cursor=pointer]':
+                      - /url: "#logging-in"
+                  - paragraph [ref=e1472]:
+                    - text: For local development you don't need email or OAuth configured.
+                    - code [ref=e1473]: crbn up
+                    - text: seeds a smoke-test user (
+                    - code [ref=e1474]: test@carbon.ms
+                    - text: ) and writes
+                    - code [ref=e1475]: DEV_BYPASS_EMAIL=test@carbon.ms
+                    - text: into
+                    - code [ref=e1476]: .env.local
+                    - text: "for you. When that bypass email is set, signing in with it skips the magic link and logs you straight into the ERP:"
+                  - list [ref=e1477]:
+                    - listitem [ref=e1478]:
+                      - text: Open the ERP at the URL from the
+                      - code [ref=e1479]: crbn up
+                      - text: summary (e.g.
+                      - code [ref=e1480]: https://<worktree>.erp.dev/login
+                      - text: ).
+                    - listitem [ref=e1481]:
+                      - text: Type
+                      - code [ref=e1482]: test@carbon.ms
+                      - text: into the email field.
+                    - listitem [ref=e1483]:
+                      - text: Click
+                      - strong [ref=e1484]: Sign in with Email
+                      - text: .
+                  - paragraph [ref=e1485]:
+                    - text: You'll land on the authenticated dashboard (
+                    - code [ref=e1486]: /x
+                    - text: ) — no inbox check required. The same session cookie works for the MES app at
+                    - code [ref=e1487]: https://<worktree>.mes.dev
+                    - text: .
+                  - blockquote [ref=e1488]:
+                    - paragraph [ref=e1489]:
+                      - text: The bypass only applies to the exact address in
+                      - code [ref=e1490]: DEV_BYPASS_EMAIL
+                      - text: and only when that user is active — it's a dev convenience, not present in production. Any other email falls back to the normal magic-link / verification flow (which needs Resend configured). To sign in as your own account instead, use the magic link and read it from the local mail catcher at
+                      - code [ref=e1491]: https://<worktree>.mail.dev
+                      - text: .
+                  - generic [ref=e1492]:
+                    - heading "Code Formatting" [level=3] [ref=e1493]
+                    - 'link "Permalink: Code Formatting" [ref=e1494] [cursor=pointer]':
+                      - /url: "#code-formatting"
+                  - paragraph [ref=e1497]:
+                    - text: This project uses
+                    - link "Biome" [ref=e1498] [cursor=pointer]:
+                      - /url: https://biomejs.dev/
+                    - text: "for code formatting and linting. To set up automatic formatting on save in VS Code:"
+                  - list [ref=e1499]:
+                    - listitem [ref=e1500]:
+                      - paragraph [ref=e1501]:
+                        - text: Install the
+                        - link "Biome VS Code extension" [ref=e1502] [cursor=pointer]:
+                          - /url: https://marketplace.visualstudio.com/items?itemName=biomejs.biome
+                    - listitem [ref=e1503]:
+                      - paragraph [ref=e1504]:
+                        - text: Add the following to your VS Code settings (
+                        - code [ref=e1505]: .vscode/settings.json
+                        - text: "or global settings):"
+                  - generic [ref=e1506]:
+                    - generic [ref=e1507]:
+                      - text: "\"editor.codeActionsOnSave\": { \"source.organizeImports.biome\":"
+                      - generic [ref=e1508]: "\"explicit\""
+                      - text: ", \"source.fixAll.biome\":"
+                      - generic [ref=e1509]: "\"explicit\""
+                      - text: "}, \"editor.defaultFormatter\":"
+                      - generic [ref=e1510]: "\"biomejs.biome\""
+                    - button "Copy code to clipboard" [ref=e1512] [cursor=pointer]
+                  - generic [ref=e1516]:
+                    - heading "Commands" [level=3] [ref=e1517]
+                    - 'link "Permalink: Commands" [ref=e1518] [cursor=pointer]':
+                      - /url: "#commands"
+                  - paragraph [ref=e1521]: To add an edge function
+                  - generic [ref=e1522]:
+                    - generic [ref=e1523]: $ pnpm run db:function:new <name>
+                    - button "Copy code to clipboard" [ref=e1525] [cursor=pointer]
+                  - paragraph [ref=e1529]: To add a database migration
+                  - generic [ref=e1530]:
+                    - generic [ref=e1531]: $ pnpm run db:migrate:new <name>
+                    - button "Copy code to clipboard" [ref=e1533] [cursor=pointer]
+                  - paragraph [ref=e1537]: To add an AI agent
+                  - generic [ref=e1538]:
+                    - generic [ref=e1539]: $ pnpm run agent:new <name>
+                    - button "Copy code to clipboard" [ref=e1541] [cursor=pointer]
+                  - paragraph [ref=e1545]: To add an AI tool
+                  - generic [ref=e1546]:
+                    - generic [ref=e1547]: $ pnpm run tool:new <name>
+                    - button "Copy code to clipboard" [ref=e1549] [cursor=pointer]
+                  - paragraph [ref=e1553]: "To stop the stack (keeps volumes — data preserved):"
+                  - generic [ref=e1554]:
+                    - generic [ref=e1555]: $ crbn down
+                    - button "Copy code to clipboard" [ref=e1557] [cursor=pointer]
+                  - paragraph [ref=e1561]: "To wipe the stack and start clean (destroys Postgres volume + flushes the redis db for this worktree):"
+                  - generic [ref=e1562]:
+                    - generic [ref=e1563]: $ crbn reset
+                    - button "Copy code to clipboard" [ref=e1565] [cursor=pointer]
+                  - paragraph [ref=e1569]:
+                    - text: To regenerate types or swagger schema manually (normally
+                    - code [ref=e1570]: crbn up
+                    - text: "does this for you after applying migrations):"
+                  - generic [ref=e1571]:
+                    - generic [ref=e1572]:
+                      - text: $ pnpm db:types
+                      - generic [ref=e1573]: "# → packages/database/src/types.ts + functions/lib/types.ts"
+                      - text: $ pnpm generate:swagger
+                      - generic [ref=e1574]: "# → packages/database/src/swagger-docs-schema.ts"
+                    - button "Copy code to clipboard" [ref=e1576] [cursor=pointer]
+                  - paragraph [ref=e1580]:
+                    - text: To run a command against a single workspace, use
+                    - code [ref=e1581]: pnpm --filter
+                    - text: ":"
+                  - generic [ref=e1582]:
+                    - generic [ref=e1583]: $ pnpm --filter @carbon/react test
+                    - button "Copy code to clipboard" [ref=e1585] [cursor=pointer]
+                  - paragraph [ref=e1589]:
+                    - text: To restore a production database snapshot locally, use the
+                    - code [ref=e1590]: scripts/restore-database.sh
+                    - text: script. It handles both plain-text
+                    - code [ref=e1591]: .backup
+                    - text: and custom-format
+                    - code [ref=e1592]: .dump
+                    - text: archives, drops and rebuilds the public schema, realigns internal sequences, and resets storage metadata.
+                  - list [ref=e1593]:
+                    - listitem [ref=e1594]:
+                      - paragraph [ref=e1595]:
+                        - text: Export a backup from your production Supabase project (
+                        - code [ref=e1596]: pg_dump
+                        - text: or Supabase Dashboard → Database → Backups).
+                    - listitem [ref=e1597]:
+                      - paragraph [ref=e1598]:
+                        - text: Boot the stack
+                        - strong [ref=e1599]: without applying migrations
+                        - text: "so they don't fight the dump's schema state:"
+                      - generic [ref=e1600]:
+                        - generic [ref=e1601]: $ crbn up --no-migrate
+                        - button "Copy code to clipboard" [ref=e1603] [cursor=pointer]
+                    - listitem [ref=e1607]:
+                      - paragraph [ref=e1608]: "Run the restore script from your worktree root, passing the path to the backup file:"
+                      - generic [ref=e1609]:
+                        - generic [ref=e1610]:
+                          - text: $ ./scripts/restore-database.sh /path/to/db_cluster.backup
+                          - generic [ref=e1611]: "# …or for .dump archives:"
+                          - text: $ ./scripts/restore-database.sh /path/to/postgres_YYYYMMDD.dump
+                        - button "Copy code to clipboard" [ref=e1613] [cursor=pointer]
+                      - paragraph [ref=e1617]:
+                        - text: To also get local admin access, set
+                        - code [ref=e1618]: ADMIN_EMAIL
+                        - text: "to your production email. The script will upgrade your account to Admin in all companies you already belong to and reset your password locally:"
+                      - generic [ref=e1619]:
+                        - generic [ref=e1620]:
+                          - text: $ ADMIN_EMAIL=you@example.com ./scripts/restore-database.sh /path/to/backup.backup
+                          - generic [ref=e1621]: "# Optional: set a custom local password (default: localpass)"
+                          - text: $ ADMIN_EMAIL=you@example.com ADMIN_PASSWORD=mypass ./scripts/restore-database.sh /path/to/backup.backup
+                        - button "Copy code to clipboard" [ref=e1623] [cursor=pointer]
+                      - blockquote [ref=e1627]:
+                        - paragraph [ref=e1628]:
+                          - strong [ref=e1629]: "Note:"
+                          - text: Emails are not scrubbed — real production addresses will be present in the local DB. Ensure local email sending is disabled or pointed at a sandbox (e.g. Mailpit) before triggering any email flows.
+                    - listitem [ref=e1630]:
+                      - paragraph [ref=e1631]: "Regenerate types so app code reflects the restored schema:"
+                      - generic [ref=e1632]:
+                        - generic [ref=e1633]: $ pnpm db:types
+                        - button "Copy code to clipboard" [ref=e1635] [cursor=pointer]
+                  - generic [ref=e1639]:
+                    - heading "API" [level=2] [ref=e1640]
+                    - 'link "Permalink: API" [ref=e1641] [cursor=pointer]':
+                      - /url: "#api"
+                  - paragraph [ref=e1644]:
+                    - text: The API documentation is located in the ERP app at
+                    - code [ref=e1645]: "${ERP}/x/api/js/intro"
+                    - text: . It is auto-generated based on changes to the database.
+                  - paragraph [ref=e1646]: "There are two ways to use the API:"
+                  - list [ref=e1647]:
+                    - listitem [ref=e1648]: "From another codebase using a supabase client library:"
+                  - list [ref=e1649]:
+                    - listitem [ref=e1650]:
+                      - link "Javascript" [ref=e1651] [cursor=pointer]:
+                        - /url: https://supabase.com/docs/reference/javascript/introduction
+                    - listitem [ref=e1652]:
+                      - link "Flutter" [ref=e1653] [cursor=pointer]:
+                        - /url: https://supabase.com/docs/reference/dart/introduction
+                    - listitem [ref=e1654]:
+                      - link "Python" [ref=e1655] [cursor=pointer]:
+                        - /url: https://supabase.com/docs/reference/python/introduction
+                    - listitem [ref=e1656]:
+                      - link "C#" [ref=e1657] [cursor=pointer]:
+                        - /url: https://supabase.com/docs/reference/csharp/introduction
+                    - listitem [ref=e1658]:
+                      - link "Swift" [ref=e1659] [cursor=pointer]:
+                        - /url: https://supabase.com/docs/reference/swift/introduction
+                    - listitem [ref=e1660]:
+                      - link "Kotlin" [ref=e1661] [cursor=pointer]:
+                        - /url: https://supabase.com/docs/reference/kotlin/introduction
+                  - list [ref=e1662]:
+                    - listitem [ref=e1663]: From within the codebase using our packages.
+                  - generic [ref=e1664]:
+                    - heading "From another Codebase" [level=3] [ref=e1665]
+                    - 'link "Permalink: From another Codebase" [ref=e1666] [cursor=pointer]':
+                      - /url: "#from-another-codebase"
+                  - paragraph [ref=e1669]: "First, set up the necessary credentials in environment variables. For the example below:"
+                  - list [ref=e1670]:
+                    - listitem [ref=e1671]:
+                      - text: Navigate to settings in the ERP to generate an API key. Set this in
+                      - code [ref=e1672]: CARBON_API_KEY
+                    - listitem [ref=e1673]:
+                      - text: Get the Supabase URL to call (this is
+                      - code [ref=e1674]: SUPABASE_URL
+                      - text: in your
+                      - code [ref=e1675]: .env
+                      - text: if hosting locally, e.g.
+                      - link "http://localhost:54321" [ref=e1676] [cursor=pointer]:
+                        - /url: http://localhost:54321
+                      - text: ). Set this as
+                      - code [ref=e1677]: CARBON_API_URL
+                      - text: .
+                    - listitem [ref=e1678]:
+                      - text: Get the
+                      - code [ref=e1679]: SUPABASE_ANON_KEY
+                      - text: e.g. from your .env file. Set this as
+                      - code [ref=e1680]: CARBON_PUBLIC_KEY
+                      - text: .
+                  - paragraph [ref=e1681]:
+                    - text: If you're self-hosting you can also use the supabase service key instead of the public key for root access. In that case you don't need to include the
+                    - code [ref=e1682]: carbon-key
+                    - text: header.
+                  - generic [ref=e1683]:
+                    - generic [ref=e1684]: "import { Database } from \"@carbon/database\"; import { createClient } from \"@supabase/supabase-js\"; const apiKey = process.env.CARBON_API_KEY; const apiUrl = process.env.CARBON_API_URL; const publicKey = process.env.CARBON_PUBLIC_KEY; const carbon = createClient<Database>(apiUrl, publicKey, { global: { headers: { \"carbon-key\": apiKey, }, }, }); // returns items from the company associated with the api key const { data, error } = await carbon.from(\"item\").select(\"*\");"
+                    - button "Copy code to clipboard" [ref=e1686] [cursor=pointer]
+                  - generic [ref=e1690]:
+                    - heading "From the Monorepo" [level=3] [ref=e1691]
+                    - 'link "Permalink: From the Monorepo" [ref=e1692] [cursor=pointer]':
+                      - /url: "#from-the-monorepo"
+                  - generic [ref=e1695]:
+                    - generic [ref=e1696]: "import { getCarbonServiceRole } from \"@carbon/auth/client.server\"; const carbon = getCarbonServiceRole(); // returns all items across companies const { data, error } = await carbon.from(\"item\").select(\"*\"); // returns items from a specific company const companyId = \"xyz\"; const { data, error } = await carbon .from(\"item\") .select(\"*\") .eq(\"companyId\", companyId);"
+                    - button "Copy code to clipboard" [ref=e1698] [cursor=pointer]
+                  - generic [ref=e1702]:
+                    - heading "Translations" [level=2] [ref=e1703]
+                    - 'link "Permalink: Translations" [ref=e1704] [cursor=pointer]':
+                      - /url: "#translations"
+                  - paragraph [ref=e1707]:
+                    - text: In order to run
+                    - code [ref=e1708]: pnpm run translate
+                    - text: "you must first run:"
+                  - generic [ref=e1709]:
+                    - generic [ref=e1710]: brew install ollama brew services start ollama ollama pull llama3.2 curl http://localhost:11434/api/tags npx linguito config set \ llmSettings.provider=ollama \ llmSettings.url=http://127.0.0.1:11434/api
+                    - button "Copy code to clipboard" [ref=e1712] [cursor=pointer]
+                  - generic [ref=e1716]:
+                    - heading "Migration Notes" [level=2] [ref=e1717]
+                    - 'link "Permalink: Migration Notes" [ref=e1718] [cursor=pointer]':
+                      - /url: "#migration-notes"
+                  - generic [ref=e1721]:
+                    - heading "Trigger.dev to Inngest" [level=3] [ref=e1722]
+                    - 'link "Permalink: Trigger.dev to Inngest" [ref=e1723] [cursor=pointer]':
+                      - /url: "#triggerdev-to-inngest"
+                  - paragraph [ref=e1726]:
+                    - text: Background jobs have been migrated from
+                    - link "Trigger.dev" [ref=e1727] [cursor=pointer]:
+                      - /url: https://trigger.dev
+                    - text: to
+                    - link "Inngest" [ref=e1728] [cursor=pointer]:
+                      - /url: https://inngest.com
+                    - text: ". Key changes:"
+                  - list [ref=e1729]:
+                    - listitem [ref=e1730]:
+                      - strong [ref=e1731]: Job definitions
+                      - text: moved from
+                      - code [ref=e1732]: packages/jobs/trigger/
+                      - text: to
+                      - code [ref=e1733]: packages/jobs/src/inngest/functions/
+                    - listitem [ref=e1734]:
+                      - strong [ref=e1735]: Triggering jobs
+                      - text: from app code uses
+                      - code [ref=e1736]: trigger()
+                      - text: and
+                      - code [ref=e1737]: batchTrigger()
+                      - text: from
+                      - code [ref=e1738]: "@carbon/jobs"
+                      - text: instead of
+                      - code [ref=e1739]: tasks.trigger()
+                      - text: from
+                      - code [ref=e1740]: "@trigger.dev/sdk"
+                    - listitem [ref=e1741]:
+                      - strong [ref=e1742]: Inngest dev server
+                      - text: runs via
+                      - code [ref=e1743]: npx inngest-cli@latest dev -u http://localhost:3000/api/inngest
+                    - listitem [ref=e1744]:
+                      - strong [ref=e1745]: Environment variables
+                      - text: ":"
+                      - code [ref=e1746]: TRIGGER_SECRET_KEY
+                      - text: ","
+                      - code [ref=e1747]: TRIGGER_API_URL
+                      - text: ", and"
+                      - code [ref=e1748]: TRIGGER_PROJECT_ID
+                      - text: are no longer needed. Set
+                      - code [ref=e1749]: INNGEST_EVENT_KEY
+                      - text: and
+                      - code [ref=e1750]: INNGEST_SIGNING_KEY
+                      - text: instead (not required for local dev).
+                  - generic [ref=e1751]:
+                    - heading "Upstash to Local Redis" [level=3] [ref=e1752]
+                    - 'link "Permalink: Upstash to Local Redis" [ref=e1753] [cursor=pointer]':
+                      - /url: "#upstash-to-local-redis"
+                  - paragraph [ref=e1756]:
+                    - text: The caching layer (
+                    - code [ref=e1757]: "@carbon/kv"
+                    - text: ) no longer depends on Upstash. A standard Redis instance is used instead. The
+                    - code [ref=e1758]: REDIS_URL
+                    - text: environment variable still applies, but you can point it at any Redis-compatible server (including a local Docker container).
+                  - generic [ref=e1759]:
+                    - heading [level=3] [ref=e1760]:
+                      - text: Supabase CLI to docker compose (
+                      - code [ref=e1761]: crbn
+                      - text: )
+                    - 'link "Permalink: Supabase CLI to docker compose (crbn)" [ref=e1762] [cursor=pointer]':
+                      - /url: "#supabase-cli-to-docker-compose-crbn"
+                  - paragraph [ref=e1765]:
+                    - text: Local dev no longer relies on
+                    - code [ref=e1766]: supabase start
+                    - text: /
+                    - code [ref=e1767]: supabase stop
+                    - text: . The full backend stack (Postgres 15, GoTrue, Kong, Storage, Realtime, Studio, Inngest, Inbucket, edge-runtime) runs from
+                    - code [ref=e1768]: packages/dev/docker/docker-compose.dev.yml
+                    - text: under a per-worktree compose project (
+                    - code [ref=e1769]: carbon-<slug>
+                    - text: ), managed by
+                    - code [ref=e1770]: crbn up
+                    - text: /
+                    - code [ref=e1771]: down
+                    - text: /
+                    - code [ref=e1772]: reset
+                    - text: ". Ports are allocated dynamically per worktree so multiple branches can run side-by-side. Key changes:"
+                  - list [ref=e1773]:
+                    - listitem [ref=e1774]:
+                      - code [ref=e1775]: pnpm db:start
+                      - text: /
+                      - code [ref=e1776]: db:stop
+                      - text: /
+                      - code [ref=e1777]: db:kill
+                      - text: /
+                      - code [ref=e1778]: db:build
+                      - text: are removed — use
+                      - code [ref=e1779]: crbn up
+                      - text: /
+                      - code [ref=e1780]: down
+                      - text: /
+                      - code [ref=e1781]: reset
+                      - text: .
+                    - listitem [ref=e1782]:
+                      - code [ref=e1783]: .env.local
+                      - text: is generated by
+                      - code [ref=e1784]: crbn up
+                      - text: (worktree-specific URLs, ports, JWT secret, anon/service keys). Genuine secrets stay in
+                      - code [ref=e1785]: .env
+                      - text: .
+                    - listitem [ref=e1786]:
+                      - code [ref=e1787]: pnpm db:migrate
+                      - text: now drives
+                      - code [ref=e1788]: supabase migration up --db-url $SUPABASE_DB_URL
+                      - text: ; it falls back to the CLI's linked-project mode when
+                      - code [ref=e1789]: SUPABASE_DB_URL
+                      - text: is unset.
+                    - listitem [ref=e1790]:
+                      - code [ref=e1791]: pnpm db:types
+                      - text: generates types directly from
+                      - code [ref=e1792]: $SUPABASE_DB_URL
+                      - text: (no
+                      - code [ref=e1793]: supabase gen types --local
+                      - text: ).
+          - generic [ref=e1796]:
+            - generic [ref=e1797]:
+              - heading "About" [level=2] [ref=e1798]
+              - paragraph [ref=e1799]: Carbon is an open source ERP, MES and QMS for manufacturing. Perfect for complex assembly, contract manufacturing, and configure to order manufacturing.
+              - generic "https://docs.carbon.ms" [ref=e1803]:
+                - link "docs.carbon.ms" [ref=e1804] [cursor=pointer]:
+                  - /url: https://docs.carbon.ms
+              - heading "Topics" [level=3] [ref=e1805]
+              - generic [ref=e1806]:
+                - link "agentic-platform" [ref=e1807] [cursor=pointer]:
+                  - /url: /topics/agentic-platform
+                - link "assemblyline" [ref=e1808] [cursor=pointer]:
+                  - /url: /topics/assemblyline
+                - link "business" [ref=e1809] [cursor=pointer]:
+                  - /url: /topics/business
+                - link "erp" [ref=e1810] [cursor=pointer]:
+                  - /url: /topics/erp
+                - link "lean" [ref=e1811] [cursor=pointer]:
+                  - /url: /topics/lean
+                - link "management" [ref=e1812] [cursor=pointer]:
+                  - /url: /topics/management
+                - link "manufacturing" [ref=e1813] [cursor=pointer]:
+                  - /url: /topics/manufacturing
+                - link "mcp-server" [ref=e1814] [cursor=pointer]:
+                  - /url: /topics/mcp-server
+                - link "mes" [ref=e1815] [cursor=pointer]:
+                  - /url: /topics/mes
+                - link "postgresql" [ref=e1816] [cursor=pointer]:
+                  - /url: /topics/postgresql
+                - link "qms" [ref=e1817] [cursor=pointer]:
+                  - /url: /topics/qms
+                - link "react-router" [ref=e1818] [cursor=pointer]:
+                  - /url: /topics/react-router
+                - link "supabase" [ref=e1819] [cursor=pointer]:
+                  - /url: /topics/supabase
+                - link "typescript" [ref=e1820] [cursor=pointer]:
+                  - /url: /topics/typescript
+              - heading "Resources" [level=3] [ref=e1821]
+              - link "Readme" [ref=e1823] [cursor=pointer]:
+                - /url: "#readme-ov-file"
+              - link "License" [ref=e1827] [cursor=pointer]:
+                - /url: "#License-1-ov-file"
+              - heading "Contributing" [level=3] [ref=e1830]
+              - link "Contributing" [ref=e1832] [cursor=pointer]:
+                - /url: "#contributing-ov-file"
+              - heading "Security policy" [level=3] [ref=e1835]
+              - link "Security policy" [ref=e1837] [cursor=pointer]:
+                - /url: "#security-ov-file"
+              - link "Activity" [ref=e1841] [cursor=pointer]:
+                - /url: /crbnos/carbon/activity
+              - link "Custom properties" [ref=e1845] [cursor=pointer]:
+                - /url: /crbnos/carbon/custom-properties
+              - heading "Stars" [level=3] [ref=e1848]
+              - link [ref=e1850] [cursor=pointer]:
+                - /url: /crbnos/carbon/stargazers
+                - strong [ref=e1854]: 2.3k
+                - text: stars
+              - heading "Watchers" [level=3] [ref=e1855]
+              - link [ref=e1857] [cursor=pointer]:
+                - /url: /crbnos/carbon/watchers
+                - strong [ref=e1861]: "16"
+                - text: watching
+              - heading "Forks" [level=3] [ref=e1862]
+              - link [ref=e1864] [cursor=pointer]:
+                - /url: /crbnos/carbon/forks
+                - strong [ref=e1868]: "324"
+                - text: forks
+              - link "Report repository" [ref=e1870] [cursor=pointer]:
+                - /url: /contact/report-content?content_url=https%3A%2F%2Fgithub.com%2Fcrbnos%2Fcarbon&report=crbnos+%28user%29
+            - generic [ref=e1871]:
+              - heading "Contributors (36)" [level=2] [ref=e1872]:
+                - generic [ref=e1873]:
+                  - link "Contributors" [ref=e1874] [cursor=pointer]:
+                    - /url: /crbnos/carbon/graphs/contributors
+                  - generic [ref=e1875]: "36"
+                  - generic [ref=e1876]: (36)
+              - list [ref=e1877]:
+                - listitem [ref=e1878]:
+                  - link [ref=e1879] [cursor=pointer]:
+                    - /url: /barbinbrad
+                    - img "@barbinbrad" [ref=e1880]
+                - listitem [ref=e1881]:
+                  - link [ref=e1882] [cursor=pointer]:
+                    - /url: /sidwebworks
+                    - img "@sidwebworks" [ref=e1883]
+                - listitem [ref=e1884]:
+                  - link [ref=e1885] [cursor=pointer]:
+                    - /url: /jeebeez
+                    - img "@jeebeez" [ref=e1886]
+                - listitem [ref=e1887]:
+                  - link [ref=e1888] [cursor=pointer]:
+                    - /url: /RobCarbonOS
+                    - img "@RobCarbonOS" [ref=e1889]
+                - listitem [ref=e1890]:
+                  - link [ref=e1891] [cursor=pointer]:
+                    - /url: /naveenkash
+                    - img "@naveenkash" [ref=e1892]
+                - listitem [ref=e1893]:
+                  - link [ref=e1894] [cursor=pointer]:
+                    - /url: /claude
+                    - img "@claude" [ref=e1895]
+                - listitem [ref=e1896]:
+                  - link [ref=e1897] [cursor=pointer]:
+                    - /url: /aashu0148
+                    - img "@aashu0148" [ref=e1898]
+                - listitem [ref=e1899]:
+                  - link [ref=e1900] [cursor=pointer]:
+                    - /url: /sidgaikwad
+                    - img "@sidgaikwad" [ref=e1901]
+                - listitem [ref=e1902]:
+                  - link [ref=e1903] [cursor=pointer]:
+                    - /url: /ayushsoni1010
+                    - img "@ayushsoni1010" [ref=e1904]
+                - listitem [ref=e1905]:
+                  - link [ref=e1906] [cursor=pointer]:
+                    - /url: /carbon-agent
+                    - img "@carbon-agent" [ref=e1907]
+                - listitem [ref=e1908]:
+                  - link [ref=e1909] [cursor=pointer]:
+                    - /url: /chasefostermfg
+                    - img "@chasefostermfg" [ref=e1910]
+                - listitem [ref=e1911]:
+                  - link [ref=e1912] [cursor=pointer]:
+                    - /url: /edsammy
+                    - img "@edsammy" [ref=e1913]
+                - listitem [ref=e1914]:
+                  - link [ref=e1915] [cursor=pointer]:
+                    - /url: /notbokuto
+                    - img "@notbokuto" [ref=e1916]
+                - listitem [ref=e1917]:
+                  - link [ref=e1918] [cursor=pointer]:
+                    - /url: /kartikbajaj1
+                    - img "@kartikbajaj1" [ref=e1919]
+              - link "+ 22 contributors" [ref=e1921] [cursor=pointer]:
+                - /url: /crbnos/carbon/graphs/contributors
+            - generic [ref=e1922]:
+              - heading "Languages" [level=2] [ref=e1923]
+              - generic [ref=e1925]:
+                - 'progressbar "TypeScript: 85.7%" [ref=e1926]'
+                - 'progressbar "PLpgSQL: 8.8%" [ref=e1927]'
+                - 'progressbar "JavaScript: 2.9%" [ref=e1928]'
+                - 'progressbar "Rust: 1.7%" [ref=e1929]'
+                - 'progressbar "CSS: 0.4%" [ref=e1930]'
+                - 'progressbar "Shell: 0.3%" [ref=e1931]'
+                - 'progressbar "Other: 0.2%" [ref=e1932]'
+              - list [ref=e1933]:
+                - listitem [ref=e1934]:
+                  - link "TypeScript 85.7%" [ref=e1935] [cursor=pointer]:
+                    - /url: /crbnos/carbon/search?l=typescript
+                    - generic [ref=e1937]: TypeScript
+                    - generic [ref=e1938]: 85.7%
+                - listitem [ref=e1939]:
+                  - link "PLpgSQL 8.8%" [ref=e1940] [cursor=pointer]:
+                    - /url: /crbnos/carbon/search?l=plpgsql
+                    - generic [ref=e1942]: PLpgSQL
+                    - generic [ref=e1943]: 8.8%
+                - listitem [ref=e1944]:
+                  - link "JavaScript 2.9%" [ref=e1945] [cursor=pointer]:
+                    - /url: /crbnos/carbon/search?l=javascript
+                    - generic [ref=e1947]: JavaScript
+                    - generic [ref=e1948]: 2.9%
+                - listitem [ref=e1949]:
+                  - link "Rust 1.7%" [ref=e1950] [cursor=pointer]:
+                    - /url: /crbnos/carbon/search?l=rust
+                    - generic [ref=e1952]: Rust
+                    - generic [ref=e1953]: 1.7%
+                - listitem [ref=e1954]:
+                  - link "CSS 0.4%" [ref=e1955] [cursor=pointer]:
+                    - /url: /crbnos/carbon/search?l=css
+                    - generic [ref=e1957]: CSS
+                    - generic [ref=e1958]: 0.4%
+                - listitem [ref=e1959]:
+                  - link "Shell 0.3%" [ref=e1960] [cursor=pointer]:
+                    - /url: /crbnos/carbon/search?l=shell
+                    - generic [ref=e1962]: Shell
+                    - generic [ref=e1963]: 0.3%
+                - listitem [ref=e1964]:
+                  - link "Other 0.2%" [ref=e1965] [cursor=pointer]:
+                    - /url: /crbnos/carbon/search?l=Other
+                    - generic [ref=e1967]: Other
+                    - generic [ref=e1968]: 0.2%
+    - contentinfo [ref=e1970]:
+      - heading "Footer" [level=2] [ref=e1971]
+      - generic [ref=e1972]:
+        - generic [ref=e1973]:
+          - link "GitHub Homepage" [ref=e1974] [cursor=pointer]:
+            - /url: https://github.com
+          - generic [ref=e1977]: © 2026 GitHub, Inc.
+        - navigation "Footer" [ref=e1978]:
+          - heading "Footer navigation" [level=3] [ref=e1979]
+          - list "Footer navigation" [ref=e1980]:
+            - listitem [ref=e1981]:
+              - link "Terms" [ref=e1982] [cursor=pointer]:
+                - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+            - listitem [ref=e1983]:
+              - link "Privacy" [ref=e1984] [cursor=pointer]:
+                - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+            - listitem [ref=e1985]:
+              - link "Security" [ref=e1986] [cursor=pointer]:
+                - /url: https://github.com/security
+            - listitem [ref=e1987]:
+              - link "Status" [ref=e1988] [cursor=pointer]:
+                - /url: https://www.githubstatus.com/
+            - listitem [ref=e1989]:
+              - link "Community" [ref=e1990] [cursor=pointer]:
+                - /url: https://github.community/
+            - listitem [ref=e1991]:
+              - link "Docs" [ref=e1992] [cursor=pointer]:
+                - /url: https://docs.github.com/
+            - listitem [ref=e1993]:
+              - link "Contact" [ref=e1994] [cursor=pointer]:
+                - /url: https://support.github.com?tags=dotcom-footer
+            - listitem [ref=e1995]:
+              - button "Manage cookies" [ref=e1997] [cursor=pointer]
+            - listitem [ref=e1998]:
+              - button "Do not share my personal information" [ref=e2000] [cursor=pointer]

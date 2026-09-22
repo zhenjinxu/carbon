@@ -78,7 +78,7 @@ import {
 } from "./components";
 import type { ColumnFilter } from "./components/Filter/types";
 import { useFilters } from "./components/Filter/useFilters";
-import type { ColumnSizeMap } from "./types";
+import type { ColumnSizeMap, CsvExportColumn } from "./types";
 import { getAccessorKey, updateNestedProperty } from "./utils";
 
 interface TableProps<T extends object> {
@@ -410,6 +410,31 @@ const Table = <T extends object>({
     [columns, translateLabel]
   );
 
+  const columnExports = useMemo(
+    () =>
+      columns.reduce<Record<string, CsvExportColumn<T>[]>>((acc, column) => {
+        const accessorKey: string | undefined = getAccessorKey(column);
+        if (accessorKey && column.header && typeof column.header === "string") {
+          const csvExport = column.meta?.csvExport;
+          return {
+            ...acc,
+            [accessorKey]: csvExport?.length
+              ? csvExport.map((exportColumn) => ({
+                  ...exportColumn,
+                  header: translateLabel(exportColumn.header)
+                }))
+              : [
+                  {
+                    header: translateLabel(column.header),
+                    accessorKey
+                  }
+                ]
+          };
+        }
+        return acc;
+      }, {}),
+    [columns, translateLabel]
+  );
   const internalColumns = useMemo(() => {
     let result: ColumnDef<T>[] = [];
     if (renderExpandedRow) {
@@ -866,6 +891,7 @@ const Table = <T extends object>({
     >
       <TableHeader
         columnAccessors={columnAccessors}
+        columnExports={columnExports}
         columnOrder={columnOrder}
         columnPinning={columnPinning}
         columnVisibility={columnVisibility}

@@ -23,6 +23,7 @@
     "typescript": "catalog:"
   },
   "exports": {
+    "./ai-routing-drawing": "./src/ai-routing-drawing.ts",
     "./events": "./src/events.ts",
     "./inngest": "./src/inngest/client.ts",
     "./resend.server": "./src/resend.server.ts",

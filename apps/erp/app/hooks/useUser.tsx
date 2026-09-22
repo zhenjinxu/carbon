@@ -8,6 +8,7 @@ type PersonalData = {
   lastName: string;
   avatarUrl: string | null;
   admin: boolean;
+  developer: boolean | null;
 };
 
 type Company = {
@@ -100,6 +101,7 @@ function isUser(value: any): value is User {
     typeof value.email === "string" &&
     typeof value.firstName === "string" &&
     typeof value.lastName === "string" &&
+    (typeof value.developer === "boolean" || value.developer === null) &&
     "avatarUrl" in value
   );
 }

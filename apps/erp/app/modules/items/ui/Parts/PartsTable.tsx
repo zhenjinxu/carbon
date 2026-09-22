@@ -31,17 +31,19 @@ import {
   LuBookMarked,
   LuCalendar,
   LuCheck,
+  LuFileSpreadsheet,
   LuGitPullRequestArrow,
   LuGroup,
   LuLoaderCircle,
   LuPencil,
+  LuRefreshCw,
   LuTag,
   LuTrash,
   LuUser
 } from "react-icons/lu";
 import { RxCodesandboxLogo } from "react-icons/rx";
 import { TbTargetArrow } from "react-icons/tb";
-import { Link, useFetcher, useNavigate } from "react-router";
+import { Link, useFetcher, useNavigate, useRevalidator } from "react-router";
 import {
   EmployeeAvatar,
   Hyperlink,
@@ -54,7 +56,7 @@ import {
 import { useItemPostingGroups } from "~/components/Form/ItemPostingGroup";
 import { ReplenishmentSystemIcon } from "~/components/Icons";
 import { ConfirmDelete } from "~/components/Modals";
-import { useDateFormatter, usePermissions } from "~/hooks";
+import { useDateFormatter, usePermissions, useUser } from "~/hooks";
 import { useCustomColumns } from "~/hooks/useCustomColumns";
 import { methodType } from "~/modules/shared";
 import type { action } from "~/routes/x+/items+/update";
@@ -65,6 +67,8 @@ import {
   itemTrackingTypes
 } from "../../items.models";
 import type { Part } from "../../types";
+import PartsBulkDeleteModal from "./PartsBulkDeleteModal";
+import { PartsImportModal } from "./PartsImportModal";
 
 type PartsTableProps = {
   data: Part[];
@@ -76,7 +80,8 @@ const PartsTable = memo(({ data, tags, count }: PartsTableProps) => {
   const { t } = useLingui();
   const navigate = useNavigate();
   const permissions = usePermissions();
-  const { formatDate } = useDateFormatter();
+  const { developer } = useUser();
+  const { formatDate, formatDateTime } = useDateFormatter();
 
   const translateReplenishment = useCallback(
     (v: string) =>
@@ -105,7 +110,16 @@ const PartsTable = memo(({ data, tags, count }: PartsTableProps) => {
   );
 
   const deleteItemModal = useDisclosure();
+  const bulkDeleteModal = useDisclosure();
+  const importModal = useDisclosure();
+  const revalidator = useRevalidator();
+  const u8Fetcher = useFetcher<{
+    data?: { enriched?: number; missingU8?: string[] } | null;
+    error?: { message: string } | null;
+  }>();
   const [selectedItem, setSelectedItem] = useState<Part | null>(null);
+  const [selectedParts, setSelectedParts] = useState<Part[]>([]);
+  const [selectedPartIds, setSelectedPartIds] = useState<string[]>([]);
 
   const [people] = usePeople();
   const itemPostingGroups = useItemPostingGroups();
@@ -134,9 +148,59 @@ const PartsTable = memo(({ data, tags, count }: PartsTableProps) => {
           </HStack>
         ),
         meta: {
+          csvExport: [
+            {
+              header: t`Part ID`,
+              accessorKey: "readableIdWithRevision",
+              preserveAsText: true
+            },
+            { header: t`Name`, accessorKey: "name" }
+          ],
           icon: <LuBookMarked />
         }
       },
+      {
+        accessorKey: "createdAt",
+        header: t`Created At`,
+        cell: (item) => formatDateTime(item.getValue<string>()),
+        meta: {
+          icon: <LuCalendar />
+        }
+      },
+      {
+        id: "createdBy",
+        header: t`Created By`,
+        cell: ({ row }) => (
+          <EmployeeAvatar employeeId={row.original.createdBy} />
+        ),
+        meta: {
+          filter: {
+            type: "static",
+            options: people.map((employee) => ({
+              value: employee.id,
+              label: employee.name
+            }))
+          },
+          icon: <LuUser />
+        }
+      },
+      {
+        id: "u8InfoStatus",
+        header: "U8 information",
+        cell: () => null,
+        meta: {
+          filter: {
+            type: "static",
+            options: [
+              { value: "no-bom", label: "No BOM information" },
+              { value: "no-routing", label: "No routing information" }
+            ]
+          },
+
+          icon: <LuRefreshCw />
+        }
+      },
+
       {
         accessorKey: "description",
         header: t`Description`,
@@ -292,31 +356,6 @@ const PartsTable = memo(({ data, tags, count }: PartsTableProps) => {
         }
       },
       {
-        id: "createdBy",
-        header: t`Created By`,
-        cell: ({ row }) => (
-          <EmployeeAvatar employeeId={row.original.createdBy} />
-        ),
-        meta: {
-          filter: {
-            type: "static",
-            options: people.map((employee) => ({
-              value: employee.id,
-              label: employee.name
-            }))
-          },
-          icon: <LuUser />
-        }
-      },
-      {
-        accessorKey: "createdAt",
-        header: t`Created At`,
-        cell: (item) => formatDate(item.getValue<string>()),
-        meta: {
-          icon: <LuCalendar />
-        }
-      },
-      {
         id: "updatedBy",
         header: t`Updated By`,
         cell: ({ row }) => (
@@ -352,16 +391,52 @@ const PartsTable = memo(({ data, tags, count }: PartsTableProps) => {
     translateMethodType,
     translateReplenishment,
     translateTrackingType,
-    formatDate
+    formatDate,
+    formatDateTime
   ]);
 
   const fetcher = useFetcher<typeof action>();
+  const deleteFetcher = useFetcher<{
+    data?: { deleted?: number } | null;
+    error?: { message: string } | null;
+  }>();
   useEffect(() => {
     if (fetcher.data?.error) {
       toast.error(fetcher.data.error.message);
     }
   }, [fetcher.data]);
 
+  useEffect(() => {
+    if (deleteFetcher.data?.error) {
+      toast.error(deleteFetcher.data.error.message);
+    } else if (deleteFetcher.data?.data?.deleted) {
+      toast.success(t`Success`);
+      bulkDeleteModal.onClose();
+      setSelectedParts([]);
+      setSelectedPartIds([]);
+      revalidator.revalidate();
+    }
+  }, [bulkDeleteModal.onClose, deleteFetcher.data, revalidator, t]);
+
+  useEffect(() => {
+    if (u8Fetcher.data?.error) {
+      toast.error(u8Fetcher.data.error.message);
+    } else if (u8Fetcher.data?.data) {
+      const missing = u8Fetcher.data.data.missingU8?.length ?? 0;
+      toast.success(
+        missing > 0
+          ? "Enriched " +
+              (u8Fetcher.data.data.enriched ?? 0) +
+              " part(s); " +
+              missing +
+              " part(s) were not found in U8."
+          : "Enriched " +
+              (u8Fetcher.data.data.enriched ?? 0) +
+              " part(s) from U8."
+      );
+      revalidator.revalidate();
+    }
+  }, [u8Fetcher.data, revalidator]);
   // biome-ignore lint/correctness/useExhaustiveDependencies: suppressed due to migration
   const onBulkUpdate = useCallback(
     (
@@ -386,6 +461,20 @@ const PartsTable = memo(({ data, tags, count }: PartsTableProps) => {
     },
 
     []
+  );
+
+  const canBulkDeleteParts =
+    developer === true && permissions.can("delete", "parts");
+
+  const openBulkDeleteModal = useCallback(
+    (parts: Part[]) => {
+      const itemIds = parts.flatMap((part) => (part.id ? [part.id] : []));
+      if (itemIds.length === 0) return;
+
+      setSelectedPartIds(itemIds);
+      bulkDeleteModal.onOpen();
+    },
+    [bulkDeleteModal]
   );
 
   const renderActions = useCallback(
@@ -488,6 +577,40 @@ const PartsTable = memo(({ data, tags, count }: PartsTableProps) => {
                 </DropdownMenuSubContent>
               </DropdownMenuPortal>
             </DropdownMenuSub>
+            <DropdownMenuItem
+              disabled={
+                !permissions.can("update", "parts") ||
+                u8Fetcher.state !== "idle"
+              }
+              onClick={() => {
+                const formData = new FormData();
+                formData.append("operation", "u8Enrich");
+                selectedRows.forEach((row) => {
+                  if (row.id) formData.append("items", row.id);
+                });
+                u8Fetcher.submit(formData, {
+                  method: "post",
+                  action: path.to.parts
+                });
+              }}
+            >
+              <DropdownMenuIcon icon={<LuRefreshCw />} />
+              <span>
+                <Trans>U8 information completion</Trans>
+              </span>
+            </DropdownMenuItem>
+            {canBulkDeleteParts && (
+              <DropdownMenuItem
+                destructive
+                disabled={selectedRows.length > 100}
+                onClick={() => openBulkDeleteModal(selectedRows)}
+              >
+                <DropdownMenuIcon icon={<LuTrash />} />
+                <span>
+                  <Trans>Delete</Trans>
+                </span>
+              </DropdownMenuItem>
+            )}
           </DropdownMenuGroup>
         </DropdownMenuContent>
       );
@@ -497,7 +620,11 @@ const PartsTable = memo(({ data, tags, count }: PartsTableProps) => {
       itemPostingGroups,
       translateMethodType,
       translateReplenishment,
-      translateTrackingType
+      translateTrackingType,
+      permissions,
+      u8Fetcher,
+      canBulkDeleteParts,
+      openBulkDeleteModal
     ]
   );
 
@@ -561,10 +688,9 @@ const PartsTable = memo(({ data, tags, count }: PartsTableProps) => {
         defaultColumnVisibility={{
           description: false,
           active: false,
-          createdBy: false,
-          createdAt: false,
           updatedBy: false,
-          updatedAt: false
+          updatedAt: false,
+          u8InfoStatus: false
         }}
         importCSV={[
           {
@@ -573,24 +699,59 @@ const PartsTable = memo(({ data, tags, count }: PartsTableProps) => {
           }
         ]}
         primaryAction={
-          permissions.can("create", "parts") && (
+          ((canBulkDeleteParts && selectedParts.length > 0) ||
+            permissions.can("create", "parts")) && (
             <div className="flex items-center gap-2">
-              <Button variant="secondary" leftIcon={<LuGroup />} asChild>
-                <Link to={path.to.itemPostingGroups}>
-                  <Trans>Item Groups</Trans>
-                </Link>
-              </Button>
-              <New label={t`Part`} to={path.to.newPart} />
+              {canBulkDeleteParts && selectedParts.length > 0 && (
+                <Button
+                  variant="destructive"
+                  leftIcon={<LuTrash />}
+                  disabled={selectedParts.length > 100}
+                  onClick={() => openBulkDeleteModal(selectedParts)}
+                >
+                  <Trans>Delete</Trans> {selectedParts.length}
+                </Button>
+              )}
+              {permissions.can("create", "parts") && (
+                <>
+                  <Button
+                    variant="secondary"
+                    leftIcon={<LuFileSpreadsheet />}
+                    onClick={importModal.onOpen}
+                  >
+                    <Trans>Import Excel</Trans>
+                  </Button>
+                  <Button variant="secondary" leftIcon={<LuGroup />} asChild>
+                    <Link to={path.to.itemPostingGroups}>
+                      <Trans>Item Groups</Trans>
+                    </Link>
+                  </Button>
+                  <New label={t`Part`} to={path.to.newPart} />
+                </>
+              )}
             </div>
           )
         }
+        onSelectedRowsChange={setSelectedParts}
         renderActions={renderActions}
         renderContextMenu={renderContextMenu}
         title={t`Parts`}
         table="part"
         withSavedView
+        getRowId={(row) => row.id!}
         withSelectableRows
       />
+      {importModal.isOpen && <PartsImportModal onClose={importModal.onClose} />}
+      {bulkDeleteModal.isOpen && selectedPartIds.length > 0 && (
+        <PartsBulkDeleteModal
+          itemIds={selectedPartIds}
+          fetcher={deleteFetcher}
+          onClose={() => {
+            bulkDeleteModal.onClose();
+            setSelectedPartIds([]);
+          }}
+        />
+      )}
       {selectedItem && selectedItem.id && (
         <ConfirmDelete
           action={path.to.deleteItem(selectedItem.id!)}

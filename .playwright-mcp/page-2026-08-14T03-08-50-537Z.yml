@@ -1,0 +1,14 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - img "Carbon Logo" [ref=e4]
+      - blockquote [ref=e6]:
+        - heading "让我们构建一些东西 ..." [level=2] [ref=e7]:
+          - text: 让我们构建一些东西
+          - generic [ref=e8]: ...
+    - generic [ref=e10]:
+      - img "Carbon 标志" [ref=e12]
+      - generic [ref=e14]:
+        - heading "让我们构建一些东西 🚀" [level=2] [ref=e15]
+        - button "登录" [ref=e16] [cursor=pointer]
+  - region "Notifications alt+T"

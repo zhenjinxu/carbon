@@ -13,6 +13,7 @@
     "@carbon/stripe": "workspace:*",
     "@carbon/utils": "workspace:*",
     "@internationalized/date": "catalog:",
+    "@napi-rs/canvas": "0.1.100",
     "@react-email/components": "catalog:",
     "@react-pdf/renderer": "catalog:",
     "@slack/web-api": "catalog:",
@@ -24,6 +25,7 @@
     "kysely": "catalog:",
     "nanoid": "catalog:",
     "nodemailer": "6.10.1",
+    "pdfjs-dist": "5.4.296",
     "react": "catalog:",
     "react-pdf": "catalog:",
     "resend": "3.5.0",
@@ -37,7 +39,8 @@
     "@types/nodemailer": "6.4.23",
     "@types/react": "catalog:",
     "tsx": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   },
   "exports": {
     ".": "./src/index.ts",
@@ -50,6 +53,7 @@
   "private": true,
   "scripts": {
     "dev:jobs": "pnpm dlx inngest-cli@latest dev --no-discovery -u http://localhost:3000/api/inngest",
+    "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "type": "module",

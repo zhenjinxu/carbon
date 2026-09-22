@@ -1,4 +1,4 @@
-# Lessons
+﻿# Lessons
 
 Patterns learned from corrections. Review at the start of each session.
 
@@ -85,6 +85,11 @@ Patterns learned from corrections. Review at the start of each session.
 
 - `.upsert({ createdBy, updatedBy, ... }, { onConflict: "itemId" })` sets both `createdBy` and `updatedBy` via `ON CONFLICT DO UPDATE SET ... = EXCLUDED....`, which overwrites `createdBy` on every update. When audit semantics matter, do an explicit `SELECT ... maybeSingle()` + branch on existence: `INSERT` sets `createdBy`, `UPDATE` sets `updatedBy`/`updatedAt`. `upsertItemShelfLife` follows this pattern.
 
+## Batch writes with JSONB/array columns need explicit SQL casts
+
+- Evidence: the AI Routing second-batch dataset writer initially failed with `invalid input syntax for type json` when nested snapshot objects and arrays were bound through the generic query builder; switching to `sql` with `JSON.stringify(...)::jsonb` and `::text[]` casts made the transaction succeed and wrote 12 rows.
+- Rule: when a batch insert/update targets JSONB or array columns and the generic bind path has not been proven for that shape, use the Carbon persistence pattern with explicit casts or the `asJsonb` helper from an existing module. Do not assume a successful bind on scalar columns proves the nested snapshot payload is safe.
+- Verification: the patched dataset writer inserted 8 Training and 4 Evaluation `aiRoutingSample` rows in one transaction, with four locked Evaluation rows and no formal routing changes.
 ## ERP app has no vitest infrastructure
 
 - `apps/erp` has no vitest config and no tests. Adding unit tests for validators there requires setting up vitest + mocking the supabase client — not a 5-minute job. If a task says "add validator tests", the estimate should include test-infrastructure setup unless `packages/*` (which does have vitest) is the right home for the pure function.
@@ -175,6 +180,11 @@ Patterns learned from corrections. Review at the start of each session.
   2. React Router 的缓存/生成类型是否需要清理
   3. 是否需要完全避免使用 `ErrorBoundary` 导出，改用其他方式处理错误
 
+## Do not bundle git housekeeping with software fixes
+
+- When the active task is a software fix, leave push/commit/untracked-file cleanup/history housekeeping alone unless the user explicitly asks for it. Report code and verification status only; git cleanup can wait until the user says the changes are mature enough.
+
+
 ## WodiMES full import requires a stable source window or a consistent snapshot
 
 - Two transaction-scoped `node scripts/import-wodimes.cjs --rollback` runs on 2026-07-17 reached the full write path but safely rolled back after 174s and 160s because `mes_proc_order_details` changed before the importer's final source-signature check. Carbon target counts and latest successful run remained unchanged after both attempts.
@@ -209,6 +219,11 @@ Patterns learned from corrections. Review at the start of each session.
 - A failed fetcher POST to `/refresh-session` previously used the request path to build `redirectTo`, so the login page sent the user back to the internal refresh endpoint instead of a usable screen.
 - On refresh failure, preserve cookie cleanup and token validation, but map the internal refresh endpoint to a fixed authenticated root path. Keep the original requested path only for real protected page requests.
 - Verify both paths with browser automation: an invalid/cleared session must reach `login?redirectTo=/x`, and a new real user session must receive a successful refresh response without navigation or console errors.
+
+## Keep Codex task artifacts inside the project work directory
+
+- Codex-generated logs, PID files, temporary SQL, patches, and similar operational artifacts must be created under `D:\Object\carbon\.codex\work`, not in `C:\Users\zhenjin_xu` or the Carbon repository root.
+- Use task-specific names or subdirectories under `.codex/work/`, keep the directory ignored by Git, and remove artifacts when they are no longer needed.
 
 ## Radix triggers around existing buttons must use `asChild`
 
@@ -284,3 +299,127 @@ Patterns learned from corrections. Review at the start of each session.
 - Restarting can only load source, image, or schema changes that were actually made. A confirmed root cause is not a fix, and a service restart cannot repair an unchanged application or a missing database object.
 - Before asking the user to retest, record the concrete source/database changes, rebuild or reload the affected runtime, and execute the reported interaction end to end. If work remains diagnosis-only, state that the behavior is still expected to fail.
 - For settings metadata, distinguish global registries from tenant-aware projections. If a required projection is missing from a restored database, restore the view, security mode, grants, and PostgREST cache instead of substituting a base table with a different row shape.
+
+## Distinguish an operator shutdown from a runtime crash before changing the model setup
+
+- A disappeared local model process is not evidence of an out-of-memory failure or a bad model. Check the application's shutdown log, process start time, listener, and health endpoint, then confirm operator actions when available.
+- The 2026-08-05 MegaMem pilot interruption was caused by the user accidentally exiting Ollama. Its logs showed an orderly desktop/server shutdown, and the restarted service returned the expected local models. Resume from the last committed Episode without changing model limits or retrying already committed notes.
+- Keep failed or interrupted attempts in a diagnostic audit list separate from successful graph entries so recovery does not create duplicate Episodes or misstate completion.
+## A successful graph command must satisfy graph postconditions
+
+- A zero exit code and a truthy Graphiti result prove only that the Episode call returned. MegaMem 1.7.6 can report success while creating an Episode with zero entities, zero MENTIONS, and zero provenance relationships.
+- Preserve entity and edge counts in the sync ledger. Require an Episode UUID and at least one extracted entity before recording success, then query the graph for UUID agreement and orphan nodes after each commit.
+- If an empty Episode is found, stop the batch, verify the exact UUID and that it has no relationships, move the entry to the diagnostic attempt log, and delete only that audited empty node before retrying.
+## Knowledge-graph timestamps must be timezone-aware before storage
+
+- A naive local `datetime.now()` followed by `replace(tzinfo=UTC)` does not convert time; it relabels the wall clock and can hide fresh Episodes from reference-time queries for the local UTC offset.
+- Generate fallback timestamps with `datetime.now(timezone.utc)`. For parsed date/time metadata, establish the intended timezone explicitly before Graphiti receives it.
+- Verify the runtime behavior through `get_episodes`, not only direct Neo4j counts, and reject a completed sync when any current Episode has a future `valid_at` without an explicit future source date.
+
+## Validate online structured output as data, not merely JSON
+
+- OpenAI-compatible providers may reject `response_format` or return the supplied JSON Schema itself. Valid JSON is not proof that the payload is a valid response instance.
+- Use the provider's compatible mode, inject the Pydantic schema as instructions, validate every returned object with the response model, and issue bounded corrective retries with input-free validation errors.
+- Keep the failed attempt in the audit ledger and verify no uncommitted Episode remains before retrying the source note.
+
+## Report semantic search and deterministic retrieval separately
+
+- More extracted entities do not guarantee good Chinese semantic recall when the embedding model is poorly matched to the query language. Measure the exact Top-K path before blaming extraction.
+- A bounded lexical fallback over scoped Episode bodies is acceptable when it ranks only from the user question and preserves exact source provenance, but its score must not be reported as semantic-vector success.
+- Record both metrics, the retrieval mode, latency, and repeated result-set stability so a later multilingual embedding upgrade can be compared honestly.
+
+## Lingui pre-commit hooks can rewrite unrelated or byte-pinned files
+
+- Evidence: the Ontology Phase A commit hook ran lingui:extract, lingui:compile, and strip-po-headers, deleting the content of 22 locale catalogs; lint-staged also reformatted the byte-pinned ontology snapshot and broke its manifest hash.
+- Rule: before committing generated or byte-pinned Ontology artifacts, inspect the hook output and verify the staged snapshot hash and unrelated locale boundary. Use git commit --no-verify only after the required package tests and static checks have passed, then record the reason in the commit review.
+- Recovery: restore the exact parent locale files and the canonical snapshot bytes, verify the combined commit diff has no locale net change, and rerun snapshot verification.
+
+## Keep project-snapshot HTTP separate from future company-live authority
+
+- The local Context API is loopback-only and unauthenticated; its response schemas and runtime guard must accept project_snapshot only. A discriminated company_live authority belongs to a future authenticated adapter, not a shared permissive response path.
+- Require authenticated userId/companyId from Carbon auth context, reject caller tenant arguments, and verify that the returned company_live authority matches the authenticated company before exposing it.
+- Do not add an ontology permission enum or ERP/MCP route until a committed company-scoped ontology source, freshness/revision semantics, and RLS/isolation evidence exist.
+
+## 历史启动日志必须与当前运行状态分离（2026-08-10）
+
+- 用户补充说明启动失败日志来自数小时前；当时的 pnpm install --frozen-lockfile 报 Ontology workspace importer 缺失，但当前 pnpm install --frozen-lockfile --ignore-scripts 已通过，当前 Compose 配置有效，14 个 Carbon 容器健康运行，新的 ERP 镜像也已成功生成。
+- 排查启动故障时，先记录日志时间，再分别核对当前 package/lockfile、Compose 配置、镜像创建时间和容器状态，不能把历史失败直接当成当前故障。
+## Verify new Lingui UI messages against the active compiled catalog
+
+- User-visible text added through `t`/`Trans` can render as generated message IDs such as `+95T7I` when the active compiled locale catalog lacks the new message.
+- Before handing off UI text changes in a localized Carbon page, verify the rendered locale or run the Lingui extract/compile path. For small hotfixes, reuse existing catalog messages only when the resulting message IDs exactly match existing entries.
+- When a new message is unavoidable, update and compile the locale catalog in the same change instead of relying on fallback source text.
+
+## Preflight item deletion dependencies before bulk deleting base records
+
+- Deleting from `item` directly can fail on dependent manufacturing records such as `methodMaterial.itemId`; raw Postgres foreign-key messages leak internal table and constraint names to users.
+- Bulk delete services must check known business dependencies inside the same transaction before deleting base records, then return an actionable user message such as removing the item from BOMs or deactivating it instead.
+- Keep the database foreign key as the final safety net, but do not make normal users discover dependency rules through constraint errors.
+## Apply schema migrations before asking users to retest schema-dependent UI
+
+- Evidence: the Parts archive-delete UI called the new deletionArchive table before the local development database had applied migration 20260813134827, so the user hit relation "deletionArchive" does not exist on the first real retry.
+- Rule: when a feature adds a table, view, function, enum, or policy that the current running app immediately calls, either apply the scoped local migration before handoff or explicitly block retest until the user applies it. Do not describe the UI path as ready while the active database cannot satisfy it.
+- Verification: confirm both to_regclass or catalog existence and the supabase_migrations.schema_migrations version row before asking for another UI retry.
+## Treat production/job references as hard blockers for test cleanup archive delete
+
+- Evidence: a 20-row Parts archive-delete retry on 2026-08-13 still failed after methodMaterial cleanup because selected parts were referenced by job and jobMakeMethod records in the live database.
+- Rule: archived test cleanup may remove item-owned setup records and editable BOM references, but it must preflight production/job history before writing deletionArchive or deleting any dependent rows. If job/job method references exist, return a specific action message to delete the test jobs first or deactivate the parts.
+- Do not expand a cleanup delete from master data into job/MES/history deletion without a separate dependency graph, archive design, and explicit user approval.
+
+## Gate destructive test-job cleanup behind explicit action and execution-safe preflight
+
+- Evidence: the Parts test cleanup flow needed an explicit user-selected option to handle job/jobMakeMethod/jobMaterial references after the default archived delete correctly blocked them.
+- Rule: never cascade-delete jobs from an item cleanup by default. Only a developer-only, user-selected cleanup action may delete referenced jobs, and only after locking the job, job method, and job material rows and proving every referenced job is unexecuted (Draft/Planned, zero completed/shipped/received quantity, and no picking list line references).
+- If any referenced job is released, in progress, completed, closed, has execution quantities, or has downstream picking records, keep the transaction intact and require deactivation or manual job review instead.
+
+## Keep deletion archive payload readers backward-compatible
+
+- Evidence: live Part archive records created during the 2026-08-13 cleanup work included legacy payloads with `item` and `methodMaterials` snapshots but no `payload.action`; the restore path treated them as `unknown` and failed with `Unsupported archive action`.
+- Rule: deletion/archive restore readers must tolerate older payload envelopes whenever the snapshot still contains enough authoritative data to restore safely. Add a regression test before changing the reader, and keep malformed payloads as explicit errors instead of silently restoring.
+- When adding new discriminator fields to JSONB recovery payloads, either backfill existing rows in a migration or make the reader infer the legacy shape from stable required snapshots.
+## Preserve identifier text semantics in Excel-oriented CSV exports
+
+- Evidence: after the Parts CSV export gained readable Part ID and Name columns, the user reported that exported Part IDs lost their original string form when opened as an Excel document. UTF-8 BOM fixes header encoding only; it does not prevent Excel from coercing numeric-looking identifiers.
+- Rule: CSV columns containing business identifiers such as part/readable IDs must opt into explicit Excel text preservation when the export is intended for Excel. Add a regression test with leading-zero or long numeric-looking IDs before changing export formatting.
+- Keep the behavior scoped through column metadata instead of globally wrapping every string, so normal text, dates, statuses, and downstream machine-readable exports are not unexpectedly converted to Excel formulas.
+## Whitelist writable columns when restoring archived snapshots
+
+- Evidence: restoring a live Parts deletion archive failed with `cannot insert a non-DEFAULT value into column "readableIdWithRevision"` because the archived item payload included the generated `item.readableIdWithRevision` display field and the restore insert builder wrote it back to `item`.
+- Rule: archive/restore payloads may keep display or read-only fields for audit and listing, but restore insert builders must explicitly whitelist writable database columns and omit generated/read-only columns. Add regression coverage that simulates the database rejecting generated columns before changing restore logic.
+- For `item`, restore `readableId` and `revision`; let PostgreSQL regenerate `readableIdWithRevision`.
+- For `methodMaterial`, restore `quantity` and `scrapQuantity`; let PostgreSQL regenerate `productionQuantity`.
+## Validate live foreign keys when restoring archived relationship snapshots
+
+- Evidence: restoring the remaining Parts deletion archives on 2026-08-14 failed with `methodMaterial_materialMakeMethodId_fkey` because archived BOM snapshots kept `methodMaterial.materialMakeMethodId` values whose original `makeMethod` rows had been deleted with the item.
+- Rule: restore paths must not blindly write optional foreign keys from archive payloads. Validate each archived FK target in the current company and remap derivable references to the current live target; if an optional relationship cannot be resolved safely, write null and let existing derived views or follow-up editing rebuild it.
+- For `methodMaterial.materialMakeMethodId`, keep the archived ID only when the live `makeMethod` still exists; otherwise resolve the restored item's current `activeMakeMethods` row for Make-to-Order materials, or null when none exists.
+
+## Distinguish OpenAI API base URLs from network proxies
+
+- A Codex `model_providers.*.base_url` is an OpenAI-compatible API base URL, not an `HTTP_PROXY`/`HTTPS_PROXY` network proxy. For host-side AI SDK calls, set `OPENAI_BASE_URL` to that URL; for Docker consumers, test the equivalent `host.docker.internal:<port>` URL before recreating containers.
+- Do not assume a Codex local proxy is suitable for Carbon business AI calls. Verify the exact wire mode the application uses: non-streaming `/v1/responses` must complete, structured outputs must validate, and response metadata must not show Codex-injected system instructions.
+- If a proxy only works for Codex streaming requests or injects Codex instructions, treat it as a Codex session transport, not a production-quality model endpoint for PDF extraction or other auditable business workflows.
+## Tell vision models whether schema coordinates are normalized or pixel-based
+
+- Evidence: the AI Routing PDF full-schema probe for Part `1927930202` returned a parseable extraction object, but Zod rejected it because every `boundingBox` coordinate was a rendered PNG pixel value while `aiRoutingDrawingExtractionSchema` requires normalized page fractions from 0 to 1.
+- Rule: when a structured vision schema includes coordinate fields, the prompt must explicitly define the coordinate system and conversion formula, and a focused test must assert that the request includes that instruction. Do not rely on field names like `boundingBox` to imply normalized coordinates.
+- Verification: after adding the normalized-coordinate instruction, the same 1684x1191 PDF image passed the full schema and live extraction `aide_DXtRjyVqUFJJuiPCkz8mdL` stored a `Succeeded` `aiDrawingExtraction` row.
+
+## Validate real `input_image` vision endpoints before dataset writes
+
+- Evidence: during the AI Routing second-batch board-part PDF run on 2026-08-18, all 12 drawings rendered and queued, but the non-streaming vision endpoint produced only 4 successful `aiDrawingExtraction` rows and 8 failures, including Headers Timeout, operation timeout, and schema mismatch errors.
+- Rule: do not treat a text-only structured output check as proof that a PDF/drawing extraction endpoint is usable. Before writing Training/Evaluation roles, training samples, or evaluation conclusions, preflight the same non-streaming `/v1/responses` endpoint with real `input_image` data URLs and representative drawings, then verify success rate, latency, schema validity, and retry behavior.
+- Safety: when image extraction is unstable, keep the affected rows Pending/Failed, record extractionId/model/timing without secrets, and switch to a verified stable vision endpoint or run a controlled retry. Do not create learning samples or holdout conclusions from failed or partial drawing extractions.
+
+## Recover stale Processing rows when extraction IDs are idempotency keys
+
+- Evidence: the AI Routing second-batch worker stopped after creating a `Processing` `aiDrawingExtraction` row for Part `1927930502`; no worker or recent execution remained, and enqueueing the same scope reused the old extraction ID instead of creating a retryable event. A controlled retry later failed with `AI_NoObjectGeneratedError`, confirming the original row was stale rather than still running.
+- Rule: long-running extraction jobs whose event payload uses `extractionId` as an idempotency key must define a bounded stale `Processing` policy. Reuse active `Pending` rows and recent `Processing` rows, but replace stale rows with a new extraction ID. Missing or invalid processing timestamps must fail closed as stale rather than block retries forever.
+- Concurrency: stale-row failure and replacement `Pending` creation must occur in one transaction protected by a scope advisory lock and an active-row `FOR UPDATE`; send the retry event only after commit. Mark the old row `Failed` with an auditable error code such as `STALE_PROCESSING_TIMEOUT` and retain the original extraction record.
+- Verification: `aiRoutingDrawingExtractionQueueDecision` regression coverage passed with the focused AI Routing suite; the live second-batch status check ended at `4 Succeeded / 8 Failed / 0 Processing`. This recovery removes the permanent retry lock but does not authorize dataset writes while the real-image vision endpoint remains unstable.
+
+## Responses metadata is part of the Carbon AI endpoint contract
+
+- Evidence: on 2026-08-19, the local Codex proxy and `api.aixhan.com` both returned HTTP 200/completed non-streaming `/v1/responses` results for `input_image` data URLs from the ERP container, but both included Codex-injected system instructions in response metadata.
+- Rule: HTTP success, image acceptance, and even structured-output success are insufficient for a Carbon business endpoint. Inspect response metadata and reject any endpoint that injects Codex system instructions; do not create extraction rows, dataset roles, Training samples, Evaluation conclusions, or formal routing from that transport.
+- Verification: no controlled retry row was created; the ERP container was restored to its base Compose configuration; the read-only second-batch dry-run remained `4` succeeded / `8` failed with `readyForDatasetWrite=false`.

@@ -641,6 +641,85 @@ export const partValidator = applyStorageAndShelfLifeRefines(
   )
 );
 
+export const partsImportValidator = z.object({
+  operation: z.enum(["excelImport", "u8Enrich"]),
+  u8Enrich: zfd.checkbox().optional(),
+  items: zfd.repeatableOfType(z.string().min(1)).optional()
+});
+
+const partsBulkDeleteCleanupActions = ["deactivate", "deleteTestJobs"] as const;
+
+export const partsBulkDeleteValidator = z
+  .object({
+    operation: z.literal("delete"),
+    items: zfd.repeatableOfType(z.string().trim().min(1)),
+    archive: z.preprocess(
+      (value) => (value === "on" || value === true ? true : undefined),
+      z.literal(true).optional()
+    ),
+    reason: z.preprocess(
+      (value) => (typeof value === "string" ? value.trim() : undefined),
+      z.string().min(1).optional()
+    ),
+    cleanupAction: z.preprocess(
+      (value) =>
+        typeof value === "string" && value.length > 0 ? value : undefined,
+      z.enum(partsBulkDeleteCleanupActions).optional()
+    )
+  })
+  .refine((value) => value.items.length > 0, {
+    path: ["items"],
+    message: "Select at least one part to delete"
+  })
+  .refine((value) => value.items.length <= 100, {
+    path: ["items"],
+    message: "Select at most 100 parts to delete"
+  })
+  .refine((value) => new Set(value.items).size === value.items.length, {
+    path: ["items"],
+    message: "Duplicate part IDs are not allowed"
+  })
+  .refine((value) => value.archive !== true || Boolean(value.reason), {
+    path: ["reason"],
+    message: "Reason is required"
+  })
+  .transform((value) => {
+    if (value.archive === true) {
+      const archivedValue = {
+        operation: value.operation,
+        items: value.items,
+        archive: true as const,
+        reason: value.reason!
+      };
+
+      return value.cleanupAction
+        ? { ...archivedValue, cleanupAction: value.cleanupAction }
+        : archivedValue;
+    }
+
+    return {
+      operation: value.operation,
+      items: value.items
+    };
+  });
+
+export const deletionArchiveRestoreValidator = z
+  .object({
+    operation: z.literal("restore"),
+    archives: zfd.repeatableOfType(z.string().trim().min(1))
+  })
+  .refine((value) => value.archives.length > 0, {
+    path: ["archives"],
+    message: "Select at least one archive record to restore"
+  })
+  .refine((value) => value.archives.length <= 100, {
+    path: ["archives"],
+    message: "Select at most 100 archive records to restore"
+  })
+  .refine((value) => new Set(value.archives).size === value.archives.length, {
+    path: ["archives"],
+    message: "Duplicate archive IDs are not allowed"
+  });
 // Tracked-entity pick order surfaced on the item's per-location Inventory
 // card. 'Default' = the picker's smart order (expiring soonest, then oldest).
 // Mirrors "pickMethodSortMethod" Postgres enum.

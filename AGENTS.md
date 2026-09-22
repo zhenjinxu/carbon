@@ -1,3 +1,10 @@
+## Canonical Development Standard
+
+- Before analyzing, editing, testing, or reviewing Carbon, read the canonical standard at `E:\AI_Project_Vault\项目开发\Carbon\Carbon 开发规范.md`.
+- Treat that Obsidian document as the single source of truth for Carbon engineering, robustness, security, testing, and AI-assisted development requirements.
+- When a new recurring issue is verified with code, tests, logs, or database evidence, update the closest section and its change log. Do not add speculative rules or temporary uncommitted behavior.
+- If the canonical file is unavailable, follow this file plus `llm/conventions/`, `llm/workflows/`, and `llm/tasks/lessons.md`, and report that the canonical standard could not be checked.
+
 ## Environment
 
 - This project is a manufacturing system called Carbon. It contains apps for ERP, MES, and a training app called academy.
@@ -63,6 +70,7 @@
 ### General
 
 - ALWAYS prefer your default tools over resorting to the Bash tool. You historically have a bad habit of doing `find ... | xargs ... grep` where you could just use your Grep tool. Avoid this! Just use the simple Grep tool.
+- Store Codex-generated logs, PID files, temporary SQL, patches, and similar task artifacts under `.codex/work/` in this Carbon repository. Never place them in the user home directory or the repository root.
 
 ### Grep
 

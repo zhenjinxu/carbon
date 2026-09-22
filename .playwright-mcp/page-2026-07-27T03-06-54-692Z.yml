@@ -1,0 +1,4 @@
+- generic [active] [ref=f20e1]:
+  - paragraph [ref=f20e2]: "DevSidecar Error:"
+  - paragraph [ref=f20e3]: "目标网站请求错误：【UNKNOWN】 连接超时: GET ➜ https://api.github.com:443/repos/crbnos/carbon/contents/contrib/deploying/simple-docker-caddy, cost: 7008 ms"
+  - paragraph [ref=f20e4]: 目标地址：https://api.github.com:443/repos/crbnos/carbon/contents/contrib/deploying/simple-docker-caddy

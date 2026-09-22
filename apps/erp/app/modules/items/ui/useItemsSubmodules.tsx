@@ -1,6 +1,7 @@
 import { useLingui } from "@lingui/react/macro";
 import { AiOutlinePartition } from "react-icons/ai";
 import {
+  LuArchive,
   LuAtom,
   LuAxis3D,
   LuBeef,
@@ -109,33 +110,35 @@ export default function useItemsSubmodules() {
           icon: <LuRuler />
         }
       ]
+    },
+    {
+      name: "归档",
+      routes: [
+        {
+          name: "归档记录",
+          to: path.to.itemDeletionArchive,
+          role: "employee",
+          permission: "settings",
+          icon: <LuArchive />
+        }
+      ]
     }
   ];
 
+  const isRouteVisible = (route: AuthenticatedRouteGroup["routes"][number]) => {
+    if (route.role && !permissions.is(route.role)) return false;
+    if (route.permission && !permissions.can("view", route.permission)) {
+      return false;
+    }
+    return true;
+  };
+
   return {
     groups: itemsRoutes
-      .filter((group) => {
-        const filteredRoutes = group.routes.filter((route) => {
-          if (route.role) {
-            return permissions.is(route.role);
-          } else {
-            return true;
-          }
-        });
-
-        return filteredRoutes.length > 0;
-      })
+      .filter((group) => group.routes.filter(isRouteVisible).length > 0)
       .map((group) => ({
         ...group,
-        routes: group.routes
-          .filter((route) => {
-            if (route.role) {
-              return permissions.is(route.role);
-            } else {
-              return true;
-            }
-          })
-          .map(addSavedViewsToRoutes)
+        routes: group.routes.filter(isRouteVisible).map(addSavedViewsToRoutes)
       }))
   };
 }

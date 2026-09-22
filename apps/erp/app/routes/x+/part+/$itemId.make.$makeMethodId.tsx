@@ -21,12 +21,17 @@ import {
   getMethodOperationsByMakeMethodId
 } from "~/modules/items";
 import {
+  getAiRoutingDrawingExtractionSummaries,
+  getAiRoutingTargetEvidenceForItem
+} from "~/modules/items/ai-routing.server";
+import {
   BillOfMaterial,
   BillOfProcess,
   MakeMethodTools
 } from "~/modules/items/ui/Item";
 import type { MethodItemType, MethodType } from "~/modules/shared";
 import { getModelByItemId, getTagsList } from "~/modules/shared";
+import { getDatabaseClient } from "~/services/database.server";
 import { path } from "~/utils/path";
 
 export async function loader({ request, params }: LoaderFunctionArgs) {
@@ -38,18 +43,23 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
   if (!itemId) throw new Error("Could not find itemId");
   if (!makeMethodId) throw new Error("Could not find makeMethodId");
 
+  const db = getDatabaseClient();
   const [
     makeMethod,
     methodMaterials,
     methodOperations,
     tags,
-    partManufacturing
+    partManufacturing,
+    aiDrawingExtractions,
+    aiRoutingTargetEvidence
   ] = await Promise.all([
     getMakeMethodById(client, makeMethodId, companyId),
     getMethodMaterialsByMakeMethod(client, makeMethodId),
     getMethodOperationsByMakeMethodId(client, makeMethodId),
     getTagsList(client, companyId, "operation"),
-    getItemManufacturing(client, itemId, companyId)
+    getItemManufacturing(client, itemId, companyId),
+    getAiRoutingDrawingExtractionSummaries(db, { companyId, itemId }),
+    getAiRoutingTargetEvidenceForItem(db, { companyId, itemId })
   ]);
 
   if (makeMethod.error) {
@@ -127,7 +137,9 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
     ...configData,
     model: getModelByItemId(client, makeMethod.data.itemId),
     makeMethods: getMakeMethods(client, makeMethod.data.itemId, companyId),
-    tags: tags.data ?? []
+    tags: tags.data ?? [],
+    aiDrawingExtractions,
+    aiRoutingTargetEvidence
   };
 }
 
@@ -143,7 +155,9 @@ export default function PartMakeMethodPage() {
     partManufacturing,
     configurationParametersAndGroups,
     configurationRules,
-    tags
+    tags,
+    aiDrawingExtractions,
+    aiRoutingTargetEvidence
   } = loaderData;
 
   const { itemId, makeMethodId } = useParams();
@@ -190,6 +204,8 @@ export default function PartMakeMethodPage() {
         configurationRules={configurationRules}
         parameters={configurationParametersAndGroups.parameters}
         tags={tags}
+        aiDrawingExtractions={aiDrawingExtractions}
+        aiRoutingTargetEvidence={aiRoutingTargetEvidence}
       />
       <Suspense fallback={null}>
         <Await resolve={loaderData.model}>
