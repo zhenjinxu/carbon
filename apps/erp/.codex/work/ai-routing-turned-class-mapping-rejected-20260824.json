@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-08-24T02:29:35.9336347Z",
+  "attemptedChange": "Map AI Routing drawing part.class=turned to feature tag 轴类, letting existing process hint logic add 车削.",
+  "redTest": "app/modules/items/ai-routing.test.ts -t turned bar drawing class failed before implementation as expected.",
+  "greenTest": "app/modules/items/ai-routing.test.ts -t turned bar drawing class passed after implementation.",
+  "regressionEvidence": "apps/erp/.codex/work/ai-routing-stage4-30-holdout-quality-summary-after-turned-class-mapping-rejected-20260824.json",
+  "smokeEvidence": "apps/erp/.codex/work/ai-routing-stage4-30-holdout-evaluation-after-turned-class-mapping-rejected-20260824.json",
+  "regression": "192759010202 operation-count delta regressed from -1 to -3 even though aggregate operationCountMatches stayed 24/30.",
+  "decision": "Rejected and reverted. Do not broadly map part.class=turned to 轴类/车削 without additional operation-level guardrails.",
+  "productionMaterializationGate": "Closed"
+}

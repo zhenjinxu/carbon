@@ -1,0 +1,31 @@
+{
+  "evaluatedAt": "2026-08-24T01:58:58.0149598Z",
+  "change": "AI Routing drawing extraction prompt v3 evidence-governance guidance",
+  "promptVersion": "ai-routing-drawing.prompt.v3",
+  "codeChangeScope": [
+    "packages/jobs/src/inngest/functions/items/extract-part-drawing.runner.ts",
+    "packages/jobs/src/inngest/functions/items/extract-part-drawing-model.ts",
+    "packages/jobs/src/inngest/functions/items/extract-part-drawing-model.test.ts"
+  ],
+  "behaviorChanged": "Future drawing extractions receive stricter prompt guidance for stock form/class, standalone thread vs visible hole evidence, saw/cut-off cues, lathe/turning cues, and external oxidation cues.",
+  "businessDataWritesPerformed": false,
+  "routeGenerationChanged": false,
+  "materializationGate": "Closed",
+  "holdoutQualityRecomputed": false,
+  "holdoutQualityReason": "Existing 30-holdout extractions remain prompt v2; quality must not be claimed improved until controlled v3 re-extractions are run.",
+  "verification": [
+    {
+      "command": "pnpm --filter @carbon/jobs exec vitest run src/inngest/functions/items/extract-part-drawing-model.test.ts -t \"v3 evidence guidance\"",
+      "result": "RED failed before implementation; GREEN passed after implementation"
+    },
+    {
+      "command": "pnpm --filter @carbon/jobs exec vitest run src/inngest/functions/items/extract-part-drawing-model.test.ts src/inngest/functions/items/extract-part-drawing.test.ts src/inngest/functions/items/extract-part-drawing-model.module-interop.test.ts",
+      "result": "3 files passed / 11 tests passed"
+    },
+    {
+      "command": "pnpm --filter @carbon/jobs exec biome check ...",
+      "result": "5 files checked / no fixes applied after formatting"
+    }
+  ],
+  "nextGate": "Run controlled same-content-hash prompt v3 re-extractions for the residual mismatch candidates before updating any Evaluation quality summary or route-generation rules."
+}

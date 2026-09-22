@@ -1,0 +1,53 @@
+{
+  "readableId": "192793050201",
+  "trainingSampleCount": 105,
+  "targetExtractionId": "aide_XsoiAJUWNtoqEGL49R1rP3",
+  "defaultMinimumScore": 35,
+  "defaultSuggestedOperationCount": 0,
+  "defaultWarnings": [
+    "No approved routing sample met the minimum similarity threshold."
+  ],
+  "relaxedMinimumScore": 30,
+  "relaxedSuggestedOperationCount": 4,
+  "relaxedWarnings": [],
+  "relaxedTopReferences": [
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_267ef40c2c3be8b760a380d0",
+      "readableId": "192793060101",
+      "score": 30,
+      "matchedDrawingEvidenceCount": 0
+    },
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_291a9d7a30548a8946aa3c98",
+      "readableId": "1927930502",
+      "score": 30,
+      "matchedDrawingEvidenceCount": 0
+    },
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_29a26687f86d8fdf1d724271",
+      "readableId": "1927930501",
+      "score": 30,
+      "matchedDrawingEvidenceCount": 0
+    },
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_4d281fa064b3a2246faa6e8b",
+      "readableId": "192793060200",
+      "score": 30,
+      "matchedDrawingEvidenceCount": 0
+    },
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_784fb5051c05d269a4357504",
+      "readableId": "192793050101",
+      "score": 30,
+      "matchedDrawingEvidenceCount": 0
+    }
+  ],
+  "actualNormalized": ["领料工作中心", "数控激光切割(下料)", "数控折弯(下料)"],
+  "relaxedNormalized": [
+    "领料工作中心",
+    "数控激光切割(下料)",
+    "数控折弯(下料)",
+    "打磨(碳钢)"
+  ],
+  "normalizedExactSequenceMatch": false
+}

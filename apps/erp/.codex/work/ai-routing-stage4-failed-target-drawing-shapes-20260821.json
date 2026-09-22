@@ -1,0 +1,708 @@
+[
+  {
+    "readableId": "192793080101",
+    "part": {
+      "class": "unknown",
+      "stockForm": "unknown"
+    },
+    "titleBlock": {
+      "finish": "拉丝处理（brushed finish）",
+      "material": "304",
+      "revision": null,
+      "partNumber": "192793080101",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 2,
+      "threads": 1,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 1,
+      "welds": 0,
+      "surfaces": 2
+    },
+    "notes": [
+      {
+        "category": "tolerance",
+        "text": "未注公差执行GB/T1804-M标准。"
+      },
+      {
+        "category": "tolerance",
+        "text": "未标注形位公差应符合GD1184-80标准；"
+      },
+      {
+        "category": "manufacturing",
+        "text": "未注圆角均为R0.5;"
+      },
+      {
+        "category": "manufacturing",
+        "text": "棱角倒钝0.5×45°;"
+      },
+      {
+        "category": "quality",
+        "text": "零件表面光滑无毛刺。"
+      }
+    ],
+    "warnings": [
+      "Drawing dimensions have no explicitly visible unit designation; dimension units are recorded as null.",
+      "The drawing title block contains material text \"304\" but does not visibly state a fuller material specification.",
+      "Hole depth callout \"↧ 14\" is visible for the ⌀4.20 holes, but the holes schema has no depth field."
+    ]
+  },
+  {
+    "readableId": "192788110402",
+    "part": {
+      "class": "unknown",
+      "stockForm": "unknown"
+    },
+    "titleBlock": {
+      "finish": null,
+      "material": "304",
+      "revision": null,
+      "partNumber": "192788110402",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 1,
+      "threads": 1,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 0,
+      "welds": 0,
+      "surfaces": 2
+    },
+    "notes": [
+      {
+        "category": "manufacturing",
+        "text": "锐角/尖角/锐边倒钝；"
+      },
+      {
+        "category": "tolerance",
+        "text": "未注尺寸公差应符合企业标准。"
+      }
+    ],
+    "warnings": [
+      "Drawing units are not explicitly stated in the visible evidence; dimension and feature units are recorded as null.",
+      "The geometric-tolerance symbol is visible but its exact semantic designation is not textually identified."
+    ]
+  },
+  {
+    "readableId": "19276939010203",
+    "part": {
+      "class": "unknown",
+      "stockForm": "unknown"
+    },
+    "titleBlock": {
+      "finish": null,
+      "material": "304",
+      "revision": null,
+      "partNumber": "19276939010203",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 1,
+      "threads": 0,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 0,
+      "welds": 0,
+      "surfaces": 1
+    },
+    "notes": [
+      {
+        "category": "manufacturing",
+        "text": "锐角/尖角/锐边倒钝;"
+      },
+      {
+        "category": "manufacturing",
+        "text": "未注倒角R0.5。"
+      }
+    ],
+    "warnings": [
+      "Drawing dimensions and surface-texture value have no explicit unit shown on the visible page."
+    ]
+  },
+  {
+    "readableId": "192788110601",
+    "part": {
+      "class": "unknown",
+      "stockForm": "unknown"
+    },
+    "titleBlock": {
+      "finish": null,
+      "material": "1Cr13",
+      "revision": null,
+      "partNumber": "192788110601",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 0,
+      "threads": 1,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 0,
+      "welds": 0,
+      "surfaces": 1
+    },
+    "notes": [
+      {
+        "category": "manufacturing",
+        "text": "技术要求：锐角/尖角/锐边倒钝"
+      }
+    ],
+    "warnings": [
+      "Drawing does not visibly state a general dimension unit; dimension and feature units are recorded as null.",
+      "No explicit weld specification was visible; parenthetical text “焊后加工” is retained only as a diameter-callout label."
+    ]
+  },
+  {
+    "readableId": "1927881101",
+    "part": {
+      "class": "unknown",
+      "stockForm": "unknown"
+    },
+    "titleBlock": {
+      "finish": null,
+      "material": "304",
+      "revision": null,
+      "partNumber": "1927881101",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 1,
+      "threads": 1,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 0,
+      "welds": 0,
+      "surfaces": 0
+    },
+    "notes": [
+      {
+        "category": "manufacturing",
+        "text": "锐角/尖角/锐边倒钝。"
+      },
+      {
+        "category": "tolerance",
+        "text": "未注线性尺寸公差按GB/T 1804-M级执行。"
+      },
+      {
+        "category": "tolerance",
+        "text": "未注形位公差按照GB/T 1184-K级执行。"
+      }
+    ],
+    "warnings": [
+      "Drawing does not visibly state a general dimensional unit; dimension and feature unit fields are null."
+    ]
+  },
+  {
+    "readableId": "192793010402",
+    "part": {
+      "class": "unknown",
+      "stockForm": "tube"
+    },
+    "titleBlock": {
+      "finish": "表面拉丝处理",
+      "material": "304",
+      "revision": null,
+      "partNumber": "192793010402",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 0,
+      "threads": 0,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 0,
+      "welds": 0,
+      "surfaces": 2
+    },
+    "notes": [
+      {
+        "category": "tolerance",
+        "text": "未注公差执行GB/T1804-M标准。"
+      },
+      {
+        "category": "tolerance",
+        "text": "未标注形位公差应符合GD1184-80标准；"
+      },
+      {
+        "category": "manufacturing",
+        "text": "未注圆角均为R0.5;"
+      },
+      {
+        "category": "manufacturing",
+        "text": "棱角倒钝0.5×45°;"
+      },
+      {
+        "category": "quality",
+        "text": "零件表面光滑无毛刺。"
+      }
+    ],
+    "warnings": ["Drawing units are not explicitly stated."]
+  },
+  {
+    "readableId": "192793010401",
+    "part": {
+      "class": "unknown",
+      "stockForm": "tube"
+    },
+    "titleBlock": {
+      "finish": "表面拉丝处理",
+      "material": "304",
+      "revision": null,
+      "partNumber": "192793010401",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 0,
+      "threads": 0,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 0,
+      "welds": 0,
+      "surfaces": 2
+    },
+    "notes": [
+      {
+        "category": "tolerance",
+        "text": "未注公差执行GB/T1804-M标准。"
+      },
+      {
+        "category": "tolerance",
+        "text": "未标注形位公差应符合GD1184-80标准；"
+      },
+      {
+        "category": "manufacturing",
+        "text": "未注圆角均为R0.5;"
+      },
+      {
+        "category": "manufacturing",
+        "text": "棱角倒钝0.5×45°；"
+      },
+      {
+        "category": "quality",
+        "text": "零件表面光滑无毛刺。"
+      }
+    ],
+    "warnings": [
+      "Drawing dimensions do not explicitly state a unit; dimension units are recorded as null.",
+      "The surface-texture symbol for surfaces labeled 其余 has no readable numeric roughness value."
+    ]
+  },
+  {
+    "readableId": "192769010103",
+    "part": {
+      "class": "unknown",
+      "stockForm": "unknown"
+    },
+    "titleBlock": {
+      "finish": null,
+      "material": "304",
+      "revision": null,
+      "partNumber": "192769010103",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 1,
+      "threads": 0,
+      "slots": 1,
+      "pockets": 0,
+      "bends": 0,
+      "welds": 0,
+      "surfaces": 1
+    },
+    "notes": [
+      {
+        "category": "manufacturing",
+        "text": "锐角/尖角/锐边倒钝。"
+      },
+      {
+        "category": "finish",
+        "text": "表面拉丝处理。"
+      },
+      {
+        "category": "tolerance",
+        "text": "未注尺寸公差应符合企业标准。"
+      },
+      {
+        "category": "quality",
+        "text": "工作表面不得有刮痕、划痕等损伤零件表面的缺陷。"
+      }
+    ],
+    "warnings": [
+      "Linear and feature units are not explicitly stated on the visible drawing.",
+      "The title-block revision field has no readable value."
+    ]
+  },
+  {
+    "readableId": "1927930206",
+    "part": {
+      "class": "machined",
+      "stockForm": "unknown"
+    },
+    "titleBlock": {
+      "finish": "Anodized (natural color)",
+      "material": "6061-T6 (GB)",
+      "revision": null,
+      "partNumber": "1927930206",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 2,
+      "threads": 1,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 0,
+      "welds": 0,
+      "surfaces": 1
+    },
+    "notes": [
+      {
+        "category": "manufacturing",
+        "text": "锐角/尖角/锐边倒钝；"
+      },
+      {
+        "category": "finish",
+        "text": "表面阳极氧化处理（本色）；"
+      },
+      {
+        "category": "tolerance",
+        "text": "未注尺寸公差应符合企业标准。"
+      }
+    ],
+    "warnings": [
+      "Drawing units are not explicitly stated; dimension units are recorded as null.",
+      "The Ø5 through callout is shown adjacent to the 4 x M6-6H through callout and has been associated with those four threaded holes."
+    ]
+  },
+  {
+    "readableId": "192744140302",
+    "part": {
+      "class": "unknown",
+      "stockForm": "unknown"
+    },
+    "titleBlock": {
+      "finish": null,
+      "material": "304",
+      "revision": null,
+      "partNumber": "192744140302",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 1,
+      "threads": 0,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 0,
+      "welds": 0,
+      "surfaces": 2
+    },
+    "notes": [
+      {
+        "category": "finish",
+        "text": "拉丝方向"
+      },
+      {
+        "category": "finish",
+        "text": "技术要求：1、单面拉丝板。"
+      },
+      {
+        "category": "quality",
+        "text": "2、零件表面不得有划痕，刮伤等损伤零件表面的缺陷。"
+      },
+      {
+        "category": "manufacturing",
+        "text": "3、锐边倒钝。"
+      }
+    ],
+    "warnings": [
+      "Dimension units are not explicitly stated on the visible drawing.",
+      "No explicit dimensional tolerances are visible.",
+      "The surface-finish designation for surfaces marked “其余” is symbol-only and was not interpreted."
+    ]
+  },
+  {
+    "readableId": "192769010102",
+    "part": {
+      "class": "unknown",
+      "stockForm": "unknown"
+    },
+    "titleBlock": {
+      "finish": "阳极氧化处理（本色）",
+      "material": "6061-T6 (GB)",
+      "revision": null,
+      "partNumber": "192769010102",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 3,
+      "threads": 1,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 0,
+      "welds": 0,
+      "surfaces": 1
+    },
+    "notes": [
+      {
+        "category": "manufacturing",
+        "text": "锐角/尖角/锐边倒钝。"
+      },
+      {
+        "category": "finish",
+        "text": "表面阳极氧化处理（本色）。"
+      },
+      {
+        "category": "tolerance",
+        "text": "未注尺寸公差应符合企业标准。"
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "readableId": "1927326104",
+    "part": {
+      "class": "unknown",
+      "stockForm": "unknown"
+    },
+    "titleBlock": {
+      "finish": null,
+      "material": "304",
+      "revision": null,
+      "partNumber": "1927326104",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 1,
+      "threads": 1,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 0,
+      "welds": 0,
+      "surfaces": 1
+    },
+    "notes": [
+      {
+        "category": "manufacturing",
+        "text": "锐角/尖角/锐边倒钝,未注倒角为C0.5；"
+      },
+      {
+        "category": "tolerance",
+        "text": "未注线性尺寸公差按GB/T 1804-M级执行；"
+      },
+      {
+        "category": "tolerance",
+        "text": "未注形位公差按照GB/T 1184-K级执行。"
+      }
+    ],
+    "warnings": [
+      "Drawing does not visibly state a dimensional unit; extracted dimension units are null.",
+      "Part class and stock form are not explicitly stated."
+    ]
+  },
+  {
+    "readableId": "192788110401",
+    "part": {
+      "class": "unknown",
+      "stockForm": "unknown"
+    },
+    "titleBlock": {
+      "finish": null,
+      "material": "304",
+      "revision": null,
+      "partNumber": "192788110401",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 3,
+      "threads": 0,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 0,
+      "welds": 0,
+      "surfaces": 3
+    },
+    "notes": [
+      {
+        "category": "manufacturing",
+        "text": "技术要求：锐角/尖角/锐边倒钝"
+      }
+    ],
+    "warnings": [
+      "The drawing does not visibly state a general dimensional unit; linear and diameter dimension units are recorded as null.",
+      "The visible Ø40 callout and Ø38 callouts are retained as drawn; their geometric relationship is not interpreted."
+    ]
+  },
+  {
+    "readableId": "192788110602",
+    "part": {
+      "class": "unknown",
+      "stockForm": "unknown"
+    },
+    "titleBlock": {
+      "finish": null,
+      "material": null,
+      "revision": null,
+      "partNumber": "192788110602",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 0,
+      "threads": 0,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 0,
+      "welds": 0,
+      "surfaces": 1
+    },
+    "notes": [
+      {
+        "category": "manufacturing",
+        "text": "技术要求：锐角/尖角/锐边倒钝；转焊接"
+      }
+    ],
+    "warnings": [
+      "Drawing units are not explicitly stated; dimension and roughness units are recorded as null.",
+      "The drawing contains post-weld machining text but does not provide a separate weld-feature callout or weld size."
+    ]
+  },
+  {
+    "readableId": "1927930804",
+    "part": {
+      "class": "sheet-metal",
+      "stockForm": "sheet"
+    },
+    "titleBlock": {
+      "finish": "拉丝处理",
+      "material": null,
+      "revision": null,
+      "partNumber": "1927930804",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 0,
+      "threads": 0,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 1,
+      "welds": 0,
+      "surfaces": 2
+    },
+    "notes": [
+      {
+        "category": "tolerance",
+        "text": "未注公差执行GB/T1804-M标准。"
+      },
+      {
+        "category": "tolerance",
+        "text": "未标注形位公差应符合GD1184-80标准；"
+      },
+      {
+        "category": "general",
+        "text": "未注圆角均为R0.5;"
+      },
+      {
+        "category": "manufacturing",
+        "text": "棱角倒钝0.5×45°；"
+      },
+      {
+        "category": "quality",
+        "text": "零件表面光滑无毛刺。"
+      }
+    ],
+    "warnings": [
+      "Multiple holes are visibly depicted, but no hole diameter, quantity, or positional dimensions are explicitly called out on the drawing."
+    ]
+  },
+  {
+    "readableId": "1927881103",
+    "part": {
+      "class": "unknown",
+      "stockForm": "unknown"
+    },
+    "titleBlock": {
+      "finish": null,
+      "material": "304",
+      "revision": null,
+      "partNumber": "1927881103",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 1,
+      "threads": 0,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 0,
+      "welds": 0,
+      "surfaces": 2
+    },
+    "notes": [
+      {
+        "category": "manufacturing",
+        "text": "锐角/尖角/锐边倒钝；"
+      },
+      {
+        "category": "tolerance",
+        "text": "未注线性尺寸公差按GB/T 1804-M级执行；"
+      },
+      {
+        "category": "tolerance",
+        "text": "未注形位公差按照GB/T 1184-K级执行。"
+      }
+    ],
+    "warnings": [
+      "Drawing units are not explicitly stated; dimension units have been left null.",
+      "The visible hole callout includes an adjacent \"200\" marking whose intended meaning is not unambiguous; it has not been extracted as a hole depth or dimension."
+    ]
+  },
+  {
+    "readableId": "1927930202",
+    "part": {
+      "class": "unknown",
+      "stockForm": "unknown"
+    },
+    "titleBlock": {
+      "finish": "拉丝处理",
+      "material": "304",
+      "revision": null,
+      "partNumber": "1927930202",
+      "heatTreatment": null
+    },
+    "featureCounts": {
+      "holes": 1,
+      "threads": 1,
+      "slots": 0,
+      "pockets": 0,
+      "bends": 1,
+      "welds": 0,
+      "surfaces": 2
+    },
+    "notes": [
+      {
+        "category": "tolerance",
+        "text": "未注公差执行GB/T1804-M标准。"
+      },
+      {
+        "category": "tolerance",
+        "text": "未标注形位公差应符合GD1184-80标准；"
+      },
+      {
+        "category": "manufacturing",
+        "text": "未注圆角均为R0.5;"
+      },
+      {
+        "category": "manufacturing",
+        "text": "棱角倒钝0.5×45°；"
+      },
+      {
+        "category": "quality",
+        "text": "零件表面光滑无毛刺。"
+      }
+    ],
+    "warnings": [
+      "Drawing does not visibly state a general dimensional unit; linear and radius dimension units are recorded as null.",
+      "Hole and threaded-feature quantities are not explicitly identified by the visible callouts."
+    ]
+  }
+]

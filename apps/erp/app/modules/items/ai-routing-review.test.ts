@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+﻿import { describe, expect, it } from "vitest";
 import type { AiRoutingDraft, AiRoutingTargetEvidence } from "./ai-routing";
 import {
   aiRoutingReviewedOperationKey,
@@ -76,6 +76,7 @@ describe("AI routing human review model", () => {
     const model = buildAiRoutingHumanReviewModel({ targetEvidence, draft });
 
     expect(model.pdfEvidence).toMatchObject({
+      evidenceId: "aide-1",
       available: true,
       drawingEvidenceCount: 2,
       warningCount: 1,
@@ -89,7 +90,8 @@ describe("AI routing human review model", () => {
     expect(model.draftEvidence).toMatchObject({
       suggestedOperationCount: 1,
       sourceSampleCount: 1,
-      matchedDrawingEvidenceCount: 1
+      matchedDrawingEvidenceCount: 1,
+      workCenterAssignmentCount: 0
     });
     expect(model.checkpoints).toEqual(
       expect.arrayContaining([

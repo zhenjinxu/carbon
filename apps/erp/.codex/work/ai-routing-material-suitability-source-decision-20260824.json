@@ -1,0 +1,40 @@
+﻿{
+  "decidedAt": "2026-08-24",
+  "scope": "AI Routing material suitability evidence source audit for 1927930206, 192769010102, and positive contrast 1927930202",
+  "auditArtifact": "apps/erp/.codex/work/ai-routing-material-suitability-source-audit-20260824.json",
+  "facts": {
+    "methodRawMaterialRowsExist": true,
+    "methodRawMaterialPropertiesPopulatedForTargets": false,
+    "directMaterialPropertiesPopulatedForTargets": false,
+    "explicitLaserPositiveSignalRows": [],
+    "explicitLaserNegativeSignalRows": [],
+    "currentTargetEvidenceStillHasLaserHintsForUnsuitableRows": [
+      "1927930206",
+      "192769010102"
+    ],
+    "positiveContrastStillHasLaserHint": ["1927930202"]
+  },
+  "decision": {
+    "routeGenerationChangeRecommended": false,
+    "tddCodeChangeJustifiedNow": false,
+    "materializationGate": "closed",
+    "sampleRoleWriteGate": "closed",
+    "reason": "Existing database evidence exposes method raw-material item names, but no structured material/stock laser-suitability field and no explicit positive/negative laser suitability text. Coding 毛坯/拉丝板 string inference would be a new unverified domain mapping and risks repeating the rejected broad sheet/plate heuristic."
+  },
+  "nextSafeGate": {
+    "requiredSourceEvidence": [
+      "Add or import structured raw-material/stock laser suitability evidence, e.g. explicit suitability flag/classification on material/raw material source, or a curated approved mapping from raw material stock classes to laser suitability.",
+      "Only after that, write RED tests preserving 1927930202 and suppressing 1927930206/192769010102 from explicit source evidence, then rerun focused tests and the 30-holdout gate."
+    ],
+    "allowedNow": [
+      "Record the data-source gap",
+      "Keep the current narrow explicit-negative-evidence guardrail",
+      "Keep production/materialization closed"
+    ],
+    "blockedNow": [
+      "No route-generation rule based on 毛坯/拉丝板 free text alone",
+      "No sample-role writes from Evaluation rows",
+      "No draft/materialization/formal method/work-center writes"
+    ]
+  }
+}

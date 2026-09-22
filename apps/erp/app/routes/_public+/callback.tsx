@@ -1,5 +1,6 @@
 import {
   assertIsPost,
+  CarbonEdition,
   callbackValidator,
   carbonClient,
   error,
@@ -23,6 +24,8 @@ import {
   LoadingBars,
   VStack
 } from "@carbon/react";
+import { updateSubscriptionQuantityForCompany } from "@carbon/stripe/stripe.server";
+import { Edition } from "@carbon/utils";
 import { Trans } from "@lingui/react/macro";
 import { useEffect, useRef, useState } from "react";
 import { LuTriangleAlert } from "react-icons/lu";
@@ -35,6 +38,8 @@ import {
   useSearchParams
 } from "react-router";
 import { getCompanies, getEmployeeCompanies } from "~/modules/settings";
+import { acceptPendingEmployeeInviteForLogin } from "~/modules/users/pending-invite-login.server";
+import { acceptInvite } from "~/modules/users/users.server";
 import { path } from "~/utils/path";
 
 export async function loader({ request }: LoaderFunctionArgs) {
@@ -61,6 +66,31 @@ export async function action({ request }: ActionFunctionArgs) {
   const { refreshToken, userId, redirectTo } = validation.data;
   const serviceRole = getCarbonServiceRole();
 
+  const acceptedEmployeeInvite = await acceptPendingEmployeeInviteForLogin(
+    serviceRole,
+    userId,
+    acceptInvite
+  );
+
+  if (acceptedEmployeeInvite.error) {
+    return redirect(
+      path.to.root,
+      await flash(
+        request,
+        error(
+          acceptedEmployeeInvite.error,
+          "Failed to accept pending employee invite"
+        )
+      )
+    );
+  }
+
+  if (acceptedEmployeeInvite.data && CarbonEdition === Edition.Cloud) {
+    await updateSubscriptionQuantityForCompany(
+      acceptedEmployeeInvite.data.companyId
+    );
+  }
+
   // Pre-session: no user-authed client yet, so query memberships with the
   // service role. Prefer an employee company as the active one; fall back to
   // any membership so auth/RLS can deny a pure portal user later.
@@ -70,9 +100,10 @@ export async function action({ request }: ActionFunctionArgs) {
     ? employeeCompanies
     : ((await getCompanies(serviceRole, userId)).data ?? []);
 
-  const cookieCompanyId = getCompanyId(request);
+  const preferredCompanyId =
+    acceptedEmployeeInvite.data?.companyId ?? getCompanyId(request);
   const match =
-    pickable.find((c) => c.companyId === cookieCompanyId) ?? pickable[0];
+    pickable.find((c) => c.companyId === preferredCompanyId) ?? pickable[0];
   const companyId = match?.companyId ?? undefined;
   const companyGroupId = match?.companyGroupId ?? "";
 
@@ -97,12 +128,11 @@ export async function action({ request }: ActionFunctionArgs) {
     });
     const headers: [string, string][] = [["Set-Cookie", sessionCookie]];
 
-    // Only finalize the active company for single-company (and portal-only)
-    // users. Multi-company users must actively choose: we leave the companyId
-    // cookie unset and let x+/_layout bounce them to the picker — its presence
-    // is the "has chosen this session" marker. This keeps all picker/enforcement
-    // logic in one place instead of duplicating the redirect here.
-    if (employeeCompanies.length <= 1) {
+    // Finalize the active company for single-company users and freshly
+    // accepted invites. Other multi-company users must actively choose: we
+    // leave the companyId cookie unset and let x+/_layout bounce them to the
+    // picker — its presence is the "has chosen this session" marker.
+    if (acceptedEmployeeInvite.data || employeeCompanies.length <= 1) {
       headers.push(["Set-Cookie", setCompanyId(authSession.companyId)]);
     }
 

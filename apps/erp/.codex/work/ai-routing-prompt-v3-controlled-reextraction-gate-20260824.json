@@ -1,0 +1,103 @@
+{
+  "generatedAt": "2026-08-24T02:12:40.5205943Z",
+  "gate": "AI Routing prompt v3 controlled re-extraction gate",
+  "targetPromptVersion": "ai-routing-drawing.prompt.v3",
+  "extractionArtifact": "apps/erp/.codex/work/ai-routing-stage4-controlled-v3-extractions-20260824.json",
+  "smokeArtifact": "apps/erp/.codex/work/ai-routing-stage4-30-holdout-evaluation-20260823.json",
+  "qualityArtifact": "apps/erp/.codex/work/ai-routing-stage4-30-holdout-quality-summary-after-prompt-v3-reextraction-20260824.json",
+  "extractionCounts": {
+    "Succeeded": 3,
+    "AlreadyTargetPromptSucceeded": 1
+  },
+  "extractionResults": [
+    {
+      "readableId": "192472540409",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_b4c1f209502c82cd3bd79c08",
+      "documentId": "doc_F74reWPB3JNwXRiLprhQgM",
+      "extractionId": "aide_8rk3XwfKspF48nKAo3UUZs",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v3",
+      "completedAt": "2026-08-24T02:08:35.443Z"
+    },
+    {
+      "readableId": "192759010202",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_67aa6030f75984cd62312899",
+      "documentId": "doc_632r4phaWmyCHhABLRRTje",
+      "extractionId": "aide_UbjdKaBig5iVSi8kV5rARb",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v3",
+      "completedAt": "2026-08-24T02:09:14.799Z"
+    },
+    {
+      "readableId": "192472540414",
+      "role": "new-evaluation-candidate",
+      "status": "AlreadyTargetPromptSucceeded",
+      "itemId": "wodiitem_8cf15bc9cbe6d483d7a0d044",
+      "documentId": "doc_5XMSHgdmoTCHY9xGqFxf68",
+      "extractionId": "aide_M5FyPMCzcLkotb7KbB5K7Z",
+      "promptVersion": "ai-routing-drawing.prompt.v3",
+      "completedAt": "2026-08-24T02:09:14.850Z"
+    },
+    {
+      "readableId": "192739030308",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_3b43cf0c7b1f7eeade432347",
+      "documentId": "doc_MViksRhFYxJWoNqbnTCzmF",
+      "extractionId": "aide_SnS2SLh3hxNGnCKy3dJ41u",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v3",
+      "completedAt": "2026-08-24T02:09:57.200Z"
+    }
+  ],
+  "quality": {
+    "holdoutCount": 30,
+    "trainingSampleCount": 105,
+    "rawExactSequenceMatches": 3,
+    "normalizedExactSequenceMatches": 19,
+    "operationCountMatches": 24,
+    "underPredicted": 6,
+    "overPredicted": 0,
+    "warningRows": 5,
+    "improvedFromBaseline": [],
+    "regressedFromBaseline": [],
+    "operationCountImprovedFromBaseline": [],
+    "operationCountRegressedFromBaseline": [],
+    "normalizedMismatches": [
+      "1927930206",
+      "1927881101",
+      "192769010102",
+      "192788110401",
+      "192788110402",
+      "192788110601",
+      "192788110602",
+      "192472540409",
+      "192759010202",
+      "192472540414",
+      "192739030308"
+    ]
+  },
+  "safety": {
+    "totalEvaluationLeaks": 0,
+    "totalWorkCenterAssignments": 0,
+    "totalUnsupportedWorkCenterAssignments": 0,
+    "totalMissingProcessIds": 0,
+    "invalidProcessIdCount": 0,
+    "invalidProcessIds": []
+  },
+  "productionMaterializationGate": "Closed",
+  "businessDataWritesPerformed": "aiDrawingExtraction audit rows only",
+  "formalRouteWritesPerformed": false,
+  "draftWritesPerformed": false,
+  "conclusion": "Prompt v3 same-content-hash re-extraction succeeded for the four original 30-gate residual candidates, but 30-holdout quality stayed neutral versus the lathe-normalization baseline."
+}

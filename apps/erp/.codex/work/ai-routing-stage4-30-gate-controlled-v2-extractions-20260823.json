@@ -1,0 +1,71 @@
+{
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "targetPromptVersion": "ai-routing-drawing.prompt.v2",
+  "startedAt": "2026-08-23T11:12:36.785Z",
+  "updatedAt": "2026-08-23T11:14:38.636Z",
+  "writesPerformed": true,
+  "databaseMutationsPerformed": true,
+  "results": [
+    {
+      "readableId": "192472540409",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_b4c1f209502c82cd3bd79c08",
+      "documentId": "doc_F74reWPB3JNwXRiLprhQgM",
+      "extractionId": "aide_UaiK39Vp1NXXeDgwWGBQJL",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-23T11:12:36.785Z"
+    },
+    {
+      "readableId": "192759010202",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_67aa6030f75984cd62312899",
+      "documentId": "doc_632r4phaWmyCHhABLRRTje",
+      "extractionId": "aide_WjUsuJ3zzDiZdkS2vPkPux",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-23T11:13:18.496Z"
+    },
+    {
+      "readableId": "192472540414",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_8cf15bc9cbe6d483d7a0d044",
+      "documentId": "doc_5XMSHgdmoTCHY9xGqFxf68",
+      "extractionId": "aide_AZMP9gp1qnS7MLwD4kUGZW",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-23T11:14:00.744Z"
+    },
+    {
+      "readableId": "192739030308",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_3b43cf0c7b1f7eeade432347",
+      "documentId": "doc_MViksRhFYxJWoNqbnTCzmF",
+      "extractionId": "aide_QeaMz4NmrKuJd7qBiUQ96z",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-23T11:14:38.635Z"
+    }
+  ],
+  "requestedInThisRun": [
+    "192472540409",
+    "192759010202",
+    "192472540414",
+    "192739030308"
+  ],
+  "counts": {
+    "Succeeded": 4
+  }
+}

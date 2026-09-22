@@ -1,0 +1,185 @@
+{
+  "generatedAt": "2026-08-24T05:19:33.244Z",
+  "inputPath": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\ai-routing-data-governance-residual-audit-20260824.json",
+  "outputMdPath": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\ai-routing-source-pdf-review-packet-20260824.md",
+  "gateStatus": {
+    "routeGenerationChange": "blocked",
+    "sampleRoleWrite": "blocked_until_source_review",
+    "materialization": "closed",
+    "workCenterAssignment": "closed"
+  },
+  "coveragePlan": [
+    {
+      "signature": "mill -> machining-center -> tap -> oxidation",
+      "readableIds": ["1927930206"],
+      "coveringTrainingMatchCount": 0,
+      "requiredFamilies": ["mill", "machining-center", "tap", "oxidation"],
+      "recommendedGate": "source/PDF review first; then add or identify coherent approved Training source outside Evaluation if route is confirmed"
+    },
+    {
+      "signature": "mill -> turn -> drill -> tap -> oxidation",
+      "readableIds": ["192769010102"],
+      "coveringTrainingMatchCount": 0,
+      "requiredFamilies": ["mill", "turn", "drill", "tap", "oxidation"],
+      "recommendedGate": "source/PDF review first; then add or identify coherent approved Training source outside Evaluation if route is confirmed"
+    },
+    {
+      "signature": "saw -> turn -> mill -> tap -> oxidation",
+      "readableIds": ["192472540409"],
+      "coveringTrainingMatchCount": 0,
+      "requiredFamilies": ["saw", "turn", "mill", "tap", "oxidation"],
+      "recommendedGate": "source/PDF review first; then add or identify coherent approved Training source outside Evaluation if route is confirmed"
+    },
+    {
+      "signature": "saw -> turn -> mill -> drill -> tap",
+      "readableIds": ["192759010202"],
+      "coveringTrainingMatchCount": 0,
+      "requiredFamilies": ["saw", "turn", "mill", "drill", "tap"],
+      "recommendedGate": "source/PDF review first; then add or identify coherent approved Training source outside Evaluation if route is confirmed"
+    }
+  ],
+  "decisions": [
+    {
+      "readableId": "1927930206",
+      "activePdfCount": 1,
+      "latestExtractionId": "aide_AuVwaULQPmqHBVeduqZKCx",
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "partClass": "machined",
+      "stockForm": "unknown",
+      "materialTags": ["6061"],
+      "featureTags": ["板件", "孔", "螺纹", "台阶"],
+      "processHints": ["激光切割", "攻丝", "氧化"],
+      "actualSignature": "issue -> mill -> machining-center -> tap -> oxidation",
+      "generatedSignature": "",
+      "missingFamilies": ["mill", "machining-center", "tap", "oxidation"],
+      "extraFamilies": [],
+      "exactTrainingMatchCount": 0,
+      "coveringTrainingMatchCount": 0,
+      "conflictFlags": [
+        "laser hint conflicts with non-laser truth route",
+        "oxidation truth route lacks coherent Training coverage",
+        "no coherent approved Training route covers truth families"
+      ],
+      "reviewQuestions": [
+        "Confirm the active PDF is the same revision/source used for the locked Evaluation route.",
+        "Confirm whether the locked Evaluation route is the correct manufacturing route for this PDF.",
+        "Mark whether the drawing explicitly supports milling operations.",
+        "Mark whether the drawing explicitly supports machining-center/CNC operations.",
+        "Mark whether thread evidence is a visible tapped hole, not only a standalone thread spec.",
+        "Mark whether oxidation/anodizing is specified on the drawing or route source.",
+        "If laser is not in the truth route, decide whether the extraction laser hint is a false positive or the truth route is incomplete.",
+        "If source review confirms the truth route, identify or create a non-Evaluation Training source with the same coherent non-issue family signature."
+      ],
+      "safeForRouteGenerationChange": false,
+      "safeForSampleRoleWrite": false,
+      "safeForMaterialization": false
+    },
+    {
+      "readableId": "192769010102",
+      "activePdfCount": 1,
+      "latestExtractionId": "aide_P24hvma6tfgWfMiMygxtig",
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "partClass": "unknown",
+      "stockForm": "unknown",
+      "materialTags": ["6061"],
+      "featureTags": ["板件", "孔", "螺纹"],
+      "processHints": ["激光切割", "攻丝", "氧化"],
+      "actualSignature": "issue -> mill -> turn -> drill -> tap -> oxidation",
+      "generatedSignature": "",
+      "missingFamilies": ["mill", "turn", "drill", "tap", "oxidation"],
+      "extraFamilies": [],
+      "exactTrainingMatchCount": 0,
+      "coveringTrainingMatchCount": 0,
+      "conflictFlags": [
+        "laser hint conflicts with non-laser truth route",
+        "sheet target tag conflicts with saw/turn truth route",
+        "oxidation truth route lacks coherent Training coverage",
+        "no coherent approved Training route covers truth families"
+      ],
+      "reviewQuestions": [
+        "Confirm the active PDF is the same revision/source used for the locked Evaluation route.",
+        "Confirm whether the locked Evaluation route is the correct manufacturing route for this PDF.",
+        "Mark whether the drawing explicitly supports milling operations.",
+        "Mark whether the drawing explicitly supports lathe/turning/shaft operations.",
+        "Mark whether the drawing explicitly supports drilling separate from tapping/thread notes.",
+        "Mark whether thread evidence is a visible tapped hole, not only a standalone thread spec.",
+        "Mark whether oxidation/anodizing is specified on the drawing or route source.",
+        "If laser is not in the truth route, decide whether the extraction laser hint is a false positive or the truth route is incomplete.",
+        "If source review confirms the truth route, identify or create a non-Evaluation Training source with the same coherent non-issue family signature."
+      ],
+      "safeForRouteGenerationChange": false,
+      "safeForSampleRoleWrite": false,
+      "safeForMaterialization": false
+    },
+    {
+      "readableId": "192472540409",
+      "activePdfCount": 1,
+      "latestExtractionId": "aide_8rk3XwfKspF48nKAo3UUZs",
+      "promptVersion": "ai-routing-drawing.prompt.v3",
+      "partClass": "unknown",
+      "stockForm": "unknown",
+      "materialTags": ["6061"],
+      "featureTags": ["轴类", "孔", "螺纹", "台阶"],
+      "processHints": ["攻丝", "车削", "氧化"],
+      "actualSignature": "issue -> saw -> turn -> mill -> tap -> oxidation",
+      "generatedSignature": "",
+      "missingFamilies": ["saw", "turn", "mill", "tap", "oxidation"],
+      "extraFamilies": [],
+      "exactTrainingMatchCount": 0,
+      "coveringTrainingMatchCount": 0,
+      "conflictFlags": [
+        "oxidation truth route lacks coherent Training coverage",
+        "no coherent approved Training route covers truth families"
+      ],
+      "reviewQuestions": [
+        "Confirm the active PDF is the same revision/source used for the locked Evaluation route.",
+        "Confirm whether the locked Evaluation route is the correct manufacturing route for this PDF.",
+        "Mark whether the drawing explicitly supports saw/cut-off/bar/tube stock preparation.",
+        "Mark whether the drawing explicitly supports lathe/turning/shaft operations.",
+        "Mark whether the drawing explicitly supports milling operations.",
+        "Mark whether thread evidence is a visible tapped hole, not only a standalone thread spec.",
+        "Mark whether oxidation/anodizing is specified on the drawing or route source.",
+        "If source review confirms the truth route, identify or create a non-Evaluation Training source with the same coherent non-issue family signature."
+      ],
+      "safeForRouteGenerationChange": false,
+      "safeForSampleRoleWrite": false,
+      "safeForMaterialization": false
+    },
+    {
+      "readableId": "192759010202",
+      "activePdfCount": 1,
+      "latestExtractionId": "aide_UbjdKaBig5iVSi8kV5rARb",
+      "promptVersion": "ai-routing-drawing.prompt.v3",
+      "partClass": "turned",
+      "stockForm": "bar",
+      "materialTags": ["304"],
+      "featureTags": ["板件", "孔", "螺纹", "台阶"],
+      "processHints": ["激光切割", "攻丝"],
+      "actualSignature": "issue -> saw -> turn -> mill -> drill -> tap",
+      "generatedSignature": "issue -> mill -> machining-center -> tap -> laser",
+      "missingFamilies": ["saw", "turn", "drill"],
+      "extraFamilies": ["machining-center", "laser"],
+      "exactTrainingMatchCount": 0,
+      "coveringTrainingMatchCount": 0,
+      "conflictFlags": [
+        "laser hint conflicts with non-laser truth route",
+        "sheet target tag conflicts with saw/turn truth route",
+        "turned/bar extraction coexists with sheet target tag",
+        "no coherent approved Training route covers truth families"
+      ],
+      "reviewQuestions": [
+        "Confirm the active PDF is the same revision/source used for the locked Evaluation route.",
+        "Confirm whether the locked Evaluation route is the correct manufacturing route for this PDF.",
+        "Mark whether the drawing explicitly supports saw/cut-off/bar/tube stock preparation.",
+        "Mark whether the drawing explicitly supports lathe/turning/shaft operations.",
+        "Mark whether the drawing explicitly supports drilling separate from tapping/thread notes.",
+        "If laser is not in the truth route, decide whether the extraction laser hint is a false positive or the truth route is incomplete.",
+        "Resolve turned/bar versus sheet tag conflict before using this row for Training or routing logic.",
+        "If source review confirms the truth route, identify or create a non-Evaluation Training source with the same coherent non-issue family signature."
+      ],
+      "safeForRouteGenerationChange": false,
+      "safeForSampleRoleWrite": false,
+      "safeForMaterialization": false
+    }
+  ]
+}

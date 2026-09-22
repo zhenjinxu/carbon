@@ -4,6 +4,7 @@ import {
   LuCirclePlay,
   LuCloudDownload,
   LuGauge,
+  LuLayoutDashboard,
   LuListChecks,
   LuSquareChartGantt,
   LuSquareKanban,
@@ -84,6 +85,17 @@ export default function useProductionSubmodules() {
           to: path.to.scrapReasons,
           role: "employee",
           icon: <LuTrash />
+        }
+      ]
+    },
+    {
+      name: t`个人工作台`,
+      routes: [
+        {
+          name: t`我的工作台`,
+          to: path.to.productionWorkbench,
+          role: "employee",
+          icon: <LuLayoutDashboard />
         }
       ]
     }

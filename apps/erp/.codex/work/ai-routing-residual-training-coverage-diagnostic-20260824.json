@@ -1,0 +1,1629 @@
+{
+  "inspectedAt": "2026-08-24T03:17:10.809Z",
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "holdoutCount": 30,
+  "trainingSampleCount": 105,
+  "residualCount": 11,
+  "categoryCounts": {
+    "training_coverage_gap": 3,
+    "retrieval_ranking_gap": 7,
+    "extraction_or_family_ambiguity": 1
+  },
+  "safety": {
+    "totalEvaluationLeaks": 0,
+    "totalWorkCenterAssignments": 0,
+    "totalUnsupportedWorkCenterAssignments": 0,
+    "totalMissingProcessIds": 0,
+    "invalidProcessIds": []
+  },
+  "decisionSupport": {
+    "codeChangeCandidates": [
+      "1927881101",
+      "192788110401",
+      "192788110402",
+      "192788110601",
+      "192788110602",
+      "192472540414",
+      "192739030308"
+    ],
+    "dataGovernanceCandidates": [
+      "1927930206",
+      "192769010102",
+      "192472540409",
+      "192759010202"
+    ],
+    "materializationGate": "closed"
+  },
+  "residuals": [
+    {
+      "readableId": "1927930206",
+      "quality": {
+        "readableId": "1927930206",
+        "normalizedExactSequenceMatch": false,
+        "normalizedPositionMatchCount": 0,
+        "actualOperationCount": 5,
+        "suggestedOperationCount": 0,
+        "operationCountDelta": -5,
+        "warningCount": 1
+      },
+      "targetFeatureTags": ["板件", "孔", "螺纹", "台阶"],
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ],
+      "actualRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JLJ01 立式加工中心VMC850B(机加工）",
+        "U8 JQG01 气动攻丝机（机加工）",
+        "U8 WYH01 外协氧化"
+      ],
+      "suggestedRoute": [],
+      "actualFamilies": [
+        "issue",
+        "mill",
+        "machining-center",
+        "tap",
+        "oxidation"
+      ],
+      "suggestedFamilies": [],
+      "familyDiff": {
+        "missing": ["mill", "machining-center", "tap", "oxidation"],
+        "extra": []
+      },
+      "actualSignature": "issue -> mill -> machining-center -> tap -> oxidation",
+      "suggestedSignature": "",
+      "exactTrainingMatches": [],
+      "nonIssueExactTrainingMatches": [],
+      "coveringTrainingMatches": [],
+      "topReferences": [
+        {
+          "readableId": "192793050101",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6,
+          "signature": "issue -> laser -> bend -> tap",
+          "families": ["issue", "laser", "bend", "tap"]
+        },
+        {
+          "readableId": "1927930207",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6,
+          "signature": "issue -> laser -> tap",
+          "families": ["issue", "laser", "tap"]
+        },
+        {
+          "readableId": "1920790301",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6,
+          "signature": "issue -> laser -> drill -> tap -> finish",
+          "families": ["issue", "laser", "drill", "tap", "finish"]
+        },
+        {
+          "readableId": "192793020101",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6,
+          "signature": "issue -> laser -> bend -> tap",
+          "families": ["issue", "laser", "bend", "tap"]
+        },
+        {
+          "readableId": "192713410301",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6,
+          "signature": "issue -> laser -> bend -> tap -> weld -> finish",
+          "families": ["issue", "laser", "bend", "tap", "weld", "finish"]
+        }
+      ],
+      "classification": {
+        "category": "training_coverage_gap",
+        "reason": "Current generator returned empty and no approved Training route covers all non-issue actual operation families."
+      }
+    },
+    {
+      "readableId": "1927881101",
+      "quality": {
+        "readableId": "1927881101",
+        "normalizedExactSequenceMatch": false,
+        "normalizedPositionMatchCount": 2,
+        "actualOperationCount": 4,
+        "suggestedOperationCount": 4,
+        "operationCountDelta": 0,
+        "warningCount": 0
+      },
+      "targetFeatureTags": ["孔", "螺纹"],
+      "warnings": [],
+      "actualRoute": [
+        "领料工作中心",
+        "片锯下料（薄壁碳钢管）（下料）",
+        "普通车床CA6140A×2000(机加工）",
+        "气动攻丝机（机加工）"
+      ],
+      "suggestedRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JLJ01 立式加工中心VMC850B(机加工）",
+        "U8 JQG01 气动攻丝机（机加工）"
+      ],
+      "actualFamilies": ["issue", "saw", "turn", "tap"],
+      "suggestedFamilies": ["issue", "mill", "machining-center", "tap"],
+      "familyDiff": {
+        "missing": ["saw", "turn"],
+        "extra": ["mill", "machining-center"]
+      },
+      "actualSignature": "issue -> saw -> turn -> tap",
+      "suggestedSignature": "issue -> mill -> machining-center -> tap",
+      "exactTrainingMatches": [
+        {
+          "readableId": "191967100102",
+          "signature": "issue -> saw -> turn -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        }
+      ],
+      "nonIssueExactTrainingMatches": [
+        {
+          "readableId": "191967100102",
+          "signature": "issue -> saw -> turn -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        }
+      ],
+      "coveringTrainingMatches": [
+        {
+          "readableId": "191967100102",
+          "signature": "issue -> saw -> turn -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "192475010310",
+          "signature": "issue -> saw -> turn -> mill -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "146001020101",
+          "signature": "issue -> saw -> turn -> drill -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JYZ01 摇臂钻床（机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        }
+      ],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 5,
+          "signature": "issue -> mill -> machining-center -> tap",
+          "families": ["issue", "mill", "machining-center", "tap"]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser -> bend",
+          "families": ["issue", "laser", "bend"]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> saw -> mill",
+          "families": ["issue", "saw", "mill"]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser",
+          "families": ["issue", "laser"]
+        },
+        {
+          "readableId": "192713410405",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser",
+          "families": ["issue", "laser"]
+        }
+      ],
+      "classification": {
+        "category": "retrieval_ranking_gap",
+        "reason": "Approved Training has an exact route-family signature, but the current top references do not surface it."
+      }
+    },
+    {
+      "readableId": "192769010102",
+      "quality": {
+        "readableId": "192769010102",
+        "normalizedExactSequenceMatch": false,
+        "normalizedPositionMatchCount": 0,
+        "actualOperationCount": 6,
+        "suggestedOperationCount": 0,
+        "operationCountDelta": -6,
+        "warningCount": 1
+      },
+      "targetFeatureTags": ["板件", "孔", "螺纹"],
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ],
+      "actualRoute": [
+        "领料工作中心",
+        "数显立铣（北一）XA5032（机加工）",
+        "普通车床CA6140A×2000(机加工）",
+        "摇臂钻床（机加工）",
+        "气动攻丝机（机加工）",
+        "外协氧化"
+      ],
+      "suggestedRoute": [],
+      "actualFamilies": ["issue", "mill", "turn", "drill", "tap", "oxidation"],
+      "suggestedFamilies": [],
+      "familyDiff": {
+        "missing": ["mill", "turn", "drill", "tap", "oxidation"],
+        "extra": []
+      },
+      "actualSignature": "issue -> mill -> turn -> drill -> tap -> oxidation",
+      "suggestedSignature": "",
+      "exactTrainingMatches": [],
+      "nonIssueExactTrainingMatches": [],
+      "coveringTrainingMatches": [],
+      "topReferences": [
+        {
+          "readableId": "192793050101",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8,
+          "signature": "issue -> laser -> bend -> tap",
+          "families": ["issue", "laser", "bend", "tap"]
+        },
+        {
+          "readableId": "1927930207",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8,
+          "signature": "issue -> laser -> tap",
+          "families": ["issue", "laser", "tap"]
+        },
+        {
+          "readableId": "1920790301",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8,
+          "signature": "issue -> laser -> drill -> tap -> finish",
+          "families": ["issue", "laser", "drill", "tap", "finish"]
+        },
+        {
+          "readableId": "192793020101",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8,
+          "signature": "issue -> laser -> bend -> tap",
+          "families": ["issue", "laser", "bend", "tap"]
+        },
+        {
+          "readableId": "192713410301",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8,
+          "signature": "issue -> laser -> bend -> tap -> weld -> finish",
+          "families": ["issue", "laser", "bend", "tap", "weld", "finish"]
+        }
+      ],
+      "classification": {
+        "category": "training_coverage_gap",
+        "reason": "Current generator returned empty and no approved Training route covers all non-issue actual operation families."
+      }
+    },
+    {
+      "readableId": "192788110401",
+      "quality": {
+        "readableId": "192788110401",
+        "normalizedExactSequenceMatch": false,
+        "normalizedPositionMatchCount": 1,
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 3,
+        "operationCountDelta": 0,
+        "warningCount": 0
+      },
+      "targetFeatureTags": ["孔"],
+      "warnings": [],
+      "actualRoute": [
+        "领料工作中心",
+        "片锯下料（薄壁碳钢管）（下料）",
+        "普通车床CA6140A×2000(机加工）"
+      ],
+      "suggestedRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JLJ01 立式加工中心VMC850B(机加工）"
+      ],
+      "actualFamilies": ["issue", "saw", "turn"],
+      "suggestedFamilies": ["issue", "mill", "machining-center"],
+      "familyDiff": {
+        "missing": ["saw", "turn"],
+        "extra": ["mill", "machining-center"]
+      },
+      "actualSignature": "issue -> saw -> turn",
+      "suggestedSignature": "issue -> mill -> machining-center",
+      "exactTrainingMatches": [
+        {
+          "readableId": "1919671002",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "192466150303",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "19247337070201",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "192477730301",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "19247773030101",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "192477730302",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "19248106040301",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        }
+      ],
+      "nonIssueExactTrainingMatches": [
+        {
+          "readableId": "1919671002",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "192466150303",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "19247337070201",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "192477730301",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "19247773030101",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "192477730302",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "19248106040301",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        }
+      ],
+      "coveringTrainingMatches": [
+        {
+          "readableId": "149999000043",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "191967100102",
+          "signature": "issue -> saw -> turn -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "1919671002",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "1920790303",
+          "signature": "issue -> saw -> turn -> drill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JYZ01 摇臂钻床（机加工）"
+          ]
+        },
+        {
+          "readableId": "1920790305",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "192466150303",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "19247271020302",
+          "signature": "issue -> saw -> turn -> other",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 WDX01 外协镀锌"
+          ]
+        },
+        {
+          "readableId": "19247337070201",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "192475010310",
+          "signature": "issue -> saw -> turn -> mill -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "192477730301",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        }
+      ],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 3,
+          "signature": "issue -> mill -> machining-center -> tap",
+          "families": ["issue", "mill", "machining-center", "tap"]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser -> bend",
+          "families": ["issue", "laser", "bend"]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> saw -> mill",
+          "families": ["issue", "saw", "mill"]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser",
+          "families": ["issue", "laser"]
+        },
+        {
+          "readableId": "192713410405",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser",
+          "families": ["issue", "laser"]
+        }
+      ],
+      "classification": {
+        "category": "retrieval_ranking_gap",
+        "reason": "Approved Training has an exact route-family signature, but the current top references do not surface it."
+      }
+    },
+    {
+      "readableId": "192788110402",
+      "quality": {
+        "readableId": "192788110402",
+        "normalizedExactSequenceMatch": false,
+        "normalizedPositionMatchCount": 2,
+        "actualOperationCount": 5,
+        "suggestedOperationCount": 5,
+        "operationCountDelta": 0,
+        "warningCount": 0
+      },
+      "targetFeatureTags": ["轴类", "孔", "螺纹"],
+      "warnings": [],
+      "actualRoute": [
+        "领料工作中心",
+        "片锯下料（薄壁碳钢管）（下料）",
+        "普通车床CA6140A×2000(机加工）",
+        "数显立铣（北一）XA5032（机加工）",
+        "气动攻丝机（机加工）"
+      ],
+      "suggestedRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 JPC01 普通车床CA6140A×2000(机加工）",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JLJ01 立式加工中心VMC850B(机加工）",
+        "U8 JQG01 气动攻丝机（机加工）"
+      ],
+      "actualFamilies": ["issue", "saw", "turn", "mill", "tap"],
+      "suggestedFamilies": ["issue", "turn", "mill", "machining-center", "tap"],
+      "familyDiff": {
+        "missing": ["saw"],
+        "extra": ["machining-center"]
+      },
+      "actualSignature": "issue -> saw -> turn -> mill -> tap",
+      "suggestedSignature": "issue -> turn -> mill -> machining-center -> tap",
+      "exactTrainingMatches": [
+        {
+          "readableId": "192475010310",
+          "signature": "issue -> saw -> turn -> mill -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        }
+      ],
+      "nonIssueExactTrainingMatches": [
+        {
+          "readableId": "192475010310",
+          "signature": "issue -> saw -> turn -> mill -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        }
+      ],
+      "coveringTrainingMatches": [
+        {
+          "readableId": "192475010310",
+          "signature": "issue -> saw -> turn -> mill -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        }
+      ],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 2,
+          "signature": "issue -> mill -> machining-center -> tap",
+          "families": ["issue", "mill", "machining-center", "tap"]
+        },
+        {
+          "readableId": "192437180604",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 1,
+          "signature": "issue -> laser",
+          "families": ["issue", "laser"]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser -> bend",
+          "families": ["issue", "laser", "bend"]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> saw -> mill",
+          "families": ["issue", "saw", "mill"]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser",
+          "families": ["issue", "laser"]
+        }
+      ],
+      "classification": {
+        "category": "retrieval_ranking_gap",
+        "reason": "Approved Training has an exact route-family signature, but the current top references do not surface it."
+      }
+    },
+    {
+      "readableId": "192788110601",
+      "quality": {
+        "readableId": "192788110601",
+        "normalizedExactSequenceMatch": false,
+        "normalizedPositionMatchCount": 0,
+        "actualOperationCount": 5,
+        "suggestedOperationCount": 0,
+        "operationCountDelta": -5,
+        "warningCount": 1
+      },
+      "targetFeatureTags": ["轴类", "螺纹", "孔", "焊接件"],
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ],
+      "actualRoute": [
+        "领料工作中心",
+        "片锯下料（薄壁碳钢管）（下料）",
+        "普通车床CA6140A×2000(机加工）",
+        "数显立铣（北一）XA5032（机加工）",
+        "气动攻丝机（机加工）"
+      ],
+      "suggestedRoute": [],
+      "actualFamilies": ["issue", "saw", "turn", "mill", "tap"],
+      "suggestedFamilies": [],
+      "familyDiff": {
+        "missing": ["saw", "turn", "mill", "tap"],
+        "extra": []
+      },
+      "actualSignature": "issue -> saw -> turn -> mill -> tap",
+      "suggestedSignature": "",
+      "exactTrainingMatches": [
+        {
+          "readableId": "192475010310",
+          "signature": "issue -> saw -> turn -> mill -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        }
+      ],
+      "nonIssueExactTrainingMatches": [
+        {
+          "readableId": "192475010310",
+          "signature": "issue -> saw -> turn -> mill -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        }
+      ],
+      "coveringTrainingMatches": [
+        {
+          "readableId": "192475010310",
+          "signature": "issue -> saw -> turn -> mill -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        }
+      ],
+      "topReferences": [
+        {
+          "readableId": "192713410301",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 4,
+          "signature": "issue -> laser -> bend -> tap -> weld -> finish",
+          "families": ["issue", "laser", "bend", "tap", "weld", "finish"]
+        },
+        {
+          "readableId": "191967100102",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 2,
+          "signature": "issue -> saw -> turn -> tap",
+          "families": ["issue", "saw", "turn", "tap"]
+        },
+        {
+          "readableId": "19272869010104",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 4,
+          "signature": "issue -> saw -> mill -> mill -> tap",
+          "families": ["issue", "saw", "mill", "mill", "tap"]
+        },
+        {
+          "readableId": "1927286901",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 2,
+          "signature": "issue -> laser -> drill -> tap",
+          "families": ["issue", "laser", "drill", "tap"]
+        },
+        {
+          "readableId": "192079030100",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 2,
+          "signature": "issue -> weld -> weld -> finish -> mill",
+          "families": ["issue", "weld", "weld", "finish", "mill"]
+        }
+      ],
+      "classification": {
+        "category": "retrieval_ranking_gap",
+        "reason": "Approved Training has an exact route-family signature, but the current top references do not surface it."
+      }
+    },
+    {
+      "readableId": "192788110602",
+      "quality": {
+        "readableId": "192788110602",
+        "normalizedExactSequenceMatch": false,
+        "normalizedPositionMatchCount": 0,
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 0,
+        "operationCountDelta": -3,
+        "warningCount": 1
+      },
+      "targetFeatureTags": ["焊接件"],
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ],
+      "actualRoute": [
+        "领料工作中心",
+        "片锯下料（薄壁碳钢管）（下料）",
+        "普通车床CA6140A×2000(机加工）"
+      ],
+      "suggestedRoute": [],
+      "actualFamilies": ["issue", "saw", "turn"],
+      "suggestedFamilies": [],
+      "familyDiff": {
+        "missing": ["saw", "turn"],
+        "extra": []
+      },
+      "actualSignature": "issue -> saw -> turn",
+      "suggestedSignature": "",
+      "exactTrainingMatches": [
+        {
+          "readableId": "1919671002",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "192466150303",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "19247337070201",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "192477730301",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "19247773030101",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "192477730302",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "19248106040301",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        }
+      ],
+      "nonIssueExactTrainingMatches": [
+        {
+          "readableId": "1919671002",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "192466150303",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "19247337070201",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "192477730301",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "19247773030101",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "192477730302",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "19248106040301",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        }
+      ],
+      "coveringTrainingMatches": [
+        {
+          "readableId": "149999000043",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "191967100102",
+          "signature": "issue -> saw -> turn -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "1919671002",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "1920790303",
+          "signature": "issue -> saw -> turn -> drill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JYZ01 摇臂钻床（机加工）"
+          ]
+        },
+        {
+          "readableId": "1920790305",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "192466150303",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "19247271020302",
+          "signature": "issue -> saw -> turn -> other",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 WDX01 外协镀锌"
+          ]
+        },
+        {
+          "readableId": "19247337070201",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        },
+        {
+          "readableId": "192475010310",
+          "signature": "issue -> saw -> turn -> mill -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "192477730301",
+          "signature": "issue -> saw -> turn",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）"
+          ]
+        }
+      ],
+      "topReferences": [
+        {
+          "readableId": "192793060200",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3,
+          "signature": "issue -> weld -> weld -> finish",
+          "families": ["issue", "weld", "weld", "finish"]
+        },
+        {
+          "readableId": "192793050200",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3,
+          "signature": "issue -> weld -> weld -> finish",
+          "families": ["issue", "weld", "weld", "finish"]
+        },
+        {
+          "readableId": "19244208060400",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3,
+          "signature": "issue -> weld -> weld -> finish",
+          "families": ["issue", "weld", "weld", "finish"]
+        },
+        {
+          "readableId": "19271341030100",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3,
+          "signature": "issue -> weld -> weld -> finish",
+          "families": ["issue", "weld", "weld", "finish"]
+        },
+        {
+          "readableId": "19272869010",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3,
+          "signature": "issue -> laser -> bend -> weld -> finish",
+          "families": ["issue", "laser", "bend", "weld", "finish"]
+        }
+      ],
+      "classification": {
+        "category": "retrieval_ranking_gap",
+        "reason": "Approved Training has an exact route-family signature, but the current top references do not surface it."
+      }
+    },
+    {
+      "readableId": "192472540409",
+      "quality": {
+        "readableId": "192472540409",
+        "normalizedExactSequenceMatch": false,
+        "normalizedPositionMatchCount": 0,
+        "actualOperationCount": 6,
+        "suggestedOperationCount": 0,
+        "operationCountDelta": -6,
+        "warningCount": 1
+      },
+      "targetFeatureTags": ["轴类", "孔", "螺纹", "台阶"],
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ],
+      "actualRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 XDJ01 锯床下料",
+        "U8 JPC01 普通车床CA6140A×2000(机加工）",
+        "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+        "U8 JQG01 气动攻丝机（机加工）",
+        "U8 WYH01 外协氧化"
+      ],
+      "suggestedRoute": [],
+      "actualFamilies": ["issue", "saw", "turn", "mill", "tap", "oxidation"],
+      "suggestedFamilies": [],
+      "familyDiff": {
+        "missing": ["saw", "turn", "mill", "tap", "oxidation"],
+        "extra": []
+      },
+      "actualSignature": "issue -> saw -> turn -> mill -> tap -> oxidation",
+      "suggestedSignature": "",
+      "exactTrainingMatches": [],
+      "nonIssueExactTrainingMatches": [],
+      "coveringTrainingMatches": [],
+      "topReferences": [
+        {
+          "readableId": "191967100102",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 8,
+          "signature": "issue -> saw -> turn -> tap",
+          "families": ["issue", "saw", "turn", "tap"]
+        },
+        {
+          "readableId": "1927286901",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 8,
+          "signature": "issue -> laser -> drill -> tap",
+          "families": ["issue", "laser", "drill", "tap"]
+        },
+        {
+          "readableId": "146001020101",
+          "score": 8,
+          "matchedDrawingEvidenceCount": 7,
+          "signature": "issue -> saw -> turn -> drill -> tap",
+          "families": ["issue", "saw", "turn", "drill", "tap"]
+        },
+        {
+          "readableId": "192475010310",
+          "score": 8,
+          "matchedDrawingEvidenceCount": 7,
+          "signature": "issue -> saw -> turn -> mill -> tap",
+          "families": ["issue", "saw", "turn", "mill", "tap"]
+        },
+        {
+          "readableId": "192793050101",
+          "score": 8,
+          "matchedDrawingEvidenceCount": 7,
+          "signature": "issue -> laser -> bend -> tap",
+          "families": ["issue", "laser", "bend", "tap"]
+        }
+      ],
+      "classification": {
+        "category": "training_coverage_gap",
+        "reason": "Current generator returned empty and no approved Training route covers all non-issue actual operation families."
+      }
+    },
+    {
+      "readableId": "192759010202",
+      "quality": {
+        "readableId": "192759010202",
+        "normalizedExactSequenceMatch": false,
+        "normalizedPositionMatchCount": 1,
+        "actualOperationCount": 6,
+        "suggestedOperationCount": 5,
+        "operationCountDelta": -1,
+        "warningCount": 0
+      },
+      "targetFeatureTags": ["板件", "孔", "螺纹", "台阶"],
+      "warnings": [],
+      "actualRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+        "U8 JPC01 普通车床CA6140A×2000(机加工）",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JYZ01 摇臂钻床（机加工）",
+        "U8 JQG01 气动攻丝机（机加工）"
+      ],
+      "suggestedRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JLJ01 立式加工中心VMC850B(机加工）",
+        "U8 JQG01 气动攻丝机（机加工）",
+        "U8 XJG01 数控激光切割（下料）"
+      ],
+      "actualFamilies": ["issue", "saw", "turn", "mill", "drill", "tap"],
+      "suggestedFamilies": [
+        "issue",
+        "mill",
+        "machining-center",
+        "tap",
+        "laser"
+      ],
+      "familyDiff": {
+        "missing": ["saw", "turn", "drill"],
+        "extra": ["machining-center", "laser"]
+      },
+      "actualSignature": "issue -> saw -> turn -> mill -> drill -> tap",
+      "suggestedSignature": "issue -> mill -> machining-center -> tap -> laser",
+      "exactTrainingMatches": [],
+      "nonIssueExactTrainingMatches": [],
+      "coveringTrainingMatches": [],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 6,
+          "signature": "issue -> mill -> machining-center -> tap",
+          "families": ["issue", "mill", "machining-center", "tap"]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser -> bend",
+          "families": ["issue", "laser", "bend"]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser",
+          "families": ["issue", "laser"]
+        },
+        {
+          "readableId": "192713410405",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser",
+          "families": ["issue", "laser"]
+        },
+        {
+          "readableId": "1924371803",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser -> bend",
+          "families": ["issue", "laser", "bend"]
+        }
+      ],
+      "classification": {
+        "category": "extraction_or_family_ambiguity",
+        "reason": "Predicted family set differs from actual. Missing: saw, turn, drill; extra: machining-center, laser."
+      }
+    },
+    {
+      "readableId": "192472540414",
+      "quality": {
+        "readableId": "192472540414",
+        "normalizedExactSequenceMatch": false,
+        "normalizedPositionMatchCount": 1,
+        "actualOperationCount": 4,
+        "suggestedOperationCount": 4,
+        "operationCountDelta": 0,
+        "warningCount": 0
+      },
+      "targetFeatureTags": ["轴类", "螺纹", "孔"],
+      "warnings": [],
+      "actualRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 XDJ01 锯床下料",
+        "U8 JPC01 普通车床CA6140A×2000(机加工）",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+      ],
+      "suggestedRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JLJ01 立式加工中心VMC850B(机加工）",
+        "U8 JQG01 气动攻丝机（机加工）"
+      ],
+      "actualFamilies": ["issue", "saw", "turn", "mill"],
+      "suggestedFamilies": ["issue", "mill", "machining-center", "tap"],
+      "familyDiff": {
+        "missing": ["saw", "turn"],
+        "extra": ["machining-center", "tap"]
+      },
+      "actualSignature": "issue -> saw -> turn -> mill",
+      "suggestedSignature": "issue -> mill -> machining-center -> tap",
+      "exactTrainingMatches": [
+        {
+          "readableId": "149999000043",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "1920790305",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        }
+      ],
+      "nonIssueExactTrainingMatches": [
+        {
+          "readableId": "149999000043",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "1920790305",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        }
+      ],
+      "coveringTrainingMatches": [
+        {
+          "readableId": "149999000043",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "1920790305",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "192475010310",
+          "signature": "issue -> saw -> turn -> mill -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        }
+      ],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 1,
+          "signature": "issue -> mill -> machining-center -> tap",
+          "families": ["issue", "mill", "machining-center", "tap"]
+        },
+        {
+          "readableId": "192437180604",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 1,
+          "signature": "issue -> laser",
+          "families": ["issue", "laser"]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser -> bend",
+          "families": ["issue", "laser", "bend"]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> saw -> mill",
+          "families": ["issue", "saw", "mill"]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser",
+          "families": ["issue", "laser"]
+        }
+      ],
+      "classification": {
+        "category": "retrieval_ranking_gap",
+        "reason": "Approved Training has an exact route-family signature, but the current top references do not surface it."
+      }
+    },
+    {
+      "readableId": "192739030308",
+      "quality": {
+        "readableId": "192739030308",
+        "normalizedExactSequenceMatch": false,
+        "normalizedPositionMatchCount": 1,
+        "actualOperationCount": 4,
+        "suggestedOperationCount": 4,
+        "operationCountDelta": 0,
+        "warningCount": 0
+      },
+      "targetFeatureTags": ["轴类", "螺纹", "孔"],
+      "warnings": [],
+      "actualRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 XDJ01 锯床下料",
+        "U8 JPC01 普通车床CA6140A×2000(机加工）",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+      ],
+      "suggestedRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JLJ01 立式加工中心VMC850B(机加工）",
+        "U8 JQG01 气动攻丝机（机加工）"
+      ],
+      "actualFamilies": ["issue", "saw", "turn", "mill"],
+      "suggestedFamilies": ["issue", "mill", "machining-center", "tap"],
+      "familyDiff": {
+        "missing": ["saw", "turn"],
+        "extra": ["machining-center", "tap"]
+      },
+      "actualSignature": "issue -> saw -> turn -> mill",
+      "suggestedSignature": "issue -> mill -> machining-center -> tap",
+      "exactTrainingMatches": [
+        {
+          "readableId": "149999000043",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "1920790305",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        }
+      ],
+      "nonIssueExactTrainingMatches": [
+        {
+          "readableId": "149999000043",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "1920790305",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        }
+      ],
+      "coveringTrainingMatches": [
+        {
+          "readableId": "149999000043",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "1920790305",
+          "signature": "issue -> saw -> turn -> mill",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "192475010310",
+          "signature": "issue -> saw -> turn -> mill -> tap",
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        }
+      ],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 1,
+          "signature": "issue -> mill -> machining-center -> tap",
+          "families": ["issue", "mill", "machining-center", "tap"]
+        },
+        {
+          "readableId": "192437180604",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 2,
+          "signature": "issue -> laser",
+          "families": ["issue", "laser"]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser -> bend",
+          "families": ["issue", "laser", "bend"]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> saw -> mill",
+          "families": ["issue", "saw", "mill"]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "signature": "issue -> laser",
+          "families": ["issue", "laser"]
+        }
+      ],
+      "classification": {
+        "category": "retrieval_ranking_gap",
+        "reason": "Approved Training has an exact route-family signature, but the current top references do not surface it."
+      }
+    }
+  ]
+}

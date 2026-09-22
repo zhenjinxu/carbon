@@ -23,6 +23,7 @@
     "./audit": "./src/audit.ts",
     "./audit.config": "./src/audit.config.ts",
     "./audit.types": "./src/audit.types.ts",
+    "./workbench": "./src/workbench.ts",
     "./swagger-docs-schema": "./src/swagger-docs-schema.ts"
   },
   "private": true,

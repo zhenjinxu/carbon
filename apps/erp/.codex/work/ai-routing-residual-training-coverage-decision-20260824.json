@@ -1,0 +1,56 @@
+{
+  "task": "AI Routing Residual Training Coverage Diagnostic",
+  "date": "2026-08-24",
+  "diagnosticArtifact": "apps/erp/.codex/work/ai-routing-residual-training-coverage-diagnostic-20260824.json",
+  "residualCount": 11,
+  "categoryCounts": {
+    "training_coverage_gap": 3,
+    "retrieval_ranking_gap": 7,
+    "extraction_or_family_ambiguity": 1
+  },
+  "materializationGate": "closed",
+  "conclusion": "Do not implement a route-generation change from this diagnostic alone. Exact or covering Training route-family signatures exist for several residuals, but the target drawing evidence does not explicitly support saw/turn/mill/tap replacement for each operation family.",
+  "noCodeChangeReason": "The remaining apparent retrieval gaps require adding saw/turn or dropping milling/tap/laser families from weak or ambiguous evidence. That violates the current evidence-scoped guardrails.",
+  "dataGovernanceNext": [
+    "Improve extraction evidence for stock form, saw/cutoff, turning/lathe, explicit hole-vs-standalone-thread, and oxidation cues.",
+    "Add or verify coherent Training references for oxidized mixed machining routes such as mill/machining-center/tap/oxidation and saw/turn/mill/tap/oxidation.",
+    "Keep production/materialization closed until a controlled holdout gate proves no regressions."
+  ],
+  "codeCandidatesRejectedForNow": [
+    {
+      "readableId": "1927881101",
+      "reason": "Actual family saw/turn/tap exists in Training, but target evidence is 304 + hole/thread + tap only; no saw/turn evidence authorizes replacement."
+    },
+    {
+      "readableId": "192788110401",
+      "reason": "Exact saw/turn Training exists, but target evidence is 304 + holes with no saw/turn process hints."
+    },
+    {
+      "readableId": "192788110402",
+      "reason": "Target supports turning/tap but not saw; adding saw or replacing machining-center requires unsupported operation-family inference."
+    },
+    {
+      "readableId": "192788110601",
+      "reason": "No material tag and thread/weld ambiguity; exact family exists but target lacks enough per-operation evidence for saw/mill/tap composition."
+    },
+    {
+      "readableId": "192788110602",
+      "reason": "Target evidence points to weldment/welding while actual is saw/turn; exact Training exists but extraction/family ambiguity blocks generation override."
+    },
+    {
+      "readableId": "192472540414",
+      "reason": "Target has shaft/thread/turn hints but no explicit saw and only standalone thread evidence; exact saw/turn/mill Training exists but replacement would drop tap/CNC from weak evidence."
+    },
+    {
+      "readableId": "192739030308",
+      "reason": "Same pattern as 192472540414: exact saw/turn/mill Training exists, but target evidence does not authorize destructive replacement."
+    }
+  ],
+  "safety": {
+    "totalEvaluationLeaks": 0,
+    "totalWorkCenterAssignments": 0,
+    "totalUnsupportedWorkCenterAssignments": 0,
+    "totalMissingProcessIds": 0,
+    "invalidProcessIds": []
+  }
+}

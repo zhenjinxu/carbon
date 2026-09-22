@@ -1,0 +1,422 @@
+{
+  "summary": {
+    "companyId": "d8s9bh4f8gm357312pbg",
+    "targetReadableIds": ["1927930206", "192769010102", "1927930202"],
+    "targetCount": 3,
+    "targetsWithMethodRawMaterialProperties": [],
+    "targetsWithDirectMaterialProperties": [],
+    "targetsWithExplicitLaserPositiveSignal": [],
+    "targetsWithExplicitLaserNegativeSignal": [],
+    "codeGap": "getAiRoutingTargetEvidenceForItem currently selects item fields and latest aiDrawingExtraction only; it does not join direct material rows or method raw materials into AiRoutingKnowledgeItem.",
+    "dataGap": "Existing material tables expose substance/form/type/dimension/grade/finish, but this diagnostic only treats explicit laser suitability/unsuitability text as direct suitability evidence. Material form/grade alone is not yet a verified laser suitability rule.",
+    "materializationGate": "closed",
+    "routeGenerationChangeRecommended": false
+  },
+  "targets": [
+    {
+      "readableId": "192769010102",
+      "expectedHumanClassification": "laser_unsuitable",
+      "item": {
+        "id": "wodiitem_b9596db1aeabf6529e9241c1",
+        "readableIdWithRevision": "192769010102",
+        "name": "电机安装板",
+        "description": null,
+        "itemType": "Part",
+        "updatedAt": "2026-07-30T02:35:38.063Z"
+      },
+      "directMaterial": {
+        "itemId": "wodiitem_b9596db1aeabf6529e9241c1",
+        "readableId": "192769010102",
+        "readableIdWithRevision": "192769010102",
+        "name": "电机安装板",
+        "itemType": "Part",
+        "materialSubstanceId": null,
+        "materialSubstance": null,
+        "materialFormId": null,
+        "materialForm": null,
+        "materialTypeId": null,
+        "materialType": null,
+        "dimensionId": null,
+        "dimension": null,
+        "gradeId": null,
+        "grade": null,
+        "finishId": null,
+        "finish": null,
+        "tags": null
+      },
+      "methodRawMaterials": [
+        {
+          "makeMethodId": "make_6d7f71fd657bbbe2d254505b",
+          "makeMethodStatus": "Active",
+          "methodMaterialId": "mmat_7b6d937bdd89666e4e6a3358",
+          "methodMaterialRow": {
+            "id": "mmat_7b6d937bdd89666e4e6a3358",
+            "kit": false,
+            "tags": [],
+            "order": 1,
+            "itemId": "item_f10e9eb9e8c41e622155a944",
+            "itemType": "Part",
+            "quantity": 0,
+            "shelfIds": {},
+            "companyId": "d8s9bh4f8gm357312pbg",
+            "createdAt": "2026-07-30T01:15:08.152+00:00",
+            "createdBy": "ec76ca4d-f4b5-4458-9924-bdbc8f7f6ebc",
+            "updatedAt": "2026-07-30T06:47:45.736+00:00",
+            "updatedBy": "ec76ca4d-f4b5-4458-9924-bdbc8f7f6ebc",
+            "methodType": "Pull from Inventory",
+            "customFields": {
+              "u8Bom": {
+                "bomId": "1000254946",
+                "opSeq": "0020",
+                "baseQtyD": "1.000000",
+                "baseQtyN": "0.400000",
+                "childCode": "372236000402",
+                "parentCode": "192769010102",
+                "childPartId": "1000213352",
+                "effectiveTo": "9999-12-30T00:00:00.000Z",
+                "parentScrap": "0.000",
+                "parentPartId": "1001601519",
+                "effectiveFrom": "2026-03-02T00:00:00.000Z",
+                "opComponentId": "1006094735",
+                "sourceSortSeq": 10,
+                "componentScrap": "0.000"
+              }
+            },
+            "makeMethodId": "make_6d7f71fd657bbbe2d254505b",
+            "sourcingType": "Specified",
+            "scrapQuantity": 0,
+            "storageUnitIds": {},
+            "methodOperationId": null,
+            "unitOfMeasureCode": "WODI_e3187e6dd6",
+            "productionQuantity": 0,
+            "materialMakeMethodId": null
+          },
+          "material": {
+            "itemId": "item_f10e9eb9e8c41e622155a944",
+            "readableId": "372236000402",
+            "readableIdWithRevision": "372236000402",
+            "name": "定尺铝合金毛坯6061-T6",
+            "itemType": "Part",
+            "materialSubstanceId": null,
+            "materialSubstance": null,
+            "materialFormId": null,
+            "materialForm": null,
+            "materialTypeId": null,
+            "materialType": null,
+            "dimensionId": null,
+            "dimension": null,
+            "gradeId": null,
+            "grade": null,
+            "finishId": null,
+            "finish": null,
+            "tags": null
+          }
+        }
+      ],
+      "latestExtraction": {
+        "id": "aide_P24hvma6tfgWfMiMygxtig",
+        "documentId": "doc_WJzgaXKNKxduY2Xtp5dPdG",
+        "promptVersion": "ai-routing-drawing.prompt.v2",
+        "contentHash": "240aa24f86c6bc90eb52b6b08d93b3fbe65f993b680449fb6b7385c3a97310cd",
+        "completedAt": "2026-08-21T00:36:25.959Z",
+        "summary": {
+          "titleBlock": {
+            "partNumber": "192769010102",
+            "material": "6061-T6 (GB)",
+            "finish": "阳极氧化处理（本色）",
+            "heatTreatment": null
+          },
+          "part": {
+            "class": "unknown",
+            "stockForm": "unknown"
+          },
+          "laserRelatedNotes": []
+        }
+      },
+      "currentTargetEvidence": {
+        "materialTags": ["6061"],
+        "featureTags": ["板件", "孔", "螺纹"],
+        "processHints": ["激光切割", "攻丝", "氧化"],
+        "warningCount": 0
+      },
+      "evidenceSourceAssessment": {
+        "hasDirectMaterialProperties": false,
+        "hasMethodRawMaterialProperties": false,
+        "hasExplicitLaserPositiveSignal": false,
+        "hasExplicitLaserNegativeSignal": false,
+        "currentServerTargetEvidenceUsesStructuredMaterialFields": false,
+        "currentServerTargetEvidenceUsesMethodRawMaterials": false
+      }
+    },
+    {
+      "readableId": "1927930202",
+      "expectedHumanClassification": "laser_suitable_positive_contrast",
+      "item": {
+        "id": "wodiitem_ffbfacf91b9ab3b7615319b1",
+        "readableIdWithRevision": "1927930202",
+        "name": "皮带侧板",
+        "description": null,
+        "itemType": "Part",
+        "updatedAt": "2026-07-30T02:35:38.063Z"
+      },
+      "directMaterial": {
+        "itemId": "wodiitem_ffbfacf91b9ab3b7615319b1",
+        "readableId": "1927930202",
+        "readableIdWithRevision": "1927930202",
+        "name": "皮带侧板",
+        "itemType": "Part",
+        "materialSubstanceId": null,
+        "materialSubstance": null,
+        "materialFormId": null,
+        "materialForm": null,
+        "materialTypeId": null,
+        "materialType": null,
+        "dimensionId": null,
+        "dimension": null,
+        "gradeId": null,
+        "grade": null,
+        "finishId": null,
+        "finish": null,
+        "tags": null
+      },
+      "methodRawMaterials": [
+        {
+          "makeMethodId": "make_56da1ff5427838e6d071699a",
+          "makeMethodStatus": "Active",
+          "methodMaterialId": "mmat_ffac0b11143c5918cfb1675f",
+          "methodMaterialRow": {
+            "id": "mmat_ffac0b11143c5918cfb1675f",
+            "kit": false,
+            "tags": [],
+            "order": 1,
+            "itemId": "item_d40af6cff7a51cea1c17e178",
+            "itemType": "Part",
+            "quantity": 0,
+            "shelfIds": {},
+            "companyId": "d8s9bh4f8gm357312pbg",
+            "createdAt": "2026-07-30T01:15:08.152+00:00",
+            "createdBy": "ec76ca4d-f4b5-4458-9924-bdbc8f7f6ebc",
+            "updatedAt": "2026-07-30T06:47:45.736+00:00",
+            "updatedBy": "ec76ca4d-f4b5-4458-9924-bdbc8f7f6ebc",
+            "methodType": "Pull from Inventory",
+            "customFields": {
+              "u8Bom": {
+                "bomId": "1000267311",
+                "opSeq": "0020",
+                "baseQtyD": "1.000000",
+                "baseQtyN": "6.040000",
+                "childCode": "370101030031",
+                "parentCode": "1927930202",
+                "childPartId": "1000213557",
+                "effectiveTo": "9999-12-30T00:00:00.000Z",
+                "parentScrap": "0.000",
+                "parentPartId": "1001611626",
+                "effectiveFrom": "2026-06-26T00:00:00.000Z",
+                "opComponentId": "1006472812",
+                "sourceSortSeq": 10,
+                "componentScrap": "0.000"
+              }
+            },
+            "makeMethodId": "make_56da1ff5427838e6d071699a",
+            "sourcingType": "Specified",
+            "scrapQuantity": 0,
+            "storageUnitIds": {},
+            "methodOperationId": null,
+            "unitOfMeasureCode": "WODI_e3187e6dd6",
+            "productionQuantity": 0,
+            "materialMakeMethodId": null
+          },
+          "material": {
+            "itemId": "item_d40af6cff7a51cea1c17e178",
+            "readableId": "370101030031",
+            "readableIdWithRevision": "370101030031",
+            "name": "SUS304 拉丝板-3.0×1220×2440",
+            "itemType": "Part",
+            "materialSubstanceId": null,
+            "materialSubstance": null,
+            "materialFormId": null,
+            "materialForm": null,
+            "materialTypeId": null,
+            "materialType": null,
+            "dimensionId": null,
+            "dimension": null,
+            "gradeId": null,
+            "grade": null,
+            "finishId": null,
+            "finish": null,
+            "tags": null
+          }
+        }
+      ],
+      "latestExtraction": {
+        "id": "aide_Xkc6f8smpAbMetaJKAsE4f",
+        "documentId": "doc_YKsm1nNnp8mhpgQWwmNUVx",
+        "promptVersion": "ai-routing-drawing.prompt.v2",
+        "contentHash": "b63ee854a7aed6d214a8b79464448e1d188246a1c4ac394745d33fe42cfe27f1",
+        "completedAt": "2026-08-21T00:45:21.638Z",
+        "summary": {
+          "titleBlock": {
+            "partNumber": "1927930202",
+            "material": "304",
+            "finish": "拉丝处理",
+            "heatTreatment": null
+          },
+          "part": {
+            "class": "unknown",
+            "stockForm": "unknown"
+          },
+          "laserRelatedNotes": []
+        }
+      },
+      "currentTargetEvidence": {
+        "materialTags": ["304"],
+        "featureTags": ["板件", "孔", "螺纹", "折弯"],
+        "processHints": ["激光切割", "折弯", "攻丝"],
+        "warningCount": 2
+      },
+      "evidenceSourceAssessment": {
+        "hasDirectMaterialProperties": false,
+        "hasMethodRawMaterialProperties": false,
+        "hasExplicitLaserPositiveSignal": false,
+        "hasExplicitLaserNegativeSignal": false,
+        "currentServerTargetEvidenceUsesStructuredMaterialFields": false,
+        "currentServerTargetEvidenceUsesMethodRawMaterials": false
+      }
+    },
+    {
+      "readableId": "1927930206",
+      "expectedHumanClassification": "laser_unsuitable",
+      "item": {
+        "id": "wodiitem_a4d59c570e244d212b1cad7e",
+        "readableIdWithRevision": "1927930206",
+        "name": "电机固定板",
+        "description": null,
+        "itemType": "Part",
+        "updatedAt": "2026-07-30T02:35:38.063Z"
+      },
+      "directMaterial": {
+        "itemId": "wodiitem_a4d59c570e244d212b1cad7e",
+        "readableId": "1927930206",
+        "readableIdWithRevision": "1927930206",
+        "name": "电机固定板",
+        "itemType": "Part",
+        "materialSubstanceId": null,
+        "materialSubstance": null,
+        "materialFormId": null,
+        "materialForm": null,
+        "materialTypeId": null,
+        "materialType": null,
+        "dimensionId": null,
+        "dimension": null,
+        "gradeId": null,
+        "grade": null,
+        "finishId": null,
+        "finish": null,
+        "tags": null
+      },
+      "methodRawMaterials": [
+        {
+          "makeMethodId": "make_7330646303888e7e0f10a384",
+          "makeMethodStatus": "Active",
+          "methodMaterialId": "mmat_845166d41f54585f6d608587",
+          "methodMaterialRow": {
+            "id": "mmat_845166d41f54585f6d608587",
+            "kit": false,
+            "tags": [],
+            "order": 1,
+            "itemId": "item_f10e9eb9e8c41e622155a944",
+            "itemType": "Part",
+            "quantity": 0,
+            "shelfIds": {},
+            "companyId": "d8s9bh4f8gm357312pbg",
+            "createdAt": "2026-07-30T01:15:08.152+00:00",
+            "createdBy": "ec76ca4d-f4b5-4458-9924-bdbc8f7f6ebc",
+            "updatedAt": "2026-07-30T06:47:45.736+00:00",
+            "updatedBy": "ec76ca4d-f4b5-4458-9924-bdbc8f7f6ebc",
+            "methodType": "Pull from Inventory",
+            "customFields": {
+              "u8Bom": {
+                "bomId": "1000267293",
+                "opSeq": "0020",
+                "baseQtyD": "1.000000",
+                "baseQtyN": "0.670000",
+                "childCode": "372236000402",
+                "parentCode": "1927930206",
+                "childPartId": "1000213352",
+                "effectiveTo": "9999-12-30T00:00:00.000Z",
+                "parentScrap": "0.000",
+                "parentPartId": "1001611648",
+                "effectiveFrom": "2026-06-26T00:00:00.000Z",
+                "opComponentId": "1006472794",
+                "sourceSortSeq": 10,
+                "componentScrap": "0.000"
+              }
+            },
+            "makeMethodId": "make_7330646303888e7e0f10a384",
+            "sourcingType": "Specified",
+            "scrapQuantity": 0,
+            "storageUnitIds": {},
+            "methodOperationId": null,
+            "unitOfMeasureCode": "WODI_e3187e6dd6",
+            "productionQuantity": 0,
+            "materialMakeMethodId": null
+          },
+          "material": {
+            "itemId": "item_f10e9eb9e8c41e622155a944",
+            "readableId": "372236000402",
+            "readableIdWithRevision": "372236000402",
+            "name": "定尺铝合金毛坯6061-T6",
+            "itemType": "Part",
+            "materialSubstanceId": null,
+            "materialSubstance": null,
+            "materialFormId": null,
+            "materialForm": null,
+            "materialTypeId": null,
+            "materialType": null,
+            "dimensionId": null,
+            "dimension": null,
+            "gradeId": null,
+            "grade": null,
+            "finishId": null,
+            "finish": null,
+            "tags": null
+          }
+        }
+      ],
+      "latestExtraction": {
+        "id": "aide_AuVwaULQPmqHBVeduqZKCx",
+        "documentId": "doc_XSVvDoSaTcUfh3ybGmsEJo",
+        "promptVersion": "ai-routing-drawing.prompt.v2",
+        "contentHash": "73b24604c14c580f02dfffafc7c5ce32d334052bfa1763ddc679c91a27234824",
+        "completedAt": "2026-08-21T00:46:51.298Z",
+        "summary": {
+          "titleBlock": {
+            "partNumber": "1927930206",
+            "material": "6061-T6 (GB)",
+            "finish": "Anodized (natural color)",
+            "heatTreatment": null
+          },
+          "part": {
+            "class": "machined",
+            "stockForm": "unknown"
+          },
+          "laserRelatedNotes": []
+        }
+      },
+      "currentTargetEvidence": {
+        "materialTags": ["6061"],
+        "featureTags": ["板件", "孔", "螺纹", "台阶"],
+        "processHints": ["激光切割", "攻丝", "氧化"],
+        "warningCount": 2
+      },
+      "evidenceSourceAssessment": {
+        "hasDirectMaterialProperties": false,
+        "hasMethodRawMaterialProperties": false,
+        "hasExplicitLaserPositiveSignal": false,
+        "hasExplicitLaserNegativeSignal": false,
+        "currentServerTargetEvidenceUsesStructuredMaterialFields": false,
+        "currentServerTargetEvidenceUsesMethodRawMaterials": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "recordedAt": "2026-08-24T00:00:00+08:00",
+  "source": "human_source_review_user_confirmation",
+  "scope": "AI Routing Stage 4 data-governance residuals and material/process suitability evidence",
+  "confirmedU8TruthRouteCorrect": [
+    "1927930206",
+    "192769010102",
+    "192472540409",
+    "192759010202"
+  ],
+  "principles": [
+    "The locked U8 truth route is the reliable evaluation baseline for these four parts.",
+    "Part process depends on the raw material and stock/material suitability, not only on part shape or a generic sheet/plate tag.",
+    "Sheet/plate-like geometry does not automatically authorize laser cutting.",
+    "Compound names containing 板 can describe the parent object rather than the part class, for example 推板连接杆 means connecting rod for the push plate."
+  ],
+  "findings": [
+    {
+      "readableId": "1927930206",
+      "humanFinding": "Sheet/plate-type part, but raw material is not suitable for laser cutting; U8 route without laser is correct.",
+      "u8TruthRouteStatus": "confirmed_correct",
+      "extractionIssue": "laser process hint is a false positive if inferred from sheet/plate evidence alone",
+      "routeGenerationImplication": "do not add laser; use this as a negative guardrail for sheet-like but laser-unsuitable material/stock",
+      "trainingCoverageNeed": "coherent non-Evaluation Training coverage remains needed for mill -\u003e machining-center -\u003e tap -\u003e oxidation if source-reviewed and approved"
+    },
+    {
+      "readableId": "192769010102",
+      "humanFinding": "Sheet/plate-type part, but raw material is not suitable for laser cutting; U8 route without laser is correct.",
+      "u8TruthRouteStatus": "confirmed_correct",
+      "extractionIssue": "laser process hint is a false positive if inferred from sheet/plate evidence alone",
+      "routeGenerationImplication": "do not add laser; use this as a negative guardrail for sheet-like but laser-unsuitable material/stock",
+      "trainingCoverageNeed": "coherent non-Evaluation Training coverage remains needed for mill -\u003e turn -\u003e drill -\u003e tap -\u003e oxidation if source-reviewed and approved"
+    },
+    {
+      "readableId": "192472540409",
+      "humanFinding": "U8 route is correct for the reviewed source.",
+      "u8TruthRouteStatus": "confirmed_correct",
+      "extractionIssue": "no user-confirmed laser issue; remaining gap is coherent coverage/evidence for the locked saw/turn/mill/tap/oxidation family",
+      "routeGenerationImplication": "do not broaden generation solely from current extraction; keep route-generation and materialization gates closed until TDD-backed guardrails and holdout proof exist",
+      "trainingCoverageNeed": "coherent non-Evaluation Training coverage remains needed for saw -\u003e turn -\u003e mill -\u003e tap -\u003e oxidation if approved"
+    },
+    {
+      "readableId": "192759010202",
+      "humanFinding": "Part name 推板连接杆 means connecting rod for the push plate; it is not a plate/sheet part. U8 route is correct.",
+      "u8TruthRouteStatus": "confirmed_correct",
+      "extractionIssue": "板件/laser interpretation from 推板 text is a false positive; turned/bar evidence should not be globally mapped to shaft routing without guardrails",
+      "routeGenerationImplication": "targeted semantic disambiguation is needed; do not use broad turned-\u003eshaft or 板 text heuristics",
+      "trainingCoverageNeed": "coherent non-Evaluation Training coverage remains needed for saw -\u003e turn -\u003e mill -\u003e drill -\u003e tap if approved"
+    },
+    {
+      "readableId": "1927930202",
+      "humanFinding": "Sheet/plate-type part whose raw material is suitable for laser cutting; laser cutting is correct.",
+      "u8TruthRouteStatus": "positive_contrast_example",
+      "extractionIssue": "none from this review; this is a preservation case",
+      "routeGenerationImplication": "future guardrails must not remove laser from all sheet/plate parts; material/stock suitability must differentiate positive and negative cases",
+      "trainingCoverageNeed": "not part of the four residual source-review rows in this packet"
+    }
+  ],
+  "gates": {
+    "routeGenerationChange": "requires_TDD_and_holdout_verification_before_code_change",
+    "sampleRoleWrite": "blocked_until_coherent_training_source_is_identified_outside_locked_Evaluation",
+    "workCenterAssignment": "closed",
+    "draftMaterialization": "closed",
+    "formalMethodWrite": "closed"
+  },
+  "recommendedNextStep": "Design TDD-backed extraction/target-evidence guardrails: laser requires compatible material/stock or explicit process evidence; compound names such as 推板连接杆 must not create 板件/laser evidence. Then run focused tests and the 30-holdout smoke before any quality claim.",
+  "relatedEvidence": [
+    "apps/erp/.codex/work/ai-routing-source-pdf-review-packet-20260824.json",
+    "apps/erp/.codex/work/ai-routing-data-governance-residual-audit-20260824.json",
+    "apps/erp/.codex/work/ai-routing-stage4-30-holdout-quality-summary-after-turned-class-mapping-reverted-20260824.json"
+  ]
+}

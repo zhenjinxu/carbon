@@ -3,6 +3,7 @@ import {
   LuContainer,
   LuCreditCard,
   LuFileText,
+  LuLayoutDashboard,
   LuLayoutList,
   LuPackageSearch,
   LuSquareChartGantt,
@@ -74,6 +75,17 @@ export default function usePurchasingSubmodules() {
           to: path.to.supplierTypes,
           role: "employee",
           icon: <LuStar />
+        }
+      ]
+    },
+    {
+      name: t`个人工作台`,
+      routes: [
+        {
+          name: t`我的工作台`,
+          to: path.to.purchasingWorkbench,
+          role: "employee",
+          icon: <LuLayoutDashboard />
         }
       ]
     }

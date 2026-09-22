@@ -13,8 +13,16 @@ import {
 } from "@carbon/database/audit.config";
 import type {
   AuditDiff,
+  AuditLogEntry,
   CreateAuditLogEntry
 } from "@carbon/database/audit.types";
+import {
+  buildWorkbenchActivityIdempotencyKey,
+  projectAuditEntryToWorkbenchActivity,
+  upsertWorkbenchActivityProjections,
+  type WorkbenchActivityProjection,
+  type WorkbenchActivityRpcClient
+} from "@carbon/database/workbench";
 import { groupBy } from "@carbon/utils";
 import { z } from "zod";
 import { inngest } from "../../client";
@@ -149,6 +157,33 @@ type AuditRpcClient = {
   ): Promise<{ data: number | null; error: any }>;
 };
 
+type PendingAuditEntry = CreateAuditLogEntry & { createdAt: string };
+
+function projectAuditEntries(
+  companyId: string,
+  entries: PendingAuditEntry[]
+): WorkbenchActivityProjection[] {
+  return entries.flatMap((entry) => {
+    const auditEntry: AuditLogEntry = {
+      id: "",
+      companyId,
+      tableName: entry.tableName,
+      entityType: entry.entityType,
+      entityId: entry.entityId,
+      recordId: entry.recordId,
+      operation: entry.operation,
+      actorId: entry.actorId,
+      diff: entry.diff ?? null,
+      metadata: entry.metadata ?? null,
+      createdAt: entry.createdAt
+    };
+    auditEntry.id = buildWorkbenchActivityIdempotencyKey(auditEntry);
+
+    const projection = projectAuditEntryToWorkbenchActivity(auditEntry);
+    return projection ? [projection] : [];
+  });
+}
+
 export const auditFunction = inngest.createFunction(
   {
     id: "event-handler-audit",
@@ -162,6 +197,7 @@ export const auditFunction = inngest.createFunction(
 
     const results = {
       inserted: 0,
+      projected: 0,
       skipped: 0,
       failed: 0
     };
@@ -182,7 +218,12 @@ export const auditFunction = inngest.createFunction(
       }
 
       const companyResult = await step.run(`audit-${companyId}`, async () => {
-        const stepResults = { inserted: 0, skipped: 0, failed: 0 };
+        const stepResults = {
+          inserted: 0,
+          skipped: 0,
+          failed: 0,
+          projections: [] as WorkbenchActivityProjection[]
+        };
 
         // Check if company has audit logs enabled
         const { data: company } = await client
@@ -201,7 +242,7 @@ export const auditFunction = inngest.createFunction(
           return stepResults;
         }
 
-        const entries: CreateAuditLogEntry[] = [];
+        const entries: PendingAuditEntry[] = [];
 
         for (const record of records) {
           const tableName = record.event.table;
@@ -358,7 +399,8 @@ export const auditFunction = inngest.createFunction(
                     operation,
                     actorId: entryActorId,
                     diff: effectiveDiff,
-                    metadata: entryMetadata
+                    metadata: entryMetadata,
+                    createdAt: record.event.timestamp
                   });
                   entriesCreatedForRecord++;
                 } else {
@@ -400,10 +442,13 @@ export const auditFunction = inngest.createFunction(
 
           if (error) {
             console.error(`Failed to insert audit log entries:`, { error });
-            stepResults.failed += entries.length;
-          } else {
-            stepResults.inserted += insertedCount ?? entries.length;
+            throw new Error(
+              `Failed to insert audit log entries for company ${companyId}: ${error.message}`
+            );
           }
+
+          stepResults.inserted += insertedCount ?? entries.length;
+          stepResults.projections = projectAuditEntries(companyId, entries);
         }
 
         return stepResults;
@@ -412,6 +457,19 @@ export const auditFunction = inngest.createFunction(
       results.inserted += companyResult.inserted;
       results.skipped += companyResult.skipped;
       results.failed += companyResult.failed;
+
+      if (companyResult.projections.length > 0) {
+        const projectedCount = await step.run(
+          `workbench-${companyId}`,
+          async () =>
+            upsertWorkbenchActivityProjections(
+              client as unknown as WorkbenchActivityRpcClient,
+              companyId,
+              companyResult.projections
+            )
+        );
+        results.projected += projectedCount;
+      }
     }
 
     console.log("Audit function completed", results);

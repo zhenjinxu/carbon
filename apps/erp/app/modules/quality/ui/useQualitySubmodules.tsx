@@ -5,6 +5,7 @@ import {
   LuClipboardCheck,
   LuDraftingCompass,
   LuFileText,
+  LuLayoutDashboard,
   LuListChecks,
   LuOctagonX,
   LuShapes,
@@ -113,6 +114,17 @@ export default function useQualitySubmodules() {
           name: t`Issue Workflows`,
           to: path.to.issueWorkflows,
           icon: <LuWorkflow />
+        }
+      ]
+    },
+    {
+      name: t`个人工作台`,
+      routes: [
+        {
+          name: t`我的工作台`,
+          to: path.to.qualityWorkbench,
+          role: "employee",
+          icon: <LuLayoutDashboard />
         }
       ]
     }

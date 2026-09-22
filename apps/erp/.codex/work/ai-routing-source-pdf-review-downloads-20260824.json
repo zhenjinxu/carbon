@@ -1,0 +1,48 @@
+{
+  "downloadedAt": "2026-08-24T05:19:36.151Z",
+  "outputDir": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\ai-routing-source-pdf-review-packet-20260824",
+  "downloadCount": 4,
+  "failureCount": 0,
+  "downloads": [
+    {
+      "readableId": "1927930206",
+      "documentId": "doc_XSVvDoSaTcUfh3ybGmsEJo",
+      "documentName": "1927930206.pdf",
+      "storagePath": "d8s9bh4f8gm357312pbg/parts/wodiitem_a4d59c570e244d212b1cad7e/1927930206.pdf",
+      "localPath": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\ai-routing-source-pdf-review-packet-20260824\\1927930206-1927930206.pdf.pdf",
+      "byteLength": 105948,
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "readableId": "192769010102",
+      "documentId": "doc_WJzgaXKNKxduY2Xtp5dPdG",
+      "documentName": "192769010102.pdf",
+      "storagePath": "d8s9bh4f8gm357312pbg/parts/wodiitem_b9596db1aeabf6529e9241c1/192769010102.pdf",
+      "localPath": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\ai-routing-source-pdf-review-packet-20260824\\192769010102-192769010102.pdf.pdf",
+      "byteLength": 92932,
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "readableId": "192472540409",
+      "documentId": "doc_F74reWPB3JNwXRiLprhQgM",
+      "documentName": "192472540409.pdf",
+      "storagePath": "d8s9bh4f8gm357312pbg/parts/wodiitem_b4c1f209502c82cd3bd79c08/192472540409.pdf",
+      "localPath": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\ai-routing-source-pdf-review-packet-20260824\\192472540409-192472540409.pdf.pdf",
+      "byteLength": 109219,
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "readableId": "192759010202",
+      "documentId": "doc_632r4phaWmyCHhABLRRTje",
+      "documentName": "192759010202.pdf",
+      "storagePath": "d8s9bh4f8gm357312pbg/parts/wodiitem_67aa6030f75984cd62312899/192759010202.pdf",
+      "localPath": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\ai-routing-source-pdf-review-packet-20260824\\192759010202-192759010202.pdf.pdf",
+      "byteLength": 101549,
+      "status": "downloaded",
+      "error": null
+    }
+  ]
+}

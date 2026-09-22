@@ -1,0 +1,1047 @@
+{
+  "holdoutCount": 26,
+  "matched": 9,
+  "byPrimary": {
+    "match": 9,
+    "draft_copies_best_sample_without_evidence_based_operation_completion": 4,
+    "retrieval_threshold_or_weak_target_evidence": 5,
+    "retrieval_selected_wrong_route_family": 8
+  },
+  "missingFamilyCounts": {
+    "攻丝": 5,
+    "领料": 5,
+    "铣/加工中心": 3,
+    "外协氧化": 2,
+    "钻孔": 2,
+    "锯/片锯下料": 7,
+    "车削": 7,
+    "激光切割": 4,
+    "折弯": 1
+  },
+  "extraFamilyCounts": {
+    "铣/加工中心": 6,
+    "攻丝": 4,
+    "激光切割": 2,
+    "折弯": 2
+  },
+  "rows": [
+    {
+      "readableId": "1927930503",
+      "targetFeatureTags": ["板件", "孔", "折弯"],
+      "actualFamilies": ["领料", "激光切割", "折弯"],
+      "predictedFamilies": ["领料", "激光切割", "折弯"],
+      "missingFamilies": [],
+      "extraFamilies": [],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1924371005",
+          "score": 55,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "readableId": "1924371803",
+          "score": 55,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 55,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "readableId": "1920790304",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "readableId": "1927134101",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "match"
+    },
+    {
+      "readableId": "192793050201",
+      "targetFeatureTags": ["板件", "折弯"],
+      "actualFamilies": ["领料", "激光切割", "折弯"],
+      "predictedFamilies": ["领料", "激光切割", "折弯"],
+      "missingFamilies": [],
+      "extraFamilies": [],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "match"
+    },
+    {
+      "readableId": "1927930603",
+      "targetFeatureTags": ["板件"],
+      "actualFamilies": ["领料", "激光切割", "折弯"],
+      "predictedFamilies": ["领料", "激光切割", "折弯"],
+      "missingFamilies": [],
+      "extraFamilies": [],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1927134101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192437180604",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "match"
+    },
+    {
+      "readableId": "192793060201",
+      "targetFeatureTags": ["板件", "折弯"],
+      "actualFamilies": ["领料", "激光切割", "折弯"],
+      "predictedFamilies": ["领料", "激光切割", "折弯"],
+      "missingFamilies": [],
+      "extraFamilies": [],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "match"
+    },
+    {
+      "readableId": "1927930202",
+      "targetFeatureTags": ["板件", "孔", "螺纹", "折弯"],
+      "actualFamilies": ["领料", "激光切割", "折弯", "攻丝"],
+      "predictedFamilies": ["领料", "激光切割", "折弯"],
+      "missingFamilies": ["攻丝"],
+      "extraFamilies": [],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1924371005",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "readableId": "1924371803",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "readableId": "1920790304",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "1927134101",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "draft_copies_best_sample_without_evidence_based_operation_completion"
+    },
+    {
+      "readableId": "192793020201",
+      "targetFeatureTags": ["板件", "折弯"],
+      "actualFamilies": ["领料", "激光切割", "折弯"],
+      "predictedFamilies": ["领料", "激光切割", "折弯"],
+      "missingFamilies": [],
+      "extraFamilies": [],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "match"
+    },
+    {
+      "readableId": "1927930206",
+      "targetFeatureTags": ["板件", "孔", "螺纹", "台阶"],
+      "actualFamilies": [
+        "领料",
+        "铣/加工中心",
+        "铣/加工中心",
+        "攻丝",
+        "外协氧化"
+      ],
+      "predictedFamilies": [],
+      "missingFamilies": ["领料", "铣/加工中心", "攻丝", "外协氧化"],
+      "extraFamilies": [],
+      "warningCount": 1,
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ],
+      "topReferences": [
+        {
+          "readableId": "192793050101",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6
+        },
+        {
+          "readableId": "1927930207",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6
+        },
+        {
+          "readableId": "1920790301",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6
+        },
+        {
+          "readableId": "192793020101",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6
+        },
+        {
+          "readableId": "192713410301",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6
+        }
+      ],
+      "primaryAttribution": "retrieval_threshold_or_weak_target_evidence"
+    },
+    {
+      "readableId": "1927326104",
+      "targetFeatureTags": ["孔", "螺纹"],
+      "actualFamilies": ["领料", "钻孔", "攻丝"],
+      "predictedFamilies": ["领料", "铣/加工中心", "铣/加工中心", "攻丝"],
+      "missingFamilies": ["钻孔"],
+      "extraFamilies": ["铣/加工中心"],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 8
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "retrieval_selected_wrong_route_family"
+    },
+    {
+      "readableId": "1927881101",
+      "targetFeatureTags": ["孔", "螺纹"],
+      "actualFamilies": ["领料", "锯/片锯下料", "车削", "攻丝"],
+      "predictedFamilies": ["领料", "铣/加工中心", "铣/加工中心", "攻丝"],
+      "missingFamilies": ["锯/片锯下料", "车削"],
+      "extraFamilies": ["铣/加工中心"],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 5
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "retrieval_selected_wrong_route_family"
+    },
+    {
+      "readableId": "1927881103",
+      "targetFeatureTags": ["板件", "孔"],
+      "actualFamilies": ["领料", "激光切割"],
+      "predictedFamilies": ["领料", "铣/加工中心", "铣/加工中心", "攻丝"],
+      "missingFamilies": ["激光切割"],
+      "extraFamilies": ["铣/加工中心", "攻丝"],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "readableId": "1924371005",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1924371803",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "retrieval_selected_wrong_route_family"
+    },
+    {
+      "readableId": "1927930801",
+      "targetFeatureTags": ["板件"],
+      "actualFamilies": ["领料", "激光切割", "折弯"],
+      "predictedFamilies": ["领料", "激光切割", "折弯"],
+      "missingFamilies": [],
+      "extraFamilies": [],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1927134101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192437180604",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "match"
+    },
+    {
+      "readableId": "1927930802",
+      "targetFeatureTags": ["板件", "折弯"],
+      "actualFamilies": ["领料", "激光切割", "折弯"],
+      "predictedFamilies": ["领料", "激光切割", "折弯"],
+      "missingFamilies": [],
+      "extraFamilies": [],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "match"
+    },
+    {
+      "readableId": "1927930803",
+      "targetFeatureTags": ["板件", "折弯"],
+      "actualFamilies": ["领料", "激光切割", "折弯"],
+      "predictedFamilies": ["领料", "激光切割", "折弯"],
+      "missingFamilies": [],
+      "extraFamilies": [],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "match"
+    },
+    {
+      "readableId": "1927930804",
+      "targetFeatureTags": ["板件", "折弯"],
+      "actualFamilies": ["领料", "激光切割", "折弯"],
+      "predictedFamilies": [],
+      "missingFamilies": ["领料", "激光切割", "折弯"],
+      "extraFamilies": [],
+      "warningCount": 1,
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ],
+      "topReferences": [
+        {
+          "readableId": "192793060101",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "readableId": "1927930502",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "readableId": "1927930501",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "readableId": "192793050101",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "readableId": "1927930601",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 4
+        }
+      ],
+      "primaryAttribution": "retrieval_threshold_or_weak_target_evidence"
+    },
+    {
+      "readableId": "192744140302",
+      "targetFeatureTags": ["板件", "孔"],
+      "actualFamilies": ["领料", "激光切割"],
+      "predictedFamilies": ["领料", "铣/加工中心", "铣/加工中心", "攻丝"],
+      "missingFamilies": ["激光切割"],
+      "extraFamilies": ["铣/加工中心", "攻丝"],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 5
+        },
+        {
+          "readableId": "1924371005",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "1924371803",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 2
+        }
+      ],
+      "primaryAttribution": "retrieval_selected_wrong_route_family"
+    },
+    {
+      "readableId": "192769010102",
+      "targetFeatureTags": ["板件", "孔", "螺纹"],
+      "actualFamilies": [
+        "领料",
+        "铣/加工中心",
+        "车削",
+        "钻孔",
+        "攻丝",
+        "外协氧化"
+      ],
+      "predictedFamilies": [],
+      "missingFamilies": [
+        "领料",
+        "铣/加工中心",
+        "车削",
+        "钻孔",
+        "攻丝",
+        "外协氧化"
+      ],
+      "extraFamilies": [],
+      "warningCount": 1,
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ],
+      "topReferences": [
+        {
+          "readableId": "192793050101",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8
+        },
+        {
+          "readableId": "1927930207",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8
+        },
+        {
+          "readableId": "1920790301",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8
+        },
+        {
+          "readableId": "192793020101",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8
+        },
+        {
+          "readableId": "192713410301",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8
+        }
+      ],
+      "primaryAttribution": "retrieval_threshold_or_weak_target_evidence"
+    },
+    {
+      "readableId": "192769010103",
+      "targetFeatureTags": ["板件", "孔", "槽"],
+      "actualFamilies": ["领料", "激光切割"],
+      "predictedFamilies": ["领料", "铣/加工中心", "铣/加工中心", "攻丝"],
+      "missingFamilies": ["激光切割"],
+      "extraFamilies": ["铣/加工中心", "攻丝"],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "1924371005",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1927134101",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1924371803",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "retrieval_selected_wrong_route_family"
+    },
+    {
+      "readableId": "192788110401",
+      "targetFeatureTags": ["孔"],
+      "actualFamilies": ["领料", "锯/片锯下料", "车削"],
+      "predictedFamilies": ["领料", "铣/加工中心", "铣/加工中心", "攻丝"],
+      "missingFamilies": ["锯/片锯下料", "车削"],
+      "extraFamilies": ["铣/加工中心", "攻丝"],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "retrieval_selected_wrong_route_family"
+    },
+    {
+      "readableId": "192788110402",
+      "targetFeatureTags": ["轴类", "孔", "螺纹"],
+      "actualFamilies": ["领料", "锯/片锯下料", "车削", "铣/加工中心", "攻丝"],
+      "predictedFamilies": ["领料", "铣/加工中心", "铣/加工中心", "攻丝"],
+      "missingFamilies": ["锯/片锯下料", "车削"],
+      "extraFamilies": [],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "192437180604",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "draft_copies_best_sample_without_evidence_based_operation_completion"
+    },
+    {
+      "readableId": "192788110601",
+      "targetFeatureTags": ["轴类", "螺纹", "孔", "焊接件"],
+      "actualFamilies": ["领料", "锯/片锯下料", "车削", "铣/加工中心", "攻丝"],
+      "predictedFamilies": [],
+      "missingFamilies": ["领料", "锯/片锯下料", "车削", "铣/加工中心", "攻丝"],
+      "extraFamilies": [],
+      "warningCount": 1,
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ],
+      "topReferences": [
+        {
+          "readableId": "192713410301",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "readableId": "19272869010104",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "readableId": "1927286901",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "191967100102",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "192079030100",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 2
+        }
+      ],
+      "primaryAttribution": "retrieval_threshold_or_weak_target_evidence"
+    },
+    {
+      "readableId": "192788110602",
+      "targetFeatureTags": ["焊接件"],
+      "actualFamilies": ["领料", "锯/片锯下料", "车削"],
+      "predictedFamilies": [],
+      "missingFamilies": ["领料", "锯/片锯下料", "车削"],
+      "extraFamilies": [],
+      "warningCount": 1,
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ],
+      "topReferences": [
+        {
+          "readableId": "192793060200",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "readableId": "192793050200",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "readableId": "19244208060400",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "readableId": "19271341030100",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "readableId": "19272869010",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3
+        }
+      ],
+      "primaryAttribution": "retrieval_threshold_or_weak_target_evidence"
+    },
+    {
+      "readableId": "192793010401",
+      "targetFeatureTags": [],
+      "actualFamilies": ["领料", "锯/片锯下料"],
+      "predictedFamilies": ["领料", "激光切割", "折弯"],
+      "missingFamilies": ["锯/片锯下料"],
+      "extraFamilies": ["激光切割", "折弯"],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410402",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "retrieval_selected_wrong_route_family"
+    },
+    {
+      "readableId": "192793010402",
+      "targetFeatureTags": [],
+      "actualFamilies": ["领料", "锯/片锯下料"],
+      "predictedFamilies": ["领料", "激光切割", "折弯"],
+      "missingFamilies": ["锯/片锯下料"],
+      "extraFamilies": ["激光切割", "折弯"],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410402",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "retrieval_selected_wrong_route_family"
+    },
+    {
+      "readableId": "192793080101",
+      "targetFeatureTags": ["板件", "孔", "螺纹", "折弯"],
+      "actualFamilies": ["领料", "激光切割", "折弯", "攻丝"],
+      "predictedFamilies": ["领料", "激光切割", "折弯"],
+      "missingFamilies": ["攻丝"],
+      "extraFamilies": [],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1924371005",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "readableId": "1924371803",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "readableId": "1920790304",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "readableId": "1927134101",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 1
+        }
+      ],
+      "primaryAttribution": "draft_copies_best_sample_without_evidence_based_operation_completion"
+    },
+    {
+      "readableId": "192793080201",
+      "targetFeatureTags": ["板件", "折弯"],
+      "actualFamilies": ["领料", "激光切割", "折弯"],
+      "predictedFamilies": ["领料", "激光切割", "折弯"],
+      "missingFamilies": [],
+      "extraFamilies": [],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "match"
+    },
+    {
+      "readableId": "19276939010203",
+      "targetFeatureTags": ["板件", "轴类", "孔"],
+      "actualFamilies": ["领料", "激光切割", "车削"],
+      "predictedFamilies": ["领料", "激光切割"],
+      "missingFamilies": ["车削"],
+      "extraFamilies": [],
+      "warningCount": 0,
+      "warnings": [],
+      "topReferences": [
+        {
+          "readableId": "192437180604",
+          "score": 55,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1920790304",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "readableId": "1924371005",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "1927134101",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "readableId": "192713410405",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "primaryAttribution": "draft_copies_best_sample_without_evidence_based_operation_completion"
+    }
+  ]
+}

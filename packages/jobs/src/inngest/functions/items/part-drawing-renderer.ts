@@ -36,6 +36,7 @@ export type AiRoutingRenderedPdfPageSummary = {
   height: number;
   textItemCount: number;
   textCharCount: number;
+  visibleText?: string;
   pngByteLength: number;
   renderDurationMs: number;
 };
@@ -73,6 +74,7 @@ type CanvasAndContext = {
 type TextContentLike = {
   items: Array<{ str?: unknown } | unknown>;
 };
+const MAX_VISIBLE_TEXT_CHARS = 12_000;
 
 function fail(code: AiRoutingPdfRendererErrorCode, message: string): never {
   throw new AiRoutingPdfRendererError(code, message);
@@ -121,9 +123,23 @@ function textStats(textContent: TextContentLike) {
     }
   }
 
+  const visibleText = textContent.items
+    .map((item) =>
+      typeof item === "object" &&
+      item !== null &&
+      "str" in item &&
+      typeof item.str === "string"
+        ? item.str
+        : ""
+    )
+    .filter(Boolean)
+    .join("\n")
+    .slice(0, MAX_VISIBLE_TEXT_CHARS);
+
   return {
     textItemCount: textContent.items.length,
-    textCharCount
+    textCharCount,
+    visibleText
   };
 }
 
@@ -213,14 +229,20 @@ async function renderAiRoutingPdfDrawingInternal(
       }
       factory.destroy(canvasAndContext);
       totalPngByteLength += pngByteLength;
-      pages.push({
+      const summaryPage = {
         pageNumber,
         width,
         height,
-        ...stats,
+        textItemCount: stats.textItemCount,
+        textCharCount: stats.textCharCount,
         pngByteLength,
         renderDurationMs: Math.round(performance.now() - renderStartedAt)
+      };
+      Object.defineProperty(summaryPage, "visibleText", {
+        value: stats.visibleText,
+        enumerable: false
       });
+      pages.push(summaryPage);
     }
 
     const summary: AiRoutingPdfRenderSummary = {

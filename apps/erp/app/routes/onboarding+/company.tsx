@@ -1,10 +1,11 @@
-import { assertIsPost, CarbonEdition } from "@carbon/auth";
+import { assertIsPost, CarbonEdition, error } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { getCarbonServiceRole } from "@carbon/auth/client.server";
 import { setCompanyId } from "@carbon/auth/company.server";
-import { updateCompanySession } from "@carbon/auth/session.server";
+import { flash, updateCompanySession } from "@carbon/auth/session.server";
 import { ValidatedForm, validationError, validator } from "@carbon/form";
 import { trigger } from "@carbon/jobs";
+import { redis } from "@carbon/kv";
 import {
   Button,
   Card,
@@ -15,6 +16,7 @@ import {
   HStack,
   VStack
 } from "@carbon/react";
+import { updateSubscriptionQuantityForCompany } from "@carbon/stripe/stripe.server";
 import { Edition } from "@carbon/utils";
 import { getLocalTimeZone } from "@internationalized/date";
 import { Trans, useLingui } from "@lingui/react/macro";
@@ -28,7 +30,6 @@ import {
   Submit
 } from "~/components/Form";
 import { useOnboarding } from "~/hooks";
-import { insertEmployeeJob } from "~/modules/people";
 import { getLocationsList, upsertLocation } from "~/modules/resources";
 import {
   getCompanies,
@@ -38,6 +39,13 @@ import {
   seedCompany,
   updateCompany
 } from "~/modules/settings";
+import { acceptPendingEmployeeInviteForLogin } from "~/modules/users/pending-invite-login.server";
+import {
+  acceptInvite,
+  getPermissionCacheKey
+} from "~/modules/users/users.server";
+import { path } from "~/utils/path";
+import { getOnboardingLocationFields } from "./company.helpers";
 
 export async function loader({ request }: ActionFunctionArgs) {
   const { client, companyId } = await requirePermissions(request, {});
@@ -71,48 +79,85 @@ export async function action({ request }: ActionFunctionArgs) {
   const serviceRole = getCarbonServiceRole();
 
   const { next, ...d } = validation.data;
+  const acceptedEmployeeInvite = await acceptPendingEmployeeInviteForLogin(
+    serviceRole,
+    userId,
+    acceptInvite
+  );
 
-  let companyId: string | undefined;
+  if (acceptedEmployeeInvite.error) {
+    return redirect(
+      path.to.root,
+      await flash(
+        request,
+        error(
+          acceptedEmployeeInvite.error,
+          "Failed to accept pending employee invite"
+        )
+      )
+    );
+  }
+
+  if (acceptedEmployeeInvite.data) {
+    if (CarbonEdition === Edition.Cloud) {
+      await updateSubscriptionQuantityForCompany(
+        acceptedEmployeeInvite.data.companyId
+      );
+    }
+
+    const { data: companyRecord } = await serviceRole
+      .from("company")
+      .select("companyGroupId")
+      .eq("id", acceptedEmployeeInvite.data.companyId)
+      .single();
+
+    const sessionCookie = await updateCompanySession(
+      request,
+      acceptedEmployeeInvite.data.companyId,
+      companyRecord?.companyGroupId ?? ""
+    );
+    const companyIdCookie = setCompanyId(acceptedEmployeeInvite.data.companyId);
+
+    throw redirect(next || path.to.authenticatedRoot, {
+      headers: [
+        ["Set-Cookie", sessionCookie],
+        ["Set-Cookie", companyIdCookie]
+      ]
+    });
+  }
+
+  const locationFields = getOnboardingLocationFields(d);
+  const timezone = getLocalTimeZone();
 
   const companies = await getCompanies(client, userId);
   const company = companies?.data?.[0];
 
-  const locations = await getLocationsList(client, company?.id ?? "");
+  const locations = company?.id
+    ? await getLocationsList(client, company.id)
+    : null;
   const location = locations?.data?.[0];
 
-  if (company && location) {
-    const [companyUpdate, locationUpdate] = await Promise.all([
-      updateCompany(serviceRole, company.id!, {
-        ...d,
-        updatedBy: userId
-      }),
-      upsertLocation(serviceRole, {
-        ...location,
-        ...d,
-        timezone: getLocalTimeZone(),
-        updatedBy: userId
-      })
-    ]);
+  let companyId = company?.id;
+  let locationId = location?.id ?? undefined;
+
+  if (companyId) {
+    const companyUpdate = await updateCompany(serviceRole, companyId, {
+      ...d,
+      updatedBy: userId
+    });
+
     if (companyUpdate.error) {
       console.error(companyUpdate.error);
       throw new Error("Fatal: failed to update company");
     }
-    if (locationUpdate.error) {
-      console.error(locationUpdate.error);
-      throw new Error("Fatal: failed to update location");
-    }
   } else {
-    if (!companyId) {
-      const [companyInsert] = await Promise.all([
-        insertCompany(serviceRole, d)
-      ]);
-      if (companyInsert.error) {
-        console.error(companyInsert.error);
-        throw new Error("Fatal: failed to insert company");
-      }
-
-      companyId = companyInsert.data?.id;
+    const companyInsert = await insertCompany(serviceRole, d);
+    if (companyInsert.error) {
+      console.error(companyInsert.error);
+      throw new Error("Fatal: failed to insert company");
     }
+
+    companyId = companyInsert.data?.id;
 
     if (!companyId) {
       throw new Error("Fatal: failed to get company ID");
@@ -131,57 +176,115 @@ export async function action({ request }: ActionFunctionArgs) {
         userId
       });
     }
+  }
 
-    // biome-ignore lint/correctness/noUnusedVariables: suppressed due to migration
-    const { baseCurrencyCode, website, ...locationData } = d;
+  if (!companyId) {
+    throw new Error("Fatal: failed to get company ID");
+  }
 
-    // TODO: move all of this to transaction
-    const [locationInsert] = await Promise.all([
-      upsertLocation(serviceRole, {
-        ...locationData,
+  const [terms, companySettings] = await Promise.all([
+    serviceRole.from("terms").upsert({ id: companyId }, { onConflict: "id" }),
+    serviceRole
+      .from("companySettings")
+      .upsert({ id: companyId }, { onConflict: "id" })
+  ]);
+
+  if (terms.error) {
+    console.error(terms.error);
+    throw new Error("Fatal: failed to ensure company terms");
+  }
+
+  if (companySettings.error) {
+    console.error(companySettings.error);
+    throw new Error("Fatal: failed to ensure company settings");
+  }
+
+  if (locationId) {
+    const locationUpdate = await upsertLocation(serviceRole, {
+      id: locationId,
+      name: location?.name ?? "Headquarters",
+      ...locationFields,
+      timezone,
+      updatedBy: userId
+    });
+
+    if (locationUpdate.error) {
+      console.error(locationUpdate.error);
+      throw new Error("Fatal: failed to update location");
+    }
+  } else {
+    const existingLocations = await getLocationsList(serviceRole, companyId);
+    if (existingLocations.error) {
+      console.error(existingLocations.error);
+      throw new Error("Fatal: failed to get locations");
+    }
+
+    const existingLocation = existingLocations.data?.[0];
+
+    if (existingLocation?.id) {
+      locationId = existingLocation.id;
+      const locationUpdate = await upsertLocation(serviceRole, {
+        id: locationId,
+        name: existingLocation.name ?? "Headquarters",
+        ...locationFields,
+        timezone,
+        updatedBy: userId
+      });
+
+      if (locationUpdate.error) {
+        console.error(locationUpdate.error);
+        throw new Error("Fatal: failed to update location");
+      }
+    } else {
+      const locationInsert = await upsertLocation(serviceRole, {
+        ...locationFields,
         name: "Headquarters",
         companyId,
-        timezone: getLocalTimeZone(),
+        timezone,
         createdBy: userId
-      })
-    ]);
+      });
 
-    if (locationInsert.error) {
-      console.error(locationInsert.error);
-      throw new Error("Fatal: failed to insert location");
-    }
+      if (locationInsert.error) {
+        console.error(locationInsert.error);
+        throw new Error("Fatal: failed to insert location");
+      }
 
-    const locationId = locationInsert.data?.id;
-    if (!locationId) {
-      throw new Error("Fatal: failed to get location ID");
-    }
-
-    const [job] = await Promise.all([
-      insertEmployeeJob(serviceRole, {
-        id: userId,
-        companyId,
-        locationId
-      })
-    ]);
-
-    if (job.error) {
-      console.error(job.error);
-      throw new Error("Fatal: failed to insert job");
+      locationId = locationInsert.data?.id;
     }
   }
+
+  if (!locationId) {
+    throw new Error("Fatal: failed to get location ID");
+  }
+
+  const job = await serviceRole.from("employeeJob").upsert(
+    {
+      id: userId,
+      companyId,
+      locationId
+    },
+    { onConflict: "id,companyId" }
+  );
+
+  if (job.error) {
+    console.error(job.error);
+    throw new Error("Fatal: failed to ensure job");
+  }
+
+  await redis.del(getPermissionCacheKey(userId));
 
   const { data: companyRecord } = await serviceRole
     .from("company")
     .select("companyGroupId")
-    .eq("id", companyId!)
+    .eq("id", companyId)
     .single();
 
   const sessionCookie = await updateCompanySession(
     request,
-    companyId!,
+    companyId,
     companyRecord?.companyGroupId ?? ""
   );
-  const companyIdCookie = setCompanyId(companyId!);
+  const companyIdCookie = setCompanyId(companyId);
 
   throw redirect(next, {
     headers: [

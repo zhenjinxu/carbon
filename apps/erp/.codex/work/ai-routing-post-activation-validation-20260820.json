@@ -1,0 +1,305 @@
+{
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "validatedAt": "2026-08-20T07:20:28.029Z",
+  "target": {
+    "readableId": "192793050201",
+    "itemId": "wodiitem_0141582866eb9de5f7c76491"
+  },
+  "activation": {
+    "methods": [
+      {
+        "id": "make_46fb2501da572da33ee8d133",
+        "status": "Archived",
+        "version": 10,
+        "createdAt": "2026-07-30T01:15:08.152Z",
+        "updatedAt": "2026-07-30T06:47:45.736Z"
+      },
+      {
+        "id": "make_MzZb6Ca6xbsjuShAfZ9n4Z",
+        "status": "Active",
+        "version": 11,
+        "createdAt": "2026-08-20T06:57:06.824Z",
+        "updatedAt": null
+      }
+    ],
+    "operations": [
+      {
+        "id": "mop_XKHxhWqg5xjVrzaMoehb1B",
+        "makeMethodId": "make_MzZb6Ca6xbsjuShAfZ9n4Z",
+        "order": 1,
+        "processId": "u8proc_f6e011e7882189b9fc05a4b2",
+        "processName": "U8 LL01 领料工作中心",
+        "workCenterId": null,
+        "description": "领料工作中心"
+      },
+      {
+        "id": "mop_2nMXGdT4rK8ozYeqZkcRHW",
+        "makeMethodId": "make_MzZb6Ca6xbsjuShAfZ9n4Z",
+        "order": 2,
+        "processId": "u8proc_4b1d56bd2a2820b629040581",
+        "processName": "U8 XJG01 数控激光切割（下料）",
+        "workCenterId": null,
+        "description": "数控激光切割（下料）"
+      },
+      {
+        "id": "mop_PoXejVwaGY3Nfrfc8cneR8",
+        "makeMethodId": "make_MzZb6Ca6xbsjuShAfZ9n4Z",
+        "order": 3,
+        "processId": "u8proc_b47b49251b71b7cdf6f2601c",
+        "processName": "U8 CSZ01 数控折弯(下料）",
+        "workCenterId": null,
+        "description": "数控折弯(下料）"
+      }
+    ],
+    "drafts": [
+      {
+        "id": "aird_EoeRjfohQYHSv3VUk3Jjhx",
+        "status": "Accepted",
+        "targetMakeMethodId": "make_46fb2501da572da33ee8d133",
+        "acceptedMakeMethodId": "make_MzZb6Ca6xbsjuShAfZ9n4Z",
+        "acceptedAt": "2026-08-20T06:57:06.824Z",
+        "feedbackId": "airf_Pcy9metjb6bFmtXMRa7ek",
+        "reason": "codex-controlled-generate-accept-materialize-20260820-192793050201"
+      }
+    ],
+    "activeMethodIds": ["make_MzZb6Ca6xbsjuShAfZ9n4Z"],
+    "activeOperationCount": 3,
+    "activeRouteSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）"
+  },
+  "linkedDraft": {
+    "id": "aird_EoeRjfohQYHSv3VUk3Jjhx",
+    "acceptedMakeMethodId": "make_MzZb6Ca6xbsjuShAfZ9n4Z",
+    "feedbackId": "airf_Pcy9metjb6bFmtXMRa7ek",
+    "reason": "codex-controlled-generate-accept-materialize-20260820-192793050201"
+  },
+  "roleChecks": [
+    {
+      "readableId": "1927930503",
+      "roles": ["Evaluation"],
+      "hasEvaluation": true,
+      "hasTraining": false
+    },
+    {
+      "readableId": "192793050201",
+      "roles": ["Evaluation"],
+      "hasEvaluation": true,
+      "hasTraining": false
+    },
+    {
+      "readableId": "1927930603",
+      "roles": ["Evaluation"],
+      "hasEvaluation": true,
+      "hasTraining": false
+    },
+    {
+      "readableId": "192793060201",
+      "roles": ["Evaluation"],
+      "hasEvaluation": true,
+      "hasTraining": false
+    }
+  ],
+  "totals": {
+    "holdoutCount": 4,
+    "trainingSampleCount": 105,
+    "evaluationLeakCount": 0,
+    "workCenterAssignmentCount": 0,
+    "missingProcessIdCount": 0,
+    "invalidProcessIdCount": 0,
+    "activatedTargetDraftOperationCount": 3
+  },
+  "draftResults": [
+    {
+      "readableId": "1927930503",
+      "extractionId": "aide_ZUm5yz18gbHisqN3j5euo",
+      "materialTags": ["304"],
+      "featureTags": ["板件", "孔", "折弯"],
+      "drawingEvidenceCount": 21,
+      "suggestedOperationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 55,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 55,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_f8a47d03d811be629b47b32e",
+          "readableId": "19271341030101",
+          "score": 55,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_90ba3f19b54eac05274bc6e6",
+          "readableId": "1920790304",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "warningCount": 0,
+      "warnings": [],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0
+    },
+    {
+      "readableId": "192793050201",
+      "extractionId": "aide_TqQRLBMEb9aHw8D2PvV1M9",
+      "materialTags": ["304"],
+      "featureTags": ["板件", "折弯"],
+      "drawingEvidenceCount": 22,
+      "suggestedOperationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_f8a47d03d811be629b47b32e",
+          "readableId": "19271341030101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "warningCount": 0,
+      "warnings": [],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0
+    },
+    {
+      "readableId": "1927930603",
+      "extractionId": "aide_7UXaU6cbQRNhZ7apv6ddtm",
+      "materialTags": ["304"],
+      "featureTags": ["板件"],
+      "drawingEvidenceCount": 11,
+      "suggestedOperationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_e129093cf9f8b43332628ddb",
+          "readableId": "192437180604",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "warningCount": 0,
+      "warnings": [],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0
+    },
+    {
+      "readableId": "192793060201",
+      "extractionId": "aide_SC2RePErD8tnQgFa9dNupT",
+      "materialTags": ["304"],
+      "featureTags": ["板件", "折弯"],
+      "drawingEvidenceCount": 28,
+      "suggestedOperationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_f8a47d03d811be629b47b32e",
+          "readableId": "19271341030101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "warningCount": 0,
+      "warnings": [],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0
+    }
+  ],
+  "counts": {
+    "extractionCount": 26,
+    "sampleCount": 112,
+    "evaluationRunCount": 1
+  }
+}

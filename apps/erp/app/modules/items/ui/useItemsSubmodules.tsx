@@ -9,6 +9,7 @@ import {
   LuGlassWater,
   LuGroup,
   LuHammer,
+  LuLayoutDashboard,
   LuPizza,
   LuPuzzle,
   LuRuler,
@@ -120,6 +121,18 @@ export default function useItemsSubmodules() {
           role: "employee",
           permission: "settings",
           icon: <LuArchive />
+        }
+      ]
+    },
+
+    {
+      name: t`个人工作台`,
+      routes: [
+        {
+          name: t`我的工作台`,
+          to: path.to.itemsWorkbench,
+          role: "employee",
+          icon: <LuLayoutDashboard />
         }
       ]
     }

@@ -1,0 +1,572 @@
+{
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "auditedAt": "2026-08-20T09:33:54.837Z",
+  "summary": {
+    "processCount": 150,
+    "activeProcessCount": 150,
+    "workCenterCount": 46,
+    "activeWorkCenterCount": 40,
+    "workCenterProcessCount": 28,
+    "activeWorkCenterProcessCount": 22,
+    "methodOperationCount": 1958,
+    "methodOperationWithWorkCenterCount": 52
+  },
+  "processCapabilities": [
+    {
+      "processId": "u8proc_b47b49251b71b7cdf6f2601c",
+      "processName": "U8 CSZ01 数控折弯(下料）",
+      "processActive": true,
+      "mappedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0,
+      "workCenters": []
+    },
+    {
+      "processId": "u8proc_f6e011e7882189b9fc05a4b2",
+      "processName": "U8 LL01 领料工作中心",
+      "processActive": true,
+      "mappedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0,
+      "workCenters": []
+    },
+    {
+      "processId": "u8proc_4b1d56bd2a2820b629040581",
+      "processName": "U8 XJG01 数控激光切割（下料）",
+      "processActive": true,
+      "mappedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0,
+      "workCenters": []
+    }
+  ],
+  "activeMethodCoverage": {
+    "activeOperationCount": 422,
+    "activeOperationWithWorkCenterCount": 10,
+    "activeProcessCount": 43,
+    "activeProcessWithWorkCenterCount": 7
+  },
+  "aiActiveRouteCoverage": [
+    {
+      "readableId": "192793050201",
+      "acceptedMakeMethodId": "make_MzZb6Ca6xbsjuShAfZ9n4Z",
+      "operationCount": 3,
+      "operationWithWorkCenterCount": 0,
+      "operations": [
+        {
+          "order": 1,
+          "processId": "u8proc_f6e011e7882189b9fc05a4b2",
+          "processName": "U8 LL01 领料工作中心",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 2,
+          "processId": "u8proc_4b1d56bd2a2820b629040581",
+          "processName": "U8 XJG01 数控激光切割（下料）",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 3,
+          "processId": "u8proc_b47b49251b71b7cdf6f2601c",
+          "processName": "U8 CSZ01 数控折弯(下料）",
+          "workCenterId": null,
+          "workCenterName": null
+        }
+      ]
+    },
+    {
+      "readableId": "1927930503",
+      "acceptedMakeMethodId": "make_4Q4iCL2kiACFpZiwiVq2pV",
+      "operationCount": 3,
+      "operationWithWorkCenterCount": 0,
+      "operations": [
+        {
+          "order": 1,
+          "processId": "u8proc_f6e011e7882189b9fc05a4b2",
+          "processName": "U8 LL01 领料工作中心",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 2,
+          "processId": "u8proc_4b1d56bd2a2820b629040581",
+          "processName": "U8 XJG01 数控激光切割（下料）",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 3,
+          "processId": "u8proc_b47b49251b71b7cdf6f2601c",
+          "processName": "U8 CSZ01 数控折弯(下料）",
+          "workCenterId": null,
+          "workCenterName": null
+        }
+      ]
+    },
+    {
+      "readableId": "192793060201",
+      "acceptedMakeMethodId": "make_DiECfGnbAxgKfDsf1QNDYH",
+      "operationCount": 3,
+      "operationWithWorkCenterCount": 0,
+      "operations": [
+        {
+          "order": 1,
+          "processId": "u8proc_f6e011e7882189b9fc05a4b2",
+          "processName": "U8 LL01 领料工作中心",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 2,
+          "processId": "u8proc_4b1d56bd2a2820b629040581",
+          "processName": "U8 XJG01 数控激光切割（下料）",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 3,
+          "processId": "u8proc_b47b49251b71b7cdf6f2601c",
+          "processName": "U8 CSZ01 数控折弯(下料）",
+          "workCenterId": null,
+          "workCenterName": null
+        }
+      ]
+    },
+    {
+      "readableId": "1927930603",
+      "acceptedMakeMethodId": "make_KXhV4zJprUXSH9ZSM8rQ2Y",
+      "operationCount": 3,
+      "operationWithWorkCenterCount": 0,
+      "operations": [
+        {
+          "order": 1,
+          "processId": "u8proc_f6e011e7882189b9fc05a4b2",
+          "processName": "U8 LL01 领料工作中心",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 2,
+          "processId": "u8proc_4b1d56bd2a2820b629040581",
+          "processName": "U8 XJG01 数控激光切割（下料）",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 3,
+          "processId": "u8proc_b47b49251b71b7cdf6f2601c",
+          "processName": "U8 CSZ01 数控折弯(下料）",
+          "workCenterId": null,
+          "workCenterName": null
+        }
+      ]
+    }
+  ],
+  "processUsage": [
+    {
+      "processId": "u8proc_f6e011e7882189b9fc05a4b2",
+      "processName": "U8 LL01 领料工作中心",
+      "operationCount": 626,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_4b1d56bd2a2820b629040581",
+      "processName": "U8 XJG01 数控激光切割（下料）",
+      "operationCount": 169,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_f4314c5981e2602ec61c05ac",
+      "processName": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+      "operationCount": 118,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_dd3934b049c7039d55dd460e",
+      "processName": "U8 XDJ02 带锯下料（薄壁不锈钢管）(下料）",
+      "operationCount": 100,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_64ad3c9b248836163b3b9f5b",
+      "processName": "U8 XDJ01 锯床下料",
+      "operationCount": 97,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_72330b28747e8b0b7f004b6c",
+      "processName": "U8 BPZ02 板焊拼装（食品）",
+      "operationCount": 88,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_cc34914b98fa3d2ff43736c8",
+      "processName": "U8 MDM02 打磨拉丝抛光（食品）",
+      "operationCount": 79,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_b30bf0220fcc96bbd035998a",
+      "processName": "U8 BYH01 氩弧焊（食品）",
+      "operationCount": 67,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_b47b49251b71b7cdf6f2601c",
+      "processName": "U8 CSZ01 数控折弯(下料）",
+      "operationCount": 67,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_49678e5d6d644d929cfacb36",
+      "processName": "U8 JQG01 气动攻丝机（机加工）",
+      "operationCount": 61,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "proc-assembly",
+      "processName": "装配",
+      "operationCount": 60,
+      "operationWithWorkCenterCount": 60,
+      "distinctAssignedWorkCenterCount": 3,
+      "activeMappedWorkCenterCount": 2
+    },
+    {
+      "processId": "u8proc_f23c4beb7380e597efa4dd14",
+      "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+      "operationCount": 50,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_014434218cb85401ee65bef0",
+      "processName": "U8 JYZ01 摇臂钻床（机加工）",
+      "operationCount": 49,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_1f5b37ea69c7491d05aad158",
+      "processName": "U8 ZSP01 食品设备组装",
+      "operationCount": 46,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_a1a2dd999b49b3dce47a8caf",
+      "processName": "U8 BYH02 氩弧焊（罐体）",
+      "operationCount": 27,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_e41bdf56716040b6105ff6e4",
+      "processName": "U8 MDM03 打磨拉丝抛光（罐体）",
+      "operationCount": 27,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_6aa9589470c8e1cd5c493b8a",
+      "processName": "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+      "operationCount": 26,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_1a9d11d1f6bb5583698b56f2",
+      "processName": "U8 XSJ01 数控剪板(下料）",
+      "operationCount": 26,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_23193f2320d1ca4cd7ac36ca",
+      "processName": "U8 BPZ03 板焊拼装（罐体）",
+      "operationCount": 25,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_7f835aa39e078b47dd2f4b49",
+      "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+      "operationCount": 20,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_0077cf1e88242abd618e60ba",
+      "processName": "U8 JXG01 数控线切割DK(机加工）",
+      "operationCount": 20,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_ef456b4836f0e380b3dce837",
+      "processName": "U8 JYZ03 摇臂钻床（食品）",
+      "operationCount": 13,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_78d343acf12f68e342d29c8c",
+      "processName": "U8 WJJ01 外协机加工",
+      "operationCount": 12,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_b2cf3e43804edd01bda312fd",
+      "processName": "U8 CXJ01 小型卷板",
+      "operationCount": 11,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "proc-machining",
+      "processName": "机加工",
+      "operationCount": 10,
+      "operationWithWorkCenterCount": 10,
+      "distinctAssignedWorkCenterCount": 2,
+      "activeMappedWorkCenterCount": 1
+    },
+    {
+      "processId": "proc-inspection",
+      "processName": "检验",
+      "operationCount": 10,
+      "operationWithWorkCenterCount": 10,
+      "distinctAssignedWorkCenterCount": 1,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_0c34731d96c7b85b6f8ed21c",
+      "processName": "U8 JSC01 数控车床(机加工）",
+      "operationCount": 8,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_d735db65ad41ca48406388f4",
+      "processName": "U8 XSG01 手工下料(下料）",
+      "operationCount": 8,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_1f8a21e2c6eda85a8b1c3579",
+      "processName": "U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+      "operationCount": 7,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "pr_TibPLLwKmeYBFvwpYXNbDb",
+      "processName": "整机通电调试",
+      "operationCount": 6,
+      "operationWithWorkCenterCount": 6,
+      "distinctAssignedWorkCenterCount": 1,
+      "activeMappedWorkCenterCount": 6
+    },
+    {
+      "processId": "pr_4zzGV9WeuBbiKyMxwRc6i9",
+      "processName": "高温老化",
+      "operationCount": 6,
+      "operationWithWorkCenterCount": 6,
+      "distinctAssignedWorkCenterCount": 1,
+      "activeMappedWorkCenterCount": 6
+    },
+    {
+      "processId": "wodiprocess_1ab245df49ca62d9d024b45a",
+      "processName": "0010",
+      "operationCount": 5,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "wodiprocess_da82b95d7a85a9502ce4ebf8",
+      "processName": "0020",
+      "operationCount": 5,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "wodiprocess_06ea78149bca55ce449669ee",
+      "processName": "0030",
+      "operationCount": 5,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "wodiprocess_a255b4c0a67c63ffbef9e544",
+      "processName": "0040",
+      "operationCount": 4,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "wodiprocess_54bdc7b9c4f48eba6d51d61c",
+      "processName": "0050",
+      "operationCount": 4,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_04570a6f5b38d531a9349774",
+      "processName": "U8 CSJ01 数显卷板",
+      "operationCount": 4,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_f2a150dc0dff14696995866b",
+      "processName": "U8 XPJ02 片锯下料（薄壁不锈钢圆管）（下料）",
+      "operationCount": 4,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_7e93dc7c9c7c27d0ce6b5be2",
+      "processName": "U8 ZGT01 罐体设备组装",
+      "operationCount": 4,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "proc-cutting",
+      "processName": "切割下料",
+      "operationCount": 4,
+      "operationWithWorkCenterCount": 4,
+      "distinctAssignedWorkCenterCount": 1,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "proc-testing",
+      "processName": "测试",
+      "operationCount": 4,
+      "operationWithWorkCenterCount": 4,
+      "distinctAssignedWorkCenterCount": 1,
+      "activeMappedWorkCenterCount": 1
+    },
+    {
+      "processId": "pr_Vcd2VukDopuHVh9UYNHPmv",
+      "processName": "自动锁附",
+      "operationCount": 4,
+      "operationWithWorkCenterCount": 4,
+      "distinctAssignedWorkCenterCount": 1,
+      "activeMappedWorkCenterCount": 4
+    },
+    {
+      "processId": "u8proc_5d34b20c34d4a09a2c2ec057",
+      "processName": "U8 CYY01 液压成型",
+      "operationCount": 2,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_d1dc36507b4d4a203c6eb4dd",
+      "processName": "U8 JPC02 普通车床C6246×1500(机加工）",
+      "operationCount": 2,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_2fbe1000f3f61ed810e502ef",
+      "processName": "U8 JST01 普通镗床TPX6111B/3（机加工）",
+      "operationCount": 2,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_e8391ace135f4b3fe7a3258a",
+      "processName": "U8 MDM01 打磨（碳钢）",
+      "operationCount": 2,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_db23d9f115cd51097b93f393",
+      "processName": "U8 MPS03 不锈钢干喷砂",
+      "operationCount": 2,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "u8proc_360d6acf24a324ca6e9485dd",
+      "processName": "U8 XDH01 数控等离子火焰切割(下料）",
+      "operationCount": 2,
+      "operationWithWorkCenterCount": 0,
+      "distinctAssignedWorkCenterCount": 0,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "proc-painting",
+      "processName": "喷涂",
+      "operationCount": 2,
+      "operationWithWorkCenterCount": 2,
+      "distinctAssignedWorkCenterCount": 1,
+      "activeMappedWorkCenterCount": 0
+    },
+    {
+      "processId": "proc-welding",
+      "processName": "焊接",
+      "operationCount": 2,
+      "operationWithWorkCenterCount": 2,
+      "distinctAssignedWorkCenterCount": 1,
+      "activeMappedWorkCenterCount": 0
+    }
+  ],
+  "conclusion": {
+    "existingCapabilitySource": "workCenterProcess maps process to workCenter and can be the first gate for workCenter recommendation.",
+    "currentAiRoutesHaveWorkCenters": false,
+    "routeProcessIdsHaveActiveMappedWorkCenters": false,
+    "recommendation": "Do not enable AI workCenter assignment until workCenterProcess coverage is validated for the route process set and material/range constraints are defined or explicitly waived."
+  }
+}

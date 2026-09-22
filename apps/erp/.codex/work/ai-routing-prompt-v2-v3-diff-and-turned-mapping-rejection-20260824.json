@@ -1,0 +1,54 @@
+{
+  "task": "AI Routing Prompt v2/v3 Extraction Diff Triage",
+  "date": "2026-08-24",
+  "comparedPartNumbers": [
+    "192472540409",
+    "192759010202",
+    "192472540414",
+    "192739030308"
+  ],
+  "sameContentHashCount": 4,
+  "comparedCount": 4,
+  "diffArtifact": "apps/erp/.codex/work/ai-routing-prompt-v2-v3-extraction-diff-20260824.json",
+  "rejectedExperiment": {
+    "change": "Map drawing part.class=turned to route-generation 轴类/车削 evidence",
+    "decision": "rejected_and_reverted",
+    "reason": "30-holdout individual operation-count regression on 192759010202",
+    "regressedPartNumber": "192759010202",
+    "baselineOperationCountDelta": -1,
+    "experimentOperationCountDelta": -3,
+    "rejectedArtifacts": [
+      "apps/erp/.codex/work/ai-routing-turned-class-mapping-rejected-20260824.json",
+      "apps/erp/.codex/work/ai-routing-stage4-30-holdout-quality-summary-after-turned-class-mapping-rejected-20260824.json",
+      "apps/erp/.codex/work/ai-routing-stage4-30-holdout-evaluation-after-turned-class-mapping-rejected-20260824.json"
+    ]
+  },
+  "restoredQuality": {
+    "normalizedExactMatches": "19/30",
+    "operationCountMatches": "24/30",
+    "underPredicted": 6,
+    "overPredicted": 0,
+    "warningRows": 5,
+    "improvedFromBaseline": [],
+    "regressedFromBaseline": [],
+    "operationCountImprovedFromBaseline": [],
+    "operationCountRegressedFromBaseline": [],
+    "artifact": "apps/erp/.codex/work/ai-routing-stage4-30-holdout-quality-summary-after-turned-class-mapping-reverted-20260824.json"
+  },
+  "safety": {
+    "evaluationLeakage": 0,
+    "workCenterAssignment": 0,
+    "unsupportedWorkCenterAssignment": 0,
+    "missingProcessIds": 0,
+    "invalidProcessIds": 0
+  },
+  "materializationGate": "closed",
+  "writesPerformed": {
+    "aiRoutingDraft": false,
+    "formalMakeMethod": false,
+    "methodOperation": false,
+    "feedback": false,
+    "activation": false
+  },
+  "decision": "Do not globally map part.class=turned or stockForm=bar into shaft/turning route-generation evidence without operation-level guardrails and holdout proof."
+}

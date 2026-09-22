@@ -1,0 +1,3099 @@
+{
+  "auditType": "AI Routing data-governance residual evidence audit",
+  "inspectedAt": "2026-08-24T05:10:38.924Z",
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "targetReadableIds": [
+    "1927930206",
+    "192769010102",
+    "192472540409",
+    "192759010202"
+  ],
+  "baseline": {
+    "holdoutCount": 30,
+    "trainingSampleCount": 105,
+    "safety": {
+      "totalEvaluationLeaks": 0,
+      "totalWorkCenterAssignments": 0,
+      "totalUnsupportedWorkCenterAssignments": 0,
+      "totalMissingProcessIds": 0,
+      "invalidProcessIds": []
+    },
+    "residualDiagnosticDecisionSupport": {
+      "codeChangeCandidates": [
+        "1927881101",
+        "192788110401",
+        "192788110402",
+        "192788110601",
+        "192788110602",
+        "192472540414",
+        "192739030308"
+      ],
+      "dataGovernanceCandidates": [
+        "1927930206",
+        "192769010102",
+        "192472540409",
+        "192759010202"
+      ],
+      "materializationGate": "closed"
+    }
+  },
+  "summary": {
+    "auditedTargetCount": 4,
+    "decisionCategoryCounts": {
+      "coherent_training_coverage_gap": 4,
+      "extraction_or_source_data_review": 4
+    },
+    "routeGenerationChangeRecommended": false,
+    "sampleRoleWriteRecommended": false,
+    "materializationGate": "closed",
+    "nextGate": "manual source/PDF review plus coherent Training coverage planning before any route-generation change"
+  },
+  "targets": [
+    {
+      "readableId": "1927930206",
+      "item": {
+        "id": "wodiitem_a4d59c570e244d212b1cad7e",
+        "readableIdWithRevision": "1927930206",
+        "name": "电机固定板",
+        "description": null,
+        "modelUploadId": null,
+        "updatedAt": "2026-07-30T02:35:38.063Z"
+      },
+      "sourceAvailability": {
+        "evaluationSampleId": "d8s9bh4f8gm357312pbg:make_7330646303888e7e0f10a384",
+        "evaluationLockedAt": "2026-08-21T01:06:15.553Z",
+        "activePartPdfCount": 1,
+        "partPdfDocuments": [
+          {
+            "id": "doc_XSVvDoSaTcUfh3ybGmsEJo",
+            "name": "1927930206.pdf",
+            "path": "d8s9bh4f8gm357312pbg/parts/wodiitem_a4d59c570e244d212b1cad7e/1927930206.pdf",
+            "size": 103,
+            "updatedAt": null
+          }
+        ],
+        "extractionCount": 2,
+        "extractionStatusCounts": {
+          "Succeeded": 2
+        },
+        "promptVersions": [
+          "ai-routing-drawing.prompt.v2",
+          "ai-routing-drawing.prompt.v1"
+        ],
+        "latestSucceededExtractionId": "aide_AuVwaULQPmqHBVeduqZKCx",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v2"
+      },
+      "extraction": {
+        "id": "aide_AuVwaULQPmqHBVeduqZKCx",
+        "documentId": "doc_XSVvDoSaTcUfh3ybGmsEJo",
+        "status": "Succeeded",
+        "promptVersion": "ai-routing-drawing.prompt.v2",
+        "modelProvider": "openai",
+        "modelName": "gpt-5.6-terra",
+        "contentHash": "73b24604c14c580f02dfffafc7c5ce32d334052bfa1763ddc679c91a27234824",
+        "pageCount": 1,
+        "completedAt": "2026-08-21T00:46:51.298Z",
+        "extractionWarnings": [
+          "Drawing units are not explicitly stated; dimension units are recorded as null.",
+          "The Ø5 through callout is shown adjacent to the 4 x M6-6H through callout and has been associated with those four threaded holes."
+        ],
+        "titleBlock": {
+          "finish": "Anodized (natural color)",
+          "material": "6061-T6 (GB)",
+          "revision": null,
+          "partNumber": "1927930206",
+          "heatTreatment": null
+        },
+        "part": {
+          "class": "machined",
+          "stockForm": "unknown"
+        },
+        "features": {
+          "holes": {
+            "count": 2,
+            "labels": ["Through holes", "Threaded through holes"]
+          },
+          "threads": {
+            "count": 1,
+            "labels": ["Threaded through holes"]
+          },
+          "slots": {
+            "count": 0,
+            "labels": []
+          },
+          "pockets": {
+            "count": 0,
+            "labels": []
+          },
+          "bends": {
+            "count": 0,
+            "labels": []
+          },
+          "welds": {
+            "count": 0,
+            "labels": []
+          },
+          "surfaces": {
+            "count": 1,
+            "labels": ["All surfaces"]
+          }
+        },
+        "targetMaterialTags": ["6061"],
+        "targetFeatureTags": ["板件", "孔", "螺纹", "台阶"],
+        "targetProcessHints": ["激光切割", "攻丝", "氧化"],
+        "targetDrawingEvidenceKindCounts": {
+          "dimension": 14,
+          "hole": 2,
+          "thread": 1,
+          "surface": 1,
+          "note": 3
+        },
+        "targetDrawingEvidenceSample": [
+          {
+            "kind": "dimension",
+            "label": "Overall width",
+            "text": "126",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "Overall height",
+            "text": "98",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "Hole center spacing horizontal",
+            "text": "70",
+            "confidence": 0.98
+          },
+          {
+            "kind": "dimension",
+            "label": "Hole center spacing vertical",
+            "text": "70",
+            "confidence": 0.98
+          },
+          {
+            "kind": "dimension",
+            "label": "Thread-hole center spacing",
+            "text": "70.7",
+            "confidence": 0.98
+          },
+          {
+            "kind": "dimension",
+            "label": "Circular feature",
+            "text": "Ø100",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "Diameter A-A",
+            "text": "Ø60 -0.01/-0.03",
+            "confidence": 0.97
+          },
+          {
+            "kind": "dimension",
+            "label": "Diameter A-A",
+            "text": "Ø50",
+            "confidence": 0.98
+          },
+          {
+            "kind": "dimension",
+            "label": "Diameter A-A",
+            "text": "Ø80 +0.035/0",
+            "confidence": 0.98
+          },
+          {
+            "kind": "dimension",
+            "label": "Section thickness",
+            "text": "11.5",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "Section dimension",
+            "text": "15",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "Section step thickness",
+            "text": "3.5 +0/-0.1",
+            "confidence": 0.98
+          }
+        ]
+      },
+      "routes": {
+        "lockedEvaluationActual": {
+          "names": [
+            "U8 LL01 领料工作中心",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）",
+            "U8 WYH01 外协氧化"
+          ],
+          "families": ["issue", "mill", "machining-center", "tap", "oxidation"],
+          "signature": "issue -> mill -> machining-center -> tap -> oxidation",
+          "nonIssueSignature": "mill -> machining-center -> tap -> oxidation"
+        },
+        "currentGenerated": {
+          "names": [],
+          "families": [],
+          "signature": "",
+          "nonIssueSignature": ""
+        },
+        "latestSmokeActual": {
+          "names": [
+            "U8 LL01 领料工作中心",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）",
+            "U8 WYH01 外协氧化"
+          ],
+          "families": ["issue", "mill", "machining-center", "tap", "oxidation"],
+          "signature": "issue -> mill -> machining-center -> tap -> oxidation",
+          "nonIssueSignature": "mill -> machining-center -> tap -> oxidation"
+        },
+        "latestSmokeSuggested": {
+          "names": [],
+          "families": [],
+          "signature": "",
+          "nonIssueSignature": ""
+        },
+        "familyDiff": {
+          "missing": ["mill", "machining-center", "tap", "oxidation"],
+          "extra": []
+        },
+        "warnings": [
+          "No approved routing sample met the minimum similarity threshold."
+        ]
+      },
+      "trainingCoverage": {
+        "exactTrainingMatchCount": 0,
+        "nonIssueExactTrainingMatchCount": 0,
+        "coveringTrainingMatchCount": 0,
+        "exactTrainingMatches": [],
+        "nonIssueExactTrainingMatches": [],
+        "coveringTrainingMatches": [],
+        "familyPresenceCounts": {
+          "mill": 19,
+          "machining-center": 5,
+          "tap": 19,
+          "oxidation": 0
+        }
+      },
+      "retrieval": {
+        "smokeTopReferences": [
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_784fb5051c05d269a4357504",
+            "readableId": "192793050101",
+            "score": 15,
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "领料工作中心",
+                "数控激光切割（下料）",
+                "数控折弯(下料）",
+                "气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "bend", "tap"],
+              "signature": "issue -> laser -> bend -> tap",
+              "nonIssueSignature": "laser -> bend -> tap"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_0029b63867d51037c7224993",
+            "readableId": "1927930207",
+            "score": 15,
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "tap"],
+              "signature": "issue -> laser -> tap",
+              "nonIssueSignature": "laser -> tap"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_13692808562ad2dcf6aec069",
+            "readableId": "1920790301",
+            "score": 15,
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JYZ01 摇臂钻床（机加工）",
+                "U8 JQG01 气动攻丝机（机加工）",
+                "U8 MDM02 打磨拉丝抛光（食品）"
+              ],
+              "families": ["issue", "laser", "drill", "tap", "finish"],
+              "signature": "issue -> laser -> drill -> tap -> finish",
+              "nonIssueSignature": "laser -> drill -> tap -> finish"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_8929a3b362c289b9d52ca1da",
+            "readableId": "192793020101",
+            "score": 15,
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 CSZ01 数控折弯(下料）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "bend", "tap"],
+              "signature": "issue -> laser -> bend -> tap",
+              "nonIssueSignature": "laser -> bend -> tap"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_9a2c353069f9234ca16129c0",
+            "readableId": "192713410301",
+            "score": 15,
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 CSZ01 数控折弯(下料）",
+                "U8 JQG01 气动攻丝机（机加工）",
+                "U8 BYH01 氩弧焊（食品）",
+                "U8 MDM02 打磨拉丝抛光（食品）"
+              ],
+              "families": ["issue", "laser", "bend", "tap", "weld", "finish"],
+              "signature": "issue -> laser -> bend -> tap -> weld -> finish",
+              "nonIssueSignature": "laser -> bend -> tap -> weld -> finish"
+            }
+          }
+        ],
+        "currentRankedTrainingReferences": [
+          {
+            "readableId": "192793050101",
+            "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_784fb5051c05d269a4357504",
+            "makeMethodId": null,
+            "score": 15,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["板件", "孔"],
+              "processTags": ["激光切割", "攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "领料工作中心",
+                "数控激光切割（下料）",
+                "数控折弯(下料）",
+                "气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "bend", "tap"],
+              "signature": "issue -> laser -> bend -> tap",
+              "nonIssueSignature": "laser -> bend -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "数控激光切割（下料）",
+                "processTags": ["激光切割", "下料", "领料"]
+              },
+              {
+                "name": "数控折弯(下料）",
+                "processTags": ["折弯", "下料", "领料"]
+              },
+              {
+                "name": "气动攻丝机（机加工）",
+                "processTags": ["攻丝", "领料"]
+              }
+            ]
+          },
+          {
+            "readableId": "1927930207",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_0029b63867d51037c7224993",
+            "makeMethodId": "make_0029b63867d51037c7224993",
+            "score": 15,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["激光切割", "攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "tap"],
+              "signature": "issue -> laser -> tap",
+              "nonIssueSignature": "laser -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "1920790301",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_13692808562ad2dcf6aec069",
+            "makeMethodId": "make_13692808562ad2dcf6aec069",
+            "score": 15,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["激光切割", "攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JYZ01 摇臂钻床（机加工）",
+                "U8 JQG01 气动攻丝机（机加工）",
+                "U8 MDM02 打磨拉丝抛光（食品）"
+              ],
+              "families": ["issue", "laser", "drill", "tap", "finish"],
+              "signature": "issue -> laser -> drill -> tap -> finish",
+              "nonIssueSignature": "laser -> drill -> tap -> finish"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 JYZ01 摇臂钻床（机加工）",
+                "processTags": ["钻孔"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              },
+              {
+                "name": "U8 MDM02 打磨拉丝抛光（食品）",
+                "processTags": ["打磨"]
+              }
+            ]
+          },
+          {
+            "readableId": "192793020101",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_8929a3b362c289b9d52ca1da",
+            "makeMethodId": "make_8929a3b362c289b9d52ca1da",
+            "score": 15,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["激光切割", "攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 CSZ01 数控折弯(下料）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "bend", "tap"],
+              "signature": "issue -> laser -> bend -> tap",
+              "nonIssueSignature": "laser -> bend -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 CSZ01 数控折弯(下料）",
+                "processTags": ["折弯", "下料"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "192713410301",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_9a2c353069f9234ca16129c0",
+            "makeMethodId": "make_9a2c353069f9234ca16129c0",
+            "score": 15,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["激光切割", "攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 CSZ01 数控折弯(下料）",
+                "U8 JQG01 气动攻丝机（机加工）",
+                "U8 BYH01 氩弧焊（食品）",
+                "U8 MDM02 打磨拉丝抛光（食品）"
+              ],
+              "families": ["issue", "laser", "bend", "tap", "weld", "finish"],
+              "signature": "issue -> laser -> bend -> tap -> weld -> finish",
+              "nonIssueSignature": "laser -> bend -> tap -> weld -> finish"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 CSZ01 数控折弯(下料）",
+                "processTags": ["折弯", "下料"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              },
+              {
+                "name": "U8 BYH01 氩弧焊（食品）",
+                "processTags": ["焊接"]
+              },
+              {
+                "name": "U8 MDM02 打磨拉丝抛光（食品）",
+                "processTags": ["打磨"]
+              }
+            ]
+          },
+          {
+            "readableId": "1927286901",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_cf492b188f7706ffa8f76712",
+            "makeMethodId": "make_cf492b188f7706ffa8f76712",
+            "score": 15,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["激光切割", "攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JYZ01 摇臂钻床（机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "drill", "tap"],
+              "signature": "issue -> laser -> drill -> tap",
+              "nonIssueSignature": "laser -> drill -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 JYZ01 摇臂钻床（机加工）",
+                "processTags": ["钻孔"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "19247114020402",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_d608738a83fc10e467df38d8",
+            "makeMethodId": "make_d608738a83fc10e467df38d8",
+            "score": 15,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["激光切割", "攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 CSZ01 数控折弯(下料）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "bend", "tap"],
+              "signature": "issue -> laser -> bend -> tap",
+              "nonIssueSignature": "laser -> bend -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 CSZ01 数控折弯(下料）",
+                "processTags": ["折弯", "下料"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "1919671001",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_a637e99df90177294d66f138",
+            "makeMethodId": "make_a637e99df90177294d66f138",
+            "score": 15,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["激光切割"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JYZ01 摇臂钻床（机加工）"
+              ],
+              "families": ["issue", "laser", "drill"],
+              "signature": "issue -> laser -> drill",
+              "nonIssueSignature": "laser -> drill"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 JYZ01 摇臂钻床（机加工）",
+                "processTags": ["钻孔"]
+              }
+            ]
+          },
+          {
+            "readableId": "192079030101",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_baf82e7769c7f30a418cd318",
+            "makeMethodId": "make_baf82e7769c7f30a418cd318",
+            "score": 15,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+                "U8 JYZ01 摇臂钻床（机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "mill", "drill", "tap"],
+              "signature": "issue -> mill -> drill -> tap",
+              "nonIssueSignature": "mill -> drill -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+                "processTags": ["铣削"]
+              },
+              {
+                "name": "U8 JYZ01 摇臂钻床（机加工）",
+                "processTags": ["钻孔"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "192728690101",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_c9fcb0cfb975aacb0b83d4b3",
+            "makeMethodId": "make_c9fcb0cfb975aacb0b83d4b3",
+            "score": 15,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+                "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "mill", "mill", "tap"],
+              "signature": "issue -> mill -> mill -> tap",
+              "nonIssueSignature": "mill -> mill -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+                "processTags": ["铣削"]
+              },
+              {
+                "name": "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+                "processTags": ["铣削"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          }
+        ]
+      },
+      "decision": {
+        "categories": [
+          "coherent_training_coverage_gap",
+          "extraction_or_source_data_review"
+        ],
+        "reasons": [
+          "No approved Training route covers all non-issue actual operation families for this target.",
+          "Current target evidence has a laser-cutting hint, but the locked actual route has no laser family.",
+          "Missing actual families are not fully supported by current process hints: mill, machining-center."
+        ],
+        "recommendedActions": [
+          "Do not broaden generation logic; first add or identify a coherent Training route only after source-route review.",
+          "Review the source PDF and extraction evidence before using this row for generation or Training expansion."
+        ],
+        "safeForRouteGenerationChange": false,
+        "safeForMaterialization": false,
+        "requiresHumanSourceReview": true,
+        "materializationGate": "closed"
+      }
+    },
+    {
+      "readableId": "192769010102",
+      "item": {
+        "id": "wodiitem_b9596db1aeabf6529e9241c1",
+        "readableIdWithRevision": "192769010102",
+        "name": "电机安装板",
+        "description": null,
+        "modelUploadId": null,
+        "updatedAt": "2026-07-30T02:35:38.063Z"
+      },
+      "sourceAvailability": {
+        "evaluationSampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_515e78676c11b542494b14ec",
+        "evaluationLockedAt": "2026-08-21T00:55:04.126Z",
+        "activePartPdfCount": 1,
+        "partPdfDocuments": [
+          {
+            "id": "doc_WJzgaXKNKxduY2Xtp5dPdG",
+            "name": "192769010102.pdf",
+            "path": "d8s9bh4f8gm357312pbg/parts/wodiitem_b9596db1aeabf6529e9241c1/192769010102.pdf",
+            "size": 91,
+            "updatedAt": null
+          }
+        ],
+        "extractionCount": 1,
+        "extractionStatusCounts": {
+          "Succeeded": 1
+        },
+        "promptVersions": ["ai-routing-drawing.prompt.v2"],
+        "latestSucceededExtractionId": "aide_P24hvma6tfgWfMiMygxtig",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v2"
+      },
+      "extraction": {
+        "id": "aide_P24hvma6tfgWfMiMygxtig",
+        "documentId": "doc_WJzgaXKNKxduY2Xtp5dPdG",
+        "status": "Succeeded",
+        "promptVersion": "ai-routing-drawing.prompt.v2",
+        "modelProvider": "openai",
+        "modelName": "gpt-5.6-terra",
+        "contentHash": "240aa24f86c6bc90eb52b6b08d93b3fbe65f993b680449fb6b7385c3a97310cd",
+        "pageCount": 1,
+        "completedAt": "2026-08-21T00:36:25.959Z",
+        "extractionWarnings": [],
+        "titleBlock": {
+          "finish": "阳极氧化处理（本色）",
+          "material": "6061-T6 (GB)",
+          "revision": null,
+          "partNumber": "192769010102",
+          "heatTreatment": null
+        },
+        "part": {
+          "class": "unknown",
+          "stockForm": "unknown"
+        },
+        "features": {
+          "holes": {
+            "count": 3,
+            "labels": [
+              "Central circular hole",
+              "Thread predrill",
+              "Through holes"
+            ]
+          },
+          "threads": {
+            "count": 1,
+            "labels": ["Internal thread"]
+          },
+          "slots": {
+            "count": 0,
+            "labels": []
+          },
+          "pockets": {
+            "count": 0,
+            "labels": []
+          },
+          "bends": {
+            "count": 0,
+            "labels": []
+          },
+          "welds": {
+            "count": 0,
+            "labels": []
+          },
+          "surfaces": {
+            "count": 1,
+            "labels": ["All surfaces"]
+          }
+        },
+        "targetMaterialTags": ["6061"],
+        "targetFeatureTags": ["板件", "孔", "螺纹"],
+        "targetProcessHints": ["激光切割", "攻丝", "氧化"],
+        "targetDrawingEvidenceKindCounts": {
+          "dimension": 13,
+          "hole": 3,
+          "thread": 1,
+          "surface": 2,
+          "note": 3
+        },
+        "targetDrawingEvidenceSample": [
+          {
+            "kind": "dimension",
+            "label": "Overall length",
+            "text": "126",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "Overall width",
+            "text": "98",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "Hole-center spacing",
+            "text": "70",
+            "confidence": 0.98
+          },
+          {
+            "kind": "dimension",
+            "label": "Hole-center spacing",
+            "text": "70",
+            "confidence": 0.98
+          },
+          {
+            "kind": "dimension",
+            "label": "Part thickness",
+            "text": "15",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "Recess depth",
+            "text": "3.5",
+            "confidence": 0.98
+          },
+          {
+            "kind": "dimension",
+            "label": "Circular recess diameter",
+            "text": "Ø60",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "Central hole diameter",
+            "text": "Ø50 ↧15",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "Central hole depth",
+            "text": "Ø50 ↧15",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "Corner radius",
+            "text": "4-R10",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "Thread predrill diameter",
+            "text": "Ø8.50 ↧24.50",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "Thread predrill depth",
+            "text": "Ø8.50 ↧24.50",
+            "confidence": 0.99
+          }
+        ]
+      },
+      "routes": {
+        "lockedEvaluationActual": {
+          "names": [
+            "领料工作中心",
+            "数显立铣（北一）XA5032（机加工）",
+            "普通车床CA6140A×2000(机加工）",
+            "摇臂钻床（机加工）",
+            "气动攻丝机（机加工）",
+            "外协氧化"
+          ],
+          "families": ["issue", "mill", "turn", "drill", "tap", "oxidation"],
+          "signature": "issue -> mill -> turn -> drill -> tap -> oxidation",
+          "nonIssueSignature": "mill -> turn -> drill -> tap -> oxidation"
+        },
+        "currentGenerated": {
+          "names": [],
+          "families": [],
+          "signature": "",
+          "nonIssueSignature": ""
+        },
+        "latestSmokeActual": {
+          "names": [
+            "领料工作中心",
+            "数显立铣（北一）XA5032（机加工）",
+            "普通车床CA6140A×2000(机加工）",
+            "摇臂钻床（机加工）",
+            "气动攻丝机（机加工）",
+            "外协氧化"
+          ],
+          "families": ["issue", "mill", "turn", "drill", "tap", "oxidation"],
+          "signature": "issue -> mill -> turn -> drill -> tap -> oxidation",
+          "nonIssueSignature": "mill -> turn -> drill -> tap -> oxidation"
+        },
+        "latestSmokeSuggested": {
+          "names": [],
+          "families": [],
+          "signature": "",
+          "nonIssueSignature": ""
+        },
+        "familyDiff": {
+          "missing": ["mill", "turn", "drill", "tap", "oxidation"],
+          "extra": []
+        },
+        "warnings": [
+          "No approved routing sample met the minimum similarity threshold."
+        ]
+      },
+      "trainingCoverage": {
+        "exactTrainingMatchCount": 0,
+        "nonIssueExactTrainingMatchCount": 0,
+        "coveringTrainingMatchCount": 0,
+        "exactTrainingMatches": [],
+        "nonIssueExactTrainingMatches": [],
+        "coveringTrainingMatches": [],
+        "familyPresenceCounts": {
+          "mill": 19,
+          "turn": 15,
+          "drill": 9,
+          "tap": 19,
+          "oxidation": 0
+        }
+      },
+      "retrieval": {
+        "smokeTopReferences": [
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_784fb5051c05d269a4357504",
+            "readableId": "192793050101",
+            "score": 20,
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "领料工作中心",
+                "数控激光切割（下料）",
+                "数控折弯(下料）",
+                "气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "bend", "tap"],
+              "signature": "issue -> laser -> bend -> tap",
+              "nonIssueSignature": "laser -> bend -> tap"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_0029b63867d51037c7224993",
+            "readableId": "1927930207",
+            "score": 20,
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "tap"],
+              "signature": "issue -> laser -> tap",
+              "nonIssueSignature": "laser -> tap"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_13692808562ad2dcf6aec069",
+            "readableId": "1920790301",
+            "score": 20,
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JYZ01 摇臂钻床（机加工）",
+                "U8 JQG01 气动攻丝机（机加工）",
+                "U8 MDM02 打磨拉丝抛光（食品）"
+              ],
+              "families": ["issue", "laser", "drill", "tap", "finish"],
+              "signature": "issue -> laser -> drill -> tap -> finish",
+              "nonIssueSignature": "laser -> drill -> tap -> finish"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_8929a3b362c289b9d52ca1da",
+            "readableId": "192793020101",
+            "score": 20,
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 CSZ01 数控折弯(下料）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "bend", "tap"],
+              "signature": "issue -> laser -> bend -> tap",
+              "nonIssueSignature": "laser -> bend -> tap"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_9a2c353069f9234ca16129c0",
+            "readableId": "192713410301",
+            "score": 20,
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 CSZ01 数控折弯(下料）",
+                "U8 JQG01 气动攻丝机（机加工）",
+                "U8 BYH01 氩弧焊（食品）",
+                "U8 MDM02 打磨拉丝抛光（食品）"
+              ],
+              "families": ["issue", "laser", "bend", "tap", "weld", "finish"],
+              "signature": "issue -> laser -> bend -> tap -> weld -> finish",
+              "nonIssueSignature": "laser -> bend -> tap -> weld -> finish"
+            }
+          }
+        ],
+        "currentRankedTrainingReferences": [
+          {
+            "readableId": "192793050101",
+            "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_784fb5051c05d269a4357504",
+            "makeMethodId": null,
+            "score": 20,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["板件", "孔"],
+              "processTags": ["激光切割", "攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "领料工作中心",
+                "数控激光切割（下料）",
+                "数控折弯(下料）",
+                "气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "bend", "tap"],
+              "signature": "issue -> laser -> bend -> tap",
+              "nonIssueSignature": "laser -> bend -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "数控激光切割（下料）",
+                "processTags": ["激光切割", "下料", "领料"]
+              },
+              {
+                "name": "数控折弯(下料）",
+                "processTags": ["折弯", "下料", "领料"]
+              },
+              {
+                "name": "气动攻丝机（机加工）",
+                "processTags": ["攻丝", "领料"]
+              }
+            ]
+          },
+          {
+            "readableId": "1927930207",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_0029b63867d51037c7224993",
+            "makeMethodId": "make_0029b63867d51037c7224993",
+            "score": 20,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["激光切割", "攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "tap"],
+              "signature": "issue -> laser -> tap",
+              "nonIssueSignature": "laser -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "1920790301",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_13692808562ad2dcf6aec069",
+            "makeMethodId": "make_13692808562ad2dcf6aec069",
+            "score": 20,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["激光切割", "攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JYZ01 摇臂钻床（机加工）",
+                "U8 JQG01 气动攻丝机（机加工）",
+                "U8 MDM02 打磨拉丝抛光（食品）"
+              ],
+              "families": ["issue", "laser", "drill", "tap", "finish"],
+              "signature": "issue -> laser -> drill -> tap -> finish",
+              "nonIssueSignature": "laser -> drill -> tap -> finish"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 JYZ01 摇臂钻床（机加工）",
+                "processTags": ["钻孔"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              },
+              {
+                "name": "U8 MDM02 打磨拉丝抛光（食品）",
+                "processTags": ["打磨"]
+              }
+            ]
+          },
+          {
+            "readableId": "192793020101",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_8929a3b362c289b9d52ca1da",
+            "makeMethodId": "make_8929a3b362c289b9d52ca1da",
+            "score": 20,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["激光切割", "攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 CSZ01 数控折弯(下料）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "bend", "tap"],
+              "signature": "issue -> laser -> bend -> tap",
+              "nonIssueSignature": "laser -> bend -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 CSZ01 数控折弯(下料）",
+                "processTags": ["折弯", "下料"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "192713410301",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_9a2c353069f9234ca16129c0",
+            "makeMethodId": "make_9a2c353069f9234ca16129c0",
+            "score": 20,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["激光切割", "攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 CSZ01 数控折弯(下料）",
+                "U8 JQG01 气动攻丝机（机加工）",
+                "U8 BYH01 氩弧焊（食品）",
+                "U8 MDM02 打磨拉丝抛光（食品）"
+              ],
+              "families": ["issue", "laser", "bend", "tap", "weld", "finish"],
+              "signature": "issue -> laser -> bend -> tap -> weld -> finish",
+              "nonIssueSignature": "laser -> bend -> tap -> weld -> finish"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 CSZ01 数控折弯(下料）",
+                "processTags": ["折弯", "下料"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              },
+              {
+                "name": "U8 BYH01 氩弧焊（食品）",
+                "processTags": ["焊接"]
+              },
+              {
+                "name": "U8 MDM02 打磨拉丝抛光（食品）",
+                "processTags": ["打磨"]
+              }
+            ]
+          },
+          {
+            "readableId": "1927286901",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_cf492b188f7706ffa8f76712",
+            "makeMethodId": "make_cf492b188f7706ffa8f76712",
+            "score": 20,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["激光切割", "攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JYZ01 摇臂钻床（机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "drill", "tap"],
+              "signature": "issue -> laser -> drill -> tap",
+              "nonIssueSignature": "laser -> drill -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 JYZ01 摇臂钻床（机加工）",
+                "processTags": ["钻孔"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "19247114020402",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_d608738a83fc10e467df38d8",
+            "makeMethodId": "make_d608738a83fc10e467df38d8",
+            "score": 20,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["激光切割", "攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 CSZ01 数控折弯(下料）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "bend", "tap"],
+              "signature": "issue -> laser -> bend -> tap",
+              "nonIssueSignature": "laser -> bend -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 CSZ01 数控折弯(下料）",
+                "processTags": ["折弯", "下料"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "1919671001",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_a637e99df90177294d66f138",
+            "makeMethodId": "make_a637e99df90177294d66f138",
+            "score": 20,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["激光切割"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JYZ01 摇臂钻床（机加工）"
+              ],
+              "families": ["issue", "laser", "drill"],
+              "signature": "issue -> laser -> drill",
+              "nonIssueSignature": "laser -> drill"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 JYZ01 摇臂钻床（机加工）",
+                "processTags": ["钻孔"]
+              }
+            ]
+          },
+          {
+            "readableId": "192079030101",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_baf82e7769c7f30a418cd318",
+            "makeMethodId": "make_baf82e7769c7f30a418cd318",
+            "score": 20,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+                "U8 JYZ01 摇臂钻床（机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "mill", "drill", "tap"],
+              "signature": "issue -> mill -> drill -> tap",
+              "nonIssueSignature": "mill -> drill -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+                "processTags": ["铣削"]
+              },
+              {
+                "name": "U8 JYZ01 摇臂钻床（机加工）",
+                "processTags": ["钻孔"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "192728690101",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_c9fcb0cfb975aacb0b83d4b3",
+            "makeMethodId": "make_c9fcb0cfb975aacb0b83d4b3",
+            "score": 20,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔", "板件"],
+              "processTags": ["攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+                "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "mill", "mill", "tap"],
+              "signature": "issue -> mill -> mill -> tap",
+              "nonIssueSignature": "mill -> mill -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+                "processTags": ["铣削"]
+              },
+              {
+                "name": "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+                "processTags": ["铣削"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          }
+        ]
+      },
+      "decision": {
+        "categories": [
+          "coherent_training_coverage_gap",
+          "extraction_or_source_data_review"
+        ],
+        "reasons": [
+          "No approved Training route covers all non-issue actual operation families for this target.",
+          "Current target evidence has a laser-cutting hint, but the locked actual route has no laser family.",
+          "Missing actual families are not fully supported by current process hints: mill, turn, drill."
+        ],
+        "recommendedActions": [
+          "Do not broaden generation logic; first add or identify a coherent Training route only after source-route review.",
+          "Review the source PDF and extraction evidence before using this row for generation or Training expansion."
+        ],
+        "safeForRouteGenerationChange": false,
+        "safeForMaterialization": false,
+        "requiresHumanSourceReview": true,
+        "materializationGate": "closed"
+      }
+    },
+    {
+      "readableId": "192472540409",
+      "item": {
+        "id": "wodiitem_b4c1f209502c82cd3bd79c08",
+        "readableIdWithRevision": "192472540409",
+        "name": "轴承座",
+        "description": "轴承座",
+        "modelUploadId": null,
+        "updatedAt": "2026-08-21T03:27:29.361Z"
+      },
+      "sourceAvailability": {
+        "evaluationSampleId": "d8s9bh4f8gm357312pbg:u8method_299a21a6716e063b593c3686",
+        "evaluationLockedAt": "2026-08-23T11:16:30.407Z",
+        "activePartPdfCount": 1,
+        "partPdfDocuments": [
+          {
+            "id": "doc_F74reWPB3JNwXRiLprhQgM",
+            "name": "192472540409.pdf",
+            "path": "d8s9bh4f8gm357312pbg/parts/wodiitem_b4c1f209502c82cd3bd79c08/192472540409.pdf",
+            "size": 107,
+            "updatedAt": null
+          }
+        ],
+        "extractionCount": 6,
+        "extractionStatusCounts": {
+          "Succeeded": 2,
+          "Failed": 4
+        },
+        "promptVersions": [
+          "ai-routing-drawing.prompt.v3",
+          "ai-routing-drawing.prompt.v2",
+          "none"
+        ],
+        "latestSucceededExtractionId": "aide_8rk3XwfKspF48nKAo3UUZs",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v3"
+      },
+      "extraction": {
+        "id": "aide_8rk3XwfKspF48nKAo3UUZs",
+        "documentId": "doc_F74reWPB3JNwXRiLprhQgM",
+        "status": "Succeeded",
+        "promptVersion": "ai-routing-drawing.prompt.v3",
+        "modelProvider": "openai",
+        "modelName": "gpt-5.6-terra",
+        "contentHash": "4fc1c01e8e1600fde76e579ff8997ae7e81a4aa75d85b451017f65b109ad215d",
+        "pageCount": 1,
+        "completedAt": "2026-08-24T02:08:35.422Z",
+        "extractionWarnings": [
+          "图纸未显示明确的毛坯或起始材料形式。",
+          "图纸未显示独立的修订号。"
+        ],
+        "titleBlock": {
+          "finish": "阳极氧化处理（本色）",
+          "material": "6061-T6 (GB)",
+          "revision": null,
+          "partNumber": "192472540409",
+          "heatTreatment": null
+        },
+        "part": {
+          "class": "unknown",
+          "stockForm": "unknown"
+        },
+        "features": {
+          "holes": {
+            "count": 1,
+            "labels": ["螺纹孔阵列"]
+          },
+          "threads": {
+            "count": 1,
+            "labels": ["螺纹孔阵列"]
+          },
+          "slots": {
+            "count": 0,
+            "labels": []
+          },
+          "pockets": {
+            "count": 0,
+            "labels": []
+          },
+          "bends": {
+            "count": 0,
+            "labels": []
+          },
+          "welds": {
+            "count": 0,
+            "labels": []
+          },
+          "surfaces": {
+            "count": 2,
+            "labels": ["表面粗糙度", "其余表面粗糙度"]
+          }
+        },
+        "targetMaterialTags": ["6061"],
+        "targetFeatureTags": ["轴类", "孔", "螺纹", "台阶"],
+        "targetProcessHints": ["攻丝", "车削", "氧化"],
+        "targetDrawingEvidenceKindCounts": {
+          "dimension": 12,
+          "hole": 1,
+          "thread": 1,
+          "surface": 2,
+          "note": 4
+        },
+        "targetDrawingEvidenceSample": [
+          {
+            "kind": "dimension",
+            "label": "外径",
+            "text": "⌀60",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "底座外径",
+            "text": "⌀94",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "内径",
+            "text": "⌀52 +0.02/-0.02",
+            "confidence": 0.98
+          },
+          {
+            "kind": "dimension",
+            "label": "内孔台阶直径",
+            "text": "⌀45 +0.02",
+            "confidence": 0.96
+          },
+          {
+            "kind": "dimension",
+            "label": "总高",
+            "text": "45",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "高度",
+            "text": "30",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "高度",
+            "text": "15",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "孔深",
+            "text": "16",
+            "confidence": 0.97
+          },
+          {
+            "kind": "dimension",
+            "label": "孔深",
+            "text": "22.25",
+            "confidence": 0.97
+          },
+          {
+            "kind": "dimension",
+            "label": "孔阵列半径",
+            "text": "R40",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "预制孔直径",
+            "text": "⌀6.80",
+            "confidence": 0.98
+          },
+          {
+            "kind": "dimension",
+            "label": "几何公差",
+            "text": "⌀0.04 B",
+            "confidence": 0.94
+          }
+        ]
+      },
+      "routes": {
+        "lockedEvaluationActual": {
+          "names": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）",
+            "U8 WYH01 外协氧化"
+          ],
+          "families": ["issue", "saw", "turn", "mill", "tap", "oxidation"],
+          "signature": "issue -> saw -> turn -> mill -> tap -> oxidation",
+          "nonIssueSignature": "saw -> turn -> mill -> tap -> oxidation"
+        },
+        "currentGenerated": {
+          "names": [],
+          "families": [],
+          "signature": "",
+          "nonIssueSignature": ""
+        },
+        "latestSmokeActual": {
+          "names": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）",
+            "U8 WYH01 外协氧化"
+          ],
+          "families": ["issue", "saw", "turn", "mill", "tap", "oxidation"],
+          "signature": "issue -> saw -> turn -> mill -> tap -> oxidation",
+          "nonIssueSignature": "saw -> turn -> mill -> tap -> oxidation"
+        },
+        "latestSmokeSuggested": {
+          "names": [],
+          "families": [],
+          "signature": "",
+          "nonIssueSignature": ""
+        },
+        "familyDiff": {
+          "missing": ["saw", "turn", "mill", "tap", "oxidation"],
+          "extra": []
+        },
+        "warnings": [
+          "No approved routing sample met the minimum similarity threshold."
+        ]
+      },
+      "trainingCoverage": {
+        "exactTrainingMatchCount": 0,
+        "nonIssueExactTrainingMatchCount": 0,
+        "coveringTrainingMatchCount": 0,
+        "exactTrainingMatches": [],
+        "nonIssueExactTrainingMatches": [],
+        "coveringTrainingMatches": [],
+        "familyPresenceCounts": {
+          "saw": 24,
+          "turn": 15,
+          "mill": 19,
+          "tap": 19,
+          "oxidation": 0
+        }
+      },
+      "retrieval": {
+        "smokeTopReferences": [
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_d00e2b5f1f37ce362b47130c",
+            "readableId": "191967100102",
+            "score": 15,
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XDJ01 锯床下料",
+                "U8 JPC01 普通车床CA6140A×2000(机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "saw", "turn", "tap"],
+              "signature": "issue -> saw -> turn -> tap",
+              "nonIssueSignature": "saw -> turn -> tap"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_cf492b188f7706ffa8f76712",
+            "readableId": "1927286901",
+            "score": 15,
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JYZ01 摇臂钻床（机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "drill", "tap"],
+              "signature": "issue -> laser -> drill -> tap",
+              "nonIssueSignature": "laser -> drill -> tap"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_5fc690745f6e81dfe7bcf078",
+            "readableId": "146001020101",
+            "score": 8,
+            "matchedDrawingEvidenceCount": 7,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XDJ01 锯床下料",
+                "U8 JPC01 普通车床CA6140A×2000(机加工）",
+                "U8 JYZ01 摇臂钻床（机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "saw", "turn", "drill", "tap"],
+              "signature": "issue -> saw -> turn -> drill -> tap",
+              "nonIssueSignature": "saw -> turn -> drill -> tap"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_747a23b8aa398637b09049d5",
+            "readableId": "192475010310",
+            "score": 8,
+            "matchedDrawingEvidenceCount": 7,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XDJ01 锯床下料",
+                "U8 JPC01 普通车床CA6140A×2000(机加工）",
+                "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "saw", "turn", "mill", "tap"],
+              "signature": "issue -> saw -> turn -> mill -> tap",
+              "nonIssueSignature": "saw -> turn -> mill -> tap"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_784fb5051c05d269a4357504",
+            "readableId": "192793050101",
+            "score": 8,
+            "matchedDrawingEvidenceCount": 7,
+            "route": {
+              "names": [
+                "领料工作中心",
+                "数控激光切割（下料）",
+                "数控折弯(下料）",
+                "气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "bend", "tap"],
+              "signature": "issue -> laser -> bend -> tap",
+              "nonIssueSignature": "laser -> bend -> tap"
+            }
+          }
+        ],
+        "currentRankedTrainingReferences": [
+          {
+            "readableId": "191967100102",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_d00e2b5f1f37ce362b47130c",
+            "makeMethodId": "make_d00e2b5f1f37ce362b47130c",
+            "score": 15,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["轴类", "孔"],
+              "processTags": ["攻丝", "车削"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XDJ01 锯床下料",
+                "U8 JPC01 普通车床CA6140A×2000(机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "saw", "turn", "tap"],
+              "signature": "issue -> saw -> turn -> tap",
+              "nonIssueSignature": "saw -> turn -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XDJ01 锯床下料",
+                "processTags": ["下料", "锯床"]
+              },
+              {
+                "name": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+                "processTags": ["车削"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "1927286901",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_cf492b188f7706ffa8f76712",
+            "makeMethodId": "make_cf492b188f7706ffa8f76712",
+            "score": 15,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["轴类", "孔"],
+              "processTags": ["攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 8,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JYZ01 摇臂钻床（机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "drill", "tap"],
+              "signature": "issue -> laser -> drill -> tap",
+              "nonIssueSignature": "laser -> drill -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 JYZ01 摇臂钻床（机加工）",
+                "processTags": ["钻孔"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "146001020101",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_5fc690745f6e81dfe7bcf078",
+            "makeMethodId": "make_5fc690745f6e81dfe7bcf078",
+            "score": 8,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔"],
+              "processTags": ["攻丝", "车削"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 7,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XDJ01 锯床下料",
+                "U8 JPC01 普通车床CA6140A×2000(机加工）",
+                "U8 JYZ01 摇臂钻床（机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "saw", "turn", "drill", "tap"],
+              "signature": "issue -> saw -> turn -> drill -> tap",
+              "nonIssueSignature": "saw -> turn -> drill -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XDJ01 锯床下料",
+                "processTags": ["下料", "锯床"]
+              },
+              {
+                "name": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+                "processTags": ["车削"]
+              },
+              {
+                "name": "U8 JYZ01 摇臂钻床（机加工）",
+                "processTags": ["钻孔"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "192475010310",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_747a23b8aa398637b09049d5",
+            "makeMethodId": "make_747a23b8aa398637b09049d5",
+            "score": 8,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔"],
+              "processTags": ["攻丝", "车削"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 7,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XDJ01 锯床下料",
+                "U8 JPC01 普通车床CA6140A×2000(机加工）",
+                "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "saw", "turn", "mill", "tap"],
+              "signature": "issue -> saw -> turn -> mill -> tap",
+              "nonIssueSignature": "saw -> turn -> mill -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XDJ01 锯床下料",
+                "processTags": ["下料", "锯床"]
+              },
+              {
+                "name": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+                "processTags": ["车削"]
+              },
+              {
+                "name": "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+                "processTags": ["铣削"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "192793050101",
+            "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_784fb5051c05d269a4357504",
+            "makeMethodId": null,
+            "score": 8,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔"],
+              "processTags": ["攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 7,
+            "route": {
+              "names": [
+                "领料工作中心",
+                "数控激光切割（下料）",
+                "数控折弯(下料）",
+                "气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "bend", "tap"],
+              "signature": "issue -> laser -> bend -> tap",
+              "nonIssueSignature": "laser -> bend -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "数控激光切割（下料）",
+                "processTags": ["激光切割", "下料", "领料"]
+              },
+              {
+                "name": "数控折弯(下料）",
+                "processTags": ["折弯", "下料", "领料"]
+              },
+              {
+                "name": "气动攻丝机（机加工）",
+                "processTags": ["攻丝", "领料"]
+              }
+            ]
+          },
+          {
+            "readableId": "1927930207",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_0029b63867d51037c7224993",
+            "makeMethodId": "make_0029b63867d51037c7224993",
+            "score": 8,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔"],
+              "processTags": ["攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 7,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "tap"],
+              "signature": "issue -> laser -> tap",
+              "nonIssueSignature": "laser -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "1920790301",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_13692808562ad2dcf6aec069",
+            "makeMethodId": "make_13692808562ad2dcf6aec069",
+            "score": 8,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔"],
+              "processTags": ["攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 7,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JYZ01 摇臂钻床（机加工）",
+                "U8 JQG01 气动攻丝机（机加工）",
+                "U8 MDM02 打磨拉丝抛光（食品）"
+              ],
+              "families": ["issue", "laser", "drill", "tap", "finish"],
+              "signature": "issue -> laser -> drill -> tap -> finish",
+              "nonIssueSignature": "laser -> drill -> tap -> finish"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 JYZ01 摇臂钻床（机加工）",
+                "processTags": ["钻孔"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              },
+              {
+                "name": "U8 MDM02 打磨拉丝抛光（食品）",
+                "processTags": ["打磨"]
+              }
+            ]
+          },
+          {
+            "readableId": "1920790302",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_2025919e4b57e5f67049d699",
+            "makeMethodId": "make_2025919e4b57e5f67049d699",
+            "score": 8,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔"],
+              "processTags": ["攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 7,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+                "U8 JLJ01 立式加工中心VMC850B(机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "mill", "machining-center", "tap"],
+              "signature": "issue -> mill -> machining-center -> tap",
+              "nonIssueSignature": "mill -> machining-center -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+                "processTags": ["铣削"]
+              },
+              {
+                "name": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+                "processTags": []
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "19244208060203",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_2fe512321ea628f831c3d52a",
+            "makeMethodId": "make_2fe512321ea628f831c3d52a",
+            "score": 8,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔"],
+              "processTags": ["攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 7,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "mill", "tap"],
+              "signature": "issue -> laser -> mill -> tap",
+              "nonIssueSignature": "laser -> mill -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+                "processTags": ["铣削"]
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "149999000050",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_359853d4782307b84b71cf6a",
+            "makeMethodId": "make_359853d4782307b84b71cf6a",
+            "score": 8,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["孔"],
+              "processTags": ["攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 7,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 JLJ01 立式加工中心VMC850B(机加工）",
+                "U8 JQG01 气动攻丝机（机加工）",
+                "U8 MPS01 碳钢喷砂",
+                "U8 PYX01 喷漆"
+              ],
+              "families": [
+                "issue",
+                "machining-center",
+                "tap",
+                "other",
+                "other"
+              ],
+              "signature": "issue -> machining-center -> tap -> other -> other",
+              "nonIssueSignature": "machining-center -> tap -> other -> other"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+                "processTags": []
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              },
+              {
+                "name": "U8 MPS01 碳钢喷砂",
+                "processTags": []
+              },
+              {
+                "name": "U8 PYX01 喷漆",
+                "processTags": []
+              }
+            ]
+          }
+        ]
+      },
+      "decision": {
+        "categories": [
+          "coherent_training_coverage_gap",
+          "extraction_or_source_data_review"
+        ],
+        "reasons": [
+          "No approved Training route covers all non-issue actual operation families for this target.",
+          "Missing actual families are not fully supported by current process hints: saw, mill."
+        ],
+        "recommendedActions": [
+          "Do not broaden generation logic; first add or identify a coherent Training route only after source-route review.",
+          "Review the source PDF and extraction evidence before using this row for generation or Training expansion."
+        ],
+        "safeForRouteGenerationChange": false,
+        "safeForMaterialization": false,
+        "requiresHumanSourceReview": true,
+        "materializationGate": "closed"
+      }
+    },
+    {
+      "readableId": "192759010202",
+      "item": {
+        "id": "wodiitem_67aa6030f75984cd62312899",
+        "readableIdWithRevision": "192759010202",
+        "name": "推板连接杆",
+        "description": "推板连接杆",
+        "modelUploadId": null,
+        "updatedAt": "2026-08-21T03:27:29.361Z"
+      },
+      "sourceAvailability": {
+        "evaluationSampleId": "d8s9bh4f8gm357312pbg:u8method_a4e6b0b7c6301ac7084f58de",
+        "evaluationLockedAt": "2026-08-23T11:16:30.420Z",
+        "activePartPdfCount": 1,
+        "partPdfDocuments": [
+          {
+            "id": "doc_632r4phaWmyCHhABLRRTje",
+            "name": "192759010202.pdf",
+            "path": "d8s9bh4f8gm357312pbg/parts/wodiitem_67aa6030f75984cd62312899/192759010202.pdf",
+            "size": 99,
+            "updatedAt": null
+          }
+        ],
+        "extractionCount": 4,
+        "extractionStatusCounts": {
+          "Succeeded": 2,
+          "Failed": 2
+        },
+        "promptVersions": [
+          "ai-routing-drawing.prompt.v3",
+          "ai-routing-drawing.prompt.v2",
+          "none"
+        ],
+        "latestSucceededExtractionId": "aide_UbjdKaBig5iVSi8kV5rARb",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v3"
+      },
+      "extraction": {
+        "id": "aide_UbjdKaBig5iVSi8kV5rARb",
+        "documentId": "doc_632r4phaWmyCHhABLRRTje",
+        "status": "Succeeded",
+        "promptVersion": "ai-routing-drawing.prompt.v3",
+        "modelProvider": "openai",
+        "modelName": "gpt-5.6-terra",
+        "contentHash": "ec2d88a7cc1df1aff8aba61bf69c531224103124a91f2f04d3d53bbe9d710a22",
+        "pageCount": 1,
+        "completedAt": "2026-08-24T02:09:14.778Z",
+        "extractionWarnings": [
+          "Drawing identifies material as 304 in the title block; no explicit material grade designation beyond this text was visible.",
+          "No explicit dimensional tolerance values were visible; drawing references general tolerance standards.",
+          "No explicit stock-form callout was visible; stockForm 'bar' is based on the visible solid round geometry."
+        ],
+        "titleBlock": {
+          "finish": null,
+          "material": "304",
+          "revision": null,
+          "partNumber": "192759010202",
+          "heatTreatment": null
+        },
+        "part": {
+          "class": "turned",
+          "stockForm": "bar"
+        },
+        "features": {
+          "holes": {
+            "count": 1,
+            "labels": ["tapped through holes"]
+          },
+          "threads": {
+            "count": 1,
+            "labels": ["tapped through holes"]
+          },
+          "slots": {
+            "count": 0,
+            "labels": []
+          },
+          "pockets": {
+            "count": 0,
+            "labels": []
+          },
+          "bends": {
+            "count": 0,
+            "labels": []
+          },
+          "welds": {
+            "count": 0,
+            "labels": []
+          },
+          "surfaces": {
+            "count": 1,
+            "labels": ["remaining surfaces"]
+          }
+        },
+        "targetMaterialTags": ["304"],
+        "targetFeatureTags": ["板件", "孔", "螺纹", "台阶"],
+        "targetProcessHints": ["激光切割", "攻丝"],
+        "targetDrawingEvidenceKindCounts": {
+          "dimension": 11,
+          "hole": 1,
+          "thread": 1,
+          "surface": 1,
+          "note": 3
+        },
+        "targetDrawingEvidenceSample": [
+          {
+            "kind": "dimension",
+            "label": "overall length",
+            "text": "166.5",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "end feature length",
+            "text": "38",
+            "confidence": 0.98
+          },
+          {
+            "kind": "dimension",
+            "label": "hole spacing",
+            "text": "15",
+            "confidence": 0.98
+          },
+          {
+            "kind": "dimension",
+            "label": "hole center to end",
+            "text": "10",
+            "confidence": 0.98
+          },
+          {
+            "kind": "dimension",
+            "label": "hole center offset from centerline",
+            "text": "7.5",
+            "confidence": 0.98
+          },
+          {
+            "kind": "dimension",
+            "label": "main diameter",
+            "text": "Ø15",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "reduced diameter",
+            "text": "Ø10",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "step radial depth",
+            "text": "2.5",
+            "confidence": 0.97
+          },
+          {
+            "kind": "dimension",
+            "label": "left chamfer",
+            "text": "C2",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "right chamfer",
+            "text": "C0.5",
+            "confidence": 0.99
+          },
+          {
+            "kind": "dimension",
+            "label": "through hole diameter",
+            "text": "Ø4.20 完全贯穿",
+            "confidence": 0.99
+          },
+          {
+            "kind": "hole",
+            "label": "tapped through holes",
+            "text": "2 x M5-6H 完全贯穿; Ø4.20 完全贯穿",
+            "confidence": 0.99
+          }
+        ]
+      },
+      "routes": {
+        "lockedEvaluationActual": {
+          "names": [
+            "U8 LL01 领料工作中心",
+            "U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "U8 JYZ01 摇臂钻床（机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ],
+          "families": ["issue", "saw", "turn", "mill", "drill", "tap"],
+          "signature": "issue -> saw -> turn -> mill -> drill -> tap",
+          "nonIssueSignature": "saw -> turn -> mill -> drill -> tap"
+        },
+        "currentGenerated": {
+          "names": [
+            "U8 LL01 领料工作中心",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）",
+            "U8 XJG01 数控激光切割（下料）"
+          ],
+          "families": ["issue", "mill", "machining-center", "tap", "laser"],
+          "signature": "issue -> mill -> machining-center -> tap -> laser",
+          "nonIssueSignature": "mill -> machining-center -> tap -> laser"
+        },
+        "latestSmokeActual": {
+          "names": [
+            "U8 LL01 领料工作中心",
+            "U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "U8 JYZ01 摇臂钻床（机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ],
+          "families": ["issue", "saw", "turn", "mill", "drill", "tap"],
+          "signature": "issue -> saw -> turn -> mill -> drill -> tap",
+          "nonIssueSignature": "saw -> turn -> mill -> drill -> tap"
+        },
+        "latestSmokeSuggested": {
+          "names": [
+            "U8 LL01 领料工作中心",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）",
+            "U8 XJG01 数控激光切割（下料）"
+          ],
+          "families": ["issue", "mill", "machining-center", "tap", "laser"],
+          "signature": "issue -> mill -> machining-center -> tap -> laser",
+          "nonIssueSignature": "mill -> machining-center -> tap -> laser"
+        },
+        "familyDiff": {
+          "missing": ["saw", "turn", "drill"],
+          "extra": ["machining-center", "laser"]
+        },
+        "warnings": []
+      },
+      "trainingCoverage": {
+        "exactTrainingMatchCount": 0,
+        "nonIssueExactTrainingMatchCount": 0,
+        "coveringTrainingMatchCount": 0,
+        "exactTrainingMatches": [],
+        "nonIssueExactTrainingMatches": [],
+        "coveringTrainingMatches": [],
+        "familyPresenceCounts": {
+          "saw": 24,
+          "turn": 15,
+          "mill": 19,
+          "drill": 9,
+          "tap": 19
+        }
+      },
+      "retrieval": {
+        "smokeTopReferences": [
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_90ba3f19b54eac05274bc6e6",
+            "readableId": "1920790304",
+            "score": 43,
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+                "U8 JLJ01 立式加工中心VMC850B(机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "mill", "machining-center", "tap"],
+              "signature": "issue -> mill -> machining-center -> tap",
+              "nonIssueSignature": "mill -> machining-center -> tap"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+            "readableId": "1924371005",
+            "score": 43,
+            "matchedDrawingEvidenceCount": 0,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 CSZ01 数控折弯(下料）"
+              ],
+              "families": ["issue", "laser", "bend"],
+              "signature": "issue -> laser -> bend",
+              "nonIssueSignature": "laser -> bend"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+            "readableId": "1927134101",
+            "score": 43,
+            "matchedDrawingEvidenceCount": 0,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）"
+              ],
+              "families": ["issue", "laser"],
+              "signature": "issue -> laser",
+              "nonIssueSignature": "laser"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+            "readableId": "192713410405",
+            "score": 43,
+            "matchedDrawingEvidenceCount": 0,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）"
+              ],
+              "families": ["issue", "laser"],
+              "signature": "issue -> laser",
+              "nonIssueSignature": "laser"
+            }
+          },
+          {
+            "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+            "readableId": "1924371803",
+            "score": 43,
+            "matchedDrawingEvidenceCount": 0,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 CSZ01 数控折弯(下料）"
+              ],
+              "families": ["issue", "laser", "bend"],
+              "signature": "issue -> laser -> bend",
+              "nonIssueSignature": "laser -> bend"
+            }
+          }
+        ],
+        "currentRankedTrainingReferences": [
+          {
+            "readableId": "1920790304",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_90ba3f19b54eac05274bc6e6",
+            "makeMethodId": "make_90ba3f19b54eac05274bc6e6",
+            "score": 43,
+            "matched": {
+              "materialTags": ["304"],
+              "featureTags": ["孔"],
+              "processTags": ["攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+                "U8 JLJ01 立式加工中心VMC850B(机加工）",
+                "U8 JQG01 气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "mill", "machining-center", "tap"],
+              "signature": "issue -> mill -> machining-center -> tap",
+              "nonIssueSignature": "mill -> machining-center -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+                "processTags": ["铣削"]
+              },
+              {
+                "name": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+                "processTags": []
+              },
+              {
+                "name": "U8 JQG01 气动攻丝机（机加工）",
+                "processTags": ["攻丝"]
+              }
+            ]
+          },
+          {
+            "readableId": "1924371005",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+            "makeMethodId": "make_1a8aa95f657a85229ff2fe62",
+            "score": 43,
+            "matched": {
+              "materialTags": ["304"],
+              "featureTags": ["板件"],
+              "processTags": ["激光切割"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 0,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 CSZ01 数控折弯(下料）"
+              ],
+              "families": ["issue", "laser", "bend"],
+              "signature": "issue -> laser -> bend",
+              "nonIssueSignature": "laser -> bend"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 CSZ01 数控折弯(下料）",
+                "processTags": ["折弯", "下料"]
+              }
+            ]
+          },
+          {
+            "readableId": "1927134101",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+            "makeMethodId": "make_41d6684d21eefe5507ac0a72",
+            "score": 43,
+            "matched": {
+              "materialTags": ["304"],
+              "featureTags": ["板件"],
+              "processTags": ["激光切割"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 0,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）"
+              ],
+              "families": ["issue", "laser"],
+              "signature": "issue -> laser",
+              "nonIssueSignature": "laser"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              }
+            ]
+          },
+          {
+            "readableId": "192713410405",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+            "makeMethodId": "make_57c2dfa509ab9b330c6d9f5f",
+            "score": 43,
+            "matched": {
+              "materialTags": ["304"],
+              "featureTags": ["板件"],
+              "processTags": ["激光切割"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 0,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）"
+              ],
+              "families": ["issue", "laser"],
+              "signature": "issue -> laser",
+              "nonIssueSignature": "laser"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              }
+            ]
+          },
+          {
+            "readableId": "1924371803",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+            "makeMethodId": "make_beb5c8780696f3589806767d",
+            "score": 43,
+            "matched": {
+              "materialTags": ["304"],
+              "featureTags": ["板件"],
+              "processTags": ["激光切割"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 0,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 CSZ01 数控折弯(下料）"
+              ],
+              "families": ["issue", "laser", "bend"],
+              "signature": "issue -> laser -> bend",
+              "nonIssueSignature": "laser -> bend"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 CSZ01 数控折弯(下料）",
+                "processTags": ["折弯", "下料"]
+              }
+            ]
+          },
+          {
+            "readableId": "192437180604",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_e129093cf9f8b43332628ddb",
+            "makeMethodId": "make_e129093cf9f8b43332628ddb",
+            "score": 43,
+            "matched": {
+              "materialTags": ["304"],
+              "featureTags": ["板件"],
+              "processTags": ["激光切割"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 0,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）"
+              ],
+              "families": ["issue", "laser"],
+              "signature": "issue -> laser",
+              "nonIssueSignature": "laser"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              }
+            ]
+          },
+          {
+            "readableId": "19271341030101",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_f8a47d03d811be629b47b32e",
+            "makeMethodId": "make_f8a47d03d811be629b47b32e",
+            "score": 43,
+            "matched": {
+              "materialTags": ["304"],
+              "featureTags": ["板件"],
+              "processTags": ["激光切割"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 0,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XJG01 数控激光切割（下料）",
+                "U8 CSZ01 数控折弯(下料）"
+              ],
+              "families": ["issue", "laser", "bend"],
+              "signature": "issue -> laser -> bend",
+              "nonIssueSignature": "laser -> bend"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XJG01 数控激光切割（下料）",
+                "processTags": ["激光切割", "下料"]
+              },
+              {
+                "name": "U8 CSZ01 数控折弯(下料）",
+                "processTags": ["折弯", "下料"]
+              }
+            ]
+          },
+          {
+            "readableId": "192713410401",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_2a6f4518bce6a332f677e34a",
+            "makeMethodId": "make_2a6f4518bce6a332f677e34a",
+            "score": 35,
+            "matched": {
+              "materialTags": ["304"],
+              "featureTags": [],
+              "processTags": [],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 0,
+            "route": {
+              "names": [
+                "U8 LL01 领料工作中心",
+                "U8 XDJ01 锯床下料",
+                "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+              ],
+              "families": ["issue", "saw", "mill"],
+              "signature": "issue -> saw -> mill",
+              "nonIssueSignature": "saw -> mill"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XDJ01 锯床下料",
+                "processTags": ["下料", "锯床"]
+              },
+              {
+                "name": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+                "processTags": ["铣削"]
+              }
+            ]
+          },
+          {
+            "readableId": "192713410402",
+            "sampleId": "d8s9bh4f8gm357312pbg:make_59e67c77ccf7c9263231fd7a",
+            "makeMethodId": "make_59e67c77ccf7c9263231fd7a",
+            "score": 35,
+            "matched": {
+              "materialTags": ["304"],
+              "featureTags": [],
+              "processTags": [],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 0,
+            "route": {
+              "names": ["U8 LL01 领料工作中心", "U8 XDJ01 锯床下料"],
+              "families": ["issue", "saw"],
+              "signature": "issue -> saw",
+              "nonIssueSignature": "saw"
+            },
+            "operationProcessTags": [
+              {
+                "name": "U8 LL01 领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "U8 XDJ01 锯床下料",
+                "processTags": ["下料", "锯床"]
+              }
+            ]
+          },
+          {
+            "readableId": "192793050101",
+            "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_784fb5051c05d269a4357504",
+            "makeMethodId": null,
+            "score": 15,
+            "matched": {
+              "materialTags": [],
+              "featureTags": ["板件", "孔"],
+              "processTags": ["激光切割", "攻丝"],
+              "resourceTags": []
+            },
+            "matchedDrawingEvidenceCount": 6,
+            "route": {
+              "names": [
+                "领料工作中心",
+                "数控激光切割（下料）",
+                "数控折弯(下料）",
+                "气动攻丝机（机加工）"
+              ],
+              "families": ["issue", "laser", "bend", "tap"],
+              "signature": "issue -> laser -> bend -> tap",
+              "nonIssueSignature": "laser -> bend -> tap"
+            },
+            "operationProcessTags": [
+              {
+                "name": "领料工作中心",
+                "processTags": ["领料"]
+              },
+              {
+                "name": "数控激光切割（下料）",
+                "processTags": ["激光切割", "下料", "领料"]
+              },
+              {
+                "name": "数控折弯(下料）",
+                "processTags": ["折弯", "下料", "领料"]
+              },
+              {
+                "name": "气动攻丝机（机加工）",
+                "processTags": ["攻丝", "领料"]
+              }
+            ]
+          }
+        ]
+      },
+      "decision": {
+        "categories": [
+          "coherent_training_coverage_gap",
+          "extraction_or_source_data_review"
+        ],
+        "reasons": [
+          "No approved Training route covers all non-issue actual operation families for this target.",
+          "Current target evidence has a laser-cutting hint, but the locked actual route has no laser family.",
+          "Extraction part class or stock form indicates turned/bar while route target tags still include sheet evidence.",
+          "Missing actual families are not fully supported by current process hints: saw, turn, drill."
+        ],
+        "recommendedActions": [
+          "Do not broaden generation logic; first add or identify a coherent Training route only after source-route review.",
+          "Review the source PDF and extraction evidence before using this row for generation or Training expansion."
+        ],
+        "safeForRouteGenerationChange": false,
+        "safeForMaterialization": false,
+        "requiresHumanSourceReview": true,
+        "materializationGate": "closed"
+      }
+    }
+  ]
+}

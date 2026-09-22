@@ -1,0 +1,784 @@
+{
+  "trainingOperationCount": 343,
+  "families": [
+    {
+      "family": "领料",
+      "count": 100,
+      "examples": [
+        {
+          "readableId": "19272869010",
+          "processName": "U8 LL01 领料工作中心",
+          "description": "领料工作中心"
+        },
+        {
+          "readableId": "146001020100",
+          "processName": "U8 LL01 领料工作中心",
+          "description": "领料工作中心"
+        },
+        {
+          "readableId": "146001020101",
+          "processName": "U8 LL01 领料工作中心",
+          "description": "领料工作中心"
+        },
+        {
+          "readableId": "146001030103",
+          "processName": "U8 LL01 领料工作中心",
+          "description": "领料工作中心"
+        },
+        {
+          "readableId": "1927930207",
+          "processName": "U8 LL01 领料工作中心",
+          "description": "领料工作中心"
+        }
+      ]
+    },
+    {
+      "family": "激光切割",
+      "count": 49,
+      "examples": [
+        {
+          "readableId": "19272869010",
+          "processName": "U8 XJG01 数控激光切割（下料）",
+          "description": "数控激光切割（下料）"
+        },
+        {
+          "readableId": "146001030103",
+          "processName": "U8 XJG01 数控激光切割（下料）",
+          "description": "数控激光切割（下料）"
+        },
+        {
+          "readableId": "1927930207",
+          "processName": "U8 XJG01 数控激光切割（下料）",
+          "description": "数控激光切割（下料）"
+        },
+        {
+          "readableId": "192793020101",
+          "processName": "U8 XJG01 数控激光切割（下料）",
+          "description": "数控激光切割（下料）"
+        },
+        {
+          "readableId": "146001040102",
+          "processName": "U8 XJG01 数控激光切割（下料）",
+          "description": "数控激光切割（下料）"
+        }
+      ]
+    },
+    {
+      "family": "铣/加工中心",
+      "count": 27,
+      "examples": [
+        {
+          "readableId": "149999000043",
+          "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "description": "数显立铣（北一）XA5032（机加工）"
+        },
+        {
+          "readableId": "149999000050",
+          "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+          "description": "立式加工中心VMC850B(机加工）"
+        },
+        {
+          "readableId": "149999000051",
+          "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "description": "数显立铣（北一）XA5032（机加工）"
+        },
+        {
+          "readableId": "192079030100",
+          "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "description": "数显立铣（北一）XA5032（机加工）"
+        },
+        {
+          "readableId": "192079030101",
+          "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "description": "数显立铣（北一）XA5032（机加工）"
+        }
+      ]
+    },
+    {
+      "family": "折弯",
+      "count": 25,
+      "examples": [
+        {
+          "readableId": "19272869010",
+          "processName": "U8 CSZ01 数控折弯(下料）",
+          "description": "数控折弯(下料）"
+        },
+        {
+          "readableId": "192793020101",
+          "processName": "U8 CSZ01 数控折弯(下料）",
+          "description": "数控折弯(下料）"
+        },
+        {
+          "readableId": "1920790207",
+          "processName": "U8 CSZ01 数控折弯(下料）",
+          "description": "数控折弯(下料）"
+        },
+        {
+          "readableId": "19240219060101",
+          "processName": "U8 CSZ01 数控折弯(下料）",
+          "description": "数控折弯(下料）"
+        },
+        {
+          "readableId": "1924371005",
+          "processName": "U8 CSZ01 数控折弯(下料）",
+          "description": "数控折弯(下料）"
+        }
+      ]
+    },
+    {
+      "family": "焊接",
+      "count": 24,
+      "examples": [
+        {
+          "readableId": "19272869010",
+          "processName": "U8 BYH01 氩弧焊（食品）",
+          "description": "氩弧焊（食品）"
+        },
+        {
+          "readableId": "192079030100",
+          "processName": "U8 BPZ02 板焊拼装（食品）",
+          "description": "板焊拼装（食品）"
+        },
+        {
+          "readableId": "192079030100",
+          "processName": "U8 BYH01 氩弧焊（食品）",
+          "description": "氩弧焊（食品）"
+        },
+        {
+          "readableId": "192079030200",
+          "processName": "U8 BPZ02 板焊拼装（食品）",
+          "description": "板焊拼装（食品）"
+        },
+        {
+          "readableId": "192079030200",
+          "processName": "U8 BYH01 氩弧焊（食品）",
+          "description": "氩弧焊（食品）"
+        }
+      ]
+    },
+    {
+      "family": "锯/片锯下料",
+      "count": 24,
+      "examples": [
+        {
+          "readableId": "146001020101",
+          "processName": "U8 XDJ01 锯床下料",
+          "description": "锯床下料"
+        },
+        {
+          "readableId": "192793020202",
+          "processName": "U8 XDJ01 锯床下料",
+          "description": "锯床下料"
+        },
+        {
+          "readableId": "149999000043",
+          "processName": "U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+          "description": "片锯下料（薄壁碳钢管）（下料）"
+        },
+        {
+          "readableId": "191967100102",
+          "processName": "U8 XDJ01 锯床下料",
+          "description": "锯床下料"
+        },
+        {
+          "readableId": "1919671002",
+          "processName": "U8 XDJ01 锯床下料",
+          "description": "锯床下料"
+        }
+      ]
+    },
+    {
+      "family": "表面处理",
+      "count": 21,
+      "examples": [
+        {
+          "readableId": "19272869010",
+          "processName": "U8 MDM02 打磨拉丝抛光（食品）",
+          "description": "打磨拉丝抛光（食品）"
+        },
+        {
+          "readableId": "149999000051",
+          "processName": "U8 MDM02 打磨拉丝抛光（食品）",
+          "description": "打磨拉丝抛光（食品）"
+        },
+        {
+          "readableId": "1920790207",
+          "processName": "U8 MDM02 打磨拉丝抛光（食品）",
+          "description": "打磨拉丝抛光（食品）"
+        },
+        {
+          "readableId": "1920790301",
+          "processName": "U8 MDM02 打磨拉丝抛光（食品）",
+          "description": "打磨拉丝抛光（食品）"
+        },
+        {
+          "readableId": "192079030100",
+          "processName": "U8 MDM02 打磨拉丝抛光（食品）",
+          "description": "打磨拉丝抛光（食品）"
+        }
+      ]
+    },
+    {
+      "family": "攻丝",
+      "count": 19,
+      "examples": [
+        {
+          "readableId": "146001020101",
+          "processName": "U8 JQG01 气动攻丝机（机加工）",
+          "description": "气动攻丝机（机加工）"
+        },
+        {
+          "readableId": "1927930207",
+          "processName": "U8 JQG01 气动攻丝机（机加工）",
+          "description": "气动攻丝机（机加工）"
+        },
+        {
+          "readableId": "192793020101",
+          "processName": "U8 JQG01 气动攻丝机（机加工）",
+          "description": "气动攻丝机（机加工）"
+        },
+        {
+          "readableId": "149999000050",
+          "processName": "U8 JQG01 气动攻丝机（机加工）",
+          "description": "气动攻丝机（机加工）"
+        },
+        {
+          "readableId": "149999000051",
+          "processName": "U8 JQG01 气动攻丝机（机加工）",
+          "description": "气动攻丝机（机加工）"
+        }
+      ]
+    },
+    {
+      "family": "车削",
+      "count": 15,
+      "examples": [
+        {
+          "readableId": "146001020101",
+          "processName": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+          "description": "普通车床CA6140A×2000(机加工）"
+        },
+        {
+          "readableId": "149999000043",
+          "processName": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+          "description": "普通车床CA6140A×2000(机加工）"
+        },
+        {
+          "readableId": "191967100102",
+          "processName": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+          "description": "普通车床CA6140A×2000(机加工）"
+        },
+        {
+          "readableId": "1919671002",
+          "processName": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+          "description": "普通车床CA6140A×2000(机加工）"
+        },
+        {
+          "readableId": "1920790303",
+          "processName": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+          "description": "普通车床CA6140A×2000(机加工）"
+        }
+      ]
+    },
+    {
+      "family": "钻孔",
+      "count": 9,
+      "examples": [
+        {
+          "readableId": "146001020101",
+          "processName": "U8 JYZ01 摇臂钻床（机加工）",
+          "description": "摇臂钻床（机加工）"
+        },
+        {
+          "readableId": "1919671001",
+          "processName": "U8 JYZ01 摇臂钻床（机加工）",
+          "description": "摇臂钻床（机加工）"
+        },
+        {
+          "readableId": "1920790301",
+          "processName": "U8 JYZ01 摇臂钻床（机加工）",
+          "description": "摇臂钻床（机加工）"
+        },
+        {
+          "readableId": "192079030101",
+          "processName": "U8 JYZ01 摇臂钻床（机加工）",
+          "description": "摇臂钻床（机加工）"
+        },
+        {
+          "readableId": "192079030102",
+          "processName": "U8 JYZ01 摇臂钻床（机加工）",
+          "description": "摇臂钻床（机加工）"
+        }
+      ]
+    },
+    {
+      "family": "0010",
+      "count": 5,
+      "examples": [
+        {
+          "readableId": "0501010001",
+          "processName": "0010",
+          "description": "0010"
+        },
+        {
+          "readableId": "0601010001",
+          "processName": "0010",
+          "description": "0010"
+        },
+        {
+          "readableId": "0601010002",
+          "processName": "0010",
+          "description": "0010"
+        },
+        {
+          "readableId": "0601020001",
+          "processName": "0010",
+          "description": "0010"
+        },
+        {
+          "readableId": "0601020001",
+          "processName": "0010",
+          "description": "0010"
+        }
+      ]
+    },
+    {
+      "family": "0020",
+      "count": 5,
+      "examples": [
+        {
+          "readableId": "0501010001",
+          "processName": "0020",
+          "description": "0020"
+        },
+        {
+          "readableId": "0601010001",
+          "processName": "0020",
+          "description": "0020"
+        },
+        {
+          "readableId": "0601010002",
+          "processName": "0020",
+          "description": "0020"
+        },
+        {
+          "readableId": "0601020001",
+          "processName": "0020",
+          "description": "0020"
+        },
+        {
+          "readableId": "0601020001",
+          "processName": "0020",
+          "description": "0020"
+        }
+      ]
+    },
+    {
+      "family": "0030",
+      "count": 5,
+      "examples": [
+        {
+          "readableId": "0501010001",
+          "processName": "0030",
+          "description": "0030"
+        },
+        {
+          "readableId": "0601010001",
+          "processName": "0030",
+          "description": "0030"
+        },
+        {
+          "readableId": "0601010002",
+          "processName": "0030",
+          "description": "0030"
+        },
+        {
+          "readableId": "0601020001",
+          "processName": "0030",
+          "description": "0030"
+        },
+        {
+          "readableId": "0601020001",
+          "processName": "0030",
+          "description": "0030"
+        }
+      ]
+    },
+    {
+      "family": "0040",
+      "count": 4,
+      "examples": [
+        {
+          "readableId": "0601010001",
+          "processName": "0040",
+          "description": "0040"
+        },
+        {
+          "readableId": "0601010002",
+          "processName": "0040",
+          "description": "0040"
+        },
+        {
+          "readableId": "0601020001",
+          "processName": "0040",
+          "description": "0040"
+        },
+        {
+          "readableId": "0601020001",
+          "processName": "0040",
+          "description": "0040"
+        }
+      ]
+    },
+    {
+      "family": "0050",
+      "count": 4,
+      "examples": [
+        {
+          "readableId": "0601010001",
+          "processName": "0050",
+          "description": "0050"
+        },
+        {
+          "readableId": "0601010002",
+          "processName": "0050",
+          "description": "0050"
+        },
+        {
+          "readableId": "0601020001",
+          "processName": "0050",
+          "description": "0050"
+        },
+        {
+          "readableId": "0601020001",
+          "processName": "0050",
+          "description": "0050"
+        }
+      ]
+    },
+    {
+      "family": "数控等离子火焰切割(下料)",
+      "count": 2,
+      "examples": [
+        {
+          "readableId": "149999000051",
+          "processName": "U8 XDH01 数控等离子火焰切割(下料）",
+          "description": "数控等离子火焰切割(下料）"
+        },
+        {
+          "readableId": "19243006070103",
+          "processName": "U8 XDH01 数控等离子火焰切割(下料）",
+          "description": "数控等离子火焰切割(下料）"
+        }
+      ]
+    },
+    {
+      "family": "0060",
+      "count": 1,
+      "examples": [
+        {
+          "readableId": "0601020001",
+          "processName": "0060",
+          "description": "0060"
+        }
+      ]
+    },
+    {
+      "family": "喷漆",
+      "count": 1,
+      "examples": [
+        {
+          "readableId": "149999000050",
+          "processName": "U8 PYX01 喷漆",
+          "description": "喷漆"
+        }
+      ]
+    },
+    {
+      "family": "数控线切割DK(机加工)",
+      "count": 1,
+      "examples": [
+        {
+          "readableId": "19243006070103",
+          "processName": "U8 JXG01 数控线切割DK(机加工）",
+          "description": "数控线切割DK(机加工）"
+        }
+      ]
+    },
+    {
+      "family": "碳钢喷砂",
+      "count": 1,
+      "examples": [
+        {
+          "readableId": "149999000050",
+          "processName": "U8 MPS01 碳钢喷砂",
+          "description": "碳钢喷砂"
+        }
+      ]
+    },
+    {
+      "family": "外协镀锌",
+      "count": 1,
+      "examples": [
+        {
+          "readableId": "19247271020302",
+          "processName": "U8 WDX01 外协镀锌",
+          "description": "外协镀锌"
+        }
+      ]
+    }
+  ],
+  "names": [
+    {
+      "name": "领料工作中心",
+      "count": 100,
+      "examples": [
+        "19272869010",
+        "146001020100",
+        "146001020101",
+        "146001030103",
+        "1927930207"
+      ]
+    },
+    {
+      "name": "数控激光切割(下料)",
+      "count": 49,
+      "examples": [
+        "19272869010",
+        "146001030103",
+        "1927930207",
+        "192793020101",
+        "146001040102"
+      ]
+    },
+    {
+      "name": "数控折弯(下料)",
+      "count": 25,
+      "examples": [
+        "19272869010",
+        "192793020101",
+        "1920790207",
+        "19240219060101",
+        "1924371005"
+      ]
+    },
+    {
+      "name": "锯床下料",
+      "count": 20,
+      "examples": [
+        "146001020101",
+        "192793020202",
+        "191967100102",
+        "1919671002",
+        "192079030202"
+      ]
+    },
+    {
+      "name": "气动攻丝机(机加工)",
+      "count": 19,
+      "examples": [
+        "146001020101",
+        "1927930207",
+        "192793020101",
+        "149999000050",
+        "149999000051"
+      ]
+    },
+    {
+      "name": "打磨拉丝抛光(食品)",
+      "count": 17,
+      "examples": [
+        "19272869010",
+        "149999000051",
+        "1920790207",
+        "1920790301",
+        "192079030100"
+      ]
+    },
+    {
+      "name": "普通车床CA6140A×2000(机加工)",
+      "count": 15,
+      "examples": [
+        "146001020101",
+        "149999000043",
+        "191967100102",
+        "1919671002",
+        "1920790303"
+      ]
+    },
+    {
+      "name": "数显立铣(北一)XA5032(机加工)",
+      "count": 15,
+      "examples": [
+        "149999000043",
+        "149999000051",
+        "192079030100",
+        "192079030101",
+        "192079030102"
+      ]
+    },
+    {
+      "name": "氩弧焊(食品)",
+      "count": 10,
+      "examples": [
+        "19272869010",
+        "192079030100",
+        "192079030200",
+        "19244208060400",
+        "19247337070200"
+      ]
+    },
+    {
+      "name": "摇臂钻床(机加工)",
+      "count": 9,
+      "examples": [
+        "146001020101",
+        "1919671001",
+        "1920790301",
+        "192079030101",
+        "192079030102"
+      ]
+    },
+    {
+      "name": "板焊拼装(食品)",
+      "count": 8,
+      "examples": [
+        "192079030100",
+        "192079030200",
+        "19244208060400",
+        "19247337070200",
+        "19247773030100"
+      ]
+    },
+    {
+      "name": "立式铣床(精乔)4S-R8(机加工)",
+      "count": 6,
+      "examples": [
+        "19243006070103",
+        "19244208060202",
+        "19244208060203",
+        "192475010310",
+        "192728690101"
+      ]
+    },
+    {
+      "name": "0010",
+      "count": 5,
+      "examples": [
+        "0501010001",
+        "0601010001",
+        "0601010002",
+        "0601020001",
+        "0601020001"
+      ]
+    },
+    {
+      "name": "0020",
+      "count": 5,
+      "examples": [
+        "0501010001",
+        "0601010001",
+        "0601010002",
+        "0601020001",
+        "0601020001"
+      ]
+    },
+    {
+      "name": "0030",
+      "count": 5,
+      "examples": [
+        "0501010001",
+        "0601010001",
+        "0601010002",
+        "0601020001",
+        "0601020001"
+      ]
+    },
+    {
+      "name": "立式加工中心VMC850B(机加工)",
+      "count": 5,
+      "examples": [
+        "149999000050",
+        "1920790302",
+        "1920790304",
+        "1924750102",
+        "1924750104"
+      ]
+    },
+    {
+      "name": "0040",
+      "count": 4,
+      "examples": ["0601010001", "0601010002", "0601020001", "0601020001"]
+    },
+    {
+      "name": "0050",
+      "count": 4,
+      "examples": ["0601010001", "0601010002", "0601020001", "0601020001"]
+    },
+    {
+      "name": "打磨(碳钢)",
+      "count": 4,
+      "examples": [
+        "192793020200",
+        "192793050200",
+        "192793060101",
+        "192793060200"
+      ]
+    },
+    {
+      "name": "板焊拼装(碳钢)",
+      "count": 3,
+      "examples": ["192793020200", "192793050200", "192793060200"]
+    },
+    {
+      "name": "氩弧焊(碳钢)",
+      "count": 3,
+      "examples": ["192793020200", "192793050200", "192793060200"]
+    },
+    {
+      "name": "带锯下料(薄壁不锈钢管)(下料)",
+      "count": 2,
+      "examples": ["192611020103", "192611290502"]
+    },
+    {
+      "name": "片锯下料(薄壁碳钢管)(下料)",
+      "count": 2,
+      "examples": ["149999000043", "19272869010105"]
+    },
+    {
+      "name": "数控等离子火焰切割(下料)",
+      "count": 2,
+      "examples": ["149999000051", "19243006070103"]
+    },
+    {
+      "name": "0060",
+      "count": 1,
+      "examples": ["0601020001"]
+    },
+    {
+      "name": "喷漆",
+      "count": 1,
+      "examples": ["149999000050"]
+    },
+    {
+      "name": "数控龙门镗铣床GMB2040(机加工)",
+      "count": 1,
+      "examples": ["19272869010101"]
+    },
+    {
+      "name": "数控线切割DK(机加工)",
+      "count": 1,
+      "examples": ["19243006070103"]
+    },
+    {
+      "name": "碳钢喷砂",
+      "count": 1,
+      "examples": ["149999000050"]
+    },
+    {
+      "name": "外协镀锌",
+      "count": 1,
+      "examples": ["19247271020302"]
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+using System; using System.Reflection; using UFIDA.U8.U8APIFramework.Meta;
+class R { static void Main(){ var asm=typeof(ExtensionBOMeta).Assembly; foreach(var t in asm.GetTypes()){ if(t.Namespace!=null && t.Namespace.Contains("Meta")){ Console.WriteLine(t.FullName); foreach(var m in t.GetMethods(BindingFlags.Public|BindingFlags.Instance|BindingFlags.DeclaredOnly)) Console.WriteLine("  "+m.ToString()); foreach(var p in t.GetProperties(BindingFlags.Public|BindingFlags.Instance|BindingFlags.DeclaredOnly)) Console.WriteLine("  "+p.ToString()); } } } }

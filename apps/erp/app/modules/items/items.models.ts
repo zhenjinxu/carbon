@@ -1,4 +1,4 @@
-import { z } from "zod";
+﻿import { z } from "zod";
 import { zfd } from "zod-form-data";
 import {
   methodItemType,
@@ -642,7 +642,7 @@ export const partValidator = applyStorageAndShelfLifeRefines(
 );
 
 export const partsImportValidator = z.object({
-  operation: z.enum(["excelImport", "u8Enrich"]),
+  operation: z.enum(["excelImport", "u8Enrich", "wholeBomImport"]),
   u8Enrich: zfd.checkbox().optional(),
   items: zfd.repeatableOfType(z.string().min(1)).optional()
 });

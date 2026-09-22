@@ -1,4 +1,4 @@
-import {
+﻿import {
   Badge,
   Button,
   Checkbox,
@@ -112,6 +112,7 @@ const PartsTable = memo(({ data, tags, count }: PartsTableProps) => {
   const deleteItemModal = useDisclosure();
   const bulkDeleteModal = useDisclosure();
   const importModal = useDisclosure();
+  const [importMode, setImportMode] = useState<"parts" | "wholeBom">("parts");
   const revalidator = useRevalidator();
   const u8Fetcher = useFetcher<{
     data?: { enriched?: number; missingU8?: string[] } | null;
@@ -717,9 +718,22 @@ const PartsTable = memo(({ data, tags, count }: PartsTableProps) => {
                   <Button
                     variant="secondary"
                     leftIcon={<LuFileSpreadsheet />}
-                    onClick={importModal.onOpen}
+                    onClick={() => {
+                      setImportMode("parts");
+                      importModal.onOpen();
+                    }}
                   >
                     <Trans>Import Excel</Trans>
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    leftIcon={<LuGitPullRequestArrow />}
+                    onClick={() => {
+                      setImportMode("wholeBom");
+                      importModal.onOpen();
+                    }}
+                  >
+                    整机 BOM 导入
                   </Button>
                   <Button variant="secondary" leftIcon={<LuGroup />} asChild>
                     <Link to={path.to.itemPostingGroups}>
@@ -741,7 +755,9 @@ const PartsTable = memo(({ data, tags, count }: PartsTableProps) => {
         getRowId={(row) => row.id!}
         withSelectableRows
       />
-      {importModal.isOpen && <PartsImportModal onClose={importModal.onClose} />}
+      {importModal.isOpen && (
+        <PartsImportModal mode={importMode} onClose={importModal.onClose} />
+      )}
       {bulkDeleteModal.isOpen && selectedPartIds.length > 0 && (
         <PartsBulkDeleteModal
           itemIds={selectedPartIds}

@@ -78,6 +78,7 @@ describe("part drawing PDF renderer", () => {
         renderDurationMs: expect.any(Number)
       })
     ]);
+    expect(result.pages[0]?.visibleText).toContain("Carbon PDF");
     expect(JSON.stringify(result)).not.toContain("Carbon PDF");
   });
 
@@ -117,6 +118,7 @@ describe("part drawing PDF renderer", () => {
     expect(page.imageBytes.byteLength).toBeGreaterThan(0);
     expect(summaryPage.pngByteLength).toBe(page.imageBytes.byteLength);
     expect(JSON.stringify(result)).not.toContain("imageBytes");
+    expect(result.summary.pages[0]?.visibleText).toContain("Model page");
     expect(JSON.stringify(result)).not.toContain("Model page");
   });
 });

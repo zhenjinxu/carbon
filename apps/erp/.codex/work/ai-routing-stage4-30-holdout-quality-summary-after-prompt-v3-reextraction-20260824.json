@@ -1,0 +1,315 @@
+{
+  "evaluatedAt": "2026-08-24T02:11:26.478Z",
+  "sourceEvaluationFile": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\ai-routing-stage4-30-holdout-evaluation-20260823.json",
+  "baselineFile": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\ai-routing-stage4-30-holdout-quality-summary-after-lathe-normalization-20260824.json",
+  "holdoutCount": 30,
+  "trainingSampleCount": 105,
+  "rawExactSequenceMatches": 3,
+  "normalizedExactSequenceMatches": 19,
+  "operationCountMatches": 24,
+  "underPredicted": 6,
+  "overPredicted": 0,
+  "warningRows": 5,
+  "totalEvaluationLeaks": 0,
+  "totalWorkCenterAssignments": 0,
+  "totalUnsupportedWorkCenterAssignments": 0,
+  "totalMissingProcessIds": 0,
+  "invalidProcessIdCount": 0,
+  "invalidProcessIds": [],
+  "normalizedMismatches": [
+    "1927930206",
+    "1927881101",
+    "192769010102",
+    "192788110401",
+    "192788110402",
+    "192788110601",
+    "192788110602",
+    "192472540409",
+    "192759010202",
+    "192472540414",
+    "192739030308"
+  ],
+  "improvedFromBaseline": [],
+  "regressedFromBaseline": [],
+  "operationCountImprovedFromBaseline": [],
+  "operationCountRegressedFromBaseline": [],
+  "baselineComparison": {
+    "normalizedExactSequenceMatches": "19 -> 19",
+    "operationCountMatches": "24 -> 24",
+    "underPredicted": "6 -> 6",
+    "overPredicted": "0 -> 0",
+    "warningRows": "5 -> 5"
+  },
+  "normalizedRows": [
+    {
+      "readableId": "1927930503",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 3,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192793050201",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 3,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "1927930603",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 3,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192793060201",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 3,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "1927930202",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 4,
+      "actualOperationCount": 4,
+      "suggestedOperationCount": 4,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192793020201",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 3,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "1927930206",
+      "normalizedExactSequenceMatch": false,
+      "normalizedPositionMatchCount": 0,
+      "actualOperationCount": 5,
+      "suggestedOperationCount": 0,
+      "operationCountDelta": -5,
+      "warningCount": 1
+    },
+    {
+      "readableId": "1927326104",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 3,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "1927881101",
+      "normalizedExactSequenceMatch": false,
+      "normalizedPositionMatchCount": 2,
+      "actualOperationCount": 4,
+      "suggestedOperationCount": 4,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "1927881103",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 2,
+      "actualOperationCount": 2,
+      "suggestedOperationCount": 2,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "1927930801",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 3,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "1927930802",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 3,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "1927930803",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 3,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "1927930804",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 3,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192744140302",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 2,
+      "actualOperationCount": 2,
+      "suggestedOperationCount": 2,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192769010102",
+      "normalizedExactSequenceMatch": false,
+      "normalizedPositionMatchCount": 0,
+      "actualOperationCount": 6,
+      "suggestedOperationCount": 0,
+      "operationCountDelta": -6,
+      "warningCount": 1
+    },
+    {
+      "readableId": "192769010103",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 2,
+      "actualOperationCount": 2,
+      "suggestedOperationCount": 2,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192788110401",
+      "normalizedExactSequenceMatch": false,
+      "normalizedPositionMatchCount": 1,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192788110402",
+      "normalizedExactSequenceMatch": false,
+      "normalizedPositionMatchCount": 2,
+      "actualOperationCount": 5,
+      "suggestedOperationCount": 5,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192788110601",
+      "normalizedExactSequenceMatch": false,
+      "normalizedPositionMatchCount": 0,
+      "actualOperationCount": 5,
+      "suggestedOperationCount": 0,
+      "operationCountDelta": -5,
+      "warningCount": 1
+    },
+    {
+      "readableId": "192788110602",
+      "normalizedExactSequenceMatch": false,
+      "normalizedPositionMatchCount": 0,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 0,
+      "operationCountDelta": -3,
+      "warningCount": 1
+    },
+    {
+      "readableId": "192793010401",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 2,
+      "actualOperationCount": 2,
+      "suggestedOperationCount": 2,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192793010402",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 2,
+      "actualOperationCount": 2,
+      "suggestedOperationCount": 2,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192793080101",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 4,
+      "actualOperationCount": 4,
+      "suggestedOperationCount": 4,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192793080201",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 3,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "19276939010203",
+      "normalizedExactSequenceMatch": true,
+      "normalizedPositionMatchCount": 3,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192472540409",
+      "normalizedExactSequenceMatch": false,
+      "normalizedPositionMatchCount": 0,
+      "actualOperationCount": 6,
+      "suggestedOperationCount": 0,
+      "operationCountDelta": -6,
+      "warningCount": 1
+    },
+    {
+      "readableId": "192759010202",
+      "normalizedExactSequenceMatch": false,
+      "normalizedPositionMatchCount": 1,
+      "actualOperationCount": 6,
+      "suggestedOperationCount": 5,
+      "operationCountDelta": -1,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192472540414",
+      "normalizedExactSequenceMatch": false,
+      "normalizedPositionMatchCount": 1,
+      "actualOperationCount": 4,
+      "suggestedOperationCount": 4,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192739030308",
+      "normalizedExactSequenceMatch": false,
+      "normalizedPositionMatchCount": 1,
+      "actualOperationCount": 4,
+      "suggestedOperationCount": 4,
+      "operationCountDelta": 0,
+      "warningCount": 0
+    }
+  ]
+}

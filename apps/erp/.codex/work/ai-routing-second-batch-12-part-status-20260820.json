@@ -1,0 +1,465 @@
+{
+  "summary": {
+    "companyId": "d8s9bh4f8gm357312pbg",
+    "checkedAt": "2026-08-20T09:00:43.270Z",
+    "requestedPartCount": 12,
+    "foundItemCount": 12,
+    "trainingCount": 8,
+    "evaluationCount": 4,
+    "activeAiMaterializedCount": 4,
+    "partsWithDrafts": [
+      "1927930503",
+      "1927930603",
+      "192793050201",
+      "192793060201"
+    ],
+    "partsWithActiveOperations": [
+      "1927930503",
+      "1927930603",
+      "192793050201",
+      "192793060201"
+    ]
+  },
+  "rows": [
+    {
+      "readableId": "1927930501",
+      "itemId": "wodiitem_a73a1be38ab2dfd756631762",
+      "itemName": "导向板",
+      "datasetRoles": ["Training"],
+      "intendedHandling": "Keep as Training reference; do not generate/activate AI route for evaluation.",
+      "sample": {
+        "sampleCount": 1,
+        "approvedCount": 1,
+        "statuses": ["Approved"],
+        "latestLockedAt": null
+      },
+      "extraction": {
+        "totalCount": 1,
+        "succeededCount": 1,
+        "statuses": ["Succeeded"],
+        "latestSucceededId": "aide_91E3CePqJ6iXtsQ6fVSaZB",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v1",
+        "latestSucceededModelProvider": "openai",
+        "latestSucceededModelName": "gpt-5.6-terra",
+        "latestSucceededCompletedAt": "2026-08-18 13:38:20.298+00",
+        "latestSucceededMaterial": null,
+        "latestSucceededWarnings": 1
+      },
+      "routing": {
+        "methodCount": 1,
+        "operationCount": 0,
+        "statuses": ["Active"],
+        "activeMethodIds": ["make_f28a655685819a59a18d0eee"],
+        "activeOperationCount": 0,
+        "activeRouteSignature": null
+      },
+      "draft": null
+    },
+    {
+      "readableId": "1927930502",
+      "itemId": "wodiitem_c8c258cad64b0c87bfc3c94a",
+      "itemName": "皮带侧板",
+      "datasetRoles": ["Training"],
+      "intendedHandling": "Keep as Training reference; do not generate/activate AI route for evaluation.",
+      "sample": {
+        "sampleCount": 1,
+        "approvedCount": 1,
+        "statuses": ["Approved"],
+        "latestLockedAt": null
+      },
+      "extraction": {
+        "totalCount": 1,
+        "succeededCount": 1,
+        "statuses": ["Succeeded"],
+        "latestSucceededId": "aide_WZrMEmhXGLzcDybkkK6nAn",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v1",
+        "latestSucceededModelProvider": "openai",
+        "latestSucceededModelName": "gpt-5.6-terra",
+        "latestSucceededCompletedAt": "2026-08-19 07:11:25.966+00",
+        "latestSucceededMaterial": null,
+        "latestSucceededWarnings": 2
+      },
+      "routing": {
+        "methodCount": 1,
+        "operationCount": 0,
+        "statuses": ["Active"],
+        "activeMethodIds": ["make_021a2b7eedaf4b1d2b84a47a"],
+        "activeOperationCount": 0,
+        "activeRouteSignature": null
+      },
+      "draft": null
+    },
+    {
+      "readableId": "1927930503",
+      "itemId": "wodiitem_0ab3b47965de06dfadc7a4bd",
+      "itemName": "皮带侧板",
+      "datasetRoles": ["Evaluation"],
+      "intendedHandling": "Keep as Evaluation holdout unless explicitly selected for controlled human-review rollout.",
+      "sample": {
+        "sampleCount": 1,
+        "approvedCount": 1,
+        "statuses": ["Approved"],
+        "latestLockedAt": "2026-08-19 08:33:51.98+00"
+      },
+      "extraction": {
+        "totalCount": 1,
+        "succeededCount": 1,
+        "statuses": ["Succeeded"],
+        "latestSucceededId": "aide_ZUm5yz18gbHisqN3j5euo",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v1",
+        "latestSucceededModelProvider": "openai",
+        "latestSucceededModelName": "gpt-5.6-terra",
+        "latestSucceededCompletedAt": "2026-08-18 10:37:20.306+00",
+        "latestSucceededMaterial": null,
+        "latestSucceededWarnings": 2
+      },
+      "routing": {
+        "methodCount": 2,
+        "operationCount": 3,
+        "statuses": ["Active", "Archived"],
+        "activeMethodIds": ["make_4Q4iCL2kiACFpZiwiVq2pV"],
+        "activeOperationCount": 3,
+        "activeRouteSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）"
+      },
+      "draft": {
+        "draftCount": 1,
+        "statuses": ["Accepted"],
+        "acceptedCount": 1,
+        "linkedAcceptedMethodIds": ["make_4Q4iCL2kiACFpZiwiVq2pV"],
+        "latestDraftId": "aird_DfxhkH633nQv7ffJ5tdARk",
+        "latestDraftStatus": "Accepted",
+        "latestDraftOperationCount": 3
+      }
+    },
+    {
+      "readableId": "1927930601",
+      "itemId": "wodiitem_cebfa8a663698ca178507d98",
+      "itemName": "导向板",
+      "datasetRoles": ["Training"],
+      "intendedHandling": "Keep as Training reference; do not generate/activate AI route for evaluation.",
+      "sample": {
+        "sampleCount": 1,
+        "approvedCount": 1,
+        "statuses": ["Approved"],
+        "latestLockedAt": null
+      },
+      "extraction": {
+        "totalCount": 1,
+        "succeededCount": 1,
+        "statuses": ["Succeeded"],
+        "latestSucceededId": "aide_6EXcuizyn5N2FPr2477c6b",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v1",
+        "latestSucceededModelProvider": "openai",
+        "latestSucceededModelName": "gpt-5.6-terra",
+        "latestSucceededCompletedAt": "2026-08-19 07:15:58.251+00",
+        "latestSucceededMaterial": null,
+        "latestSucceededWarnings": 1
+      },
+      "routing": {
+        "methodCount": 1,
+        "operationCount": 0,
+        "statuses": ["Active"],
+        "activeMethodIds": ["make_0e54e6fb40a1dc9d89f0c1ad"],
+        "activeOperationCount": 0,
+        "activeRouteSignature": null
+      },
+      "draft": null
+    },
+    {
+      "readableId": "1927930602",
+      "itemId": "wodiitem_e3c475500da72b79ce1ecec8",
+      "itemName": "皮带侧板",
+      "datasetRoles": ["Training"],
+      "intendedHandling": "Keep as Training reference; do not generate/activate AI route for evaluation.",
+      "sample": {
+        "sampleCount": 1,
+        "approvedCount": 1,
+        "statuses": ["Approved"],
+        "latestLockedAt": null
+      },
+      "extraction": {
+        "totalCount": 1,
+        "succeededCount": 1,
+        "statuses": ["Succeeded"],
+        "latestSucceededId": "aide_562YsmLgzgu1X2UnhNLMza",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v1",
+        "latestSucceededModelProvider": "openai",
+        "latestSucceededModelName": "gpt-5.6-terra",
+        "latestSucceededCompletedAt": "2026-08-19 07:25:01.393+00",
+        "latestSucceededMaterial": null,
+        "latestSucceededWarnings": 2
+      },
+      "routing": {
+        "methodCount": 1,
+        "operationCount": 0,
+        "statuses": ["Active"],
+        "activeMethodIds": ["make_ca7db5a21f9cc52557e9767a"],
+        "activeOperationCount": 0,
+        "activeRouteSignature": null
+      },
+      "draft": null
+    },
+    {
+      "readableId": "1927930603",
+      "itemId": "wodiitem_00cbfbb892924246cd133e65",
+      "itemName": "皮带侧板",
+      "datasetRoles": ["Evaluation"],
+      "intendedHandling": "Keep as Evaluation holdout unless explicitly selected for controlled human-review rollout.",
+      "sample": {
+        "sampleCount": 1,
+        "approvedCount": 1,
+        "statuses": ["Approved"],
+        "latestLockedAt": "2026-08-19 08:33:51.991+00"
+      },
+      "extraction": {
+        "totalCount": 1,
+        "succeededCount": 1,
+        "statuses": ["Succeeded"],
+        "latestSucceededId": "aide_7UXaU6cbQRNhZ7apv6ddtm",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v1",
+        "latestSucceededModelProvider": "openai",
+        "latestSucceededModelName": "gpt-5.6-terra",
+        "latestSucceededCompletedAt": "2026-08-19 07:27:18.242+00",
+        "latestSucceededMaterial": null,
+        "latestSucceededWarnings": 3
+      },
+      "routing": {
+        "methodCount": 2,
+        "operationCount": 3,
+        "statuses": ["Active", "Archived"],
+        "activeMethodIds": ["make_KXhV4zJprUXSH9ZSM8rQ2Y"],
+        "activeOperationCount": 3,
+        "activeRouteSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）"
+      },
+      "draft": {
+        "draftCount": 1,
+        "statuses": ["Accepted"],
+        "acceptedCount": 1,
+        "linkedAcceptedMethodIds": ["make_KXhV4zJprUXSH9ZSM8rQ2Y"],
+        "latestDraftId": "aird_9efLYk4mcnVyqBsuQ8p1mP",
+        "latestDraftStatus": "Accepted",
+        "latestDraftOperationCount": 3
+      }
+    },
+    {
+      "readableId": "192793050101",
+      "itemId": "wodiitem_044423c3d635768549ec92de",
+      "itemName": "皮带侧板",
+      "datasetRoles": ["Training"],
+      "intendedHandling": "Keep as Training reference; do not generate/activate AI route for evaluation.",
+      "sample": {
+        "sampleCount": 1,
+        "approvedCount": 1,
+        "statuses": ["Approved"],
+        "latestLockedAt": null
+      },
+      "extraction": {
+        "totalCount": 1,
+        "succeededCount": 1,
+        "statuses": ["Succeeded"],
+        "latestSucceededId": "aide_JJCrcjx7ztaw8qjFxws8GA",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v1",
+        "latestSucceededModelProvider": "openai",
+        "latestSucceededModelName": "gpt-5.6-terra",
+        "latestSucceededCompletedAt": "2026-08-19 07:30:05.666+00",
+        "latestSucceededMaterial": null,
+        "latestSucceededWarnings": 1
+      },
+      "routing": {
+        "methodCount": 1,
+        "operationCount": 0,
+        "statuses": ["Active"],
+        "activeMethodIds": ["make_8ba59d122cf26f13e61e8d31"],
+        "activeOperationCount": 0,
+        "activeRouteSignature": null
+      },
+      "draft": null
+    },
+    {
+      "readableId": "192793050200",
+      "itemId": "wodiitem_55c5e928885ee561ad41c7d6",
+      "itemName": "皮带支撑板1",
+      "datasetRoles": ["Training"],
+      "intendedHandling": "Keep as Training reference; do not generate/activate AI route for evaluation.",
+      "sample": {
+        "sampleCount": 1,
+        "approvedCount": 1,
+        "statuses": ["Approved"],
+        "latestLockedAt": null
+      },
+      "extraction": {
+        "totalCount": 1,
+        "succeededCount": 1,
+        "statuses": ["Succeeded"],
+        "latestSucceededId": "aide_LXBYyokFqRd1FnqjPscFJX",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v1",
+        "latestSucceededModelProvider": "openai",
+        "latestSucceededModelName": "gpt-5.6-terra",
+        "latestSucceededCompletedAt": "2026-08-18 10:54:36.517+00",
+        "latestSucceededMaterial": null,
+        "latestSucceededWarnings": 2
+      },
+      "routing": {
+        "methodCount": 1,
+        "operationCount": 0,
+        "statuses": ["Active"],
+        "activeMethodIds": ["make_4fc84a3918e2509ec375051a"],
+        "activeOperationCount": 0,
+        "activeRouteSignature": null
+      },
+      "draft": null
+    },
+    {
+      "readableId": "192793050201",
+      "itemId": "wodiitem_0141582866eb9de5f7c76491",
+      "itemName": "拖板1",
+      "datasetRoles": ["Evaluation"],
+      "intendedHandling": "Keep as Evaluation holdout unless explicitly selected for controlled human-review rollout.",
+      "sample": {
+        "sampleCount": 1,
+        "approvedCount": 1,
+        "statuses": ["Approved"],
+        "latestLockedAt": "2026-08-19 08:33:51.998+00"
+      },
+      "extraction": {
+        "totalCount": 2,
+        "succeededCount": 2,
+        "statuses": ["Succeeded"],
+        "latestSucceededId": "aide_TqQRLBMEb9aHw8D2PvV1M9",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v2",
+        "latestSucceededModelProvider": "openai",
+        "latestSucceededModelName": "gpt-5.6-terra",
+        "latestSucceededCompletedAt": "2026-08-20 00:52:41.822+00",
+        "latestSucceededMaterial": null,
+        "latestSucceededWarnings": 1
+      },
+      "routing": {
+        "methodCount": 2,
+        "operationCount": 3,
+        "statuses": ["Active", "Archived"],
+        "activeMethodIds": ["make_MzZb6Ca6xbsjuShAfZ9n4Z"],
+        "activeOperationCount": 3,
+        "activeRouteSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）"
+      },
+      "draft": {
+        "draftCount": 1,
+        "statuses": ["Accepted"],
+        "acceptedCount": 1,
+        "linkedAcceptedMethodIds": ["make_MzZb6Ca6xbsjuShAfZ9n4Z"],
+        "latestDraftId": "aird_EoeRjfohQYHSv3VUk3Jjhx",
+        "latestDraftStatus": "Accepted",
+        "latestDraftOperationCount": 3
+      }
+    },
+    {
+      "readableId": "192793060101",
+      "itemId": "wodiitem_6de4bb245018f548d4756ede",
+      "itemName": "皮带侧板",
+      "datasetRoles": ["Training"],
+      "intendedHandling": "Keep as Training reference; do not generate/activate AI route for evaluation.",
+      "sample": {
+        "sampleCount": 1,
+        "approvedCount": 1,
+        "statuses": ["Approved"],
+        "latestLockedAt": null
+      },
+      "extraction": {
+        "totalCount": 1,
+        "succeededCount": 1,
+        "statuses": ["Succeeded"],
+        "latestSucceededId": "aide_LbdFz2XP1Gi4u5oGaaEv5A",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v1",
+        "latestSucceededModelProvider": "openai",
+        "latestSucceededModelName": "gpt-5.6-terra",
+        "latestSucceededCompletedAt": "2026-08-19 07:40:01.61+00",
+        "latestSucceededMaterial": null,
+        "latestSucceededWarnings": 2
+      },
+      "routing": {
+        "methodCount": 1,
+        "operationCount": 0,
+        "statuses": ["Active"],
+        "activeMethodIds": ["make_ebdb90d5871eefc82e422252"],
+        "activeOperationCount": 0,
+        "activeRouteSignature": null
+      },
+      "draft": null
+    },
+    {
+      "readableId": "192793060200",
+      "itemId": "wodiitem_5590232150fd66b7f4c76ff0",
+      "itemName": "皮带支撑板1",
+      "datasetRoles": ["Training"],
+      "intendedHandling": "Keep as Training reference; do not generate/activate AI route for evaluation.",
+      "sample": {
+        "sampleCount": 1,
+        "approvedCount": 1,
+        "statuses": ["Approved"],
+        "latestLockedAt": null
+      },
+      "extraction": {
+        "totalCount": 1,
+        "succeededCount": 1,
+        "statuses": ["Succeeded"],
+        "latestSucceededId": "aide_Sw5u4fAsQNsnJyTu9VwJa4",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v1",
+        "latestSucceededModelProvider": "openai",
+        "latestSucceededModelName": "gpt-5.6-terra",
+        "latestSucceededCompletedAt": "2026-08-19 07:43:11.22+00",
+        "latestSucceededMaterial": null,
+        "latestSucceededWarnings": 2
+      },
+      "routing": {
+        "methodCount": 1,
+        "operationCount": 0,
+        "statuses": ["Active"],
+        "activeMethodIds": ["make_248f2827de419c311a9e6094"],
+        "activeOperationCount": 0,
+        "activeRouteSignature": null
+      },
+      "draft": null
+    },
+    {
+      "readableId": "192793060201",
+      "itemId": "wodiitem_db2f755e013b250b9c9f450c",
+      "itemName": "拖板1",
+      "datasetRoles": ["Evaluation"],
+      "intendedHandling": "Keep as Evaluation holdout unless explicitly selected for controlled human-review rollout.",
+      "sample": {
+        "sampleCount": 1,
+        "approvedCount": 1,
+        "statuses": ["Approved"],
+        "latestLockedAt": "2026-08-19 08:33:52.006+00"
+      },
+      "extraction": {
+        "totalCount": 1,
+        "succeededCount": 1,
+        "statuses": ["Succeeded"],
+        "latestSucceededId": "aide_SC2RePErD8tnQgFa9dNupT",
+        "latestSucceededPromptVersion": "ai-routing-drawing.prompt.v1",
+        "latestSucceededModelProvider": "openai",
+        "latestSucceededModelName": "gpt-5.6-terra",
+        "latestSucceededCompletedAt": "2026-08-18 11:05:36.408+00",
+        "latestSucceededMaterial": null,
+        "latestSucceededWarnings": 2
+      },
+      "routing": {
+        "methodCount": 2,
+        "operationCount": 3,
+        "statuses": ["Active", "Archived"],
+        "activeMethodIds": ["make_DiECfGnbAxgKfDsf1QNDYH"],
+        "activeOperationCount": 3,
+        "activeRouteSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）"
+      },
+      "draft": {
+        "draftCount": 1,
+        "statuses": ["Accepted"],
+        "acceptedCount": 1,
+        "linkedAcceptedMethodIds": ["make_DiECfGnbAxgKfDsf1QNDYH"],
+        "latestDraftId": "aird_TPD3pQbFjMajVkTkhM3rrC",
+        "latestDraftStatus": "Accepted",
+        "latestDraftOperationCount": 3
+      }
+    }
+  ]
+}

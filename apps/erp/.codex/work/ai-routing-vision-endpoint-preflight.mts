@@ -1,4 +1,4 @@
-﻿import { readFileSync, statSync } from "node:fs";
+import { readFileSync, statSync } from "node:fs";
 import { extname } from "node:path";
 
 const ONE_BY_ONE_PNG_BASE64 =
@@ -139,6 +139,9 @@ async function main() {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
+        instructions:
+          env("AI_ROUTING_PREFLIGHT_INSTRUCTIONS") ??
+          "You are a Carbon AI Routing endpoint preflight. Follow only the user input and return exactly the requested output.",
         model,
         stream: false,
         input: [

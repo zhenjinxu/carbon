@@ -1,0 +1,578 @@
+{
+  "summary": {
+    "companyId": "d8s9bh4f8gm357312pbg",
+    "scannedAt": "2026-08-20T13:00:03.716Z",
+    "rawPdfBackedTruthRouteCandidates": 12,
+    "eligibleCandidateCount": 4,
+    "selectedCount": 4,
+    "currentSecondBatchExcludedCount": 12,
+    "existingTrainingExcludedCount": 8,
+    "alreadyEvaluationCandidateCount": 3,
+    "existingAiMaterializedExcludedCount": 0,
+    "candidatesWithSucceededExtraction": 3,
+    "candidatesWithoutSucceededExtraction": 1,
+    "bucketSummaries": [
+      {
+        "key": "laser_bending_baseline",
+        "label": "Laser + bending sheet-metal baseline",
+        "needed": 4,
+        "availableEligible": 2,
+        "selected": 2,
+        "shortfall": 2
+      },
+      {
+        "key": "hole_slot_countersink",
+        "label": "Hole-heavy / countersink / slot features",
+        "needed": 4,
+        "availableEligible": 0,
+        "selected": 0,
+        "shortfall": 4
+      },
+      {
+        "key": "tapping_drilling_machining",
+        "label": "Tapping / drilling / machining follow-up",
+        "needed": 4,
+        "availableEligible": 1,
+        "selected": 1,
+        "shortfall": 3
+      },
+      {
+        "key": "welding_fabrication",
+        "label": "Welding / fabrication",
+        "needed": 5,
+        "availableEligible": 0,
+        "selected": 0,
+        "shortfall": 5
+      },
+      {
+        "key": "deburr_grind_brush_polish",
+        "label": "Deburr / grinding / brushing / polishing",
+        "needed": 4,
+        "availableEligible": 0,
+        "selected": 0,
+        "shortfall": 4
+      },
+      {
+        "key": "outsourcing_surface_treatment",
+        "label": "Outsourcing / surface treatment",
+        "needed": 3,
+        "availableEligible": 0,
+        "selected": 0,
+        "shortfall": 3
+      },
+      {
+        "key": "weak_ambiguous_drawings",
+        "label": "Weak / ambiguous drawings",
+        "needed": 2,
+        "availableEligible": 1,
+        "selected": 1,
+        "shortfall": 1
+      }
+    ],
+    "selectedReadableIds": [
+      "1927930202",
+      "192793020201",
+      "1927930206",
+      "asm-top-001"
+    ],
+    "writesPerformed": false,
+    "databaseMutationsPerformed": false
+  },
+  "selected": [
+    {
+      "rank": 1,
+      "bucket": "Laser + bending sheet-metal baseline",
+      "readableId": "1927930202",
+      "readableIdWithRevision": "1927930202",
+      "itemId": "wodiitem_ffbfacf91b9ab3b7615319b1",
+      "itemName": "皮带侧板",
+      "reason": "PDF-backed Active route contains laser/bending baseline (U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料） -> U8 JQG01 气动攻丝机（机加工）); use as repeatability variant.",
+      "pdfDocumentCount": 1,
+      "pdfDocuments": [
+        {
+          "id": "doc_YKsm1nNnp8mhpgQWwmNUVx",
+          "name": "1927930202.pdf",
+          "path": "d8s9bh4f8gm357312pbg/parts/wodiitem_ffbfacf91b9ab3b7615319b1/1927930202.pdf",
+          "size": 90
+        }
+      ],
+      "activeMethodIds": ["make_56da1ff5427838e6d071699a"],
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料） -> U8 JQG01 气动攻丝机（机加工）",
+      "operations": [
+        {
+          "order": 1,
+          "processId": "u8proc_f6e011e7882189b9fc05a4b2",
+          "processName": "U8 LL01 领料工作中心",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 2,
+          "processId": "u8proc_4b1d56bd2a2820b629040581",
+          "processName": "U8 XJG01 数控激光切割（下料）",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 3,
+          "processId": "u8proc_b47b49251b71b7cdf6f2601c",
+          "processName": "U8 CSZ01 数控折弯(下料）",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 4,
+          "processId": "u8proc_49678e5d6d644d929cfacb36",
+          "processName": "U8 JQG01 气动攻丝机（机加工）",
+          "workCenterId": null,
+          "workCenterName": null
+        }
+      ],
+      "sampleRoles": ["Evaluation"],
+      "sampleStatuses": ["Approved"],
+      "sampleCount": 1,
+      "draftCount": 2,
+      "acceptedDraftCount": 1,
+      "activeAiDraftCount": 0,
+      "latestExtractionId": "aide_DXtRjyVqUFJJuiPCkz8mdL",
+      "latestExtractionStatus": "Succeeded",
+      "latestExtractionPromptVersion": "ai-routing-drawing.prompt.v1",
+      "latestExtractionCompletedAt": "2026-08-18 05:51:05.471+00",
+      "extractionSummary": {
+        "material": "304",
+        "finish": null,
+        "holes": 2,
+        "threads": 1,
+        "slots": 0,
+        "bends": 1,
+        "surfaces": 2,
+        "warnings": 2
+      },
+      "labels": [
+        "laser_bending_baseline",
+        "tapping_drilling_machining",
+        "deburr_grind_brush_polish",
+        "weak_ambiguous_drawings"
+      ],
+      "selectionScore": 58,
+      "guardrails": [
+        "note: already Evaluation; can be folded into expanded holdout run without role write",
+        "review: existing AI draft"
+      ]
+    },
+    {
+      "rank": 2,
+      "bucket": "Laser + bending sheet-metal baseline",
+      "readableId": "192793020201",
+      "readableIdWithRevision": "192793020201",
+      "itemId": "wodiitem_d6d6376c2dbec8d306812f97",
+      "itemName": "拖板",
+      "reason": "PDF-backed Active route contains laser/bending baseline (U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）); use as repeatability variant.",
+      "pdfDocumentCount": 1,
+      "pdfDocuments": [
+        {
+          "id": "doc_F3m9n3xTm9MYLsPi1Tpn2Y",
+          "name": "192793020201.pdf",
+          "path": "d8s9bh4f8gm357312pbg/parts/wodiitem_d6d6376c2dbec8d306812f97/192793020201.pdf",
+          "size": 74
+        }
+      ],
+      "activeMethodIds": ["make_60185ba88e75759f6ce509be"],
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "operations": [
+        {
+          "order": 1,
+          "processId": "u8proc_f6e011e7882189b9fc05a4b2",
+          "processName": "U8 LL01 领料工作中心",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 2,
+          "processId": "u8proc_4b1d56bd2a2820b629040581",
+          "processName": "U8 XJG01 数控激光切割（下料）",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 3,
+          "processId": "u8proc_b47b49251b71b7cdf6f2601c",
+          "processName": "U8 CSZ01 数控折弯(下料）",
+          "workCenterId": null,
+          "workCenterName": null
+        }
+      ],
+      "sampleRoles": ["Evaluation"],
+      "sampleStatuses": ["Approved"],
+      "sampleCount": 1,
+      "draftCount": 0,
+      "acceptedDraftCount": 0,
+      "activeAiDraftCount": 0,
+      "latestExtractionId": "aide_28zuA4xCQBJj6C3Hd2MAfD",
+      "latestExtractionStatus": "Succeeded",
+      "latestExtractionPromptVersion": "ai-routing-drawing.prompt.v1",
+      "latestExtractionCompletedAt": "2026-08-18 06:11:50.354+00",
+      "extractionSummary": {
+        "material": "304",
+        "finish": null,
+        "holes": 1,
+        "threads": 0,
+        "slots": 0,
+        "bends": 1,
+        "surfaces": 2,
+        "warnings": 3
+      },
+      "labels": [
+        "laser_bending_baseline",
+        "deburr_grind_brush_polish",
+        "weak_ambiguous_drawings"
+      ],
+      "selectionScore": 29,
+      "guardrails": [
+        "note: already Evaluation; can be folded into expanded holdout run without role write"
+      ]
+    },
+    {
+      "rank": 3,
+      "bucket": "Tapping / drilling / machining follow-up",
+      "readableId": "1927930206",
+      "readableIdWithRevision": "1927930206",
+      "itemId": "wodiitem_a4d59c570e244d212b1cad7e",
+      "itemName": "电机固定板",
+      "reason": "Truth route or extraction indicates tapping/drilling/machining follow-up (threads=1; U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工） -> U8 WYH01 外协氧化).",
+      "pdfDocumentCount": 1,
+      "pdfDocuments": [
+        {
+          "id": "doc_XSVvDoSaTcUfh3ybGmsEJo",
+          "name": "1927930206.pdf",
+          "path": "d8s9bh4f8gm357312pbg/parts/wodiitem_a4d59c570e244d212b1cad7e/1927930206.pdf",
+          "size": 103
+        }
+      ],
+      "activeMethodIds": ["make_7330646303888e7e0f10a384"],
+      "operationCount": 5,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工） -> U8 WYH01 外协氧化",
+      "operations": [
+        {
+          "order": 1,
+          "processId": "u8proc_f6e011e7882189b9fc05a4b2",
+          "processName": "U8 LL01 领料工作中心",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 2,
+          "processId": "u8proc_f23c4beb7380e597efa4dd14",
+          "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 3,
+          "processId": "u8proc_7f835aa39e078b47dd2f4b49",
+          "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 4,
+          "processId": "u8proc_49678e5d6d644d929cfacb36",
+          "processName": "U8 JQG01 气动攻丝机（机加工）",
+          "workCenterId": null,
+          "workCenterName": null
+        },
+        {
+          "order": 5,
+          "processId": "u8proc_b5a6a2a42d19674b5b3130b5",
+          "processName": "U8 WYH01 外协氧化",
+          "workCenterId": null,
+          "workCenterName": null
+        }
+      ],
+      "sampleRoles": ["Evaluation"],
+      "sampleStatuses": ["Approved"],
+      "sampleCount": 1,
+      "draftCount": 0,
+      "acceptedDraftCount": 0,
+      "activeAiDraftCount": 0,
+      "latestExtractionId": "aide_Gv7xSpSnFcaYhWnhw6WGR5",
+      "latestExtractionStatus": "Succeeded",
+      "latestExtractionPromptVersion": "ai-routing-drawing.prompt.v1",
+      "latestExtractionCompletedAt": "2026-08-18 06:07:17.269+00",
+      "extractionSummary": {
+        "material": "6061-T6（GB）",
+        "finish": "阳极氧化处理（本色）",
+        "holes": 2,
+        "threads": 1,
+        "slots": 0,
+        "bends": 0,
+        "surfaces": 1,
+        "warnings": 0
+      },
+      "labels": [
+        "tapping_drilling_machining",
+        "deburr_grind_brush_polish",
+        "outsourcing_surface_treatment"
+      ],
+      "selectionScore": 65,
+      "guardrails": [
+        "note: already Evaluation; can be folded into expanded holdout run without role write"
+      ]
+    },
+    {
+      "rank": 4,
+      "bucket": "Weak / ambiguous drawings",
+      "readableId": "asm-top-001",
+      "readableIdWithRevision": "asm-top-001",
+      "itemId": "item_EKugM4fFrf7EHCaioR1CEv",
+      "itemName": "asm-top-001 总成",
+      "reason": "Candidate is useful for weak/ambiguous evidence gate (latestExtraction=none, warnings=0, featureCount=0).",
+      "pdfDocumentCount": 1,
+      "pdfDocuments": [
+        {
+          "id": "doc_9xZnz9Jj53xD7GRcKKVdVV",
+          "name": "2019永创 输送机 样册 预览(1).pdf",
+          "path": "d8s9bh4f8gm357312pbg/parts/item_EKugM4fFrf7EHCaioR1CEv/2019   (1).pdf",
+          "size": 877
+        }
+      ],
+      "activeMethodIds": ["make_UTq2fEuqL3FpLNYVu7kMFa"],
+      "operationCount": 5,
+      "routeSignature": "零部件预装 -> 自动锁附 -> 整机通电调试 -> 高温老化 -> 终检包装",
+      "operations": [
+        {
+          "order": 1,
+          "processId": "pr_Ru21wMZunb6Vhcv8BHPnTj",
+          "processName": "零部件预装",
+          "workCenterId": "wc_TZwyvs9H4vmmHEAYKKdeUL",
+          "workCenterName": "PRE-ASM-01 预装工位"
+        },
+        {
+          "order": 2,
+          "processId": "pr_Vcd2VukDopuHVh9UYNHPmv",
+          "processName": "自动锁附",
+          "workCenterId": "wc_NqdPBfeSxM8v8uebM4xX1e",
+          "workCenterName": "ROB01 锁附机器人"
+        },
+        {
+          "order": 3,
+          "processId": "pr_TibPLLwKmeYBFvwpYXNbDb",
+          "processName": "整机通电调试",
+          "workCenterId": "wc_Kct2pCwHZGaLSKPyaLzWBt",
+          "workCenterName": "TEST01 调试测试台"
+        },
+        {
+          "order": 4,
+          "processId": "pr_4zzGV9WeuBbiKyMxwRc6i9",
+          "processName": "高温老化",
+          "workCenterId": "wc_WcAXiiBWgjfvsaVMWrJccH",
+          "workCenterName": "AG01 老化柜"
+        },
+        {
+          "order": 5,
+          "processId": "pr_CADGWpQsf7wwVDW6sgFsM9",
+          "processName": "终检包装",
+          "workCenterId": "wc_LmvfcmXYXpsBe5exanSzP9",
+          "workCenterName": "FI-01 终检工位"
+        }
+      ],
+      "sampleRoles": [],
+      "sampleStatuses": [],
+      "sampleCount": 0,
+      "draftCount": 0,
+      "acceptedDraftCount": 0,
+      "activeAiDraftCount": 0,
+      "latestExtractionId": null,
+      "latestExtractionStatus": null,
+      "latestExtractionPromptVersion": null,
+      "latestExtractionCompletedAt": null,
+      "extractionSummary": {
+        "material": null,
+        "finish": null,
+        "holes": 0,
+        "threads": 0,
+        "slots": 0,
+        "bends": 0,
+        "surfaces": 0,
+        "warnings": 0
+      },
+      "labels": ["weak_ambiguous_drawings"],
+      "selectionScore": 20,
+      "guardrails": []
+    }
+  ],
+  "eligiblePoolPreview": [
+    {
+      "readableId": "1927930206",
+      "itemName": "电机固定板",
+      "labels": [
+        "tapping_drilling_machining",
+        "deburr_grind_brush_polish",
+        "outsourcing_surface_treatment"
+      ],
+      "operationCount": 5,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工） -> U8 WYH01 外协氧化",
+      "pdfDocumentCount": 1,
+      "latestExtractionId": "aide_Gv7xSpSnFcaYhWnhw6WGR5",
+      "extractionSummary": {
+        "material": "6061-T6（GB）",
+        "finish": "阳极氧化处理（本色）",
+        "holes": 2,
+        "threads": 1,
+        "slots": 0,
+        "bends": 0,
+        "surfaces": 1,
+        "warnings": 0
+      },
+      "selectionScore": 65,
+      "guardrails": [
+        "note: already Evaluation; can be folded into expanded holdout run without role write"
+      ]
+    },
+    {
+      "readableId": "1927930202",
+      "itemName": "皮带侧板",
+      "labels": [
+        "laser_bending_baseline",
+        "tapping_drilling_machining",
+        "deburr_grind_brush_polish",
+        "weak_ambiguous_drawings"
+      ],
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料） -> U8 JQG01 气动攻丝机（机加工）",
+      "pdfDocumentCount": 1,
+      "latestExtractionId": "aide_DXtRjyVqUFJJuiPCkz8mdL",
+      "extractionSummary": {
+        "material": "304",
+        "finish": null,
+        "holes": 2,
+        "threads": 1,
+        "slots": 0,
+        "bends": 1,
+        "surfaces": 2,
+        "warnings": 2
+      },
+      "selectionScore": 58,
+      "guardrails": [
+        "note: already Evaluation; can be folded into expanded holdout run without role write",
+        "review: existing AI draft"
+      ]
+    },
+    {
+      "readableId": "192793020201",
+      "itemName": "拖板",
+      "labels": [
+        "laser_bending_baseline",
+        "deburr_grind_brush_polish",
+        "weak_ambiguous_drawings"
+      ],
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "pdfDocumentCount": 1,
+      "latestExtractionId": "aide_28zuA4xCQBJj6C3Hd2MAfD",
+      "extractionSummary": {
+        "material": "304",
+        "finish": null,
+        "holes": 1,
+        "threads": 0,
+        "slots": 0,
+        "bends": 1,
+        "surfaces": 2,
+        "warnings": 3
+      },
+      "selectionScore": 29,
+      "guardrails": [
+        "note: already Evaluation; can be folded into expanded holdout run without role write"
+      ]
+    },
+    {
+      "readableId": "asm-top-001",
+      "itemName": "asm-top-001 总成",
+      "labels": ["weak_ambiguous_drawings"],
+      "operationCount": 5,
+      "routeSignature": "零部件预装 -> 自动锁附 -> 整机通电调试 -> 高温老化 -> 终检包装",
+      "pdfDocumentCount": 1,
+      "latestExtractionId": null,
+      "extractionSummary": {
+        "material": null,
+        "finish": null,
+        "holes": 0,
+        "threads": 0,
+        "slots": 0,
+        "bends": 0,
+        "surfaces": 0,
+        "warnings": 0
+      },
+      "selectionScore": 20,
+      "guardrails": []
+    }
+  ],
+  "excludedPreview": [
+    {
+      "readableId": "1919671001",
+      "itemName": "转轮盖板",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 JYZ01 摇臂钻床（机加工）",
+      "guardrails": ["exclude: existing Training sample"],
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0
+    },
+    {
+      "readableId": "1920790302",
+      "itemName": "铜套固定块A",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+      "guardrails": ["exclude: existing Training sample"],
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0
+    },
+    {
+      "readableId": "192793020101",
+      "itemName": "皮带侧板",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料） -> U8 JQG01 气动攻丝机（机加工）",
+      "guardrails": ["exclude: existing Training sample"],
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0
+    },
+    {
+      "readableId": "192793020200",
+      "itemName": "皮带支撑板",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 BPZ01 板焊拼装（碳钢） -> U8 BYH03 氩弧焊（碳钢） -> U8 MDM01 打磨（碳钢）",
+      "guardrails": ["exclude: existing Training sample"],
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0
+    },
+    {
+      "readableId": "192793020202",
+      "itemName": "不锈钢方管",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料",
+      "guardrails": ["exclude: existing Training sample"],
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0
+    },
+    {
+      "readableId": "1927930203",
+      "itemName": "导向板",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "guardrails": ["exclude: existing Training sample"],
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0
+    },
+    {
+      "readableId": "1927930205",
+      "itemName": "导向板",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "guardrails": ["exclude: existing Training sample"],
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0
+    },
+    {
+      "readableId": "1927930207",
+      "itemName": "骨架下连接板",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 JQG01 气动攻丝机（机加工）",
+      "guardrails": ["exclude: existing Training sample"],
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0
+    }
+  ]
+}

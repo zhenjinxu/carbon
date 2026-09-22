@@ -169,6 +169,10 @@ function compareRoutes(actual: AiRoutingOperation[], suggested: AiRoutingOperati
   };
 }
 
+function workCenterProcessPairKey(args: { processId: string; workCenterId: string }) {
+  return `${args.processId}\u0000${args.workCenterId}`;
+}
+
 const root = resolve(process.cwd(), "../..");
 loadEnvFile(resolve(root, ".env"));
 loadEnvFile(resolve(root, ".env.local"), true);
@@ -192,6 +196,24 @@ const evaluationReadableIds = [
   "192793060201"
 ];
 const evaluationSet = new Set(evaluationReadableIds);
+
+const { data: workCenterProcessRows, error: workCenterProcessError } = await carbon
+  .from("workCenterProcess")
+  .select("processId,workCenterId")
+  .eq("companyId", companyId);
+if (workCenterProcessError) throw workCenterProcessError;
+const supportedWorkCenterProcessPairs = new Set(
+  (workCenterProcessRows ?? [])
+    .map((row) => ({
+      processId: stringValue(row.processId),
+      workCenterId: stringValue(row.workCenterId)
+    }))
+    .filter(
+      (row): row is { processId: string; workCenterId: string } =>
+        Boolean(row.processId && row.workCenterId)
+    )
+    .map(workCenterProcessPairKey)
+);
 
 const { data: sampleRows, error: sampleError } = await carbon
   .from("aiRoutingSample")
@@ -337,6 +359,16 @@ for (const readableId of evaluationReadableIds) {
   const workCenterAssignments = draft.suggestedOperations.filter(
     (operation) => operation.workCenterId || operation.workCenterName
   );
+  const unsupportedWorkCenterAssignments = draft.suggestedOperations.filter((operation) => {
+    if (!operation.workCenterId) return false;
+    if (!operation.processId) return true;
+    return !supportedWorkCenterProcessPairs.has(
+      workCenterProcessPairKey({
+        processId: operation.processId,
+        workCenterId: operation.workCenterId
+      })
+    );
+  });
   const missingProcessIdCount = draft.suggestedOperations.filter(
     (operation) => !operation.processId
   ).length;
@@ -362,6 +394,7 @@ for (const readableId of evaluationReadableIds) {
     })),
     evaluationLeakCount: evaluationLeaks.length,
     workCenterAssignmentCount: workCenterAssignments.length,
+    unsupportedWorkCenterAssignmentCount: unsupportedWorkCenterAssignments.length,
     missingProcessIdCount,
     invalidProcessIds
   });
@@ -375,6 +408,10 @@ const summary = {
   exactSequenceMatches: results.filter((result) => result.comparison.exactSequenceMatch).length,
   totalEvaluationLeaks: results.reduce((sum, result) => sum + result.evaluationLeakCount, 0),
   totalWorkCenterAssignments: results.reduce((sum, result) => sum + result.workCenterAssignmentCount, 0),
+  totalUnsupportedWorkCenterAssignments: results.reduce(
+    (sum, result) => sum + result.unsupportedWorkCenterAssignmentCount,
+    0
+  ),
   totalMissingProcessIds: results.reduce((sum, result) => sum + result.missingProcessIdCount, 0),
   invalidProcessIds: Array.from(new Set(results.flatMap((result) => result.invalidProcessIds))),
   results
@@ -382,7 +419,7 @@ const summary = {
 
 const outputPath = resolve(
   process.cwd(),
-  ".codex/work/ai-routing-second-batch-holdout-evaluation-20260819.json"
+  ".codex/work/ai-routing-second-batch-holdout-evaluation-20260820.json"
 );
 writeFileSync(outputPath, `${JSON.stringify(summary, null, 2)}\n`, "utf8");
 console.log(JSON.stringify(summary, null, 2));
@@ -390,6 +427,7 @@ console.log(JSON.stringify(summary, null, 2));
 if (
   summary.totalEvaluationLeaks > 0 ||
   summary.totalWorkCenterAssignments > 0 ||
+  summary.totalUnsupportedWorkCenterAssignments > 0 ||
   summary.totalMissingProcessIds > 0 ||
   summary.invalidProcessIds.length > 0
 ) {

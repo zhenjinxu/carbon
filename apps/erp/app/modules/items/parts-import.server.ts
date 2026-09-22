@@ -1,10 +1,19 @@
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
+import { extname } from "node:path";
+import { getCarbonServiceRole } from "@carbon/auth/client.server";
 import type { Kysely, KyselyDatabase } from "@carbon/database/client";
 import { sql } from "kysely";
 import mssql from "mssql";
+import { upsertDocument } from "~/modules/documents";
 import { getDatabaseClient } from "~/services/database.server";
-import type { PartImportRow } from "./parts-import";
+import { stripSpecialCharacters } from "~/utils/string";
+import {
+  buildWholeBomFailures,
+  type PartImportRow,
+  type WholeBomFailure,
+  type WholeBomImportPlan
+} from "./parts-import";
 import { u8MethodOperationId } from "./parts-import-identity.server";
 
 type U8Item = {
@@ -420,19 +429,24 @@ async function upsertItems(
     )
     .execute();
   const itemIdByCode = new Map(itemRows.map((row) => [row.readableId, row.id]));
-  await tx
-    .insertInto("part")
-    .values(
-      values.map((value) => ({
-        id: value.readableId,
+  const partRows = values.flatMap((value) => {
+    const itemId = itemIdByCode.get(value.readableId);
+    if (!itemId) return [];
+    return [
+      {
+        id: itemId,
         companyId,
         createdBy: userId,
         updatedBy: userId,
         customFields: snapshot?.items
           ? { u8: { itemCode: value.readableId } }
           : undefined
-      })) as never
-    )
+      }
+    ];
+  });
+  await tx
+    .insertInto("part")
+    .values(partRows as never)
     .onConflict((conflict) =>
       conflict
         .columns(["id", "companyId"])
@@ -797,4 +811,384 @@ async function importU8Methods(
       )
       .execute();
   }
+}
+
+type WholeBomImportResult = {
+  imported: number;
+  existing: number;
+  bomLinks: number;
+  rootCode: string;
+  failures: WholeBomFailure[];
+  itemIdByCode: Record<string, string>;
+};
+
+function jsonObject(value: unknown): Record<string, unknown> {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : {};
+}
+
+export async function importWholeBomFromPlan({
+  plan,
+  companyId,
+  userId
+}: {
+  plan: WholeBomImportPlan;
+  companyId: string;
+  userId: string;
+}): Promise<WholeBomImportResult> {
+  if (plan.items.length > MAX_ROWS) {
+    throw new Error(`Excel may contain at most ${MAX_ROWS} BOM items`);
+  }
+
+  const db = getDatabaseClient();
+  return db.transaction().execute(async (tx) => {
+    const codes = plan.items.map((item) => item.code);
+    const existingRows = await tx
+      .selectFrom("item")
+      .select(["id", "readableId"])
+      .where("companyId", "=", companyId)
+      .where("type", "=", "Part")
+      .where("revision", "=", "0")
+      .where("readableId", "in", codes)
+      .execute();
+    const existingCodes = new Set(existingRows.map((row) => row.readableId));
+    const failures = buildWholeBomFailures(plan, existingCodes);
+    const newItems = plan.items.filter((item) => !existingCodes.has(item.code));
+
+    if (newItems.length > 0) {
+      await tx
+        .insertInto("item")
+        .values(
+          newItems.map((item) => ({
+            readableId: item.code,
+            revision: "0",
+            name: item.name,
+            description: item.specification ?? item.remark ?? item.name,
+            type: "Part" as const,
+            replenishmentSystem: item.replenishmentSystem,
+            defaultMethodType: item.methodType,
+            itemTrackingType: "Inventory" as const,
+            unitOfMeasureCode: "EA",
+            active: true,
+            companyId,
+            createdBy: userId,
+            updatedBy: userId,
+            notes: {
+              bomImport: {
+                source: "whole-machine-bom",
+                rootCode: plan.rootCode,
+                rowNumber: item.rowNumber,
+                attributes: item.attributes
+              }
+            }
+          })) as never
+        )
+        .onConflict((conflict) =>
+          conflict.constraint("item_unique").doNothing()
+        )
+        .execute();
+    }
+
+    const itemRows = await tx
+      .selectFrom("item")
+      .select(["id", "readableId"])
+      .where("companyId", "=", companyId)
+      .where("type", "=", "Part")
+      .where("revision", "=", "0")
+      .where("readableId", "in", codes)
+      .execute();
+    const itemIdByCode = new Map(
+      itemRows.map((row) => [row.readableId, row.id])
+    );
+
+    const partRows = plan.items.flatMap((item) => {
+      const itemId = itemIdByCode.get(item.code);
+      if (!itemId) return [];
+      return [
+        {
+          id: itemId,
+          companyId,
+          createdBy: userId,
+          updatedBy: userId,
+          customFields: {
+            bomImport: {
+              itemId,
+              rootCode: plan.rootCode,
+              rowNumber: item.rowNumber,
+              drawingCategory: item.drawingCategory,
+              materialCategory: item.materialCategory,
+              drawingPage: item.drawingPage,
+              attributes: item.attributes
+            }
+          }
+        }
+      ];
+    });
+    if (partRows.length > 0) {
+      await tx
+        .insertInto("part")
+        .values(partRows as never)
+        .onConflict((conflict) =>
+          conflict.columns(["id", "companyId"]).doUpdateSet({
+            customFields: sql`coalesce("part"."customFields", '{}'::jsonb) || excluded."customFields"`,
+            updatedBy: userId,
+            updatedAt: new Date().toISOString()
+          } as never)
+        )
+        .execute();
+    }
+
+    const unitCode = await tx
+      .selectFrom("unitOfMeasure")
+      .select("code")
+      .where("companyId", "=", companyId)
+      .where("code", "=", "EA")
+      .executeTakeFirst();
+    if (!unitCode) {
+      throw new Error("Carbon unit of measure EA is required for BOM import");
+    }
+
+    const parentCodes = [...new Set(plan.edges.map((edge) => edge.parentCode))];
+    const parentItemIds = parentCodes.flatMap((code) => {
+      const itemId = itemIdByCode.get(code);
+      return itemId ? [itemId] : [];
+    });
+    const existingMethods = parentItemIds.length
+      ? await tx
+          .selectFrom("makeMethod")
+          .selectAll()
+          .where("companyId", "=", companyId)
+          .where("itemId", "in", parentItemIds)
+          .execute()
+      : [];
+    const methodByItemId = new Map<string, (typeof existingMethods)[number]>();
+    for (const method of existingMethods) {
+      const current = methodByItemId.get(method.itemId);
+      if (
+        !current ||
+        (current.status !== "Active" && method.status === "Active")
+      ) {
+        methodByItemId.set(method.itemId, method);
+      }
+    }
+
+    const methodIdByParentCode = new Map<string, string>();
+    for (const parentCode of parentCodes) {
+      const itemId = itemIdByCode.get(parentCode);
+      if (!itemId) continue;
+      let method = methodByItemId.get(itemId);
+      if (!method) {
+        const id = stableId("bombom", companyId, parentCode);
+        await tx
+          .insertInto("makeMethod")
+          .values({
+            id,
+            itemId,
+            companyId,
+            createdBy: userId,
+            updatedBy: userId,
+            version: 1,
+            status: "Draft",
+            customFields: {
+              bomImport: {
+                source: "whole-machine-bom",
+                rootCode: plan.rootCode,
+                parentCode
+              }
+            }
+          } as never)
+          .onConflict((conflict) => conflict.column("id").doNothing())
+          .execute();
+        method = await tx
+          .selectFrom("makeMethod")
+          .selectAll()
+          .where("id", "=", id)
+          .executeTakeFirst();
+      }
+      if (!method) continue;
+      methodIdByParentCode.set(parentCode, method.id);
+      await tx
+        .updateTable("makeMethod")
+        .set({
+          customFields: {
+            ...jsonObject(method.customFields),
+            bomImport: {
+              ...jsonObject(jsonObject(method.customFields).bomImport),
+              source: "whole-machine-bom",
+              rootCode: plan.rootCode,
+              parentCode,
+              importedAt: new Date().toISOString()
+            }
+          },
+          updatedBy: userId,
+          updatedAt: new Date().toISOString()
+        } as never)
+        .where("id", "=", method.id)
+        .execute();
+    }
+
+    const itemByCode = new Map(plan.items.map((item) => [item.code, item]));
+    for (const edge of plan.edges) {
+      const makeMethodId = methodIdByParentCode.get(edge.parentCode);
+      const childItemId = itemIdByCode.get(edge.childCode);
+      const childItem = itemByCode.get(edge.childCode);
+      if (!makeMethodId || !childItemId || !childItem) continue;
+      const materialMakeMethodId =
+        methodIdByParentCode.get(edge.childCode) ?? null;
+      await tx
+        .insertInto("methodMaterial")
+        .values({
+          id: stableId(
+            "bombommat",
+            companyId,
+            plan.rootCode,
+            edge.parentCode,
+            edge.childCode,
+            String(edge.rowNumber)
+          ),
+          makeMethodId,
+          methodOperationId: null,
+          materialMakeMethodId,
+          itemId: childItemId,
+          itemType: "Part",
+          methodType: childItem.methodType,
+          sourcingType: "Specified",
+          quantity: edge.quantity,
+          unitOfMeasureCode: unitCode.code,
+          order: edge.order,
+          companyId,
+          createdBy: userId,
+          updatedBy: userId,
+          customFields: {
+            bomImport: {
+              source: "whole-machine-bom",
+              rootCode: plan.rootCode,
+              parentCode: edge.parentCode,
+              childCode: edge.childCode,
+              rowNumber: edge.rowNumber,
+              attributes: childItem.attributes
+            }
+          },
+          storageUnitIds: {},
+          kit: false
+        } as never)
+        .onConflict((conflict) =>
+          conflict.column("id").doUpdateSet({
+            makeMethodId,
+            itemId: childItemId,
+            materialMakeMethodId,
+            quantity: edge.quantity,
+            order: edge.order,
+            methodType: childItem.methodType,
+            updatedBy: userId,
+            updatedAt: new Date().toISOString()
+          } as never)
+        )
+        .execute();
+    }
+
+    return {
+      imported: newItems.length,
+      existing: existingCodes.size,
+      bomLinks: plan.edges.length,
+      rootCode: plan.rootCode,
+      failures,
+      itemIdByCode: Object.fromEntries(itemIdByCode.entries())
+    };
+  });
+}
+
+export async function uploadWholeBomDrawingFiles({
+  files,
+  itemIdByCode,
+  companyId,
+  userId
+}: {
+  files: File[];
+  itemIdByCode: Record<string, string>;
+  companyId: string;
+  userId: string;
+}) {
+  const serviceRole = getCarbonServiceRole();
+  const uploaded: string[] = [];
+  const missing: string[] = [];
+  const failed: { fileName: string; message: string }[] = [];
+
+  for (const file of files) {
+    const fileName = String(file.name ?? "");
+    if (extname(fileName).toLowerCase() !== ".pdf") {
+      failed.push({ fileName, message: "Only PDF drawings are supported" });
+      continue;
+    }
+    const code = fileName.replace(/\.pdf$/i, "");
+    const itemId = itemIdByCode[code];
+    if (!itemId) {
+      missing.push(fileName);
+      continue;
+    }
+    const sanitizedFileName = stripSpecialCharacters(fileName);
+    const storagePath = `${companyId}/parts/${itemId}/${sanitizedFileName}`;
+    const upload = await serviceRole.storage
+      .from("private")
+      .upload(storagePath, file, {
+        cacheControl: `${12 * 60 * 60}`,
+        upsert: true,
+        contentType: file.type || "application/pdf"
+      });
+    if (upload.error) {
+      failed.push({ fileName, message: upload.error.message });
+      continue;
+    }
+    const sizeKb = Math.max(1, Math.round(file.size / 1024));
+    const existingDocument = await serviceRole
+      .from("document")
+      .select("id")
+      .eq("companyId", companyId)
+      .eq("path", storagePath)
+      .maybeSingle();
+    if (existingDocument.error) {
+      failed.push({ fileName, message: existingDocument.error.message });
+      continue;
+    }
+    if (existingDocument.data?.id) {
+      const updateDocument = await serviceRole
+        .from("document")
+        .update({
+          name: fileName,
+          size: sizeKb,
+          sourceDocument: "Part",
+          sourceDocumentId: itemId,
+          readGroups: [userId],
+          writeGroups: [userId],
+          updatedBy: userId,
+          updatedAt: new Date().toISOString()
+        } as never)
+        .eq("id", existingDocument.data.id);
+      if (updateDocument.error) {
+        failed.push({ fileName, message: updateDocument.error.message });
+        continue;
+      }
+      uploaded.push(fileName);
+      continue;
+    }
+    const document = await upsertDocument(serviceRole, {
+      path: storagePath,
+      name: fileName,
+      size: sizeKb,
+      sourceDocument: "Part",
+      sourceDocumentId: itemId,
+      readGroups: [userId],
+      writeGroups: [userId],
+      createdBy: userId,
+      companyId
+    });
+    if (document.error) {
+      failed.push({ fileName, message: document.error.message });
+      continue;
+    }
+    uploaded.push(fileName);
+  }
+
+  return { uploaded, missing, failed };
 }

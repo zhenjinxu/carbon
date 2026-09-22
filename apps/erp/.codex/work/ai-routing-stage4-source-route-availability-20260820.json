@@ -1,0 +1,4318 @@
+{
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "checkedAt": "2026-08-20T23:47:40.963Z",
+  "matchingTables": [
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationDependency"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationNote"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationParameter"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStepRecord"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationTool"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationParameter"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationTool"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "nonConformanceJobOperation"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "printerRoute"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationParameter"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationTool"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESExternalEntity"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInventorySnapshot"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESLegacyRecord"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESProcHour"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResourcePresence"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncError"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESWorker"
+    }
+  ],
+  "matchingColumns": [
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "jobId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "jobMakeMethodId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "order",
+      "data_type": "double precision"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "processId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "workCenterId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "description",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "setupTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "setupUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "laborTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "laborUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "machineTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "machineUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "operationOrder",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "laborRate",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "overheadRate",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "machineRate",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "operationType",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "operationMinimumCost",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "operationLeadTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "operationUnitCost",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "operationSupplierProcessId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "workInstruction",
+      "data_type": "json"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "customFields",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "operationQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "quantityComplete",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "quantityScrapped",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "quantityReworked",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "status",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "priority",
+      "data_type": "double precision"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "assignee",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "tags",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "procedureId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "startDate",
+      "data_type": "date"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "dueDate",
+      "data_type": "date"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "hasConflict",
+      "data_type": "boolean"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "conflictReason",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "targetQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "manuallyScheduled",
+      "data_type": "boolean"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperation",
+      "column_name": "reworkId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationDependency",
+      "column_name": "operationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationDependency",
+      "column_name": "dependsOnId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationDependency",
+      "column_name": "jobId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationDependency",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationDependency",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationNote",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationNote",
+      "column_name": "jobOperationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationNote",
+      "column_name": "note",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationNote",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationNote",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationNote",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationNote",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationNote",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationNote",
+      "column_name": "productionQuantityId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationParameter",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationParameter",
+      "column_name": "key",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationParameter",
+      "column_name": "value",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationParameter",
+      "column_name": "operationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationParameter",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationParameter",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationParameter",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationParameter",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationParameter",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "name",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "required",
+      "data_type": "boolean"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "sortOrder",
+      "data_type": "double precision"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "type",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "unitOfMeasureCode",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "minValue",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "maxValue",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "listValues",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "fileTypes",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "operationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "description",
+      "data_type": "json"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "nonConformanceActionId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStep",
+      "column_name": "nonConformanceInvestigationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStepRecord",
+      "column_name": "jobOperationStepId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStepRecord",
+      "column_name": "value",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStepRecord",
+      "column_name": "numericValue",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStepRecord",
+      "column_name": "booleanValue",
+      "data_type": "boolean"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStepRecord",
+      "column_name": "userValue",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStepRecord",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStepRecord",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStepRecord",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStepRecord",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStepRecord",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStepRecord",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationStepRecord",
+      "column_name": "index",
+      "data_type": "integer"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationTool",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationTool",
+      "column_name": "operationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationTool",
+      "column_name": "toolId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationTool",
+      "column_name": "quantity",
+      "data_type": "integer"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationTool",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationTool",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationTool",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationTool",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationTool",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "jobId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "jobMakeMethodId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "order",
+      "data_type": "double precision"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "processId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "workCenterId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "description",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "setupTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "setupUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "laborTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "laborUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "machineTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "machineUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "operationOrder",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "laborRate",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "overheadRate",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "machineRate",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "operationType",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "operationMinimumCost",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "operationLeadTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "operationUnitCost",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "operationSupplierProcessId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "workInstruction",
+      "data_type": "json"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "customFields",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "operationQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "quantityComplete",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "quantityScrapped",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "quantityReworked",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "status",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "priority",
+      "data_type": "double precision"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "assignee",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "tags",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "procedureId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "startDate",
+      "data_type": "date"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "dueDate",
+      "data_type": "date"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "hasConflict",
+      "data_type": "boolean"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "conflictReason",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "targetQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "manuallyScheduled",
+      "data_type": "boolean"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "reworkId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithDependencies",
+      "column_name": "dependencies",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "makeMethodId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "jobId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "jobMakeMethodId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "order",
+      "data_type": "double precision"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "processId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "workCenterId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "description",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "setupTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "setupUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "laborTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "laborUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "machineTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "machineUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "operationOrder",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "laborRate",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "overheadRate",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "machineRate",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "operationType",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "operationMinimumCost",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "operationLeadTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "operationUnitCost",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "operationSupplierProcessId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "workInstruction",
+      "data_type": "json"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "customFields",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "operationQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "quantityComplete",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "quantityScrapped",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "quantityReworked",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "status",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "priority",
+      "data_type": "double precision"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "assignee",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "tags",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "procedureId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "startDate",
+      "data_type": "date"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "dueDate",
+      "data_type": "date"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "hasConflict",
+      "data_type": "boolean"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "conflictReason",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "targetQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "manuallyScheduled",
+      "data_type": "boolean"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "jobOperationsWithMakeMethods",
+      "column_name": "reworkId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "makeMethodId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "order",
+      "data_type": "double precision"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "operationOrder",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "description",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "customFields",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "processId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "workCenterId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "setupTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "setupUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "laborTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "laborUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "machineTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "machineUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "operationType",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "operationSupplierProcessId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "workInstruction",
+      "data_type": "json"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "tags",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "procedureId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "operationMinimumCost",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "operationLeadTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperation",
+      "column_name": "operationUnitCost",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationParameter",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationParameter",
+      "column_name": "key",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationParameter",
+      "column_name": "value",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationParameter",
+      "column_name": "operationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationParameter",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationParameter",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationParameter",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationParameter",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationParameter",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "name",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "required",
+      "data_type": "boolean"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "sortOrder",
+      "data_type": "double precision"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "type",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "unitOfMeasureCode",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "minValue",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "maxValue",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "listValues",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "fileTypes",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "operationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationStep",
+      "column_name": "description",
+      "data_type": "json"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationTool",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationTool",
+      "column_name": "operationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationTool",
+      "column_name": "toolId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationTool",
+      "column_name": "quantity",
+      "data_type": "integer"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationTool",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationTool",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationTool",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationTool",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "methodOperationTool",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "nonConformanceJobOperation",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "nonConformanceJobOperation",
+      "column_name": "nonConformanceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "nonConformanceJobOperation",
+      "column_name": "jobOperationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "nonConformanceJobOperation",
+      "column_name": "jobId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "nonConformanceJobOperation",
+      "column_name": "jobReadableId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "nonConformanceJobOperation",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "nonConformanceJobOperation",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "nonConformanceJobOperation",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "nonConformanceJobOperation",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "nonConformanceJobOperation",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "printerRoute",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "printerRoute",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "printerRoute",
+      "column_name": "locationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "printerRoute",
+      "column_name": "name",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "printerRoute",
+      "column_name": "format",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "printerRoute",
+      "column_name": "mediaSizeId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "printerRoute",
+      "column_name": "printerUrl",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "printerRoute",
+      "column_name": "apiKey",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "printerRoute",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "printerRoute",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "printerRoute",
+      "column_name": "templateId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "quoteId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "quoteLineId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "quoteMakeMethodId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "order",
+      "data_type": "double precision"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "description",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "operationOrder",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "laborRate",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "overheadRate",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "customFields",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "processId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "workCenterId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "setupTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "setupUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "laborTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "laborUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "machineTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "machineUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "machineRate",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "operationType",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "operationMinimumCost",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "operationLeadTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "operationUnitCost",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "operationSupplierProcessId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "workInstruction",
+      "data_type": "json"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "tags",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperation",
+      "column_name": "procedureId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationParameter",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationParameter",
+      "column_name": "key",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationParameter",
+      "column_name": "value",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationParameter",
+      "column_name": "operationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationParameter",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationParameter",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationParameter",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationParameter",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationParameter",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "name",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "required",
+      "data_type": "boolean"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "sortOrder",
+      "data_type": "double precision"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "type",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "unitOfMeasureCode",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "minValue",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "maxValue",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "listValues",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "fileTypes",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "operationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationStep",
+      "column_name": "description",
+      "data_type": "json"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationTool",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationTool",
+      "column_name": "operationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationTool",
+      "column_name": "toolId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationTool",
+      "column_name": "quantity",
+      "data_type": "integer"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationTool",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationTool",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationTool",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationTool",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationTool",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "makeMethodId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "quoteId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "quoteLineId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "quoteMakeMethodId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "order",
+      "data_type": "double precision"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "description",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "operationOrder",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "laborRate",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "overheadRate",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "customFields",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "processId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "workCenterId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "setupTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "setupUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "laborTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "laborUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "machineTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "machineUnit",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "machineRate",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "operationType",
+      "data_type": "USER-DEFINED"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "operationMinimumCost",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "operationLeadTime",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "operationUnitCost",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "operationSupplierProcessId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "workInstruction",
+      "data_type": "json"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "tags",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "quoteOperationsWithMakeMethods",
+      "column_name": "procedureId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "jobId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "sourceMoDId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "moCode",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "salesOrderCode",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "customerCode",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "customerName",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "departmentName",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "personInCharge",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "itemCode",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "itemName",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "sourceStatus",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "plannedQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "sourceQualifiedQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "plannedStartDate",
+      "data_type": "date"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "dueDate",
+      "data_type": "date"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "sourceUpdatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "payloadHash",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrder",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "enabled",
+      "data_type": "boolean"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "intervalMinutes",
+      "data_type": "integer"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "customerNames",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "moCodes",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "soCodes",
+      "data_type": "ARRAY"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "startDate",
+      "data_type": "date"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "endDate",
+      "data_type": "date"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "nextRunAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "lastRunAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "configVersion",
+      "data_type": "integer"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "updatedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "u8WorkOrderImportConfig",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "sourceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "jobOperationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "employeeId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "resourceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "assignedQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "completedQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "priority",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "status",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "isRework",
+      "data_type": "boolean"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "originalSourceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "assignedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "payload",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESAssignment",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESExternalEntity",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESExternalEntity",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESExternalEntity",
+      "column_name": "sourceCollection",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESExternalEntity",
+      "column_name": "sourceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESExternalEntity",
+      "column_name": "externalKey",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESExternalEntity",
+      "column_name": "entityType",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESExternalEntity",
+      "column_name": "carbonEntityId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESExternalEntity",
+      "column_name": "payloadHash",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESExternalEntity",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESExternalEntity",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESExternalEntity",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback",
+      "column_name": "sourceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback",
+      "column_name": "assignmentId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback",
+      "column_name": "jobOperationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback",
+      "column_name": "type",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback",
+      "column_name": "content",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback",
+      "column_name": "status",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback",
+      "column_name": "reportedBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback",
+      "column_name": "assignee",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback",
+      "column_name": "resolution",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback",
+      "column_name": "payload",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESFeedback",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "sourceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "reportId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "jobOperationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "inspectorId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "status",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "submittedQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "sampledQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "acceptedQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "rejectedQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "result",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "reason",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "criteriaSnapshot",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "inspectedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "payload",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInspection",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInventorySnapshot",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInventorySnapshot",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInventorySnapshot",
+      "column_name": "sourceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInventorySnapshot",
+      "column_name": "itemId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInventorySnapshot",
+      "column_name": "locationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInventorySnapshot",
+      "column_name": "quantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInventorySnapshot",
+      "column_name": "sourceLocation",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInventorySnapshot",
+      "column_name": "capturedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInventorySnapshot",
+      "column_name": "payload",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInventorySnapshot",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInventorySnapshot",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESInventorySnapshot",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESLegacyRecord",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESLegacyRecord",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESLegacyRecord",
+      "column_name": "sourceCollection",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESLegacyRecord",
+      "column_name": "sourceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESLegacyRecord",
+      "column_name": "sourceUpdatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESLegacyRecord",
+      "column_name": "payload",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESLegacyRecord",
+      "column_name": "syncRunId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESLegacyRecord",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESLegacyRecord",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESLegacyRecord",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement",
+      "column_name": "sourceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement",
+      "column_name": "jobId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement",
+      "column_name": "jobOperationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement",
+      "column_name": "itemId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement",
+      "column_name": "quantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement",
+      "column_name": "unitOfMeasureCode",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement",
+      "column_name": "reason",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement",
+      "column_name": "requester",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement",
+      "column_name": "approver",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement",
+      "column_name": "payload",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESMaterialSupplement",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESProcHour",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESProcHour",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESProcHour",
+      "column_name": "sourceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESProcHour",
+      "column_name": "jobOperationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESProcHour",
+      "column_name": "moCode",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESProcHour",
+      "column_name": "moDId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESProcHour",
+      "column_name": "opSeq",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESProcHour",
+      "column_name": "operationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESProcHour",
+      "column_name": "workHour",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESProcHour",
+      "column_name": "prepHour",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESProcHour",
+      "column_name": "payload",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESProcHour",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESProcHour",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESProcHour",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "sourceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "assignmentId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "jobOperationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "employeeId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "reportedQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "acceptedQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "rejectedQuantity",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "status",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "actualHours",
+      "data_type": "numeric"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "inspectorId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "qcReason",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "reportedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "inspectedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "cancelled",
+      "data_type": "boolean"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "cancelledAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "cancelReason",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "payload",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESReport",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "sourceCollection",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "sourceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "code",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "name",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "resourceType",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "model",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "status",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "workCenterId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "locationId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "ipAddress",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "macAddress",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "payload",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResource",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResourcePresence",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResourcePresence",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResourcePresence",
+      "column_name": "resourceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResourcePresence",
+      "column_name": "deviceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResourcePresence",
+      "column_name": "ipAddress",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResourcePresence",
+      "column_name": "macAddress",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResourcePresence",
+      "column_name": "hostname",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResourcePresence",
+      "column_name": "lastSeenAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResourcePresence",
+      "column_name": "payload",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResourcePresence",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResourcePresence",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESResourcePresence",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncError",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncError",
+      "column_name": "syncRunId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncError",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncError",
+      "column_name": "sourceCollection",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncError",
+      "column_name": "sourceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncError",
+      "column_name": "errorCode",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncError",
+      "column_name": "message",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncError",
+      "column_name": "payload",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncError",
+      "column_name": "retryStatus",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncError",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncError",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "source",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "status",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "startedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "finishedAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "sourceCounts",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "targetCounts",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "errorCount",
+      "data_type": "integer"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "triggerType",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "filterSnapshot",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "configVersion",
+      "data_type": "integer"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "scannedCount",
+      "data_type": "integer"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "insertedCount",
+      "data_type": "integer"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "updatedCount",
+      "data_type": "integer"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "skippedCount",
+      "data_type": "integer"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "heartbeatAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESSyncRun",
+      "column_name": "message",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESWorker",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESWorker",
+      "column_name": "companyId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESWorker",
+      "column_name": "sourceId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESWorker",
+      "column_name": "username",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESWorker",
+      "column_name": "name",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESWorker",
+      "column_name": "role",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESWorker",
+      "column_name": "phone",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESWorker",
+      "column_name": "employeeId",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESWorker",
+      "column_name": "active",
+      "data_type": "boolean"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESWorker",
+      "column_name": "payload",
+      "data_type": "jsonb"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESWorker",
+      "column_name": "createdBy",
+      "data_type": "text"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESWorker",
+      "column_name": "createdAt",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wodiMESWorker",
+      "column_name": "updatedAt",
+      "data_type": "timestamp with time zone"
+    }
+  ],
+  "itemRouteState": [
+    {
+      "requestedReadableId": "1919671001",
+      "itemId": "wodiitem_2eb1e65fcbf6785fe06eebc3",
+      "readableId": "1919671001",
+      "name": "转轮盖板",
+      "methods": [
+        {
+          "ops": 3,
+          "status": "Active",
+          "makeMethodId": "make_a637e99df90177294d66f138"
+        }
+      ],
+      "jobMakeMethodCount": 4,
+      "jobOperationCount": 12,
+      "jobIds": "WODI-J260700240-1000084380, WODI-J260700242-1000084447, WODI-J260700243-1000084482, WODI-J260700244-1000084517"
+    },
+    {
+      "requestedReadableId": "1919671002",
+      "itemId": "wodiitem_c460dbffaf0f3589052e216a",
+      "readableId": "1919671002",
+      "name": "尼龙轮",
+      "methods": [
+        {
+          "ops": 3,
+          "status": "Active",
+          "makeMethodId": "make_e9fe9a1bf7faf76ada24a44d"
+        }
+      ],
+      "jobMakeMethodCount": 4,
+      "jobOperationCount": 12,
+      "jobIds": "WODI-J260700240-1000084382, WODI-J260700242-1000084449, WODI-J260700243-1000084484, WODI-J260700244-1000084519"
+    },
+    {
+      "requestedReadableId": "1927326104",
+      "itemId": "wodiitem_c484b072af5ad08fe605223f",
+      "readableId": "1927326104",
+      "name": "涨紧块",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_1050b7b984cc98f270cc5b35"
+        }
+      ],
+      "jobMakeMethodCount": 8,
+      "jobOperationCount": 24,
+      "jobIds": "WODI-J260700239-1000084356, WODI-J260700240-1000084390, WODI-J260700241-1000084420, WODI-J260700242-1000084453, WODI-J260700243-1000084488, WODI-J260700244-1000084523, WODI-J260700321-1000086272, WODI-J260700322-1000086301"
+    },
+    {
+      "requestedReadableId": "1927881101",
+      "itemId": "wodiitem_6fab77b46187bf1152a38c8c",
+      "readableId": "1927881101",
+      "name": "电机安装位支撑杆",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_c92a94445045161cef824f75"
+        }
+      ],
+      "jobMakeMethodCount": 8,
+      "jobOperationCount": 32,
+      "jobIds": "WODI-J260700239-1000084361, WODI-J260700240-1000084395, WODI-J260700241-1000084425, WODI-J260700242-1000084458, WODI-J260700243-1000084493, WODI-J260700244-1000084528, WODI-J260700321-1000086277, WODI-J260700322-1000086306"
+    },
+    {
+      "requestedReadableId": "1927881103",
+      "itemId": "wodiitem_f9a8a725516c183669a73edb",
+      "readableId": "1927881103",
+      "name": "封板",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_96737cb4c96912a4d3288972"
+        }
+      ],
+      "jobMakeMethodCount": 8,
+      "jobOperationCount": 16,
+      "jobIds": "WODI-J260700239-1000084362, WODI-J260700240-1000084396, WODI-J260700241-1000084426, WODI-J260700242-1000084459, WODI-J260700243-1000084494, WODI-J260700244-1000084529, WODI-J260700321-1000086278, WODI-J260700322-1000086307"
+    },
+    {
+      "requestedReadableId": "1927930801",
+      "itemId": "wodiitem_ed6768a1531c1e7fb9e4d010",
+      "readableId": "1927930801",
+      "name": "导向板",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_862b0e26568932f7d66f2de9"
+        }
+      ],
+      "jobMakeMethodCount": 1,
+      "jobOperationCount": 3,
+      "jobIds": "WODI-J260700243-1000084509"
+    },
+    {
+      "requestedReadableId": "1927930802",
+      "itemId": "wodiitem_3d14eb0a9ab0b1bd4e910ca7",
+      "readableId": "1927930802",
+      "name": "导向板",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_fce4cf8d6ae28706b6a2a17a"
+        }
+      ],
+      "jobMakeMethodCount": 1,
+      "jobOperationCount": 3,
+      "jobIds": "WODI-J260700243-1000084512"
+    },
+    {
+      "requestedReadableId": "1927930803",
+      "itemId": "wodiitem_2d1bbe14b42cd4c1c1aaf1bc",
+      "readableId": "1927930803",
+      "name": "皮带侧板",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_58d24845b51028fadcb23453"
+        }
+      ],
+      "jobMakeMethodCount": 1,
+      "jobOperationCount": 3,
+      "jobIds": "WODI-J260700243-1000084515"
+    },
+    {
+      "requestedReadableId": "1927930804",
+      "itemId": "wodiitem_ee0c59b012e73475a6ecc66f",
+      "readableId": "1927930804",
+      "name": "皮带侧板",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_aa44e84a874f708e7cc817cf"
+        }
+      ],
+      "jobMakeMethodCount": 1,
+      "jobOperationCount": 3,
+      "jobIds": "WODI-J260700243-1000084516"
+    },
+    {
+      "requestedReadableId": "191967100102",
+      "itemId": "wodiitem_5443de97069247ec3a42fbc7",
+      "readableId": "191967100102",
+      "name": "转轴座组件2",
+      "methods": [
+        {
+          "ops": 4,
+          "status": "Active",
+          "makeMethodId": "make_d00e2b5f1f37ce362b47130c"
+        }
+      ],
+      "jobMakeMethodCount": 4,
+      "jobOperationCount": 16,
+      "jobIds": "WODI-J260700240-1000084381, WODI-J260700242-1000084448, WODI-J260700243-1000084483, WODI-J260700244-1000084518"
+    },
+    {
+      "requestedReadableId": "192713640301",
+      "itemId": "wodiitem_9e95bb8737cb0d76120f5fa1",
+      "readableId": "192713640301",
+      "name": "调节板",
+      "methods": [
+        {
+          "ops": 3,
+          "status": "Active",
+          "makeMethodId": "make_f42ec26c3148b844d5347c1e"
+        }
+      ],
+      "jobMakeMethodCount": 4,
+      "jobOperationCount": 12,
+      "jobIds": "WODI-J260700240-1000084389, WODI-J260700242-1000084452, WODI-J260700243-1000084487, WODI-J260700244-1000084522"
+    },
+    {
+      "requestedReadableId": "192744140302",
+      "itemId": "wodiitem_a6f589f786afcd86e4cb8f37",
+      "readableId": "192744140302",
+      "name": "连接板",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_85ec2be158f94e1f6b20144b"
+        }
+      ],
+      "jobMakeMethodCount": 8,
+      "jobOperationCount": 16,
+      "jobIds": "WODI-J260700239-1000084357, WODI-J260700240-1000084391, WODI-J260700241-1000084421, WODI-J260700242-1000084454, WODI-J260700243-1000084489, WODI-J260700244-1000084524, WODI-J260700321-1000086273, WODI-J260700322-1000086302"
+    },
+    {
+      "requestedReadableId": "192769010102",
+      "itemId": "wodiitem_b9596db1aeabf6529e9241c1",
+      "readableId": "192769010102",
+      "name": "电机安装板",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_6d7f71fd657bbbe2d254505b"
+        }
+      ],
+      "jobMakeMethodCount": 8,
+      "jobOperationCount": 48,
+      "jobIds": "WODI-J260700239-1000084358, WODI-J260700240-1000084392, WODI-J260700241-1000084422, WODI-J260700242-1000084455, WODI-J260700243-1000084490, WODI-J260700244-1000084525, WODI-J260700321-1000086274, WODI-J260700322-1000086303"
+    },
+    {
+      "requestedReadableId": "192769010103",
+      "itemId": "wodiitem_a3654f8c91f3eae26a3d053b",
+      "readableId": "192769010103",
+      "name": "封板",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_1d8a7ad6cb179f33451dbddf"
+        }
+      ],
+      "jobMakeMethodCount": 8,
+      "jobOperationCount": 16,
+      "jobIds": "WODI-J260700239-1000084359, WODI-J260700240-1000084393, WODI-J260700241-1000084423, WODI-J260700242-1000084456, WODI-J260700243-1000084491, WODI-J260700244-1000084526, WODI-J260700321-1000086275, WODI-J260700322-1000086304"
+    },
+    {
+      "requestedReadableId": "192788110401",
+      "itemId": "wodiitem_d8a7f9fc17051e3109653465",
+      "readableId": "192788110401",
+      "name": "辊筒套",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_83bc9168b27e7f8368f6a6f2"
+        }
+      ],
+      "jobMakeMethodCount": 8,
+      "jobOperationCount": 24,
+      "jobIds": "WODI-J260700239-1000084364, WODI-J260700240-1000084398, WODI-J260700241-1000084428, WODI-J260700242-1000084461, WODI-J260700243-1000084496, WODI-J260700244-1000084531, WODI-J260700321-1000086280, WODI-J260700322-1000086309"
+    },
+    {
+      "requestedReadableId": "192788110402",
+      "itemId": "wodiitem_0c7809d895b302ac56f75077",
+      "readableId": "192788110402",
+      "name": "辊筒轴",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_408dddfa1fdd4643bad6bd7d"
+        }
+      ],
+      "jobMakeMethodCount": 8,
+      "jobOperationCount": 40,
+      "jobIds": "WODI-J260700239-1000084365, WODI-J260700240-1000084399, WODI-J260700241-1000084429, WODI-J260700242-1000084462, WODI-J260700243-1000084497, WODI-J260700244-1000084532, WODI-J260700321-1000086281, WODI-J260700322-1000086310"
+    },
+    {
+      "requestedReadableId": "192788110601",
+      "itemId": "wodiitem_3311a0f636766fa46d4118a8",
+      "readableId": "192788110601",
+      "name": "主动滚筒轴",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_93c82a90a13863eea923c1e1"
+        }
+      ],
+      "jobMakeMethodCount": 7,
+      "jobOperationCount": 35,
+      "jobIds": "WODI-J260700240-1000084401, WODI-J260700241-1000084431, WODI-J260700242-1000084464, WODI-J260700243-1000084499, WODI-J260700244-1000084534, WODI-J260700321-1000086283, WODI-J260700322-1000086312"
+    },
+    {
+      "requestedReadableId": "192788110602",
+      "itemId": "wodiitem_eae5ab70153eb79d94f53b7e",
+      "readableId": "192788110602",
+      "name": "主动滚筒辊面",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_868f6dbc67d946354f310fde"
+        }
+      ],
+      "jobMakeMethodCount": 8,
+      "jobOperationCount": 24,
+      "jobIds": "WODI-J260700239-1000084366, WODI-J260700240-1000084402, WODI-J260700241-1000084432, WODI-J260700242-1000084465, WODI-J260700243-1000084500, WODI-J260700244-1000084535, WODI-J260700321-1000086284, WODI-J260700322-1000086313"
+    },
+    {
+      "requestedReadableId": "192793010401",
+      "itemId": "wodiitem_8b8b1e8460fa36afdd366607",
+      "readableId": "192793010401",
+      "name": "支腿方管1",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_feb0080fed2e0abf12442ebb"
+        }
+      ],
+      "jobMakeMethodCount": 7,
+      "jobOperationCount": 14,
+      "jobIds": "WODI-J260700239-1000084378, WODI-J260700240-1000084404, WODI-J260700241-1000084434, WODI-J260700242-1000084467, WODI-J260700243-1000084502, WODI-J260700244-1000084537, WODI-J260700321-1000086286"
+    },
+    {
+      "requestedReadableId": "192793010402",
+      "itemId": "wodiitem_8930a681c9f673136834b92b",
+      "readableId": "192793010402",
+      "name": "支腿方管2",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_7c9f6c810c81db23204971b2"
+        }
+      ],
+      "jobMakeMethodCount": 8,
+      "jobOperationCount": 16,
+      "jobIds": "WODI-J260700239-1000084379, WODI-J260700240-1000084405, WODI-J260700241-1000084435, WODI-J260700242-1000084468, WODI-J260700243-1000084503, WODI-J260700244-1000084538, WODI-J260700321-1000086287, WODI-J260700322-1000086314"
+    },
+    {
+      "requestedReadableId": "192793080101",
+      "itemId": "wodiitem_06937274e48a9b06cff42804",
+      "readableId": "192793080101",
+      "name": "皮带侧板",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_4243e4d8f722721b02604a49"
+        }
+      ],
+      "jobMakeMethodCount": 1,
+      "jobOperationCount": 4,
+      "jobIds": "WODI-J260700243-1000084511"
+    },
+    {
+      "requestedReadableId": "192793080201",
+      "itemId": "wodiitem_fed5ef936470a074b7a378c2",
+      "readableId": "192793080201",
+      "name": "拖板1",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_735a5f454e33b257da84824c"
+        }
+      ],
+      "jobMakeMethodCount": 1,
+      "jobOperationCount": 3,
+      "jobIds": "WODI-J260700243-1000084514"
+    },
+    {
+      "requestedReadableId": "19266541010201",
+      "itemId": "wodiitem_562bcb52fb7a08099516751f",
+      "readableId": "19266541010201",
+      "name": "挡轮固定板",
+      "methods": [
+        {
+          "ops": 2,
+          "status": "Active",
+          "makeMethodId": "make_8c02cd69c0167e0c2a1e2809"
+        }
+      ],
+      "jobMakeMethodCount": 4,
+      "jobOperationCount": 8,
+      "jobIds": "WODI-J260700240-1000084388, WODI-J260700242-1000084451, WODI-J260700243-1000084486, WODI-J260700244-1000084521"
+    },
+    {
+      "requestedReadableId": "19276939010203",
+      "itemId": "wodiitem_25d798c259814e9f83c52b92",
+      "readableId": "19276939010203",
+      "name": "主动轴固定板",
+      "methods": [
+        {
+          "ops": 0,
+          "status": "Active",
+          "makeMethodId": "make_a2df3ea31eeb6c02006b11b1"
+        }
+      ],
+      "jobMakeMethodCount": 7,
+      "jobOperationCount": 21,
+      "jobIds": "WODI-J260700239-1000084360, WODI-J260700240-1000084394, WODI-J260700241-1000084424, WODI-J260700242-1000084457, WODI-J260700243-1000084492, WODI-J260700244-1000084527, WODI-J260700321-1000086276"
+    }
+  ]
+}

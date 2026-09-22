@@ -1,4 +1,4 @@
-import { assertIsPost, error } from "@carbon/auth";
+﻿import { assertIsPost, error } from "@carbon/auth";
 import { requirePermissions } from "@carbon/auth/auth.server";
 import { flash } from "@carbon/auth/session.server";
 import { validationError, validator } from "@carbon/form";
@@ -18,10 +18,17 @@ import {
   bulkDeleteParts,
   PartsBulkDeleteAuthorizationError
 } from "~/modules/items/parts-bulk-delete.server";
-import { parsePartsWorkbook } from "~/modules/items/parts-import";
+import {
+  annotateWholeBomWorkbook,
+  matchWholeBomDrawingFileNames,
+  parsePartsWorkbook,
+  parseWholeBomWorkbook
+} from "~/modules/items/parts-import";
 import {
   enrichPartsFromU8,
-  importPartsFromRows
+  importPartsFromRows,
+  importWholeBomFromPlan,
+  uploadWholeBomDrawingFiles
 } from "~/modules/items/parts-import.server";
 import { PartsTable } from "~/modules/items/ui/Parts";
 import { getTagsList } from "~/modules/shared";
@@ -72,13 +79,13 @@ export async function action({ request }: ActionFunctionArgs) {
 
   const { operation, u8Enrich, items } = validation.data;
   const permission =
-    operation === "excelImport"
+    operation === "excelImport" || operation === "wholeBomImport"
       ? { create: "parts" as const }
       : { update: "parts" as const };
   const { companyId, userId } = await requirePermissions(request, permission);
 
   try {
-    if (operation === "excelImport") {
+    if (operation === "excelImport" || operation === "wholeBomImport") {
       const file = formData.get("file");
       if (
         !file ||
@@ -104,14 +111,63 @@ export async function action({ request }: ActionFunctionArgs) {
         };
       }
 
-      const rows = parsePartsWorkbook(new Uint8Array(await file.arrayBuffer()));
-      const result = await importPartsFromRows({
-        rows,
+      const excelBytes = new Uint8Array(await file.arrayBuffer());
+      if (operation === "excelImport") {
+        const rows = parsePartsWorkbook(excelBytes);
+        const result = await importPartsFromRows({
+          rows,
+          companyId,
+          userId,
+          enrichFromU8: u8Enrich === true
+        });
+        return { data: result, error: null };
+      }
+
+      const plan = parseWholeBomWorkbook(excelBytes);
+      const importResult = await importWholeBomFromPlan({
+        plan,
         companyId,
-        userId,
-        enrichFromU8: u8Enrich === true
+        userId
       });
-      return { data: result, error: null };
+      const drawingFiles = formData
+        .getAll("drawings")
+        .filter(
+          (entry): entry is File =>
+            typeof entry !== "string" &&
+            entry instanceof Blob &&
+            typeof entry.arrayBuffer === "function" &&
+            entry.size > 0
+        );
+      const drawingMatch = matchWholeBomDrawingFileNames(
+        plan,
+        drawingFiles.map((drawing) => drawing.name)
+      );
+      const drawings = await uploadWholeBomDrawingFiles({
+        files: drawingFiles,
+        itemIdByCode: importResult.itemIdByCode,
+        companyId,
+        userId
+      });
+      const annotatedWorkbook = importResult.failures.length
+        ? {
+            fileName: `${plan.rootCode}_BOM_导入结果.xlsx`,
+            base64: Buffer.from(
+              annotateWholeBomWorkbook(excelBytes, importResult.failures)
+            ).toString("base64")
+          }
+        : undefined;
+      return {
+        data: {
+          ...importResult,
+          drawings: {
+            ...drawings,
+            expectedMissing: drawingMatch.missingExpected,
+            unmatched: drawingMatch.unmatched
+          },
+          annotatedWorkbook
+        },
+        error: null
+      };
     }
 
     const itemIds = items ?? [];
@@ -142,7 +198,7 @@ async function executePartsBulkDelete({
   sessionUserId: string;
   validation: ReturnType<typeof partsBulkDeleteValidator.parse>;
 }) {
-  if (validation.archive !== true) {
+  if (!("archive" in validation)) {
     return bulkDeleteParts(getDatabaseClient(), {
       itemIds: validation.items,
       companyId,
@@ -150,7 +206,10 @@ async function executePartsBulkDelete({
     });
   }
 
-  if (validation.cleanupAction === "deactivate") {
+  if (
+    "cleanupAction" in validation &&
+    validation.cleanupAction === "deactivate"
+  ) {
     return archiveAndDeactivatePartsForTestCleanup(getDatabaseClient(), {
       itemIds: validation.items,
       companyId,
@@ -164,7 +223,9 @@ async function executePartsBulkDelete({
     companyId,
     sessionUserId,
     reason: validation.reason,
-    deleteTestJobs: validation.cleanupAction === "deleteTestJobs"
+    deleteTestJobs:
+      "cleanupAction" in validation &&
+      validation.cleanupAction === "deleteTestJobs"
   });
 }
 

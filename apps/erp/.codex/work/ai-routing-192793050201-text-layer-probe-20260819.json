@@ -1,0 +1,413 @@
+{
+  "promptVersion": "ai-routing-drawing.prompt.v2",
+  "modelName": "gpt-5.6-terra",
+  "renderer": {
+    "contentHash": "470de7ccd8f77cf056318e46a9edca6312bb75b9ff27583beb7f3374afafa67c",
+    "pageCount": 1,
+    "visibleTextCharCount": 415,
+    "textLayerChecks": {
+      "material304": true,
+      "bend90": true,
+      "brushedFinish": true
+    }
+  },
+  "extraction": {
+    "schemaVersion": "ai-routing-drawing.v1",
+    "document": {
+      "pageCount": 1,
+      "renderedPageCount": 1,
+      "contentHash": "470de7ccd8f77cf056318e46a9edca6312bb75b9ff27583beb7f3374afafa67c"
+    },
+    "titleBlock": {
+      "partNumber": "192793050201",
+      "revision": null,
+      "material": "304",
+      "finish": "表面拉丝处理",
+      "heatTreatment": null
+    },
+    "part": {
+      "class": "unknown",
+      "stockForm": "unknown"
+    },
+    "dimensions": [
+      {
+        "id": "dim-001",
+        "kind": "linear",
+        "label": "overall length",
+        "nominal": 1922.97,
+        "unit": "mm",
+        "tolerance": null,
+        "evidence": [
+          {
+            "id": "ev-dim-001",
+            "pageNumber": 1,
+            "text": "1922.97",
+            "confidence": 0.99
+          }
+        ]
+      },
+      {
+        "id": "dim-002",
+        "kind": "linear",
+        "label": "overall height",
+        "nominal": 394,
+        "unit": "mm",
+        "tolerance": null,
+        "evidence": [
+          {
+            "id": "ev-dim-002",
+            "pageNumber": 1,
+            "text": "394",
+            "confidence": 0.99
+          }
+        ]
+      },
+      {
+        "id": "dim-003",
+        "kind": "linear",
+        "label": "thickness",
+        "nominal": 2,
+        "unit": "mm",
+        "tolerance": null,
+        "evidence": [
+          {
+            "id": "ev-dim-003",
+            "pageNumber": 1,
+            "text": "2",
+            "confidence": 0.91
+          }
+        ]
+      },
+      {
+        "id": "dim-004",
+        "kind": "linear",
+        "label": "developed length",
+        "nominal": 1925.72,
+        "unit": "mm",
+        "tolerance": null,
+        "evidence": [
+          {
+            "id": "ev-dim-004",
+            "pageNumber": 1,
+            "text": "1925.72",
+            "confidence": 0.99
+          }
+        ]
+      },
+      {
+        "id": "dim-005",
+        "kind": "linear",
+        "label": "developed height",
+        "nominal": 450.37,
+        "unit": "mm",
+        "tolerance": null,
+        "evidence": [
+          {
+            "id": "ev-dim-005",
+            "pageNumber": 1,
+            "text": "450.37",
+            "confidence": 0.99
+          }
+        ]
+      },
+      {
+        "id": "dim-006",
+        "kind": "linear",
+        "label": null,
+        "nominal": 29.78,
+        "unit": "mm",
+        "tolerance": null,
+        "evidence": [
+          {
+            "id": "ev-dim-006",
+            "pageNumber": 1,
+            "text": "29.78",
+            "confidence": 0.98
+          }
+        ]
+      },
+      {
+        "id": "dim-007",
+        "kind": "linear",
+        "label": null,
+        "nominal": 30.09,
+        "unit": "mm",
+        "tolerance": null,
+        "evidence": [
+          {
+            "id": "ev-dim-007",
+            "pageNumber": 1,
+            "text": "30.09",
+            "confidence": 0.98
+          }
+        ]
+      },
+      {
+        "id": "dim-008",
+        "kind": "linear",
+        "label": null,
+        "nominal": 32,
+        "unit": "mm",
+        "tolerance": null,
+        "evidence": [
+          {
+            "id": "ev-dim-008",
+            "pageNumber": 1,
+            "text": "32",
+            "confidence": 0.98
+          }
+        ]
+      },
+      {
+        "id": "dim-009",
+        "kind": "linear",
+        "label": null,
+        "nominal": 11,
+        "unit": "mm",
+        "tolerance": null,
+        "evidence": [
+          {
+            "id": "ev-dim-009",
+            "pageNumber": 1,
+            "text": "11",
+            "confidence": 0.98
+          }
+        ]
+      },
+      {
+        "id": "dim-010",
+        "kind": "linear",
+        "label": null,
+        "nominal": 14,
+        "unit": "mm",
+        "tolerance": null,
+        "evidence": [
+          {
+            "id": "ev-dim-010",
+            "pageNumber": 1,
+            "text": "14",
+            "confidence": 0.94
+          }
+        ]
+      },
+      {
+        "id": "dim-011",
+        "kind": "angle",
+        "label": null,
+        "nominal": 20,
+        "unit": "degree",
+        "tolerance": null,
+        "evidence": [
+          {
+            "id": "ev-dim-011",
+            "pageNumber": 1,
+            "text": "20°",
+            "confidence": 0.99
+          }
+        ]
+      },
+      {
+        "id": "dim-012",
+        "kind": "angle",
+        "label": null,
+        "nominal": 90,
+        "unit": "degree",
+        "tolerance": null,
+        "evidence": [
+          {
+            "id": "ev-dim-012",
+            "pageNumber": 1,
+            "text": "90°",
+            "confidence": 0.99
+          }
+        ]
+      },
+      {
+        "id": "dim-013",
+        "kind": "radius",
+        "label": null,
+        "nominal": 2.5,
+        "unit": "mm",
+        "tolerance": null,
+        "evidence": [
+          {
+            "id": "ev-dim-013",
+            "pageNumber": 1,
+            "text": "R 2.5",
+            "confidence": 0.99
+          }
+        ]
+      }
+    ],
+    "features": {
+      "holes": [],
+      "threads": [],
+      "slots": [],
+      "pockets": [],
+      "bends": [
+        {
+          "id": "bend-001",
+          "label": "end bends",
+          "quantity": 2,
+          "evidence": [
+            {
+              "id": "ev-bend-001",
+              "pageNumber": 1,
+              "text": "20° R 2.5",
+              "confidence": 0.97
+            }
+          ],
+          "angle": 20,
+          "radius": 2.5,
+          "unit": "degree"
+        },
+        {
+          "id": "bend-002",
+          "label": "right-angle bends",
+          "quantity": 2,
+          "evidence": [
+            {
+              "id": "ev-bend-002",
+              "pageNumber": 1,
+              "text": "90° R 2.5",
+              "confidence": 0.97
+            }
+          ],
+          "angle": 90,
+          "radius": 2.5,
+          "unit": "degree"
+        }
+      ],
+      "welds": [],
+      "surfaces": [
+        {
+          "id": "surface-001",
+          "label": "加工面",
+          "quantity": null,
+          "evidence": [
+            {
+              "id": "ev-surface-001",
+              "pageNumber": 1,
+              "text": "12.5 加工面",
+              "confidence": 0.98
+            }
+          ],
+          "finish": null,
+          "roughness": "12.5",
+          "unit": null
+        },
+        {
+          "id": "surface-002",
+          "label": "拉丝面",
+          "quantity": null,
+          "evidence": [
+            {
+              "id": "ev-surface-002",
+              "pageNumber": 1,
+              "text": "拉丝面",
+              "confidence": 0.98
+            }
+          ],
+          "finish": "拉丝处理",
+          "roughness": null,
+          "unit": null
+        }
+      ]
+    },
+    "notes": [
+      {
+        "id": "note-001",
+        "text": "未注公差执行GB/T1804-M标准。",
+        "category": "tolerance",
+        "evidence": [
+          {
+            "id": "ev-note-001",
+            "pageNumber": 1,
+            "text": "未注公差执行GB/T1804-M标准。",
+            "confidence": 0.99
+          }
+        ]
+      },
+      {
+        "id": "note-002",
+        "text": "未标注形位公差应符合GD1184-80标准。",
+        "category": "tolerance",
+        "evidence": [
+          {
+            "id": "ev-note-002",
+            "pageNumber": 1,
+            "text": "未标注形位公差应符合GD1184-80标准。",
+            "confidence": 0.99
+          }
+        ]
+      },
+      {
+        "id": "note-003",
+        "text": "未注圆角均为R0.5。",
+        "category": "manufacturing",
+        "evidence": [
+          {
+            "id": "ev-note-003",
+            "pageNumber": 1,
+            "text": "未注圆角均为R0.5",
+            "confidence": 0.99
+          }
+        ]
+      },
+      {
+        "id": "note-004",
+        "text": "棱角倒钝0.5×45°。",
+        "category": "manufacturing",
+        "evidence": [
+          {
+            "id": "ev-note-004",
+            "pageNumber": 1,
+            "text": "棱角倒钝0.5×45°",
+            "confidence": 0.99
+          }
+        ]
+      },
+      {
+        "id": "note-005",
+        "text": "零件表面光滑无毛刺。",
+        "category": "quality",
+        "evidence": [
+          {
+            "id": "ev-note-005",
+            "pageNumber": 1,
+            "text": "零件表面光滑无毛刺。",
+            "confidence": 0.99
+          }
+        ]
+      },
+      {
+        "id": "note-006",
+        "text": "表面拉丝处理。",
+        "category": "finish",
+        "evidence": [
+          {
+            "id": "ev-note-006",
+            "pageNumber": 1,
+            "text": "表面拉丝处理。",
+            "confidence": 0.99
+          }
+        ]
+      }
+    ],
+    "explicitUnknowns": [
+      "revision",
+      "heatTreatment",
+      "partClass",
+      "stockForm",
+      "holes",
+      "threads",
+      "slots",
+      "pockets",
+      "welds"
+    ],
+    "warnings": [
+      "The drawing visibly shows small circular marks, but no hole diameter, quantity, or hole specification is provided; holes were not classified.",
+      "Dimension 14 and dimension 2 are visible in the text layer/drawing, but their feature association is unclear."
+    ]
+  }
+}

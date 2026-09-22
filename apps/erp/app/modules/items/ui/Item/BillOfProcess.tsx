@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useCarbon } from "@carbon/auth";
 import { Array as ArrayInput, Input, ValidatedForm } from "@carbon/form";
 import type { JSONContent } from "@carbon/react";
@@ -69,7 +69,7 @@ import {
   LuTriangleAlert,
   LuX
 } from "react-icons/lu";
-import { useFetcher, useFetchers, useParams } from "react-router";
+import { useFetcher, useFetchers, useNavigate, useParams } from "react-router";
 import { z } from "zod";
 import {
   DirectionAwareTabs,
@@ -3013,6 +3013,7 @@ function AiRoutingAssistantPanel({
   aiRoutingTargetEvidence
 }: AiRoutingAssistantPanelProps) {
   const fetcher = useFetcher<AiRoutingActionData>();
+  const navigate = useNavigate();
   const { t } = useLingui();
   const submitted = useRef(false);
   const [draftState, setDraftState] = useState<{
@@ -3057,15 +3058,22 @@ function AiRoutingAssistantPanel({
         setFeedbackReason("");
         setReviewStatus(fetcher.data.draftStatus);
       }
+      if (fetcher.data.intent === "materialize-draft") {
+        navigate(fetcher.data.redirectTo);
+      }
     } else {
       toast.error(t(fetcher.data.message));
     }
 
     submitted.current = false;
-  }, [fetcher.data, fetcher.state, t]);
+  }, [fetcher.data, fetcher.state, navigate, t]);
 
   const submitAssistantAction = (
-    intent: "save-sample" | "generate-draft" | "extract-drawing",
+    intent:
+      | "save-sample"
+      | "generate-draft"
+      | "extract-drawing"
+      | "materialize-draft",
     extra?: Record<string, string>
   ) => {
     const formData = new FormData();
@@ -3082,6 +3090,13 @@ function AiRoutingAssistantPanel({
     fetcher.submit(formData, {
       method: "post",
       action: path.to.aiRoutingAssistant
+    });
+  };
+
+  const submitMaterializeDraft = () => {
+    if (!draftState?.draftId || reviewStatus !== "Accepted") return;
+    submitAssistantAction("materialize-draft", {
+      draftId: draftState.draftId
     });
   };
 
@@ -3243,6 +3258,9 @@ function AiRoutingAssistantPanel({
           draft={draftState.draft}
           feedbackReason={feedbackReason}
           isBusy={isBusy}
+          isMaterializing={
+            isBusy && fetcher.formData?.get("intent") === "materialize-draft"
+          }
           reviewStatus={reviewStatus}
           reviewedOperations={reviewedOperations}
           onFeedbackReasonChange={setFeedbackReason}
@@ -3257,6 +3275,7 @@ function AiRoutingAssistantPanel({
           }
           onAccept={() => submitFeedback("Accepted")}
           onReject={() => submitFeedback("Rejected")}
+          onCreateDraftMethod={submitMaterializeDraft}
         />
       )}
     </div>
@@ -3293,6 +3312,8 @@ function AiRoutingHumanReviewPanel({
     ...reviewModel.pdfEvidence.materialTags,
     ...reviewModel.pdfEvidence.featureTags
   ];
+  const workCenterGateSatisfied =
+    reviewModel.draftEvidence.workCenterAssignmentCount === 0;
 
   return (
     <div className="mt-4 space-y-3 rounded-md border bg-background p-3 text-sm">
@@ -3301,6 +3322,31 @@ function AiRoutingHumanReviewPanel({
         <div className="text-xs text-muted-foreground">
           {t`Review PDF evidence and draft sources before recording feedback. The assistant does not change formal routing.`}
         </div>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        <Badge
+          variant={reviewModel.pdfEvidence.evidenceId ? "secondary" : "gray"}
+        >
+          {reviewModel.pdfEvidence.evidenceId
+            ? t`PDF evidence: ${reviewModel.pdfEvidence.evidenceId}`
+            : t`No PDF evidence id`}
+        </Badge>
+        <Badge
+          variant={
+            reviewModel.draftEvidence.sourceSampleCount > 0 ? "green" : "gray"
+          }
+        >
+          {reviewModel.draftEvidence.sourceSampleCount > 0
+            ? t`Training-only references`
+            : t`No retrieval references`}
+        </Badge>
+        <Badge variant="green">{t`Formal route protected`}</Badge>
+        <Badge variant={workCenterGateSatisfied ? "green" : "yellow"}>
+          {workCenterGateSatisfied
+            ? t`No work center assigned`
+            : t`Work center requires capability`}
+        </Badge>
       </div>
 
       <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-4">
@@ -3402,6 +3448,7 @@ type AiRoutingDraftPreviewProps = {
   draft: AiRoutingDraft;
   feedbackReason: string;
   isBusy: boolean;
+  isMaterializing: boolean;
   reviewStatus: "Accepted" | "Rejected" | null;
   reviewedOperations: AiRoutingDraft["suggestedOperations"];
   onFeedbackReasonChange: (value: string) => void;
@@ -3411,6 +3458,7 @@ type AiRoutingDraftPreviewProps = {
   ) => void;
   onAccept: () => void;
   onReject: () => void;
+  onCreateDraftMethod: () => void;
 };
 
 function AiRoutingDraftPreview({
@@ -3418,12 +3466,14 @@ function AiRoutingDraftPreview({
   draft,
   feedbackReason,
   isBusy,
+  isMaterializing,
   reviewStatus,
   reviewedOperations,
   onFeedbackReasonChange,
   onReviewedOperationChange,
   onAccept,
-  onReject
+  onReject,
+  onCreateDraftMethod
 }: AiRoutingDraftPreviewProps) {
   const { t } = useLingui();
   const draftLabel = draftId ?? t`Not saved`;
@@ -3584,10 +3634,20 @@ function AiRoutingDraftPreview({
           >
             {t`Record acceptance`}
           </Button>
+          {reviewStatus === "Accepted" && (
+            <Button
+              variant="secondary"
+              isDisabled={!draftId || isBusy}
+              isLoading={isMaterializing}
+              onClick={onCreateDraftMethod}
+            >
+              {t`Create draft method version`}
+            </Button>
+          )}
         </div>
         <p className="text-xs text-muted-foreground">
           {reviewStatus === "Accepted"
-            ? t`Acceptance feedback recorded; the formal routing is unchanged.`
+            ? t`Acceptance feedback recorded; creating a formal Draft method version remains a separate explicit action.`
             : reviewStatus === "Rejected"
               ? t`Rejection feedback recorded; the formal routing is unchanged.`
               : t`Acceptance and rejection only record feedback; they never insert or publish formal operations.`}

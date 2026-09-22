@@ -1,0 +1,535 @@
+{
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "diagnosedAt": "2026-08-20T12:58:10.432Z",
+  "counts": {
+    "itemCount": 37602,
+    "validPdfItemCount": 24,
+    "loosePdfItemCount": 24,
+    "activeRouteItemCount": 129,
+    "validPdfAndActiveRouteCount": 15,
+    "loosePdfAndActiveRouteCount": 15,
+    "validPdfActiveRouteSecondBatchCount": 4,
+    "validPdfActiveRouteExistingDatasetCount": 14,
+    "strictCleanCandidateCount": 1
+  },
+  "documentBreakdown": [
+    {
+      "sourceDocument": "Part",
+      "type": "PDF",
+      "extension": "pdf",
+      "active": true,
+      "count": 25,
+      "itemCount": 24
+    },
+    {
+      "sourceDocument": "Part",
+      "type": "Document",
+      "extension": "docx",
+      "active": true,
+      "count": 9,
+      "itemCount": 1
+    },
+    {
+      "sourceDocument": "(null)",
+      "type": "Document",
+      "extension": "txt",
+      "active": true,
+      "count": 2,
+      "itemCount": 0
+    },
+    {
+      "sourceDocument": "Part",
+      "type": "Presentation",
+      "extension": "ppt",
+      "active": true,
+      "count": 2,
+      "itemCount": 2
+    },
+    {
+      "sourceDocument": "Part",
+      "type": "Spreadsheet",
+      "extension": "xlsx",
+      "active": true,
+      "count": 2,
+      "itemCount": 2
+    },
+    {
+      "sourceDocument": "Purchase Order",
+      "type": "Document",
+      "extension": "docx",
+      "active": true,
+      "count": 1,
+      "itemCount": 1
+    },
+    {
+      "sourceDocument": "Quote",
+      "type": "PDF",
+      "extension": "pdf",
+      "active": true,
+      "count": 1,
+      "itemCount": 1
+    },
+    {
+      "sourceDocument": "Sales Order",
+      "type": "PDF",
+      "extension": "pdf",
+      "active": true,
+      "count": 1,
+      "itemCount": 1
+    }
+  ],
+  "validPdfTruthRows": [
+    {
+      "readableId": "192793050201",
+      "readableIdWithRevision": "192793050201",
+      "name": "拖板1",
+      "pdfCount": 1,
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "roles": ["Evaluation"],
+      "draftCount": 1,
+      "isCurrentSecondBatch": true
+    },
+    {
+      "readableId": "1927930503",
+      "readableIdWithRevision": "1927930503",
+      "name": "皮带侧板",
+      "pdfCount": 1,
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "roles": ["Evaluation"],
+      "draftCount": 1,
+      "isCurrentSecondBatch": true
+    },
+    {
+      "readableId": "192793060201",
+      "readableIdWithRevision": "192793060201",
+      "name": "拖板1",
+      "pdfCount": 1,
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "roles": ["Evaluation"],
+      "draftCount": 1,
+      "isCurrentSecondBatch": true
+    },
+    {
+      "readableId": "1927930603",
+      "readableIdWithRevision": "1927930603",
+      "name": "皮带侧板",
+      "pdfCount": 1,
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "roles": ["Evaluation"],
+      "draftCount": 1,
+      "isCurrentSecondBatch": true
+    },
+    {
+      "readableId": "asm-top-001",
+      "readableIdWithRevision": "asm-top-001",
+      "name": "asm-top-001 总成",
+      "pdfCount": 1,
+      "ops": 5,
+      "route": "零部件预装 -> 自动锁附 -> 整机通电调试 -> 高温老化 -> 终检包装",
+      "roles": [],
+      "draftCount": 0,
+      "isCurrentSecondBatch": false
+    },
+    {
+      "readableId": "1927930202",
+      "readableIdWithRevision": "1927930202",
+      "name": "皮带侧板",
+      "pdfCount": 1,
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料） -> U8 JQG01 气动攻丝机（机加工）",
+      "roles": ["Evaluation"],
+      "draftCount": 2,
+      "isCurrentSecondBatch": false
+    },
+    {
+      "readableId": "192793020201",
+      "readableIdWithRevision": "192793020201",
+      "name": "拖板",
+      "pdfCount": 1,
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "roles": ["Evaluation"],
+      "draftCount": 0,
+      "isCurrentSecondBatch": false
+    },
+    {
+      "readableId": "1927930206",
+      "readableIdWithRevision": "1927930206",
+      "name": "电机固定板",
+      "pdfCount": 1,
+      "ops": 5,
+      "route": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工） -> U8 WYH01 外协氧化",
+      "roles": ["Evaluation"],
+      "draftCount": 0,
+      "isCurrentSecondBatch": false
+    },
+    {
+      "readableId": "1920790302",
+      "readableIdWithRevision": "1920790302",
+      "name": "铜套固定块A",
+      "pdfCount": 1,
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+      "roles": ["Training"],
+      "draftCount": 0,
+      "isCurrentSecondBatch": false
+    },
+    {
+      "readableId": "192793020101",
+      "readableIdWithRevision": "192793020101",
+      "name": "皮带侧板",
+      "pdfCount": 1,
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料） -> U8 JQG01 气动攻丝机（机加工）",
+      "roles": ["Training"],
+      "draftCount": 0,
+      "isCurrentSecondBatch": false
+    },
+    {
+      "readableId": "192793020200",
+      "readableIdWithRevision": "192793020200",
+      "name": "皮带支撑板",
+      "pdfCount": 1,
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 BPZ01 板焊拼装（碳钢） -> U8 BYH03 氩弧焊（碳钢） -> U8 MDM01 打磨（碳钢）",
+      "roles": ["Training"],
+      "draftCount": 0,
+      "isCurrentSecondBatch": false
+    },
+    {
+      "readableId": "192793020202",
+      "readableIdWithRevision": "192793020202",
+      "name": "不锈钢方管",
+      "pdfCount": 1,
+      "ops": 2,
+      "route": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料",
+      "roles": ["Training"],
+      "draftCount": 0,
+      "isCurrentSecondBatch": false
+    },
+    {
+      "readableId": "1927930203",
+      "readableIdWithRevision": "1927930203",
+      "name": "导向板",
+      "pdfCount": 1,
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "roles": ["Training"],
+      "draftCount": 0,
+      "isCurrentSecondBatch": false
+    },
+    {
+      "readableId": "1927930205",
+      "readableIdWithRevision": "1927930205",
+      "name": "导向板",
+      "pdfCount": 2,
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "roles": ["Training"],
+      "draftCount": 0,
+      "isCurrentSecondBatch": false
+    },
+    {
+      "readableId": "1927930207",
+      "readableIdWithRevision": "1927930207",
+      "name": "骨架下连接板",
+      "pdfCount": 1,
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 JQG01 气动攻丝机（机加工）",
+      "roles": ["Training"],
+      "draftCount": 0,
+      "isCurrentSecondBatch": false
+    }
+  ],
+  "activeRouteNoPdfExamples": [
+    {
+      "readableId": "0501010001",
+      "readableIdWithRevision": "0501010001",
+      "name": "C型板（加厚）",
+      "ops": 3,
+      "route": "0010 -> 0020 -> 0030"
+    },
+    {
+      "readableId": "0601010001",
+      "readableIdWithRevision": "0601010001",
+      "name": "标准输送机",
+      "ops": 5,
+      "route": "0010 -> 0020 -> 0030 -> 0040 -> 0050"
+    },
+    {
+      "readableId": "0601010002",
+      "readableIdWithRevision": "0601010002",
+      "name": "食品级输送机",
+      "ops": 5,
+      "route": "0010 -> 0020 -> 0030 -> 0040 -> 0050"
+    },
+    {
+      "readableId": "0601020001",
+      "readableIdWithRevision": "0601020001",
+      "name": "不锈钢储罐 5m³",
+      "ops": 11,
+      "route": "0010 -> 0010 -> 0020 -> 0020 -> 0030 -> 0030 -> 0040 -> 0040 -> 0050 -> 0050 -> 0060"
+    },
+    {
+      "readableId": "146001020100",
+      "readableIdWithRevision": "146001020100",
+      "name": "护栏固定组（杆长220）",
+      "ops": 1,
+      "route": "U8 LL01 领料工作中心"
+    },
+    {
+      "readableId": "146001020101",
+      "readableIdWithRevision": "146001020101",
+      "name": "护栏调节杆L=220",
+      "ops": 5,
+      "route": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JYZ01 摇臂钻床（机加工） -> U8 JQG01 气动攻丝机（机加工）"
+    },
+    {
+      "readableId": "146001030103",
+      "readableIdWithRevision": "146001030103",
+      "name": "支腿连接板",
+      "ops": 2,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）"
+    },
+    {
+      "readableId": "146001040102",
+      "readableIdWithRevision": "146001040102",
+      "name": "电机固定底板加强板",
+      "ops": 2,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）"
+    },
+    {
+      "readableId": "149999000030",
+      "readableIdWithRevision": "149999000030",
+      "name": "电机轴端挡片45-11-3",
+      "ops": 2,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）"
+    },
+    {
+      "readableId": "149999000043",
+      "readableIdWithRevision": "149999000043",
+      "name": "电机轴套S25型 25-20-8",
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 XPJ01 片锯下料（薄壁碳钢管）（下料） -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JSX01 数显立铣（北一）XA5032（机加工）"
+    },
+    {
+      "readableId": "149999000050",
+      "readableIdWithRevision": "149999000050",
+      "name": "PC-端部件 铸件",
+      "ops": 5,
+      "route": "U8 LL01 领料工作中心 -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工） -> U8 MPS01 碳钢喷砂 -> U8 PYX01 喷漆"
+    },
+    {
+      "readableId": "149999000051",
+      "readableIdWithRevision": "149999000051",
+      "name": "不锈钢涨紧块",
+      "ops": 5,
+      "route": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 XDH01 数控等离子火焰切割(下料） -> U8 JQG01 气动攻丝机（机加工） -> U8 MDM02 打磨拉丝抛光（食品）"
+    },
+    {
+      "readableId": "1919671001",
+      "readableIdWithRevision": "1919671001",
+      "name": "转轮盖板",
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 JYZ01 摇臂钻床（机加工）"
+    },
+    {
+      "readableId": "191967100102",
+      "readableIdWithRevision": "191967100102",
+      "name": "转轴座组件2",
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JQG01 气动攻丝机（机加工）"
+    },
+    {
+      "readableId": "1919671002",
+      "readableIdWithRevision": "1919671002",
+      "name": "尼龙轮",
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工）"
+    },
+    {
+      "readableId": "1920790207",
+      "readableIdWithRevision": "1920790207",
+      "name": "前挡板",
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料） -> U8 MDM02 打磨拉丝抛光（食品）"
+    },
+    {
+      "readableId": "1920790301",
+      "readableIdWithRevision": "1920790301",
+      "name": "固定底板",
+      "ops": 5,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 JYZ01 摇臂钻床（机加工） -> U8 JQG01 气动攻丝机（机加工） -> U8 MDM02 打磨拉丝抛光（食品）"
+    },
+    {
+      "readableId": "192079030100",
+      "readableIdWithRevision": "192079030100",
+      "name": "气缸耳轴角座",
+      "ops": 5,
+      "route": "U8 LL01 领料工作中心 -> U8 BPZ02 板焊拼装（食品） -> U8 BYH01 氩弧焊（食品） -> U8 MDM02 打磨拉丝抛光（食品） -> U8 JSX01 数显立铣（北一）XA5032（机加工）"
+    },
+    {
+      "readableId": "192079030101",
+      "readableIdWithRevision": "192079030101",
+      "name": "角座板B",
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JYZ01 摇臂钻床（机加工） -> U8 JQG01 气动攻丝机（机加工）"
+    },
+    {
+      "readableId": "192079030102",
+      "readableIdWithRevision": "192079030102",
+      "name": "角座板A",
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JYZ01 摇臂钻床（机加工）"
+    },
+    {
+      "readableId": "192079030200",
+      "readableIdWithRevision": "192079030200",
+      "name": "转箱挡板",
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 BPZ02 板焊拼装（食品） -> U8 BYH01 氩弧焊（食品） -> U8 MDM02 打磨拉丝抛光（食品）"
+    },
+    {
+      "readableId": "192079030201",
+      "readableIdWithRevision": "192079030201",
+      "name": "挡板",
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 MDM02 打磨拉丝抛光（食品）"
+    },
+    {
+      "readableId": "192079030202",
+      "readableIdWithRevision": "192079030202",
+      "name": "固定块",
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JYZ01 摇臂钻床（机加工）"
+    },
+    {
+      "readableId": "1920790303",
+      "readableIdWithRevision": "1920790303",
+      "name": "铜套",
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JYZ01 摇臂钻床（机加工）"
+    },
+    {
+      "readableId": "192079030302",
+      "readableIdWithRevision": "192079030302",
+      "name": "加强筋",
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 MDM02 打磨拉丝抛光（食品）"
+    },
+    {
+      "readableId": "1920790304",
+      "readableIdWithRevision": "1920790304",
+      "name": "固定块B",
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）"
+    },
+    {
+      "readableId": "1920790305",
+      "readableIdWithRevision": "1920790305",
+      "name": "导向杆",
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JSX01 数显立铣（北一）XA5032（机加工）"
+    },
+    {
+      "readableId": "19240219060101",
+      "readableIdWithRevision": "19240219060101",
+      "name": "挡板",
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料） -> U8 MDM02 打磨拉丝抛光（食品）"
+    },
+    {
+      "readableId": "192414580201",
+      "readableIdWithRevision": "192414580201",
+      "name": "电机座板",
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 JYZ01 摇臂钻床（机加工）"
+    },
+    {
+      "readableId": "19243006070101",
+      "readableIdWithRevision": "19243006070101",
+      "name": "旋转臂",
+      "ops": 2,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）"
+    },
+    {
+      "readableId": "19243006070103",
+      "readableIdWithRevision": "19243006070103",
+      "name": "旋转臂-1",
+      "ops": 6,
+      "route": "U8 LL01 领料工作中心 -> U8 XDH01 数控等离子火焰切割(下料） -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JXG01 数控线切割DK(机加工） -> U8 JLX02 立式铣床（精乔）4S-R8(机加工） -> U8 MDM02 打磨拉丝抛光（食品）"
+    },
+    {
+      "readableId": "19243006070104",
+      "readableIdWithRevision": "19243006070104",
+      "name": "加强筋",
+      "ops": 2,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）"
+    },
+    {
+      "readableId": "19243710030102",
+      "readableIdWithRevision": "19243710030102",
+      "name": "螺杆 不锈钢螺杆-M16×1000-del",
+      "ops": 2,
+      "route": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料"
+    },
+    {
+      "readableId": "1924371005",
+      "readableIdWithRevision": "1924371005",
+      "name": "SD-G10电眼支架 SUS304 拉丝板-2.0×1000×2000",
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）"
+    },
+    {
+      "readableId": "1924371803",
+      "readableIdWithRevision": "1924371803",
+      "name": "SD-G6电眼支架 SUS304 拉丝板-2.0×1000×2000",
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）"
+    },
+    {
+      "readableId": "192437180604",
+      "readableIdWithRevision": "192437180604",
+      "name": "电机轴端挡片45-11-3 SUS304 2B平板-3.0×1220×2440",
+      "ops": 2,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）"
+    },
+    {
+      "readableId": "19244208060202",
+      "readableIdWithRevision": "19244208060202",
+      "name": "气缸连接板",
+      "ops": 2,
+      "route": "U8 LL01 领料工作中心 -> U8 JLX02 立式铣床（精乔）4S-R8(机加工）"
+    },
+    {
+      "readableId": "19244208060203",
+      "readableIdWithRevision": "19244208060203",
+      "name": "连扳",
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 JLX02 立式铣床（精乔）4S-R8(机加工） -> U8 JQG01 气动攻丝机（机加工）"
+    },
+    {
+      "readableId": "19244208060400",
+      "readableIdWithRevision": "19244208060400",
+      "name": "气缸支座二",
+      "ops": 4,
+      "route": "U8 LL01 领料工作中心 -> U8 BPZ02 板焊拼装（食品） -> U8 BYH01 氩弧焊（食品） -> U8 MDM02 打磨拉丝抛光（食品）"
+    },
+    {
+      "readableId": "19244208060401",
+      "readableIdWithRevision": "19244208060401",
+      "name": "气缸底座板",
+      "ops": 3,
+      "route": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）"
+    }
+  ],
+  "conclusion": {
+    "strictCleanCandidateCount": 1,
+    "canPropose26StrictCandidates": false,
+    "primaryLimit": "Most valid PDF-backed truth-route parts are already in AI Routing Training/Evaluation samples."
+  }
+}

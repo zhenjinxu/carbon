@@ -1,0 +1,89 @@
+{
+  "generatedAt": "2026-08-23T11:16:10.561Z",
+  "mode": "dry-run",
+  "committed": false,
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "partIds": ["192472540409", "192759010202", "192472540414", "192739030308"],
+  "beforeCounts": {
+    "roles": [
+      {
+        "role": "Evaluation",
+        "count": 26
+      },
+      {
+        "role": "Training",
+        "count": 105
+      }
+    ],
+    "lockedEvaluation": 26
+  },
+  "afterCounts": {
+    "roles": [
+      {
+        "role": "Evaluation",
+        "count": 26
+      },
+      {
+        "role": "Training",
+        "count": 105
+      }
+    ],
+    "lockedEvaluation": 26
+  },
+  "readiness": [
+    {
+      "readableId": "192472540409",
+      "itemId": "wodiitem_b4c1f209502c82cd3bd79c08",
+      "documentCount": 1,
+      "currentV2ExtractionCount": 1,
+      "activeMethodCount": 1,
+      "activeMethodId": "u8method_299a21a6716e063b593c3686",
+      "operationCount": 6,
+      "routeSignature": "1:领料工作中心 -> 2:锯床下料 -> 3:普通车床CA6140A×2000(机加工） -> 4:立式铣床（精乔）4S-R8(机加工） -> 5:气动攻丝机（机加工） -> 6:外协氧化",
+      "existingSampleRoles": [],
+      "blockers": []
+    },
+    {
+      "readableId": "192759010202",
+      "itemId": "wodiitem_67aa6030f75984cd62312899",
+      "documentCount": 1,
+      "currentV2ExtractionCount": 1,
+      "activeMethodCount": 1,
+      "activeMethodId": "u8method_a4e6b0b7c6301ac7084f58de",
+      "operationCount": 6,
+      "routeSignature": "1:领料工作中心 -> 2:片锯下料（薄壁碳钢管）（下料） -> 3:普通车床CA6140A×2000(机加工） -> 4:数显立铣（北一）XA5032（机加工） -> 5:摇臂钻床（机加工） -> 6:气动攻丝机（机加工）",
+      "existingSampleRoles": [],
+      "blockers": []
+    },
+    {
+      "readableId": "192472540414",
+      "itemId": "wodiitem_8cf15bc9cbe6d483d7a0d044",
+      "documentCount": 1,
+      "currentV2ExtractionCount": 1,
+      "activeMethodCount": 1,
+      "activeMethodId": "u8method_6ebfd070271b966a3012bead",
+      "operationCount": 4,
+      "routeSignature": "1:领料工作中心 -> 2:锯床下料 -> 3:普通车床CA6140A×2000(机加工） -> 4:数显立铣（北一）XA5032（机加工）",
+      "existingSampleRoles": [],
+      "blockers": []
+    },
+    {
+      "readableId": "192739030308",
+      "itemId": "wodiitem_3b43cf0c7b1f7eeade432347",
+      "documentCount": 1,
+      "currentV2ExtractionCount": 1,
+      "activeMethodCount": 1,
+      "activeMethodId": "u8method_257d4135dc171f67a2d91626",
+      "operationCount": 4,
+      "routeSignature": "1:领料工作中心 -> 2:锯床下料 -> 3:普通车床CA6140A×2000(机加工） -> 4:数显立铣（北一）XA5032（机加工）",
+      "existingSampleRoles": [],
+      "blockers": []
+    }
+  ],
+  "blocked": [],
+  "wrote": 0,
+  "writeResults": [],
+  "databaseMutationsPerformed": false,
+  "formalRouteWritesPerformed": false,
+  "draftWritesPerformed": false
+}

@@ -117,11 +117,26 @@ type IndirectTable<T extends TableName> = {
   snapshotFields?: SnapshotFields<T>;
 };
 
+type ResolveFromRecord<T extends TableName> = {
+  [Parent in TableName]: {
+    table: Parent;
+    sourceColumn: ColumnOf<T>;
+    targetColumn: ColumnOf<Parent>;
+    entityIdColumn: ColumnOf<Parent>;
+  };
+}[TableName];
+
+type ResolvedFromRecordTable<T extends TableName> = {
+  resolveFromRecord: ResolveFromRecord<T>;
+  createFields?: readonly ColumnOf<T>[];
+  snapshotFields?: SnapshotFields<T>;
+};
 export type TableConfig<T extends TableName = TableName> =
   | RootTable<T>
   | ExtensionTable<T>
   | ChildTable<T>
-  | IndirectTable<T>;
+  | IndirectTable<T>
+  | ResolvedFromRecordTable<T>;
 
 type EntityTables = {
   [T in TableName]?: TableConfig<T>;
@@ -196,10 +211,40 @@ export const auditConfig = {
         itemReplenishment: { role: "extension" }, // PK = itemId
         itemUnitSalePrice: { role: "extension" }, // PK = itemId
         supplierPart: { entityIdColumn: "itemId" },
-        customerPartToItem: { entityIdColumn: "itemId" }
+        customerPartToItem: { entityIdColumn: "itemId" },
+        makeMethod: { entityIdColumn: "itemId" },
+        methodOperation: {
+          resolveFromRecord: {
+            table: "makeMethod",
+            sourceColumn: "makeMethodId",
+            targetColumn: "id",
+            entityIdColumn: "itemId"
+          }
+        },
+        methodMaterial: {
+          resolveFromRecord: {
+            table: "makeMethod",
+            sourceColumn: "makeMethodId",
+            targetColumn: "id",
+            entityIdColumn: "itemId"
+          }
+        }
       }
     },
 
+    itemsConfiguration: {
+      label: "Items Configuration",
+      tables: {
+        itemPostingGroup: { role: "root" },
+        materialDimension: { role: "root" },
+        materialFinish: { role: "root" },
+        materialForm: { role: "root" },
+        materialGrade: { role: "root" },
+        materialSubstance: { role: "root" },
+        materialType: { role: "root" },
+        unitOfMeasure: { role: "root" }
+      }
+    },
     itemShelfLife: {
       label: "Item Shelf Life",
       tables: {
@@ -428,6 +473,17 @@ export const auditConfig = {
     itemReplenishment: "Replenishment",
     itemUnitSalePrice: "Unit Sale Price",
     customerPartToItem: "Customer Part Mapping",
+    makeMethod: "Make Method",
+    methodOperation: "Operation",
+    methodMaterial: "Material",
+    itemPostingGroup: "Item Group",
+    materialDimension: "Dimension",
+    materialFinish: "Finish",
+    materialForm: "Shape",
+    materialGrade: "Grade",
+    materialSubstance: "Substance",
+    materialType: "Type",
+    unitOfMeasure: "Unit",
     salesOrder: "Sales Order",
     salesOrderLine: "Line Item",
     salesOrderPayment: "Payment",
@@ -649,4 +705,13 @@ export function isIndirectTable(
   config: TableConfig
 ): config is IndirectTable<TableName> {
   return "resolve" in config;
+}
+/**
+ * Check if a table resolves its entity through a parent referenced by the
+ * current event row (for example methodOperation -> makeMethod -> item).
+ */
+export function isResolvedFromRecordTable(
+  config: TableConfig
+): config is ResolvedFromRecordTable<TableName> {
+  return "resolveFromRecord" in config;
 }

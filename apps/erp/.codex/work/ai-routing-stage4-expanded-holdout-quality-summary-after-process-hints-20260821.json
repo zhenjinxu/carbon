@@ -1,0 +1,311 @@
+﻿{
+  "evaluatedAt": "2026-08-21T01:34:37.574Z",
+  "holdoutCount": 26,
+  "trainingSampleCount": 105,
+  "safetyGate": {
+    "evaluationLeaks": 0,
+    "workCenterAssignments": 0,
+    "unsupportedWorkCenterAssignments": 0,
+    "missingProcessIds": 0,
+    "invalidProcessIds": []
+  },
+  "idExactSequenceMatches": 0,
+  "normalizedExactSequenceMatches": 9,
+  "operationCountMatches": 10,
+  "underPredicted": 6,
+  "overPredicted": 10,
+  "warningRows": 0,
+  "productionGate": {
+    "eligible": false,
+    "minimumHoldouts": 30,
+    "reason": "Requires at least 30 representative holdouts; evaluated 26."
+  },
+  "rows": [
+    {
+      "readableId": "1927930503",
+      "actualCount": 3,
+      "suggestedCount": 3,
+      "delta": 0,
+      "normalizedPositionMatches": 3,
+      "normalizedExactSequence": true,
+      "missing": "",
+      "extra": "",
+      "warnings": ""
+    },
+    {
+      "readableId": "192793050201",
+      "actualCount": 3,
+      "suggestedCount": 3,
+      "delta": 0,
+      "normalizedPositionMatches": 3,
+      "normalizedExactSequence": true,
+      "missing": "",
+      "extra": "",
+      "warnings": ""
+    },
+    {
+      "readableId": "1927930603",
+      "actualCount": 3,
+      "suggestedCount": 3,
+      "delta": 0,
+      "normalizedPositionMatches": 3,
+      "normalizedExactSequence": true,
+      "missing": "",
+      "extra": "",
+      "warnings": ""
+    },
+    {
+      "readableId": "192793060201",
+      "actualCount": 3,
+      "suggestedCount": 3,
+      "delta": 0,
+      "normalizedPositionMatches": 3,
+      "normalizedExactSequence": true,
+      "missing": "",
+      "extra": "",
+      "warnings": ""
+    },
+    {
+      "readableId": "1927930202",
+      "actualCount": 4,
+      "suggestedCount": 3,
+      "delta": -1,
+      "normalizedPositionMatches": 3,
+      "normalizedExactSequence": false,
+      "missing": "气动攻丝机(机加工)",
+      "extra": "",
+      "warnings": ""
+    },
+    {
+      "readableId": "192793020201",
+      "actualCount": 3,
+      "suggestedCount": 3,
+      "delta": 0,
+      "normalizedPositionMatches": 3,
+      "normalizedExactSequence": true,
+      "missing": "",
+      "extra": "",
+      "warnings": ""
+    },
+    {
+      "readableId": "1927930206",
+      "actualCount": 5,
+      "suggestedCount": 4,
+      "delta": -1,
+      "normalizedPositionMatches": 2,
+      "normalizedExactSequence": false,
+      "missing": "数显立铣(北一)XA5032(机加工) / 立式加工中心VMC850B(机加工) / 外协氧化",
+      "extra": "数控激光切割(下料) / 数控折弯(下料)",
+      "warnings": ""
+    },
+    {
+      "readableId": "1927326104",
+      "actualCount": 3,
+      "suggestedCount": 4,
+      "delta": 1,
+      "normalizedPositionMatches": 1,
+      "normalizedExactSequence": false,
+      "missing": "摇臂钻床(机加工)",
+      "extra": "数显立铣(北一)XA5032(机加工) / 立式加工中心VMC850B(机加工)",
+      "warnings": ""
+    },
+    {
+      "readableId": "1927881101",
+      "actualCount": 4,
+      "suggestedCount": 4,
+      "delta": 0,
+      "normalizedPositionMatches": 2,
+      "normalizedExactSequence": false,
+      "missing": "片锯下料(薄壁碳钢管)(下料) / 普通车床CA6140A×2000(机加工)",
+      "extra": "数显立铣(北一)XA5032(机加工) / 立式加工中心VMC850B(机加工)",
+      "warnings": ""
+    },
+    {
+      "readableId": "1927881103",
+      "actualCount": 2,
+      "suggestedCount": 3,
+      "delta": 1,
+      "normalizedPositionMatches": 2,
+      "normalizedExactSequence": false,
+      "missing": "",
+      "extra": "数控折弯(下料)",
+      "warnings": ""
+    },
+    {
+      "readableId": "1927930801",
+      "actualCount": 3,
+      "suggestedCount": 3,
+      "delta": 0,
+      "normalizedPositionMatches": 3,
+      "normalizedExactSequence": true,
+      "missing": "",
+      "extra": "",
+      "warnings": ""
+    },
+    {
+      "readableId": "1927930802",
+      "actualCount": 3,
+      "suggestedCount": 3,
+      "delta": 0,
+      "normalizedPositionMatches": 3,
+      "normalizedExactSequence": true,
+      "missing": "",
+      "extra": "",
+      "warnings": ""
+    },
+    {
+      "readableId": "1927930803",
+      "actualCount": 3,
+      "suggestedCount": 3,
+      "delta": 0,
+      "normalizedPositionMatches": 3,
+      "normalizedExactSequence": true,
+      "missing": "",
+      "extra": "",
+      "warnings": ""
+    },
+    {
+      "readableId": "1927930804",
+      "actualCount": 3,
+      "suggestedCount": 4,
+      "delta": 1,
+      "normalizedPositionMatches": 3,
+      "normalizedExactSequence": false,
+      "missing": "",
+      "extra": "打磨(碳钢)",
+      "warnings": ""
+    },
+    {
+      "readableId": "192744140302",
+      "actualCount": 2,
+      "suggestedCount": 3,
+      "delta": 1,
+      "normalizedPositionMatches": 2,
+      "normalizedExactSequence": false,
+      "missing": "",
+      "extra": "数控折弯(下料)",
+      "warnings": ""
+    },
+    {
+      "readableId": "192769010102",
+      "actualCount": 6,
+      "suggestedCount": 4,
+      "delta": -2,
+      "normalizedPositionMatches": 1,
+      "normalizedExactSequence": false,
+      "missing": "数显立铣(北一)XA5032(机加工) / 普通车床CA6140A×2000(机加工) / 摇臂钻床(机加工) / 外协氧化",
+      "extra": "数控激光切割(下料) / 数控折弯(下料)",
+      "warnings": ""
+    },
+    {
+      "readableId": "192769010103",
+      "actualCount": 2,
+      "suggestedCount": 3,
+      "delta": 1,
+      "normalizedPositionMatches": 2,
+      "normalizedExactSequence": false,
+      "missing": "",
+      "extra": "数控折弯(下料)",
+      "warnings": ""
+    },
+    {
+      "readableId": "192788110401",
+      "actualCount": 3,
+      "suggestedCount": 4,
+      "delta": 1,
+      "normalizedPositionMatches": 1,
+      "normalizedExactSequence": false,
+      "missing": "片锯下料(薄壁碳钢管)(下料) / 普通车床CA6140A×2000(机加工)",
+      "extra": "数显立铣(北一)XA5032(机加工) / 立式加工中心VMC850B(机加工) / 气动攻丝机(机加工)",
+      "warnings": ""
+    },
+    {
+      "readableId": "192788110402",
+      "actualCount": 5,
+      "suggestedCount": 4,
+      "delta": -1,
+      "normalizedPositionMatches": 1,
+      "normalizedExactSequence": false,
+      "missing": "片锯下料(薄壁碳钢管)(下料) / 普通车床CA6140A×2000(机加工)",
+      "extra": "立式加工中心VMC850B(机加工)",
+      "warnings": ""
+    },
+    {
+      "readableId": "192788110601",
+      "actualCount": 5,
+      "suggestedCount": 6,
+      "delta": 1,
+      "normalizedPositionMatches": 1,
+      "normalizedExactSequence": false,
+      "missing": "片锯下料(薄壁碳钢管)(下料) / 普通车床CA6140A×2000(机加工) / 数显立铣(北一)XA5032(机加工)",
+      "extra": "数控激光切割(下料) / 数控折弯(下料) / 氩弧焊(食品) / 打磨拉丝抛光(食品)",
+      "warnings": ""
+    },
+    {
+      "readableId": "192788110602",
+      "actualCount": 3,
+      "suggestedCount": 4,
+      "delta": 1,
+      "normalizedPositionMatches": 1,
+      "normalizedExactSequence": false,
+      "missing": "片锯下料(薄壁碳钢管)(下料) / 普通车床CA6140A×2000(机加工)",
+      "extra": "板焊拼装(碳钢) / 氩弧焊(碳钢) / 打磨(碳钢)",
+      "warnings": ""
+    },
+    {
+      "readableId": "192793010401",
+      "actualCount": 2,
+      "suggestedCount": 3,
+      "delta": 1,
+      "normalizedPositionMatches": 2,
+      "normalizedExactSequence": false,
+      "missing": "",
+      "extra": "数显立铣(北一)XA5032(机加工)",
+      "warnings": ""
+    },
+    {
+      "readableId": "192793010402",
+      "actualCount": 2,
+      "suggestedCount": 3,
+      "delta": 1,
+      "normalizedPositionMatches": 2,
+      "normalizedExactSequence": false,
+      "missing": "",
+      "extra": "数显立铣(北一)XA5032(机加工)",
+      "warnings": ""
+    },
+    {
+      "readableId": "192793080101",
+      "actualCount": 4,
+      "suggestedCount": 3,
+      "delta": -1,
+      "normalizedPositionMatches": 3,
+      "normalizedExactSequence": false,
+      "missing": "气动攻丝机(机加工)",
+      "extra": "",
+      "warnings": ""
+    },
+    {
+      "readableId": "192793080201",
+      "actualCount": 3,
+      "suggestedCount": 3,
+      "delta": 0,
+      "normalizedPositionMatches": 3,
+      "normalizedExactSequence": true,
+      "missing": "",
+      "extra": "",
+      "warnings": ""
+    },
+    {
+      "readableId": "19276939010203",
+      "actualCount": 3,
+      "suggestedCount": 2,
+      "delta": -1,
+      "normalizedPositionMatches": 2,
+      "normalizedExactSequence": false,
+      "missing": "普通车床CA6150B/A×2000(机加工)",
+      "extra": "",
+      "warnings": ""
+    }
+  ]
+}

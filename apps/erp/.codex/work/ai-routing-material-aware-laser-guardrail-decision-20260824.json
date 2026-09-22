@@ -1,0 +1,47 @@
+{
+  "recordedAt": "2026-08-24T00:00:00+08:00",
+  "source": "TDD implementation plus 30-holdout verification",
+  "scope": "AI Routing material-aware laser evidence and push-plate connector disambiguation",
+  "broadAttempt": {
+    "implementation": "Removed implicit sheet/plate -\u003e laser process hint unless explicit laser evidence existed.",
+    "decision": "rejected",
+    "reason": "30-holdout quality regressed materially because existing positive laser sheet/bend holdouts do not yet carry a separate material-suitability field.",
+    "qualityImpact": {
+      "normalizedExactSequenceMatches": "19 -\u003e 14",
+      "operationCountMatches": "24 -\u003e 19",
+      "underPredicted": "6 -\u003e 8",
+      "overPredicted": "0 -\u003e 3",
+      "warningRows": "5 -\u003e 6"
+    }
+  },
+  "retainedImplementation": {
+    "negativeLaserEvidenceGuardrail": "Suppress 激光切割 only when drawing/material text explicitly says the stock/material is not suitable for laser cutting.",
+    "positiveLaserPreservation": "Keep existing sheet/plate laser behavior unless explicit negative material/stock evidence exists; explicit laser-compatible evidence remains positive.",
+    "connectorNameDisambiguation": "Remove misleading 板件 evidence from 推板连接杆-style compound connector text so it does not create 板件/激光 target evidence.",
+    "productionWrites": "none",
+    "materializationGate": "closed"
+  },
+  "verification": {
+    "redObserved": "2 target tests failed before implementation: sheet/plate laser-unsuitable case and push-plate connector plate false positive.",
+    "focusedTests": "pnpm --filter erp exec vitest run app/modules/items/ai-routing.test.ts --testNamePattern \"laser-unsuitable|preserves laser cutting|push-plate\" -\u003e 3 passed",
+    "fullAiRoutingTests": "pnpm --filter erp exec vitest run app/modules/items/ai-routing.test.ts -\u003e 22 passed",
+    "biome": "pnpm --filter erp exec biome check app/modules/items/ai-routing.ts app/modules/items/ai-routing.test.ts -\u003e checked 2 files, no fixes applied after formatting",
+    "holdoutQuality": {
+      "artifact": "apps/erp/.codex/work/ai-routing-stage4-30-holdout-quality-summary-after-material-aware-laser-guardrail-20260824.json",
+      "normalizedExactSequenceMatches": 19,
+      "operationCountMatches": 24,
+      "underPredicted": 6,
+      "overPredicted": 0,
+      "warningRows": 5,
+      "evaluationLeaks": 0,
+      "workCenterAssignments": 0,
+      "unsupportedWorkCenterAssignments": 0,
+      "missingProcessIds": 0,
+      "invalidProcessIds": 0,
+      "regressedFromBaseline": [],
+      "operationCountRegressedFromBaseline": ["192759010202"],
+      "note": "192759010202 operation-count delta worsened because the retained semantic disambiguation removes the incorrect laser/plate evidence; aggregate operation-count matches stayed 24/30 and normalized exact stayed 19/30."
+    }
+  },
+  "nextGate": "Add or expose raw-material/stock suitability evidence before enforcing a global no-sheet-laser rule for existing drawings; then rerun TDD and 30-holdout quality."
+}

@@ -3,6 +3,7 @@ import {
   LuArrowRightLeft,
   LuClipboardList,
   LuHandCoins,
+  LuLayoutDashboard,
   LuListChecks,
   LuNetwork,
   LuQrCode,
@@ -116,6 +117,17 @@ export default function useInventorySubmodules() {
           to: path.to.shippingMethods,
           role: "employee",
           icon: <LuTruck />
+        }
+      ]
+    },
+    {
+      name: t`个人工作台`,
+      routes: [
+        {
+          name: t`我的工作台`,
+          to: path.to.inventoryWorkbench,
+          role: "employee",
+          icon: <LuLayoutDashboard />
         }
       ]
     }

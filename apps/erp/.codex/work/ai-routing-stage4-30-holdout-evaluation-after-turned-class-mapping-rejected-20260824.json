@@ -1,0 +1,2896 @@
+{
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "evaluatedAt": "2026-08-24T02:28:37.564Z",
+  "holdoutCount": 30,
+  "trainingSampleCount": 105,
+  "exactSequenceMatches": 3,
+  "totalEvaluationLeaks": 0,
+  "totalWorkCenterAssignments": 0,
+  "totalUnsupportedWorkCenterAssignments": 0,
+  "totalMissingProcessIds": 0,
+  "invalidProcessIds": [],
+  "productionGate": {
+    "eligible": true,
+    "minimumHoldouts": 30,
+    "reason": null
+  },
+  "results": [
+    {
+      "readableId": "1927930503",
+      "targetExtractionId": "aide_ZUm5yz18gbHisqN3j5euo",
+      "targetDrawingEvidenceCount": 21,
+      "targetFeatureTags": ["板件", "孔", "折弯"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:数控激光切割（下料） -> 30:数控折弯(下料）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料） -> 3:U8 CSZ01 数控折弯(下料）",
+      "comparison": {
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 3,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_48b14696e7820288f3d239a2",
+          "wodiprocess_8dcc004ef7392f8c20dfff0d"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_4b1d56bd2a2820b629040581",
+          "u8proc_b47b49251b71b7cdf6f2601c"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_48b14696e7820288f3d239a2",
+            "expectedProcessName": "数控激光切割（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_8dcc004ef7392f8c20dfff0d",
+            "expectedProcessName": "数控折弯(下料）",
+            "predictedProcessId": "u8proc_b47b49251b71b7cdf6f2601c",
+            "predictedProcessName": "U8 CSZ01 数控折弯(下料）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 55,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 55,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_f8a47d03d811be629b47b32e",
+          "readableId": "19271341030101",
+          "score": 55,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192793050201",
+      "targetExtractionId": "aide_TqQRLBMEb9aHw8D2PvV1M9",
+      "targetDrawingEvidenceCount": 22,
+      "targetFeatureTags": ["板件", "折弯"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:数控激光切割（下料） -> 30:数控折弯(下料）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料） -> 3:U8 CSZ01 数控折弯(下料）",
+      "comparison": {
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 3,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_48b14696e7820288f3d239a2",
+          "wodiprocess_8dcc004ef7392f8c20dfff0d"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_4b1d56bd2a2820b629040581",
+          "u8proc_b47b49251b71b7cdf6f2601c"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_48b14696e7820288f3d239a2",
+            "expectedProcessName": "数控激光切割（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_8dcc004ef7392f8c20dfff0d",
+            "expectedProcessName": "数控折弯(下料）",
+            "predictedProcessId": "u8proc_b47b49251b71b7cdf6f2601c",
+            "predictedProcessName": "U8 CSZ01 数控折弯(下料）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_f8a47d03d811be629b47b32e",
+          "readableId": "19271341030101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "1927930603",
+      "targetExtractionId": "aide_7UXaU6cbQRNhZ7apv6ddtm",
+      "targetDrawingEvidenceCount": 11,
+      "targetFeatureTags": ["板件"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:数控激光切割（下料） -> 30:数控折弯(下料）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料） -> 3:U8 CSZ01 数控折弯(下料）",
+      "comparison": {
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 3,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_48b14696e7820288f3d239a2",
+          "wodiprocess_8dcc004ef7392f8c20dfff0d"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_4b1d56bd2a2820b629040581",
+          "u8proc_b47b49251b71b7cdf6f2601c"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_48b14696e7820288f3d239a2",
+            "expectedProcessName": "数控激光切割（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_8dcc004ef7392f8c20dfff0d",
+            "expectedProcessName": "数控折弯(下料）",
+            "predictedProcessId": "u8proc_b47b49251b71b7cdf6f2601c",
+            "predictedProcessName": "U8 CSZ01 数控折弯(下料）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_e129093cf9f8b43332628ddb",
+          "readableId": "192437180604",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192793060201",
+      "targetExtractionId": "aide_SC2RePErD8tnQgFa9dNupT",
+      "targetDrawingEvidenceCount": 28,
+      "targetFeatureTags": ["板件", "折弯"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:数控激光切割（下料） -> 30:数控折弯(下料）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料） -> 3:U8 CSZ01 数控折弯(下料）",
+      "comparison": {
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 3,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_48b14696e7820288f3d239a2",
+          "wodiprocess_8dcc004ef7392f8c20dfff0d"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_4b1d56bd2a2820b629040581",
+          "u8proc_b47b49251b71b7cdf6f2601c"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_48b14696e7820288f3d239a2",
+            "expectedProcessName": "数控激光切割（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_8dcc004ef7392f8c20dfff0d",
+            "expectedProcessName": "数控折弯(下料）",
+            "predictedProcessId": "u8proc_b47b49251b71b7cdf6f2601c",
+            "predictedProcessName": "U8 CSZ01 数控折弯(下料）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_f8a47d03d811be629b47b32e",
+          "readableId": "19271341030101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "1927930202",
+      "targetExtractionId": "aide_Xkc6f8smpAbMetaJKAsE4f",
+      "targetDrawingEvidenceCount": 25,
+      "targetFeatureTags": ["板件", "孔", "螺纹", "折弯"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料） -> 3:U8 CSZ01 数控折弯(下料） -> 4:U8 JQG01 气动攻丝机（机加工）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料） -> 3:U8 CSZ01 数控折弯(下料） -> 13:U8 JQG01 气动攻丝机（机加工）",
+      "comparison": {
+        "actualOperationCount": 4,
+        "suggestedOperationCount": 4,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 4,
+        "exactSequenceMatch": true,
+        "missingActualProcessIds": [],
+        "extraSuggestedProcessIds": [],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "expectedProcessName": "U8 LL01 领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": true
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "expectedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": true
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "u8proc_b47b49251b71b7cdf6f2601c",
+            "expectedProcessName": "U8 CSZ01 数控折弯(下料）",
+            "predictedProcessId": "u8proc_b47b49251b71b7cdf6f2601c",
+            "predictedProcessName": "U8 CSZ01 数控折弯(下料）",
+            "match": true
+          },
+          {
+            "position": 4,
+            "expectedProcessId": "u8proc_49678e5d6d644d929cfacb36",
+            "expectedProcessName": "U8 JQG01 气动攻丝机（机加工）",
+            "predictedProcessId": "u8proc_49678e5d6d644d929cfacb36",
+            "predictedProcessName": "U8 JQG01 气动攻丝机（机加工）",
+            "match": true
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_f8a47d03d811be629b47b32e",
+          "readableId": "19271341030101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_90ba3f19b54eac05274bc6e6",
+          "readableId": "1920790304",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192793020201",
+      "targetExtractionId": "aide_Uw3VowXSciEShC5k2FfRDx",
+      "targetDrawingEvidenceCount": 22,
+      "targetFeatureTags": ["板件", "折弯"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料） -> 3:U8 CSZ01 数控折弯(下料）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料） -> 3:U8 CSZ01 数控折弯(下料）",
+      "comparison": {
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 3,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 3,
+        "exactSequenceMatch": true,
+        "missingActualProcessIds": [],
+        "extraSuggestedProcessIds": [],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "expectedProcessName": "U8 LL01 领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": true
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "expectedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": true
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "u8proc_b47b49251b71b7cdf6f2601c",
+            "expectedProcessName": "U8 CSZ01 数控折弯(下料）",
+            "predictedProcessId": "u8proc_b47b49251b71b7cdf6f2601c",
+            "predictedProcessName": "U8 CSZ01 数控折弯(下料）",
+            "match": true
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_f8a47d03d811be629b47b32e",
+          "readableId": "19271341030101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "1927930206",
+      "targetExtractionId": "aide_AuVwaULQPmqHBVeduqZKCx",
+      "targetDrawingEvidenceCount": 21,
+      "targetFeatureTags": ["板件", "孔", "螺纹", "台阶"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 JSX01 数显立铣（北一）XA5032（机加工） -> 3:U8 JLJ01 立式加工中心VMC850B(机加工） -> 4:U8 JQG01 气动攻丝机（机加工） -> 5:U8 WYH01 外协氧化",
+      "suggestedRouteSignature": "",
+      "comparison": {
+        "actualOperationCount": 5,
+        "suggestedOperationCount": 0,
+        "operationCountDelta": -5,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_f23c4beb7380e597efa4dd14",
+          "u8proc_7f835aa39e078b47dd2f4b49",
+          "u8proc_49678e5d6d644d929cfacb36",
+          "u8proc_b5a6a2a42d19674b5b3130b5"
+        ],
+        "extraSuggestedProcessIds": [],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "expectedProcessName": "U8 LL01 领料工作中心",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "u8proc_f23c4beb7380e597efa4dd14",
+            "expectedProcessName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "u8proc_7f835aa39e078b47dd2f4b49",
+            "expectedProcessName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 4,
+            "expectedProcessId": "u8proc_49678e5d6d644d929cfacb36",
+            "expectedProcessName": "U8 JQG01 气动攻丝机（机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 5,
+            "expectedProcessId": "u8proc_b5a6a2a42d19674b5b3130b5",
+            "expectedProcessName": "U8 WYH01 外协氧化",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 1,
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_784fb5051c05d269a4357504",
+          "readableId": "192793050101",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_0029b63867d51037c7224993",
+          "readableId": "1927930207",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_13692808562ad2dcf6aec069",
+          "readableId": "1920790301",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_8929a3b362c289b9d52ca1da",
+          "readableId": "192793020101",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_9a2c353069f9234ca16129c0",
+          "readableId": "192713410301",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "1927326104",
+      "targetExtractionId": "aide_JGRzJnTp1euqyo5APptHrP",
+      "targetDrawingEvidenceCount": 17,
+      "targetFeatureTags": ["孔", "螺纹"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:摇臂钻床（机加工） -> 30:气动攻丝机（机加工）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 3:U8 JYZ01 摇臂钻床（机加工） -> 4:U8 JQG01 气动攻丝机（机加工）",
+      "comparison": {
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 3,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_2f4127c9cc4e3523498955b9",
+          "wodiprocess_b9476d727e9447d208f0c201"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_014434218cb85401ee65bef0",
+          "u8proc_49678e5d6d644d929cfacb36"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_2f4127c9cc4e3523498955b9",
+            "expectedProcessName": "摇臂钻床（机加工）",
+            "predictedProcessId": "u8proc_014434218cb85401ee65bef0",
+            "predictedProcessName": "U8 JYZ01 摇臂钻床（机加工）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_b9476d727e9447d208f0c201",
+            "expectedProcessName": "气动攻丝机（机加工）",
+            "predictedProcessId": "u8proc_49678e5d6d644d929cfacb36",
+            "predictedProcessName": "U8 JQG01 气动攻丝机（机加工）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 6,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_90ba3f19b54eac05274bc6e6",
+          "readableId": "1920790304",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 8
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_2a6f4518bce6a332f677e34a",
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "1927881101",
+      "targetExtractionId": "aide_V5D3PdXfftHpG8PMjkzGqd",
+      "targetDrawingEvidenceCount": 11,
+      "targetFeatureTags": ["孔", "螺纹"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:片锯下料（薄壁碳钢管）（下料） -> 30:普通车床CA6140A×2000(机加工） -> 40:气动攻丝机（机加工）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 JSX01 数显立铣（北一）XA5032（机加工） -> 3:U8 JLJ01 立式加工中心VMC850B(机加工） -> 4:U8 JQG01 气动攻丝机（机加工）",
+      "comparison": {
+        "actualOperationCount": 4,
+        "suggestedOperationCount": 4,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_d5879a6494d8be2faf03d0cf",
+          "wodiprocess_ce4a2251664f611fa45efb8a",
+          "wodiprocess_b9476d727e9447d208f0c201"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_f23c4beb7380e597efa4dd14",
+          "u8proc_7f835aa39e078b47dd2f4b49",
+          "u8proc_49678e5d6d644d929cfacb36"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_d5879a6494d8be2faf03d0cf",
+            "expectedProcessName": "片锯下料（薄壁碳钢管）（下料）",
+            "predictedProcessId": "u8proc_f23c4beb7380e597efa4dd14",
+            "predictedProcessName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_ce4a2251664f611fa45efb8a",
+            "expectedProcessName": "普通车床CA6140A×2000(机加工）",
+            "predictedProcessId": "u8proc_7f835aa39e078b47dd2f4b49",
+            "predictedProcessName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "match": false
+          },
+          {
+            "position": 4,
+            "expectedProcessId": "wodiprocess_b9476d727e9447d208f0c201",
+            "expectedProcessName": "气动攻丝机（机加工）",
+            "predictedProcessId": "u8proc_49678e5d6d644d929cfacb36",
+            "predictedProcessName": "U8 JQG01 气动攻丝机（机加工）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_90ba3f19b54eac05274bc6e6",
+          "readableId": "1920790304",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 5
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_2a6f4518bce6a332f677e34a",
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "1927881103",
+      "targetExtractionId": "aide_KzsYtxcCiX9RnUjUqBJfHB",
+      "targetDrawingEvidenceCount": 13,
+      "targetFeatureTags": ["板件", "孔"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:数控激光切割（下料）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料）",
+      "comparison": {
+        "actualOperationCount": 2,
+        "suggestedOperationCount": 2,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_48b14696e7820288f3d239a2"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_4b1d56bd2a2820b629040581"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_48b14696e7820288f3d239a2",
+            "expectedProcessName": "数控激光切割（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_e129093cf9f8b43332628ddb",
+          "readableId": "192437180604",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "1927930801",
+      "targetExtractionId": "aide_QniffBqMAtu4TtPjBQaqcZ",
+      "targetDrawingEvidenceCount": 21,
+      "targetFeatureTags": ["板件"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:数控激光切割（下料） -> 30:数控折弯(下料）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料） -> 3:U8 CSZ01 数控折弯(下料）",
+      "comparison": {
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 3,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_48b14696e7820288f3d239a2",
+          "wodiprocess_8dcc004ef7392f8c20dfff0d"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_4b1d56bd2a2820b629040581",
+          "u8proc_b47b49251b71b7cdf6f2601c"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_48b14696e7820288f3d239a2",
+            "expectedProcessName": "数控激光切割（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_8dcc004ef7392f8c20dfff0d",
+            "expectedProcessName": "数控折弯(下料）",
+            "predictedProcessId": "u8proc_b47b49251b71b7cdf6f2601c",
+            "predictedProcessName": "U8 CSZ01 数控折弯(下料）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_e129093cf9f8b43332628ddb",
+          "readableId": "192437180604",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "1927930802",
+      "targetExtractionId": "aide_ADchRmnCoZBfxMCHVFouwj",
+      "targetDrawingEvidenceCount": 26,
+      "targetFeatureTags": ["板件", "折弯"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:数控激光切割（下料） -> 30:数控折弯(下料）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料） -> 3:U8 CSZ01 数控折弯(下料）",
+      "comparison": {
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 3,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_48b14696e7820288f3d239a2",
+          "wodiprocess_8dcc004ef7392f8c20dfff0d"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_4b1d56bd2a2820b629040581",
+          "u8proc_b47b49251b71b7cdf6f2601c"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_48b14696e7820288f3d239a2",
+            "expectedProcessName": "数控激光切割（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_8dcc004ef7392f8c20dfff0d",
+            "expectedProcessName": "数控折弯(下料）",
+            "predictedProcessId": "u8proc_b47b49251b71b7cdf6f2601c",
+            "predictedProcessName": "U8 CSZ01 数控折弯(下料）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_f8a47d03d811be629b47b32e",
+          "readableId": "19271341030101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "1927930803",
+      "targetExtractionId": "aide_WyUukggsnAa4QM4bX3MKg2",
+      "targetDrawingEvidenceCount": 24,
+      "targetFeatureTags": ["板件", "折弯"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:数控激光切割（下料） -> 30:数控折弯(下料）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料） -> 3:U8 CSZ01 数控折弯(下料）",
+      "comparison": {
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 3,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_48b14696e7820288f3d239a2",
+          "wodiprocess_8dcc004ef7392f8c20dfff0d"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_4b1d56bd2a2820b629040581",
+          "u8proc_b47b49251b71b7cdf6f2601c"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_48b14696e7820288f3d239a2",
+            "expectedProcessName": "数控激光切割（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_8dcc004ef7392f8c20dfff0d",
+            "expectedProcessName": "数控折弯(下料）",
+            "predictedProcessId": "u8proc_b47b49251b71b7cdf6f2601c",
+            "predictedProcessName": "U8 CSZ01 数控折弯(下料）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_f8a47d03d811be629b47b32e",
+          "readableId": "19271341030101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "1927930804",
+      "targetExtractionId": "aide_7PBr1WGQazN14EUJbi9NKD",
+      "targetDrawingEvidenceCount": 21,
+      "targetFeatureTags": ["板件", "折弯"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:数控激光切割（下料） -> 30:数控折弯(下料）",
+      "suggestedRouteSignature": "10:领料工作中心 -> 20:数控激光切割（下料） -> 30:数控折弯(下料）",
+      "comparison": {
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 3,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 3,
+        "exactSequenceMatch": true,
+        "missingActualProcessIds": [],
+        "extraSuggestedProcessIds": [],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "predictedProcessName": "领料工作中心",
+            "match": true
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_48b14696e7820288f3d239a2",
+            "expectedProcessName": "数控激光切割（下料）",
+            "predictedProcessId": "wodiprocess_48b14696e7820288f3d239a2",
+            "predictedProcessName": "数控激光切割（下料）",
+            "match": true
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_8dcc004ef7392f8c20dfff0d",
+            "expectedProcessName": "数控折弯(下料）",
+            "predictedProcessId": "wodiprocess_8dcc004ef7392f8c20dfff0d",
+            "predictedProcessName": "数控折弯(下料）",
+            "match": true
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_267ef40c2c3be8b760a380d0",
+          "readableId": "192793060101",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_291a9d7a30548a8946aa3c98",
+          "readableId": "1927930502",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_29a26687f86d8fdf1d724271",
+          "readableId": "1927930501",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_784fb5051c05d269a4357504",
+          "readableId": "192793050101",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_941468ce82ab34a5b8e5a911",
+          "readableId": "1927930601",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 4
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192744140302",
+      "targetExtractionId": "aide_TRmEZDdyFJ6VajU5JqoJj7",
+      "targetDrawingEvidenceCount": 16,
+      "targetFeatureTags": ["板件", "孔"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:数控激光切割（下料）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料）",
+      "comparison": {
+        "actualOperationCount": 2,
+        "suggestedOperationCount": 2,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_48b14696e7820288f3d239a2"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_4b1d56bd2a2820b629040581"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_48b14696e7820288f3d239a2",
+            "expectedProcessName": "数控激光切割（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_e129093cf9f8b43332628ddb",
+          "readableId": "192437180604",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 2
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192769010102",
+      "targetExtractionId": "aide_P24hvma6tfgWfMiMygxtig",
+      "targetDrawingEvidenceCount": 22,
+      "targetFeatureTags": ["板件", "孔", "螺纹"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:数显立铣（北一）XA5032（机加工） -> 30:普通车床CA6140A×2000(机加工） -> 40:摇臂钻床（机加工） -> 50:气动攻丝机（机加工） -> 60:外协氧化",
+      "suggestedRouteSignature": "",
+      "comparison": {
+        "actualOperationCount": 6,
+        "suggestedOperationCount": 0,
+        "operationCountDelta": -6,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_8ce3ec258d1462d5263f12d3",
+          "wodiprocess_ce4a2251664f611fa45efb8a",
+          "wodiprocess_2f4127c9cc4e3523498955b9",
+          "wodiprocess_b9476d727e9447d208f0c201",
+          "wodiprocess_058778a3bf91a82b6fadf627"
+        ],
+        "extraSuggestedProcessIds": [],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_8ce3ec258d1462d5263f12d3",
+            "expectedProcessName": "数显立铣（北一）XA5032（机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_ce4a2251664f611fa45efb8a",
+            "expectedProcessName": "普通车床CA6140A×2000(机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 4,
+            "expectedProcessId": "wodiprocess_2f4127c9cc4e3523498955b9",
+            "expectedProcessName": "摇臂钻床（机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 5,
+            "expectedProcessId": "wodiprocess_b9476d727e9447d208f0c201",
+            "expectedProcessName": "气动攻丝机（机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 6,
+            "expectedProcessId": "wodiprocess_058778a3bf91a82b6fadf627",
+            "expectedProcessName": "外协氧化",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 1,
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_784fb5051c05d269a4357504",
+          "readableId": "192793050101",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_0029b63867d51037c7224993",
+          "readableId": "1927930207",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_13692808562ad2dcf6aec069",
+          "readableId": "1920790301",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_8929a3b362c289b9d52ca1da",
+          "readableId": "192793020101",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_9a2c353069f9234ca16129c0",
+          "readableId": "192713410301",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192769010103",
+      "targetExtractionId": "aide_6M9nDo3LjQ3QzahLv6d3r",
+      "targetDrawingEvidenceCount": 20,
+      "targetFeatureTags": ["板件", "孔", "槽"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:数控激光切割（下料）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料）",
+      "comparison": {
+        "actualOperationCount": 2,
+        "suggestedOperationCount": 2,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_48b14696e7820288f3d239a2"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_4b1d56bd2a2820b629040581"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_48b14696e7820288f3d239a2",
+            "expectedProcessName": "数控激光切割（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_e129093cf9f8b43332628ddb",
+          "readableId": "192437180604",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192788110401",
+      "targetExtractionId": "aide_3FpRu215mLSXAoRYRh7qDE",
+      "targetDrawingEvidenceCount": 24,
+      "targetFeatureTags": ["孔"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:片锯下料（薄壁碳钢管）（下料） -> 30:普通车床CA6140A×2000(机加工）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 JSX01 数显立铣（北一）XA5032（机加工） -> 3:U8 JLJ01 立式加工中心VMC850B(机加工）",
+      "comparison": {
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 3,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_d5879a6494d8be2faf03d0cf",
+          "wodiprocess_ce4a2251664f611fa45efb8a"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_f23c4beb7380e597efa4dd14",
+          "u8proc_7f835aa39e078b47dd2f4b49"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_d5879a6494d8be2faf03d0cf",
+            "expectedProcessName": "片锯下料（薄壁碳钢管）（下料）",
+            "predictedProcessId": "u8proc_f23c4beb7380e597efa4dd14",
+            "predictedProcessName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_ce4a2251664f611fa45efb8a",
+            "expectedProcessName": "普通车床CA6140A×2000(机加工）",
+            "predictedProcessId": "u8proc_7f835aa39e078b47dd2f4b49",
+            "predictedProcessName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_90ba3f19b54eac05274bc6e6",
+          "readableId": "1920790304",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_2a6f4518bce6a332f677e34a",
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192788110402",
+      "targetExtractionId": "aide_YDuccKdGMfdsBHD1jqyvUh",
+      "targetDrawingEvidenceCount": 18,
+      "targetFeatureTags": ["轴类", "孔", "螺纹"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:片锯下料（薄壁碳钢管）（下料） -> 30:普通车床CA6140A×2000(机加工） -> 40:数显立铣（北一）XA5032（机加工） -> 50:气动攻丝机（机加工）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 1.5:U8 JPC01 普通车床CA6140A×2000(机加工） -> 2:U8 JSX01 数显立铣（北一）XA5032（机加工） -> 3:U8 JLJ01 立式加工中心VMC850B(机加工） -> 4:U8 JQG01 气动攻丝机（机加工）",
+      "comparison": {
+        "actualOperationCount": 5,
+        "suggestedOperationCount": 5,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_d5879a6494d8be2faf03d0cf",
+          "wodiprocess_ce4a2251664f611fa45efb8a",
+          "wodiprocess_8ce3ec258d1462d5263f12d3",
+          "wodiprocess_b9476d727e9447d208f0c201"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_f4314c5981e2602ec61c05ac",
+          "u8proc_f23c4beb7380e597efa4dd14",
+          "u8proc_7f835aa39e078b47dd2f4b49",
+          "u8proc_49678e5d6d644d929cfacb36"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_d5879a6494d8be2faf03d0cf",
+            "expectedProcessName": "片锯下料（薄壁碳钢管）（下料）",
+            "predictedProcessId": "u8proc_f4314c5981e2602ec61c05ac",
+            "predictedProcessName": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_ce4a2251664f611fa45efb8a",
+            "expectedProcessName": "普通车床CA6140A×2000(机加工）",
+            "predictedProcessId": "u8proc_f23c4beb7380e597efa4dd14",
+            "predictedProcessName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "match": false
+          },
+          {
+            "position": 4,
+            "expectedProcessId": "wodiprocess_8ce3ec258d1462d5263f12d3",
+            "expectedProcessName": "数显立铣（北一）XA5032（机加工）",
+            "predictedProcessId": "u8proc_7f835aa39e078b47dd2f4b49",
+            "predictedProcessName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "match": false
+          },
+          {
+            "position": 5,
+            "expectedProcessId": "wodiprocess_b9476d727e9447d208f0c201",
+            "expectedProcessName": "气动攻丝机（机加工）",
+            "predictedProcessId": "u8proc_49678e5d6d644d929cfacb36",
+            "predictedProcessName": "U8 JQG01 气动攻丝机（机加工）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 6,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_90ba3f19b54eac05274bc6e6",
+          "readableId": "1920790304",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_e129093cf9f8b43332628ddb",
+          "readableId": "192437180604",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_2a6f4518bce6a332f677e34a",
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192788110601",
+      "targetExtractionId": "aide_KjMWNsdknY1LKSrontU5pp",
+      "targetDrawingEvidenceCount": 16,
+      "targetFeatureTags": ["轴类", "螺纹", "孔", "焊接件"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:片锯下料（薄壁碳钢管）（下料） -> 30:普通车床CA6140A×2000(机加工） -> 40:数显立铣（北一）XA5032（机加工） -> 50:气动攻丝机（机加工）",
+      "suggestedRouteSignature": "",
+      "comparison": {
+        "actualOperationCount": 5,
+        "suggestedOperationCount": 0,
+        "operationCountDelta": -5,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_d5879a6494d8be2faf03d0cf",
+          "wodiprocess_ce4a2251664f611fa45efb8a",
+          "wodiprocess_8ce3ec258d1462d5263f12d3",
+          "wodiprocess_b9476d727e9447d208f0c201"
+        ],
+        "extraSuggestedProcessIds": [],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_d5879a6494d8be2faf03d0cf",
+            "expectedProcessName": "片锯下料（薄壁碳钢管）（下料）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_ce4a2251664f611fa45efb8a",
+            "expectedProcessName": "普通车床CA6140A×2000(机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 4,
+            "expectedProcessId": "wodiprocess_8ce3ec258d1462d5263f12d3",
+            "expectedProcessName": "数显立铣（北一）XA5032（机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 5,
+            "expectedProcessId": "wodiprocess_b9476d727e9447d208f0c201",
+            "expectedProcessName": "气动攻丝机（机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 1,
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_9a2c353069f9234ca16129c0",
+          "readableId": "192713410301",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_d00e2b5f1f37ce362b47130c",
+          "readableId": "191967100102",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_ab4860616ae50387ff91fe09",
+          "readableId": "19272869010104",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_cf492b188f7706ffa8f76712",
+          "readableId": "1927286901",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_d8d8e0b0359820987eb1930a",
+          "readableId": "192079030100",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 2
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192788110602",
+      "targetExtractionId": "aide_91jJDkF1SkBcZyYe8Rq7xd",
+      "targetDrawingEvidenceCount": 10,
+      "targetFeatureTags": ["焊接件"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:片锯下料（薄壁碳钢管）（下料） -> 30:普通车床CA6140A×2000(机加工）",
+      "suggestedRouteSignature": "",
+      "comparison": {
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 0,
+        "operationCountDelta": -3,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_d5879a6494d8be2faf03d0cf",
+          "wodiprocess_ce4a2251664f611fa45efb8a"
+        ],
+        "extraSuggestedProcessIds": [],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_d5879a6494d8be2faf03d0cf",
+            "expectedProcessName": "片锯下料（薄壁碳钢管）（下料）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_ce4a2251664f611fa45efb8a",
+            "expectedProcessName": "普通车床CA6140A×2000(机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 1,
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_4d281fa064b3a2246faa6e8b",
+          "readableId": "192793060200",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_98b593fac21e2540fded0b40",
+          "readableId": "192793050200",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_0f62bfe0e5994928a00ac74f",
+          "readableId": "19244208060400",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1739da521f0e18e2b6c70fe6",
+          "readableId": "19271341030100",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_56d8f4491465f60155f07345",
+          "readableId": "19272869010",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192793010401",
+      "targetExtractionId": "aide_6JdUuVRapwmWCEtVMnVaBX",
+      "targetDrawingEvidenceCount": 16,
+      "targetFeatureTags": [],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:锯床下料",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XDJ01 锯床下料",
+      "comparison": {
+        "actualOperationCount": 2,
+        "suggestedOperationCount": 2,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_67d0175add9c1af2114f0bd3"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_64ad3c9b248836163b3b9f5b"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_67d0175add9c1af2114f0bd3",
+            "expectedProcessName": "锯床下料",
+            "predictedProcessId": "u8proc_64ad3c9b248836163b3b9f5b",
+            "predictedProcessName": "U8 XDJ01 锯床下料",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_59e67c77ccf7c9263231fd7a",
+          "readableId": "192713410402",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_2a6f4518bce6a332f677e34a",
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_e129093cf9f8b43332628ddb",
+          "readableId": "192437180604",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192793010402",
+      "targetExtractionId": "aide_M4coteusuwuhLc4YhA9SBx",
+      "targetDrawingEvidenceCount": 13,
+      "targetFeatureTags": [],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:锯床下料",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XDJ01 锯床下料",
+      "comparison": {
+        "actualOperationCount": 2,
+        "suggestedOperationCount": 2,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_67d0175add9c1af2114f0bd3"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_64ad3c9b248836163b3b9f5b"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_67d0175add9c1af2114f0bd3",
+            "expectedProcessName": "锯床下料",
+            "predictedProcessId": "u8proc_64ad3c9b248836163b3b9f5b",
+            "predictedProcessName": "U8 XDJ01 锯床下料",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_59e67c77ccf7c9263231fd7a",
+          "readableId": "192713410402",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_2a6f4518bce6a332f677e34a",
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_e129093cf9f8b43332628ddb",
+          "readableId": "192437180604",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192793080101",
+      "targetExtractionId": "aide_8G3JhmjydrvxBisY1a1srt",
+      "targetDrawingEvidenceCount": 26,
+      "targetFeatureTags": ["板件", "孔", "螺纹", "折弯"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:数控激光切割（下料） -> 30:数控折弯(下料） -> 40:气动攻丝机（机加工）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料） -> 3:U8 CSZ01 数控折弯(下料） -> 13:U8 JQG01 气动攻丝机（机加工）",
+      "comparison": {
+        "actualOperationCount": 4,
+        "suggestedOperationCount": 4,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_48b14696e7820288f3d239a2",
+          "wodiprocess_8dcc004ef7392f8c20dfff0d",
+          "wodiprocess_b9476d727e9447d208f0c201"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_4b1d56bd2a2820b629040581",
+          "u8proc_b47b49251b71b7cdf6f2601c",
+          "u8proc_49678e5d6d644d929cfacb36"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_48b14696e7820288f3d239a2",
+            "expectedProcessName": "数控激光切割（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_8dcc004ef7392f8c20dfff0d",
+            "expectedProcessName": "数控折弯(下料）",
+            "predictedProcessId": "u8proc_b47b49251b71b7cdf6f2601c",
+            "predictedProcessName": "U8 CSZ01 数控折弯(下料）",
+            "match": false
+          },
+          {
+            "position": 4,
+            "expectedProcessId": "wodiprocess_b9476d727e9447d208f0c201",
+            "expectedProcessName": "气动攻丝机（机加工）",
+            "predictedProcessId": "u8proc_49678e5d6d644d929cfacb36",
+            "predictedProcessName": "U8 JQG01 气动攻丝机（机加工）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_f8a47d03d811be629b47b32e",
+          "readableId": "19271341030101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_90ba3f19b54eac05274bc6e6",
+          "readableId": "1920790304",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 3
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 1
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192793080201",
+      "targetExtractionId": "aide_3KTkKLRWjjD5LdaXifFEJJ",
+      "targetDrawingEvidenceCount": 23,
+      "targetFeatureTags": ["板件", "折弯"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:数控激光切割（下料） -> 30:数控折弯(下料）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料） -> 3:U8 CSZ01 数控折弯(下料）",
+      "comparison": {
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 3,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_48b14696e7820288f3d239a2",
+          "wodiprocess_8dcc004ef7392f8c20dfff0d"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_4b1d56bd2a2820b629040581",
+          "u8proc_b47b49251b71b7cdf6f2601c"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_48b14696e7820288f3d239a2",
+            "expectedProcessName": "数控激光切割（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_8dcc004ef7392f8c20dfff0d",
+            "expectedProcessName": "数控折弯(下料）",
+            "predictedProcessId": "u8proc_b47b49251b71b7cdf6f2601c",
+            "predictedProcessName": "U8 CSZ01 数控折弯(下料）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_f8a47d03d811be629b47b32e",
+          "readableId": "19271341030101",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 4
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "19276939010203",
+      "targetExtractionId": "aide_Hidq62Pytt95QUMuc98Ssr",
+      "targetDrawingEvidenceCount": 7,
+      "targetFeatureTags": ["板件", "轴类", "孔"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "10:领料工作中心 -> 20:数控激光切割（下料） -> 30:普通车床CA6150B/A×2000（机加工）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料） -> 12:U8 JPC01 普通车床CA6140A×2000(机加工）",
+      "comparison": {
+        "actualOperationCount": 3,
+        "suggestedOperationCount": 3,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "wodiprocess_74cece1f3a50817257f1e9dc",
+          "wodiprocess_48b14696e7820288f3d239a2",
+          "wodiprocess_e6e59c84d29851f431c81bda"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_4b1d56bd2a2820b629040581",
+          "u8proc_f4314c5981e2602ec61c05ac"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "wodiprocess_74cece1f3a50817257f1e9dc",
+            "expectedProcessName": "领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "wodiprocess_48b14696e7820288f3d239a2",
+            "expectedProcessName": "数控激光切割（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "wodiprocess_e6e59c84d29851f431c81bda",
+            "expectedProcessName": "普通车床CA6150B/A×2000（机加工）",
+            "predictedProcessId": "u8proc_f4314c5981e2602ec61c05ac",
+            "predictedProcessName": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 6,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_e129093cf9f8b43332628ddb",
+          "readableId": "192437180604",
+          "score": 55,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+          "readableId": "1924371803",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192472540409",
+      "targetExtractionId": "aide_8rk3XwfKspF48nKAo3UUZs",
+      "targetDrawingEvidenceCount": 20,
+      "targetFeatureTags": ["轴类", "孔", "螺纹", "台阶"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XDJ01 锯床下料 -> 3:U8 JPC01 普通车床CA6140A×2000(机加工） -> 4:U8 JLX02 立式铣床（精乔）4S-R8(机加工） -> 5:U8 JQG01 气动攻丝机（机加工） -> 6:U8 WYH01 外协氧化",
+      "suggestedRouteSignature": "",
+      "comparison": {
+        "actualOperationCount": 6,
+        "suggestedOperationCount": 0,
+        "operationCountDelta": -6,
+        "exactPositionMatchCount": 0,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "u8proc_f6e011e7882189b9fc05a4b2",
+          "u8proc_64ad3c9b248836163b3b9f5b",
+          "u8proc_f4314c5981e2602ec61c05ac",
+          "u8proc_6aa9589470c8e1cd5c493b8a",
+          "u8proc_49678e5d6d644d929cfacb36",
+          "u8proc_b5a6a2a42d19674b5b3130b5"
+        ],
+        "extraSuggestedProcessIds": [],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "expectedProcessName": "U8 LL01 领料工作中心",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "u8proc_64ad3c9b248836163b3b9f5b",
+            "expectedProcessName": "U8 XDJ01 锯床下料",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "u8proc_f4314c5981e2602ec61c05ac",
+            "expectedProcessName": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 4,
+            "expectedProcessId": "u8proc_6aa9589470c8e1cd5c493b8a",
+            "expectedProcessName": "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 5,
+            "expectedProcessId": "u8proc_49678e5d6d644d929cfacb36",
+            "expectedProcessName": "U8 JQG01 气动攻丝机（机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 6,
+            "expectedProcessId": "u8proc_b5a6a2a42d19674b5b3130b5",
+            "expectedProcessName": "U8 WYH01 外协氧化",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 1,
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_d00e2b5f1f37ce362b47130c",
+          "readableId": "191967100102",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 8
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_cf492b188f7706ffa8f76712",
+          "readableId": "1927286901",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 8
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_5fc690745f6e81dfe7bcf078",
+          "readableId": "146001020101",
+          "score": 8,
+          "matchedDrawingEvidenceCount": 7
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_747a23b8aa398637b09049d5",
+          "readableId": "192475010310",
+          "score": 8,
+          "matchedDrawingEvidenceCount": 7
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_784fb5051c05d269a4357504",
+          "readableId": "192793050101",
+          "score": 8,
+          "matchedDrawingEvidenceCount": 7
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192759010202",
+      "targetExtractionId": "aide_UbjdKaBig5iVSi8kV5rARb",
+      "targetDrawingEvidenceCount": 17,
+      "targetFeatureTags": ["板件", "轴类", "孔", "螺纹", "台阶"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XPJ01 片锯下料（薄壁碳钢管）（下料） -> 3:U8 JPC01 普通车床CA6140A×2000(机加工） -> 4:U8 JSX01 数显立铣（北一）XA5032（机加工） -> 5:U8 JYZ01 摇臂钻床（机加工） -> 6:U8 JQG01 气动攻丝机（机加工）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XJG01 数控激光切割（下料） -> 12:U8 JQG01 气动攻丝机（机加工）",
+      "comparison": {
+        "actualOperationCount": 6,
+        "suggestedOperationCount": 3,
+        "operationCountDelta": -3,
+        "exactPositionMatchCount": 1,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "u8proc_1f8a21e2c6eda85a8b1c3579",
+          "u8proc_f4314c5981e2602ec61c05ac",
+          "u8proc_f23c4beb7380e597efa4dd14",
+          "u8proc_014434218cb85401ee65bef0"
+        ],
+        "extraSuggestedProcessIds": ["u8proc_4b1d56bd2a2820b629040581"],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "expectedProcessName": "U8 LL01 领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": true
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "u8proc_1f8a21e2c6eda85a8b1c3579",
+            "expectedProcessName": "U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+            "predictedProcessId": "u8proc_4b1d56bd2a2820b629040581",
+            "predictedProcessName": "U8 XJG01 数控激光切割（下料）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "u8proc_f4314c5981e2602ec61c05ac",
+            "expectedProcessName": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "predictedProcessId": "u8proc_49678e5d6d644d929cfacb36",
+            "predictedProcessName": "U8 JQG01 气动攻丝机（机加工）",
+            "match": false
+          },
+          {
+            "position": 4,
+            "expectedProcessId": "u8proc_f23c4beb7380e597efa4dd14",
+            "expectedProcessName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 5,
+            "expectedProcessId": "u8proc_014434218cb85401ee65bef0",
+            "expectedProcessName": "U8 JYZ01 摇臂钻床（机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          },
+          {
+            "position": 6,
+            "expectedProcessId": "u8proc_49678e5d6d644d929cfacb36",
+            "expectedProcessName": "U8 JQG01 气动攻丝机（机加工）",
+            "predictedProcessId": null,
+            "predictedProcessName": null,
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_e129093cf9f8b43332628ddb",
+          "readableId": "192437180604",
+          "score": 47,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_90ba3f19b54eac05274bc6e6",
+          "readableId": "1920790304",
+          "score": 41,
+          "matchedDrawingEvidenceCount": 6
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 41,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 41,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+          "readableId": "192713410405",
+          "score": 41,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192472540414",
+      "targetExtractionId": "aide_M5FyPMCzcLkotb7KbB5K7Z",
+      "targetDrawingEvidenceCount": 11,
+      "targetFeatureTags": ["轴类", "螺纹", "孔"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XDJ01 锯床下料 -> 3:U8 JPC01 普通车床CA6140A×2000(机加工） -> 4:U8 JSX01 数显立铣（北一）XA5032（机加工）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 JSX01 数显立铣（北一）XA5032（机加工） -> 3:U8 JLJ01 立式加工中心VMC850B(机加工） -> 4:U8 JQG01 气动攻丝机（机加工）",
+      "comparison": {
+        "actualOperationCount": 4,
+        "suggestedOperationCount": 4,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 1,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "u8proc_64ad3c9b248836163b3b9f5b",
+          "u8proc_f4314c5981e2602ec61c05ac"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_7f835aa39e078b47dd2f4b49",
+          "u8proc_49678e5d6d644d929cfacb36"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "expectedProcessName": "U8 LL01 领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": true
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "u8proc_64ad3c9b248836163b3b9f5b",
+            "expectedProcessName": "U8 XDJ01 锯床下料",
+            "predictedProcessId": "u8proc_f23c4beb7380e597efa4dd14",
+            "predictedProcessName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "u8proc_f4314c5981e2602ec61c05ac",
+            "expectedProcessName": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "predictedProcessId": "u8proc_7f835aa39e078b47dd2f4b49",
+            "predictedProcessName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "match": false
+          },
+          {
+            "position": 4,
+            "expectedProcessId": "u8proc_f23c4beb7380e597efa4dd14",
+            "expectedProcessName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "predictedProcessId": "u8proc_49678e5d6d644d929cfacb36",
+            "predictedProcessName": "U8 JQG01 气动攻丝机（机加工）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_90ba3f19b54eac05274bc6e6",
+          "readableId": "1920790304",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_e129093cf9f8b43332628ddb",
+          "readableId": "192437180604",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_2a6f4518bce6a332f677e34a",
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    },
+    {
+      "readableId": "192739030308",
+      "targetExtractionId": "aide_SnS2SLh3hxNGnCKy3dJ41u",
+      "targetDrawingEvidenceCount": 12,
+      "targetFeatureTags": ["轴类", "螺纹", "孔"],
+      "trainingSampleCount": 105,
+      "routeCandidateCount": 1,
+      "actualRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 XDJ01 锯床下料 -> 3:U8 JPC01 普通车床CA6140A×2000(机加工） -> 4:U8 JSX01 数显立铣（北一）XA5032（机加工）",
+      "suggestedRouteSignature": "1:U8 LL01 领料工作中心 -> 2:U8 JSX01 数显立铣（北一）XA5032（机加工） -> 3:U8 JLJ01 立式加工中心VMC850B(机加工） -> 4:U8 JQG01 气动攻丝机（机加工）",
+      "comparison": {
+        "actualOperationCount": 4,
+        "suggestedOperationCount": 4,
+        "operationCountDelta": 0,
+        "exactPositionMatchCount": 1,
+        "exactSequenceMatch": false,
+        "missingActualProcessIds": [
+          "u8proc_64ad3c9b248836163b3b9f5b",
+          "u8proc_f4314c5981e2602ec61c05ac"
+        ],
+        "extraSuggestedProcessIds": [
+          "u8proc_7f835aa39e078b47dd2f4b49",
+          "u8proc_49678e5d6d644d929cfacb36"
+        ],
+        "byPosition": [
+          {
+            "position": 1,
+            "expectedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "expectedProcessName": "U8 LL01 领料工作中心",
+            "predictedProcessId": "u8proc_f6e011e7882189b9fc05a4b2",
+            "predictedProcessName": "U8 LL01 领料工作中心",
+            "match": true
+          },
+          {
+            "position": 2,
+            "expectedProcessId": "u8proc_64ad3c9b248836163b3b9f5b",
+            "expectedProcessName": "U8 XDJ01 锯床下料",
+            "predictedProcessId": "u8proc_f23c4beb7380e597efa4dd14",
+            "predictedProcessName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "match": false
+          },
+          {
+            "position": 3,
+            "expectedProcessId": "u8proc_f4314c5981e2602ec61c05ac",
+            "expectedProcessName": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "predictedProcessId": "u8proc_7f835aa39e078b47dd2f4b49",
+            "predictedProcessName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "match": false
+          },
+          {
+            "position": 4,
+            "expectedProcessId": "u8proc_f23c4beb7380e597efa4dd14",
+            "expectedProcessName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "predictedProcessId": "u8proc_49678e5d6d644d929cfacb36",
+            "predictedProcessName": "U8 JQG01 气动攻丝机（机加工）",
+            "match": false
+          }
+        ]
+      },
+      "warningCount": 0,
+      "warnings": [],
+      "referenceCount": 5,
+      "topReferences": [
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_90ba3f19b54eac05274bc6e6",
+          "readableId": "1920790304",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 1
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_e129093cf9f8b43332628ddb",
+          "readableId": "192437180604",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 2
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_2a6f4518bce6a332f677e34a",
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        },
+        {
+          "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0
+        }
+      ],
+      "evaluationLeakCount": 0,
+      "workCenterAssignmentCount": 0,
+      "unsupportedWorkCenterAssignmentCount": 0,
+      "missingProcessIdCount": 0,
+      "invalidProcessIds": []
+    }
+  ]
+}

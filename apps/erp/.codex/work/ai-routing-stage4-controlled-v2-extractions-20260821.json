@@ -1,0 +1,300 @@
+{
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "targetPromptVersion": "ai-routing-drawing.prompt.v2",
+  "startedAt": "2026-08-21T00:20:13.460Z",
+  "updatedAt": "2026-08-21T00:46:51.323Z",
+  "writesPerformed": true,
+  "databaseMutationsPerformed": true,
+  "results": [
+    {
+      "readableId": "1927326104",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_c484b072af5ad08fe605223f",
+      "documentId": "doc_FC9aFPdTFZTaiBHPn87k7L",
+      "extractionId": "aide_JGRzJnTp1euqyo5APptHrP",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:28:01.408Z"
+    },
+    {
+      "readableId": "1927881101",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_6fab77b46187bf1152a38c8c",
+      "documentId": "doc_LQjoNwkvRztjvgX1kZ54pi",
+      "extractionId": "aide_V5D3PdXfftHpG8PMjkzGqd",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:29:44.738Z"
+    },
+    {
+      "readableId": "1927881103",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_f9a8a725516c183669a73edb",
+      "documentId": "doc_A1a7gp4rk3H4p4SxefTahV",
+      "extractionId": "aide_KzsYtxcCiX9RnUjUqBJfHB",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:28:39.750Z"
+    },
+    {
+      "readableId": "1927930801",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_ed6768a1531c1e7fb9e4d010",
+      "documentId": "doc_TcJS3hvEath3H1oLTvZzed",
+      "extractionId": "aide_QniffBqMAtu4TtPjBQaqcZ",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:30:32.714Z"
+    },
+    {
+      "readableId": "1927930802",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_3d14eb0a9ab0b1bd4e910ca7",
+      "documentId": "doc_JzuFBcFz5L5kVXMaXoAipA",
+      "extractionId": "aide_ADchRmnCoZBfxMCHVFouwj",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:31:21.781Z"
+    },
+    {
+      "readableId": "1927930803",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_2d1bbe14b42cd4c1c1aaf1bc",
+      "documentId": "doc_5vRQUrNRC3PbS7Nh3BiPg",
+      "extractionId": "aide_WyUukggsnAa4QM4bX3MKg2",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:32:41.018Z"
+    },
+    {
+      "readableId": "1927930804",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_ee0c59b012e73475a6ecc66f",
+      "documentId": "doc_N8wyzXT68oQNc6bYCD1Q7v",
+      "extractionId": "aide_7PBr1WGQazN14EUJbi9NKD",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:33:20.089Z"
+    },
+    {
+      "readableId": "192744140302",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_a6f589f786afcd86e4cb8f37",
+      "documentId": "doc_C24Uo6h2Xn5yr8SynfPGHN",
+      "extractionId": "aide_TRmEZDdyFJ6VajU5JqoJj7",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:33:53.887Z"
+    },
+    {
+      "readableId": "192769010102",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_b9596db1aeabf6529e9241c1",
+      "documentId": "doc_WJzgaXKNKxduY2Xtp5dPdG",
+      "extractionId": "aide_P24hvma6tfgWfMiMygxtig",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:36:25.979Z"
+    },
+    {
+      "readableId": "192769010103",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_a3654f8c91f3eae26a3d053b",
+      "documentId": "doc_3w8y6ekYoL3hhgYJwK4MSN",
+      "extractionId": "aide_6M9nDo3LjQ3QzahLv6d3r",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:34:46.763Z"
+    },
+    {
+      "readableId": "192788110401",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_d8a7f9fc17051e3109653465",
+      "documentId": "doc_8craCjevGfbMqGhozHXD8E",
+      "extractionId": "aide_3FpRu215mLSXAoRYRh7qDE",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:37:27.518Z"
+    },
+    {
+      "readableId": "192788110402",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_0c7809d895b302ac56f75077",
+      "documentId": "doc_SZ5Vkn688CNcMpaWLqxVsG",
+      "extractionId": "aide_YDuccKdGMfdsBHD1jqyvUh",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:38:13.482Z"
+    },
+    {
+      "readableId": "192788110601",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_3311a0f636766fa46d4118a8",
+      "documentId": "doc_J5K1iLeYpo4AQdspZoyB1P",
+      "extractionId": "aide_KjMWNsdknY1LKSrontU5pp",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:40:01.085Z"
+    },
+    {
+      "readableId": "192788110602",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_eae5ab70153eb79d94f53b7e",
+      "documentId": "doc_VriVSRYqTXQCJRA9ochdJT",
+      "extractionId": "aide_91jJDkF1SkBcZyYe8Rq7xd",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:40:33.326Z"
+    },
+    {
+      "readableId": "192793010401",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_8b8b1e8460fa36afdd366607",
+      "documentId": "doc_CiuxzDDm5uKhcJnukyYN6N",
+      "extractionId": "aide_6JdUuVRapwmWCEtVMnVaBX",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:41:06.628Z"
+    },
+    {
+      "readableId": "192793010402",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_8930a681c9f673136834b92b",
+      "documentId": "doc_887YcuWYyBioxJ98sAiMZt",
+      "extractionId": "aide_M4coteusuwuhLc4YhA9SBx",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:41:35.489Z"
+    },
+    {
+      "readableId": "192793080101",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_06937274e48a9b06cff42804",
+      "documentId": "doc_LDdUMJv4RBgsHCFLHHpLkb",
+      "extractionId": "aide_8G3JhmjydrvxBisY1a1srt",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:42:56.091Z"
+    },
+    {
+      "readableId": "192793080201",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_fed5ef936470a074b7a378c2",
+      "documentId": "doc_4AymemtCtZRpLLGB9q4Mx",
+      "extractionId": "aide_3KTkKLRWjjD5LdaXifFEJJ",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:43:37.893Z"
+    },
+    {
+      "readableId": "19276939010203",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_25d798c259814e9f83c52b92",
+      "documentId": "doc_KQDD4WDp8nfkUFTPho2zT7",
+      "extractionId": "aide_Hidq62Pytt95QUMuc98Ssr",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:44:04.357Z"
+    },
+    {
+      "readableId": "1927930202",
+      "role": "existing-evaluation-refresh",
+      "status": "Succeeded",
+      "itemId": "wodiitem_ffbfacf91b9ab3b7615319b1",
+      "documentId": "doc_YKsm1nNnp8mhpgQWwmNUVx",
+      "extractionId": "aide_Xkc6f8smpAbMetaJKAsE4f",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:45:21.658Z"
+    },
+    {
+      "readableId": "192793020201",
+      "role": "existing-evaluation-refresh",
+      "status": "Succeeded",
+      "itemId": "wodiitem_d6d6376c2dbec8d306812f97",
+      "documentId": "doc_F3m9n3xTm9MYLsPi1Tpn2Y",
+      "extractionId": "aide_Uw3VowXSciEShC5k2FfRDx",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:46:08.968Z"
+    },
+    {
+      "readableId": "1927930206",
+      "role": "existing-evaluation-refresh",
+      "status": "Succeeded",
+      "itemId": "wodiitem_a4d59c570e244d212b1cad7e",
+      "documentId": "doc_XSVvDoSaTcUfh3ybGmsEJo",
+      "extractionId": "aide_AuVwaULQPmqHBVeduqZKCx",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v2",
+      "completedAt": "2026-08-21T00:46:51.322Z"
+    }
+  ],
+  "requestedInThisRun": ["1927930202", "192793020201", "1927930206"],
+  "counts": {
+    "Succeeded": 22
+  }
+}

@@ -1,0 +1,907 @@
+{
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "scannedAt": "2026-08-21T05:36:17.064Z",
+  "existingHoldoutCount": 26,
+  "minimumHoldoutCount": 30,
+  "neededAdditionalHoldouts": 4,
+  "summary": {
+    "activePdfPartCount": 69,
+    "activePdfWithAnyTruthRouteCount": 69,
+    "cleanAdditionalCandidateCount": 22,
+    "cleanAdditionalWithCurrentV2ExtractionCount": 0,
+    "selectedAdditionalCount": 4,
+    "reachesThirtyHoldoutsWithSelection": true,
+    "writesPerformed": false,
+    "databaseMutationsPerformed": false
+  },
+  "selectedAdditionalHoldouts": [
+    {
+      "rank": 1,
+      "readableId": "192472540409",
+      "itemId": "wodiitem_b4c1f209502c82cd3bd79c08",
+      "name": "轴承座",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 6,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JLX02 立式铣床（精乔）4S-R8(机加工） -> U8 JQG01 气动攻丝机（机加工） -> U8 WYH01 外协氧化",
+      "pdfDocumentCount": 1,
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "outsourcing_surface",
+        "tube_saw",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 83
+    },
+    {
+      "rank": 2,
+      "readableId": "192759010202",
+      "itemId": "wodiitem_67aa6030f75984cd62312899",
+      "name": "推板连接杆",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 6,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XPJ01 片锯下料（薄壁碳钢管）（下料） -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JYZ01 摇臂钻床（机加工） -> U8 JQG01 气动攻丝机（机加工）",
+      "pdfDocumentCount": 1,
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "tube_saw",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 70
+    },
+    {
+      "rank": 3,
+      "readableId": "192472540414",
+      "itemId": "wodiitem_8cf15bc9cbe6d483d7a0d044",
+      "name": "轴",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JSX01 数显立铣（北一）XA5032（机加工）",
+      "pdfDocumentCount": 1,
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "tube_saw",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 60
+    },
+    {
+      "rank": 4,
+      "readableId": "192739030308",
+      "itemId": "wodiitem_3b43cf0c7b1f7eeade432347",
+      "name": "轴",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JSX01 数显立铣（北一）XA5032（机加工）",
+      "pdfDocumentCount": 1,
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "tube_saw",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 60
+    }
+  ],
+  "cleanAdditionalCandidates": [
+    {
+      "readableId": "192472540409",
+      "itemId": "wodiitem_b4c1f209502c82cd3bd79c08",
+      "name": "轴承座",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 6,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JLX02 立式铣床（精乔）4S-R8(机加工） -> U8 JQG01 气动攻丝机（机加工） -> U8 WYH01 外协氧化",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "outsourcing_surface",
+        "tube_saw",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 83
+    },
+    {
+      "readableId": "192759010202",
+      "itemId": "wodiitem_67aa6030f75984cd62312899",
+      "name": "推板连接杆",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 6,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XPJ01 片锯下料（薄壁碳钢管）（下料） -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JYZ01 摇臂钻床（机加工） -> U8 JQG01 气动攻丝机（机加工）",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "tube_saw",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 70
+    },
+    {
+      "readableId": "192472540414",
+      "itemId": "wodiitem_8cf15bc9cbe6d483d7a0d044",
+      "name": "轴",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JSX01 数显立铣（北一）XA5032（机加工）",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "tube_saw",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 60
+    },
+    {
+      "readableId": "192739030308",
+      "itemId": "wodiitem_3b43cf0c7b1f7eeade432347",
+      "name": "轴",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JSX01 数显立铣（北一）XA5032（机加工）",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "tube_saw",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 60
+    },
+    {
+      "readableId": "1927590102",
+      "itemId": "wodiitem_852b4586cfd2b72475c4a436",
+      "name": "滑板01",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工） -> U8 WYH01 外协氧化",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "outsourcing_surface",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 59
+    },
+    {
+      "readableId": "1927590103",
+      "itemId": "wodiitem_dd36a6806dd90b599fe51cd5",
+      "name": "固定板",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工） -> U8 WYH01 外协氧化",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "outsourcing_surface",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 59
+    },
+    {
+      "readableId": "192472540410",
+      "itemId": "wodiitem_a6b5d1591aeac02c5dd200ee",
+      "name": "、轴",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工）",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "tube_saw",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 55
+    },
+    {
+      "readableId": "192759010101",
+      "itemId": "wodiitem_bb43594f8f1f5d93b4633d51",
+      "name": "不锈钢矩管A型 20x40x2 L= 1200",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XPJ01 片锯下料（薄壁碳钢管）（下料） -> U8 JYZ01 摇臂钻床（机加工）",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "tube_saw",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 55
+    },
+    {
+      "readableId": "1927590104",
+      "itemId": "wodiitem_8be9c99f2f942b062167822f",
+      "name": "垫高柱",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XPJ01 片锯下料（薄壁碳钢管）（下料） -> U8 JPC01 普通车床CA6140A×2000(机加工）",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "tube_saw",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 55
+    },
+    {
+      "readableId": "1924725417",
+      "itemId": "wodiitem_8aca75681986b958145b7ab2",
+      "name": "固定板",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 WYH01 外协氧化",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "outsourcing_surface",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 54
+    },
+    {
+      "readableId": "192739030307",
+      "itemId": "wodiitem_c77ad729ef6436eae845e57c",
+      "name": "连杆",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 WYH01 外协氧化",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "outsourcing_surface",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 54
+    },
+    {
+      "readableId": "1927590101",
+      "itemId": "wodiitem_e3ae2ac2efac065404aefe76",
+      "name": "固定板",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 JLM01 数控龙门镗铣床GMB2040(机加工） -> U8 WYH01 外协氧化",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "outsourcing_surface",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 54
+    },
+    {
+      "readableId": "192759010100",
+      "itemId": "wodiitem_11258907571579554ff850d6",
+      "name": "推板",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 BPZ01 板焊拼装（碳钢） -> U8 BYH03 氩弧焊（碳钢） -> U8 MDM01 打磨（碳钢）",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "finish_deburr_polish",
+        "weak_or_needs_extraction_review",
+        "welding_fabrication"
+      ],
+      "coverageScore": 51
+    },
+    {
+      "readableId": "192759010200",
+      "itemId": "wodiitem_c1b93ac159c7b4006dada5dd",
+      "name": "推板支撑组件",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 BPZ01 板焊拼装（碳钢） -> U8 BYH03 氩弧焊（碳钢） -> U8 MDM01 打磨（碳钢）",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "finish_deburr_polish",
+        "weak_or_needs_extraction_review",
+        "welding_fabrication"
+      ],
+      "coverageScore": 51
+    },
+    {
+      "readableId": "1927930201",
+      "itemId": "wodiitem_136358709b5db8860cdfc0d6",
+      "name": "皮带侧板",
+      "truthSource": "JobRoute",
+      "operationCount": 4,
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料） -> 气动攻丝机（机加工）",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "laser_bending",
+        "machining_drilling_turning",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 42
+    },
+    {
+      "readableId": "192739030309",
+      "itemId": "wodiitem_c239fd526a2420983cce9795",
+      "name": "滑块连接件",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JYZ01 摇臂钻床（机加工）",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "machining_drilling_turning",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 41
+    },
+    {
+      "readableId": "19272817090304",
+      "itemId": "wodiitem_efc5de99a3d85e0aef1667dc",
+      "name": "矩管封板",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 2,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": [
+        "laser_bending",
+        "tube_saw",
+        "weak_or_needs_extraction_review"
+      ],
+      "coverageScore": 35
+    },
+    {
+      "readableId": "192759010102",
+      "itemId": "wodiitem_7ada1d7cd6ca13ad26044620",
+      "name": "不锈钢矩管A型 20x40x2 L= 200",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 2,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": ["tube_saw", "weak_or_needs_extraction_review"],
+      "coverageScore": 35
+    },
+    {
+      "readableId": "1927590100",
+      "itemId": "wodiitem_cb03feb6f88ec51ceeb2c779",
+      "name": "推箱机构（居中机构）",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 2,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 ZBZ01 标准输送机组装",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": ["weak_or_needs_extraction_review", "welding_fabrication"],
+      "coverageScore": 33
+    },
+    {
+      "readableId": "192739030306",
+      "itemId": "wodiitem_4b7d389d597b748fa95e3a23",
+      "name": "固定板",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": ["laser_bending", "weak_or_needs_extraction_review"],
+      "coverageScore": 26
+    },
+    {
+      "readableId": "19273903030203",
+      "itemId": "wodiitem_0ca665401cabc89a1c1115bf",
+      "name": "连接杆加强筋",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 2,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": ["laser_bending", "weak_or_needs_extraction_review"],
+      "coverageScore": 21
+    },
+    {
+      "readableId": "192759010201",
+      "itemId": "wodiitem_5cb69ad1d037c08967057c21",
+      "name": "推板固定底板",
+      "truthSource": "PartActiveRoute",
+      "operationCount": 2,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+      "latestExtractionId": null,
+      "latestExtractionPromptVersion": null,
+      "needsV2Extraction": true,
+      "labels": ["laser_bending", "weak_or_needs_extraction_review"],
+      "coverageScore": 21
+    }
+  ],
+  "blockedCounts": [
+    {
+      "blocker": "existing Training sample would leak",
+      "count": 20
+    },
+    {
+      "blocker": "already Evaluation holdout",
+      "count": 26
+    },
+    {
+      "blocker": "already active AI-materialized route",
+      "count": 4
+    },
+    {
+      "blocker": "fake item excluded",
+      "count": 1
+    }
+  ],
+  "blockedPreview": [
+    {
+      "readableId": "1919671001",
+      "name": "转轮盖板",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 JYZ01 摇臂钻床（机加工）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "191967100102",
+      "name": "转轴座组件2",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "1919671002",
+      "name": "尼龙轮",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "1920790302",
+      "name": "铜套固定块A",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "19266541010201",
+      "name": "挡轮固定板",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "192713640301",
+      "name": "调节板",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "1927326104",
+      "name": "涨紧块",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 摇臂钻床（机加工） -> 气动攻丝机（机加工）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "192744140302",
+      "name": "连接板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "192769010102",
+      "name": "电机安装板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数显立铣（北一）XA5032（机加工） -> 普通车床CA6140A×2000(机加工） -> 摇臂钻床（机加工） -> 气动攻丝机（机加工） -> 外协氧化",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "192769010103",
+      "name": "封板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "19276939010203",
+      "name": "主动轴固定板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料） -> 普通车床CA6150B/A×2000（机加工）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "1927881101",
+      "name": "电机安装位支撑杆",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 片锯下料（薄壁碳钢管）（下料） -> 普通车床CA6140A×2000(机加工） -> 气动攻丝机（机加工）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "1927881103",
+      "name": "封板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "192788110401",
+      "name": "辊筒套",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 片锯下料（薄壁碳钢管）（下料） -> 普通车床CA6140A×2000(机加工）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "192788110402",
+      "name": "辊筒轴",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 片锯下料（薄壁碳钢管）（下料） -> 普通车床CA6140A×2000(机加工） -> 数显立铣（北一）XA5032（机加工） -> 气动攻丝机（机加工）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "192788110601",
+      "name": "主动滚筒轴",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 片锯下料（薄壁碳钢管）（下料） -> 普通车床CA6140A×2000(机加工） -> 数显立铣（北一）XA5032（机加工） -> 气动攻丝机（机加工）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "192788110602",
+      "name": "主动滚筒辊面",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 片锯下料（薄壁碳钢管）（下料） -> 普通车床CA6140A×2000(机加工）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "192793010401",
+      "name": "支腿方管1",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 锯床下料",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "192793010402",
+      "name": "支腿方管2",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 锯床下料",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "192793020101",
+      "name": "皮带侧板",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料） -> U8 JQG01 气动攻丝机（机加工）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "1927930202",
+      "name": "皮带侧板",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料） -> U8 JQG01 气动攻丝机（机加工）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "192793020200",
+      "name": "皮带支撑板",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 BPZ01 板焊拼装（碳钢） -> U8 BYH03 氩弧焊（碳钢） -> U8 MDM01 打磨（碳钢）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "192793020201",
+      "name": "拖板",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "192793020202",
+      "name": "不锈钢方管",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "1927930203",
+      "name": "导向板",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "1927930205",
+      "name": "导向板",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "1927930206",
+      "name": "电机固定板",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工） -> U8 WYH01 外协氧化",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "1927930207",
+      "name": "骨架下连接板",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 JQG01 气动攻丝机（机加工）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "1927930501",
+      "name": "导向板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "192793050101",
+      "name": "皮带侧板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料） -> 气动攻丝机（机加工）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "1927930502",
+      "name": "皮带侧板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "192793050200",
+      "name": "皮带支撑板1",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 板焊拼装（碳钢） -> 氩弧焊（碳钢） -> 打磨（碳钢）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "192793050201",
+      "name": "拖板1",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 1,
+      "blockers": [
+        "already Evaluation holdout",
+        "already active AI-materialized route"
+      ]
+    },
+    {
+      "readableId": "1927930503",
+      "name": "皮带侧板",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 1,
+      "blockers": [
+        "already Evaluation holdout",
+        "already active AI-materialized route"
+      ]
+    },
+    {
+      "readableId": "1927930601",
+      "name": "导向板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "192793060101",
+      "name": "皮带侧板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料） -> 打磨（碳钢）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "1927930602",
+      "name": "皮带侧板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "192793060200",
+      "name": "皮带支撑板1",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 板焊拼装（碳钢） -> 氩弧焊（碳钢） -> 打磨（碳钢）",
+      "sampleRoles": ["Training"],
+      "activeAiDraftCount": 0,
+      "blockers": ["existing Training sample would leak"]
+    },
+    {
+      "readableId": "192793060201",
+      "name": "拖板1",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 1,
+      "blockers": [
+        "already Evaluation holdout",
+        "already active AI-materialized route"
+      ]
+    },
+    {
+      "readableId": "1927930603",
+      "name": "皮带侧板",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 1,
+      "blockers": [
+        "already Evaluation holdout",
+        "already active AI-materialized route"
+      ]
+    },
+    {
+      "readableId": "1927930801",
+      "name": "导向板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "192793080101",
+      "name": "皮带侧板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料） -> 气动攻丝机（机加工）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "1927930802",
+      "name": "导向板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "192793080201",
+      "name": "拖板1",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "1927930803",
+      "name": "皮带侧板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "1927930804",
+      "name": "皮带侧板",
+      "truthSource": "JobRoute",
+      "routeSignature": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料）",
+      "sampleRoles": ["Evaluation"],
+      "activeAiDraftCount": 0,
+      "blockers": ["already Evaluation holdout"]
+    },
+    {
+      "readableId": "asm-top-001",
+      "name": "asm-top-001 总成",
+      "truthSource": "PartActiveRoute",
+      "routeSignature": "零部件预装 -> 自动锁附 -> 整机通电调试 -> 高温老化 -> 终检包装",
+      "sampleRoles": [],
+      "activeAiDraftCount": 0,
+      "blockers": ["fake item excluded"]
+    }
+  ]
+}

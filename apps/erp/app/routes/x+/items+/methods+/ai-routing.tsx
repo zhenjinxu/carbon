@@ -13,6 +13,7 @@ import {
   getAiRoutingSamples,
   getAiRoutingTargetEvidenceForItem,
   getAiRoutingTrainingDrawingSnapshots,
+  materializeAcceptedAiRoutingDraft,
   persistAiRoutingSample,
   recordAiRoutingFeedback
 } from "~/modules/items/ai-routing.server";
@@ -24,12 +25,14 @@ import {
 } from "~/modules/items/ai-routing-drawing.server";
 import { parseAiRoutingConfirmedRouteSnapshot } from "~/modules/items/ai-routing-review";
 import { getDatabaseClient } from "~/services/database.server";
+import { path } from "~/utils/path";
 
 const intentValidator = z.enum([
   "save-sample",
   "generate-draft",
   "record-feedback",
-  "extract-drawing"
+  "extract-drawing",
+  "materialize-draft"
 ]);
 
 const sampleStatusValidator = z.enum(["Candidate", "Approved"]);
@@ -64,6 +67,16 @@ export type AiRoutingActionData =
       message: MessageDescriptor;
       extractionId: string;
       status: "Pending";
+    }
+  | {
+      success: true;
+      intent: "materialize-draft";
+      message: MessageDescriptor;
+      action: "Created" | "Reused";
+      makeMethodId: string;
+      operationCount: number;
+      version: number;
+      redirectTo: string;
     }
   | {
       success: false;
@@ -206,6 +219,31 @@ export async function action({ request }: ActionFunctionArgs) {
       });
     }
 
+    if (intent.data === "materialize-draft") {
+      const draftId = formText(formData, "draftId");
+      if (!draftId) return fail(msg`Missing AI routing draft id`, intent.data);
+
+      const result = await materializeAcceptedAiRoutingDraft(db, {
+        companyId,
+        userId,
+        itemId,
+        draftId
+      });
+
+      return data<AiRoutingActionData>({
+        success: true,
+        intent: intent.data,
+        message:
+          result.action === "Created"
+            ? msg`Created an AI-reviewed Draft method version. Review and activate it separately.`
+            : msg`This AI draft already has a linked Draft method version.`,
+        action: result.action,
+        makeMethodId: result.makeMethodId,
+        operationCount: result.operationCount,
+        version: result.version,
+        redirectTo: path.to.partMake(itemId, result.makeMethodId)
+      });
+    }
     if (intent.data === "generate-draft") {
       const target = await getAiRoutingTargetEvidenceForItem(db, {
         companyId,

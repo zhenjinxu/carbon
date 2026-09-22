@@ -1,0 +1,69 @@
+{
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "targetPromptVersion": "ai-routing-drawing.prompt.v3",
+  "startedAt": "2026-08-24T02:07:21.184Z",
+  "updatedAt": "2026-08-24T02:09:57.201Z",
+  "writesPerformed": true,
+  "databaseMutationsPerformed": true,
+  "results": [
+    {
+      "readableId": "192472540409",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_b4c1f209502c82cd3bd79c08",
+      "documentId": "doc_F74reWPB3JNwXRiLprhQgM",
+      "extractionId": "aide_8rk3XwfKspF48nKAo3UUZs",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v3",
+      "completedAt": "2026-08-24T02:08:35.443Z"
+    },
+    {
+      "readableId": "192759010202",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_67aa6030f75984cd62312899",
+      "documentId": "doc_632r4phaWmyCHhABLRRTje",
+      "extractionId": "aide_UbjdKaBig5iVSi8kV5rARb",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v3",
+      "completedAt": "2026-08-24T02:09:14.799Z"
+    },
+    {
+      "readableId": "192472540414",
+      "role": "new-evaluation-candidate",
+      "status": "AlreadyTargetPromptSucceeded",
+      "itemId": "wodiitem_8cf15bc9cbe6d483d7a0d044",
+      "documentId": "doc_5XMSHgdmoTCHY9xGqFxf68",
+      "extractionId": "aide_M5FyPMCzcLkotb7KbB5K7Z",
+      "promptVersion": "ai-routing-drawing.prompt.v3",
+      "completedAt": "2026-08-24T02:09:14.850Z"
+    },
+    {
+      "readableId": "192739030308",
+      "role": "new-evaluation-candidate",
+      "status": "Succeeded",
+      "itemId": "wodiitem_3b43cf0c7b1f7eeade432347",
+      "documentId": "doc_MViksRhFYxJWoNqbnTCzmF",
+      "extractionId": "aide_SnS2SLh3hxNGnCKy3dJ41u",
+      "result": {
+        "status": "Succeeded"
+      },
+      "promptVersion": "ai-routing-drawing.prompt.v3",
+      "completedAt": "2026-08-24T02:09:57.200Z"
+    }
+  ],
+  "requestedInThisRun": [
+    "192472540409",
+    "192759010202",
+    "192472540414",
+    "192739030308"
+  ],
+  "counts": {
+    "Succeeded": 3,
+    "AlreadyTargetPromptSucceeded": 1
+  }
+}

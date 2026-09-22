@@ -1,0 +1,2 @@
+using System; using System.Reflection; using UFIDA.U8.U8APIFramework.Parameter;
+class R { static void Dump(Type t){ Console.WriteLine("TYPE "+t.FullName); foreach(var m in t.GetMethods(BindingFlags.Public|BindingFlags.Instance|BindingFlags.DeclaredOnly)) Console.WriteLine(m.ToString()); foreach(var p in t.GetProperties(BindingFlags.Public|BindingFlags.Instance|BindingFlags.DeclaredOnly)) Console.WriteLine(p.ToString()); } static void Main(){ Dump(typeof(ExtensionItemList)); Dump(typeof(ExtensionItem)); Dump(typeof(ExtensionBusinessEntity)); } }

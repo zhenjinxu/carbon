@@ -1,0 +1,883 @@
+{
+  "generatedAt": "2026-08-24T02:22:49.303Z",
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "scope": "Prompt v2/v3 extraction diff for the four original 30-gate residual candidates",
+  "sourceArtifacts": {
+    "v2": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\ai-routing-stage4-30-gate-controlled-v2-extractions-20260823.json",
+    "v3": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\ai-routing-stage4-controlled-v3-extractions-20260824.json"
+  },
+  "rows": [
+    {
+      "readableId": "192472540409",
+      "itemId": "wodiitem_b4c1f209502c82cd3bd79c08",
+      "documentId": "doc_F74reWPB3JNwXRiLprhQgM",
+      "v2": {
+        "id": "aide_UaiK39Vp1NXXeDgwWGBQJL",
+        "promptVersion": "ai-routing-drawing.prompt.v2",
+        "status": "Succeeded",
+        "contentHash": "4fc1c01e8e1600fde76e579ff8997ae7e81a4aa75d85b451017f65b109ad215d",
+        "rendererVersion": "pdfjs-dist-5.4.296-napi-canvas.v1",
+        "extractorSchemaVersion": "ai-routing-drawing.v1",
+        "completedAt": "2026-08-23T11:12:36.764+00:00",
+        "document": {
+          "pageCount": 1,
+          "contentHash": "4fc1c01e8e1600fde76e579ff8997ae7e81a4aa75d85b451017f65b109ad215d",
+          "renderedPageCount": 1
+        },
+        "titleBlock": {
+          "finish": "表面阳极氧化处理（本色）",
+          "material": "6061-T6 (GB)",
+          "revision": null,
+          "partNumber": "192472540409",
+          "heatTreatment": null
+        },
+        "part": {
+          "class": "unknown",
+          "stockForm": "unknown"
+        },
+        "explicitUnknowns": [
+          "revision",
+          "heatTreatment",
+          "partClass",
+          "stockForm"
+        ],
+        "extractionWarnings": [
+          "图纸未明确标注尺寸单位，所有尺寸的 unit 保留为 null。",
+          "未从图纸推断零件类别或毛坯形式。"
+        ],
+        "target": {
+          "materialTags": ["6061"],
+          "featureTags": ["孔", "螺纹"],
+          "processHints": ["攻丝", "氧化"],
+          "drawingEvidenceCount": 19,
+          "drawingEvidenceByKind": {
+            "dimension": 12,
+            "hole": 1,
+            "thread": 1,
+            "surface": 2,
+            "note": 3
+          }
+        },
+        "features": {
+          "dimensions": 12,
+          "holes": 1,
+          "holesWithThread": 1,
+          "holeTexts": ["4 x M8-6H；Ø6.80 深22.25"],
+          "threads": 1,
+          "threadSpecs": ["M8-6H"],
+          "threadTexts": ["4 x M8-6H 深16"],
+          "slots": 0,
+          "pockets": 0,
+          "bends": 0,
+          "welds": 0,
+          "surfaces": 2,
+          "surfaceTexts": ["其余：表面粗糙度符号 6.3", "3.2"],
+          "notes": 3,
+          "manufacturingNotes": ["表面阳极氧化处理（本色）。"],
+          "allNotes": [
+            "锐角/尖角/锐边倒钝。",
+            "表面阳极氧化处理（本色）。",
+            "未注尺寸公差应符合企业标准。"
+          ]
+        }
+      },
+      "v3": {
+        "id": "aide_8rk3XwfKspF48nKAo3UUZs",
+        "promptVersion": "ai-routing-drawing.prompt.v3",
+        "status": "Succeeded",
+        "contentHash": "4fc1c01e8e1600fde76e579ff8997ae7e81a4aa75d85b451017f65b109ad215d",
+        "rendererVersion": "pdfjs-dist-5.4.296-napi-canvas.v1",
+        "extractorSchemaVersion": "ai-routing-drawing.v1",
+        "completedAt": "2026-08-24T02:08:35.422+00:00",
+        "document": {
+          "pageCount": 1,
+          "contentHash": "4fc1c01e8e1600fde76e579ff8997ae7e81a4aa75d85b451017f65b109ad215d",
+          "renderedPageCount": 1
+        },
+        "titleBlock": {
+          "finish": "阳极氧化处理（本色）",
+          "material": "6061-T6 (GB)",
+          "revision": null,
+          "partNumber": "192472540409",
+          "heatTreatment": null
+        },
+        "part": {
+          "class": "unknown",
+          "stockForm": "unknown"
+        },
+        "explicitUnknowns": [
+          "revision",
+          "heatTreatment",
+          "partClass",
+          "stockForm"
+        ],
+        "extractionWarnings": [
+          "图纸未显示明确的毛坯或起始材料形式。",
+          "图纸未显示独立的修订号。"
+        ],
+        "target": {
+          "materialTags": ["6061"],
+          "featureTags": ["孔", "螺纹", "台阶", "轴类"],
+          "processHints": ["攻丝", "车削", "氧化"],
+          "drawingEvidenceCount": 20,
+          "drawingEvidenceByKind": {
+            "dimension": 12,
+            "hole": 1,
+            "thread": 1,
+            "surface": 2,
+            "note": 4
+          }
+        },
+        "features": {
+          "dimensions": 12,
+          "holes": 1,
+          "holesWithThread": 1,
+          "holeTexts": ["4 x M8-6H; ⌀6.80; 深16; 深22.25"],
+          "threads": 1,
+          "threadSpecs": ["M8-6H"],
+          "threadTexts": ["4 x M8-6H; 深16"],
+          "slots": 0,
+          "pockets": 0,
+          "bends": 0,
+          "welds": 0,
+          "surfaces": 2,
+          "surfaceTexts": ["3.2", "其余：6.3"],
+          "notes": 4,
+          "manufacturingNotes": ["表面阳极氧化处理（本色）。"],
+          "allNotes": [
+            "表面阳极氧化处理（本色）。",
+            "锐角、尖角、锐边倒钝。",
+            "未注尺寸公差应符合企业标准。",
+            "零件名称：轴承座。"
+          ]
+        }
+      },
+      "diff": {
+        "sameContentHash": true,
+        "partClassChanged": false,
+        "stockFormChanged": false,
+        "materialChanged": false,
+        "finishChanged": true,
+        "explicitUnknowns": {
+          "added": [],
+          "removed": [],
+          "unchanged": ["revision", "heatTreatment", "partClass", "stockForm"]
+        },
+        "materialTags": {
+          "added": [],
+          "removed": [],
+          "unchanged": ["6061"]
+        },
+        "featureTags": {
+          "added": ["台阶", "轴类"],
+          "removed": [],
+          "unchanged": ["孔", "螺纹"]
+        },
+        "processHints": {
+          "added": ["车削"],
+          "removed": [],
+          "unchanged": ["攻丝", "氧化"]
+        },
+        "evidenceCountDelta": 1,
+        "featureCountDelta": {
+          "dimensions": 0,
+          "holes": 0,
+          "holesWithThread": 0,
+          "threads": 0,
+          "slots": 0,
+          "pockets": 0,
+          "bends": 0,
+          "welds": 0,
+          "surfaces": 0,
+          "notes": 1
+        },
+        "manufacturingNotes": {
+          "added": [],
+          "removed": [],
+          "unchanged": ["表面阳极氧化处理（本色）。"]
+        },
+        "holeTexts": {
+          "added": ["4 x M8-6H; ⌀6.80; 深16; 深22.25"],
+          "removed": ["4 x M8-6H；Ø6.80 深22.25"],
+          "unchanged": []
+        },
+        "threadTexts": {
+          "added": ["4 x M8-6H; 深16"],
+          "removed": ["4 x M8-6H 深16"],
+          "unchanged": []
+        },
+        "surfaceTexts": {
+          "added": ["其余：6.3"],
+          "removed": ["其余：表面粗糙度符号 6.3"],
+          "unchanged": ["3.2"]
+        }
+      }
+    },
+    {
+      "readableId": "192759010202",
+      "itemId": "wodiitem_67aa6030f75984cd62312899",
+      "documentId": "doc_632r4phaWmyCHhABLRRTje",
+      "v2": {
+        "id": "aide_WjUsuJ3zzDiZdkS2vPkPux",
+        "promptVersion": "ai-routing-drawing.prompt.v2",
+        "status": "Succeeded",
+        "contentHash": "ec2d88a7cc1df1aff8aba61bf69c531224103124a91f2f04d3d53bbe9d710a22",
+        "rendererVersion": "pdfjs-dist-5.4.296-napi-canvas.v1",
+        "extractorSchemaVersion": "ai-routing-drawing.v1",
+        "completedAt": "2026-08-23T11:13:18.478+00:00",
+        "document": {
+          "pageCount": 1,
+          "contentHash": "ec2d88a7cc1df1aff8aba61bf69c531224103124a91f2f04d3d53bbe9d710a22",
+          "renderedPageCount": 1
+        },
+        "titleBlock": {
+          "finish": null,
+          "material": "304",
+          "revision": null,
+          "partNumber": "192759010202",
+          "heatTreatment": null
+        },
+        "part": {
+          "class": "unknown",
+          "stockForm": "unknown"
+        },
+        "explicitUnknowns": [
+          "revision",
+          "finish",
+          "heatTreatment",
+          "partClass",
+          "stockForm"
+        ],
+        "extractionWarnings": [
+          "Part class and stock form are not explicitly identified on the visible drawing.",
+          "Title-block finish and heat-treatment fields are blank or not legible."
+        ],
+        "target": {
+          "materialTags": ["304"],
+          "featureTags": ["孔", "螺纹", "台阶"],
+          "processHints": ["攻丝"],
+          "drawingEvidenceCount": 17,
+          "drawingEvidenceByKind": {
+            "dimension": 10,
+            "hole": 2,
+            "thread": 1,
+            "surface": 1,
+            "note": 3
+          }
+        },
+        "features": {
+          "dimensions": 10,
+          "holes": 2,
+          "holesWithThread": 1,
+          "holeTexts": ["2 x M5 - 6H 完全贯穿", "Ø4.20 完全贯穿"],
+          "threads": 1,
+          "threadSpecs": ["M5-6H"],
+          "threadTexts": ["2 x M5 - 6H 完全贯穿"],
+          "slots": 0,
+          "pockets": 0,
+          "bends": 0,
+          "welds": 0,
+          "surfaces": 1,
+          "surfaceTexts": ["12.5/其余"],
+          "notes": 3,
+          "manufacturingNotes": [],
+          "allNotes": [
+            "锐角、尖角、边倒钝；",
+            "未注形位公差按 GB/T 1804-k；",
+            "未注尺寸公差按 GB/T 1184-m。"
+          ]
+        }
+      },
+      "v3": {
+        "id": "aide_UbjdKaBig5iVSi8kV5rARb",
+        "promptVersion": "ai-routing-drawing.prompt.v3",
+        "status": "Succeeded",
+        "contentHash": "ec2d88a7cc1df1aff8aba61bf69c531224103124a91f2f04d3d53bbe9d710a22",
+        "rendererVersion": "pdfjs-dist-5.4.296-napi-canvas.v1",
+        "extractorSchemaVersion": "ai-routing-drawing.v1",
+        "completedAt": "2026-08-24T02:09:14.778+00:00",
+        "document": {
+          "pageCount": 1,
+          "contentHash": "ec2d88a7cc1df1aff8aba61bf69c531224103124a91f2f04d3d53bbe9d710a22",
+          "renderedPageCount": 1
+        },
+        "titleBlock": {
+          "finish": null,
+          "material": "304",
+          "revision": null,
+          "partNumber": "192759010202",
+          "heatTreatment": null
+        },
+        "part": {
+          "class": "turned",
+          "stockForm": "bar"
+        },
+        "explicitUnknowns": [
+          "revision",
+          "finish",
+          "heatTreatment",
+          "partClass",
+          "dimensions",
+          "slots",
+          "pockets",
+          "bends",
+          "welds"
+        ],
+        "extractionWarnings": [
+          "Drawing identifies material as 304 in the title block; no explicit material grade designation beyond this text was visible.",
+          "No explicit dimensional tolerance values were visible; drawing references general tolerance standards.",
+          "No explicit stock-form callout was visible; stockForm 'bar' is based on the visible solid round geometry."
+        ],
+        "target": {
+          "materialTags": ["304"],
+          "featureTags": ["孔", "螺纹", "台阶"],
+          "processHints": ["攻丝"],
+          "drawingEvidenceCount": 17,
+          "drawingEvidenceByKind": {
+            "dimension": 11,
+            "hole": 1,
+            "thread": 1,
+            "surface": 1,
+            "note": 3
+          }
+        },
+        "features": {
+          "dimensions": 11,
+          "holes": 1,
+          "holesWithThread": 1,
+          "holeTexts": ["2 x M5-6H 完全贯穿; Ø4.20 完全贯穿"],
+          "threads": 1,
+          "threadSpecs": ["M5-6H"],
+          "threadTexts": ["2 x M5-6H 完全贯穿"],
+          "slots": 0,
+          "pockets": 0,
+          "bends": 0,
+          "welds": 0,
+          "surfaces": 1,
+          "surfaceTexts": ["其余 12.5"],
+          "notes": 3,
+          "manufacturingNotes": [],
+          "allNotes": [
+            "锐角、尖角、边倒钝；",
+            "未注形位公差按 GB/T 1804-k；",
+            "未注尺寸公差按GB/T 1184-m。"
+          ]
+        }
+      },
+      "diff": {
+        "sameContentHash": true,
+        "partClassChanged": true,
+        "stockFormChanged": true,
+        "materialChanged": false,
+        "finishChanged": false,
+        "explicitUnknowns": {
+          "added": ["dimensions", "slots", "pockets", "bends", "welds"],
+          "removed": ["stockForm"],
+          "unchanged": ["revision", "finish", "heatTreatment", "partClass"]
+        },
+        "materialTags": {
+          "added": [],
+          "removed": [],
+          "unchanged": ["304"]
+        },
+        "featureTags": {
+          "added": [],
+          "removed": [],
+          "unchanged": ["孔", "螺纹", "台阶"]
+        },
+        "processHints": {
+          "added": [],
+          "removed": [],
+          "unchanged": ["攻丝"]
+        },
+        "evidenceCountDelta": 0,
+        "featureCountDelta": {
+          "dimensions": 1,
+          "holes": -1,
+          "holesWithThread": 0,
+          "threads": 0,
+          "slots": 0,
+          "pockets": 0,
+          "bends": 0,
+          "welds": 0,
+          "surfaces": 0,
+          "notes": 0
+        },
+        "manufacturingNotes": {
+          "added": [],
+          "removed": [],
+          "unchanged": []
+        },
+        "holeTexts": {
+          "added": ["2 x M5-6H 完全贯穿; Ø4.20 完全贯穿"],
+          "removed": ["2 x M5 - 6H 完全贯穿", "Ø4.20 完全贯穿"],
+          "unchanged": []
+        },
+        "threadTexts": {
+          "added": ["2 x M5-6H 完全贯穿"],
+          "removed": ["2 x M5 - 6H 完全贯穿"],
+          "unchanged": []
+        },
+        "surfaceTexts": {
+          "added": ["其余 12.5"],
+          "removed": ["12.5/其余"],
+          "unchanged": []
+        }
+      }
+    },
+    {
+      "readableId": "192472540414",
+      "itemId": "wodiitem_8cf15bc9cbe6d483d7a0d044",
+      "documentId": "doc_5XMSHgdmoTCHY9xGqFxf68",
+      "v2": {
+        "id": "aide_AZMP9gp1qnS7MLwD4kUGZW",
+        "promptVersion": "ai-routing-drawing.prompt.v2",
+        "status": "Succeeded",
+        "contentHash": "54573b12a2e7c512b1e546fe7eb685c7c2b3227fe6b5137a8bffcb2b28fb535d",
+        "rendererVersion": "pdfjs-dist-5.4.296-napi-canvas.v1",
+        "extractorSchemaVersion": "ai-routing-drawing.v1",
+        "completedAt": "2026-08-23T11:14:00.728+00:00",
+        "document": {
+          "pageCount": 1,
+          "contentHash": "54573b12a2e7c512b1e546fe7eb685c7c2b3227fe6b5137a8bffcb2b28fb535d",
+          "renderedPageCount": 1
+        },
+        "titleBlock": {
+          "finish": null,
+          "material": "304",
+          "revision": null,
+          "partNumber": "192472540414",
+          "heatTreatment": null
+        },
+        "part": {
+          "class": "unknown",
+          "stockForm": "unknown"
+        },
+        "explicitUnknowns": [
+          "revision",
+          "finish",
+          "heatTreatment",
+          "partClass",
+          "stockForm",
+          "holes",
+          "slots",
+          "pockets",
+          "bends",
+          "welds"
+        ],
+        "extractionWarnings": [
+          "Drawing units are not explicitly stated in the visible drawing.",
+          "The visible 14 dimension and ⌀16 callout are recorded as shown; their feature association is not further inferred."
+        ],
+        "target": {
+          "materialTags": ["304"],
+          "featureTags": ["螺纹", "孔"],
+          "processHints": ["攻丝"],
+          "drawingEvidenceCount": 12,
+          "drawingEvidenceByKind": {
+            "dimension": 7,
+            "thread": 1,
+            "surface": 2,
+            "note": 2
+          }
+        },
+        "features": {
+          "dimensions": 7,
+          "holes": 0,
+          "holesWithThread": 0,
+          "holeTexts": [],
+          "threads": 1,
+          "threadSpecs": ["M10"],
+          "threadTexts": ["M10"],
+          "slots": 0,
+          "pockets": 0,
+          "bends": 0,
+          "welds": 0,
+          "surfaces": 2,
+          "surfaceTexts": ["1.6 surface roughness symbol", "其余: 6.3"],
+          "notes": 2,
+          "manufacturingNotes": [],
+          "allNotes": [
+            "锐角/尖角/锐边倒钝，未注倒角C0.5",
+            "未注尺寸公差应符合企业标准。"
+          ]
+        }
+      },
+      "v3": {
+        "id": "aide_M5FyPMCzcLkotb7KbB5K7Z",
+        "promptVersion": "ai-routing-drawing.prompt.v3",
+        "status": "Succeeded",
+        "contentHash": "54573b12a2e7c512b1e546fe7eb685c7c2b3227fe6b5137a8bffcb2b28fb535d",
+        "rendererVersion": "pdfjs-dist-5.4.296-napi-canvas.v1",
+        "extractorSchemaVersion": "ai-routing-drawing.v1",
+        "completedAt": "2026-08-24T02:07:21.161+00:00",
+        "document": {
+          "pageCount": 1,
+          "contentHash": "54573b12a2e7c512b1e546fe7eb685c7c2b3227fe6b5137a8bffcb2b28fb535d",
+          "renderedPageCount": 1
+        },
+        "titleBlock": {
+          "finish": null,
+          "material": "304",
+          "revision": null,
+          "partNumber": "192472540414",
+          "heatTreatment": null
+        },
+        "part": {
+          "class": "turned",
+          "stockForm": "unknown"
+        },
+        "explicitUnknowns": [
+          "revision",
+          "finish",
+          "heatTreatment",
+          "stockForm",
+          "holes",
+          "bends",
+          "slots",
+          "pockets",
+          "welds"
+        ],
+        "extractionWarnings": [
+          "Stock form is not explicitly specified on the drawing.",
+          "The drawing shows a 304 material designation; the material standard/form is not otherwise specified.",
+          "The Ø16 and 14 diameter callouts are recorded as visibly shown without resolving their apparent view-to-view relationship."
+        ],
+        "target": {
+          "materialTags": ["304"],
+          "featureTags": ["螺纹", "孔", "轴类"],
+          "processHints": ["攻丝", "车削"],
+          "drawingEvidenceCount": 11,
+          "drawingEvidenceByKind": {
+            "dimension": 6,
+            "thread": 1,
+            "surface": 2,
+            "note": 2
+          }
+        },
+        "features": {
+          "dimensions": 6,
+          "holes": 0,
+          "holesWithThread": 0,
+          "holeTexts": [],
+          "threads": 1,
+          "threadSpecs": ["M10"],
+          "threadTexts": ["M10"],
+          "slots": 0,
+          "pockets": 0,
+          "bends": 0,
+          "welds": 0,
+          "surfaces": 2,
+          "surfaceTexts": ["1.6", "其余: 6.3"],
+          "notes": 2,
+          "manufacturingNotes": [],
+          "allNotes": [
+            "锐角/尖角/锐边倒钝，未注倒角C0.5",
+            "未注尺寸公差应符合企业标准。"
+          ]
+        }
+      },
+      "diff": {
+        "sameContentHash": true,
+        "partClassChanged": true,
+        "stockFormChanged": false,
+        "materialChanged": false,
+        "finishChanged": false,
+        "explicitUnknowns": {
+          "added": [],
+          "removed": ["partClass"],
+          "unchanged": [
+            "revision",
+            "finish",
+            "heatTreatment",
+            "stockForm",
+            "holes",
+            "bends",
+            "slots",
+            "pockets",
+            "welds"
+          ]
+        },
+        "materialTags": {
+          "added": [],
+          "removed": [],
+          "unchanged": ["304"]
+        },
+        "featureTags": {
+          "added": ["轴类"],
+          "removed": [],
+          "unchanged": ["螺纹", "孔"]
+        },
+        "processHints": {
+          "added": ["车削"],
+          "removed": [],
+          "unchanged": ["攻丝"]
+        },
+        "evidenceCountDelta": -1,
+        "featureCountDelta": {
+          "dimensions": -1,
+          "holes": 0,
+          "holesWithThread": 0,
+          "threads": 0,
+          "slots": 0,
+          "pockets": 0,
+          "bends": 0,
+          "welds": 0,
+          "surfaces": 0,
+          "notes": 0
+        },
+        "manufacturingNotes": {
+          "added": [],
+          "removed": [],
+          "unchanged": []
+        },
+        "holeTexts": {
+          "added": [],
+          "removed": [],
+          "unchanged": []
+        },
+        "threadTexts": {
+          "added": [],
+          "removed": [],
+          "unchanged": ["M10"]
+        },
+        "surfaceTexts": {
+          "added": ["1.6"],
+          "removed": ["1.6 surface roughness symbol"],
+          "unchanged": ["其余: 6.3"]
+        }
+      }
+    },
+    {
+      "readableId": "192739030308",
+      "itemId": "wodiitem_3b43cf0c7b1f7eeade432347",
+      "documentId": "doc_MViksRhFYxJWoNqbnTCzmF",
+      "v2": {
+        "id": "aide_QeaMz4NmrKuJd7qBiUQ96z",
+        "promptVersion": "ai-routing-drawing.prompt.v2",
+        "status": "Succeeded",
+        "contentHash": "8d3cbfdd66cda6fd2b30eacdb412027e185c55c94e61cd7d98a7d9fcd12b1f3f",
+        "rendererVersion": "pdfjs-dist-5.4.296-napi-canvas.v1",
+        "extractorSchemaVersion": "ai-routing-drawing.v1",
+        "completedAt": "2026-08-23T11:14:38.608+00:00",
+        "document": {
+          "pageCount": 1,
+          "contentHash": "8d3cbfdd66cda6fd2b30eacdb412027e185c55c94e61cd7d98a7d9fcd12b1f3f",
+          "renderedPageCount": 1
+        },
+        "titleBlock": {
+          "finish": null,
+          "material": "304",
+          "revision": null,
+          "partNumber": "192739030308",
+          "heatTreatment": null
+        },
+        "part": {
+          "class": "unknown",
+          "stockForm": "unknown"
+        },
+        "explicitUnknowns": [
+          "revision",
+          "finish",
+          "heatTreatment",
+          "partClass",
+          "stockForm",
+          "holes",
+          "bends",
+          "welds"
+        ],
+        "extractionWarnings": [
+          "Drawing units are not explicitly stated.",
+          "The M10 thread callout does not specify thread length or class.",
+          "The 14 dimension is shown without a diameter symbol and is recorded as a linear dimension."
+        ],
+        "target": {
+          "materialTags": ["304"],
+          "featureTags": ["螺纹", "孔"],
+          "processHints": ["攻丝"],
+          "drawingEvidenceCount": 12,
+          "drawingEvidenceByKind": {
+            "dimension": 7,
+            "thread": 1,
+            "surface": 2,
+            "note": 2
+          }
+        },
+        "features": {
+          "dimensions": 7,
+          "holes": 0,
+          "holesWithThread": 0,
+          "holeTexts": [],
+          "threads": 1,
+          "threadSpecs": ["M10"],
+          "threadTexts": ["M10"],
+          "slots": 0,
+          "pockets": 0,
+          "bends": 0,
+          "welds": 0,
+          "surfaces": 2,
+          "surfaceTexts": ["1.6", "其余: 12.5"],
+          "notes": 2,
+          "manufacturingNotes": [],
+          "allNotes": [
+            "锐角/尖角/锐边倒钝，未注倒角C0.5",
+            "未注尺寸公差应符合企业标准。"
+          ]
+        }
+      },
+      "v3": {
+        "id": "aide_SnS2SLh3hxNGnCKy3dJ41u",
+        "promptVersion": "ai-routing-drawing.prompt.v3",
+        "status": "Succeeded",
+        "contentHash": "8d3cbfdd66cda6fd2b30eacdb412027e185c55c94e61cd7d98a7d9fcd12b1f3f",
+        "rendererVersion": "pdfjs-dist-5.4.296-napi-canvas.v1",
+        "extractorSchemaVersion": "ai-routing-drawing.v1",
+        "completedAt": "2026-08-24T02:09:57.18+00:00",
+        "document": {
+          "pageCount": 1,
+          "contentHash": "8d3cbfdd66cda6fd2b30eacdb412027e185c55c94e61cd7d98a7d9fcd12b1f3f",
+          "renderedPageCount": 1
+        },
+        "titleBlock": {
+          "finish": null,
+          "material": "304",
+          "revision": null,
+          "partNumber": "192739030308",
+          "heatTreatment": null
+        },
+        "part": {
+          "class": "turned",
+          "stockForm": "unknown"
+        },
+        "explicitUnknowns": [
+          "revision",
+          "finish",
+          "heatTreatment",
+          "stockForm",
+          "holes",
+          "slots",
+          "pockets",
+          "bends",
+          "welds"
+        ],
+        "extractionWarnings": [
+          "Stock form is not explicitly specified on the visible drawing.",
+          "No material grade beyond the visible title-block entry '304' was provided."
+        ],
+        "target": {
+          "materialTags": ["304"],
+          "featureTags": ["螺纹", "孔", "轴类"],
+          "processHints": ["攻丝", "车削"],
+          "drawingEvidenceCount": 12,
+          "drawingEvidenceByKind": {
+            "dimension": 7,
+            "thread": 1,
+            "surface": 2,
+            "note": 2
+          }
+        },
+        "features": {
+          "dimensions": 7,
+          "holes": 0,
+          "holesWithThread": 0,
+          "holeTexts": [],
+          "threads": 1,
+          "threadSpecs": ["M10"],
+          "threadTexts": ["M10"],
+          "slots": 0,
+          "pockets": 0,
+          "bends": 0,
+          "welds": 0,
+          "surfaces": 2,
+          "surfaceTexts": ["1.6 surface roughness symbol", "12.5 其余"],
+          "notes": 2,
+          "manufacturingNotes": [],
+          "allNotes": [
+            "锐角/尖角/锐边倒钝，未注倒角 C0.5",
+            "未注尺寸公差应符合企业标准。"
+          ]
+        }
+      },
+      "diff": {
+        "sameContentHash": true,
+        "partClassChanged": true,
+        "stockFormChanged": false,
+        "materialChanged": false,
+        "finishChanged": false,
+        "explicitUnknowns": {
+          "added": ["slots", "pockets"],
+          "removed": ["partClass"],
+          "unchanged": [
+            "revision",
+            "finish",
+            "heatTreatment",
+            "stockForm",
+            "holes",
+            "bends",
+            "welds"
+          ]
+        },
+        "materialTags": {
+          "added": [],
+          "removed": [],
+          "unchanged": ["304"]
+        },
+        "featureTags": {
+          "added": ["轴类"],
+          "removed": [],
+          "unchanged": ["螺纹", "孔"]
+        },
+        "processHints": {
+          "added": ["车削"],
+          "removed": [],
+          "unchanged": ["攻丝"]
+        },
+        "evidenceCountDelta": 0,
+        "featureCountDelta": {
+          "dimensions": 0,
+          "holes": 0,
+          "holesWithThread": 0,
+          "threads": 0,
+          "slots": 0,
+          "pockets": 0,
+          "bends": 0,
+          "welds": 0,
+          "surfaces": 0,
+          "notes": 0
+        },
+        "manufacturingNotes": {
+          "added": [],
+          "removed": [],
+          "unchanged": []
+        },
+        "holeTexts": {
+          "added": [],
+          "removed": [],
+          "unchanged": []
+        },
+        "threadTexts": {
+          "added": [],
+          "removed": [],
+          "unchanged": ["M10"]
+        },
+        "surfaceTexts": {
+          "added": ["1.6 surface roughness symbol", "12.5 其余"],
+          "removed": ["1.6", "其余: 12.5"],
+          "unchanged": []
+        }
+      }
+    }
+  ],
+  "rollup": {
+    "comparedCount": 4,
+    "sameContentHashCount": 4,
+    "partClassChanged": ["192759010202", "192472540414", "192739030308"],
+    "stockFormChanged": ["192759010202"],
+    "materialChanged": [],
+    "finishChanged": ["192472540409"],
+    "processHintChanged": ["192472540409", "192472540414", "192739030308"],
+    "featureTagChanged": ["192472540409", "192472540414", "192739030308"],
+    "totalEvidenceCountDelta": 0,
+    "routeGenerationRecommendation": "No route-generation change is recommended from this diff alone; use it as extraction evidence attribution only."
+  }
+}

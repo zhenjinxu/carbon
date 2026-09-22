@@ -1,19 +1,43 @@
 ﻿import type { Database } from "@carbon/database";
 import type { Kysely, KyselyDatabase } from "@carbon/database/client";
 import { trigger } from "@carbon/jobs";
-import { normalizeAiRoutingDrawingExtraction } from "@carbon/lib/ai-routing-drawing";
+import * as aiRoutingDrawingModule from "@carbon/lib/ai-routing-drawing";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { sql } from "kysely";
+import { sql, type Transaction } from "kysely";
 import {
   type AiRoutingDraft,
   type AiRoutingKnowledgeItem,
   type AiRoutingOperation,
   type AiRoutingSample,
   type AiRoutingTargetEvidence,
+  aiRoutingSampleScopeExclusionReasons,
   aiRoutingTargetEvidenceFromDrawing,
   generateAiRoutingDraft,
   routingKnowledgeTags
 } from "./ai-routing";
+import { parseAiRoutingConfirmedRouteSnapshot } from "./ai-routing-review";
+
+type AiRoutingDrawingModule = typeof import("@carbon/lib/ai-routing-drawing");
+type RuntimeAiRoutingDrawingModule = AiRoutingDrawingModule & {
+  default?: AiRoutingDrawingModule;
+  "module.exports"?: AiRoutingDrawingModule;
+};
+
+const runtimeAiRoutingDrawingModule =
+  aiRoutingDrawingModule as RuntimeAiRoutingDrawingModule;
+const resolvedAiRoutingDrawingModule =
+  runtimeAiRoutingDrawingModule.normalizeAiRoutingDrawingExtraction
+    ? runtimeAiRoutingDrawingModule
+    : (runtimeAiRoutingDrawingModule.default ??
+      runtimeAiRoutingDrawingModule["module.exports"]);
+
+if (!resolvedAiRoutingDrawingModule?.normalizeAiRoutingDrawingExtraction) {
+  throw new Error(
+    "@carbon/lib/ai-routing-drawing did not expose normalization helpers"
+  );
+}
+
+const { normalizeAiRoutingDrawingExtraction } = resolvedAiRoutingDrawingModule;
 
 type BuiltAiRoutingSample = AiRoutingSample & {
   status: Exclude<NonNullable<AiRoutingSample["status"]>, "Retired">;
@@ -125,6 +149,7 @@ type AiRoutingSampleRow = {
   featureTags?: string[] | null;
   processTags?: string[] | null;
   resourceTags?: string[] | null;
+  customFields?: unknown;
   status?: AiRoutingSample["status"] | null;
   datasetRole?: AiRoutingSample["datasetRole"] | null;
 };
@@ -493,15 +518,17 @@ export function aiRoutingSampleFromRow(
   const operationSnapshot = Array.isArray(row.operationSnapshot)
     ? row.operationSnapshot
     : [];
+  const readableId =
+    stringValue(itemSnapshot.readableIdWithRevision) ??
+    stringValue(itemSnapshot.readableId) ??
+    undefined;
+  const name = stringValue(itemSnapshot.name) ?? undefined;
 
   return {
     id: row.id,
     itemId: row.itemId,
-    readableId:
-      stringValue(itemSnapshot.readableIdWithRevision) ??
-      stringValue(itemSnapshot.readableId) ??
-      undefined,
-    name: stringValue(itemSnapshot.name) ?? undefined,
+    readableId,
+    name,
     makeMethodId: row.makeMethodId ?? null,
     documentIds: stringArray(row.drawingDocumentIds),
     operations: operationSnapshot.map((operation) =>
@@ -511,6 +538,12 @@ export function aiRoutingSampleFromRow(
     featureTags: stringArray(row.featureTags),
     processTags: stringArray(row.processTags),
     resourceTags: stringArray(row.resourceTags),
+    customFields: row.customFields,
+    scopeExclusionReasons: aiRoutingSampleScopeExclusionReasons({
+      readableId,
+      name,
+      customFields: row.customFields
+    }),
     status: row.status ?? "Candidate",
     datasetRole: row.datasetRole ?? "Training"
   };
@@ -527,7 +560,8 @@ export function aiRoutingTargetEvidenceFromExtractionRow(
     item: {
       readableId: row.readableIdWithRevision ?? row.readableId,
       name: row.name,
-      description: row.description
+      description: row.description,
+      customFields: row.customFields
     },
     drawingExtraction: extraction
   });
@@ -781,7 +815,7 @@ export async function getAiRoutingTargetEvidenceForItem(
       item."readableIdWithRevision" AS "readableIdWithRevision",
       item."name" AS "name",
       item."description" AS "description",
-      item."customFields" AS "customFields",
+      item."notes" AS "customFields",
       extraction."id" AS "extractionId",
       extraction."extraction" AS "extraction"
     FROM "item" AS item
@@ -820,6 +854,7 @@ export async function getAiRoutingSamples(
       "featureTags",
       "processTags",
       "resourceTags",
+      "customFields",
       "status",
       "datasetRole"
     FROM "aiRoutingSample"
@@ -1044,6 +1079,690 @@ export async function persistAiRoutingSample(
   });
 }
 
+const AI_ROUTING_METHOD_OPERATION_ORDERS = new Set([
+  "After Previous",
+  "With Previous"
+]);
+const AI_ROUTING_OPERATION_TYPES = new Set(["Inside", "Outside"]);
+const AI_ROUTING_STANDARD_FACTORS = new Set([
+  "Hours/Piece",
+  "Hours/100 Pieces",
+  "Hours/1000 Pieces",
+  "Minutes/Piece",
+  "Minutes/100 Pieces",
+  "Minutes/1000 Pieces",
+  "Pieces/Hour",
+  "Pieces/Minute",
+  "Seconds/Piece",
+  "Total Hours",
+  "Total Minutes"
+]);
+
+type MaterializeAcceptedAiRoutingDraftArgs = {
+  companyId: string;
+  userId: string;
+  itemId: string;
+  draftId: string;
+};
+
+type AiRoutingMaterializationDraftRow = {
+  id: string;
+  itemId: string;
+  targetMakeMethodId: string | null;
+  acceptedMakeMethodId: string | null;
+  status: string;
+};
+
+type AiRoutingMaterializationFeedbackRow = {
+  confirmedRouteSnapshot: unknown;
+};
+
+type AiRoutingMaterializationMakeMethodRow = {
+  id: string;
+  itemId: string;
+  status: string;
+  version: number;
+  tags: string[] | null;
+  customFields: unknown;
+};
+
+type AiRoutingMaterializedMethodOperationInsert = {
+  companyId: string;
+  makeMethodId: string;
+  order: number;
+  operationOrder: "After Previous" | "With Previous";
+  operationType: "Inside" | "Outside";
+  processId: string;
+  workCenterId: string | null;
+  description: string;
+  setupTime: number;
+  setupUnit: string;
+  laborTime: number;
+  laborUnit: string;
+  machineTime: number;
+  machineUnit: string;
+  customFields: unknown;
+  workInstruction: unknown;
+  createdBy: string;
+};
+
+type AiRoutingMaterializationTransaction = {
+  getAcceptedDraftForUpdate(args: {
+    companyId: string;
+    itemId: string;
+    draftId: string;
+  }): Promise<AiRoutingMaterializationDraftRow | null>;
+  getLatestAcceptedFeedback(args: {
+    companyId: string;
+    itemId: string;
+    draftId: string;
+  }): Promise<AiRoutingMaterializationFeedbackRow | null>;
+  getTargetMakeMethodForUpdate(args: {
+    companyId: string;
+    itemId: string;
+    makeMethodId: string;
+  }): Promise<AiRoutingMaterializationMakeMethodRow | null>;
+  getNextMakeMethodVersion(args: {
+    companyId: string;
+    itemId: string;
+  }): Promise<number>;
+  getActiveProcessIds(companyId: string, ids: string[]): Promise<Set<string>>;
+  getActiveWorkCenterIds(
+    companyId: string,
+    ids: string[]
+  ): Promise<Set<string>>;
+  getActiveWorkCenterProcessPairs(
+    companyId: string,
+    pairs: Array<{ processId: string; workCenterId: string }>
+  ): Promise<Set<string>>;
+  insertDraftMakeMethod(args: {
+    companyId: string;
+    itemId: string;
+    version: number;
+    tags: string[] | null;
+    customFields: unknown;
+    createdBy: string;
+  }): Promise<AiRoutingMaterializationMakeMethodRow>;
+  insertMethodOperations(
+    rows: AiRoutingMaterializedMethodOperationInsert[]
+  ): Promise<void>;
+  linkDraftToAcceptedMakeMethod(args: {
+    companyId: string;
+    itemId: string;
+    draftId: string;
+    makeMethodId: string;
+    updatedBy: string;
+  }): Promise<boolean>;
+};
+
+export type AiRoutingMaterializationStore = {
+  transaction<T>(
+    callback: (trx: AiRoutingMaterializationTransaction) => Promise<T>
+  ): Promise<T>;
+};
+
+export type AiRoutingMaterializationResult = {
+  action: "Created" | "Reused";
+  makeMethodId: string;
+  itemId: string;
+  version: number;
+  operationCount: number;
+};
+
+function nonEmptyText(value: string | null | undefined) {
+  const trimmed = value?.trim();
+  return trimmed ? trimmed : null;
+}
+
+function finiteNumberOrDefault(value: number | null | undefined, fallback = 0) {
+  return typeof value === "number" && Number.isFinite(value) ? value : fallback;
+}
+
+function methodOperationOrder(
+  value: string | null | undefined
+): "After Previous" | "With Previous" {
+  return AI_ROUTING_METHOD_OPERATION_ORDERS.has(value ?? "")
+    ? (value as "After Previous" | "With Previous")
+    : "After Previous";
+}
+
+function operationType(value: string | null | undefined): "Inside" | "Outside" {
+  return AI_ROUTING_OPERATION_TYPES.has(value ?? "")
+    ? (value as "Inside" | "Outside")
+    : "Inside";
+}
+
+function standardFactor(value: string | null | undefined, fallback: string) {
+  return AI_ROUTING_STANDARD_FACTORS.has(value ?? "") ? value! : fallback;
+}
+
+function uniqueNonEmpty(values: Array<string | null | undefined>) {
+  return [...new Set(values.map(nonEmptyText).filter(Boolean) as string[])];
+}
+
+function workCenterProcessPairKey(args: {
+  processId: string;
+  workCenterId: string;
+}) {
+  return `${args.processId}\u0000${args.workCenterId}`;
+}
+
+function uniqueWorkCenterProcessPairs(
+  operations: AiRoutingMaterializedMethodOperationInsert[]
+) {
+  const pairs: Array<{ processId: string; workCenterId: string }> = [];
+  const seen = new Set<string>();
+
+  for (const operation of operations) {
+    const processId = nonEmptyText(operation.processId);
+    const workCenterId = nonEmptyText(operation.workCenterId);
+    if (!processId || !workCenterId) continue;
+
+    const key = workCenterProcessPairKey({ processId, workCenterId });
+    if (seen.has(key)) continue;
+
+    seen.add(key);
+    pairs.push({ processId, workCenterId });
+  }
+
+  return pairs;
+}
+
+function parseAcceptedAiRoutingSnapshot(args: {
+  value: unknown;
+  itemId: string;
+}) {
+  const raw =
+    typeof args.value === "string" ? args.value : JSON.stringify(args.value);
+  const snapshot = parseAiRoutingConfirmedRouteSnapshot(raw);
+
+  if (!snapshot) {
+    throw new Error(
+      "Accepted AI routing draft is missing a reviewed route snapshot"
+    );
+  }
+  if (snapshot.targetItemId !== args.itemId) {
+    throw new Error(
+      "Accepted AI routing snapshot does not match the target item"
+    );
+  }
+  if (snapshot.suggestedOperations.length === 0) {
+    throw new Error("Accepted AI routing snapshot has no reviewed operations");
+  }
+
+  return snapshot;
+}
+
+function buildMaterializedMethodOperations(args: {
+  companyId: string;
+  userId: string;
+  draftId: string;
+  makeMethodId: string;
+  snapshot: ReturnType<typeof parseAcceptedAiRoutingSnapshot>;
+}): AiRoutingMaterializedMethodOperationInsert[] {
+  return [...args.snapshot.suggestedOperations]
+    .sort(
+      (left, right) =>
+        left.order - right.order ||
+        left.sourceOperationOrder - right.sourceOperationOrder
+    )
+    .map((operation, index) => {
+      const processId = nonEmptyText(operation.processId);
+      if (!processId) {
+        throw new Error(
+          "Accepted AI routing operation is missing a process id"
+        );
+      }
+
+      return {
+        companyId: args.companyId,
+        makeMethodId: args.makeMethodId,
+        order: index + 1,
+        operationOrder: methodOperationOrder(operation.operationOrder),
+        operationType: operationType(operation.operationType),
+        processId,
+        workCenterId: nonEmptyText(operation.workCenterId),
+        description:
+          nonEmptyText(operation.description) ??
+          nonEmptyText(operation.processName) ??
+          "",
+        setupTime: finiteNumberOrDefault(operation.setupTime),
+        setupUnit: standardFactor(operation.setupUnit, "Total Minutes"),
+        laborTime: finiteNumberOrDefault(operation.laborTime),
+        laborUnit: standardFactor(operation.laborUnit, "Minutes/Piece"),
+        machineTime: finiteNumberOrDefault(operation.machineTime),
+        machineUnit: standardFactor(operation.machineUnit, "Minutes/Piece"),
+        customFields: {
+          aiRouting: {
+            draftId: args.draftId,
+            sourceSampleId: operation.sourceSampleId,
+            sourceOperationId: operation.sourceOperationId ?? null,
+            sourceOperationOrder: operation.sourceOperationOrder,
+            referenceSampleIds: args.snapshot.referenceSampleIds,
+            warnings: args.snapshot.warnings
+          },
+          reviewedOperationCustomFields: operation.customFields ?? null
+        },
+        workInstruction: {},
+        createdBy: args.userId
+      };
+    });
+}
+
+async function assertMaterializedOperationReferences(args: {
+  trx: AiRoutingMaterializationTransaction;
+  companyId: string;
+  operations: AiRoutingMaterializedMethodOperationInsert[];
+}) {
+  const processIds = uniqueNonEmpty(
+    args.operations.map((row) => row.processId)
+  );
+  const workCenterIds = uniqueNonEmpty(
+    args.operations.map((row) => row.workCenterId)
+  );
+  const workCenterProcessPairs = uniqueWorkCenterProcessPairs(args.operations);
+  const [validProcessIds, validWorkCenterIds, validWorkCenterProcessPairs] =
+    await Promise.all([
+      args.trx.getActiveProcessIds(args.companyId, processIds),
+      args.trx.getActiveWorkCenterIds(args.companyId, workCenterIds),
+      args.trx.getActiveWorkCenterProcessPairs(
+        args.companyId,
+        workCenterProcessPairs
+      )
+    ]);
+  const missingProcessIds = processIds.filter((id) => !validProcessIds.has(id));
+  const missingWorkCenterIds = workCenterIds.filter(
+    (id) => !validWorkCenterIds.has(id)
+  );
+
+  const unsupportedWorkCenterProcessPairs = workCenterProcessPairs.filter(
+    (pair) => !validWorkCenterProcessPairs.has(workCenterProcessPairKey(pair))
+  );
+
+  if (
+    missingProcessIds.length > 0 ||
+    missingWorkCenterIds.length > 0 ||
+    unsupportedWorkCenterProcessPairs.length > 0
+  ) {
+    throw new Error(
+      [
+        missingProcessIds.length
+          ? `Invalid AI routing process IDs: ${missingProcessIds.join(", ")}`
+          : null,
+        missingWorkCenterIds.length
+          ? `Invalid AI routing work center IDs: ${missingWorkCenterIds.join(", ")}`
+          : null,
+        unsupportedWorkCenterProcessPairs.length
+          ? `Unsupported AI routing work center/process pairs: ${unsupportedWorkCenterProcessPairs
+              .map((pair) => `${pair.workCenterId} -> ${pair.processId}`)
+              .join(", ")}`
+          : null
+      ]
+        .filter(Boolean)
+        .join("; ")
+    );
+  }
+}
+
+export async function materializeAcceptedAiRoutingDraftWithStore(
+  store: AiRoutingMaterializationStore,
+  args: MaterializeAcceptedAiRoutingDraftArgs
+): Promise<AiRoutingMaterializationResult> {
+  return store.transaction(async (trx) => {
+    const draft = await trx.getAcceptedDraftForUpdate(args);
+    if (!draft) {
+      throw new Error("AI routing draft was not found for this Part");
+    }
+    if (draft.acceptedMakeMethodId) {
+      const existing = await trx.getTargetMakeMethodForUpdate({
+        companyId: args.companyId,
+        itemId: args.itemId,
+        makeMethodId: draft.acceptedMakeMethodId
+      });
+      if (!existing || existing.status !== "Draft") {
+        throw new Error(
+          "AI routing draft is linked to a missing Draft method version"
+        );
+      }
+      return {
+        action: "Reused",
+        makeMethodId: existing.id,
+        itemId: existing.itemId,
+        version: existing.version,
+        operationCount: 0
+      };
+    }
+    if (draft.status !== "Accepted") {
+      throw new Error(
+        "Only accepted AI routing drafts can create a Draft method version"
+      );
+    }
+    if (!draft.targetMakeMethodId) {
+      throw new Error(
+        "AI routing draft is stale because its target method is missing"
+      );
+    }
+
+    const [feedback, targetMethod] = await Promise.all([
+      trx.getLatestAcceptedFeedback(args),
+      trx.getTargetMakeMethodForUpdate({
+        companyId: args.companyId,
+        itemId: args.itemId,
+        makeMethodId: draft.targetMakeMethodId
+      })
+    ]);
+    if (!feedback) {
+      throw new Error("Accepted AI routing draft has no feedback snapshot");
+    }
+    if (!targetMethod) {
+      throw new Error(
+        "AI routing draft target method was not found for this Part"
+      );
+    }
+
+    const snapshot = parseAcceptedAiRoutingSnapshot({
+      value: feedback.confirmedRouteSnapshot,
+      itemId: args.itemId
+    });
+    const operationsForValidation = buildMaterializedMethodOperations({
+      companyId: args.companyId,
+      userId: args.userId,
+      draftId: args.draftId,
+      makeMethodId: "pending-ai-routing-method",
+      snapshot
+    });
+
+    await assertMaterializedOperationReferences({
+      trx,
+      companyId: args.companyId,
+      operations: operationsForValidation
+    });
+
+    const nextVersion = await trx.getNextMakeMethodVersion({
+      companyId: args.companyId,
+      itemId: args.itemId
+    });
+    const draftMethod = await trx.insertDraftMakeMethod({
+      companyId: args.companyId,
+      itemId: args.itemId,
+      version: nextVersion,
+      tags: targetMethod.tags,
+      customFields: targetMethod.customFields,
+      createdBy: args.userId
+    });
+    const operations = operationsForValidation.map((operation) => ({
+      ...operation,
+      makeMethodId: draftMethod.id
+    }));
+
+    await trx.insertMethodOperations(operations);
+
+    const linked = await trx.linkDraftToAcceptedMakeMethod({
+      companyId: args.companyId,
+      itemId: args.itemId,
+      draftId: args.draftId,
+      makeMethodId: draftMethod.id,
+      updatedBy: args.userId
+    });
+    if (!linked) {
+      throw new Error("AI routing draft was already materialized");
+    }
+
+    return {
+      action: "Created",
+      makeMethodId: draftMethod.id,
+      itemId: draftMethod.itemId,
+      version: draftMethod.version,
+      operationCount: operations.length
+    };
+  });
+}
+
+function aiRoutingMaterializationTransaction(
+  trx: Kysely<KyselyDatabase> | Transaction<KyselyDatabase>
+): AiRoutingMaterializationTransaction {
+  return {
+    async getAcceptedDraftForUpdate(args) {
+      const result = await sql<AiRoutingMaterializationDraftRow>`
+        SELECT
+          "id",
+          "itemId",
+          "targetMakeMethodId",
+          "acceptedMakeMethodId",
+          "status"::text AS "status"
+        FROM "aiRoutingDraft"
+        WHERE "id" = ${args.draftId}
+          AND "companyId" = ${args.companyId}
+          AND "itemId" = ${args.itemId}
+        FOR UPDATE
+      `.execute(trx);
+      return result.rows[0] ?? null;
+    },
+    async getLatestAcceptedFeedback(args) {
+      const result = await sql<AiRoutingMaterializationFeedbackRow>`
+        SELECT "confirmedRouteSnapshot"
+        FROM "aiRoutingFeedback"
+        WHERE "companyId" = ${args.companyId}
+          AND "draftId" = ${args.draftId}
+          AND "itemId" = ${args.itemId}
+        ORDER BY "createdAt" DESC
+        LIMIT 1
+      `.execute(trx);
+      return result.rows[0] ?? null;
+    },
+    async getTargetMakeMethodForUpdate(args) {
+      const result = await sql<{
+        id: string;
+        itemId: string;
+        status: string;
+        version: number | string;
+        tags: string[] | null;
+        customFields: unknown;
+      }>`
+        SELECT
+          "id",
+          "itemId",
+          "status"::text AS "status",
+          "version",
+          "tags",
+          "customFields"
+        FROM "makeMethod"
+        WHERE "id" = ${args.makeMethodId}
+          AND "companyId" = ${args.companyId}
+          AND "itemId" = ${args.itemId}
+        FOR UPDATE
+      `.execute(trx);
+      const row = result.rows[0];
+      return row
+        ? {
+            ...row,
+            version: Number(row.version)
+          }
+        : null;
+    },
+    async getNextMakeMethodVersion(args) {
+      const result = await sql<{ version: number | string }>`
+        SELECT COALESCE(MAX("version"), 0) + 1 AS "version"
+        FROM "makeMethod"
+        WHERE "companyId" = ${args.companyId}
+          AND "itemId" = ${args.itemId}
+      `.execute(trx);
+      return Number(result.rows[0]?.version ?? 1);
+    },
+    async getActiveProcessIds(companyId, ids) {
+      if (ids.length === 0) return new Set<string>();
+      const result = await sql<{ id: string }>`
+        SELECT "id"
+        FROM "process"
+        WHERE "companyId" = ${companyId}
+          AND "active" = true
+          AND "id" = ANY(${ids}::text[])
+      `.execute(trx);
+      return new Set(result.rows.map((row) => row.id));
+    },
+    async getActiveWorkCenterIds(companyId, ids) {
+      if (ids.length === 0) return new Set<string>();
+      const result = await sql<{ id: string }>`
+        SELECT "id"
+        FROM "workCenter"
+        WHERE "companyId" = ${companyId}
+          AND "active" = true
+          AND "id" = ANY(${ids}::text[])
+      `.execute(trx);
+      return new Set(result.rows.map((row) => row.id));
+    },
+    async getActiveWorkCenterProcessPairs(companyId, pairs) {
+      if (pairs.length === 0) return new Set<string>();
+      const requestedPairs = new Set(pairs.map(workCenterProcessPairKey));
+      const processIds = uniqueNonEmpty(pairs.map((pair) => pair.processId));
+      const workCenterIds = uniqueNonEmpty(
+        pairs.map((pair) => pair.workCenterId)
+      );
+      const result = await sql<{ processId: string; workCenterId: string }>`
+        SELECT wcp."processId", wcp."workCenterId"
+        FROM "workCenterProcess" wcp
+        INNER JOIN "process" p
+          ON p."id" = wcp."processId"
+          AND p."companyId" = wcp."companyId"
+          AND p."active" = true
+        INNER JOIN "workCenter" wc
+          ON wc."id" = wcp."workCenterId"
+          AND wc."companyId" = wcp."companyId"
+          AND wc."active" = true
+        WHERE wcp."companyId" = ${companyId}
+          AND wcp."processId" = ANY(${processIds}::text[])
+          AND wcp."workCenterId" = ANY(${workCenterIds}::text[])
+      `.execute(trx);
+      return new Set(
+        result.rows
+          .map(workCenterProcessPairKey)
+          .filter((key) => requestedPairs.has(key))
+      );
+    },
+    async insertDraftMakeMethod(args) {
+      const result = await sql<{
+        id: string;
+        itemId: string;
+        status: string;
+        version: number | string;
+        tags: string[] | null;
+        customFields: unknown;
+      }>`
+        INSERT INTO "makeMethod" (
+          "companyId",
+          "itemId",
+          "status",
+          "version",
+          "tags",
+          "customFields",
+          "createdBy"
+        ) VALUES (
+          ${args.companyId},
+          ${args.itemId},
+          'Draft'::"makeMethodStatus",
+          ${args.version},
+          ${args.tags}::text[],
+          ${asJsonb(args.customFields ?? null)}::jsonb,
+          ${args.createdBy}
+        )
+        RETURNING
+          "id",
+          "itemId",
+          "status"::text AS "status",
+          "version",
+          "tags",
+          "customFields"
+      `.execute(trx);
+      const row = result.rows[0];
+      if (!row)
+        throw new Error("Failed to create AI routing Draft method version");
+      return {
+        ...row,
+        version: Number(row.version)
+      };
+    },
+    async insertMethodOperations(rows) {
+      for (const row of rows) {
+        await sql`
+          INSERT INTO "methodOperation" (
+            "companyId",
+            "makeMethodId",
+            "order",
+            "operationOrder",
+            "operationType",
+            "processId",
+            "workCenterId",
+            "description",
+            "setupTime",
+            "setupUnit",
+            "laborTime",
+            "laborUnit",
+            "machineTime",
+            "machineUnit",
+            "customFields",
+            "workInstruction",
+            "createdBy"
+          ) VALUES (
+            ${row.companyId},
+            ${row.makeMethodId},
+            ${row.order},
+            ${row.operationOrder}::"methodOperationOrder",
+            ${row.operationType}::"operationType",
+            ${row.processId},
+            ${row.workCenterId},
+            ${row.description},
+            ${row.setupTime},
+            ${row.setupUnit}::"factor",
+            ${row.laborTime},
+            ${row.laborUnit}::"factor",
+            ${row.machineTime},
+            ${row.machineUnit}::"factor",
+            ${asJsonb(row.customFields)}::jsonb,
+            ${asJsonb(row.workInstruction)}::jsonb,
+            ${row.createdBy}
+          )
+        `.execute(trx);
+      }
+    },
+    async linkDraftToAcceptedMakeMethod(args) {
+      const result = await sql<{ id: string }>`
+        UPDATE "aiRoutingDraft"
+        SET
+          "acceptedMakeMethodId" = ${args.makeMethodId},
+          "updatedBy" = ${args.updatedBy},
+          "updatedAt" = NOW()
+        WHERE "id" = ${args.draftId}
+          AND "companyId" = ${args.companyId}
+          AND "itemId" = ${args.itemId}
+          AND "status" = 'Accepted'::"aiRoutingDraftStatus"
+          AND "acceptedMakeMethodId" IS NULL
+        RETURNING "id"
+      `.execute(trx);
+      return Boolean(result.rows[0]);
+    }
+  };
+}
+
+function aiRoutingMaterializationStore(
+  db: Kysely<KyselyDatabase>
+): AiRoutingMaterializationStore {
+  return {
+    transaction: (callback) =>
+      db
+        .transaction()
+        .execute((trx) => callback(aiRoutingMaterializationTransaction(trx)))
+  };
+}
+
+export async function materializeAcceptedAiRoutingDraft(
+  db: Kysely<KyselyDatabase>,
+  args: MaterializeAcceptedAiRoutingDraftArgs
+) {
+  return materializeAcceptedAiRoutingDraftWithStore(
+    aiRoutingMaterializationStore(db),
+    args
+  );
+}
 export async function persistGeneratedAiRoutingDraft(
   db: Kysely<KyselyDatabase>,
   args: PersistDraftArgs

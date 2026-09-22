@@ -1,0 +1,52 @@
+{
+  "checkedAt": "2026-08-23T11:10:31.758Z",
+  "endpointHost": "api.aixhan.com",
+  "modelName": "gpt-5.6-terra",
+  "httpStatus": 200,
+  "elapsedMs": 15537,
+  "promptVersion": "ai-routing-drawing.prompt.v2",
+  "renderer": {
+    "contentHash": "470de7ccd8f77cf056318e46a9edca6312bb75b9ff27583beb7f3374afafa67c",
+    "pageCount": 1,
+    "renderedPageCount": 1,
+    "visibleTextCharCount": 415
+  },
+  "request": {
+    "model": "gpt-5.6-terra",
+    "hasTopLevelInstructions": true,
+    "topLevelInstructionsLength": 1378,
+    "topLevelInstructionsHasCarbon": true,
+    "topLevelInstructionsHasCodex": false,
+    "inputRoleCount": 2,
+    "hasSystemOrDeveloperInputRole": true,
+    "hasInputImage": true,
+    "imageDataUrlCount": 1,
+    "bodyCharLength": 394518
+  },
+  "response": {
+    "responseStatus": "completed",
+    "responseInstructionsLength": 1378,
+    "responseInstructionsHasCarbon": true,
+    "responseInstructionsHasCodex": false,
+    "outputTextSample": "{\"schemaVersion\":\"ai-routing-drawing.v1\",\"document\":{\"pageCount\":1,\"renderedPageCount\":1,\"contentHash\":\"470de7ccd8f77cf0",
+    "codexMetadataInjectionDetected": false,
+    "codexMetadataInjectionPath": null,
+    "codexMetadataInjectionPattern": null
+  },
+  "schemaValid": true,
+  "extractionQualitySnapshot": {
+    "material": "304",
+    "finish": "拉丝处理",
+    "partClass": "sheet-metal",
+    "stockForm": "sheet",
+    "featureCounts": {
+      "holes": 0,
+      "threads": 0,
+      "bends": 2,
+      "surfaces": 2
+    },
+    "noteCount": 6,
+    "warningCount": 1
+  },
+  "passed": true
+}

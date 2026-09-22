@@ -1,0 +1,1084 @@
+{
+  "evaluatedAt": "2026-08-24T01:47:28.8603803Z",
+  "sourceQualitySummary": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\ai-routing-stage4-30-holdout-quality-summary-after-lathe-normalization-20260824.json",
+  "sourceRankDiagnostics": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\ai-routing-rank-pool-diagnostics-20260824.json",
+  "conclusion": "Stop adding route-generation heuristics for the current residual 11 mismatches. The remaining exact-match gaps require destructive route replacement, missing Training coverage, or extraction/data-governance improvements rather than another evidence-scoped code change.",
+  "productionMaterializationGate": "Closed",
+  "codeChangePerformed": false,
+  "testsRequired": "No production behavior changed in this triage step; no RED/GREEN test was added.",
+  "baselineMetrics": {
+    "holdoutCount": 30,
+    "trainingSampleCount": 105,
+    "rawExactSequenceMatches": 3,
+    "normalizedExactSequenceMatches": 19,
+    "operationCountMatches": 24,
+    "underPredicted": 6,
+    "overPredicted": 0,
+    "warningRows": 5
+  },
+  "safetyCounters": {
+    "evaluationLeaks": 0,
+    "workCenterAssignments": 0,
+    "unsupportedWorkCenterAssignments": 0,
+    "missingProcessIds": 0,
+    "invalidProcessIds": 0
+  },
+  "rejectedCandidates": ["192472540414", "192739030308", "192472540409"],
+  "remainingMismatchTriage": [
+    {
+      "readableId": "1927930206",
+      "normalizedPositionMatchCount": 0,
+      "actualOperationCount": 5,
+      "suggestedOperationCount": 0,
+      "operationCountDelta": -5,
+      "warningCount": 1,
+      "materialTags": ["6061"],
+      "featureTags": ["板件", "孔", "螺纹", "台阶"],
+      "processHints": ["激光切割", "攻丝", "氧化"],
+      "drawingEvidenceKinds": {
+        "dimension": 14,
+        "hole": 2,
+        "thread": 1,
+        "surface": 1,
+        "note": 3
+      },
+      "actualRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JLJ01 立式加工中心VMC850B(机加工）",
+        "U8 JQG01 气动攻丝机（机加工）",
+        "U8 WYH01 外协氧化"
+      ],
+      "suggestedRoute": [],
+      "triageDecision": "No new heuristic in this step",
+      "reason": "Empty draft with laser/tap/oxidize hints, but actual route is milling/CNC/tap/oxidize and top references are laser/tap families with bend/polish/weld contamination; no safe route-generation heuristic without guessing away laser evidence.",
+      "recommendedNextAction": "Add or verify Training coverage for 6061 oxidized machining routes, or improve extraction to distinguish laser sheet evidence from machined plate evidence.",
+      "topReferences": [
+        {
+          "readableId": "192793050101",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6,
+          "matchedFeatureTags": ["板件", "孔"],
+          "matchedProcessTags": ["激光切割", "攻丝"],
+          "operations": [
+            "领料工作中心",
+            "数控激光切割（下料）",
+            "数控折弯(下料）",
+            "气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "1927930207",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6,
+          "matchedFeatureTags": ["孔", "板件"],
+          "matchedProcessTags": ["激光切割", "攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "1920790301",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6,
+          "matchedFeatureTags": ["孔", "板件"],
+          "matchedProcessTags": ["激光切割", "攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 JYZ01 摇臂钻床（机加工）",
+            "U8 JQG01 气动攻丝机（机加工）",
+            "U8 MDM02 打磨拉丝抛光（食品）"
+          ]
+        },
+        {
+          "readableId": "192793020101",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6,
+          "matchedFeatureTags": ["孔", "板件"],
+          "matchedProcessTags": ["激光切割", "攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 CSZ01 数控折弯(下料）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "192713410301",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 6,
+          "matchedFeatureTags": ["孔", "板件"],
+          "matchedProcessTags": ["激光切割", "攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 CSZ01 数控折弯(下料）",
+            "U8 JQG01 气动攻丝机（机加工）",
+            "U8 BYH01 氩弧焊（食品）",
+            "U8 MDM02 打磨拉丝抛光（食品）"
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "1927881101",
+      "normalizedPositionMatchCount": 2,
+      "actualOperationCount": 4,
+      "suggestedOperationCount": 4,
+      "operationCountDelta": 0,
+      "warningCount": 0,
+      "materialTags": ["304"],
+      "featureTags": ["孔", "螺纹"],
+      "processHints": ["攻丝"],
+      "drawingEvidenceKinds": {
+        "dimension": 6,
+        "hole": 1,
+        "thread": 1,
+        "note": 3
+      },
+      "actualRoute": [
+        "领料工作中心",
+        "片锯下料（薄壁碳钢管）（下料）",
+        "普通车床CA6140A×2000(机加工）",
+        "气动攻丝机（机加工）"
+      ],
+      "suggestedRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JLJ01 立式加工中心VMC850B(机加工）",
+        "U8 JQG01 气动攻丝机（机加工）"
+      ],
+      "triageDecision": "No new heuristic in this step",
+      "reason": "Operation count already matches, but exact improvement would require replacing milling/CNC with saw/lathe while target has no turning/saw hint and only single thread evidence; earlier drill/tap guardrail intentionally leaves this ambiguity unchanged.",
+      "recommendedNextAction": "Improve extraction/process hints for saw or turning before route replacement; keep current output for review.",
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 50,
+          "matchedDrawingEvidenceCount": 5,
+          "matchedFeatureTags": ["孔"],
+          "matchedProcessTags": ["攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 CSZ01 数控折弯(下料）"
+          ]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）"
+          ]
+        },
+        {
+          "readableId": "192713410405",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）"
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "192769010102",
+      "normalizedPositionMatchCount": 0,
+      "actualOperationCount": 6,
+      "suggestedOperationCount": 0,
+      "operationCountDelta": -6,
+      "warningCount": 1,
+      "materialTags": ["6061"],
+      "featureTags": ["板件", "孔", "螺纹"],
+      "processHints": ["激光切割", "攻丝", "氧化"],
+      "drawingEvidenceKinds": {
+        "dimension": 13,
+        "hole": 3,
+        "thread": 1,
+        "surface": 2,
+        "note": 3
+      },
+      "actualRoute": [
+        "领料工作中心",
+        "数显立铣（北一）XA5032（机加工）",
+        "普通车床CA6140A×2000(机加工）",
+        "摇臂钻床（机加工）",
+        "气动攻丝机（机加工）",
+        "外协氧化"
+      ],
+      "suggestedRoute": [],
+      "triageDecision": "No new heuristic in this step",
+      "reason": "Empty draft with laser/tap/oxidize hints, but actual route is milling/lathe/drill/tap/oxidize; ranked references support laser/tap rather than the actual mixed machining route.",
+      "recommendedNextAction": "Add Training coverage for oxidized mixed machining routes and improve extraction around laser-vs-machining choice.",
+      "topReferences": [
+        {
+          "readableId": "192793050101",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8,
+          "matchedFeatureTags": ["板件", "孔"],
+          "matchedProcessTags": ["激光切割", "攻丝"],
+          "operations": [
+            "领料工作中心",
+            "数控激光切割（下料）",
+            "数控折弯(下料）",
+            "气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "1927930207",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8,
+          "matchedFeatureTags": ["孔", "板件"],
+          "matchedProcessTags": ["激光切割", "攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "1920790301",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8,
+          "matchedFeatureTags": ["孔", "板件"],
+          "matchedProcessTags": ["激光切割", "攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 JYZ01 摇臂钻床（机加工）",
+            "U8 JQG01 气动攻丝机（机加工）",
+            "U8 MDM02 打磨拉丝抛光（食品）"
+          ]
+        },
+        {
+          "readableId": "192793020101",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8,
+          "matchedFeatureTags": ["孔", "板件"],
+          "matchedProcessTags": ["激光切割", "攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 CSZ01 数控折弯(下料）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "192713410301",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 8,
+          "matchedFeatureTags": ["孔", "板件"],
+          "matchedProcessTags": ["激光切割", "攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 CSZ01 数控折弯(下料）",
+            "U8 JQG01 气动攻丝机（机加工）",
+            "U8 BYH01 氩弧焊（食品）",
+            "U8 MDM02 打磨拉丝抛光（食品）"
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "192788110401",
+      "normalizedPositionMatchCount": 1,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "operationCountDelta": 0,
+      "warningCount": 0,
+      "materialTags": ["304"],
+      "featureTags": ["孔"],
+      "processHints": [],
+      "drawingEvidenceKinds": {
+        "dimension": 17,
+        "hole": 3,
+        "surface": 3,
+        "note": 1
+      },
+      "actualRoute": [
+        "领料工作中心",
+        "片锯下料（薄壁碳钢管）（下料）",
+        "普通车床CA6140A×2000(机加工）"
+      ],
+      "suggestedRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JLJ01 立式加工中心VMC850B(机加工）"
+      ],
+      "triageDecision": "No new heuristic in this step",
+      "reason": "Operation count already matches, but target is hole-only with no process hints; exact improvement would require replacing milling/CNC with saw/lathe without drawing-derived turning/saw evidence.",
+      "recommendedNextAction": "Improve extraction for stock/saw/turn cues on hole-only shaft-like parts before replacing route families.",
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 65,
+          "matchedDrawingEvidenceCount": 3,
+          "matchedFeatureTags": ["孔"],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 CSZ01 数控折弯(下料）"
+          ]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）"
+          ]
+        },
+        {
+          "readableId": "192713410405",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）"
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "192788110402",
+      "normalizedPositionMatchCount": 2,
+      "actualOperationCount": 5,
+      "suggestedOperationCount": 5,
+      "operationCountDelta": 0,
+      "warningCount": 0,
+      "materialTags": ["304"],
+      "featureTags": ["轴类", "孔", "螺纹"],
+      "processHints": ["攻丝", "车削"],
+      "drawingEvidenceKinds": {
+        "dimension": 12,
+        "hole": 1,
+        "thread": 1,
+        "surface": 2,
+        "note": 2
+      },
+      "actualRoute": [
+        "领料工作中心",
+        "片锯下料（薄壁碳钢管）（下料）",
+        "普通车床CA6140A×2000(机加工）",
+        "数显立铣（北一）XA5032（机加工）",
+        "气动攻丝机（机加工）"
+      ],
+      "suggestedRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JLJ01 立式加工中心VMC850B(机加工）",
+        "U8 JQG01 气动攻丝机（机加工）"
+      ],
+      "triageDecision": "No new heuristic in this step",
+      "reason": "Operation count already matches after shaft-thread turn insertion; exact improvement would require adding saw, removing CNC, and interpreting tap retention, which exceeds the explicit hole/thread/turn evidence used by the current safe rule.",
+      "recommendedNextAction": "Do not broaden the current shaft-thread rule; exact-match work needs a separate saw/CNC/tap evidence model.",
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 2,
+          "matchedFeatureTags": ["孔"],
+          "matchedProcessTags": ["攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "192437180604",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 1,
+          "matchedFeatureTags": ["轴类"],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）"
+          ]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 CSZ01 数控折弯(下料）"
+          ]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）"
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "192788110601",
+      "normalizedPositionMatchCount": 0,
+      "actualOperationCount": 5,
+      "suggestedOperationCount": 0,
+      "operationCountDelta": -5,
+      "warningCount": 1,
+      "materialTags": [],
+      "featureTags": ["轴类", "螺纹", "孔", "焊接件"],
+      "processHints": ["攻丝", "车削", "焊接"],
+      "drawingEvidenceKinds": {
+        "dimension": 12,
+        "thread": 2,
+        "surface": 1,
+        "note": 1
+      },
+      "actualRoute": [
+        "领料工作中心",
+        "片锯下料（薄壁碳钢管）（下料）",
+        "普通车床CA6140A×2000(机加工）",
+        "数显立铣（北一）XA5032（机加工）",
+        "气动攻丝机（机加工）"
+      ],
+      "suggestedRoute": [],
+      "triageDecision": "No new heuristic in this step",
+      "reason": "Empty draft has shaft/thread/weld ambiguity and no material; competing references split between weld routes and saw/turn/tap routes, so selecting one would be guesswork.",
+      "recommendedNextAction": "Resolve weld-vs-shaft extraction ambiguity or add explicit route-family governance before non-empty generation.",
+      "topReferences": [
+        {
+          "readableId": "192713410301",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 4,
+          "matchedFeatureTags": ["孔", "焊接件"],
+          "matchedProcessTags": ["攻丝", "焊接"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 CSZ01 数控折弯(下料）",
+            "U8 JQG01 气动攻丝机（机加工）",
+            "U8 BYH01 氩弧焊（食品）",
+            "U8 MDM02 打磨拉丝抛光（食品）"
+          ]
+        },
+        {
+          "readableId": "191967100102",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 2,
+          "matchedFeatureTags": ["轴类", "孔"],
+          "matchedProcessTags": ["攻丝", "车削"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "19272869010104",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 4,
+          "matchedFeatureTags": ["孔", "焊接件"],
+          "matchedProcessTags": ["攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "1927286901",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 2,
+          "matchedFeatureTags": ["轴类", "孔"],
+          "matchedProcessTags": ["攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 JYZ01 摇臂钻床（机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "192079030100",
+          "score": 15,
+          "matchedDrawingEvidenceCount": 2,
+          "matchedFeatureTags": ["轴类", "焊接件"],
+          "matchedProcessTags": ["焊接"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 BPZ02 板焊拼装（食品）",
+            "U8 BYH01 氩弧焊（食品）",
+            "U8 MDM02 打磨拉丝抛光（食品）",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "192788110602",
+      "normalizedPositionMatchCount": 0,
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 0,
+      "operationCountDelta": -3,
+      "warningCount": 1,
+      "materialTags": [],
+      "featureTags": ["焊接件"],
+      "processHints": ["焊接"],
+      "drawingEvidenceKinds": {
+        "dimension": 8,
+        "surface": 1,
+        "note": 1
+      },
+      "actualRoute": [
+        "领料工作中心",
+        "片锯下料（薄壁碳钢管）（下料）",
+        "普通车床CA6140A×2000(机加工）"
+      ],
+      "suggestedRoute": [],
+      "triageDecision": "No new heuristic in this step",
+      "reason": "Target extraction says weld-only, while actual route is saw/lathe; top references are weld routes, so the miss indicates extraction/data ambiguity rather than a safe generation rule.",
+      "recommendedNextAction": "Treat as extraction/data-governance issue; do not generate weld route or saw/turn route unattended.",
+      "topReferences": [
+        {
+          "readableId": "192793060200",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3,
+          "matchedFeatureTags": ["焊接件"],
+          "matchedProcessTags": ["焊接"],
+          "operations": [
+            "领料工作中心",
+            "板焊拼装（碳钢）",
+            "氩弧焊（碳钢）",
+            "打磨（碳钢）"
+          ]
+        },
+        {
+          "readableId": "192793050200",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3,
+          "matchedFeatureTags": ["焊接件"],
+          "matchedProcessTags": ["焊接"],
+          "operations": [
+            "领料工作中心",
+            "板焊拼装（碳钢）",
+            "氩弧焊（碳钢）",
+            "打磨（碳钢）"
+          ]
+        },
+        {
+          "readableId": "19244208060400",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3,
+          "matchedFeatureTags": ["焊接件"],
+          "matchedProcessTags": ["焊接"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 BPZ02 板焊拼装（食品）",
+            "U8 BYH01 氩弧焊（食品）",
+            "U8 MDM02 打磨拉丝抛光（食品）"
+          ]
+        },
+        {
+          "readableId": "19271341030100",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3,
+          "matchedFeatureTags": ["焊接件"],
+          "matchedProcessTags": ["焊接"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 BPZ02 板焊拼装（食品）",
+            "U8 BYH01 氩弧焊（食品）",
+            "U8 MDM02 打磨拉丝抛光（食品）"
+          ]
+        },
+        {
+          "readableId": "19272869010",
+          "score": 30,
+          "matchedDrawingEvidenceCount": 3,
+          "matchedFeatureTags": ["焊接件"],
+          "matchedProcessTags": ["焊接"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 CSZ01 数控折弯(下料）",
+            "U8 BYH01 氩弧焊（食品）",
+            "U8 MDM02 打磨拉丝抛光（食品）"
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "192472540409",
+      "normalizedPositionMatchCount": 0,
+      "actualOperationCount": 6,
+      "suggestedOperationCount": 0,
+      "operationCountDelta": -6,
+      "warningCount": 1,
+      "materialTags": ["6061"],
+      "featureTags": ["轴类", "孔", "螺纹"],
+      "processHints": ["攻丝", "车削", "氧化"],
+      "drawingEvidenceKinds": {
+        "dimension": 12,
+        "hole": 1,
+        "thread": 1,
+        "surface": 2,
+        "note": 3
+      },
+      "actualRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 XDJ01 锯床下料",
+        "U8 JPC01 普通车床CA6140A×2000(机加工）",
+        "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+        "U8 JQG01 气动攻丝机（机加工）",
+        "U8 WYH01 外协氧化"
+      ],
+      "suggestedRoute": [],
+      "triageDecision": "No new heuristic in this step",
+      "reason": "Strong shaft/hole/thread/turn/oxidize target, but ranked references support saw/turn/tap or drill/tap without oxidation; generating the full actual route lacks a coherent oxidized machining Training reference.",
+      "recommendedNextAction": "Add coherent Training examples for saw/turn/mill/tap/oxidize shaft routes before enabling fallback.",
+      "topReferences": [
+        {
+          "readableId": "191967100102",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 6,
+          "matchedFeatureTags": ["轴类", "孔"],
+          "matchedProcessTags": ["攻丝", "车削"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "1927286901",
+          "score": 20,
+          "matchedDrawingEvidenceCount": 6,
+          "matchedFeatureTags": ["轴类", "孔"],
+          "matchedProcessTags": ["攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 JYZ01 摇臂钻床（机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "146001020101",
+          "score": 10,
+          "matchedDrawingEvidenceCount": 6,
+          "matchedFeatureTags": ["孔"],
+          "matchedProcessTags": ["攻丝", "车削"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JYZ01 摇臂钻床（机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "192475010310",
+          "score": 10,
+          "matchedDrawingEvidenceCount": 6,
+          "matchedFeatureTags": ["孔"],
+          "matchedProcessTags": ["攻丝", "车削"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JPC01 普通车床CA6140A×2000(机加工）",
+            "U8 JLX02 立式铣床（精乔）4S-R8(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "192793050101",
+          "score": 10,
+          "matchedDrawingEvidenceCount": 6,
+          "matchedFeatureTags": ["孔"],
+          "matchedProcessTags": ["攻丝"],
+          "operations": [
+            "领料工作中心",
+            "数控激光切割（下料）",
+            "数控折弯(下料）",
+            "气动攻丝机（机加工）"
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "192759010202",
+      "normalizedPositionMatchCount": 1,
+      "actualOperationCount": 6,
+      "suggestedOperationCount": 5,
+      "operationCountDelta": -1,
+      "warningCount": 0,
+      "materialTags": ["304"],
+      "featureTags": ["板件", "孔", "螺纹", "台阶"],
+      "processHints": ["激光切割", "攻丝"],
+      "drawingEvidenceKinds": {
+        "dimension": 10,
+        "hole": 2,
+        "thread": 1,
+        "surface": 1,
+        "note": 3
+      },
+      "actualRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+        "U8 JPC01 普通车床CA6140A×2000(机加工）",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JYZ01 摇臂钻床（机加工）",
+        "U8 JQG01 气动攻丝机（机加工）"
+      ],
+      "suggestedRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JLJ01 立式加工中心VMC850B(机加工）",
+        "U8 JQG01 气动攻丝机（机加工）",
+        "U8 XJG01 数控激光切割（下料）"
+      ],
+      "triageDecision": "No new heuristic in this step",
+      "reason": "Mixed sheet/hole/thread/step target where suggested route contains laser and actual route is saw/lathe/mill/drill/tap; exact improvement would require broad destructive replacement across route families.",
+      "recommendedNextAction": "Manual review or data governance; this row mixes sheet features and shaft-style actual operations.",
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 5,
+          "matchedFeatureTags": ["孔"],
+          "matchedProcessTags": ["攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": ["板件"],
+          "matchedProcessTags": ["激光切割"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 CSZ01 数控折弯(下料）"
+          ]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": ["板件"],
+          "matchedProcessTags": ["激光切割"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）"
+          ]
+        },
+        {
+          "readableId": "192713410405",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": ["板件"],
+          "matchedProcessTags": ["激光切割"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）"
+          ]
+        },
+        {
+          "readableId": "1924371803",
+          "score": 43,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": ["板件"],
+          "matchedProcessTags": ["激光切割"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 CSZ01 数控折弯(下料）"
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "192472540414",
+      "normalizedPositionMatchCount": 1,
+      "actualOperationCount": 4,
+      "suggestedOperationCount": 4,
+      "operationCountDelta": 0,
+      "warningCount": 0,
+      "materialTags": ["304"],
+      "featureTags": ["轴类", "螺纹", "孔"],
+      "processHints": ["攻丝", "车削"],
+      "drawingEvidenceKinds": {
+        "dimension": 7,
+        "thread": 1,
+        "surface": 2,
+        "note": 2
+      },
+      "actualRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 XDJ01 锯床下料",
+        "U8 JPC01 普通车床CA6140A×2000(机加工）",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+      ],
+      "suggestedRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JLJ01 立式加工中心VMC850B(机加工）",
+        "U8 JQG01 气动攻丝机（机加工）"
+      ],
+      "triageDecision": "No new heuristic in this step",
+      "reason": "Thread-only shaft target has no explicit hole evidence; exact improvement would require dropping tap/CNC and composing saw/turn/mill from multiple weak references, violating current explicit-hole guardrails.",
+      "recommendedNextAction": "Require explicit hole evidence or coherent no-tap shaft/mill reference before changing generation.",
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 1,
+          "matchedFeatureTags": ["孔"],
+          "matchedProcessTags": ["攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "192437180604",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": ["轴类"],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）"
+          ]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 CSZ01 数控折弯(下料）"
+          ]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）"
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "192739030308",
+      "normalizedPositionMatchCount": 1,
+      "actualOperationCount": 4,
+      "suggestedOperationCount": 4,
+      "operationCountDelta": 0,
+      "warningCount": 0,
+      "materialTags": ["304"],
+      "featureTags": ["轴类", "螺纹", "孔"],
+      "processHints": ["攻丝", "车削"],
+      "drawingEvidenceKinds": {
+        "dimension": 7,
+        "thread": 1,
+        "surface": 2,
+        "note": 2
+      },
+      "actualRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 XDJ01 锯床下料",
+        "U8 JPC01 普通车床CA6140A×2000(机加工）",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+      ],
+      "suggestedRoute": [
+        "U8 LL01 领料工作中心",
+        "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+        "U8 JLJ01 立式加工中心VMC850B(机加工）",
+        "U8 JQG01 气动攻丝机（机加工）"
+      ],
+      "triageDecision": "No new heuristic in this step",
+      "reason": "Same evidence shape as 192472540414: no explicit hole evidence and exact improvement requires destructive saw/turn/mill replacement rather than a filtered extension.",
+      "recommendedNextAction": "Require explicit hole evidence or coherent no-tap shaft/mill reference before changing generation.",
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 1,
+          "matchedFeatureTags": ["孔"],
+          "matchedProcessTags": ["攻丝"],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+            "U8 JLJ01 立式加工中心VMC850B(机加工）",
+            "U8 JQG01 气动攻丝机（机加工）"
+          ]
+        },
+        {
+          "readableId": "192437180604",
+          "score": 45,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": ["轴类"],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）"
+          ]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）",
+            "U8 CSZ01 数控折弯(下料）"
+          ]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XDJ01 锯床下料",
+            "U8 JSX01 数显立铣（北一）XA5032（机加工）"
+          ]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matchedDrawingEvidenceCount": 0,
+          "matchedFeatureTags": [],
+          "matchedProcessTags": [],
+          "operations": [
+            "U8 LL01 领料工作中心",
+            "U8 XJG01 数控激光切割（下料）"
+          ]
+        }
+      ]
+    }
+  ],
+  "recommendedNextGates": [
+    "Add or verify Training coverage for oxidized mixed machining and saw/turn/mill/tap families before route fallback expansion.",
+    "Improve drawing extraction/process-hint evidence for saw, stock-shape, turning, and thread-vs-tap semantics.",
+    "Keep production/materialization closed until quality improves with safety counters still at zero and explicit user authorization is given."
+  ]
+}

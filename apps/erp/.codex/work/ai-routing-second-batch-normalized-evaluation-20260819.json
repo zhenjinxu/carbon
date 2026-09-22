@@ -1,0 +1,127 @@
+﻿{
+  "evaluatedAt": "2026-08-19T10:03:16.3248635Z",
+  "source": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\ai-routing-second-batch-holdout-evaluation-20260819.json",
+  "holdoutCount": 4,
+  "idExactSequenceMatches": 0,
+  "normalizedExactSequenceMatches": 3,
+  "results": [
+    {
+      "readableId": "1927930503",
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "idExactSequenceMatch": false,
+      "normalizedExactSequenceMatch": true,
+      "normalizedByPosition": [
+        {
+          "position": 1,
+          "expected": "领料工作中心",
+          "predicted": "领料工作中心",
+          "match": true
+        },
+        {
+          "position": 2,
+          "expected": "数控激光切割(下料)",
+          "predicted": "数控激光切割(下料)",
+          "match": true
+        },
+        {
+          "position": 3,
+          "expected": "数控折弯(下料)",
+          "predicted": "数控折弯(下料)",
+          "match": true
+        }
+      ],
+      "warningCount": 0,
+      "warnings": []
+    },
+    {
+      "readableId": "192793050201",
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 0,
+      "idExactSequenceMatch": false,
+      "normalizedExactSequenceMatch": false,
+      "normalizedByPosition": [
+        {
+          "position": 1,
+          "expected": "领料工作中心",
+          "predicted": "",
+          "match": false
+        },
+        {
+          "position": 2,
+          "expected": "数控激光切割(下料)",
+          "predicted": "",
+          "match": false
+        },
+        {
+          "position": 3,
+          "expected": "数控折弯(下料)",
+          "predicted": "",
+          "match": false
+        }
+      ],
+      "warningCount": 1,
+      "warnings": [
+        "No approved routing sample met the minimum similarity threshold."
+      ]
+    },
+    {
+      "readableId": "1927930603",
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "idExactSequenceMatch": false,
+      "normalizedExactSequenceMatch": true,
+      "normalizedByPosition": [
+        {
+          "position": 1,
+          "expected": "领料工作中心",
+          "predicted": "领料工作中心",
+          "match": true
+        },
+        {
+          "position": 2,
+          "expected": "数控激光切割(下料)",
+          "predicted": "数控激光切割(下料)",
+          "match": true
+        },
+        {
+          "position": 3,
+          "expected": "数控折弯(下料)",
+          "predicted": "数控折弯(下料)",
+          "match": true
+        }
+      ],
+      "warningCount": 0,
+      "warnings": []
+    },
+    {
+      "readableId": "192793060201",
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "idExactSequenceMatch": false,
+      "normalizedExactSequenceMatch": true,
+      "normalizedByPosition": [
+        {
+          "position": 1,
+          "expected": "领料工作中心",
+          "predicted": "领料工作中心",
+          "match": true
+        },
+        {
+          "position": 2,
+          "expected": "数控激光切割(下料)",
+          "predicted": "数控激光切割(下料)",
+          "match": true
+        },
+        {
+          "position": 3,
+          "expected": "数控折弯(下料)",
+          "predicted": "数控折弯(下料)",
+          "match": true
+        }
+      ],
+      "warningCount": 0,
+      "warnings": []
+    }
+  ]
+}

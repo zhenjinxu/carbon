@@ -1,0 +1,107 @@
+{
+  "generatedAt": "2026-08-24T00:00:00+08:00",
+  "phase": "Phase 2: Target-Evidence Adapter Feasibility Audit",
+  "readOnlyBoundary": {
+    "carbonDatabaseWrites": 0,
+    "u8DatabaseWrites": 0,
+    "productionRouteGenerationChanged": false,
+    "materializationGate": "closed",
+    "sampleRoleWriteGate": "closed",
+    "formalRouteWriteGate": "closed"
+  },
+  "inputs": {
+    "plan": "D:\\Object\\carbon\\llm\\tasks\\ai-routing-material-evidence-next-plan-20260824.md",
+    "positiveVsControl": "D:\\Object\\carbon\\.codex\\work\\ai-routing-positive-vs-control-material-comparison-20260824.json",
+    "priorSourceAudit": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\ai-routing-material-suitability-source-decision-20260824.json",
+    "inspectedSourceFiles": [
+      "D:\\Object\\carbon\\apps\\erp\\app\\modules\\items\\ai-routing.server.ts",
+      "D:\\Object\\carbon\\apps\\erp\\app\\modules\\items\\ai-routing.ts",
+      "D:\\Object\\carbon\\apps\\erp\\app\\modules\\items\\ai-routing.test.ts"
+    ]
+  },
+  "sourceEvidence": {
+    "currentTargetEvidenceQuery": {
+      "file": "apps/erp/app/modules/items/ai-routing.server.ts",
+      "lines": "796-827",
+      "finding": "getAiRoutingTargetEvidenceForItem selects item id/readableId/name/description/notes plus the latest Succeeded aiDrawingExtraction object; it does not join material, methodMaterial, makeMethod material inputs, or BOM/raw-material rows."
+    },
+    "targetEvidenceMapper": {
+      "file": "apps/erp/app/modules/items/ai-routing.server.ts",
+      "lines": "542-556",
+      "finding": "aiRoutingTargetEvidenceFromExtractionRow maps only the selected item fields and normalized drawing extraction into aiRoutingTargetEvidenceFromDrawing."
+    },
+    "targetEvidenceShape": {
+      "file": "apps/erp/app/modules/items/ai-routing.ts",
+      "lines": "74-84, 531-569",
+      "finding": "AiRoutingTargetEvidence contains readableId/name, materialTags, featureTags, optional processHints/drawingEvidence/warnings. Raw-material leaf rows, component codes, operationSequence, and route operations are not part of target evidence."
+    },
+    "drawingLaserHints": {
+      "file": "apps/erp/app/modules/items/ai-routing.ts",
+      "lines": "212-238",
+      "finding": "drawingProcessHints derives 激光切割 from sheet-like or explicit laser drawing text unless explicit negative laser-unsuitable text exists. It does not consume U8 raw-material/BOM rows."
+    },
+    "existingTests": {
+      "file": "apps/erp/app/modules/items/ai-routing.test.ts",
+      "lines": "351-458, 1251-1355",
+      "finding": "Tests cover explicit laser-unsuitable/suitable drawing evidence and verify PDF-only target evidence does not expose target operations/processTags."
+    }
+  },
+  "comparatorEvidence": {
+    "phase1Decision": "No route-generation change and no target-evidence adapter implementation yet.",
+    "positiveVsControlFindings": [
+      "板材/平板: 993/1000 positive parts vs 500/1182 control parts; strong positive correlation but appears in controls.",
+      "BOM operationSequence 0020: 1000/1000 positive parts vs 1180/1182 controls; not discriminative.",
+      "采购 + 板材/平板 + 0020 still appears in controls; not sufficient alone.",
+      "定尺铝合金毛坯6061-T6 is control-only in current exports for 268 control parts, matching source-reviewed no-laser examples, but free-text alone remains an unapproved mapping.",
+      "SUS304/SUS316 2B平板, 拉丝板, and 定尺不锈钢毛坯 overlap positive and control sets."
+    ],
+    "priorSourceAuditFacts": [
+      "Method raw-material rows exist for 1927930206, 192769010102, and 1927930202.",
+      "Structured direct/material raw-material properties are not populated for these target rows.",
+      "No explicit positive/negative laser suitability field or text exists in current structured target evidence.",
+      "Current target evidence still has laser hints for the laser-unsuitable source-reviewed examples because their negative suitability is not currently present as explicit target evidence."
+    ]
+  },
+  "leakageClassification": {
+    "allowedNow": [
+      "Item master fields currently selected by getAiRoutingTargetEvidenceForItem: readableId/readableIdWithRevision/name/description/notes.",
+      "Latest Succeeded aiDrawingExtraction when it is tied to the target item/document and normalized as drawing evidence.",
+      "Explicit drawing text saying raw stock is suitable or not suitable for laser cutting."
+    ],
+    "candidateButNotImplemented": [
+      "Direct item material table fields, if populated and independently maintained as item/master-data properties rather than route-derived truth.",
+      "Independent U8/BOM recursive leaf raw-material import, only if exposed without route operations/XJG flags/truth route labels and paired with explicit suitability evidence or an approved curated stock-class mapping.",
+      "Curated raw-material/stock laser-suitability mapping, only after approval plus RED/GREEN tests and 30-holdout verification."
+    ],
+    "forbiddenOrLeaky": [
+      "Active U8 route operations, XJG/XJG01/激光/切割 flags, or truth route operation sequence for the target.",
+      "Locked Evaluation truth routes, target processTags, target operations, work centers, or sample-role labels.",
+      "Active makeMethod/methodOperation route data as target evidence when it is the answer route being predicted.",
+      "BOM operationSequence such as 0020 as a laser rule, because Phase 1 proved it appears in no-laser controls and may be route-operation aligned."
+    ],
+    "ambiguous": [
+      "methodMaterial rows under an active makeMethod: useful for audit, but unsafe as generation input until classified as pre-route BOM evidence or separated from answer-route makeMethod truth.",
+      "Raw-material free text such as 毛坯, 拉丝板, 平板, 6061, SUS304/SUS316: useful for review, not sufficient as a direct add/suppress rule without explicit suitability or approved mapping."
+    ]
+  },
+  "decision": {
+    "targetEvidenceAdapterImplementationRecommendedNow": false,
+    "routeGenerationChangeRecommendedNow": false,
+    "tddGuardrailImplementationRecommendedNow": false,
+    "reason": "The current AI Routing target evidence path has no non-leaking raw-material/BOM evidence source beyond item fields and drawing extraction. Prior audits found raw-material names but no populated structured laser-suitability field, and Phase 1 proved raw category/text/operationSequence overlap is too high for direct rules. Implementing an adapter now would either add non-discriminative evidence or risk leaking the active route truth.",
+    "stopCondition": "Stop before code changes; do not proceed to Phase 3 RED implementation until explicit non-leaking suitability evidence or an approved curated mapping exists."
+  },
+  "nextSafeGate": {
+    "required": [
+      "Define/import a target-available raw-material/stock suitability source that is independent of active route operations and Evaluation truth.",
+      "Classify each source column as allowed, ambiguous, or forbidden before adapter implementation.",
+      "Only then write RED tests: preserve 1927930202 laser, suppress 1927930206/192769010102 only from explicit evidence, preserve 192759010202 role disambiguation, and block raw text/category/0020-only rules.",
+      "Run focused AI Routing tests and 30-holdout verification before any production route-generation change."
+    ],
+    "blocked": [
+      "No adapter based on raw-material free text alone.",
+      "No rule based on 板材/平板, 拉丝板, 毛坯/6061, or 0020 alone.",
+      "No draft/materialization/formal makeMethod/methodOperation/sample-role writes."
+    ]
+  }
+}

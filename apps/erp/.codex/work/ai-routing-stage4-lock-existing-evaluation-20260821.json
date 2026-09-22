@@ -1,0 +1,25 @@
+{
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "lockedEvaluationSamples": [
+    {
+      "readableId": "192793020201",
+      "sampleId": "d8s9bh4f8gm357312pbg:make_60185ba88e75759f6ce509be",
+      "locked": true,
+      "operationCount": 3
+    },
+    {
+      "readableId": "1927930206",
+      "sampleId": "d8s9bh4f8gm357312pbg:make_7330646303888e7e0f10a384",
+      "locked": true,
+      "operationCount": 5
+    },
+    {
+      "readableId": "1927930202",
+      "sampleId": "d8s9bh4f8gm357312pbg:make_56da1ff5427838e6d071699a",
+      "locked": true,
+      "operationCount": 4
+    }
+  ],
+  "writesPerformed": true,
+  "scope": "lock existing Evaluation samples only"
+}

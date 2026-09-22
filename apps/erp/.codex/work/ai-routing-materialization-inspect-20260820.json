@@ -1,0 +1,80 @@
+{
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "preferredReadableId": "192793050201",
+  "preferredItem": {
+    "id": "wodiitem_0141582866eb9de5f7c76491",
+    "readableId": "192793050201",
+    "readableIdWithRevision": "192793050201",
+    "name": "拖板1",
+    "createdByPresent": true
+  },
+  "inspectedDraftCount": 2,
+  "preferredCandidateCount": 0,
+  "allCandidateCount": 0,
+  "preferredCandidates": [],
+  "allCandidates": [],
+  "drafts": [
+    {
+      "id": "aird_EoeRjfohQYHSv3VUk3Jjhx",
+      "itemId": "wodiitem_0141582866eb9de5f7c76491",
+      "readableId": "192793050201",
+      "readableIdWithRevision": "192793050201",
+      "itemName": "拖板1",
+      "status": "Accepted",
+      "source": "similarity-retrieval",
+      "targetMakeMethodId": "make_46fb2501da572da33ee8d133",
+      "targetMakeMethodStatus": "Active",
+      "targetMakeMethodVersion": "10.00",
+      "acceptedMakeMethodId": "make_MzZb6Ca6xbsjuShAfZ9n4Z",
+      "acceptedMakeMethodStatus": "Draft",
+      "createdAt": "2026-08-20T06:57:06.824Z",
+      "updatedAt": "2026-08-20T06:57:06.824Z",
+      "acceptedAt": "2026-08-20T06:57:06.824Z",
+      "acceptedByPresent": true,
+      "createdByPresent": true,
+      "suggestedOperationsCount": 3,
+      "referenceSamplesCount": 5,
+      "latestFeedbackId": "airf_Pcy9metjb6bFmtXMRa7ek",
+      "latestFeedbackCreatedAt": "2026-08-20T06:57:06.824Z",
+      "confirmedSnapshotTargetItemId": "wodiitem_0141582866eb9de5f7c76491",
+      "confirmedSnapshotOperationCount": 3,
+      "routeCounts": {
+        "methodCount": 2,
+        "operationCount": 3,
+        "activeMethodIds": ["make_46fb2501da572da33ee8d133"]
+      },
+      "materializationCandidate": false
+    },
+    {
+      "id": "aird_TEZdL8zMjmfoa33MXoBMf9",
+      "itemId": "wodiitem_ffbfacf91b9ab3b7615319b1",
+      "readableId": "1927930202",
+      "readableIdWithRevision": "1927930202",
+      "itemName": "皮带侧板",
+      "status": "Accepted",
+      "source": "similarity-retrieval",
+      "targetMakeMethodId": "make_56da1ff5427838e6d071699a",
+      "targetMakeMethodStatus": "Active",
+      "targetMakeMethodVersion": "10.00",
+      "acceptedMakeMethodId": null,
+      "acceptedMakeMethodStatus": null,
+      "createdAt": "2026-08-17T00:31:02.575Z",
+      "updatedAt": "2026-08-17T00:31:38.417Z",
+      "acceptedAt": "2026-08-17T00:31:38.417Z",
+      "acceptedByPresent": true,
+      "createdByPresent": true,
+      "suggestedOperationsCount": 4,
+      "referenceSamplesCount": 5,
+      "latestFeedbackId": "airf_PqjCF4oD6FKT9FUk3Kx9HH",
+      "latestFeedbackCreatedAt": "2026-08-17T00:31:38.417Z",
+      "confirmedSnapshotTargetItemId": null,
+      "confirmedSnapshotOperationCount": 0,
+      "routeCounts": {
+        "methodCount": 1,
+        "operationCount": 4,
+        "activeMethodIds": ["make_56da1ff5427838e6d071699a"]
+      },
+      "materializationCandidate": false
+    }
+  ]
+}

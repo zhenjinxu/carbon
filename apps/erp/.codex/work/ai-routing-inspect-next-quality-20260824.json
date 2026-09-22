@@ -1,0 +1,2021 @@
+{
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "inspectedAt": "2026-08-24T00:02:19.067Z",
+  "results": [
+    {
+      "readableId": "192472540414",
+      "target": {
+        "materialTags": ["304"],
+        "featureTags": ["轴类", "螺纹", "孔"],
+        "processHints": ["攻丝", "车削"],
+        "drawingEvidenceKinds": {
+          "dimension": 7,
+          "thread": 1,
+          "surface": 2,
+          "note": 2
+        }
+      },
+      "actual": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JSX01 数显立铣（北一）XA5032（机加工）",
+      "suggested": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+      "suggestedTagsByOperation": [
+        {
+          "processName": "U8 LL01 领料工作中心",
+          "tags": ["领料"]
+        },
+        {
+          "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "tags": ["铣削"]
+        },
+        {
+          "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+          "tags": []
+        },
+        {
+          "processName": "U8 JQG01 气动攻丝机（机加工）",
+          "tags": ["攻丝"]
+        }
+      ],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 45,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["孔"],
+            "processTags": ["攻丝"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 1,
+          "operations": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+              "tags": ["铣削"]
+            },
+            {
+              "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+              "tags": []
+            },
+            {
+              "processName": "U8 JQG01 气动攻丝机（机加工）",
+              "tags": ["攻丝"]
+            }
+          ]
+        },
+        {
+          "readableId": "192437180604",
+          "score": 45,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["轴类"],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            },
+            {
+              "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+              "tags": ["铣削"]
+            }
+          ]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410405",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410402",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            }
+          ]
+        },
+        {
+          "readableId": "1924371803",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "191967100102",
+          "score": 20,
+          "matched": {
+            "materialTags": [],
+            "featureTags": ["轴类", "孔"],
+            "processTags": ["攻丝", "车削"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 1,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            },
+            {
+              "processName": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+              "tags": ["车削"]
+            },
+            {
+              "processName": "U8 JQG01 气动攻丝机（机加工）",
+              "tags": ["攻丝"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "1927326104",
+      "target": {
+        "materialTags": ["304"],
+        "featureTags": ["孔", "螺纹"],
+        "processHints": ["攻丝"],
+        "drawingEvidenceKinds": {
+          "dimension": 10,
+          "hole": 1,
+          "thread": 2,
+          "surface": 1,
+          "note": 3
+        }
+      },
+      "actual": "领料工作中心 -> 摇臂钻床（机加工） -> 气动攻丝机（机加工）",
+      "suggested": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+      "suggestedTagsByOperation": [
+        {
+          "processName": "U8 LL01 领料工作中心",
+          "tags": ["领料"]
+        },
+        {
+          "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "tags": ["铣削"]
+        },
+        {
+          "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+          "tags": []
+        },
+        {
+          "processName": "U8 JQG01 气动攻丝机（机加工）",
+          "tags": ["攻丝"]
+        }
+      ],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 50,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["孔"],
+            "processTags": ["攻丝"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 8,
+          "operations": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+              "tags": ["铣削"]
+            },
+            {
+              "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+              "tags": []
+            },
+            {
+              "processName": "U8 JQG01 气动攻丝机（机加工）",
+              "tags": ["攻丝"]
+            }
+          ]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            },
+            {
+              "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+              "tags": ["铣削"]
+            }
+          ]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410405",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410402",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            }
+          ]
+        },
+        {
+          "readableId": "1924371803",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192437180604",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192793050101",
+          "score": 15,
+          "matched": {
+            "materialTags": [],
+            "featureTags": ["孔"],
+            "processTags": ["攻丝"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 8,
+          "operations": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料） -> 气动攻丝机（机加工）",
+          "operationTags": [
+            {
+              "processName": "领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "数控激光切割（下料）",
+              "tags": ["激光切割", "下料", "领料"]
+            },
+            {
+              "processName": "数控折弯(下料）",
+              "tags": ["折弯", "下料", "领料"]
+            },
+            {
+              "processName": "气动攻丝机（机加工）",
+              "tags": ["攻丝", "领料"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "192739030308",
+      "target": {
+        "materialTags": ["304"],
+        "featureTags": ["轴类", "螺纹", "孔"],
+        "processHints": ["攻丝", "车削"],
+        "drawingEvidenceKinds": {
+          "dimension": 7,
+          "thread": 1,
+          "surface": 2,
+          "note": 2
+        }
+      },
+      "actual": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JSX01 数显立铣（北一）XA5032（机加工）",
+      "suggested": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+      "suggestedTagsByOperation": [
+        {
+          "processName": "U8 LL01 领料工作中心",
+          "tags": ["领料"]
+        },
+        {
+          "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "tags": ["铣削"]
+        },
+        {
+          "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+          "tags": []
+        },
+        {
+          "processName": "U8 JQG01 气动攻丝机（机加工）",
+          "tags": ["攻丝"]
+        }
+      ],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 45,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["孔"],
+            "processTags": ["攻丝"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 1,
+          "operations": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+              "tags": ["铣削"]
+            },
+            {
+              "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+              "tags": []
+            },
+            {
+              "processName": "U8 JQG01 气动攻丝机（机加工）",
+              "tags": ["攻丝"]
+            }
+          ]
+        },
+        {
+          "readableId": "192437180604",
+          "score": 45,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["轴类"],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            },
+            {
+              "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+              "tags": ["铣削"]
+            }
+          ]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410405",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410402",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            }
+          ]
+        },
+        {
+          "readableId": "1924371803",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "191967100102",
+          "score": 20,
+          "matched": {
+            "materialTags": [],
+            "featureTags": ["轴类", "孔"],
+            "processTags": ["攻丝", "车削"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 1,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            },
+            {
+              "processName": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+              "tags": ["车削"]
+            },
+            {
+              "processName": "U8 JQG01 气动攻丝机（机加工）",
+              "tags": ["攻丝"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "192759010202",
+      "target": {
+        "materialTags": ["304"],
+        "featureTags": ["板件", "孔", "螺纹", "台阶"],
+        "processHints": ["激光切割", "攻丝"],
+        "drawingEvidenceKinds": {
+          "dimension": 10,
+          "hole": 2,
+          "thread": 1,
+          "surface": 1,
+          "note": 3
+        }
+      },
+      "actual": "U8 LL01 领料工作中心 -> U8 XPJ01 片锯下料（薄壁碳钢管）（下料） -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JYZ01 摇臂钻床（机加工） -> U8 JQG01 气动攻丝机（机加工）",
+      "suggested": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工） -> U8 XJG01 数控激光切割（下料）",
+      "suggestedTagsByOperation": [
+        {
+          "processName": "U8 LL01 领料工作中心",
+          "tags": ["领料"]
+        },
+        {
+          "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "tags": ["铣削"]
+        },
+        {
+          "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+          "tags": []
+        },
+        {
+          "processName": "U8 JQG01 气动攻丝机（机加工）",
+          "tags": ["攻丝"]
+        },
+        {
+          "processName": "U8 XJG01 数控激光切割（下料）",
+          "tags": ["激光切割", "下料"]
+        }
+      ],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 43,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["孔"],
+            "processTags": ["攻丝"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 5,
+          "operations": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+              "tags": ["铣削"]
+            },
+            {
+              "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+              "tags": []
+            },
+            {
+              "processName": "U8 JQG01 气动攻丝机（机加工）",
+              "tags": ["攻丝"]
+            }
+          ]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 43,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["板件"],
+            "processTags": ["激光切割"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 43,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["板件"],
+            "processTags": ["激光切割"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410405",
+          "score": 43,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["板件"],
+            "processTags": ["激光切割"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "1924371803",
+          "score": 43,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["板件"],
+            "processTags": ["激光切割"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192437180604",
+          "score": 43,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["板件"],
+            "processTags": ["激光切割"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 43,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["板件"],
+            "processTags": ["激光切割"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            },
+            {
+              "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+              "tags": ["铣削"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410402",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            }
+          ]
+        },
+        {
+          "readableId": "192793050101",
+          "score": 15,
+          "matched": {
+            "materialTags": [],
+            "featureTags": ["板件", "孔"],
+            "processTags": ["激光切割", "攻丝"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 5,
+          "operations": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料） -> 气动攻丝机（机加工）",
+          "operationTags": [
+            {
+              "processName": "领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "数控激光切割（下料）",
+              "tags": ["激光切割", "下料", "领料"]
+            },
+            {
+              "processName": "数控折弯(下料）",
+              "tags": ["折弯", "下料", "领料"]
+            },
+            {
+              "processName": "气动攻丝机（机加工）",
+              "tags": ["攻丝", "领料"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "19276939010203",
+      "target": {
+        "materialTags": ["304"],
+        "featureTags": ["板件", "轴类", "孔"],
+        "processHints": ["激光切割", "车削"],
+        "drawingEvidenceKinds": {
+          "dimension": 3,
+          "hole": 1,
+          "surface": 1,
+          "note": 2
+        }
+      },
+      "actual": "领料工作中心 -> 数控激光切割（下料） -> 普通车床CA6150B/A×2000（机加工）",
+      "suggested": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+      "suggestedTagsByOperation": [
+        {
+          "processName": "U8 LL01 领料工作中心",
+          "tags": ["领料"]
+        },
+        {
+          "processName": "U8 XJG01 数控激光切割（下料）",
+          "tags": ["激光切割", "下料"]
+        }
+      ],
+      "topReferences": [
+        {
+          "readableId": "192437180604",
+          "score": 55,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["轴类", "板件"],
+            "processTags": ["激光切割"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 45,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["板件"],
+            "processTags": ["激光切割"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 45,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["板件"],
+            "processTags": ["激光切割"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410405",
+          "score": 45,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["板件"],
+            "processTags": ["激光切割"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "1924371803",
+          "score": 45,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["板件"],
+            "processTags": ["激光切割"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 45,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["板件"],
+            "processTags": ["激光切割"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "1920790304",
+          "score": 45,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["孔"],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 2,
+          "operations": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+              "tags": ["铣削"]
+            },
+            {
+              "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+              "tags": []
+            },
+            {
+              "processName": "U8 JQG01 气动攻丝机（机加工）",
+              "tags": ["攻丝"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            },
+            {
+              "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+              "tags": ["铣削"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410402",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            }
+          ]
+        },
+        {
+          "readableId": "1927286901",
+          "score": 30,
+          "matched": {
+            "materialTags": [],
+            "featureTags": ["轴类", "孔", "板件"],
+            "processTags": ["激光切割"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 2,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 JYZ01 摇臂钻床（机加工） -> U8 JQG01 气动攻丝机（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 JYZ01 摇臂钻床（机加工）",
+              "tags": ["钻孔"]
+            },
+            {
+              "processName": "U8 JQG01 气动攻丝机（机加工）",
+              "tags": ["攻丝"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "192788110401",
+      "target": {
+        "materialTags": ["304"],
+        "featureTags": ["孔"],
+        "processHints": [],
+        "drawingEvidenceKinds": {
+          "dimension": 17,
+          "hole": 3,
+          "surface": 3,
+          "note": 1
+        }
+      },
+      "actual": "领料工作中心 -> 片锯下料（薄壁碳钢管）（下料） -> 普通车床CA6140A×2000(机加工）",
+      "suggested": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+      "suggestedTagsByOperation": [
+        {
+          "processName": "U8 LL01 领料工作中心",
+          "tags": ["领料"]
+        },
+        {
+          "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "tags": ["铣削"]
+        },
+        {
+          "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+          "tags": []
+        },
+        {
+          "processName": "U8 JQG01 气动攻丝机（机加工）",
+          "tags": ["攻丝"]
+        }
+      ],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 65,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["孔"],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 3,
+          "operations": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+              "tags": ["铣削"]
+            },
+            {
+              "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+              "tags": []
+            },
+            {
+              "processName": "U8 JQG01 气动攻丝机（机加工）",
+              "tags": ["攻丝"]
+            }
+          ]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            },
+            {
+              "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+              "tags": ["铣削"]
+            }
+          ]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410405",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410402",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            }
+          ]
+        },
+        {
+          "readableId": "1924371803",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192437180604",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192793050101",
+          "score": 30,
+          "matched": {
+            "materialTags": [],
+            "featureTags": ["孔"],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 3,
+          "operations": "领料工作中心 -> 数控激光切割（下料） -> 数控折弯(下料） -> 气动攻丝机（机加工）",
+          "operationTags": [
+            {
+              "processName": "领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "数控激光切割（下料）",
+              "tags": ["激光切割", "下料", "领料"]
+            },
+            {
+              "processName": "数控折弯(下料）",
+              "tags": ["折弯", "下料", "领料"]
+            },
+            {
+              "processName": "气动攻丝机（机加工）",
+              "tags": ["攻丝", "领料"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "readableId": "192788110402",
+      "target": {
+        "materialTags": ["304"],
+        "featureTags": ["轴类", "孔", "螺纹"],
+        "processHints": ["攻丝", "车削"],
+        "drawingEvidenceKinds": {
+          "dimension": 12,
+          "hole": 1,
+          "thread": 1,
+          "surface": 2,
+          "note": 2
+        }
+      },
+      "actual": "领料工作中心 -> 片锯下料（薄壁碳钢管）（下料） -> 普通车床CA6140A×2000(机加工） -> 数显立铣（北一）XA5032（机加工） -> 气动攻丝机（机加工）",
+      "suggested": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+      "suggestedTagsByOperation": [
+        {
+          "processName": "U8 LL01 领料工作中心",
+          "tags": ["领料"]
+        },
+        {
+          "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "tags": ["铣削"]
+        },
+        {
+          "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+          "tags": []
+        },
+        {
+          "processName": "U8 JQG01 气动攻丝机（机加工）",
+          "tags": ["攻丝"]
+        }
+      ],
+      "topReferences": [
+        {
+          "readableId": "1920790304",
+          "score": 45,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["孔"],
+            "processTags": ["攻丝"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 2,
+          "operations": "U8 LL01 领料工作中心 -> U8 JSX01 数显立铣（北一）XA5032（机加工） -> U8 JLJ01 立式加工中心VMC850B(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+              "tags": ["铣削"]
+            },
+            {
+              "processName": "U8 JLJ01 立式加工中心VMC850B(机加工）",
+              "tags": []
+            },
+            {
+              "processName": "U8 JQG01 气动攻丝机（机加工）",
+              "tags": ["攻丝"]
+            }
+          ]
+        },
+        {
+          "readableId": "192437180604",
+          "score": 45,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": ["轴类"],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 1,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "1924371005",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410401",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JSX01 数显立铣（北一）XA5032（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            },
+            {
+              "processName": "U8 JSX01 数显立铣（北一）XA5032（机加工）",
+              "tags": ["铣削"]
+            }
+          ]
+        },
+        {
+          "readableId": "1927134101",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410405",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "192713410402",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            }
+          ]
+        },
+        {
+          "readableId": "1924371803",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "19271341030101",
+          "score": 35,
+          "matched": {
+            "materialTags": ["304"],
+            "featureTags": [],
+            "processTags": [],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 0,
+          "operations": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XJG01 数控激光切割（下料）",
+              "tags": ["激光切割", "下料"]
+            },
+            {
+              "processName": "U8 CSZ01 数控折弯(下料）",
+              "tags": ["折弯", "下料"]
+            }
+          ]
+        },
+        {
+          "readableId": "191967100102",
+          "score": 20,
+          "matched": {
+            "materialTags": [],
+            "featureTags": ["轴类", "孔"],
+            "processTags": ["攻丝", "车削"],
+            "resourceTags": []
+          },
+          "matchedDrawingEvidenceCount": 3,
+          "operations": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JQG01 气动攻丝机（机加工）",
+          "operationTags": [
+            {
+              "processName": "U8 LL01 领料工作中心",
+              "tags": ["领料"]
+            },
+            {
+              "processName": "U8 XDJ01 锯床下料",
+              "tags": ["下料", "锯床"]
+            },
+            {
+              "processName": "U8 JPC01 普通车床CA6140A×2000(机加工）",
+              "tags": ["车削"]
+            },
+            {
+              "processName": "U8 JQG01 气动攻丝机（机加工）",
+              "tags": ["攻丝"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

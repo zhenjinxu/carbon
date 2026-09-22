@@ -1,0 +1,49 @@
+﻿{
+  "evaluatedAt": "2026-08-20T00:56:38.265Z",
+  "source": ".codex/work/ai-routing-second-batch-holdout-evaluation-20260819.json",
+  "holdoutCount": 4,
+  "normalizedExactSequenceMatches": 4,
+  "totalEvaluationLeaks": 0,
+  "results": [
+    {
+      "readableId": "1927930503",
+      "targetExtractionId": "aide_ZUm5yz18gbHisqN3j5euo",
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "normalizedExpectedSequence": "领料工作中心 -\u003e 数控激光切割(下料) -\u003e 数控折弯(下料)",
+      "normalizedSuggestedSequence": "领料工作中心 -\u003e 数控激光切割(下料) -\u003e 数控折弯(下料)",
+      "normalizedExactSequenceMatch": true,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192793050201",
+      "targetExtractionId": "aide_TqQRLBMEb9aHw8D2PvV1M9",
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "normalizedExpectedSequence": "领料工作中心 -\u003e 数控激光切割(下料) -\u003e 数控折弯(下料)",
+      "normalizedSuggestedSequence": "领料工作中心 -\u003e 数控激光切割(下料) -\u003e 数控折弯(下料)",
+      "normalizedExactSequenceMatch": true,
+      "warningCount": 0
+    },
+    {
+      "readableId": "1927930603",
+      "targetExtractionId": "aide_7UXaU6cbQRNhZ7apv6ddtm",
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "normalizedExpectedSequence": "领料工作中心 -\u003e 数控激光切割(下料) -\u003e 数控折弯(下料)",
+      "normalizedSuggestedSequence": "领料工作中心 -\u003e 数控激光切割(下料) -\u003e 数控折弯(下料)",
+      "normalizedExactSequenceMatch": true,
+      "warningCount": 0
+    },
+    {
+      "readableId": "192793060201",
+      "targetExtractionId": "aide_SC2RePErD8tnQgFa9dNupT",
+      "actualOperationCount": 3,
+      "suggestedOperationCount": 3,
+      "normalizedExpectedSequence": "领料工作中心 -\u003e 数控激光切割(下料) -\u003e 数控折弯(下料)",
+      "normalizedSuggestedSequence": "领料工作中心 -\u003e 数控激光切割(下料) -\u003e 数控折弯(下料)",
+      "normalizedExactSequenceMatch": true,
+      "warningCount": 0
+    }
+  ]
+}

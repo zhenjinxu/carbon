@@ -1,0 +1,310 @@
+{
+  "readableId": "192793050201",
+  "target": {
+    "extractionId": "aide_TqQRLBMEb9aHw8D2PvV1M9",
+    "materialTags": ["304"],
+    "featureTags": ["板件", "折弯"],
+    "drawingEvidenceCount": 22,
+    "drawingEvidenceByKind": {
+      "dimension": 12,
+      "bend": 2,
+      "surface": 2,
+      "note": 6
+    },
+    "drawingWarnings": [
+      "linear dimension units are not explicitly stated on the visible drawing."
+    ]
+  },
+  "topReferences": [
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62",
+      "readableId": "1924371005",
+      "score": 65,
+      "matchedMaterialTags": ["304"],
+      "matchedFeatureTags": ["折弯", "板件"],
+      "matchedDrawingEvidenceCount": 2,
+      "sampleMaterialTags": ["304"],
+      "sampleFeatureTags": ["支架", "折弯", "板件"],
+      "sampleProcessTags": ["激光切割", "领料", "折弯", "下料"],
+      "normalizedOperations": [
+        "领料工作中心",
+        "数控激光切割(下料)",
+        "数控折弯(下料)"
+      ]
+    },
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:make_beb5c8780696f3589806767d",
+      "readableId": "1924371803",
+      "score": 65,
+      "matchedMaterialTags": ["304"],
+      "matchedFeatureTags": ["折弯", "板件"],
+      "matchedDrawingEvidenceCount": 2,
+      "sampleMaterialTags": ["304"],
+      "sampleFeatureTags": ["支架", "折弯", "板件"],
+      "sampleProcessTags": ["激光切割", "领料", "折弯", "下料"],
+      "normalizedOperations": [
+        "领料工作中心",
+        "数控激光切割(下料)",
+        "数控折弯(下料)"
+      ]
+    },
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:make_f8a47d03d811be629b47b32e",
+      "readableId": "19271341030101",
+      "score": 65,
+      "matchedMaterialTags": ["304"],
+      "matchedFeatureTags": ["折弯", "板件"],
+      "matchedDrawingEvidenceCount": 2,
+      "sampleMaterialTags": ["304"],
+      "sampleFeatureTags": ["折弯", "板件"],
+      "sampleProcessTags": ["激光切割", "领料", "折弯", "下料"],
+      "normalizedOperations": [
+        "领料工作中心",
+        "数控激光切割(下料)",
+        "数控折弯(下料)"
+      ]
+    },
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:make_41d6684d21eefe5507ac0a72",
+      "readableId": "1927134101",
+      "score": 50,
+      "matchedMaterialTags": ["304"],
+      "matchedFeatureTags": ["板件"],
+      "matchedDrawingEvidenceCount": 0,
+      "sampleMaterialTags": ["304"],
+      "sampleFeatureTags": ["板件"],
+      "sampleProcessTags": ["激光切割", "领料", "下料"],
+      "normalizedOperations": ["领料工作中心", "数控激光切割(下料)"]
+    },
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:make_57c2dfa509ab9b330c6d9f5f",
+      "readableId": "192713410405",
+      "score": 50,
+      "matchedMaterialTags": ["304"],
+      "matchedFeatureTags": ["板件"],
+      "matchedDrawingEvidenceCount": 0,
+      "sampleMaterialTags": ["304"],
+      "sampleFeatureTags": ["板件"],
+      "sampleProcessTags": ["激光切割", "领料", "下料"],
+      "normalizedOperations": ["领料工作中心", "数控激光切割(下料)"]
+    },
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:make_e129093cf9f8b43332628ddb",
+      "readableId": "192437180604",
+      "score": 50,
+      "matchedMaterialTags": ["304"],
+      "matchedFeatureTags": ["板件"],
+      "matchedDrawingEvidenceCount": 0,
+      "sampleMaterialTags": ["304"],
+      "sampleFeatureTags": ["轴类", "板件"],
+      "sampleProcessTags": ["激光切割", "领料", "下料"],
+      "normalizedOperations": ["领料工作中心", "数控激光切割(下料)"]
+    },
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:make_2a6f4518bce6a332f677e34a",
+      "readableId": "192713410401",
+      "score": 35,
+      "matchedMaterialTags": ["304"],
+      "matchedFeatureTags": [],
+      "matchedDrawingEvidenceCount": 0,
+      "sampleMaterialTags": ["304"],
+      "sampleFeatureTags": [],
+      "sampleProcessTags": ["领料", "铣削", "下料", "锯床"],
+      "normalizedOperations": [
+        "领料工作中心",
+        "锯床下料",
+        "数显立铣(北一)XA5032(机加工)"
+      ]
+    },
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:make_59e67c77ccf7c9263231fd7a",
+      "readableId": "192713410402",
+      "score": 35,
+      "matchedMaterialTags": ["304"],
+      "matchedFeatureTags": [],
+      "matchedDrawingEvidenceCount": 0,
+      "sampleMaterialTags": ["304"],
+      "sampleFeatureTags": [],
+      "sampleProcessTags": ["领料", "下料", "锯床"],
+      "normalizedOperations": ["领料工作中心", "锯床下料"]
+    },
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:make_90ba3f19b54eac05274bc6e6",
+      "readableId": "1920790304",
+      "score": 35,
+      "matchedMaterialTags": ["304"],
+      "matchedFeatureTags": [],
+      "matchedDrawingEvidenceCount": 0,
+      "sampleMaterialTags": ["304"],
+      "sampleFeatureTags": ["孔"],
+      "sampleProcessTags": ["攻丝", "领料", "铣削"],
+      "normalizedOperations": [
+        "领料工作中心",
+        "数显立铣(北一)XA5032(机加工)",
+        "立式加工中心VMC850B(机加工)",
+        "气动攻丝机(机加工)"
+      ]
+    },
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_267ef40c2c3be8b760a380d0",
+      "readableId": "192793060101",
+      "score": 30,
+      "matchedMaterialTags": [],
+      "matchedFeatureTags": ["板件", "折弯"],
+      "matchedDrawingEvidenceCount": 2,
+      "sampleMaterialTags": [],
+      "sampleFeatureTags": ["板件", "折弯"],
+      "sampleProcessTags": ["激光切割", "折弯", "打磨", "下料", "领料"],
+      "normalizedOperations": [
+        "领料工作中心",
+        "数控激光切割(下料)",
+        "数控折弯(下料)",
+        "打磨(碳钢)"
+      ]
+    },
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_291a9d7a30548a8946aa3c98",
+      "readableId": "1927930502",
+      "score": 30,
+      "matchedMaterialTags": [],
+      "matchedFeatureTags": ["板件", "折弯"],
+      "matchedDrawingEvidenceCount": 2,
+      "sampleMaterialTags": [],
+      "sampleFeatureTags": ["板件", "折弯"],
+      "sampleProcessTags": ["激光切割", "折弯", "下料", "领料"],
+      "normalizedOperations": [
+        "领料工作中心",
+        "数控激光切割(下料)",
+        "数控折弯(下料)"
+      ]
+    },
+    {
+      "sampleId": "d8s9bh4f8gm357312pbg:job-route:wodjmm_29a26687f86d8fdf1d724271",
+      "readableId": "1927930501",
+      "score": 30,
+      "matchedMaterialTags": [],
+      "matchedFeatureTags": ["板件", "折弯"],
+      "matchedDrawingEvidenceCount": 2,
+      "sampleMaterialTags": [],
+      "sampleFeatureTags": ["板件", "折弯"],
+      "sampleProcessTags": ["激光切割", "折弯", "下料", "领料"],
+      "normalizedOperations": [
+        "领料工作中心",
+        "数控激光切割(下料)",
+        "数控折弯(下料)"
+      ]
+    }
+  ],
+  "sameFamilyTraining": [
+    {
+      "readableId": "1927930501",
+      "materialTags": [],
+      "featureTags": ["板件", "折弯"],
+      "processTags": ["激光切割", "折弯", "下料", "领料"],
+      "operationCount": 3,
+      "normalizedOperations": [
+        "领料工作中心",
+        "数控激光切割(下料)",
+        "数控折弯(下料)"
+      ]
+    },
+    {
+      "readableId": "192793050101",
+      "materialTags": [],
+      "featureTags": ["板件", "孔", "折弯"],
+      "processTags": ["激光切割", "折弯", "攻丝", "下料", "领料"],
+      "operationCount": 4,
+      "normalizedOperations": [
+        "领料工作中心",
+        "数控激光切割(下料)",
+        "数控折弯(下料)",
+        "气动攻丝机(机加工)"
+      ]
+    },
+    {
+      "readableId": "1927930502",
+      "materialTags": [],
+      "featureTags": ["板件", "折弯"],
+      "processTags": ["激光切割", "折弯", "下料", "领料"],
+      "operationCount": 3,
+      "normalizedOperations": [
+        "领料工作中心",
+        "数控激光切割(下料)",
+        "数控折弯(下料)"
+      ]
+    },
+    {
+      "readableId": "192793050200",
+      "materialTags": [],
+      "featureTags": ["板件", "焊接件"],
+      "processTags": ["焊接", "打磨", "领料"],
+      "operationCount": 4,
+      "normalizedOperations": [
+        "领料工作中心",
+        "板焊拼装(碳钢)",
+        "氩弧焊(碳钢)",
+        "打磨(碳钢)"
+      ]
+    },
+    {
+      "readableId": "1927930601",
+      "materialTags": [],
+      "featureTags": ["板件", "折弯"],
+      "processTags": ["激光切割", "折弯", "下料", "领料"],
+      "operationCount": 3,
+      "normalizedOperations": [
+        "领料工作中心",
+        "数控激光切割(下料)",
+        "数控折弯(下料)"
+      ]
+    },
+    {
+      "readableId": "192793060101",
+      "materialTags": [],
+      "featureTags": ["板件", "折弯"],
+      "processTags": ["激光切割", "折弯", "打磨", "下料", "领料"],
+      "operationCount": 4,
+      "normalizedOperations": [
+        "领料工作中心",
+        "数控激光切割(下料)",
+        "数控折弯(下料)",
+        "打磨(碳钢)"
+      ]
+    },
+    {
+      "readableId": "1927930602",
+      "materialTags": [],
+      "featureTags": ["板件", "折弯"],
+      "processTags": ["激光切割", "折弯", "下料", "领料"],
+      "operationCount": 3,
+      "normalizedOperations": [
+        "领料工作中心",
+        "数控激光切割(下料)",
+        "数控折弯(下料)"
+      ]
+    },
+    {
+      "readableId": "192793060200",
+      "materialTags": [],
+      "featureTags": ["板件", "焊接件"],
+      "processTags": ["焊接", "打磨", "领料"],
+      "operationCount": 4,
+      "normalizedOperations": [
+        "领料工作中心",
+        "板焊拼装(碳钢)",
+        "氩弧焊(碳钢)",
+        "打磨(碳钢)"
+      ]
+    }
+  ],
+  "relaxedDraftAtScore30": {
+    "operationCount": 3,
+    "warnings": [],
+    "normalizedOperations": [
+      "领料工作中心",
+      "数控激光切割(下料)",
+      "数控折弯(下料)"
+    ],
+    "sourceSampleIds": ["d8s9bh4f8gm357312pbg:make_1a8aa95f657a85229ff2fe62"]
+  }
+}

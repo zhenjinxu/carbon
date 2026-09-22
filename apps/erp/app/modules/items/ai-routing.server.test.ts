@@ -1,4 +1,4 @@
-﻿import { readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import type { AiRoutingDrawingExtraction } from "@carbon/lib/ai-routing-drawing";
 import { describe, expect, it } from "vitest";
@@ -61,6 +61,32 @@ describe("AI routing server helpers", () => {
     });
   });
 
+  it("maps persisted sample scope exclusions from custom fields", () => {
+    const sample = aiRoutingSampleFromRow({
+      id: "sample-scope-excluded",
+      itemId: "part-1",
+      makeMethodId: "method-1",
+      itemSnapshot: {
+        readableIdWithRevision: "1927930206",
+        name: "\u65e0\u677f\u6750\u6fc0\u5149\u6837\u672c"
+      },
+      operationSnapshot: [],
+      drawingDocumentIds: [],
+      materialTags: [],
+      featureTags: ["\u677f\u4ef6"],
+      processTags: ["\u6fc0\u5149\u5207\u5272"],
+      resourceTags: [],
+      status: "Approved",
+      datasetRole: "Training",
+      customFields: {
+        aiRoutingScope: {
+          exclusionReasons: ["illegal_laser_no_plate"]
+        }
+      }
+    });
+
+    expect(sample.scopeExclusionReasons).toEqual(["illegal_laser_no_plate"]);
+  });
   it("builds an ID-only drawing extraction event payload", () => {
     const payload = aiRoutingDrawingExtractionEventPayload({
       companyId: "company-1",
@@ -393,6 +419,109 @@ describe("AI routing server helpers", () => {
     expect(JSON.stringify(target)).not.toContain("hidden-target-process");
     expect(JSON.stringify(target)).not.toContain("hidden-target-resource");
   });
+  it("forwards whitelisted human weld evidence from item notes into target evidence", () => {
+    const drawingExtraction = {
+      schemaVersion: "ai-routing-drawing.v1",
+      document: {
+        pageCount: 1,
+        renderedPageCount: 1,
+        contentHash: "d".repeat(64)
+      },
+      titleBlock: {
+        partNumber: "192766040302",
+        revision: null,
+        material: "SUS304",
+        finish: "表面拉丝处理",
+        heatTreatment: null
+      },
+      part: { class: "sheet-metal", stockForm: "sheet" },
+      dimensions: [],
+      features: {
+        holes: [],
+        threads: [],
+        slots: [],
+        pockets: [],
+        bends: [
+          {
+            id: "bend-1",
+            label: "90° bend",
+            angle: 90,
+            unit: "degree",
+            evidence: [
+              {
+                id: "ev-bend-1",
+                pageNumber: 1,
+                text: "90° R2",
+                confidence: 0.93
+              }
+            ]
+          }
+        ],
+        welds: [],
+        surfaces: [
+          {
+            id: "surface-1",
+            label: "brushed surface",
+            finish: "拉丝",
+            evidence: [
+              {
+                id: "ev-surface-1",
+                pageNumber: 1,
+                text: "4.表面拉丝处理。",
+                confidence: 0.92
+              }
+            ]
+          }
+        ]
+      },
+      notes: [],
+      explicitUnknowns: [],
+      warnings: []
+    } satisfies AiRoutingDrawingExtraction;
+
+    const target = aiRoutingTargetEvidenceFromExtractionRow({
+      itemId: "part-192766040302",
+      readableId: "192766040302",
+      readableIdWithRevision: null,
+      name: "防护罩1",
+      description: null,
+      customFields: {
+        processTags: ["hidden-target-process"],
+        resourceTags: ["hidden-target-resource"],
+        aiRoutingHumanEvidence: {
+          processConfirmations: [
+            {
+              source: "process_owner_review",
+              evidenceType: "folded_edge_closure_requires_welding",
+              allowed: true,
+              processes: ["焊接"],
+              text: "折弯边需要封闭所以需要氩弧焊",
+              sourceDocument:
+                "ai-routing-weld-evidence-human-review-filled-20260828.xlsx"
+            }
+          ]
+        }
+      },
+      extractionId: "aide-human-weld",
+      extraction: drawingExtraction
+    });
+
+    expect(target.processHints).toEqual(
+      expect.arrayContaining(["激光切割", "折弯", "焊接", "打磨"])
+    );
+    expect(target.featureTags).toEqual(expect.arrayContaining(["焊接件"]));
+    expect(target.humanEvidence).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          kind: "process_owner_review",
+          label: "folded_edge_closure_requires_welding",
+          processHints: ["焊接"]
+        })
+      ])
+    );
+    expect(JSON.stringify(target)).not.toContain("hidden-target-process");
+    expect(JSON.stringify(target)).not.toContain("hidden-target-resource");
+  });
   it("builds training drawing snapshots only from current succeeded extractions", () => {
     const drawingExtraction = {
       schemaVersion: "ai-routing-drawing.v1",
@@ -626,5 +755,608 @@ describe("AI routing server helpers", () => {
     expect(snapshots).toHaveLength(1);
     expect(snapshots[0]?.id).toBe("doc-current");
     expect(snapshots[0]?.aiDrawingExtraction.id).toBe("aide-current");
+  });
+});
+
+type MaterializationDraftRecord = {
+  id: string;
+  companyId: string;
+  itemId: string;
+  targetMakeMethodId: string | null;
+  acceptedMakeMethodId: string | null;
+  status: string;
+};
+
+type MaterializationFeedbackRecord = {
+  id: string;
+  companyId: string;
+  draftId: string;
+  itemId: string;
+  confirmedRouteSnapshot: unknown;
+  createdAt: string;
+};
+
+type MaterializationMakeMethodRecord = {
+  id: string;
+  companyId: string;
+  itemId: string;
+  status: string;
+  version: number;
+  tags?: string[] | null;
+  customFields?: unknown;
+  createdBy?: string;
+};
+
+type MaterializationOperationRecord = {
+  id: string;
+  companyId: string;
+  makeMethodId: string;
+  order: number;
+  processId: string;
+  workCenterId: string | null;
+  description: string;
+};
+
+function materializationWorkCenterProcessPairKey(pair: {
+  processId: string;
+  workCenterId: string;
+}) {
+  return `${pair.processId}\u0000${pair.workCenterId}`;
+}
+
+function createAiRoutingMaterializationStore(args: {
+  drafts: MaterializationDraftRecord[];
+  feedback: MaterializationFeedbackRecord[];
+  makeMethods: MaterializationMakeMethodRecord[];
+  processIds?: string[];
+  workCenterIds?: string[];
+  workCenterProcessPairs?: Array<{ processId: string; workCenterId: string }>;
+  failOperationInsert?: boolean;
+}) {
+  let drafts = structuredClone(args.drafts);
+  let feedback = structuredClone(args.feedback);
+  let makeMethods = structuredClone(args.makeMethods);
+  let operations: MaterializationOperationRecord[] = [];
+  const processIds = new Set(args.processIds ?? ["proc-laser", "proc-bend"]);
+  const workCenterIds = new Set(args.workCenterIds ?? ["wc-laser"]);
+  const workCenterProcessPairs = new Set(
+    (
+      args.workCenterProcessPairs ?? [
+        { processId: "proc-laser", workCenterId: "wc-laser" }
+      ]
+    ).map(materializationWorkCenterProcessPairKey)
+  );
+
+  const tx = {
+    getAcceptedDraftForUpdate: async ({
+      companyId,
+      itemId,
+      draftId
+    }: {
+      companyId: string;
+      itemId: string;
+      draftId: string;
+    }) =>
+      drafts.find(
+        (draft) =>
+          draft.id === draftId &&
+          draft.companyId === companyId &&
+          draft.itemId === itemId
+      ) ?? null,
+    getLatestAcceptedFeedback: async ({
+      companyId,
+      itemId,
+      draftId
+    }: {
+      companyId: string;
+      itemId: string;
+      draftId: string;
+    }) =>
+      feedback
+        .filter(
+          (row) =>
+            row.companyId === companyId &&
+            row.itemId === itemId &&
+            row.draftId === draftId
+        )
+        .sort((left, right) =>
+          right.createdAt.localeCompare(left.createdAt)
+        )[0] ?? null,
+    getTargetMakeMethodForUpdate: async ({
+      companyId,
+      itemId,
+      makeMethodId
+    }: {
+      companyId: string;
+      itemId: string;
+      makeMethodId: string;
+    }) =>
+      makeMethods.find(
+        (method) =>
+          method.id === makeMethodId &&
+          method.companyId === companyId &&
+          method.itemId === itemId
+      ) ?? null,
+    getNextMakeMethodVersion: async ({
+      companyId,
+      itemId
+    }: {
+      companyId: string;
+      itemId: string;
+    }) =>
+      Math.max(
+        0,
+        ...makeMethods
+          .filter(
+            (method) =>
+              method.companyId === companyId && method.itemId === itemId
+          )
+          .map((method) => method.version)
+      ) + 1,
+    getActiveProcessIds: async (_companyId: string, ids: string[]) =>
+      new Set(ids.filter((id) => processIds.has(id))),
+    getActiveWorkCenterIds: async (_companyId: string, ids: string[]) =>
+      new Set(ids.filter((id) => workCenterIds.has(id))),
+    getActiveWorkCenterProcessPairs: async (
+      _companyId: string,
+      pairs: Array<{ processId: string; workCenterId: string }>
+    ) =>
+      new Set(
+        pairs
+          .map(materializationWorkCenterProcessPairKey)
+          .filter((key) => workCenterProcessPairs.has(key))
+      ),
+    insertDraftMakeMethod: async ({
+      companyId,
+      itemId,
+      version,
+      tags,
+      customFields,
+      createdBy
+    }: {
+      companyId: string;
+      itemId: string;
+      version: number;
+      tags: string[] | null;
+      customFields: unknown;
+      createdBy: string;
+    }) => {
+      const inserted = {
+        id: `method-ai-${makeMethods.length + 1}`,
+        companyId,
+        itemId,
+        status: "Draft",
+        version,
+        tags,
+        customFields,
+        createdBy
+      } satisfies MaterializationMakeMethodRecord;
+      makeMethods.push(inserted);
+      return inserted;
+    },
+    insertMethodOperations: async (
+      rows: Omit<MaterializationOperationRecord, "id">[]
+    ) => {
+      if (args.failOperationInsert) {
+        throw new Error("forced child insert failure");
+      }
+      operations.push(
+        ...rows.map((row, index) => ({
+          id: `operation-${operations.length + index + 1}`,
+          ...structuredClone(row)
+        }))
+      );
+    },
+    linkDraftToAcceptedMakeMethod: async ({
+      companyId,
+      itemId,
+      draftId,
+      makeMethodId
+    }: {
+      companyId: string;
+      itemId: string;
+      draftId: string;
+      makeMethodId: string;
+    }) => {
+      const draft = drafts.find(
+        (row) =>
+          row.id === draftId &&
+          row.companyId === companyId &&
+          row.itemId === itemId
+      );
+      if (!draft || draft.acceptedMakeMethodId) return false;
+      draft.acceptedMakeMethodId = makeMethodId;
+      return true;
+    }
+  };
+
+  return {
+    store: {
+      transaction: async <T>(callback: (trx: typeof tx) => Promise<T>) => {
+        const snapshot = {
+          drafts: structuredClone(drafts),
+          makeMethods: structuredClone(makeMethods),
+          operations: structuredClone(operations)
+        };
+        try {
+          return await callback(tx);
+        } catch (error) {
+          drafts = snapshot.drafts;
+          makeMethods = snapshot.makeMethods;
+          operations = snapshot.operations;
+          throw error;
+        }
+      }
+    },
+    getDrafts: () => drafts,
+    getMakeMethods: () => makeMethods,
+    getOperations: () => operations
+  };
+}
+
+const acceptedRouteSnapshot = {
+  status: "Technologist reviewed",
+  targetItemId: "part-1",
+  formalRoutingAction: "not-published",
+  suggestedOperations: [
+    {
+      order: 1,
+      processId: "proc-laser",
+      processName: "Laser cut",
+      workCenterId: "wc-laser",
+      workCenterName: "Laser cell",
+      description: "Laser cut blank",
+      operationType: "Inside",
+      operationOrder: "After Previous",
+      setupTime: 0,
+      setupUnit: "Total Minutes",
+      laborTime: 12,
+      laborUnit: "Minutes/Piece",
+      machineTime: 8,
+      machineUnit: "Minutes/Piece",
+      sourceSampleId: "sample-1",
+      sourceOperationOrder: 10
+    },
+    {
+      order: 2,
+      processId: "proc-bend",
+      processName: "Bend",
+      workCenterId: null,
+      workCenterName: null,
+      description: "Bend formed edges",
+      operationType: "Inside",
+      operationOrder: "After Previous",
+      setupTime: 0,
+      setupUnit: "Total Minutes",
+      laborTime: 10,
+      laborUnit: "Minutes/Piece",
+      machineTime: 5,
+      machineUnit: "Minutes/Piece",
+      sourceSampleId: "sample-2",
+      sourceOperationOrder: 20
+    }
+  ],
+  referenceSampleIds: ["sample-1", "sample-2"],
+  warnings: []
+};
+
+describe("AI routing accepted draft materialization", () => {
+  it("creates one new Draft make-method version from an accepted reviewed snapshot without changing the Active version", async () => {
+    const { materializeAcceptedAiRoutingDraftWithStore } = await import(
+      "./ai-routing.server"
+    );
+    const database = createAiRoutingMaterializationStore({
+      drafts: [
+        {
+          id: "draft-1",
+          companyId: "company-a",
+          itemId: "part-1",
+          targetMakeMethodId: "method-active",
+          acceptedMakeMethodId: null,
+          status: "Accepted"
+        }
+      ],
+      feedback: [
+        {
+          id: "feedback-1",
+          companyId: "company-a",
+          itemId: "part-1",
+          draftId: "draft-1",
+          confirmedRouteSnapshot: acceptedRouteSnapshot,
+          createdAt: "2026-08-20T00:00:00.000Z"
+        }
+      ],
+      makeMethods: [
+        {
+          id: "method-active",
+          companyId: "company-a",
+          itemId: "part-1",
+          status: "Active",
+          version: 1,
+          tags: ["current"],
+          customFields: { source: "current" }
+        }
+      ]
+    });
+
+    await expect(
+      materializeAcceptedAiRoutingDraftWithStore(database.store as never, {
+        companyId: "company-a",
+        userId: "user-1",
+        itemId: "part-1",
+        draftId: "draft-1"
+      })
+    ).resolves.toMatchObject({
+      action: "Created",
+      makeMethodId: "method-ai-2",
+      itemId: "part-1",
+      operationCount: 2,
+      version: 2
+    });
+
+    expect(database.getMakeMethods()).toEqual([
+      expect.objectContaining({ id: "method-active", status: "Active" }),
+      expect.objectContaining({
+        id: "method-ai-2",
+        status: "Draft",
+        version: 2,
+        createdBy: "user-1"
+      })
+    ]);
+    expect(database.getDrafts()[0]?.acceptedMakeMethodId).toBe("method-ai-2");
+    expect(database.getOperations()).toEqual([
+      expect.objectContaining({
+        makeMethodId: "method-ai-2",
+        order: 1,
+        processId: "proc-laser",
+        workCenterId: "wc-laser",
+        description: "Laser cut blank"
+      }),
+      expect.objectContaining({
+        makeMethodId: "method-ai-2",
+        order: 2,
+        processId: "proc-bend",
+        workCenterId: null,
+        description: "Bend formed edges"
+      })
+    ]);
+  });
+
+  it("rejects non-accepted drafts without creating a method version", async () => {
+    const { materializeAcceptedAiRoutingDraftWithStore } = await import(
+      "./ai-routing.server"
+    );
+    const database = createAiRoutingMaterializationStore({
+      drafts: [
+        {
+          id: "draft-1",
+          companyId: "company-a",
+          itemId: "part-1",
+          targetMakeMethodId: "method-active",
+          acceptedMakeMethodId: null,
+          status: "Draft"
+        }
+      ],
+      feedback: [],
+      makeMethods: [
+        {
+          id: "method-active",
+          companyId: "company-a",
+          itemId: "part-1",
+          status: "Active",
+          version: 1
+        }
+      ]
+    });
+
+    await expect(
+      materializeAcceptedAiRoutingDraftWithStore(database.store as never, {
+        companyId: "company-a",
+        userId: "user-1",
+        itemId: "part-1",
+        draftId: "draft-1"
+      })
+    ).rejects.toThrow(/accepted/i);
+    expect(database.getMakeMethods()).toHaveLength(1);
+  });
+
+  it("reuses an already linked Draft method on duplicate submission", async () => {
+    const { materializeAcceptedAiRoutingDraftWithStore } = await import(
+      "./ai-routing.server"
+    );
+    const database = createAiRoutingMaterializationStore({
+      drafts: [
+        {
+          id: "draft-1",
+          companyId: "company-a",
+          itemId: "part-1",
+          targetMakeMethodId: "method-active",
+          acceptedMakeMethodId: "method-ai-existing",
+          status: "Accepted"
+        }
+      ],
+      feedback: [],
+      makeMethods: [
+        {
+          id: "method-active",
+          companyId: "company-a",
+          itemId: "part-1",
+          status: "Active",
+          version: 1
+        },
+        {
+          id: "method-ai-existing",
+          companyId: "company-a",
+          itemId: "part-1",
+          status: "Draft",
+          version: 2
+        }
+      ]
+    });
+
+    await expect(
+      materializeAcceptedAiRoutingDraftWithStore(database.store as never, {
+        companyId: "company-a",
+        userId: "user-1",
+        itemId: "part-1",
+        draftId: "draft-1"
+      })
+    ).resolves.toMatchObject({
+      action: "Reused",
+      makeMethodId: "method-ai-existing",
+      operationCount: 0,
+      version: 2
+    });
+    expect(database.getMakeMethods()).toHaveLength(2);
+    expect(database.getOperations()).toHaveLength(0);
+  });
+
+  it("rolls back method creation, operation inserts, and draft linking when a child insert fails", async () => {
+    const { materializeAcceptedAiRoutingDraftWithStore } = await import(
+      "./ai-routing.server"
+    );
+    const database = createAiRoutingMaterializationStore({
+      failOperationInsert: true,
+      drafts: [
+        {
+          id: "draft-1",
+          companyId: "company-a",
+          itemId: "part-1",
+          targetMakeMethodId: "method-active",
+          acceptedMakeMethodId: null,
+          status: "Accepted"
+        }
+      ],
+      feedback: [
+        {
+          id: "feedback-1",
+          companyId: "company-a",
+          itemId: "part-1",
+          draftId: "draft-1",
+          confirmedRouteSnapshot: acceptedRouteSnapshot,
+          createdAt: "2026-08-20T00:00:00.000Z"
+        }
+      ],
+      makeMethods: [
+        {
+          id: "method-active",
+          companyId: "company-a",
+          itemId: "part-1",
+          status: "Active",
+          version: 1
+        }
+      ]
+    });
+
+    await expect(
+      materializeAcceptedAiRoutingDraftWithStore(database.store as never, {
+        companyId: "company-a",
+        userId: "user-1",
+        itemId: "part-1",
+        draftId: "draft-1"
+      })
+    ).rejects.toThrow(/child insert/);
+    expect(database.getMakeMethods()).toHaveLength(1);
+    expect(database.getOperations()).toHaveLength(0);
+    expect(database.getDrafts()[0]?.acceptedMakeMethodId).toBeNull();
+  });
+
+  it("validates reviewed process and work-center references before inserting the Draft method", async () => {
+    const { materializeAcceptedAiRoutingDraftWithStore } = await import(
+      "./ai-routing.server"
+    );
+    const database = createAiRoutingMaterializationStore({
+      processIds: ["proc-laser"],
+      workCenterIds: [],
+      drafts: [
+        {
+          id: "draft-1",
+          companyId: "company-a",
+          itemId: "part-1",
+          targetMakeMethodId: "method-active",
+          acceptedMakeMethodId: null,
+          status: "Accepted"
+        }
+      ],
+      feedback: [
+        {
+          id: "feedback-1",
+          companyId: "company-a",
+          itemId: "part-1",
+          draftId: "draft-1",
+          confirmedRouteSnapshot: acceptedRouteSnapshot,
+          createdAt: "2026-08-20T00:00:00.000Z"
+        }
+      ],
+      makeMethods: [
+        {
+          id: "method-active",
+          companyId: "company-a",
+          itemId: "part-1",
+          status: "Active",
+          version: 1
+        }
+      ]
+    });
+
+    await expect(
+      materializeAcceptedAiRoutingDraftWithStore(database.store as never, {
+        companyId: "company-a",
+        userId: "user-1",
+        itemId: "part-1",
+        draftId: "draft-1"
+      })
+    ).rejects.toThrow(/process.*proc-bend|work center.*wc-laser/i);
+    expect(database.getMakeMethods()).toHaveLength(1);
+    expect(database.getOperations()).toHaveLength(0);
+  });
+
+  it("rejects reviewed work-center assignments without a supporting process capability", async () => {
+    const { materializeAcceptedAiRoutingDraftWithStore } = await import(
+      "./ai-routing.server"
+    );
+    const database = createAiRoutingMaterializationStore({
+      workCenterProcessPairs: [],
+      drafts: [
+        {
+          id: "draft-1",
+          companyId: "company-a",
+          itemId: "part-1",
+          targetMakeMethodId: "method-active",
+          acceptedMakeMethodId: null,
+          status: "Accepted"
+        }
+      ],
+      feedback: [
+        {
+          id: "feedback-1",
+          companyId: "company-a",
+          itemId: "part-1",
+          draftId: "draft-1",
+          confirmedRouteSnapshot: acceptedRouteSnapshot,
+          createdAt: "2026-08-20T00:00:00.000Z"
+        }
+      ],
+      makeMethods: [
+        {
+          id: "method-active",
+          companyId: "company-a",
+          itemId: "part-1",
+          status: "Active",
+          version: 1
+        }
+      ]
+    });
+
+    await expect(
+      materializeAcceptedAiRoutingDraftWithStore(database.store as never, {
+        companyId: "company-a",
+        userId: "user-1",
+        itemId: "part-1",
+        draftId: "draft-1"
+      })
+    ).rejects.toThrow(/unsupported.*work center\/process/i);
+    expect(database.getMakeMethods()).toHaveLength(1);
+    expect(database.getOperations()).toHaveLength(0);
   });
 });

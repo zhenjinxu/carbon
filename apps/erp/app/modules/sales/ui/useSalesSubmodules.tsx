@@ -3,6 +3,7 @@ import {
   LuBan,
   LuCreditCard,
   LuGlobe,
+  LuLayoutDashboard,
   LuList,
   LuPercent,
   LuShapes,
@@ -99,6 +100,17 @@ export default function useSalesSubmodules() {
           to: path.to.customerTypes,
           role: "employee",
           icon: <LuShapes />
+        }
+      ]
+    },
+    {
+      name: t`个人工作台`,
+      routes: [
+        {
+          name: t`我的工作台`,
+          to: path.to.salesWorkbench,
+          role: "employee",
+          icon: <LuLayoutDashboard />
         }
       ]
     }

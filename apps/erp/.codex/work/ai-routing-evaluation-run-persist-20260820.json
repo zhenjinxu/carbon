@@ -1,0 +1,51 @@
+{
+  "action": "Reused",
+  "evaluationRunId": "airer_Lg9eP6jJPYYRgYcXRHGUSN",
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "generatorVersion": "ai-routing-draft.v1",
+  "promptVersion": "mixed:ai-routing-drawing.prompt.v1,ai-routing-drawing.prompt.v2",
+  "extractorSchemaVersion": "ai-routing-drawing.v1",
+  "modelProvider": "openai",
+  "modelName": "gpt-5.6-terra",
+  "trainingSampleCount": 105,
+  "evaluationSampleCount": 4,
+  "targetExtractionIds": [
+    "aide_ZUm5yz18gbHisqN3j5euo",
+    "aide_TqQRLBMEb9aHw8D2PvV1M9",
+    "aide_7UXaU6cbQRNhZ7apv6ddtm",
+    "aide_SC2RePErD8tnQgFa9dNupT"
+  ],
+  "metrics": {
+    "holdoutCount": 4,
+    "rawExactSequenceMatches": 0,
+    "normalizedExactSequenceMatches": 4,
+    "rawPositionMatchCount": 0,
+    "normalizedPositionMatchCount": 12,
+    "orderedSequenceSimilarity": 1,
+    "semanticPrecision": 1,
+    "semanticRecall": 1,
+    "semanticF1": 1,
+    "totalEvaluationLeaks": 0,
+    "totalWorkCenterAssignments": 0,
+    "totalMissingProcessIds": 0,
+    "invalidProcessIds": [],
+    "productionGate": {
+      "eligible": false,
+      "minimumHoldouts": 30,
+      "reason": "Requires at least 30 representative holdouts; evaluated 4."
+    }
+  },
+  "formalBefore": {
+    "methodCount": 4,
+    "operationCount": 0
+  },
+  "formalAfter": {
+    "methodCount": 4,
+    "operationCount": 0
+  },
+  "productionGate": {
+    "eligible": false,
+    "minimumHoldouts": 30,
+    "reason": "Requires at least 30 representative holdouts; evaluated 4."
+  }
+}

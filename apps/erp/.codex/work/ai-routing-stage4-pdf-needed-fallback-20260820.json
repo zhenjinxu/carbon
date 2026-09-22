@@ -1,0 +1,292 @@
+{
+  "companyId": "d8s9bh4f8gm357312pbg",
+  "scannedAt": "2026-08-20T13:01:38.700Z",
+  "fallbackType": "Not valid Evaluation holdouts until active Part PDFs are attached/provided.",
+  "poolCount": 25,
+  "selectedCount": 22,
+  "bucketSummary": [
+    {
+      "key": "laser_bending_baseline",
+      "label": "Laser + bending sheet-metal baseline",
+      "needed": 2,
+      "selected": 2,
+      "available": 5
+    },
+    {
+      "key": "hole_slot_countersink",
+      "label": "Hole-heavy / countersink / slot features",
+      "needed": 4,
+      "selected": 4,
+      "available": 5
+    },
+    {
+      "key": "tapping_drilling_machining",
+      "label": "Tapping / drilling / machining follow-up",
+      "needed": 3,
+      "selected": 3,
+      "available": 6
+    },
+    {
+      "key": "welding_fabrication",
+      "label": "Welding / fabrication",
+      "needed": 5,
+      "selected": 5,
+      "available": 5
+    },
+    {
+      "key": "deburr_grind_brush_polish",
+      "label": "Deburr / grinding / brushing / polishing",
+      "needed": 4,
+      "selected": 0,
+      "available": 0
+    },
+    {
+      "key": "outsourcing_surface_treatment",
+      "label": "Outsourcing / surface treatment",
+      "needed": 3,
+      "selected": 0,
+      "available": 0
+    },
+    {
+      "key": "weak_ambiguous_drawings",
+      "label": "Weak / ambiguous drawings",
+      "needed": 1,
+      "selected": 0,
+      "available": 0
+    }
+  ],
+  "selected": [
+    {
+      "rank": 1,
+      "readableId": "1927286902",
+      "readableIdWithRevision": "1927286902",
+      "name": "限位板",
+      "bucket": "Laser + bending sheet-metal baseline",
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料） -> U8 JQG01 气动攻丝机（机加工）",
+      "labels": [
+        "laser_bending_baseline",
+        "hole_slot_countersink",
+        "tapping_drilling_machining"
+      ]
+    },
+    {
+      "rank": 2,
+      "readableId": "192728690202",
+      "readableIdWithRevision": "192728690202",
+      "name": "固定轴板",
+      "bucket": "Laser + bending sheet-metal baseline",
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料） -> U8 JQG01 气动攻丝机（机加工）",
+      "labels": [
+        "laser_bending_baseline",
+        "hole_slot_countersink",
+        "tapping_drilling_machining"
+      ]
+    },
+    {
+      "rank": 3,
+      "readableId": "239999300009",
+      "readableIdWithRevision": "239999300009",
+      "name": "支脚螺栓(M36)",
+      "bucket": "Hole-heavy / countersink / slot features",
+      "operationCount": 5,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JSC01 数控车床(机加工） -> U8 JYZ01 摇臂钻床（机加工）",
+      "labels": ["hole_slot_countersink", "tapping_drilling_machining"]
+    },
+    {
+      "rank": 4,
+      "readableId": "239999300003",
+      "readableIdWithRevision": "239999300003",
+      "name": "开槽支脚螺栓垫板",
+      "bucket": "Hole-heavy / countersink / slot features",
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 JPC02 普通车床C6246×1500(机加工） -> U8 JSX01 数显立铣（北一）XA5032（机加工）",
+      "labels": ["hole_slot_countersink", "tapping_drilling_machining"]
+    },
+    {
+      "rank": 5,
+      "readableId": "192728690201",
+      "readableIdWithRevision": "192728690201",
+      "name": "矩形管",
+      "bucket": "Hole-heavy / countersink / slot features",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JYZ01 摇臂钻床（机加工）",
+      "labels": ["hole_slot_countersink", "tapping_drilling_machining"]
+    },
+    {
+      "rank": 6,
+      "readableId": "239999300038",
+      "readableIdWithRevision": "239999300038",
+      "name": "2mm孔铆接小铭牌托架 自制件",
+      "bucket": "Hole-heavy / countersink / slot features",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "labels": [
+        "laser_bending_baseline",
+        "hole_slot_countersink",
+        "welding_fabrication"
+      ]
+    },
+    {
+      "rank": 7,
+      "readableId": "239999200001",
+      "readableIdWithRevision": "239999200001",
+      "name": "地脚盘 M36 -MOD-DIAM 136",
+      "bucket": "Tapping / drilling / machining follow-up",
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JSC01 数控车床(机加工） -> U8 JPC01 普通车床CA6140A×2000(机加工）",
+      "labels": ["tapping_drilling_machining"]
+    },
+    {
+      "rank": 8,
+      "readableId": "239999200002",
+      "readableIdWithRevision": "239999200002",
+      "name": "地脚丝杆 M36",
+      "bucket": "Tapping / drilling / machining follow-up",
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工） -> U8 JSX01 数显立铣（北一）XA5032（机加工）",
+      "labels": ["tapping_drilling_machining"]
+    },
+    {
+      "rank": 9,
+      "readableId": "192728690102",
+      "readableIdWithRevision": "192728690102",
+      "name": "导轮",
+      "bucket": "Tapping / drilling / machining follow-up",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工）",
+      "labels": ["tapping_drilling_machining"]
+    },
+    {
+      "rank": 10,
+      "readableId": "192728690200",
+      "readableIdWithRevision": "192728690200",
+      "name": "左叉臂安装支架",
+      "bucket": "Welding / fabrication",
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 BPZ02 板焊拼装（食品） -> U8 BYH01 氩弧焊（食品） -> U8 MDM02 打磨拉丝抛光（食品）",
+      "labels": ["welding_fabrication", "deburr_grind_brush_polish"]
+    },
+    {
+      "rank": 11,
+      "readableId": "23999930001100",
+      "readableIdWithRevision": "23999930001100",
+      "name": "38进料口-45度",
+      "bucket": "Welding / fabrication",
+      "operationCount": 4,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 BPZ03 板焊拼装（罐体） -> U8 BYH02 氩弧焊（罐体） -> U8 MDM03 打磨拉丝抛光（罐体）",
+      "labels": ["welding_fabrication", "deburr_grind_brush_polish"]
+    },
+    {
+      "rank": 12,
+      "readableId": "229999000007",
+      "readableIdWithRevision": "229999000007",
+      "name": "易福门单点液位罐体焊接头 E30056AD",
+      "bucket": "Welding / fabrication",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JSC01 数控车床(机加工）",
+      "labels": ["tapping_drilling_machining", "welding_fabrication"]
+    },
+    {
+      "rank": 13,
+      "readableId": "192728690204",
+      "readableIdWithRevision": "192728690204",
+      "name": "立柱地脚板",
+      "bucket": "Welding / fabrication",
+      "operationCount": 2,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 BPZ02 板焊拼装（食品）",
+      "labels": ["welding_fabrication"]
+    },
+    {
+      "rank": 14,
+      "readableId": "ASM-TOP-001",
+      "readableIdWithRevision": "ASM-TOP-001",
+      "name": "精密减速电机总成",
+      "bucket": "Welding / fabrication",
+      "operationCount": 5,
+      "routeSignature": "装配 -> 装配 -> 装配 -> 装配 -> 测试",
+      "labels": ["welding_fabrication"]
+    },
+    {
+      "rank": 15,
+      "readableId": "229999000005",
+      "readableIdWithRevision": "229999000005",
+      "name": "易福门压力变送器接头 E30122",
+      "bucket": "Best remaining active truth route needing PDF",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JSC01 数控车床(机加工）",
+      "labels": ["tapping_drilling_machining"]
+    },
+    {
+      "rank": 16,
+      "readableId": "239999200003",
+      "readableIdWithRevision": "239999200003",
+      "name": "地脚连接板 M36 80x80x16",
+      "bucket": "Best remaining active truth route needing PDF",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XDJ01 锯床下料 -> U8 JPC01 普通车床CA6140A×2000(机加工）",
+      "labels": ["tapping_drilling_machining"]
+    },
+    {
+      "rank": 17,
+      "readableId": "19272869012",
+      "readableIdWithRevision": "19272869012",
+      "name": "接近安装板",
+      "bucket": "Best remaining active truth route needing PDF",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "labels": ["laser_bending_baseline"]
+    },
+    {
+      "rank": 18,
+      "readableId": "19272869013",
+      "readableIdWithRevision": "19272869013",
+      "name": "接近板",
+      "bucket": "Best remaining active truth route needing PDF",
+      "operationCount": 3,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料） -> U8 CSZ01 数控折弯(下料）",
+      "labels": ["laser_bending_baseline"]
+    },
+    {
+      "rank": 19,
+      "readableId": "19272869010106",
+      "readableIdWithRevision": "19272869010106",
+      "name": "肋板",
+      "bucket": "Best remaining active truth route needing PDF",
+      "operationCount": 2,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+      "labels": []
+    },
+    {
+      "rank": 20,
+      "readableId": "19272869010107",
+      "readableIdWithRevision": "19272869010107",
+      "name": "不锈钢槽钢 12#不锈钢槽钢 L=2028",
+      "bucket": "Best remaining active truth route needing PDF",
+      "operationCount": 2,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XPJ01 片锯下料（薄壁碳钢管）（下料）",
+      "labels": ["hole_slot_countersink"]
+    },
+    {
+      "rank": 21,
+      "readableId": "192728690203",
+      "readableIdWithRevision": "192728690203",
+      "name": "顶板",
+      "bucket": "Best remaining active truth route needing PDF",
+      "operationCount": 2,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+      "labels": []
+    },
+    {
+      "rank": 22,
+      "readableId": "192728690205",
+      "readableIdWithRevision": "192728690205",
+      "name": "螺纹衬板",
+      "bucket": "Best remaining active truth route needing PDF",
+      "operationCount": 2,
+      "routeSignature": "U8 LL01 领料工作中心 -> U8 XJG01 数控激光切割（下料）",
+      "labels": []
+    }
+  ]
+}

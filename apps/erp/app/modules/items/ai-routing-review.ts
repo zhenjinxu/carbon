@@ -1,4 +1,4 @@
-import type {
+﻿import type {
   AiRoutingDraft,
   AiRoutingDrawingEvidenceFact,
   AiRoutingTargetEvidence
@@ -12,6 +12,7 @@ export type AiRoutingHumanReviewCheckpointKey =
 
 export type AiRoutingHumanReviewModel = {
   pdfEvidence: {
+    evidenceId: string | null;
     available: boolean;
     materialTags: string[];
     featureTags: string[];
@@ -24,6 +25,7 @@ export type AiRoutingHumanReviewModel = {
     suggestedOperationCount: number;
     sourceSampleCount: number;
     matchedDrawingEvidenceCount: number;
+    workCenterAssignmentCount: number;
   };
   checkpoints: Array<{
     key: AiRoutingHumanReviewCheckpointKey;
@@ -196,9 +198,14 @@ export function buildAiRoutingHumanReviewModel(args: {
         count + (reference.matchedDrawingEvidence?.length ?? 0),
       0
     ) ?? 0;
+  const workCenterAssignmentCount =
+    args.draft?.suggestedOperations.filter(
+      (operation) => operation.workCenterId || operation.workCenterName
+    ).length ?? 0;
 
   return {
     pdfEvidence: {
+      evidenceId: args.targetEvidence?.id ?? null,
       available: Boolean(args.targetEvidence && drawingEvidence.length > 0),
       materialTags: args.targetEvidence?.materialTags ?? [],
       featureTags: args.targetEvidence?.featureTags ?? [],
@@ -210,7 +217,8 @@ export function buildAiRoutingHumanReviewModel(args: {
     draftEvidence: {
       suggestedOperationCount,
       sourceSampleCount,
-      matchedDrawingEvidenceCount
+      matchedDrawingEvidenceCount,
+      workCenterAssignmentCount
     },
     checkpoints: [
       {

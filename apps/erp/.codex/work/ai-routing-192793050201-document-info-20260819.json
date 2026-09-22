@@ -1,0 +1,34 @@
+{
+  "item": {
+    "id": "wodiitem_0141582866eb9de5f7c76491",
+    "readableId": "192793050201",
+    "readableIdWithRevision": "192793050201",
+    "name": "拖板1"
+  },
+  "documents": [
+    {
+      "id": "doc_FRk2cXWg8XB26Avfms1hjp",
+      "name": "192793050201.pdf",
+      "path": "d8s9bh4f8gm357312pbg/parts/wodiitem_0141582866eb9de5f7c76491/192793050201.pdf",
+      "extension": "pdf",
+      "type": "PDF",
+      "sourceDocument": "Part",
+      "sourceDocumentId": "wodiitem_0141582866eb9de5f7c76491",
+      "size": 74,
+      "signedUrl": "[redacted]",
+      "downloadedPath": "D:\\Object\\carbon\\apps\\erp\\.codex\\work\\192793050201-192793050201.pdf.pdf",
+      "downloadError": null
+    }
+  ],
+  "extractions": [
+    {
+      "id": "aide_XsoiAJUWNtoqEGL49R1rP3",
+      "documentId": "doc_FRk2cXWg8XB26Avfms1hjp",
+      "status": "Succeeded",
+      "completedAt": "2026-08-19T07:32:19.914+00:00",
+      "modelName": "gpt-5.6-terra",
+      "pageCount": 1,
+      "contentHash": "470de7ccd8f77cf056318e46a9edca6312bb75b9ff27583beb7f3374afafa67c"
+    }
+  ]
+}

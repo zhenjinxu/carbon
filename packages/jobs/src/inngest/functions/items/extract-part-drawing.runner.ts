@@ -1,16 +1,26 @@
-import {
-  AI_ROUTING_DRAWING_SCHEMA_VERSION,
-  type AiRoutingDrawingExtraction,
-  normalizeAiRoutingDrawingExtraction
-} from "@carbon/lib/ai-routing-drawing";
 import { z } from "zod";
+import * as aiRoutingDrawingNamespace from "../../../../../lib/src/ai-routing-drawing.ts";
 import type {
   AiRoutingPdfRenderForModel,
   AiRoutingPdfRenderSummary,
   AiRoutingRenderedPdfPageImage
 } from "./part-drawing-renderer";
 
-export const AI_ROUTING_DRAWING_PROMPT_VERSION = "ai-routing-drawing.prompt.v1";
+export const AI_ROUTING_DRAWING_PROMPT_VERSION = "ai-routing-drawing.prompt.v4";
+
+const aiRoutingDrawing =
+  (
+    aiRoutingDrawingNamespace as unknown as {
+      default?: typeof aiRoutingDrawingNamespace;
+    }
+  ).default ?? aiRoutingDrawingNamespace;
+const {
+  AI_ROUTING_DRAWING_SCHEMA_VERSION,
+  normalizeAiRoutingDrawingExtraction
+} = aiRoutingDrawing;
+type AiRoutingDrawingExtraction = ReturnType<
+  typeof normalizeAiRoutingDrawingExtraction
+>;
 
 export const aiRoutingDrawingExtractionPayloadSchema = z
   .object({
